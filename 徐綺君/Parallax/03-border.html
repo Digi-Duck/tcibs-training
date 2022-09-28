@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>border</title>
+
+    <style>
+        /* body{
+            background-color: rgb(255, 208, 138);
+        } */
+        .border{
+
+            width: 500px;
+            height: 500px;
+            border: 5px solid rgb(255, 255, 255);
+            /* 複合式屬性: 一次要寫很多數值定義 */
+            /* border: 線條寬度 線條樣式 線條顏色 */
+
+            border-radius: 100%;
+            background-image: url(/03-Parallax/cat.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .test{
+            position: relative;
+            background-color: aqua;
+            
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            /* float: left; */
+            position: absolute;
+        }
+        .clear{
+            clear: left;
+            
+        }
+    </style>
+</head>
+<body>
+
+    <!-- <div class="border"></div> -->
+
+    <!-- 會取消體積的CSS屬性: 1.float 2.position:absolute -->
+    <div class="test">
+        <div class="box"></div>
+        <!-- <div class="clear"></div> -->
+    </div>
+</body>
+</html>

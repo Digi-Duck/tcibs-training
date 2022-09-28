@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+
+    <style>
+        body, html{
+            margin: 0;
+            padding: 0;
+        }
+        .all{
+            background-color: rgb(255, 255, 255);
+            display: flex;
+        }
+        .left{
+            height: 100vh;
+            width: 366px;
+            background-color: #31598dad;
+        }
+        .logo{
+            width: 150px;
+            height: 150px;
+            background-image: url(./logo.jpg);
+            background-size: cover;
+            background-position: center;
+            margin: auto;
+            margin-top: 75px;
+        }
+        .links{
+            margin-top: 65px;
+        }
+        label{
+            display: none;
+        }
+        input{
+            display: none;
+        }
+        ul{
+            text-align: center;
+            padding: 0;
+        }
+        li{
+            font-size: 24px;
+        }
+        a{
+            color: rgb(52, 129, 196);
+            transition: 1s;
+        }
+        a:hover{
+            margin-left: 10px;
+            color: rgb(119, 192, 255);
+        }
+        a:active{
+            color: aqua;
+        }
+        a:visited{
+            color: rgb(0, 0, 0);
+        }
+        .right{
+            width: calc(100% - 366px);
+            height: 100vh;
+            display: flex;
+        }
+        .main{
+            width: 1000px;
+            height: 625px;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+        }
+        .s{
+            height: 100%;
+            width: 300px;
+            margin: 0 2px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            line-height: 625px;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bolder;
+            transition: 2s;
+        }
+        .s:hover{
+            opacity: 0.5;
+        }
+        .x{
+            background-image: url(./duck-1.jpg);
+        }
+        .y{
+            background-image: url(./duck-2.jpg);
+        }
+        .z{
+            background-image: url(./duck-3.jpg);
+        }
+
+    </style>
+    <link rel="stylesheet" href="./1280x1024.css">
+    <link rel="stylesheet" href="./768x1024.css">
+    <link rel="stylesheet" href="./375x677.css">
+</head>
+<body>
+    <div class="all">
+        <div class="left">
+            <div class="logo"></div>
+            <div class="links">
+                <label for="switch">
+                    <img src="./menu.png" alt="menu">
+                </label>
+                <input type="checkbox" id="switch">
+                <ul>
+                    <li><a href="">飼養可愛鴨鴨</a></li>
+                    <li><a href="">陪伴可愛鴨鴨</a></li>
+                    <li><a href="">烹飪好吃鴨鴨</a></li>
+                </ul>                
+            </div>
+
+        </div>
+        <div class="right">
+            <div class="main">
+                <div class="s x">飼養</div>
+                <div class="s y">陪伴</div>
+                <div class="s z">烹飪</div>
+                <div class="clear" style="clear: both;"></div>                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

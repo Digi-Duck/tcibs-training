@@ -1,0 +1,41 @@
+@media screen and (max-width: 1170px){
+    .all{
+        display: block;
+    }
+    
+    .left{
+        width: 100%;
+        height: 75px;
+        padding: 12.5px 0px;
+        display: flex;
+    }
+    .logo{
+        width: 75px;
+        height: 75px;
+        margin: 0;
+        margin-left: 10px;
+    }
+    .links{
+        margin: auto 0;
+        margin-left: auto;
+    }
+    ul{
+        padding: 0 50px;
+        list-style: none;
+        display: flex;
+    }
+    li{
+        padding: 10px;
+        font-size: large;
+    }
+    .right{
+        width: calc(100% - 10px);
+        height: 0;
+        margin: 5px;
+        margin-bottom: 0;
+    }
+    .main{
+        width: 750px;
+        height: 850px;
+    }
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position</title>
+
+    <style>
+        body{
+            height: 30000px;
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+
+        /* position系列 */
+            /* position: relative; */
+            /* 相對位置 : 從標籤目前的位置做移動*/
+            /* left: 50px; */
+            /* top: ; */
+            /* right: ; */
+            /* bottom: ; */
+
+            position: absolute;
+            /* 絕對位置 : 以某個標籤(有position:relative屬性的父層標籤,若全部的父層標籤都沒有relative,則以"瀏覽器視窗為主")為基準做移動*/
+            /* left: 50px; */
+            /* top: 50px; */
+            /* right: 0; */
+            /* bottom: 0; */
+
+            position: fixed;
+            /* 畫面位置 : 以"瀏覽器畫面"為主做移動*/
+            /* left: 50px; */
+            /* top: 0; */
+            /* right: 0; */
+            /* bottom: 0; */
+
+            /* position做水平垂直至中 */
+            position: absolute;
+            left: calc(50% - 50px);
+            top: calc(50% - 50px);
+            /* calc(父層的一半 - 自己的一半) */
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            position: relative;
+            background-color: blue;
+        }
+        .box3{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+
+        .all{
+            width: 500px;
+            height: 500px;
+            background-color: yellow;
+            position: relative;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div> -->
+    <div class="a">
+        <div class="b">
+            <div class="c">
+                <div class="all">
+                    <div class="box1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

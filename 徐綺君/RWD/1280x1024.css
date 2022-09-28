@@ -1,0 +1,24 @@
+@media screen and (max-width: 1280px){
+
+    .main{
+        width: 800px;
+        height: 500px;
+        display: inline;
+    }
+    .s{
+        line-height: 312.5px;
+        width: calc(50% - 2.5px);
+        height: 50%;
+        margin: 0;
+    }
+    .x{
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .y{
+        margin-right: 5px;
+    }
+    .y, .z{
+        float: left;
+    }
+}

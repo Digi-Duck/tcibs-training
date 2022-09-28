@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回家作業</title>
+
+    <style>
+        .all{
+            width: 100%;
+            height: 800px;
+        }
+
+        .box1{
+            width: 100%;
+            height: 30%;
+            background-color: blue;
+            float: left;
+        }
+        .box2{
+            width: 100%;
+            height: 40%;
+            background-color: rebeccapurple;
+            float: left;
+        }
+        .box2-left{
+            width: 50%;
+            height: 100%;
+            background-color: rgb(228, 238, 89);
+            float: left;
+        }
+        .box2-right{
+            width: 50%;
+            height: 100%;
+            background-color: rgb(153, 51, 127);
+            float: right;
+        }
+        .box3{
+            width: 100%;
+            height: 30%;
+            background-color: red;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- 巢狀結構 -->
+
+    <!-- 父層 -->
+    <div class="all">
+        <!-- 子層 -->
+        <div class="box1"></div>
+        <div class="box2">
+            <div class="box2-left"></div>
+            <div class="box2-right"></div>
+        </div>
+        <div class="box3"></div>
+    </div>
+</body>
+</html>

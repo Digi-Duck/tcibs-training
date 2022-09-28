@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字屬性</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap" rel="stylesheet">
+
+    <style>
+
+        .text_box{
+
+            /* 文字專用屬性 */
+            /* 特性: 會影響子層 */
+
+            /* width: 100px; */
+            /* height: 150px; */
+            background-color: rgb(243, 190, 181);
+            
+            color: rgb(72, 117, 199);
+            font-size: 25px;
+            /* 文字大小(網頁限制最小12px) */
+
+            font-weight: 400px;
+            /* 字重(調整文字粗細) */
+
+            /* font-style: oblique; */
+            /* 斜體 */
+
+            line-height: 1.3;
+            /* 行高 -> 寫數值但不寫單位會用預設行高乘上該數值 */
+
+            text-align: justify;
+            /* 文字對齊 */
+            /* justifly(分散對齊) ->只有多行才會有效果 */
+        
+            font-family: 'Bakbak One', cursive,'標楷體';
+            /* 字體 */
+            /* 要預防網頁發布後,別人的電腦中沒有該字體,所以需要寫多個字體代替 */
+
+            letter-spacing: 2px;
+            /* 字距 */
+
+            text-indent: 100px;
+            /* 凸/縮排 */
+            /* 正數 = 縮排 */
+            /* 負數 = 凸排 */
+        }
+
+        .text_box:first-letter{
+            font-size: 50px;
+        }
+        /* :first-letter -> 指定標籤的第一個文字 */
+
+        .color_red{
+            color: red;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- 假文產生器: lorem -->
+    <div class="text_box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt repudiandae itaque animi numquam hic quasi <samp class="color_red">at fugit voluptatem </samp>ea veniam sunt corrupti, eaque libero laboriosam deserunt magni qui ut tempora.</div>
+
+    <!-- <div>123456789</div>
+    <samp>1111111111</samp>
+    <samp class="color_red">222222222</samp> -->
+
+</body>
+</html>

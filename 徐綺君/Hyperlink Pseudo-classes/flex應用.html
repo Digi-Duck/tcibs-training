@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        .all{
+            width: 1000px;
+            height: 1000px;
+            background-color: rgb(187, 187, 187);
+
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+
+            position: relative;
+        }
+        
+        .m-auto{
+            margin-right: auto;
+        }
+
+        .menu{
+            display: none;
+            position: absolute;
+            bottom: -130px;
+            width: 100%;
+            padding: 30px;
+            background-color: black;
+            box-sizing: border-box;
+
+            transition: 5s;
+        }
+
+        .box:hover .menu {
+            display: block;
+        }
+
+        li{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="box m-auto">
+            <ul class="menu">
+                <li>Lorem, ipsum dolor.</li>
+                <li>Lorem, ipsum dolor.</li>
+                <li>Lorem, ipsum dolor.</li>
+            </ul>
+        </div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+</body>
+</html>

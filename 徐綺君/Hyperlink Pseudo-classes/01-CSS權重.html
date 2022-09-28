@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 通用選擇器: html中所有的標籤都寫上指定的CSS */
+        * {
+
+        }
+        
+        /* 標籤選擇器 */
+        div{
+
+        }
+
+        /* 子層選擇器 */
+        .box > .blue_box{
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+        }
+
+        div > span{
+
+        }
+
+        /* 後代選擇器 */
+        div box blue_box text{
+
+        }
+
+        /* 同個標籤重複寫相同屬性,比較晚寫的屬性,優先權"比較高" */
+        /* id的權重大於class */
+        /* 
+        新手使用的選擇器:
+            1.標籤選擇器 div <-初始化標籤用
+            2.class選擇器 .box <-CSS專用
+            3.ID選擇器  #box <-JS專用
+
+            *少用: inline-style(行內樣式) !important(最高權重 別用!!!)
+        */
+
+    </style>
+</head>
+<body>
+    <!-- 優先順序
+         升冪:數值越大 優先權越大
+         降冪:數值越小 優先權越大 -->
+    <div id="red_box" class="box">
+        <div class="blue_box">
+            <span class="text">11</span>
+        </div>
+    </div>
+
+    <div id="red_box" class="another_box">
+        <div class="blue_box"></div>
+    </div>
+
+    <div>
+        
+    </div>
+</body>
+</html>

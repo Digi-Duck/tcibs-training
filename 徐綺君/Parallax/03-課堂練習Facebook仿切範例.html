@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課堂練習Facebook仿切範例</title>
+
+    <style>
+        body{
+            margin: 0;
+        }
+        .nav_bar{
+            width: 100%;
+            height: 50px;
+            background-color: rgb(24, 119, 242);
+        }
+        .m-auto{
+            width: 1200px;
+            height: 100%;
+            /* background-color: rgba(255, 0, 0, 0.178); */
+            margin: auto;
+            position: relative;
+        }
+        .left-side{
+            width: 50%;
+            height: 40px;
+            float: left;
+            
+        }
+        .icon{
+            position: absolute;
+            top: 5px;
+        }
+        .input{
+            width: 40%;
+            height: 40px;
+            background-color: rgb(255, 255, 255);
+            position: absolute;
+            left: 45px;
+            top: 5px;
+        }
+        .right-side{
+            width: 50%;
+            height: 50px;
+            float: right;
+            position: relative;
+        }
+        .r{
+            width: 40px;
+            height: 40px;
+            background-image: url(./cat4.jpg);
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            position: absolute;
+            top: 5px;
+        }
+        .r1{
+            font-size: 25px;
+            color: white;
+            position: absolute;
+            left: 50px;
+            bottom: calc(50% - 14px);
+        }
+        .r2{
+            color: white;
+            font-size: 25px;
+            position: absolute;
+            left: 130px;
+            bottom: calc(50% - 16.5px);
+        }
+        .r3{
+            font-size: 25px;
+            color: white;
+            position: absolute;
+            left: 200px;
+            bottom: calc(50% - 16.5px);
+        }
+        .r4{
+            font-size: 25px;
+            color: white;
+            position: absolute;
+            left: 315px;
+            bottom: calc(50% - 16.5px);
+        }
+        .r5{
+            font-size: 25px;
+            color: white;
+            position: absolute;
+            left: 375px;
+            bottom: calc(50% - 16.5px);
+        }
+        .r6{
+            font-size: 25px;
+            color: white;
+            position: absolute;
+            left: 435px;
+            bottom: calc(50% - 16.5px);
+        }
+        .r7{
+            font-size: 25px;
+            color: white;
+            position: absolute;
+            left: 495px;
+            bottom: calc(50% - 16.5px);
+        }
+        .main{
+            width: 800px;
+            margin: auto;
+            position: relative;
+        }
+        .up{
+            width: 100%;
+        }
+        .back_img{
+            width: 100%;
+            height: 200px;
+            background-color: rgb(46, 46, 46);
+        }
+        .down{
+            width: 100%;
+            height: 50px;
+            background-color: rgb(194, 194, 194);
+            
+        }
+        .head{
+            width: 175px;
+            height: 175px;
+            border: 2px solid rgb(255, 255, 255);
+            background-image: url(./cat4.jpg);
+            background-size: cover;
+            background-position: center;
+            border-radius: 100% ;
+            
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+        .back_down{
+            width: 100%;
+            height: 50px;
+            position: absolute;
+            bottom: 50px;
+        }
+        .m_name{
+            color: white;
+            font-size: 40px;
+            position: absolute;
+            left: 200px;
+        }
+        .btn{
+            width: 300px;
+            height: 100%;
+            float: right;
+            background-color: rgb(172, 172, 172);
+        }
+        .A{
+            width: 50%;
+            height: 100%;
+            background-color: rgb(255, 255, 255);
+            margin: auto;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="nav_bar">
+        
+        <div class="m-auto">
+
+            <div class="left-side">
+                <div class="icon">
+                    <img src="./logo2.png" alt=" logo ">
+                </div>
+                <div class="input"></div>
+            </div>
+
+            <div class="right-side">
+                <div class="r"></div>
+                <div class="r1">na_me</div>
+                <div class="r2">首頁</div>
+                <div class="r3">尋找朋友</div>
+                <div class="r4">好友</div>
+                <div class="r5">訊息</div>
+                <div class="r6">語言</div>
+                <div class="r7">問題</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="main">
+        <div class="container">
+            <div class="up">
+                <div class="back_img">
+                    <div class="head"></div>
+                    <div class="back_down">
+                        <div class="m_name">na__me</div>
+                        <div class="btn"></div>
+                    </div>
+                </div>
+
+                <div class="down">
+                    <div class="A">
+                        <!-- <div class="a1">動態時報</div>
+                        <div class="a2">關於</div>
+                        <div class="a3">朋友</div>
+                        <div class="a4">典藏</div>
+                        <div class="a5">更多</div> -->
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

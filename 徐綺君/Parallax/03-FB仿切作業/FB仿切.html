@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>facebook</title>
+
+    <style>
+        body{
+            margin: 0;
+        }
+        .navbar{
+            width: 100%;
+            background-attachment: fixed;
+            top: 0px;
+            height: 56px;
+            background-color: rgb(255, 255, 255);
+            border-bottom: 2px solid rgb(212, 212, 212);
+        }
+        .left{
+            float: left;
+            padding: 8px 15px;
+        }
+        .logo{
+            float: left;
+        }
+        .search{
+            float: left;
+            width: 280px;
+            height: 40px;
+            background-color: rgb(240, 242, 245);
+            border-radius: 20px;
+            margin: 0 0 0 8px ;    
+        }
+        .img{
+            float: left;
+            margin: 13px 13px;
+        }
+        .search_text{
+            float: left;
+            font-size: 15px;
+            margin: 9px 0;
+            color: rgb(114, 114, 114);
+            font-family: 'Open Sans', sans-serif;
+        }
+        .center{
+            width: 700px;
+            position: absolute;
+            left: calc(50% - 340px);
+            top: 4px;
+        }
+        .center_btn{
+            float: left;
+            width: 6.8vw;
+            height: 48px;
+            border-radius: 8px;
+            margin: 0 0 0 8px;
+        }
+        .center_btn_img{
+            margin: 11px 41px;
+        }
+        .right{
+            float: right;
+            padding: 8px 16px;
+        }
+        .user{
+            float: left;
+            /* height: 36px; */
+            width: 95px;
+            background-color: rgb(232, 243, 255);
+            border-radius: 19px;
+            margin: 2px 0;
+        }
+        .head{
+            height: 28px;
+            width: 28px;
+            background-image: url(./head.jpg);
+            background-size: cover ;
+            border-radius: 50%;
+            margin: 4px;
+        }
+        .menu{
+            float: left;
+            height: 40px;
+            width: 40px;
+            background-color: rgb(228, 230, 235);
+            border-radius: 50px;
+            margin: 0 0 0 8px;
+        }
+        .msg_1{
+            float: left;
+            height: 40px;
+            width: 40px;
+            background-color: rgb(228, 230, 235);
+            border-radius: 50px;
+            margin: 0 0 0 8px;
+        }
+        .msg_2{
+            float: left;
+            height: 40px;
+            width: 40px;
+            background-color: rgb(228, 230, 235);
+            border-radius: 50px;
+            margin: 0 0 0 8px;
+        }
+        .shop{
+            float: left;
+            height: 40px;
+            width: 40px;
+            background-color: rgb(228, 230, 235);
+            border-radius: 50px;
+            margin: 0 0 0 8px;
+        }
+        .main{
+            background-color: rgb(240, 242, 245);
+            height: 100vh;
+        }
+        .container{
+            height: 565px;
+            background-color: rgb(255, 255, 255);
+            border-bottom: 2px solid rgb(223, 225, 228);
+        }
+        .back_img{
+            background-color: rgb(240, 242, 245);
+            background-image:linear-gradient(rgba(0, 255, 255, 0)79%,rgb(107, 108,110));
+            height: 346px;
+            width: 940px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            margin: auto;
+            position: relative;
+        }
+        .back_btn{
+            width: 136px;
+            height: 36px;
+            background-color: rgb(255, 255, 255);
+            position: absolute;
+            right: 32px;
+            bottom: 16px;
+            border-radius: 6px;
+        }
+        .menu_img{
+            margin: 9.5px;
+        }
+        .msg_1_img{
+            margin: 11px;
+        }
+        .msg_2_img{
+            margin: 11px 12px;
+        }
+        .shop_img{
+            margin: 10px 15px;
+        }
+        .back_btn_img{
+            margin: 11px 0 0 12px;
+            float: left;
+        }
+        .back_btn_text{
+            font-size: 15px;
+            font-weight: 600;
+            margin: 8px 0 0 6px;
+            float: left;
+        }
+        .down{
+            height: 158px;
+            width: 877px;
+            margin: auto;
+            position: relative;
+            border-bottom: 1px solid rgb(204, 206, 210);
+        }
+        .head_down{
+            height: 168px;
+            width: 168px;
+            background-image: url(./head.jpg);
+            background-size: cover ;
+            border: 4px solid white;
+            border-radius: 50%;
+            position: absolute;
+            top: -34px ;
+            left: 1px;
+        }
+        .head_down_btn{
+            height: 36px;
+            width: 36px;
+            background-color: rgb(228, 230, 235);
+            border-radius: 50%;
+            position: absolute;
+            right: 7px;
+            bottom: 7px;
+        }
+        .head_down_btn_img{
+            margin: 8px;
+        }
+        .down_left{
+            position: absolute;
+            left: 190px;
+            top: 20px;
+        }
+        .name{
+            top: 20px;
+            left: 200px;
+            font-size: 32px;
+            font-weight: 800;
+        }
+        .down_text{
+            color: rgb(100, 102, 106);
+            margin: 2px 0;
+            font-weight: 600;
+            font-size: 17px;
+        }
+        .down_img{
+            height: 32px;
+            width: 32px;
+            background-image: url(./head.jpg);
+            background-size: cover ;
+            border: 2px solid white;
+            border-radius: 50%;
+            margin: 3px -8.3px 0 0;
+            float: right;
+        }
+        .down_btn1{
+            height: 36px;
+            width: 151px;
+            background-color: rgb(27, 116, 228);
+            position: absolute;
+            bottom: 32px;
+            right: 144px;
+            border-radius: 6px;
+        }
+        .down_btn1_img{
+            float: left;
+            margin: 10px 0 0 12px;
+        }
+        .down_btn1_text{
+            float: left;
+            color: white;
+            margin: 8px 5.5px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .down_btn2{
+            height: 36px;
+            width: 136px;
+            background-color: rgb(229, 230, 233);
+            position: absolute;
+            bottom: 32px;
+            right: 0px;
+            border-radius: 6px;
+        }
+        .down_btn2_img{
+            float: left;
+            margin: 10px 0 0 13px;
+        }
+        .down_btn2_text{
+            float: left;
+            margin: 8px 5.5px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .submenu{
+            height: 59px;
+            width: 880px;
+            margin: auto;
+            padding: 0 0 0 4px;
+            position: relative;
+        }
+        .btn{
+            float: left;
+            margin: 20px 16px;
+            font-size: 15px;
+            color: rgb(101, 103, 107);
+            font-weight: 600;
+            position: relative;
+        }
+        .btn_text{
+            float: left;
+        }
+        .btn_img{
+            float: right;
+            margin: 0 8px;
+        }
+        .right_btn{
+            height: 36px;
+            width: 48px;
+            background-color: rgb(229, 230, 233);
+            border-radius: 5px;
+            float: right;
+            position: relative;
+            margin: 12px 4px;
+        }
+        .right_btn_img{
+            margin: 6px 17px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar_wrapper">
+            <div class="left">
+                <div class="logo">
+                    <img src="./logo.jpg" width="40" height="40" alt="logo">
+                </div>
+                <div class="search">
+                    <div class="img">
+                        <img src="./search.jpg" alt="search" width="15" height="15">
+                    </div>
+                    <div class="search_text">搜尋 Facebook</div>
+                </div>
+            </div>
+            <div class="center">
+                <div class="center_btn">
+                    <div class="center_btn_img">
+                        <img src="./home.jpg" alt="home">
+                    </div>
+                </div>
+                <div class="center_btn">
+                    <div class="center_btn_img">
+                        <img src="./friend.jpg" alt="friend">                        
+                    </div>
+                </div>
+                <div class="center_btn">
+                    <div class="center_btn_img">
+                        <img src="./watch.jpg" alt="watch">
+                    </div>
+                </div>
+                <div class="center_btn">
+                    <div class="center_btn_img">
+                        <img src="./club.jpg" alt="club">
+                    </div>
+                </div>
+                <div class="center_btn">
+                    <div class="center_btn_img">
+                        <img src="./game.jpg" alt="game">   
+                    </div>                    
+                </div>
+            </div>
+            <div class="right">
+                <div class="user">
+                    <div class="head"></div>
+                    <div class="user_text"></div>
+                </div>
+                <div class="menu">
+                    <div class="menu_img">
+                        <img src="./menu.jpg" alt="menu">
+                    </div>
+                </div>
+                <div class="msg_1">
+                    <div class="msg_1_img">
+                        <img src="./msg_1.jpg" alt="msg_1">
+                    </div>
+                </div>
+                <div class="msg_2">
+                    <div class="msg_2_img">
+                        <img src="./msg_2.jpg" alt="msg_2">
+                    </div>
+                </div>
+                <div class="shop">
+                    <div class="shop_img">
+                        <img src="./shop.jpg" alt="shop">
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+    
+    <div class="main">
+        <div class="container">
+            <div class="back_img">
+                    <div class="back_btn">
+                        <div class="back_btn_img">
+                            <img src="./camera2.jpg" alt="相機">
+                        </div>
+                        <div class="back_btn_text">加上封面相片</div>
+                    </div>
+            </div>
+            <div class="down">
+                <div class="head_down">
+                    <div class="head_down_btn">
+                        <div class="head_down_btn_img">
+                            <img src="./camera.jpg" alt="相機" >
+                        </div>
+                    </div>
+                </div>
+                <div class="down_left">
+                    <div class="name">徐綺君</div>
+                    <div class="down_text">115 位朋友</div>
+                    <div class="down_img"></div>
+                    <div class="down_img"></div>
+                    <div class="down_img"></div>
+                    <div class="down_img"></div>
+                    <div class="down_img"></div>
+                    <div class="down_img"></div>
+                    <div class="down_img"></div>
+                    <div class="down_img"></div>
+                </div>
+                <div class="down_right">
+                    <div class="down_btn1">
+                        <div class="down_btn1_img">
+                            <img src="./+.jpg" alt="加號">
+                        </div>
+                        <div class="down_btn1_text">新增到限時動態</div>
+                    </div>
+                    <div class="down_btn2">
+                        <div class="down_btn2_img">
+                            <img src="./pen.jpg" alt="筆">
+                        </div>
+                        <div class="down_btn2_text">編輯個人檔案</div>
+                    </div>
+                </div>
+            </div>
+            <div class="submenu">
+                <div class="submenu_left">
+                    <div class="btn">貼文</div>
+                    <div class="btn">關於</div>
+                    <div class="btn">朋友</div>
+                    <div class="btn">相片</div>
+                    <div class="btn">影片</div>
+                    <div class="btn">打卡動態</div>
+                    <div class="btn">
+                        <div class="btn_text">更多</div>
+                        <div class="btn_img">
+                            <img src="./more.jpg" alt="more">
+                        </div>
+                    </div>
+                </div>
+                <div class="right_btn">
+                    <div class="right_btn_img">
+                        <img src="./dot.jpg" alt="...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

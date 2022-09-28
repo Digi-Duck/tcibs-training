@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_練習</title>
+
+    <style>
+        /* 初始化: 取消瀏覽器自帶的CSS樣式 */
+        body{
+            margin: 0;
+        }
+        .all {
+            /* calc = CSS的數值運算 */
+            width: calc(100vw - 40px);
+            /* View Width :瀏覽器視窗的寬度*/
+            height: calc(100vh - 40px);
+            /* View Height : 瀏覽器視窗的高度*/
+            padding: 20px;
+            /* box-sizing: border-box; */
+            /* 自動幫你把標籤減去padding和border的寬高 */
+
+            /* 
+            如何剪去多餘的體積:
+                1.calc()
+                2.box-sizing: border-box
+            */
+
+            /* 
+            單位總整理:
+                1. px = 絕對數值
+                2. % = 變動數值,數值來自"父層"
+                3. vw/vh = 變動數值,數值來自"瀏覽器視窗"
+            */
+            
+        }
+
+        .box {
+            width: 100%;
+            height: 100%;
+        }
+
+        .row1 {
+            width: 100%;
+            height: 33.33%;
+        }
+
+        .row2 {
+            width: 100%;
+            height: 33.34%;
+        }
+
+        .row3 {
+            width: 100%;
+            height: 33.33%;
+        }
+
+        .left {
+            width: 40%;
+            height: 100%;
+            background-color: rgb(224, 162, 155);
+            float: left;
+        }
+
+        .right {
+            width: 40%;
+            height: 100%;
+            background-color: rgb(114, 250, 232);
+            float: right;
+        }
+
+        .middle {
+            width: 40%;
+            height: 100%;
+            background-color: springgreen;
+            margin: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 快捷的巢狀結構產生算式 -->
+    <!-- .all>.box>(.row1>.left+.right)+(.row2>.middle)+.row3>.left+.right -->
+
+    <div class="all">
+        <div class="box">
+            <div class="row1">
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+            <div class="row2">
+                <div class="middle"></div>
+            </div>
+            <div class="row3">
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+        </div>
+    </div>
+
+    <h1>1</h1>
+    <h2>2</h2>
+    <h3>3</h3>
+    <h4>4</h4>
+    <h5>5</h5>
+    <h6>6</h6>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2020-08-20-K-div巢狀結構</title>
+
+    <style>
+        #boxAll{
+            width: 580px;
+            height: 680px;
+            background-color: rgb(61, 61, 61);
+            padding: 10px ;
+        }
+        #boxA{
+            width: 580px;
+            height: 185px;
+            background-color: rgb(243, 183, 191);
+            margin: 0 0 10px 0;
+        }
+        #boxB{
+            width: 285px;
+            height: 290px;
+            background-color: rgb(241, 230, 131);
+            float: left;
+            margin: 0 10px 10px 0;
+        }
+        #boxC{
+            width: 285px;
+            height: 290px;
+            background-color: rgb(129, 152, 196);
+            float: left;
+
+        }
+        #boxD{
+            width: 580px;
+            height: 185px;
+            float: left;
+            background-color: rgb(185, 130, 57);
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="boxAll">
+            <div id="boxA"></div>
+            <div id="boxB"></div>
+            <div id="boxC"></div>
+            <div id="boxD"></div>
+    </div>
+</body>
+</html>

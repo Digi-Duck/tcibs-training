@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-parallax實作 cat_memes</title>
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 100%;
+            height: auto;
+        }
+        .area{
+            width: 100%;
+            height: 100vh;
+
+            background-size: cover;
+            background-position: center;
+            /*background-attachment: fixed;*/
+
+
+            position: relative;
+        }
+        .img1{
+            background-image: url('cat_1.jpg');
+        }
+        .img2{
+            background-image: url('cat_2.jpg');
+        }
+        .img3{
+            background-image: url('cat_3.jpg');
+        }
+        /*
+            #area1{
+                background-image: url('cat_1.jpg');
+            }
+            #area2{
+                background-image: url('cat_2.jpg');
+            }
+            #area3{
+                background-image: url('cat_3.jpg');
+            }
+        */
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+    <div id="area1" class="area img1">
+        <div class="mask">
+            <div class="bth"></div>
+        </div>
+    </div>
+    <div id="area2" class="area img2">
+        <div class="mask">
+            <div class="bth"></div>
+        </div>
+    </div>
+    <div id="area3" class="area img3">
+        <div class="mask">
+            <div class="bth"></div>
+        </div>
+    </div>
+</body>
+</html>

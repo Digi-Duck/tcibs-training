@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背景圖片與圖片標籤.</title>
+
+    <style>
+        .coffee{
+            width: 100vn;
+        }
+        /* img標籤只定義寬或高能夠等比例縮放,但同時定義寬高會導致圖片失真 */
+        
+        .background{
+            width: 600px;
+            height: 600px;
+        
+            /* background系列 */
+            background-image: url(data:image/jpeg;base64,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);
+            background-size: contain;
+            /* background-size: contain <- 圖片的寬或高碰到div的邊就停止放大 */
+            /* background-size: cover <-圖片的寬和高都碰到div的邊才停止放大 */
+            background-position: center;
+            /* background-position <- 調整背景圖片的對齊位置 */
+            background-repeat: no-repeat;
+            /* background-repeat <- 指定背景圖片不要重複出現 */
+            
+            background-attachment: fixed;
+            /* background-attachment:讓圖片能夠跟著滾軸一起移動 */
+        }
+
+
+
+    </style>
+
+
+</head>
+<body>
+    
+
+    <!-- 1.img -->
+    <!-- <img class="coffee" src="../coffee.jpg" alt=""> -->
+    <!-- 
+        src = 圖片連結
+        alt = 替代文字
+     -->
+
+     <div class="background"></div>
+</body>
+</html>
