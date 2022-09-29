@@ -32,12 +32,12 @@ body, html{
     height: 54px;
 
     padding: 16px 6px 16px 10px;
-    margin-right: 1px 0 0;
+    margin: 1px 0 0;
 
     box-sizing:border-box ;
 }
 .logo{
-    width: 100px;
+    width: 121px;
     height: 100%;
 
     margin: -3px 0 0;
@@ -45,6 +45,7 @@ body, html{
     background-image: url('https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31');
     background-size: contain;
     background-repeat: no-repeat;
+    box-sizing: border-box;
 }
 .help{
     width: 420px;
@@ -55,6 +56,7 @@ body, html{
 .product{
     width: 100%;
     height: 100%;
+    padding: 0 1px 0 2px;
 
     display: flex;
 }
@@ -279,6 +281,7 @@ ul .font{
     margin-bottom: 48px;
 }
 .tran-page-2{
+    position: relative;
     display: flex;
     align-items: center;
 
@@ -292,8 +295,16 @@ ul .font{
 
     text-align: center;
     font-size: 30px;
-
+    /* transition: all 1s ease; */
     box-sizing: border-box;
+}
+.arrow-01:hover{
+   transform: translateX(-10px);
+   transition: all 1s ease;
+}
+.arrow-02:hover{
+    transform: translateX(10px);
+    transition: all 1s ease;
 }
 .circle-01{
     width: 44px;
@@ -396,6 +407,13 @@ ul .font{
     font-weight: 600;
     color: rgb(66, 124, 201);
     text-decoration: none;
+}
+.content-product-link span:hover{
+    text-decoration: underline;
+}
+.a-link i:hover{
+    position: relative;
+    left: 5px;
 }
 .content-product-link .content-product-a{
     margin-right: 24px;
