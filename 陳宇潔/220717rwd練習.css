@@ -1,31 +1,29 @@
 body{
     margin: 0px;
-    background-color: rgb(5, 5, 5);
+    
 }
 .background{
     width: 100vw;
-    height: 100vh;
-    position: relative;
+    
 }
 .left-background{
     width: 367px;
     height: 100vh;
     background-color: lightcyan;
-    position: absolute;
-    left: 0px;
+    float: left;
+ 
 }
 
 
 .logo{
     width: 150px;
     height: 150px;
+    background-color: aquamarine;
+    margin: 108.5px 108.5px 0 108.5px;
     background-image: url("https://i.pinimg.com/564x/d1/b2/b1/d1b2b1d304f997ffba1ec338d84015b3.jpg");
     background-size: cover;
     background-position: center;
-    position: absolute;
-    top: 75px;
-    right: 110px;
-    left: 110px;
+
 }
 
 /* .text{
@@ -37,8 +35,8 @@ body{
 } */
 
 ul{
-    margin: 0 auto;
-    margin-top: 300px;
+    margin:  auto;
+    margin-top: 50px;
     padding: 0;
     text-align: center;
     list-style: none;
@@ -56,13 +54,13 @@ ul li a{
     color: steelblue;
 }
 
-ul li:hover{
+ ul li:hover{
     background-color: lightsteelblue;
 }
 
 ul li a:hover{
     color: Lavender;
-}
+} 
 
 
 
@@ -71,60 +69,66 @@ ul li a:hover{
     width: calc(100% - 367px);
     height: 100vh;
     background-color: lightblue;
-    position: absolute;
-    right: 0px;
+    float: right;
+    padding-top: calc((100vh - 570px) / 2);
+    box-sizing: border-box;
 }
 
 .xyz{
     width: 955px;
     height: 570px;
-    position: absolute;
-    left: calc(50% - 477.5px);
-    top: calc(50% - 285px);
+    margin: auto;
 }
 
 .x{
-    width: 315px;
-    height: 570px;
-
+    width: calc((100% / 3) - 5px);
+    height: 100%;
+    float: left;
+    /* background-color: red; */
     background-image: url("https://www.welcometw.com/wp-content/uploads/2020/09/%E5%8A%8D%E6%B9%96%E5%B1%B1%E4%B8%96%E7%95%8C-%E6%91%A9%E5%A4%A9%E8%BC%AA%E8%83%8C%E6%99%AF-850x638.jpg");
     background-size: cover;
-    background-position: center;
-
-    position: absolute;
-    left: 0px;
+    background-position: center; 
+    transition: all 0.1s ease; 
 }
-
 .x:hover{
     width: 100%;
-}
-
+} 
+.x:hover + .y,.x:hover ~ .z{
+    width: 0px;
+} 
 .y{
-    width: 315px;
-    height: 570px;
-    background-image: url("https://obs.line-scdn.net/0h5DmnHaDaamtQF31W3WoVPGhBZhpjcXBicnUgXycfMFl7O3pvaXA5CCVEPUd0IilqcHdyXyBEMVl5cnpvbQ/w644");
-    background-size: cover;
-    background-position: center;
-    
-    position: absolute;
-    right: 320px;
-}
-
-.y:hover{
-    width: 100%;
-}
-
-.z{
-    width: 315px;
-    height: 570px;
-
+    width: calc(100% / 3);
+    margin-left: 5px;
+    height: 100%;
+    float: left;
+    /* background-color: yellow; */
     background-image: url("https://www.lookit.tw/upload/2i/46U/555c0ce95a834becb747b88e5d2db2cd.jpg");
     background-size: cover;
-    background-position: left;
-
-    position: absolute;
-    right: 0px;
+    background-position: left; 
+}
+.y:hover{
+    width: 100%;
+}  
+.z{
+    width: calc((100% / 3) - 5px);
+    margin-left: 5px;
+    height: 100%;
+    float: right;
+    background-color: green;
+    background-image: url("https://obs.line-scdn.net/0h5DmnHaDaamtQF31W3WoVPGhBZhpjcXBicnUgXycfMFl7O3pvaXA5CCVEPUd0IilqcHdyXyBEMVl5cnpvbQ/w644");
+    background-size: cover;
+    background-position: center; 
 }
 .z:hover{
     width: 100%;
+}  
+
+@media (max-width：1280px){
+    .x{
+        width：100%;
+    }
+    .y .z{
+        width：50%;
+    }
 }
+    
