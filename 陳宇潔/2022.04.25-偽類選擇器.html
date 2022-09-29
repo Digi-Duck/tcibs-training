@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 偽類 */
+        /* 1.標籤狀態的偽類 */
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+            margin: 20px;
+        }
+
+        .box:hover {
+            background-color: mediumaquamarine;
+        }
+        /* 超連結預設狀態 */
+        a:link{
+            color: seagreen;
+        }
+        /* 超連結被點擊過呈現的狀態 */
+        a:visited{
+            color: black;
+        }
+        /* 超連結正被點擊時的狀態 */
+        a:active{
+            color: aqua;
+        }
+
+        input[type = "checkbox"]:focus{
+            
+        }
+        /* 2.CSS選擇器的偽類 */
+        .box::first-letter{
+            font-size: 40px;
+        }
+
+        /* 每層 */
+        .box:nth-child(3){
+            background-color: blueviolet;
+        } /*  指定標籤後出現的第n個標籤  */
+
+        .box:nth-last-child(2){
+            background-color: blueviolet;
+        } /*指定標籤後最後一個倒回來出現的第n個標籤*/
+
+        .box:first-child{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="box">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum debitis distinctio odio mollitia voluptas! Natus veritatis fuga facere ratione magni nesciunt debitis atque perspiciatis blanditiis? Accusamus hic laboriosam enim earum.</div>
+    <a href="123456">測試超連結狀態</a>
+    <input type="checkbox"> -->
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+    <input type="checkbox">
+</body>
+</html>
+<!-- 锚偽類 -->
+<!--
+    link     未訪問的連結
+    visited  已訪問的連結 
+    hover    鼠標移動到連結上
+    active   選定的連結
+-->
