@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>巢狀結構3(間距版)</title>
+
+    <style>
+        #all{
+            width: 580px;
+            height: 580px;
+            background-color: black;
+            float:right;
+            padding: 10px 10px 10px 10px;
+        }    
+        #box-top{
+            width: 580px;
+            height: 186.86px;
+            background-color: pink;
+            margin: 0 0 10px 0;
+            
+        }    
+        
+            
+        #box-mid{
+            width: 580px;
+            height: 186.86px;
+            background-color: black
+            
+        }
+        #box-bot{
+            width: 580px;
+            height: 186.86px;
+            background-color: sandybrown;
+            margin: 10px 0 0 0 ;
+        }
+        #box-mid-l{
+            width: 140px;
+            height: 186.86px;
+            background-color: tomato;
+            float :left;
+            margin: 0 10px 0 0 ;
+        }
+        #box-mid-r-top{
+            width: 430px;
+            height: 55.62px;
+            background-color: black;
+            float :left;
+            margin: 0 0 10px 0 ;
+        }
+        #box-mid-r-mid{
+            width: 430px;
+            height: 55.62px;
+            background-color: black;
+            float: left;
+            margin: 0 0 10px 0 ;
+        }
+        #box-mid-r-bot{
+            width: 430px;
+            height: 55.62px;
+            background-color: black;
+            float: left;
+            margin: 0 0 10px 0 ;
+        }
+        #box-mid-t-l{
+            width: 138.33px;
+            height: 55.62px;
+            background-color: lightgoldenrodyellow;
+            float: left;
+            margin: 0 0 10px 0 ;
+        }
+        #box-mid-t-r{
+            width: 281.66px;
+            height: 55.62px;
+            background-color: lightgreen;
+            float: left;
+            margin: 0 0 10px 10px ;
+        }
+        #box-mid-m-l{
+            width: 281.66px;
+            height: 55.62px;
+            background-color: indigo;
+            float: left;
+            margin: 0 0 10px 0 ;
+        }
+        #box-mid-m-r{
+            width: 138.33px;
+            height: 55.62px;
+            background-color: darkgreen;
+            float: left;
+            margin: 0 0 10px 10px ;
+        }
+        
+        #box-mid-b-l{
+            width: 138.33px;
+            height: 55.62px;
+            background-color: darkturquoise;
+            float: left;
+            margin: 0 0 10px 0 ;
+        }
+        #box-mid-b-r{
+            width: 281.66px;
+            height: 55.62px;
+            background-color: deeppink;
+            float: left;
+            margin: 0 0 10px 10px ;
+        }
+
+    </style>
+</head>
+<body>
+    
+        <div id="all">
+            <div id="box-top"></div> 
+            <div id="box-mid">
+                <div id="box-mid-l"></div>
+                <div id="box-mid-r-top">
+                    <div id="box-mid-t-l"></div>
+                    <div id="box-mid-t-r"></div>
+                </div>
+                <div id="box-mid-r-mid">
+                    <div id="box-mid-m-l"></div>
+                    <div id="box-mid-m-r"></div>
+
+                </div>
+                <div id="box-mid-r-bot">
+                    <div id="box-mid-b-l"></div>
+                    <div id="box-mid-b-r"></div>
+                </div>
+            </div>
+            <div id="box-bot"></div>
+        </div>
+            
+    
+    
+    
+    
+
+
+
+
+    
+</body>
+</html>

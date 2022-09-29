@@ -1,0 +1,268 @@
+body, html{
+    margin: 0px;
+    padding: 0;
+}
+.nav{
+    display:flex;
+
+    width: 100%;
+    height: 100%;
+    
+    background-image: url(./img/PE1rNM3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+    position: fixed;
+}
+.box1{
+    width: 366px;
+    height: 100%;
+    background-color: rgb(255, 203, 203);
+    /* opacity: 0.65; */
+    }
+.image{
+    display: flex;
+    
+    width: 100%;
+    height: 300px;
+}
+.img{
+    width: 150px;
+    height: 150px;
+
+    background-image: url(./img/PE1rNM3.jpg);
+    background-size: cover ;
+    background-repeat:no-repeat ;
+    background-position:center ;
+
+    margin:auto;
+}
+.link ul{
+    text-align: center;
+    list-style: none;
+    padding: 0;
+}
+.link ul li{
+    margin: 15px;
+}
+.link ul li a{
+    font-size: 24px;
+}
+.box2{
+    display: flex;
+    
+    width: calc(100% - 366px);
+    height: 100%; 
+
+    padding: 120px;
+    box-sizing: border-box;
+}
+.block{
+    display: flex;
+    justify-content: space-between;
+
+    width: 956px;
+    height: 576px;
+    
+    margin: auto;
+}
+.project{
+    width: calc(33.3% - 5px);
+    height: 100%;
+
+    background-size: cover ;
+    background-repeat:no-repeat ;
+    background-position:center ;
+}
+.x{
+    background-image: url(./img/264014786_956330775008920_5505670214503536807_n.png); 
+}
+.y{
+    background-image: url(./img/巧克力蛋糕.png);
+}
+.z{
+    background-image: url(./img/264828170_356247232927672_7580583740451996137_n\ -\ 複製.gif);
+}
+.x:hover{
+    width: 100%;
+    transition: 1s;
+}
+.y:hover{
+    width: 100%;
+    transition: 1s;
+}
+.z:hover{
+    width: 100%;
+    transition: 1s;
+}
+.box2 a{
+    color: yellow;
+    font-size: 30px;
+    text-align: center;
+    line-height: 200px ;
+    text-decoration: none;
+}
+@media screen and (max-width:1280px){
+    .box2{
+    padding: 60px;
+    box-sizing: border-box;
+}
+    .block{
+        display: flex;
+        flex-wrap: wrap;
+        
+        justify-content: space-between;
+
+        width: 800px;
+        height: 500px;
+    }
+    .project{
+        height: calc(50% - 10px);
+    }
+    .x{
+        width: 100%;
+    }
+    .x:hover{
+        width: 100%;
+        height: 100%;
+        transition: 1s;
+    }
+    .y{
+        width: calc(50% - 5px);
+    }
+    .y:hover{
+        width: 100%;
+        height: 100%;
+        transition: 1s;
+    }
+    .z{
+        width: calc(50% - 5px);
+    }
+    .z:hover{
+        width: 100%;
+        height: 100%;
+        transition: 1s;
+    }
+}
+@media (max-width:768px) {
+    .nav{
+        display: block;
+    }
+    .box1{
+        display: flex;
+        justify-content: space-between;
+
+        width:100%;
+        height: 100px;
+        }
+    .image{
+        display: flex;
+            
+        width: 100px;
+        height: 100%;
+        }
+    .img{
+        width: 70px;
+        height: 70px;        
+            
+        background-color: aqua;
+        margin:auto;
+        }
+    .link{
+        width: 300px;
+        margin: auto 0;
+    }
+    .link ul{
+        display: flex;
+        text-align: center;
+        list-style: none;
+        padding: 0;
+        }
+    .link ul li{
+        width: 70px;
+        margin:0 15px;
+        }
+    .link ul li a{
+        font-size: 15px;
+            /* padding: 15px; */
+        }
+    .box2{
+        display: flex;
+            
+        width: 100%;
+        height: calc(100% - 220px); 
+        
+        padding: 60px;
+        box-sizing: border-box;
+    }
+}
+@media (max-width:376px) {
+    .box1{
+        display: flex;
+        position: relative;
+    }
+    .link{
+        width: 40px;
+        height: 40px;
+        margin-left: 20px;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        justify-content: center;
+        align-items: center;
+
+        background-color: bisque;
+        }
+    .sq{
+        width: 35px;
+        height: 6px;
+
+        background-color: black;
+    }
+    .link ul{
+        display: none;
+            opacity: 0;
+        }
+    .link a{
+        display: none;
+    }
+    .link:hover a{
+        display: block;
+    }
+    .link:hover ul{
+        display: block;
+        width: 100px;
+        position: absolute;
+        top: 50px;
+        background-color: white;
+            
+        opacity: 1;
+        transition: 2s;
+    }
+    .image{
+        position:absolute;
+        left:calc(50% - 50px);
+        margin: 0;
+    }
+    .img{
+        width: 50px;
+        height: 50px;
+        }
+    .box2{
+        height: calc(100% - 100px);
+        padding: 0;
+    }
+    .project{
+        width: 100%;
+        height: 33.333%;
+    }
+    .x:hover{
+        height: 70%;
+    }
+    .block{
+        height:100%;
+        display: flex;
+    }
+}

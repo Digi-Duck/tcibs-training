@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>巢狀結構1</title>
+
+    <style>
+        #all{
+            width: 600px;
+            height: 800px;
+            background-color: yellow;
+            float:right;
+        }    
+        #box-top{
+            width: 600px;
+            height: 250px;
+            background-color: pink; 
+        }      
+        #box-mid{
+            width: 600px;
+            height: 300pX;
+            background-color: blue; 
+        }
+        #box-bot{
+            width: 600px;
+            height: 250px;
+            background-color: sandybrown;
+        }
+        #box-mid-l{
+            width: 300px;
+            height: 300px;
+            background-color: tomato;
+            float :left;
+        }
+        #box-mid-r{
+            width: 300px;
+            height: 300px;
+            background-color: green;
+            float :left;
+        }
+
+    </style>
+</head>
+<body>
+    
+        <div id="all">
+            <div id="box-top"></div> 
+            <div id="box-mid">
+                <div id="box-mid-l"></div>
+                <div id="box-mid-r">962952</div>
+            </div>
+            <div id="box-bot"></div>
+        </div>
+</body>
+</html>

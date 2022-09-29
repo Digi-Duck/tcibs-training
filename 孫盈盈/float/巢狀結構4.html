@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>巢狀結構4</title>
+
+    <style>
+        #all{
+            width: 600px;
+            height: 800px;
+            background-color: yellow;
+            float:right;
+            
+        }    
+        #box-top{
+            width: 600px;
+            height: 250px;
+            background-color: pink;
+        }    
+        
+            
+        #box-mid{
+            width: 600px;
+            height: 500pX;
+            background-color: blue;
+        }
+        #box-bot{
+            width: 600px;
+            height: 250px;
+            background-color: sandybrown;
+        }
+        #box-mid-top-l{
+            width: 150px;
+            height: 300px;
+            background-color: tomato;
+            float :left;
+        }
+        #box-mid-m-t{
+            width: 300px;
+            height: 100px;
+            background-color: green;
+            float :left;
+        }
+        #box-mid-m-m{
+            width: 300px;
+            height: 100px;
+            background-color: indigo;
+            float: left;
+        }
+        #box-mid-m-b{
+            width: 300px;
+            height: 100px;
+            background-color: khaki;
+            float: left;
+        }
+        #box-mid-b-t{
+            width: 450px;
+            height: 100px;
+            background-color: lawngreen;
+            clear: left;
+        }
+        #box-mid-b-b{
+            width: 450px;
+            height: 100px;
+            background-color:blueviolet ;
+            clear: left;
+        }
+        
+        #box-mid-r{
+            width: 150px;
+            height: 500px;
+            background-color:cyan ;
+            float: right;
+        }
+        
+    </style>
+</head>
+<body>
+    
+        <div id="all">
+            <div id="box-top"></div> 
+            <div id="box-mid">
+                <div id="box-mid-r"></div> 
+                <div id="box-mid-top-l"></div>
+                <div id="box-mid-m-t"></div>
+                <div id="box-mid-m-m"></div>
+                <div id="box-mid-m-b"></div>
+                <div id="box-mid-b-t"></div>
+                <div id="box-mid-b-b"></div>
+            </div>
+            <div id="box-bot"></div>
+        </div>
+            
+</body>
+</html>
