@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax</title>
+    <style>
+        
+        body, html {
+        height: 100%;
+        margin: 0;
+        font: 400 15px/1.8 "Lato", sans-serif;
+        color: #777;
+        scroll-behavior: smooth;
+        }
+
+        .bgimg-1, .bgimg-2, .bgimg-3 {
+        background-attachment: fixed;
+        position: relative;
+        opacity: 0.65;
+        background-position: center;
+        background-size: cover;
+
+        }
+        .bgimg-1 {
+        background-image: url("https://i.pinimg.com/564x/67/8a/cb/678acb2daeb25874da9131e7766bf0c1.jpg");
+        height: 1000px;
+        }
+
+        .bgimg-2 {
+        background-image: url("https://i.pinimg.com/564x/e4/0d/d6/e40dd6ce5efc4984ddb6b8c6668c5a3f.jpg");
+        background-size: bottom;
+        height: 600px;
+        }
+
+        .bgimg-3 {
+        background-image: url("https://i.pinimg.com/564x/9f/b6/c6/9fb6c60975a80e48b1c5798d9202623e.jpg");
+        min-height: 600px;
+        }
+
+        .caption {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 100%;
+        text-align: center;
+        color: #000;
+        }
+
+        .caption span.border {
+        background-color: #111;
+        color: #fff;
+        padding: 18px;
+        font-size: 25px;
+        letter-spacing: 10px;
+        }
+
+        h3 {
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        font: 20px "Lato", sans-serif;
+        color: #111;
+        }
+
+        .go_top {
+        color:white;
+        background-color: #777;
+        padding: 20px;
+        position: fixed;
+        right: 50px;
+        bottom: 30px ;
+        }
+
+        .nav{
+            background-color: #111;
+        }
+        .nav a {
+        color: white;
+        /* 超連結自帶color屬性, 需要直接指定超連結修改文字顏色 */
+        text-decoration: none; 
+        /* 移除超連結屬性 */
+        }
+        .go_top a{
+        color: white; 
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <a href="#quotes1">emotional quotes</a>
+        <a href="#quotes2">quotes2</a>
+        <a href="#quotes3">quotes3</a>
+        <a href="#end">END</a>
+     <!-- 錨點(在同一頁面快速移動) -->
+        <a target="_blank" href="https://mingyanjiaju.org/hchj/123221.html">更多英文語錄</a>
+    </div>
+    <div id="to_top" class="bgimg-1">
+        <div class="caption">
+        <span class="border">SCROLL DOWN</span>
+        </div>
+    </div>
+    <div id="quotes1" style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
+        <h3  style="text-align:center;">Emotional quotes</h3>
+        <p>here is someone that is coming or passing away in your life around the clock, so you may lose sight of those seen, and forget those remembered. There is gain and loss in your life, so you may catch sight of those unseen, and remember those forgotten. Nevertheless, doesn‘t the unseen exist for sure? Will the remembered remain for ever?</p>
+    </div>
+    <div class="bgimg-2">
+        <div class="caption">
+        <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">LESS HEIGHT</span>
+        </div>
+    </div>
+    <div style="position:relative;">
+        <div id="quotes2" style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+        <p >You and I remains the same in different time, at different places,among different people; time is changing, space is changing and everything is changing except my miss to you!</p>
+        </div>
+    </div>
+    <div class="bgimg-3">
+        <div class="caption">
+        <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">SCROLL UP</span>
+        </div>
+    </div>
+    <div style="position:relative;">
+        <div id="quotes3" style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+        <p >We all wear masks, and the time comes when we cannot remove them without removing some of our own skin.</p>
+        </div>
+    </div>
+    <div class="bgimg-1">
+        <div class="caption">
+        <span id="end" class="border">END</span>
+        </div>
+    </div>
+    <div class="go_top">
+        <a href="#to_top">回到最上面</a>
+    </div>
+</body>
+</html>

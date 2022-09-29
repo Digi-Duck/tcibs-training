@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            margin: 0 10px;
+            background-color: aquamarine;
+
+            /* display */
+            display: none; 
+            /* 暫時讓標籤在畫面上隱藏 */
+            display: block;
+            /* 讓標籤占滿一橫行(div標籤預設) */
+
+            display: inline;
+            /* 讓標籤只佔有子層的體積，無法定義寬高(span標籤預設) */
+
+            display: inline-block;
+            /* 同時兼具block和inline的特性，能定義寬高但不會直接佔滿一橫行 */
+            
+            /* 排版屬性 */
+            display: flex;
+            display: grid;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">123456</div>
+</body>
+</html>
