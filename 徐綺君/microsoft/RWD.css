@@ -55,7 +55,52 @@
         width: calc(100% - 46px);
         padding: 0 23px;
     }
-    
+    .container{
+        width: 100%;
+        padding: 0;
+    }
+    .m_text_box{
+        display: none;
+    }
+    .m_text_back{
+        display: block;
+        width: calc(100% - 24px);
+        margin: 0px 12px;
+        margin-top: -52px;
+        margin-bottom: 16px;
+    }
+    .m_text{
+        width: calc(100% - 96px);
+        background-color: white;
+        box-shadow: 0px 2px 5px 1px rgb(212, 212, 212);
+    }
+    .text_box1{
+        margin-bottom: 9px;
+    }
+    .text_box2{
+        font-size: 24px;
+        line-height: 1;
+    }
+    .content{
+        flex-wrap: wrap;
+    }
+    .ct_box{
+        width: calc(50% - 24px);
+        margin-bottom: 20px;
+    }
+    .ct_start{
+        padding: 0px 12px;
+    }
+    .ct_end{
+        padding: 0px 12px;
+    }
+    .title{
+        font-size: 21px;
+        margin-bottom: 8px;
+    }
+    .column{
+        width: calc(100% / 3);
+    }
 }
 @media screen and (max-width:1080px) {
     .m_text_box{

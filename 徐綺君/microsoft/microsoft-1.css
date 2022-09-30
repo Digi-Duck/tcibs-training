@@ -227,6 +227,9 @@ input:checked ~ .menu_box{
     max-width: 1600px;
     margin: auto;
 }
+.m_text_back{
+    display: none;
+}
 .m_text{
     margin-bottom: 3px;
     padding: 48px;
@@ -377,8 +380,12 @@ ul{
 }
 
 .m_img2_box{
+    width: 100%;
     display: flex;
     justify-content: center; 
+}
+.m_img2{
+    width: 100%;
 }
 .m_text2{
     padding-top: 46px;
