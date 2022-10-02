@@ -245,6 +245,8 @@ input:checked ~ .menu_box{
     font-weight: 600;
 }
 .text_box2{
+    word-break: keep-all;
+    word-wrap: break-word;
     font-size: 37px;
     font-weight: 500;
     padding-bottom: 19px;
@@ -253,6 +255,7 @@ input:checked ~ .menu_box{
     line-height: 1.5;
     /* max-width: 430px; */
     margin-bottom: 24px;
+    word-break: keep-all;
 }
 .text_btn{
     display: inline-block;
@@ -310,6 +313,7 @@ input:checked ~ .menu_box{
     font-weight: 600;
     text-decoration-line: underline;
     color: rgb(27, 103, 182);
+    box-sizing: border-box;
 }
 .box_img{
     width: 40px;
@@ -321,6 +325,7 @@ ul{
     display: flex;
 }
 .content{
+    width: 100%;
     margin-bottom: 81px;
 }
 .ct_box{
@@ -339,16 +344,23 @@ ul{
     width: 100%;
 }
 .title{
+    word-break: keep-all;
     font-size: 29px;
     font-weight: 600;
     margin: 11px 0px 15px 0px;
     color: black;
 }
 .content_text{
+    width: 100%;
     font-size: 16px;
     line-height: 1.5;
     color: black;
-    display: inline;
+    display: inline-block;
+    word-break: keep-all;
+    word-wrap: break-word;      
+}
+.word-break{
+    word-break: normal;
 }
 .link_box{
     display: flex;
@@ -456,7 +468,7 @@ ul{
     font-size: 16px;
     color: black;
     font-weight: 600;
-    padding: 12px 14px 10px 19px;
+    padding: 10px 14px 10px 19px;
     border-radius: 2px;
 }
 .top_btn:hover{

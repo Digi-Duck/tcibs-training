@@ -10,6 +10,9 @@
     .m_text{
         width: 26.01%;
     }
+    .box_column, .footer_bar{
+        padding: 0 5%;
+    }
 }
 @media screen and (max-width:1425px) {
     .m_text{
@@ -49,6 +52,10 @@
     .title{
         font-size: 24px;
     }
+    .title_text{
+        font-size: 29px;
+    }
+
 }
 @media screen and (max-width:1085px) {
     .top_box{
@@ -97,9 +104,30 @@
     .title{
         font-size: 21px;
         margin-bottom: 8px;
+        
     }
+    .title_text{
+       margin-left: 12px; 
+    }
+    .icon_box{
+        padding-left:12px;
+    }
+    .box_column{
+        flex-wrap: wrap;
+        padding: 0px 12px;
+    }    
     .column{
         width: calc(100% / 3);
+    }
+    .column1{
+        padding: 0 12px;
+    }
+    .link_box1{
+        margin: 0;
+        margin-right: 24px;
+    }
+    .footer_bar{
+        padding: 0 24px;
     }
 }
 @media screen and (max-width:1080px) {
@@ -107,7 +135,7 @@
         display: none;
     }
 }
-@media screen and (max-width:870px) {
+@media screen and (max-width:872px) {
     .menu_box_L{
         width: 170px;
         display: none;
@@ -162,9 +190,6 @@
         justify-content: space-between;
         padding: 0 7px;
         padding-bottom: 5px;
-    }
-    .m_img2{
-        display: none;
     }
     
     .bar_ul, .bar_li_ul{
@@ -231,6 +256,31 @@
         display: flex;
     }
 }
+@media screen and (max-width:860px) {
+    .m_text_back{
+        margin: 0px;
+        width: 100%;
+        box-shadow: 0 2px 2px 0 rgb(223, 223, 223);
+    }
+    .m_text{
+        padding: 20px 24px 16px;        
+        box-shadow: 0 0 ;
+        margin: 0px;
+    }
+    .m_btn_bar{
+        margin-top: 20px;
+    }
+    .box{
+        margin-top: 16px;
+        margin-bottom: 18px;
+    }
+    .m_text_back2{
+        box-shadow: none;
+    }
+    .footer_bar, .footer_R_box{
+        flex-wrap: wrap;
+    }
+}
 @media screen and (max-width:605px){
     .box{
         margin: 0px;
@@ -242,4 +292,22 @@
     .box_btn{
         margin: 16px 24px;
     }
+}
+@media screen and (max-width:540px){
+    .ct_box{
+        width: calc(100% - 24px);
+    }
+    .top_btn_box{
+        display: none;
+    }
+    .top_btn_RWD{
+        width: calc(100% - 24px);
+        padding: 10px 0px;
+        text-align: center;
+        margin: 0 12px;
+    }
+    .column{
+        width: 100%;
+    }
+
 }
