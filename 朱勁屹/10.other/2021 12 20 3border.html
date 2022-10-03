@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: white;
+        }
+        .border{
+            width: 100px;
+            height: 100px;
+            border: 1px solid white;
+            /* 複合式屬性:一次寫很多東西 */
+            /* border:線條寬度 線條樣式 線條顏色 */
+            border-radius: 50%;
+            /* 四腳變圓 */
+            /* 50跟100=圓 */
+            background-image: url('山豬.jpg') ;
+            background-size: cover;
+            background-position: center;
+        }
+        .text{
+            /* position: relative; */
+            /* float: left; */
+            background-color: blue;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: violet;
+            float: left;
+            /* position: absolute; */
+        }
+        .clear{
+            clear: both ;
+            /*  */
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="border"></div> -->
+    <!-- 會取消體積:1.float2.position: absolute; -->
+    <div class="text">
+    <div class="box"></div>
+    <div class="clear"></div>
+</div>
+</body>
+</html>

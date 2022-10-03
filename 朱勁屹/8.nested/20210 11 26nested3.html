@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=., initial-scale=1.0">
+    <title>巢狀3</title>
+    <style>
+        .all{
+            width: 800px;
+            height: 800px;
+        }
+        .box1{
+            width: 100%;
+            height: 30%;
+            background-color: blue;
+            float: left;
+            
+        }
+
+        .box2{
+            width: 100%;
+            height: 40%;
+            background-color: red;
+            float: right;
+            
+            
+        }
+        .box2-left{
+            width: 30%;
+            height: 100%;
+            background-color: yellow;
+            float: left;
+            
+            
+        }
+        .box2-right{
+            width: 70%;
+            height: 100%;
+            background-color: brown;
+            float: right;
+        }
+            .box2-right1{
+                width: 100%;
+                height: 33%;
+                background-color: pink;
+                float: right;
+            }
+                .box2-right1-1l{
+                    width: 30%;
+                    height: 100%;
+                    background-color: rgb(1, 49, 60);
+                    float: left;
+                }
+                .box2-right1-1r{
+                    width: 70%;
+                    height: 100%;
+                    background-color: rgb(84, 41, 48);
+                    float: right;
+                }
+            .box2-right2{
+                width: 100%;
+                height: 33%;
+                background-color: rgb(145, 42, 145);
+                float: right;
+            }
+                .box2-right2-2l{
+                    width: 30%;
+                    height: 100%;
+                    background-color: rgb(12, 97, 143);
+                    float: right;
+                }
+                .box2-right2-2r{
+                    width: 70%;
+                    height: 100%;
+                    background-color: rgb(116, 25, 71);
+                    float: right;
+                }
+            .box2-right3{
+                width: 100%;
+                height: 34%;
+                background-color: palegreen;
+                float: right;
+            }
+                .box2-right3-3l{
+                    width: 70%;
+                    height: 100%;
+                    background-color: rgb(178, 152, 251);
+                    float: right;
+                }
+                .box2-right3-3r{
+                    width: 30%;
+                    height: 100%;
+                    background-color: rgb(238, 251, 152);
+                    float: right;
+                }
+        .box3{
+            width: 100%;
+            height: 30%;
+            background-color: green;
+            clear: both;
+            /* 結束上標籤的float狀態 */
+        }
+    </style>
+
+</head>
+<body>
+    <!-- 巢狀結構-->
+
+    <!--父層-->
+    <div class="all">
+        <!--子層-->
+        <div class="box1"></div>
+        <div class="box2">
+            <div class="box2-left"></div>
+            <div class="box2-right">
+                <div class="box2-right1">
+                    <div class="box2-right1-1l"></div>
+                    <div class="box2-right1-1r"></div>
+                </div>
+                <div class="box2-right2">
+                    <div class="box2-right2-2l"></div>
+                    <div class="box2-right2-2r"></div>
+                </div>
+                <div class="box2-right3">
+                    <div class="box2-right3-3l"></div>
+                    <div class="box2-right3-3r"></div>
+                </div>
+            </div>
+        </div>
+        <div class="box3"></div>
+    </div>
+</body>
+</html>

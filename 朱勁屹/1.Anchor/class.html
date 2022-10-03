@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            scroll-behavior: smooth;
+        }
+        body{
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        .area{
+            width: 100%;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+        .area-mask{
+            width: 100%;
+            height: 50%;
+            background-color: #000;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            opacity: .7;
+        }
+        .area-mask-btn{
+            width: 120px;
+            height: 40px;
+            background-color: red;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .img1{
+            background-image: url('1.jpg');
+        }
+        .img2{
+            background-image: url('2.jpg');
+        }
+        .img3{
+            background-image: url('3.jpg');
+        }
+        nav{
+            width: calc(100% - 20px);
+            height: auto;
+            padding: 10px;
+            background-color: gray;
+            opacity: .7;
+
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+        }
+        .avatar{
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border-radius: 50%;
+            float: left;
+        }
+        .nav-btns{
+            width: auto;
+            height: auto;
+            float: right;
+            background-color: green;
+        }
+        .btn{
+            padding: 10px 20px;
+            background-color: #FFF;
+            border: 1px solid #000;
+            float: left;
+            margin-right: 10px;
+            transition: 1s;
+        }
+        
+        .btn:hover{
+            background-color: rgb(45, 48, 216); 
+        }
+        .btn:active{
+            background-color: rgb(182, 21, 61);
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="avatar"></div>
+        <div class="nav-btns">
+            <a href="#area-A" class="btn">按鈕一按鈕一按鈕一</a>
+            <a href="#area-B" class="btn">按鈕二</a>
+            <a href="#area-C" class="btn">按鈕三</a>
+        </div>
+    </nav>
+    <div id="area-A" class="container">
+        <div class="area img1">
+            <div class="area-mask">
+                <div class="area-mask-btn">
+
+                </div>
+            </div>
+        </div>
+        <div id="area-B" class="area img2">
+            <div class="area-mask">
+                <div class="area-mask-btn">
+                    
+                </div>
+            </div>
+        </div>
+        <div id="area-C" class="area img3">
+            <div class="area-mask">
+                <div class="area-mask-btn">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
