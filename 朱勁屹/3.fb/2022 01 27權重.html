@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 通用選擇器:html中所有標籤都寫上指定的css*/
+        /* 最小 */
+        *{
+            color: blue;
+        }
+        /* 標籤選擇器 */
+        /* 第二小 */
+        div{
+
+        }
+
+        /* 子層選擇器 */
+        .box > .blue_box{
+
+        }
+
+        /* 後代選擇器 */
+        html body .box .blue_box .text{
+            columns: red;
+        }
+        #red_box{
+            background-color: red;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+        }
+        
+        /* 同個標籤重複寫相同屬性，比較晚寫優先權高 */
+        /* id>class */
+
+        /* 
+        新手使用的選擇器:
+            1.標籤選擇器<-初始化用
+            2.class選擇器<-css專用
+            3.id選擇器<-js專用
+
+            *少用:inline-style(行內樣式) !important(最高權重 別用!!)
+        */
+    </style>
+</head>
+<body>
+    <div  id="red_box" class="box">
+        <div class="blue_box"></div>
+    </div>
+    <!-- 優先順序
+    升冪:數值又大 優先越高
+    降冪:數值越小 優先越高 -->
+</body>
+</html>

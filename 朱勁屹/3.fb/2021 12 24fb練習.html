@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 初始化 */
+        body{
+            background-color: wheat;
+            margin: 0;
+        }
+
+        .upline{
+            width: 100%;
+            height: 30px;
+            background-color: blue;
+            position: relative;
+        }
+
+        /* logo */
+        .fb{
+            width: 20px;
+            height: 20px;
+            background-image: url('fb.jpg');
+            position: absolute;
+            top: calc(50% - 10px);
+            left: calc(50% - 410px);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+        .upline_thing{
+            position: absolute;
+            left: 160px;
+            top: 5px;
+            height: 20px;
+            width: 850px;
+        }
+        .search{
+            background-color: white;
+            width: 300px;
+            height: 20px;
+        }
+        .question{
+            width: 20px;
+            height: 20px;
+            background-image: url('問號.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            float: right;
+        }
+        .earth{
+            width: 20px;
+            height: 20px;
+            background-image: url('問號.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            float: right;
+        }
+        .manssage{
+            width: 20px;
+            height: 20px;
+            background-image: url('問號.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            float: right;
+        }
+        .friend{
+            width: 20px;
+            height: 20px;
+            background-image: url('問號.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            float: right;
+        }
+        .upworld1{
+            color: white;
+            float: right;
+            padding-right: 20px;
+            padding-left: 10px;
+        }
+        .upworld2{
+            color: white;
+            float: right;
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+        .myself{
+            color: white;
+            float: right;
+            padding: 2.5px;
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+        .myself-photo{
+            width: 20px;
+            height: 20px;
+            /* 複合式屬性:一次寫很多東西 */
+            /* border:線條寬度 線條樣式 線條顏色 */
+            border-radius: 50%;
+            /* 四腳變圓 */
+            /* 50跟100=圓 */
+            background-image: url('山豬.jpg') ;
+            background-size: cover;
+            background-position: center;
+            float: right;
+        }
+        .all{
+            width: 800px;
+            position: relative;
+            left: calc(50% - 400px);
+            background-color: wheat;
+            
+        }
+        .background{
+            width: 100%;
+            height: 200px;
+            background-color: white;
+           position: relative;
+        }
+        .backup{
+            width: 100%;
+            height: 150px;
+            background-color: black;
+            position: relative;
+        }
+        .pig{
+            width: 100px;
+            height: 100px;
+            border: 3px solid black;
+            /* 複合式屬性:一次寫很多東西 */
+            /* border:線條寬度 線條樣式 線條顏色 */
+            border-radius: 50%;
+            /* 四腳變圓 */
+            /* 50跟100=圓 */
+            background-image: url('山豬.jpg') ;
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            left: 5px;
+            bottom: -30px;
+        }
+        .updown_right{
+            padding: 5px;
+            position: absolute;
+            bottom:0;
+            left: 110px;
+            /* background-color: coral; */
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+        }
+        .updown_left1{
+            padding: 5px;
+            position: absolute;
+            right: 10px;
+            bottom: 2.5px;
+            background-color: white;
+        }
+        .updown_left2{
+            padding: 5px;
+            position: absolute;
+            right: 200px;
+            bottom: 2.5px;
+            background-color: white;
+        }
+        .background_down{
+            width: 600px;
+            height: 40px;
+            background-color: cornsilk;
+            position: absolute;
+            bottom: 5px;
+            left: calc(50% - 300px);
+        }
+        .world1{
+            width: 100px; ;
+            height: 40px;
+            /* background-color: violet; */
+            float: left;
+            /* text-indent:40px ; */
+            position: relative;
+        }
+        .world1-2{
+            position: absolute;
+            left: calc(50% - 32px);
+            top: calc(50% - 10.5px);
+        }
+        .world2{
+            width: 100px; ;
+            height: 40px;
+            /* background-color: violet; */
+            float: left;
+            /* text-indent:40px ; */
+            position: relative;
+        }
+        .world2-2{
+            position: absolute;
+            left: calc(50% - 16px);
+            top: calc(50% - 10.5px);
+        }
+        .world3{
+            width: 100px; ;
+            height: 40px;
+            /* background-color: violet; */
+            float: left;
+            /* text-indent:40px ; */
+            position: relative;
+        }
+        .world3-2{
+            /* position: absolute;
+            left: calc(50% - 16px);
+            top: calc(50% - 10.5px); */
+            padding: 5px;
+        }
+        .world4{
+            width: 100px; ;
+            height: 40px;
+            /* background-color: violet; */
+            float: left;
+            /* text-indent:40px ; */
+            position: relative;
+        }
+        .world4-2{
+            position: absolute;
+            left: calc(50% - 16px);
+            top: calc(50% - 10.5px);
+        }
+        .world5{
+            width: 100px; ;
+            height: 40px;
+            /* background-color: violet; */
+            float: left;
+            /* text-indent:40px ; */
+            position: relative;
+        }
+        .world5-2{
+            position: absolute;
+            left: calc(50% - 16px);
+            top: calc(50% - 10.5px);
+        }
+        .world6{
+            width: 100px; ;
+            height: 40px;
+            /* background-color: violet; */
+            float: left;
+            /* text-indent:40px ; */
+            position: relative;
+        }
+        .world6-2{
+            position: absolute;
+            left: calc(50% - 16px);
+            top: calc(50% - 10.5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="upline">
+        <div class="fb"></div>
+        <div class="upline_thing">
+            <input placeholder="請輸入帳號" class="search">
+            <div class="question"></div>
+            <div class="earth"></div>
+            <div class="manssage"></div>
+            <div class="friend"></div>
+            <div class="upworld1">尋找朋友</div>
+            <div class="upworld2">首頁</div>
+            <div class="myself">123456789</div>
+            <div class="myself-photo"></div>
+        </div>
+    </div>
+    <div class="all">
+    <div class="background">
+        <div class="backup">
+            <div class="updown_right">123456789</div>
+            <div class="updown_left1">123456789</div>
+            <div class="updown_left2">123456789</div>
+            <div class="pig"></div> 
+        </div>
+        <div class="background_down">
+            <div class="world1">
+                <div class="world1-2">動態消息</div>
+            </div>
+            <div class="world2">
+                <div class="world2-2">關於</div>
+            </div>
+            <div class="world3">
+                <div class="world3-2">朋友1234566</div>
+            </div>
+            <div class="world4">
+                <div class="world4-2">相片</div>
+            </div>
+            <div class="world5">
+                <div class="world5-2">典藏</div>
+            </div>
+            <div class="world6">
+                <div class="world6-2">更多</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+   
+</body>
+</html>

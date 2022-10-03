@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+            
+            display: flex;
+        }
+        ul{
+                display: none;
+            }
+        .button{
+            display: none;
+            }
+            input{
+                display: none;
+            }
+        .leftBox{
+            height: 100vh;
+            width: 300px;
+            background-color: gray;
+            
+        }
+        .logo{
+            width: 150px;
+            height: 150px;
+            /* background-color: red; */
+            background-image: url(./small.jpg);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: auto;
+            margin-top:50px ;
+        }
+        .a-box{
+            margin: auto;
+            width: 90px;
+            /* height: 80px; */
+            
+        }
+        a{
+            white-space:nowrap; 
+        }
+        .centerBox{
+            width: 1000px;
+            /* height: 700px; */
+            /* background-color: red; */
+            /* border: 1px solid black; */
+            margin: auto;
+            display:flex;
+        }
+
+        .s{
+            width: 300px;
+            height: 80%;
+            margin: auto;
+            transition: 0.8s;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-size: 30px;
+            text-align: justify;
+            font-weight: 1000;
+            text-align: center;
+            line-height: 800px;
+        }
+        .x{
+
+            background-image: url(https://lh4.googleusercontent.com/3ckNIFseMKQhAh5S9bboBprV_vavC4bKu1Tj7aVO36CCzLQhdRLqIGqP8Hcd-FU-c2Qn_w=w16383);
+            color: aqua;
+        }
+        .y{
+            /* background-color: blue; */
+            background-image: url(https://lh3.googleusercontent.com/a-/AOh14GjSFR77CF8F7Iwm4RF5K4bjnKuyiQ4gVTRqlqxrGQ=s75-c);
+            color: blue;
+        }
+        .z{
+            background-image: url(./small.jpg);
+            color: red;
+        }
+        .s:hover{
+            width: 900px;
+            
+        }
+        .links a{
+            display: none;
+        }
+        @media screen and (max-width: 1919px){
+            .centerBox{
+                display: inline;
+                
+            }
+            .s{
+                height: 50%;
+                line-height: 400px;
+            }
+            .x{
+                width: 100%;
+                
+            }
+            .y, .z{
+                width: 50%;
+                float: left;
+                margin: 0px;
+            }
+        }
+        @media screen and (max-width: 1279px){
+            body{
+                display: inline;
+            }
+            .leftBox{
+                width: calc(100% - 37.5px);
+                height: 150px;
+                /* display: flex; */
+                padding-top:37.5px ;
+                padding-left:37.5px ;
+            }
+            a{
+                
+                margin: 10px;
+            }
+            .a-box{
+                display:flex ;
+                width: 10px;
+                margin-top: -47px;
+            }
+            .logo{
+                width: 75px;
+                height: 75px;
+                margin: 0px;
+            }
+        }
+        @media screen and (max-width: 767px){
+            
+            .button{
+                font-size: 100px;
+                float: left;
+                display: block;
+                position: relative;
+                left:calc(25% - 100px);
+            }
+            input{
+                display: none;
+            }
+            #burger:checked + ul{
+                display: inline;
+                
+            }
+            
+            li{
+                background-color: beige;
+                position: relative;
+                bottom: -110px;
+                left: -50px;
+            }
+            ul{
+                /* background-color: aquamarine; */
+                position: absolute;
+            }
+            .links{
+                width: 125px;
+                background-color: wheat;
+                position: relative;
+                top: 100px;
+            }
+            
+            
+          
+            .centerBox{
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+            }
+            .logo{
+                position: relative;
+                right: calc(25% - 37.5px);
+                top: calc(50% - 37.5px);
+                margin: auto;
+            }
+            .s{
+                width: 100%;
+            }
+            .a-box a{
+                display:none;
+                
+            }
+            .a-box{
+                width: 0;
+                height: 0;
+                margin: 0;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="leftBox">
+        <label for="burger" class="button">☰</label>
+        <input type="checkbox" id="burger">
+        <ul>
+            <li><a href="error.html">詩正的頭髮</a></li>
+            <li><a href="error.html">詩正的老婆</a></li>
+            <li><a href="https://zh.wikipedia.org/zh-tw/%E6%9D%B1%E6%B2%99%E7%BE%A4%E5%B3%B6">異變種出現地</a></li>
+        </ul>
+            
+            
+            
+        
+        <div class="logo"></div>
+        <div class="a-box">
+                <a href="error.html">詩正的頭髮</a>
+                <a href="error.html">詩正的老婆</a>
+                <a href="https://zh.wikipedia.org/zh-tw/%E6%9D%B1%E6%B2%99%E7%BE%A4%E5%B3%B6">異變種出現地</a>
+        </div>
+    </div>
+    <div class="centerBox">
+        <div class="s x">未成熟種</div>
+        <div class="s y">成熟種</div>
+        <div class="s z">異變種</div>
+    </div>
+</body>
+</html>

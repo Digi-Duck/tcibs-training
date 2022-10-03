@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mask</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 100%;
+            height: auto;
+        }
+        /*
+        tag<class<id
+        */
+        .area{
+            width: 100%;
+            height: 100vh;
+
+            background-image: url('1.jpg');
+            background-size: cover;
+            background-position: center;
+            /*background-attachment: fixed*/
+
+
+            position: relative;
+        }
+        .img2{
+            background-image: url('2.jpg');
+        }
+        /*#area1{
+            background-image: url('2.jpg');
+        }*/
+    
+    
+    
+    
+    
+    
+    </style>
+
+
+
+</head>
+<body>
+    <div class="container">
+        <div id="area1"class="area img1">
+            <div class="mask">
+                <div class="btn"></div>
+            </div>
+        </div>
+        <div id="area2"class="area img2">
+            <div class="mask">
+                <div class="btn"></div>
+            </div>
+        </div>
+        <div id="area3"class="area img3">
+            <div class="mask">
+                <div class="btn"></div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+</body>
+</html>

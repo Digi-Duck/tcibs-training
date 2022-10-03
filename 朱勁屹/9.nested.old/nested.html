@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>巢狀1</title>
+    <style>
+        #boxA{
+            width: 580px;
+            height: 580px;
+            background-color: black;
+            padding: 10px;
+        }
+        #boxB{
+            width: 580px;
+            height: 186.68px;
+            background-color: red;
+            margin:  0 0 10px 0;
+        }
+        #boxC{
+            width: 580px;
+            height: 186.68px;
+            background-color: black;
+            
+            margin:  0 0 10px 0;
+        }
+        #boxD{
+            width: 285px;
+            height: 186.68px;
+            background-color: blue;
+            float: left;
+            margin:0 10px 0 0 ;
+        }
+        
+        #boxE{
+            width: 285px;
+            height: 186.68px;
+            background-color: rgb(27, 45, 145);
+            float: right;
+        }
+        #boxF{
+            width: 580px;
+            height: 186.68px;
+            background-color: rgb(97, 33, 33);
+            float: left;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="boxA">
+        <div id="boxB"></div>
+        <div id="boxC">
+            <div id="boxD"></div>
+            <div id="boxE"></div>
+        </div>
+        <div id="boxF"></div>
+
+    </div>
+    
+    
+</body>
+</html>

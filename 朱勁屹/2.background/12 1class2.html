@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    .back{
+        width: 100%;
+        height: 100px;
+        background-color: white;
+    }
+    .pig{
+        width: 100%;
+        /*img標籤只能定義等比例，一起用會失真*/
+    }
+    
+    /*
+    .all->class
+    #aaa->id
+    body->body
+    */
+    .background{
+        width: 6000px;
+        height: 6000px;
+        /* background 系列*/
+        background-image: url('./img/20200811003263.jpg');/*===background-color*/
+        background-size: contain;
+        /*<-圖片高或寬到邊就放大*/
+        /* background-size: cover; */
+        /*<-圖片高跟寬到邊就放大*/
+        background-position: center;
+        /*背景圖對準位置*/
+        background-repeat: no-repeat;
+        /*不讓他重複*/
+        background-attachment: fixed;
+        /*讓圖片跟滾輪移動*/
+    }
+    /*
+    img->只有圖
+    background->有字有圖
+    */
+</style>
+</head>
+<body>
+    <div class="back"></div>
+    <!-- 1.img -->
+    <img class="pig" src="./img/20200811003263.jpg" alt="這裡應該要有一張圖">
+    <div class="background">123456</div>
+    <!-- 
+        src=圖片連結
+        alt=替代文字
+     -->
+     
+</body>
+</html>

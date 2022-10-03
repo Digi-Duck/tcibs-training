@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2022 1 24新版FB訪切</title>
+    <style>
+        body{
+            background-color: rgb(241, 240, 240);
+            margin: 0px;
+        }
+        .topline{
+            background-color: white;
+            width: 100%;
+            height: 56px;
+            border: 1px solid rgb(216, 215, 215);
+            position: relative;
+        }
+        .fb-picture{
+            width: 38px;
+            height: 38px;
+            background-image: url('fb.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            border: 1px solid blue;
+            position: absolute;
+            top: 8px;
+            left: 8px;
+        }
+        .search-picture{
+            width: 38px;
+            height: 38px;
+            background-image: url('放大鏡.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            border: 1px solid black;
+            position: absolute;
+            top: 8px;
+            left: 56px;
+        }
+        .search{
+            width: 100px;
+            position: absolute;
+            top: 18px;
+            left: 100px;
+        }
+        .add-picture{
+            width: 38px;
+            height: 38px;
+            /* background-color: rgb(165, 165, 165); */
+            background-image: url('加號.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            margin-top: 9px;
+            margin-right: 3px;
+            margin-left: 3px;
+            float: right;
+        }
+        .messenger-picture{
+            width: 38px;
+            height: 38px;
+            /* background-color: rgb(165, 165, 165); */
+            background-image: url('messenge.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            margin-top: 9px;
+            margin-right: 3px;
+            margin-left: 3px;
+            float: right;
+        }
+        .notice-picture{
+            width: 38px;
+            height: 38px;
+            /* background-color: rgb(165, 165, 165); */
+            background-image: url('鈴鐺.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            margin-top: 9px;
+            margin-right: 3px;
+            margin-left: 3px;
+            float: right;
+        }
+        .account-picture{
+            width: 38px;
+            height: 38px;
+            background-color: rgb(165, 165, 165);
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            margin-top: 9px;
+            margin-right: 3px;
+            margin-left: 3px;
+            float: right;
+            position: relative;
+        }
+        .triangle{
+            width: 0px;
+            height: 0px;
+            border: 10px;
+            border-left: 6px solid rgb(165, 165, 165);
+            border-right: 6px solid rgb(165, 165, 165);
+            border-top: 10px solid rgb(71, 71, 71);
+            margin-top: 10.5px;
+            position: absolute;
+            left: calc(50% - 6px);
+            top: calc(25% - 5px);
+        }
+        .centerbox{
+            height: 56px;
+            width: 550px;
+            background-color: transparent;
+            position: absolute;
+            margin-right: 241px;
+            margin-left: 241px;
+        }
+        .house-picture{
+            width: 38px;
+            height: 38px;
+            /* background-color: rgb(165, 165, 165); */
+            background-image: url('房子.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            margin-top: 9px;
+            margin-right: 90px;
+            float: left;
+        }
+        .friend-picture{
+            width: 38px;
+            height: 38px;
+            background-image: url('朋友.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            margin-top: 9px;
+            margin-right: 90px;
+            float: left;
+        }
+        .video-picture{
+            width: 38px;
+            height: 38px;
+            background-image: url('影片.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            margin-top: 9px;
+            margin-right: 90px;
+            float: left;
+        }
+        .store-picture{
+            width: 38px;
+            height: 38px;
+            background-image: url('商店.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            margin-top: 9px;
+            margin-right: 90px;
+            float: left;
+        }
+        .more-picture{
+            width: 38px;
+            height: 38px;
+            /* background-color: rgb(165, 165, 165); */
+            background-image: url('更多.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            margin-top: 9px;
+            float: right;
+        }
+        
+        .topbox{
+            width: 100%;
+            height: 507.14px;
+            background-color: white;
+            position: relative;
+        }
+        .coverphoto{
+            position: absolute;
+            left: calc(50% - 470px);
+            width: 940px;
+            height: 348.14px;
+            background-image: linear-gradient(to bottom,rgb(238, 238, 238) 80%,rgb(94, 94, 94) 100%);
+            border-radius: 2%;
+            position: relative;
+        }
+        .add-coverphoto-box{
+            background-color: white;
+            height: 21px;
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            border: 3px solid white;
+            border-radius: 10%;
+        }
+        .add-coverphoto{
+            width: 21px;
+            height: 21px;
+            background-image: url('相機.jpg');
+            background-size: cover;
+            background-position: center;
+            float: left;
+        }
+        .add-coverphoto-word{
+            font-size: 16px;
+            display: inline;
+        }
+        .myself{
+            width: 908px;
+            height: 159px;
+            /* background-color: black; */
+            position: absolute;
+            bottom: 0px;
+            left: calc(50% - 454px);
+        }
+        .my-photo{
+            border: 5px solid white;
+            width: 168px;
+            height: 168px;
+            border-radius: 50%;
+            background-image: url('山豬.jpg') ;
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top:-50px;
+            left:10px;
+            float: none;
+        }
+        .photo{
+            width: 36px;
+            height: 36px;
+            background-image: url('相機.jpg');
+            background-position: center;
+            background-size: cover;
+            border-radius: 50%;
+            margin-top: 100px;
+            margin-left: 130px;
+        }
+        .my-name{
+            font-size: 40px;
+            position: absolute;
+            left: 200px;
+        }
+        .friend{
+            position: absolute;
+            left:200px;
+            top:50px;
+            font-size: 20px;
+        }
+        .friend-photo-box{
+            width: 259px;
+            height: 44px;
+            /* background-color: black; */
+            position: absolute;
+            left: 200px;
+            top: 77px;
+            position: relative;
+        }
+        .my-friend-photo-1{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-image: url('自由的男人.jpg');
+            background-position: center;
+            background-size: cover;
+            border: 2px solid white;
+            position: absolute;
+            right: 0px;
+        }
+        .my-friend-photo-2{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-image: url('自由的男人.jpg');
+            background-position: center;
+            background-size: cover;
+            border: 2px solid white;
+            position: absolute;
+            right: 35px;
+        }
+        .my-friend-photo-3{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-image: url('自由的男人.jpg');
+            background-position: center;
+            background-size: cover;
+            border: 2px solid white;
+            position: absolute;
+            right: 65px;
+        }
+        .my-friend-photo-4{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-image: url('自由的男人.jpg');
+            background-position: center;
+            background-size: cover;
+            border: 2px solid white;
+            position: absolute;
+            right: 95px;
+        }
+        .my-friend-photo-5{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-image: url('自由的男人.jpg');
+            background-position: center;
+            background-size: cover;
+            border: 2px solid white;
+            position: absolute;
+            right: 125px;
+        }
+        .my-friend-photo-6{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-image: url('自由的男人.jpg');
+            background-position: center;
+            background-size: cover;
+            border: 2px solid white;
+            position: absolute;
+            right: 155px;
+        }
+        .my-friend-photo-7{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-image: url('自由的男人.jpg');
+            background-position: center;
+            background-size: cover;
+            border: 2px solid white;
+            position: absolute;
+            right: 185px;
+        }
+        .my-friend-photo-8{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-image: url('自由的男人.jpg');
+            background-position: center;
+            background-size: cover;
+            border: 2px solid white;
+            position: absolute;
+            right: 215px;
+        }
+        .box-gray{
+            background-color: rgb(168, 167, 167);
+            position: absolute;
+            right: 0px;
+            bottom: 40px;
+            border: 3px solid rgb(168, 167, 167);
+            border-radius: 10%;
+        }
+        .pencil{
+            width: 21px;
+            height: 21px;
+            background-image: url('鉛筆.jpg');
+            background-size: cover;
+            background-position: center;
+            float: left;
+        }
+        .word-1{
+            font-size: 16px;
+            display: inline;
+            
+        }
+        .box-blue{
+            background-color: rgb(58, 95, 175);
+            position: absolute;
+            right: 130px;
+            bottom: 40px;
+            height: 21px;
+            border: 3px solid rgb(58, 95, 175);
+            border-radius: 10%;
+        }
+        .add{
+            background-image: url('加號.jpg');
+            width: 21px;
+            height: 21px;
+            background-size: cover;
+            background-position: center;
+            float: left;
+        }
+        .word-2{
+            color: white;
+            font-size: 16px;
+            display:inline;
+            margin-bottom: 2px;
+        }
+        .bottomline{
+            width: 100%;
+            height: 56px;
+            background-color: white;
+        }
+        .bottomline-top{
+            width: 60%;
+            height: 2px;
+            background-color: rgb(155, 155, 155);
+            margin-left: 20%;
+        }
+        .bottomline-box{
+            width: 60%;
+            height: 56px;
+            /* background-color: red; */
+            margin-left:20%; 
+            
+        }
+        
+        .poste-word{
+            font-size: 20px;
+            margin-top: 14.5px;
+            /* margin-left: 20%; */
+            float: left;
+            margin-left: 2.5%;
+            margin-right: 2.5%;
+        }
+        .about-word{
+            font-size: 20px;
+            margin-bottom: 14.5px;
+            margin-top: 14.5px;
+            margin-left: 2.5%;
+            float: left;
+            margin-right: 2.5%;
+        }
+        .friend-word{
+            font-size: 20px;
+            margin-bottom: 14.5px;
+            margin-top: 14.5px;
+            margin-left: 2.5%;
+            float: left;
+            margin-right: 2.5%;
+        }
+        .photo-word{
+            font-size: 20px;
+            margin-bottom: 14.5px;
+            margin-top: 14.5px;
+            margin-left: 2.5%;
+            float: left;
+            margin-right: 2.5%;
+        }
+        .video-word{
+            font-size: 20px;
+            margin-bottom: 14.5px;
+            margin-top: 14.5px;
+            margin-left: 2.5%;
+            float: left;
+            margin-right: 2.5%;
+        }
+        .hitcard-word{
+            font-size: 20px;
+            margin-bottom: 14.5px;
+            margin-top: 14.5px;
+            margin-left: 2.5%;
+            float: left;
+            margin-right: 2.5%;
+        }
+        .more-word-box{
+            margin-bottom: 14.5px;
+            margin-top: 14.5px;
+            margin-left: 2.5%;
+            float: left;
+            margin-right: 2.5%;
+        }
+        .more-word{
+            font-size: 20px;
+            display: inline;
+            float: left;
+        }
+        .more-word-triangle{
+            width: 0px;
+            height: 0px;
+            border: 10px;
+            border-left: 6px solid white;
+            border-right: 6px solid white;
+            border-top: 10px solid black;
+            margin-top: 10.5px;
+            float: right;
+            margin-left: 3px;
+        }
+        .more-picture-word{
+            width: 50px;
+            height: 50px;
+            background-image: url('更多.jpg');
+            background-position: center;
+            background-size: cover;
+            float: right;
+        }
+        .fanallyline{
+            width: 100%;
+            height: 2px;
+            background-color: rgb(168, 168, 168);
+        }
+    </style>
+</head>
+<body>
+    <div class="topline">
+        <div class="fb-picture"></div>
+        <div class="search-picture"></div>
+        <input placeholder="輸入你要找的人" class="search">
+        <div class="centerbox">
+            <div class="house-picture"></div>
+            <div class="friend-picture"></div>
+            <div class="video-picture"></div>
+            <div class="store-picture"></div>
+            <div class="more-picture"></div>
+        </div>
+            <div class="account-picture">
+                <div class="triangle"></div>
+            </div>
+            <div class="notice-picture"></div>
+            <div class="messenger-picture"></div>
+            <div class="add-picture"></div>
+            
+        </div>
+    </div>
+    <div class="topbox">
+        <div class="coverphoto">
+            <div class="add-coverphoto-box">
+                <div class="add-coverphoto"></div>
+                <div class="add-coverphoto-word">加上封面照片</div>
+            </div>
+        </div>
+        <div class="myself">
+            <div class="my-photo">
+                <div class="photo"></div>
+            </div>
+            <div class="my-name">朱勁屹</div>
+            <div class="friend">你沒有朋友</div>
+            <div class="friend-photo-box">
+                <div class="my-friend-photo-1"></div>
+                <div class="my-friend-photo-2"></div>
+                <div class="my-friend-photo-3"></div>
+                <div class="my-friend-photo-4"></div>
+                <div class="my-friend-photo-5"></div>
+                <div class="my-friend-photo-6"></div>
+                <div class="my-friend-photo-7"></div>
+                <div class="my-friend-photo-8"></div>
+               
+            </div>
+            <div class="box-gray">
+                <div class="pencil"></div>
+                <div class="word-1" >編輯個人檔案</div>
+            </div>
+            <div class="box-blue">
+                <div class="add"></div>
+                <div class="word-2">
+                    <input type="button" value="新增到限時動態" onclick="location.href='https://www.redcross.org.tw/'"style="font-size:15px;background-color:blue;color:white">
+                    
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+    <div class="bottomline">
+        <div class="bottomline-top"></div>
+        <div class="bottomline-box">
+            <div class="poste-word">貼文</div>
+            <div class="about-word">關於</div>
+            <div class="friend-word">朋友</div>
+            <div class="photo-word">相片</div>
+            <div class="video-word">影片</div>
+            <div class="hitcard-word">打卡動態</div>
+            <div class="more-word-box">
+                <div class="more-word">
+                    <input type="button" value="更多" style="font-size: 16px;"onclick="location.href='https://youtu.be/dQw4w9WgXcQ'">
+                </div>
+                <div class="more-word-triangle"></div>
+            </div>
+            <div class="more-picture-word"></div>
+        </div>
+    </div>
+    <div class="fanallyline"></div>
+</body>
+</html>

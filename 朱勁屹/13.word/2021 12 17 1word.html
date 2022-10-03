@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2021 12 17無字屬性</title>
+    <style>
+        .text_box{
+            width: 20px;
+            /* 文字專用屬性 */
+            /* 特性:影響子層 */
+            /* 固定的話可以寫body */
+            color: blue;
+            font-size: 25%;
+            /* 最小12px */
+            font-weight: normal;
+            /* 粗細 */
+            font-style: initial;
+            line-height: 1.3;
+            /* 行高 */
+            text-align: justify;
+            /* 文字對其 */
+            /* j>>分散對其 */
+            font-family: '標楷體','';
+            /* 字體 */
+            /* 多幾種字體防止沒有 */
+            letter-spacing: 2px;
+            /* 文字距離 */
+            text-indent:100px ;
+            /* 縮排 */
+            
+        }
+        .color_red{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!--假文產生器:Lorem-->
+    <div class="text_box">Lorem ipsum <span class="color_red"> sit</span> amet consectetur, adipisicing elit. Animi iusto illo, esse recusandae, porro velit non, neque laboriosam error blanditiis incidunt ex nobis enim assumenda quibusdam alias quidem repellat suscipit! </div>
+    <!-- <span></span> -->
+    <!-- 不像div後面不留 -->
+</body>
+</html>

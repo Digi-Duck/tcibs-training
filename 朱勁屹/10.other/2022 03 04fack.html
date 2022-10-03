@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .box{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+    }
+    /* 鮪類 */
+    /* 1.標籤狀態的鮪類 */
+    /* 當滑鼠移到標籤的狀態 */
+    .box:hover{
+        background-color: blue;
+    }
+
+    /* 超連結預設狀態 */
+    a:link{
+        color: red;
+    }
+
+    /* 超連結被點過後狀態 */
+    a:visited{
+        color:black;
+    }
+    /* 超連結正在被點擊時的狀態 */
+    a:active{
+        color: green;
+    }
+    input:focus{
+
+    }
+    /* 2.css選擇器的儰類 */
+    .box::first-letter{
+        font-size: 25px; ;
+    }
+    /* 偵測制定標籤後出現的多個class中的第N個 */
+    /* .box:nth-child(3){
+        background-color: green;
+    } */
+    /* 選擇標籤往淺計算第n個標籤 */
+    /* .box:nth-last-child(2){
+        background-color: green;
+    } */
+    /* 每層裡第一個 */
+    .box:first-child{
+        background-color: green;
+    }
+    </style>
+</head>
+<body>
+    <!-- <div class="box">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam consequuntur ullam facere? Esse dolore sapiente magni, cumque fugit eveniet maiores tenetur molestiae fuga, velit, repudiandae quibusdam! Consectetur reprehenderit maiores ad.</div>
+    <a href="45454854">測試超連結狀態</a> -->
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+    <input type="text">
+
+    <a href="">48854</a>
+
+    <button>1564</button>
+</body>
+</html>

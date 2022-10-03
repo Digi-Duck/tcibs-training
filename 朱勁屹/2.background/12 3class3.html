@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 30000px;
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+
+            
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+
+            /*position系列*/
+                position: relative;
+                /*相對位置:以某個標籤(收尋父層標籤有position:relativ屬性的父層標籤)為基準移動移動*/
+                /* position: absolute; */
+                /*絕對位置:以某標籤(有posution:relative屬性的父層標籤，若全部的父層都沒有relative,則以"瀏覽器視窗"為主)為基準做移動*/
+                /* left: 50px; */
+                /* top: ;從某處開始 */
+                /* right: ; */
+                right:0px;
+                bottom:0px ;
+                position:fixed;
+        }
+        .box3{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+        .all{
+            width: 500px;
+            height: 500px;
+            background-color: red;
+            position: relative;
+            top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div> -->
+    <div class="all">
+        <div class="box2"></div>
+    </div>
+</body>
+</html>
