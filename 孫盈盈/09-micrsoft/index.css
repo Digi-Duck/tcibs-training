@@ -232,23 +232,23 @@ ul .font{
     box-sizing: border-box;
 }
 .img-font-2{
-    width: 25%;
+    width: 24%;
 
     padding: 48px;
     line-height: 25px;
 }
 .img-h1{
     margin: 0;
-    margin-bottom: 25px; 
+    margin-bottom: 20px; 
 
     color: black;
 
-    font-family: "Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 600;
     font-size: 37px;
+    line-height: 44px;
 }
 .img-p{
-    margin: 0 0 20px 0;
+    margin: 0 0 13px 0;
 
     font-size: 16px;
 
@@ -278,7 +278,7 @@ ul .font{
     width: 100%;
     height: 64px;
 
-    margin-bottom: 48px;
+    margin-bottom: 41.5px;
 }
 .tran-page-2{
     position: relative;
@@ -332,14 +332,14 @@ ul .font{
     display: flex;
 
     max-width: calc(1600px + 10%);
-    height: 120px;
+    height: 118px;
     margin: 0 auto;
 }
 .buy-microsoft-2{
     display: flex;
     align-items: center;
     
-    margin: auto;
+    margin:auto;
 }
 .windows{
     height: 72px;
@@ -349,8 +349,8 @@ ul .font{
 .windows-2{
     width: 40px;
 
-    margin: auto;
-    margin-bottom: 8px;
+    margin:auto;
+    margin-bottom: 4px;
 }
 .windows a{
     color: rgb(72, 143, 190);
@@ -364,7 +364,7 @@ ul .font{
     max-width: calc(1600px + 10%);
 
     padding: 0 4%;
-    margin: 64px auto;
+    margin: 55px auto;
     margin-bottom: 96px;
     box-sizing: border-box;
 }
@@ -660,7 +660,10 @@ ul .font{
         height: 750px;
     }
 }
-@media  screen and (max-width:1080px) {
+@media  screen and (max-width:1083.5px) {
+    .title-back{
+        padding: 0 24px;
+    }
     #img{
         display: block;
     }
@@ -723,7 +726,7 @@ ul .font{
         margin: 0;
     }
 }
-@media screen and (max-width:910px){
+@media screen and (max-width:860px){
     /* .font{
         display: none;
     } */
