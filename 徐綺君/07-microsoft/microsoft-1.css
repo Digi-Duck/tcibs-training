@@ -139,8 +139,8 @@ input:checked ~ .menu_box{
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 52px;
-    left: 22.99%;
+    margin-top: -4px;
+    margin-left: -925.859px;
     border: 1px solid #E6E6E6;
     border-bottom: 2px solid black;
 }
@@ -393,8 +393,9 @@ ul{
 
 .m_img2_box{
     width: 100%;
+    max-width: 1596px;
     display: flex;
-    justify-content: center; 
+    margin: 0 auto;
 }
 .m_img2{
     width: 100%;
@@ -451,9 +452,11 @@ ul{
     margin-left: 15.8px;
 
 }
-
+.top_btn_box_RWD{
+    display: none;
+}
 .sticky{
-    margin-top: -43px;
+    margin-top: -41px;
 }
 .top_btn_box{
     width: 100%;
