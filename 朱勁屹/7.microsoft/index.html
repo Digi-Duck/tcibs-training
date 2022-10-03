@@ -189,7 +189,16 @@
             <div class="producePhoto" id="photo">
                 
                 <div class="produceIntroduce">
-                    <div class="produceIntroduceBox">
+                    <div class="produceIntroduceBox1">
+                        <div class="new2">
+                            新市
+                        </div>
+                        <div class="name">Surface Laptop Go 2</div>
+                        <div class="introduce">外型時尚的筆記型電腦配備 12.4 吋觸控螢幕、絕佳的打字體驗，以及改良的 HD 相機</div>
+                        <div class="deep">深入了解</div>
+                    </div>
+                </div>
+                    <div class="produceIntroduceBox2">
                         <div class="new2">
                             新上市
                         </div>
@@ -515,22 +524,20 @@
    
     
          
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
-        // $(function(){
-        //     var $win =$(window);
-        //     var $backToTop = $('.js-back-to-top');
-
-        //     $win.scroll(function(){
-        //         if($win.scrollTop()>100){
-        //             $backToTop.show();
-        //         }else{
-        //             $backToTop.hide();
-        //         }
-        //     });
-        //     $backToTop.click(function(){
-        //         $('html, body').animate({scrollTop:o}, 200);
-        //     })
-        // })
-    </script>
+        var swiper = new Swiper(".mySwiper", {
+          cssMode: true,
+          navigation: {
+            nextEl: ".fa-chevron-left",
+            prevEl: ".fa-chevron-right",
+          },
+          pagination: {
+            el: ".swiper-pagination",
+          },
+          mousewheel: true,
+          keyboard: true,
+        });
+      </script>
 </body>
 </html>
