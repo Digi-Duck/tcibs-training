@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./microsoft-1.css">
     <link rel="stylesheet" href="./RWD.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
 </head>
 <body>
     <div class="bar ">
@@ -22,8 +23,8 @@
                         <li><a class="menu menu_L" id="under_line" href="">Teams</a></li>
                         <li><a class="menu menu_L" id="under_line" href="">Windows</a></li>
                         <li><a class="menu menu_L" id="under_line" href="">Surface</a></li>
-                        <li><a class="menu menu_L none" href="">Xbox</a></li>
-                        <li><a class="menu menu_L none" href="">支援</a></li>
+                        <li><a class="menu menu_L none" id="under_line" href="">Xbox</a></li>
+                        <li><a class="menu menu_L none" id="under_line" href="">支援</a></li>
                         <input type="checkbox" id="switch_l">
                         <label for="switch_l" class="menu menu_L menu_btn menu_L_btn" id="under_line_l">
                                 <div class="menu_L_text" >更多</div>
@@ -225,26 +226,47 @@
     </div>
 
     <div class="m">
+
         <div class="main_img">
-            <picture class="m_img">
-                <source class="m_img" media="(min-width: 1400px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Laptop-Go-2-01-M01:VP5-1920x600">
-                <source class="m_img" media="(min-width: 1084px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Laptop-Go-2-01-M01:VP4-1399x600">
-                <source class="m_img" media="(min-width: 860px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Laptop-Go-2-01-M01:VP3-1083x600">
-                <source class="m_img" media="(min-width: 540px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Laptop-Go-2-01-M01:VP2-859x540">
-                <img class="m_img" src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Laptop-Go-2-01-M01:VP1-539x440">
-            </picture>   
-            <div class="m_text_box">
-                <div class="container">
-                    <div class="m_text">
-                        <div class="text_box1"> 新上市</div>
-                        <div class="text_box2"> Surface Laptop Go 2</div>
-                        <div class="text_box3">外型時尚的筆記型電腦配備 12.4 吋觸控螢幕、絕佳的打字體驗，以及改良的 HD 相機</div>
-                        <div class="text_btn">深入了解</div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <picture class="m_img swiper-slide">
+                        <source class="m_img" media="(min-width: 1400px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Hero-Surface-Pro-8-with-TypeCover:VP5-1920x600">
+                        <source class="m_img" media="(min-width: 1084px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Hero-Surface-Pro-8-with-TypeCover:VP4-1399x600">
+                        <source class="m_img" media="(min-width: 860px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Hero-Surface-Pro-8-with-TypeCover:VP3-1083x600">
+                        <source class="m_img" media="(min-width: 540px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Hero-Surface-Pro-8-with-TypeCover:VP2-859x540">
+                        <img class="m_img" src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Hero-Surface-Pro-8-with-TypeCover:VP1-539x440">
+                    </picture>   
+                    <div class="m_text_box">
+                        <div class="container container1">
+                            <div class="m_text">
+                                <div class="text_box2 text_box2_2">Surface Pro 8</div>
+                                <div class="text_box3">運用更大的 13 吋觸控螢幕、更快的連線，以及提升的速度，成就更多。現在提供 Windows 11。</div>
+                                <div class="text_btn">深入了解</div>
+                            </div>
+                        </div>
+                    </div>
+                    <picture class="m_img swiper-slide">
+                        <source class="m_img" media="(min-width: 1400px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Laptop-Go-2-01-M01:VP5-1920x600">
+                        <source class="m_img" media="(min-width: 1084px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Laptop-Go-2-01-M01:VP4-1399x600">
+                        <source class="m_img" media="(min-width: 860px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Laptop-Go-2-01-M01:VP3-1083x600">
+                        <source class="m_img" media="(min-width: 540px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Laptop-Go-2-01-M01:VP2-859x540">
+                        <img class="m_img" src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Laptop-Go-2-01-M01:VP1-539x440">
+                    </picture>   
+                    <div class="m_text_box">
+                        <div class="container">
+                            <div class="m_text">
+                                <div class="text_box1"> 新上市</div>
+                                <div class="text_box2"> Surface Laptop Go 2</div>
+                                <div class="text_box3">外型時尚的筆記型電腦配備 12.4 吋觸控螢幕、絕佳的打字體驗，以及改良的 HD 相機</div>
+                                <div class="text_btn">深入了解</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="m_text_back">
+        <div class="m_text_back ">
             <div class="m_text">
                 <div class="text_box1"> 新上市</div>
                 <div class="text_box2"> Surface Laptop Go 2</div>
@@ -596,5 +618,21 @@
         </div>
     </div>
     
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        navigation: {
+          nextEl: ".R_arrow",
+          prevEl: ".L_arrow",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+        },
+      });
+
+    </script>
 </body>
 </html>

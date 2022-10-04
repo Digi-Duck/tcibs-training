@@ -143,6 +143,7 @@ input:checked ~ .menu_box{
     margin-left: -925.859px;
     border: 1px solid #E6E6E6;
     border-bottom: 2px solid black;
+    z-index: 5;
 }
 .menu_li{
     padding: 15px 0px 11.5px 23px;
@@ -208,7 +209,10 @@ input:checked ~ .menu_box{
 }
 
 
-
+.swiper-wrapper,.mySwiper{
+    width: 100%;
+    display: flex;
+}
 
 .main_img{
     display: flex;
@@ -217,15 +221,20 @@ input:checked ~ .menu_box{
     width: 100%;
 }
 .m_text_box{
-    width: 100%;
+    min-width: 100%;
     margin-left: -100%;
     display: flex;
+    z-index: 5;
 }
 .container{
     width: 90%;
     padding: 0 5%;
     max-width: 1600px;
     margin: auto;
+}
+.container1{
+    margin: 0 auto;
+    margin-top: 45px;
 }
 .m_text_back{
     display: none;
@@ -234,7 +243,8 @@ input:checked ~ .menu_box{
     margin-bottom: 3px;
     padding: 48px;
     display: inline-block;
-    width: 26.5%;
+    word-break: keep-all;
+    width: 28%;
 }
 .text_box1{
     display: inline-block;
@@ -250,6 +260,9 @@ input:checked ~ .menu_box{
     font-size: 37px;
     font-weight: 500;
     padding-bottom: 19px;
+}
+.text_box2_2{
+    padding-bottom: 20px;
 }
 .text_box3{
     line-height: 1.5;
