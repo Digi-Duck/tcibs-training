@@ -134,8 +134,7 @@ html {
     background-repeat: no-repeat;
 }
 .swiper-wrapper{
-    display: flex;
-    width: 100%;
+    width: 50%;
 }
 .mySwiper {
     /* background-color: red; */
