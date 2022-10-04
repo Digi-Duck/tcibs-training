@@ -333,7 +333,7 @@ ul .font{
 
     max-width: calc(1600px + 10%);
     height: 118px;
-    margin: 0 auto;
+    margin: 0 auto 16px;
 }
 .buy-microsoft-2{
     display: flex;
@@ -393,6 +393,7 @@ ul .font{
 }
 .content-product-link{
     display: flex;
+    flex-wrap: wrap;
 
     width: 100%;
     
@@ -548,7 +549,7 @@ ul .font{
 .last-ul{
     width: 16.666%;
 
-    padding-right: 12px;
+    padding: 0 12PX;
     float: left;
     box-sizing: border-box;
 }
@@ -623,7 +624,7 @@ ul .font{
     margin: 3px 0;
     box-sizing: border-box;
 }
-@media screen and (max-width:1400px){
+@media screen and (max-width:1399px){
     .title{
         margin: 0;
     }
@@ -652,14 +653,14 @@ ul .font{
         font-size: 24px;
     }
 }
-@media screen and (max-width:1250px){
+@media screen and (max-width:1229px) {
     #all-mic:checked + .form{
         flex-wrap: wrap;
         
         width: 850px;
         height: 750px;
     }
-}
+} 
 @media  screen and (max-width:1083.5px) {
     .title-back{
         padding: 0 24px;
@@ -679,12 +680,28 @@ ul .font{
     }
     .img-font-2{
         width: 100%;
+        height: 224.8px;
 
         background-color: white;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+
+        box-sizing: border-box;
     }
     .img-h1{
-        font-size:25px;
+        font-size:24px;
+        margin: 0 0 12px;
+
+        line-height: 32px;
+    }
+    .img-p{
+        line-height: 22px;
+
+        margin: 0 0 16px;
+    }
+    .business h1{
+        font-size: 24px;
+        line-height: 28.8px;
+        margin-bottom: 12px;
     }
     .content-product{
         flex-wrap: wrap;
@@ -693,6 +710,11 @@ ul .font{
     }
     .content-product-2{
         width: 50%;
+    }
+    .content-product-h1{
+        margin-bottom: 8px;
+
+        font-size: 21px;
     }
     .same{
         margin-bottom: 48px;
@@ -715,6 +737,9 @@ ul .font{
         background-color: white;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
     }
+    .focus{
+        padding: 0 12px;
+    }
     .last-1{
         height: auto;
         padding: 0 12px;
@@ -723,33 +748,35 @@ ul .font{
         width: 33.33%;
     }
     .last-2{
+        flex-wrap: wrap;
+
+        padding: 30px 24px 16px;
         margin: 0;
     }
 }
-@media screen and (max-width:860px){
-    /* .font{
-        display: none;
-    } */
+@media screen and (max-width:859px){
     .title-back{
         width: 100%;
         padding: 0;
     }
     .title{
-        justify-content: space-around;
         margin: auto;
     }
-    .logo-back{
-        width: 0;
-        height: 0;
-        padding: 0;
+    .funtion{
+        width: 95%;
     }
     .burger{
         display: flex;
         align-items: center;
         justify-content: center;
 
-        width: 10%;
+        width: 5%;
         font-size: 25px;
+    }
+    .logo-back{
+        width: 0;
+        height: 0;
+        padding: 0;
     }
     #all-mic:checked + .form{
         display: block;
@@ -943,9 +970,6 @@ ul .font{
         width: 0;
         height: 0;
     }
-    .funtion{
-        width: 90%;
-    }
     .text:hover .line{
         height: 0;
     }
@@ -973,9 +997,33 @@ ul .font{
         background-size: contain;
         background-repeat: no-repeat;
     }
+    .img-font{
+        padding: 0;
+        margin: 0;
+    }
+    .img-font-2{
+        height: 205px;
+        padding: 24px;
+    }
+    .tran-page{
+        margin: 0;
+    }
     .buy-microsoft-2{
         flex-wrap: wrap;
         justify-content: center;
     }
-
+    .one-drive-font{
+        padding: 0;
+        margin: 0;
+    }
+    .one-drive-font-2{
+        padding: 48px 12px;
+        box-shadow: 0 4px 8px 0 rgb(255, 255, 255), 0 6px 10px 0 rgb(255, 255, 255);
+    }
+    .content-product.bis{
+        margin-top: 48px;
+    }
+    .content-product{
+        margin-bottom: 48px;
+    }
 }

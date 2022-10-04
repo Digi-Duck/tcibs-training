@@ -133,8 +133,11 @@ html {
     background-size: cover;
     background-repeat: no-repeat;
 }
-
-.bigProduce {
+.swiper-wrapper{
+    display: flex;
+    width: 100%;
+}
+.mySwiper {
     /* background-color: red; */
     width: 100%;
     /* height: 40vw; */
@@ -190,12 +193,19 @@ html {
     
 }
 
-.producePhoto {
-    background-image: url(https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Laptop-Go-2-01-M01:VP5-1920x600);
+.swiper-slide {
+    
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     margin-bottom: 20px;
+    
+}
+.photo100{
+    background-image: url(https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Hero-Surface-Pro-8-with-TypeCover:VP5-1920x600);
+}
+.photo200{
+    background-image: url(https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Laptop-Go-2-01-M01:VP5-1920x600);
 }
 .lastIntroduce{
     display: none;
@@ -914,7 +924,7 @@ a{
         z-index: 99;
         display: flex;
     }
-    .bigProduce{
+    .mySwiper{
         /* margin-bottom: ; */
         /* position: relative; */
         height: 100%;
