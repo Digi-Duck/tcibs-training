@@ -358,5 +358,8 @@
     .column{
         width: 100%;
     }
+    .top_btn_box_RWD{
+        display: block;
+    }
 
 }
