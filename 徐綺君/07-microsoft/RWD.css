@@ -5,6 +5,16 @@
     .menu_L{
         margin-right: 0px;
     }
+    .search_btn{
+        padding-left: 6px;
+    }
+    .search{
+        margin-left: 6.5px;
+    }
+    .shop{
+        margin-right: 6px;
+        margin-left: 37px;
+    }
 }
 @media screen and (max-width:1480px) {
     .m_text{
@@ -35,14 +45,25 @@
     .menu_R_text{
         display: none;
     }
+    .menu_ul{
+        padding-left: 1px;
+    }
+    .menu_ul2{
+        width: 200px;
+    }
     .text_menu{
         display: block;
     }
     .search_btn{
         margin-right: 0;
+        padding-right: 4px;
+        padding-left: 9px;
     }
     .shop{
         margin-left: 0;
+    }
+    .user_btn{
+        padding: 18px 6px 10px 0px;
     }
     .text_box2{
         font-size: 29px;
@@ -130,6 +151,27 @@
         padding: 0 24px;
     }
 }
+@media screen and (max-width:1260px) {
+    input:checked ~ .menu_box{
+        width: 1023px;
+        margin-left: -804.312px;
+        z-index: 5;
+    }
+    .menu_ul{
+        flex-wrap: wrap;
+    }
+    .menu_padding{
+        padding-top: 14px;
+    }
+}
+@media screen and (max-width:1030px) {
+    input:checked ~ .menu_box{
+        overflow-x: visible;
+        width: 820px;
+        margin-left: -633.359px;
+    }
+
+}
 @media screen and (max-width:1080px) {
     .m_text_box{
         display: none;
@@ -180,6 +222,9 @@
     .rightbar{
         width: 100%;
         margin: 0;
+    }
+    input:checked ~ .menu_box{
+        display: none;
     }
     .bar_btn{
         display: inherit;
@@ -255,8 +300,6 @@
     #bar_6:checked ~ .bar_6_ul{
         display: flex;
     }
-}
-@media screen and (max-width:860px) {
     .m_text_back{
         margin: 0px;
         width: 100%;
@@ -279,6 +322,12 @@
     }
     .footer_bar, .footer_R_box{
         flex-wrap: wrap;
+    }
+    .shop{
+        padding-right: 15px;
+    }
+    .user_btn{
+        padding-right: 5px;
     }
 }
 @media screen and (max-width:605px){
