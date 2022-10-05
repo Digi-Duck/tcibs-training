@@ -32,6 +32,22 @@ html {
     justify-content: space-between;
 }
 
+.swiper-pagination .swiper-pagination-bullet{
+    width: 10px;
+    height: 10px;
+    border: 1px solid black ;
+    background-color: white;
+    opacity: 100;
+}
+
+.swiper-pagination .swiper-pagination-bullet-active{
+    background-color: black;
+}
+#circle{
+    position: initial;
+    width: initial;
+    
+}
 .photo {
     width: 30px;
     height: 30px;
@@ -45,7 +61,6 @@ html {
 .title {
     width: 148px;
     float: left;
-
 }
 
 .dogsoft {
@@ -799,6 +814,10 @@ a > button{
 a{
     color: black;
     text-decoration:none;
+}
+.paddding{
+    margin: 0px auto;
+    margin-top: 100px;
 }
 @media screen and (max-width: 1395px){
     
