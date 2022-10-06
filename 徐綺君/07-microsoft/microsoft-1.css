@@ -143,6 +143,7 @@ input:checked ~ .menu_box{
     margin-left: -925.859px;
     border: 1px solid #E6E6E6;
     border-bottom: 2px solid black;
+    z-index: 5;
 }
 .menu_li{
     padding: 15px 0px 11.5px 23px;
@@ -212,9 +213,11 @@ input:checked ~ .menu_box{
 
 .main_img{
     display: flex;
+    cursor: pointer;
 }
 .m_img{
     width: 100%;
+
 }
 .m_text_box{
     width: 100%;
@@ -234,7 +237,11 @@ input:checked ~ .menu_box{
     margin-bottom: 3px;
     padding: 48px;
     display: inline-block;
-    width: 26.5%;
+    width: 28%;
+}
+.m_text_1{
+    margin: 0 auto;
+    margin-top: 45px;
 }
 .text_box1{
     display: inline-block;
@@ -251,11 +258,14 @@ input:checked ~ .menu_box{
     font-weight: 500;
     padding-bottom: 19px;
 }
+.text_box2_1{
+    padding-bottom: 18px;
+}   
 .text_box3{
-    line-height: 1.5;
-    /* max-width: 430px; */
-    margin-bottom: 24px;
     word-break: keep-all;
+    word-wrap: break-word;
+    line-height: 1.5;
+    margin-bottom: 24px;
 }
 .text_btn{
     display: inline-block;
@@ -274,7 +284,7 @@ input:checked ~ .menu_box{
     display: flex;
     justify-content: center;
     margin: 15px;
-    margin-top: 15px;
+    margin-top: 18px;
 }
 .m_arrow{
     font-size: 25px;
@@ -294,10 +304,22 @@ input:checked ~ .menu_box{
     position: relative;
     left: 10px;
 }
+#circle{
+    position: inherit;
+    width: inherit;
+}
 
-.circle{
-    font-size: 10px;
-    margin: 8px 8px;
+#circle .swiper-pagination-bullet{
+    border: 1px solid black;
+    background-color: rgb(255, 255, 255);
+    margin: 0px 9px;
+    width: 8px;
+    height: 8px;
+    opacity:inherit
+}
+#circle .swiper-pagination-bullet-active{
+    border: 1px solid black;
+    background-color: black;
 }
 .box{
     display: flex;
