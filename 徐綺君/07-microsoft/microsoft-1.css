@@ -324,7 +324,7 @@ input:checked ~ .menu_box{
 .box{
     display: flex;
     justify-content: center;
-    margin-top: 65px;
+    margin-top: 64px;
     margin-bottom: 66px;
 }
 .box_btn{
@@ -336,6 +336,8 @@ input:checked ~ .menu_box{
     text-decoration-line: underline;
     color: rgb(27, 103, 182);
     box-sizing: border-box;
+    min-width: 140px;
+    text-align: center;
 }
 .box_img{
     width: 40px;
@@ -407,6 +409,7 @@ ul{
 }
 
 .right_arrow{
+    margin: auto;
     margin-left: 5px;
     position: relative;
     left: 0px;
@@ -425,6 +428,7 @@ ul{
 .m_text2{
     padding-top: 46px;
     margin: 0 48px;
+    width: 25%;
 }
 .text_box2_2{
     padding-bottom: 18px;
@@ -462,7 +466,7 @@ ul{
     font-size: 16px;
     width: 90%;
     padding-top: 18px;
-    padding-bottom: 40px;
+    padding-bottom: 38px;
 }
 .icon_text{
     margin-top: 5px;
