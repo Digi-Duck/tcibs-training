@@ -9,11 +9,12 @@
         .box{
             width: 100px;
             height: 100px;
-            background-color: aqua;
+            background-image: url(./cat.jpg);
+            background-size: contain;
             margin-top: 10px;
         }
         .bigbox{
-            background-color: black;
+            background-image: url(./cat2.jpg);
         }
     </style>
 </head>
@@ -27,12 +28,13 @@
         const box = document.querySelector('.box');
         box.addEventListener('click',function(){
             console.log(box);
-            box.classList.add('bigbox');
+            box.classList.toggle('bigbox')
         });
         const box2 = document.querySelector('.box2');
         box2.addEventListener('click',function(){
             console.log(box2);
             box2.classList.add('bigbox');
+            
         });
         const box3 = document.querySelector('.box3');
         box3.addEventListener('click',function(){
