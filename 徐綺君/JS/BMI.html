@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+            
+        }
+        .title{
+            text-align: center;
+            font-size: 80px;
+            padding: 5px;
+            background-color: rgb(32, 159, 190);
+            font-weight: bold;
+        }
+        .content{
+            margin: 0px auto;
+            text-align: center;
+            margin-top: 100px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+        .box{
+            font-size: 70px;
+            margin: 10px;
+            border-radius: 15px;
+            padding: 10px;
+            border: 2px solid black;
+            
+        }
+        .text{
+            text-align: left;
+            min-height: 75px;
+            vertical-align:baseline
+        }
+    </style>
+</head>
+<body>
+    <div class="title">BMI計算</div>
+    <div class="content">
+        <input class="box height" type="number" placeholder="請輸入身高:cm"><br>
+        <input class="box weight" type="number" placeholder="請輸入體重:kg">
+        <button class="box startBtn">開始計算</button>
+        <div class="box text"></div>
+    </div>
+
+    <script>
+        const startBtn = document.querySelector('.startBtn');
+        const text = document.querySelector('.text')
+        startBtn.addEventListener("click", function(){
+            let he = document.querySelector('.height').value;
+            let we = document.querySelector('.weight').value;
+            
+            if(he > 10 && he < 600 && we > 5 && we < 3000){
+                let hei = he*0.01;
+                const num = (we / hei**2).toFixed(1);
+                
+                if(num < 18.5){
+                    text.innerHTML='BMI = '+num+' , 體重過輕'
+                }else if(num < 24){
+                    text.innerHTML='BMI = '+num+' , 正常範圍'
+                }else if(num < 27){
+                    text.innerHTML='BMI = '+num+' , 過重'
+                }else if(num < 30){
+                    text.innerHTML='BMI = '+num+' , 輕度肥胖'
+                }else if(num < 35){
+                    text.innerHTML='BMI = '+num+' , 中度肥胖'
+                }else if(num >= 35){
+                    text.innerHTML='BMI = '+num+' , 重度肥胖'
+                }
+            }else{
+                text.innerHTML='???????'
+            }
+        });
+    </script>
+</body>
+</html>
