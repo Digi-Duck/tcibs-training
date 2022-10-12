@@ -192,14 +192,30 @@ html {
     
 }
 
+#circle{
+    position: absolute;
+    top: 0px;
+    left: 173px;
+    width: 50px;
+}
+.swiper-pagination .swiper-pagination-bullet{
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    opacity: 100;
+    border: 1px solid black;
+}
+.swiper-pagination .swiper-pagination-bullet-active{
+    background-color: black;
+}
 .swiper-slide {
-    
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     margin-bottom: 20px;
     
 }
+
 .photo100{
     background-image: url(https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Hero-Surface-Pro-8-with-TypeCover:VP5-1920x600);
 }
@@ -605,7 +621,7 @@ i{
     /* margin: auto; */
     width: 75px;
     white-space: nowrap;
-    margin-bottom: 4px;
+    
 }
 
 .toe {
@@ -820,9 +836,15 @@ a{
     }
     #photo{
         height: 40vw;
-        background-image: url(https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Laptop-Go-2-01-M01:VP4-1399x600);
     }
-    
+    .photo100{
+        background-image: url(https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Hero-Surface-Pro-8-with-TypeCover:VP4-1399x600);
+        height: 40vw;
+    }
+    .photo200{
+        background-image: url(https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Laptop-Go-2-01-M01:VP4-1399x600);
+        height: 40vw;
+    }
     .bigProduce2{
         height: 40vw;
         /* width: 95%; */
@@ -854,6 +876,14 @@ a{
         display: none;
     }
     #photo{
+        background-image: url(https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Laptop-Go-2-01-M01:VP1-539x440);
+        height: 60vw;
+    }
+    .photo100{
+        background-image: url(https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Hero-Surface-Pro-8-with-TypeCover:VP3-1083x600);
+        width: 60vw;
+    }
+    .photo200{
         background-image: url(https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Laptop-Go-2-01-M01:VP1-539x440);
         height: 60vw;
     }
@@ -901,6 +931,7 @@ a{
         margin-bottom: -100px;
         flex-wrap: wrap;
         padding: 0px;
+        padding-top: 20px;
     }
     .foot{
         width: calc(100%/3);
