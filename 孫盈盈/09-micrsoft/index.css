@@ -335,7 +335,7 @@ ul .font{
     display: flex;
 
     max-width: calc(1600px + 10%);
-    height: 118px;
+
     margin: 0 auto 16px;
 }
 .buy-microsoft-2{
@@ -345,8 +345,6 @@ ul .font{
     margin:auto;
 }
 .windows{
-    height: 72px;
-
     margin: 16px 24px;
 }
 .windows-2{
@@ -417,8 +415,12 @@ ul .font{
 .content-product-link span:hover{
     text-decoration: underline;
 }
-.a-link:hover i{
+.a-link i{
+    transition: 1s;
     position: relative;
+    left: 0px;
+}
+.a-link:hover i{
     left: 5px;
 }
 .content-product-link .content-product-a{
@@ -497,14 +499,16 @@ ul .font{
     align-items: center;
 
     max-width: calc(1600px + 10%);
-    height: 32px;
 
     padding: 0 5%;
-    margin: 0 auto;
+    margin: 0 auto 10px;
     box-sizing: border-box;
 }
+.focus span{
+    margin-right: 24px;
+}
 .fa-facebook-f{
-    margin: 0 24px;
+    margin-right:24px;
     font-size: 20px;
 }
 .fa-youtube{
@@ -692,7 +696,6 @@ ul .font{
     }
     .img-font-2{
         width: 100%;
-        height: 224.8px;
 
         background-color: white;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
@@ -882,6 +885,9 @@ ul .font{
 
         padding-left: 24px;
     }
+    #soft:checked ~ .soft-i{
+        transform: rotate(0.5turn);
+    }
     .soft-ul{
         display: none;
     }
@@ -973,13 +979,13 @@ ul .font{
         border-bottom: 1px solid white;
     }
     #map{
-        width: calc(100% - 2px);
+        width: calc(100% - 1px);
         height: 50px;
 
         padding: 0;
         margin: 0;
 
-        bottom: -52px;
+        bottom: -50px;
         
         background-color: gainsboro;
     }
@@ -1035,14 +1041,16 @@ ul .font{
         margin: 0;
     }
     .img-font-2{
-        height: 205px;
         padding: 24px;
     }
     .tran-page{
         margin: 0;
     }
     .buy-microsoft{
+        padding: 0 6px;
         margin-bottom: 16px;
+
+        text-align: center;
     }
     .buy-microsoft-2{
         flex-wrap: wrap;
@@ -1061,5 +1069,45 @@ ul .font{
     }
     .content-product{
         margin: 0 0 48px;
+    }
+    .last-2 li{
+        margin-top: 12px;
+        padding:6px 12px 0 0;
+
+        font-size: 12.1px;
+    }
+}
+@media screen and (max-width:534px){
+    .content-product-2{
+        width: 100%;
+    }
+    .focus{
+        flex-wrap: wrap;
+        
+        margin-bottom: 10px;
+    }
+    .back-first{
+        bottom: -50px;
+    }
+    .back-first-2{
+        width: calc(100% - 20px);
+
+        margin: 0 10px 0 10px;
+        right:0;
+        position: relative;
+        text-align: center;
+        box-sizing: border-box;
+    }
+    .last-ul{
+        width: 100%;
+    }
+    .last-2 ul{
+        flex-wrap: wrap;
+        justify-content: left;
+
+        margin: 10px;
+    }
+    .last-2 li{
+        margin: 0;
     }
 }
