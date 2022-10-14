@@ -95,21 +95,180 @@
         }
         .text{
             /* border: 1px solid black; */
-            width: 500px;
-            height: 50px;
+            width: 300px;
+            height: 100px;
             margin: auto;
-            font-size: 50px;
+            font-size: 100px;
             text-align: center;
+            margin-top: 150px;
         }
         .his,.mine{
             width: 150px;
             height: 100px;
+        }
+        .troduce1{
+            width: 300px;
+            /* background-color: aqua; */
+            margin: auto;
+            margin-top: -200px;
+            font-size: 50px;
+            text-align: center;
+        }
+        .troduce2{
+            width: 300px;
+            /* background-color: aqua; */
+            margin: auto;
+            font-size: 30px;
+            text-align: center;
+        }
+        .hisgra{
+            /* background-color: aqua; */
+            font-size: 100px;
+            margin: 20px;
+            display: flex;
+            float: left;
+            margin-bottom: 60px;
+        }
+        .mygra{
+            
+            /* background-color: aqua; */
+            font-size: 100px;
+            margin: 20px;
+            display: flex;
+            float: right;
+        }
+        .box{
+            /* display: flex; */
+            justify-content: space-between;
+            margin-bottom: -100px;
+        }
+        .win{
+            width: 500px;
+            height: 500px;
+            background-color: aqua;
+            border-left: 720px solid rgba(128, 128, 128, 0.144);
+            border-right: 720px solid gray;
+            border-top: 250px solid gray;
+            border-bottom: 260px solid gray;
+            border-color: rgba(194, 194, 194, 0.26);
+            background-clip:content-box;
+        }
+        .winBox{
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            left: 0;
+            top: 0;
+            font-size: 50px;
+            text-align: center;
+            line-height: 500px;
+            
+        }
+        .love1{
+            background-image: url(../14.JS/love.jpg);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 100px;
+            height: 100px;
+            
+        }
+        .love2{
+            background-image: url(../14.JS/love.jpg);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        .love3{
+            background-image: url(../14.JS/love.jpg);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        .love4{
+            background-image: url(../14.JS/love.jpg);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        .love5{
+            background-image: url(../14.JS/love.jpg);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        .love6{
+            background-image: url(../14.JS/love.jpg);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        .love7{
+            background-image: url(../14.JS/love.jpg);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        .love8{
+            background-image: url(../14.JS/love.jpg);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        .love9{
+            background-image: url(../14.JS/love.jpg);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        .love10{
+            background-image: url(../14.JS/love.jpg);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        .display{
+            display: none;
         }
     </style>
 </head>
 <body>
     <div class="title">
         剪刀石頭布
+    </div>
+    <div class="box">
+        <div class="hisgra">
+            <div class="love1"></div>
+            <div class="love2"></div>
+            <div class="love3"></div>
+            <div class="love4"></div>
+            <div class="love5"></div>
+        </div>
+        <div class="mygra">
+            <div class="love6"></div>
+            <div class="love7"></div>
+            <div class="love8"></div>
+            <div class="love9"></div>
+            <div class="love10"></div>
+        </div>
     </div>
     <div class="text"></div>
     <div class="center">
@@ -123,6 +282,12 @@
         </div>
 
     </div>
+    <div class="troduce1">介紹</div>
+    <div class="troduce2">在某天，你遇上了他想與你蕉流蕉流<br>
+        你需要戰勝他，否則你將後門不保
+    </div>
+    <div class="winBox">
+    </div>
     <script>
         let text = document.querySelector('.text');
         let knife = document.querySelector('.knife');
@@ -130,53 +295,210 @@
         let paper = document.querySelector('.paper');
         let his = document.querySelector('.his');
         let mine = document.querySelector('.mine');
+        let win = document.querySelector('.win');
+        let winBox = document.querySelector('.winBox');
+        let hisgra = 5;
+        let mygra = 5;
+        let hisg = document.querySelector('.hisgra');
+        let myg = document.querySelector('.mygra');
+        let l1 = document.querySelector('.love1');
+        let l2 = document.querySelector('.love2');
+        let l3 = document.querySelector('.love3');
+        let l4 = document.querySelector('.love4');
+        let l5 = document.querySelector('.love5');
+        let l6 = document.querySelector('.love6');
+        let l7 = document.querySelector('.love7');
+        let l8 = document.querySelector('.love8');
+        let l9 = document.querySelector('.love9');
+        let l10 = document.querySelector('.love10');
+        
+        // hisg.innerHTML = hisgra;
+        // myg.innerHTML = mygra;
         // 1=stone 2=knife 3=paper
+
         knife.addEventListener('click', function () {
             var a = Math.floor(Math.random()*3) + 1;
+            
+            his.classList.remove('stone2');
+            his.classList.remove('knife2');
+            his.classList.remove('paper2');
+            mine.classList.remove('paper1');
+            mine.classList.remove('stone1');
+            mine.classList.remove('knife1');
             mine.classList.add('knife1');
             if(a==1){
                 text.innerHTML = '你輸了';
                 his.classList.add('stone2');
+                mygra = mygra - 1;
             }else if(a==2){
                 text.innerHTML = '平手';
                 his.classList.add('knife2');
             }else{
                 text.innerHTML = '你贏了';
                 his.classList.add('paper2');
+                
+                hisgra = hisgra - 1;
             }
-            
+            // hisg.innerHTML = hisgra;
+            // myg.innerHTML = mygra;
+            // if(hisgra == 5){
+            //     winBox.classList.add('win');
+            //     winBox.innerHTML = '你的後門將被玩破';
+            // }else if(mygra == 5){
+            //     winBox.classList.add('win');
+            //     winBox.innerHTML = '你守住了你的屁股';
+            // }
+                if(hisgra == 0){
+                    l1.classList.add('display');
+                }else if(hisgra == 1){
+                    l2.classList.add('display');
+                }else if(hisgra == 2){
+                    l3.classList.add('display');
+                }else if(hisgra == 3){
+                    l4.classList.add('display');
+                }else if(hisgra == 4){
+                    l5.classList.add('display');
+                }
+                if(mygra == 0){
+                    l10.classList.add('display');
+                }else if(mygra == 1){
+                    l9.classList.add('display');
+                }else if(mygra == 2){
+                    l8.classList.add('display');
+                }else if(mygra == 3){
+                    l7.classList.add('display');
+                }else if(mygra == 4){
+                    l6.classList.add('display');
+                }
+                if(mygra == 0){
+                winBox.classList.add('win');
+                winBox.innerHTML = '你的後門將被玩破';
+            }else if(hisgra == 0){
+                winBox.classList.add('win');
+                winBox.innerHTML = '你守住了你的屁股';
+            }
         })
         stone.addEventListener('click', function () {
+            his.classList.remove('stone2');
+            his.classList.remove('knife2');
+            his.classList.remove('paper2');
+            mine.classList.remove('paper1');
+            mine.classList.remove('stone1');
+            mine.classList.remove('knife1');
             mine.classList.add('stone1');
             var a = Math.floor(Math.random()*3) + 1;
             if(a==3){
                 text.innerHTML = '你輸了';
                 his.classList.add('paper2');
-
+                mygra = mygra - 1;
             }else if(a==1){
                 text.innerHTML = '平手';
                 his.classList.add('stone2');
             }else{
                 text.innerHTML = '你贏了';
                 his.classList.add('knife2');
-
+                
+                hisgra = hisgra - 1;
             }
-            
+            // hisg.innerHTML = hisgra;
+            // myg.innerHTML = mygra;
+            // if(hisgra == 5){
+            //     winBox.classList.add('win');
+            //     winBox.innerHTML = '你的後門將被玩破';
+            // }else if(mygra == 5){
+            //     winBox.classList.add('win');
+            //     winBox.innerHTML = '你守住了你的屁股';
+            // }
+            if(hisgra == 0){
+                    l1.classList.add('display');
+                }else if(hisgra == 1){
+                    l2.classList.add('display');
+                }else if(hisgra == 2){
+                    l3.classList.add('display');
+                }else if(hisgra == 3){
+                    l4.classList.add('display');
+                }else if(hisgra == 4){
+                    l5.classList.add('display');
+                }
+                if(mygra == 0){
+                    l10.classList.add('display');
+                }else if(mygra == 1){
+                    l9.classList.add('display');
+                }else if(mygra == 2){
+                    l8.classList.add('display');
+                }else if(mygra == 3){
+                    l7.classList.add('display');
+                }else if(mygra == 4){
+                    l6.classList.add('display');
+                }
+                if(mygra == 0){
+                winBox.classList.add('win');
+                winBox.innerHTML = '你的後門將被玩破';
+            }else if(hisgra == 0){
+                winBox.classList.add('win');
+                winBox.innerHTML = '你守住了你的屁股';
+            }
         })
         paper.addEventListener('click', function () {
+            his.classList.remove('stone2');
+            his.classList.remove('knife2');
+            his.classList.remove('paper2');
+            mine.classList.remove('paper1');
+            mine.classList.remove('stone1');
+            mine.classList.remove('knife1');
             mine.classList.add('paper1');
             var a = Math.floor(Math.random()*3) + 1;
             if(a==2){
                 text.innerHTML = '你輸了';
                 his.classList.add('knife2');
+                mygra = mygra - 1;
             }else if(a==3){
                 text.innerHTML = '平手';
                 his.classList.add('paper2');
             }else{
                 text.innerHTML = '你贏了';
                 his.classList.add('stone2');
+                
+                hisgra = hisgra - 1;
             }
-            
+            // hisg.innerHTML = hisgra;
+            // myg.innerHTML = mygra;
+            // if(hisgra == 5){
+            //     winBox.classList.add('win');
+            //     winBox.innerHTML = '你的後門將被玩破';
+            // }else if(mygra == 5){
+            //     winBox.classList.add('win');
+            //     winBox.innerHTML = '你守住了你的屁股';
+            // }
+            if(hisgra == 0){
+                    l1.classList.add('display');
+                }else if(hisgra == 1){
+                    l2.classList.add('display');
+                }else if(hisgra == 2){
+                    l3.classList.add('display');
+                }else if(hisgra == 3){
+                    l4.classList.add('display');
+                }else if(hisgra == 4){
+                    l5.classList.add('display');
+                }
+                if(mygra == 0){
+                    l10.classList.add('display');
+                }else if(mygra == 1){
+                    l9.classList.add('display');
+                }else if(mygra == 2){
+                    l8.classList.add('display');
+                }else if(mygra == 3){
+                    l7.classList.add('display');
+                }else if(mygra == 4){
+                    l6.classList.add('display');
+                }
+                if(mygra == 0){
+                winBox.classList.add('win');
+                winBox.innerHTML = '你的後門將被玩破';
+            }else if(hisgra == 0){
+                winBox.classList.add('win');
+                winBox.innerHTML = '你守住了你的屁股';
+            }
         })
     </script>
 </body>
