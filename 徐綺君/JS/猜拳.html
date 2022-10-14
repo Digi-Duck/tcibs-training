@@ -11,68 +11,116 @@
             margin: 0px;
         }
         .box{
-            display: flex;
+            height: 100vh;
+            width: 100%;
+            background-image: url(data:image/jpeg;base64,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);
+            background-repeat: no-repeat;
+            background-size: cover;
         }
         .title{
-            font-weight: bolder;
-            padding: 20px;
-            position: absolute;
-            left: calc( 50% - 64px);
-            top: calc(50% - 34.5px);
-            background-color: rgb(102, 245, 150);
-            border-radius: 10px;
-            border: 4px solid olivedrab;
+            height: 10%;
+        }
+
+        .ochinchinHe{
+            height: 30%;
+            display: flex;
+            flex-direction: row-reverse;
+            /* background-color: blue; */
+        }
+        .He_dialogue_box{
+            background-color: rgb(250, 245, 225);
+            border: 10px solid rgb(36, 48, 24);
+            border-radius: 25px 5px;
+            width: 800px;
+            margin-bottom: 100px;
+        }        
+        .he{
+            height: 100%;
+            width: 480px;
+            -moz-transform:scaleX(-1);
+            -webkit-transform:scaleX(-1);
+            -o-transform:scaleX(-1);
+            transform:scaleX(-1);
+            margin: 0 250px;
         }
         .ochinchin{
-            width: 50%;
-            font-size: 150px;
+            height: 35%;
             display: flex;
-            padding: 20px;
-            background-color: rgb(255, 0, 0);
-            flex-direction: column;
-
+            justify-content: space-around;
         }
         .me{
-            text-align: center;
-            font-weight: bold;
-            text-decoration: underline;
+            margin-left: 100px;
+            transform:scaleX(-1.5);
         }
-        .btn{
-            font-size: 100px;
-            background-color: green;
-            margin-bottom: 2px;
-        }
-        .btn:hover{
-            background-color: aquamarine;
-            text-decoration: underline 5px;
-        }
+
         .color{
             background-color: aquamarine;
         }
-        .text{
-            background-color: aqua;
-            height: 200px;
+        .text_box{
+            height: 25%;
+            background-color: rgb(40, 48, 48);
+        }
+        .dialogue_box{
+            height: calc(100% - 20px);
+            display: flex;
+        }
+        .dialog{
+            width: 50%;
+            height: calc(100% - 10px);
+            border: 10px solid rgb(64, 64, 64);
+            background-color: rgb(104, 104, 104);
+            border-right: none;
+            border-radius: 10px 0px 10px 10px;
+            margin: 5px;
+            color: white;
+            text-shadow: 3px 3px rgb(46, 46, 46);
+            font-size: 85px;
+            padding: 0 10px;
+        }
+        .skill{
+            width: 50%;
+            height: calc(100% - 10px);   
+            background-color: white;
+            border: 10px solid rgb(112, 104, 128);
+            border-radius: 10px;
+            margin: 5px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .btn{
+            font-size: 85px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0);
+            height: 50%;
+            width: 50%;
         }
     </style>
 </head>
 <body>
-    <div class="title">布剪刀石頭</div>    
     <div class="box">
-        
-        <div class="ochinchin">
-            <div class="me">你</div>
-            <button class="button btn scissorsBtn">剪刀</button>
-            <button class="button btn rockBtn">石頭</button>
-            <button class="button btn paperBtn">布</button>            
+        <div class="title"></div>       
+
+        <div class="ochinchinHe">
+            <img class="he" src="https://img1.picmix.com/output/stamp/normal/6/5/1/5/1905156_867bd.png" alt="">
+            <div class="He_dialogue_box"></div>
         </div>
         <div class="ochinchin">
-            <div class="me">他</div>
-            <button class="btn scissors">剪刀</button>
-            <button class="btn rock">石頭</button>
-            <button class="btn paper">布</button>            
+            <img class="me" src="https://cdn130.picsart.com/317431294201211.png" alt="">
+            <div class="He_dialogue_box"></div>
         </div>
+        <div class="text_box">
+            <div class="dialogue_box">
+                <div class="dialog">要出什麼拳呢?</div>
+                <div class="skill">
+                    <button class="button btn scissorsBtn">剪刀</button>
+                    <button class="button btn rockBtn">石頭</button>
+                    <button class="button btn paperBtn">布</button>
+                    <button class="button btn">逃跑</button>
+                </div>
+            </div>
+        </div> 
     </div>
-    <div class="text"></div>
+    
     
     <script>
         let scissors = document.querySelector('.scissorsBtn');
@@ -83,57 +131,72 @@
         let paper2 = document.querySelector('.paper');
         let button = document.querySelector('.button');
         let start = document.querySelector('.title');
-        const text = document.querySelector('.text')
+        let btn = document.querySelector('.btn');
+        const dialog = document.querySelector('.dialog');
+
+        function colorbtn(){
+            if(scissors2.classList.contains('color') || rock2.classList.contains('color') || paper2.classList.contains('color')){
+                        scissors2.classList.remove('color');
+                        rock2.classList.remove('color');
+                        paper2.classList.remove('color');
+            };
+        }
+
 
         scissors.addEventListener("click", function(){
+            colorbtn();
             let a = Math.floor(Math.random()*3) + 1;
             console.log(a);
 
             if(a == 1){
-                text.innerHTML='平'
-                scissors2.classList.toggle('color');
+                dialog.innerHTML='平'
+                scissors2.classList.add('color');
             }else if(a == 2){
-                text.innerHTML='輸'
-                rock2.classList.toggle('color');
+                dialog.innerHTML='輸'
+                rock2.classList.add('color');
             }else if(a == 3){
-                text.innerHTML='贏'
-                rock2.classList.toggle('color');
+                dialog.innerHTML='贏'
+                paper2.classList.add('color');
             }
 
-        })
-        rock.addEventListener("click", function(){
-            let a = Math.floor(Math.random()*3) + 1;
-            console.log(a);
-
-            if(a == 1){
-                text.innerHTML='贏'
-                scissors2.classList.toggle('color');
-            }else if(a == 2){
-                text.innerHTML='平'
-                rock2.classList.toggle('color');
-            }else if(a == 3){
-                text.innerHTML='輸'
-                rock2.classList.toggle('color');
-            }
-        })
-        paper.addEventListener("click", function(){
-            let a = Math.floor(Math.random()*3) + 1;
-            console.log(a);
-
-            if(a == 1){
-                text.innerHTML='輸'
-                scissors2.classList.toggle('color');
-            }else if(a == 2){
-                text.innerHTML='贏'
-                rock2.classList.toggle('color');
-            }else if(a == 3){
-                text.innerHTML='平'
-                rock2.classList.toggle('color');
-            }
-        })
-
-
+        });
         
+
+        rock.addEventListener("click", function(){
+            colorbtn();
+            let a = Math.floor(Math.random()*3) + 1;
+            console.log(a);
+
+            if(a == 1){
+                dialog.innerHTML='贏'
+                scissors2.classList.add('color');
+            }else if(a == 2){
+                dialog.innerHTML='平'
+                rock2.classList.add('color');
+            }else if(a == 3){
+                dialog.innerHTML='輸'
+                paper2.classList.add('color');
+            }
+
+        });
+        paper.addEventListener("click", function(){
+            colorbtn();
+            let a = Math.floor(Math.random()*3) + 1;
+            console.log(a);
+
+            if(a == 1){
+                dialog.innerHTML='輸'
+                scissors2.classList.add('color');
+            }else if(a == 2){
+                dialog.innerHTML='贏'
+                rock2.classList.add('color');
+            }else if(a == 3){
+                dialog.innerHTML='平'
+                paper2.classList.add('color');
+            }
+        });
+           
+
     </script>
 
 
