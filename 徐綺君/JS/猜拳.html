@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            margin: 0px;
+        }
+        .box{
+            display: flex;
+        }
+        .title{
+            font-weight: bolder;
+            padding: 20px;
+            position: absolute;
+            left: calc( 50% - 64px);
+            top: calc(50% - 34.5px);
+            background-color: rgb(102, 245, 150);
+            border-radius: 10px;
+            border: 4px solid olivedrab;
+        }
+        .ochinchin{
+            width: 50%;
+            font-size: 150px;
+            display: flex;
+            padding: 20px;
+            background-color: rgb(255, 0, 0);
+            flex-direction: column;
+
+        }
+        .me{
+            text-align: center;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        .btn{
+            font-size: 100px;
+            background-color: green;
+            margin-bottom: 2px;
+        }
+        .btn:hover{
+            background-color: aquamarine;
+            text-decoration: underline 5px;
+        }
+        .color{
+            background-color: aquamarine;
+        }
+        .text{
+            background-color: aqua;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">布剪刀石頭</div>    
+    <div class="box">
+        
+        <div class="ochinchin">
+            <div class="me">你</div>
+            <button class="button btn scissorsBtn">剪刀</button>
+            <button class="button btn rockBtn">石頭</button>
+            <button class="button btn paperBtn">布</button>            
+        </div>
+        <div class="ochinchin">
+            <div class="me">他</div>
+            <button class="btn scissors">剪刀</button>
+            <button class="btn rock">石頭</button>
+            <button class="btn paper">布</button>            
+        </div>
+    </div>
+    <div class="text"></div>
+    
+    <script>
+        let scissors = document.querySelector('.scissorsBtn');
+        let rock = document.querySelector('.rockBtn');
+        let paper = document.querySelector('.paperBtn');
+        let scissors2 = document.querySelector('.scissors');
+        let rock2 = document.querySelector('.rock');
+        let paper2 = document.querySelector('.paper');
+        let button = document.querySelector('.button');
+        let start = document.querySelector('.title');
+        const text = document.querySelector('.text')
+
+        scissors.addEventListener("click", function(){
+            let a = Math.floor(Math.random()*3) + 1;
+            console.log(a);
+
+            if(a == 1){
+                text.innerHTML='平'
+                scissors2.classList.toggle('color');
+            }else if(a == 2){
+                text.innerHTML='輸'
+                rock2.classList.toggle('color');
+            }else if(a == 3){
+                text.innerHTML='贏'
+                rock2.classList.toggle('color');
+            }
+
+        })
+        rock.addEventListener("click", function(){
+            let a = Math.floor(Math.random()*3) + 1;
+            console.log(a);
+
+            if(a == 1){
+                text.innerHTML='贏'
+                scissors2.classList.toggle('color');
+            }else if(a == 2){
+                text.innerHTML='平'
+                rock2.classList.toggle('color');
+            }else if(a == 3){
+                text.innerHTML='輸'
+                rock2.classList.toggle('color');
+            }
+        })
+        paper.addEventListener("click", function(){
+            let a = Math.floor(Math.random()*3) + 1;
+            console.log(a);
+
+            if(a == 1){
+                text.innerHTML='輸'
+                scissors2.classList.toggle('color');
+            }else if(a == 2){
+                text.innerHTML='贏'
+                rock2.classList.toggle('color');
+            }else if(a == 3){
+                text.innerHTML='平'
+                rock2.classList.toggle('color');
+            }
+        })
+
+
+        
+    </script>
+
+
+</body>
+</html>
