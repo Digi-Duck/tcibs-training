@@ -87,6 +87,9 @@
         width: 100%;
         padding: 0;
     }
+    .main_img{
+        flex-wrap: wrap;
+    }
     .m_text_box{
         display: none;
     }
@@ -94,13 +97,17 @@
         display: block;
         width: calc(100% - 24px);
         margin: 0px 12px;
+        margin-bottom: 3px;
         margin-top: -52px;
-        margin-bottom: 16px;
     }
     .m_text{
         width: calc(100% - 96px);
         background-color: white;
         box-shadow: 0px 2px 5px 1px rgb(212, 212, 212);
+    }
+    .m_text_1{
+        margin: 0 0 3px 0;
+        padding-top: 49px;
     }
     .text_box1{
         margin-bottom: 9px;
@@ -109,8 +116,15 @@
         font-size: 24px;
         line-height: 1;
     }
+    .m_btn_bar{
+        margin-top: 15px;
+    }
     .content{
         flex-wrap: wrap;
+    }
+    .box{
+        margin-top: 65px;
+        margin-bottom: 66px;
     }
     .ct_box{
         width: calc(50% - 24px);
@@ -125,10 +139,9 @@
     .title{
         font-size: 21px;
         margin-bottom: 8px;
-        
     }
     .title_text{
-       margin-left: 12px; 
+        margin-left: 12px; 
     }
     .icon_box{
         padding-left:12px;

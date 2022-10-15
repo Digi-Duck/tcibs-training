@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title{
+            text-align: center;
+            font-size: 30px;
+            background-color: rgb(124, 124, 255);
+        }
+        body{
+            margin: 0px;
+        }
+        .center{
+            width: 1600px;
+            height: 400px;
+            background-color: aqua;
+            margin: auto;
+            /* display: flex; */
+        }
+        button{
+            float: right;
+        }
+        input{
+            width: 100%;
+            font-size: 100px;
+        }
+        button{
+            width: 100%;
+            height: 80%;
+            font-size: 200px;
+        }
+        .text{
+            font-size: 100px;
+            border: 1px black solid;
+            text-align: center;
+            background-color: aqua;
+
+        }
+        .cool{
+            text-align: center;
+            font-size: 50px;
+        }
+    </style>
+</head>
+    
+<body>
+    <div class="center">
+        <div class="title">
+            BMI計算機
+        </div>
+        <div class="cool">身高</div>
+        <input id="height" type="text" placeholder="請輸入身高">
+        <div class="cool">體重</div>
+        <input id="weight" type="text" placeholder="請輸入體重">
+        
+        <button id="botton">
+            <!-- <button id="botton" onclick="start()"> -->
+            按
+        </button>
+        <div class="text"></div>
+    </div>
+    <script>
+
+        const button = document.querySelector('#botton');
+        const text = document.querySelector('.text');
+
+        button.addEventListener('click', function () {
+            let hi = document.querySelector('#height').value;
+            let we = document.querySelector('#weight').value;
+
+            if (parseFloat(hi) != NaN && parseFloat(we) != NaN) {
+                if (hi > 1 && hi < 20 && we > 10 && we < 3000) {
+                    cont = we / Math.pow(hi, 2);
+                    num = cont.toFixed(1);
+                    // if(num<18.5){
+                    //     text.innerHTML='你太瘦了，去吃飯'
+                    // }else{
+                    //     if(num<24){
+                            
+                    //     }else{
+                    //         if(num<27){
+                                
+                    //         }else{
+                    //             if(num<30){
+                    //                 text.innerHTML='你好胖，不要吃了'
+                    //             }else{
+                    //                 text.innerHTML='你超胖'
+                    //             }
+                    //         }
+                    //     }
+                    // }
+                    if(num<18.5){
+                        text.innerHTML='BMI:'+num+'你太瘦了，去吃飯';
+                    }else if(num<24){
+                        text.innerHTML='BMI:'+num+'你剛好，抓去冷凍';
+                    }else if(num<27){
+                        text.innerHTML='BMI:'+num+'你有點胖，吃少點';
+                    }else if(num<30){
+                        text.innerHTML='BMI:'+num+'你好胖，不要吃了';
+                    }else if(num<35){
+                        text.innerHTML='BMI:'+num+'你超胖';
+                    }else{
+                        text.innerHTML='王田油庫裝的油都比你身體的還少';
+                    }
+                }else{
+                    text.innerHTML='bitch'
+                }
+            }
+        })
+                    // switch (num) {
+                    //     case 18.5:
+                    //         console.log(123);
+                    //         text.innerHTML = '您所輸入的數字計算後體重過輕，請多吃肉'
+                    //         break;
+                    //     case 24:
+                    //         break;
+
+                    //     default:
+                    //         break;
+                    // }
+
+
+                
+        //             if(num < 18.5){
+        //                 text.innerHTML='您所輸入的數字計算後，為'+num+'體重過輕，請多吃肉'
+        //             }else if(num < 24){
+        //                 text.innerHTML='您所輸入的數字計算後體重過輕，請多吃肉'
+        //             }
+        //         } else {
+        //             text.innerHTML = '您所輸入的數字不符合國際標準值'
+        //         }
+        //     } else {
+        //         text.innerHTML = '您所輸入的不是數字'
+        //     }
+
+
+        // });
+
+
+        // function start(){
+        //     var height = document.getElementById("height").value;
+        //     var weight = document.getElementById("weight").value;
+        //     var f = weight/height/height ;
+        //     if(f<18.5){
+        //         alert("你太瘦了，去吃飯");
+        //     }else{
+        //         if(f<24){
+        //             alert("你剛好，抓去冷凍");
+        //         }else{
+        //             if(f<27){
+        //                 alert("你有點胖，吃少點")
+        //             }else{
+        //                 if(f<30){
+        //                     alert("你好胖，不要吃了");
+        //                 }else{
+        //                     alert("你超胖");
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+        
+    </script>
+</body>
+
+</html>

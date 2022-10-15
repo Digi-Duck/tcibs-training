@@ -194,11 +194,8 @@
                     
                     <div class="produceIntroduce">
                         <div class="produceIntroduceBox">
-                            <div class="new2">
-                                新上市
-                            </div>
-                            <div class="name">Surface Laptop Go 2</div>
-                            <div class="introduce">外型時尚的筆記型電腦配備 12.4 吋觸控螢幕、絕佳的打字體驗，以及改良的 HD 相機</div>
+                            <div class="name">Surface Pro 8</div>
+                            <div class="introduce">運用更大的 13 吋觸控螢幕、更快的連線，以及提升的速度，成就更多。現在提供 Windows 11。</div>
                             <div class="deep">深入了解</div>
                         </div>
                         </div>
@@ -234,8 +231,7 @@
     <div class="changeBtn_box">
         
             <i class="fa-solid fa-chevron-left " id="icon"></i>
-            <i class="fa-solid fa-circle circle" id="icon2"></i>
-            <i class="fa-regular fa-circle circle" id="icon2"></i>
+            <div class="swiper-pagination" id="circle"></div>
             <i class="fa-solid fa-chevron-right" id="icon"></i>
     </div>
     <div class="centerBtns">
@@ -532,6 +528,7 @@
         </div>
     </div>
    
+
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
     <!-- Initialize Swiper -->
@@ -541,6 +538,15 @@
           nextEl: ".fa-chevron-right",
           prevEl: ".fa-chevron-left",
         },
+
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+
       });
     </script>
 </body>

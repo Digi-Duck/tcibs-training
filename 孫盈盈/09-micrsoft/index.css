@@ -270,6 +270,9 @@ ul .font{
     border-radius: 2px;
     box-sizing: border-box;
 }
+.img-button:hover{
+    background-color: #00508e;
+}
 .tran-page{
     display: flex;
     align-items: center;
@@ -332,7 +335,7 @@ ul .font{
     display: flex;
 
     max-width: calc(1600px + 10%);
-    height: 118px;
+
     margin: 0 auto 16px;
 }
 .buy-microsoft-2{
@@ -342,8 +345,6 @@ ul .font{
     margin:auto;
 }
 .windows{
-    height: 72px;
-
     margin: 16px 24px;
 }
 .windows-2{
@@ -353,7 +354,7 @@ ul .font{
     margin-bottom: 4px;
 }
 .windows a{
-    color: rgb(72, 143, 190);
+    color: #0067b8;
 
     font-weight: 600;
 }
@@ -408,12 +409,18 @@ ul .font{
     font-weight: 600;
     color: rgb(66, 124, 201);
     text-decoration: none;
+
+    box-sizing: border-box;
 }
 .content-product-link span:hover{
     text-decoration: underline;
 }
-.a-link i:hover{
+.a-link i{
+    transition: 1s;
     position: relative;
+    left: 0px;
+}
+.a-link:hover i{
     left: 5px;
 }
 .content-product-link .content-product-a{
@@ -492,14 +499,16 @@ ul .font{
     align-items: center;
 
     max-width: calc(1600px + 10%);
-    height: 32px;
 
     padding: 0 5%;
-    margin: 0 auto;
+    margin: 0 auto 10px;
     box-sizing: border-box;
 }
+.focus span{
+    margin-right: 24px;
+}
 .fa-facebook-f{
-    margin: 0 24px;
+    margin-right:24px;
     font-size: 20px;
 }
 .fa-youtube{
@@ -537,7 +546,7 @@ ul .font{
 
     margin-top: 48px;
 
-    background-color: rgb(209, 209, 209);
+    background-color: #f2f2f2;
 }
 .last-1{
     width: calc(1600px + 10%);
@@ -545,6 +554,8 @@ ul .font{
     padding: 0 5%;
     margin: 0 auto;
     box-sizing: border-box;
+
+    color: rgb(110, 110, 110);
 }
 .last-ul{
     width: 16.666%;
@@ -575,6 +586,9 @@ ul .font{
     font-size: 12px;
     color: rgb(110, 110, 110);
 }
+.last-ul-1{
+    padding-left: 0;
+}
 .last-ul a:hover{
     text-decoration:underline;
 }
@@ -586,6 +600,8 @@ ul .font{
 
     padding: 30px 5% 16px;
     margin: 0 auto;
+
+    color: rgb(110, 110, 110);
 
     box-sizing: border-box;
 }
@@ -680,7 +696,6 @@ ul .font{
     }
     .img-font-2{
         width: 100%;
-        height: 224.8px;
 
         background-color: white;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
@@ -744,6 +759,9 @@ ul .font{
         height: auto;
         padding: 0 12px;
     }
+    .last-ul-1{
+        padding-left: 12px;
+    }
     .last-ul{
         width: 33.33%;
     }
@@ -799,29 +817,33 @@ ul .font{
         display: block;
 
         background-color: gainsboro;
-        width: 100%;
+        width: calc(100% - 1px);
         /* height: 80%; */
 
         position: absolute;
         top: 54px;
         
         z-index: 10;
+        box-sizing: border-box;
     }
     .product{
         display: flex;
         flex-wrap: wrap;
+        padding: 0;
+        margin: 0;
 
         height: auto;
     }
     .product a{
-        width: calc(100% - 38px);
-        height: 20px;
+        width: 100%;
+        height: 51px;
         
         padding: 15px 24px 15px 14px;
         margin: 1px;
         border-bottom: 1px solid white;
         
         font-size: 18px;
+        box-sizing: border-box;
     }
     .form{
         display: flex;
@@ -830,6 +852,9 @@ ul .font{
         width: 100%;
         height: auto;
 
+        padding: 0;
+        margin: 0;
+
         opacity: 1;
     }
     .form .li{
@@ -837,8 +862,8 @@ ul .font{
         width: 100%;
     }
     .li .soft{
-        width: calc(100% - 39px);
-        height: 20px;
+        width: 100%;
+        height: 51px;
         
         padding: 15px 24px 15px 14px;
         margin: 1px;
@@ -848,6 +873,7 @@ ul .font{
         
         font-size: 18px;
         font-weight: normal;
+        box-sizing: border-box;
     }
     .soft i{
         font-size: 18px;
@@ -858,6 +884,9 @@ ul .font{
         flex-wrap: wrap;
 
         padding-left: 24px;
+    }
+    #soft:checked ~ .soft-i{
+        transform: rotate(0.5turn);
     }
     .soft-ul{
         display: none;
@@ -882,6 +911,12 @@ ul .font{
         font-size: 18px;
 
         border-bottom: 1px solid white;
+    }
+    .happy-tran{
+        display: inline;
+    }
+    #happy:checked ~ .happy-tran{
+        transform: rotate(0.5turn);
     }
     #happy:checked + .happy-ul{
         display: flex;
@@ -944,24 +979,28 @@ ul .font{
         border-bottom: 1px solid white;
     }
     #map{
-        width: calc(100% - 2px);
+        width: calc(100% - 1px);
         height: 50px;
 
-        bottom: -52px;
+        padding: 0;
+        margin: 0;
+
+        bottom: -50px;
         
         background-color: gainsboro;
     }
     #map .font{
         display: block;
-        width: calc(100% - 38px);
-        height: 20px;
+        width: 100%;
+        height: 51px;
         
         padding: 15px 24px 15px 14px;
-        margin: 1px;
+        margin-bottom: 1px;
         border-bottom: 1px solid black;
         
         font-size: 18px;
         text-align: left;
+        box-sizing: border-box;
     }
     #map i{
         font-size: 0;
@@ -1002,11 +1041,16 @@ ul .font{
         margin: 0;
     }
     .img-font-2{
-        height: 205px;
         padding: 24px;
     }
     .tran-page{
         margin: 0;
+    }
+    .buy-microsoft{
+        padding: 0 6px;
+        margin-bottom: 16px;
+
+        text-align: center;
     }
     .buy-microsoft-2{
         flex-wrap: wrap;
@@ -1024,6 +1068,46 @@ ul .font{
         margin-top: 48px;
     }
     .content-product{
-        margin-bottom: 48px;
+        margin: 0 0 48px;
+    }
+    .last-2 li{
+        margin-top: 12px;
+        padding:6px 12px 0 0;
+
+        font-size: 12.1px;
+    }
+}
+@media screen and (max-width:534px){
+    .content-product-2{
+        width: 100%;
+    }
+    .focus{
+        flex-wrap: wrap;
+        
+        margin-bottom: 10px;
+    }
+    .back-first{
+        bottom: -50px;
+    }
+    .back-first-2{
+        width: calc(100% - 20px);
+
+        margin: 0 10px 0 10px;
+        right:0;
+        position: relative;
+        text-align: center;
+        box-sizing: border-box;
+    }
+    .last-ul{
+        width: 100%;
+    }
+    .last-2 ul{
+        flex-wrap: wrap;
+        justify-content: left;
+
+        margin: 10px;
+    }
+    .last-2 li{
+        margin: 0;
     }
 }
