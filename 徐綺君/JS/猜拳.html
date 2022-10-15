@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         body{
@@ -18,14 +19,23 @@
             background-size: cover;
         }
         .title{
-            height: 10%;
+            height: 5%;
         }
 
-        .ochinchinHe{
-            height: 30%;
+        .contentHe{
+            height: 35%;
             display: flex;
             flex-direction: row-reverse;
             /* background-color: blue; */
+        }   
+        .text{
+            font-size: 80px;
+            font-weight: bold;
+            position: absolute;
+            right: 35%;
+            top: 25%;
+            color: rgb(72, 72, 72);
+            text-shadow: 3px 3px rgb(208, 208, 200);
         }
         .He_dialogue_box{
             background-color: rgb(250, 245, 225);
@@ -33,7 +43,30 @@
             border-radius: 25px 5px;
             width: 800px;
             margin-bottom: 100px;
+            display: flex;
+            flex-direction: column;
         }        
+        .name{
+            font-size: 70px;
+            padding-left: 30px;
+            color: rgb(49, 49, 49);
+            text-shadow: 3px 3px rgb(208, 208, 200);
+        }
+        .blood{
+            width: 80%;
+            background-color: rgb(21, 22, 20);
+            height: 30px;
+            margin: 20px 30px;
+            border: 20px solid rgb(56, 56, 56);
+            border-radius: 25px;
+            display: flex;
+        }
+        .blood_bar{
+            width: 20%;
+            height: 100%;
+            background-color: brown;
+            
+        }
         .he{
             height: 100%;
             width: 480px;
@@ -43,7 +76,7 @@
             transform:scaleX(-1);
             margin: 0 250px;
         }
-        .ochinchin{
+        .content{
             height: 35%;
             display: flex;
             justify-content: space-around;
@@ -52,7 +85,7 @@
             margin-left: 100px;
             transform:scaleX(-1.5);
         }
-
+        
         .color{
             background-color: aquamarine;
         }
@@ -66,16 +99,18 @@
         }
         .dialog{
             width: 50%;
-            height: calc(100% - 10px);
+            height: calc(100% - 30px);
             border: 10px solid rgb(64, 64, 64);
             background-color: rgb(104, 104, 104);
             border-right: none;
-            border-radius: 10px 0px 10px 10px;
+            border-radius: 10px 0px 0px 10px;
             margin: 5px;
             color: white;
-            text-shadow: 3px 3px rgb(46, 46, 46);
+            text-shadow: 3px 3px rgb(104, 88, 112);
             font-size: 85px;
-            padding: 0 10px;
+            padding: 10px 10px;
+            padding-top: 10px;
+            line-height: 1.15;
         }
         .skill{
             width: 50%;
@@ -86,36 +121,86 @@
             margin: 5px;
             display: flex;
             flex-wrap: wrap;
+            justify-content: space-around;
         }
         .btn{
+            display: inline-block;
             font-size: 85px;
+            padding-top: 0;
             border: none;
             background-color: rgba(255, 255, 255, 0);
+            color: rgb(72, 72, 72);
             height: 50%;
-            width: 50%;
+            width: 40%;
+            line-height: 110px;
+            display: flex;
+            text-shadow: 3px 3px rgb(208, 208, 200);
         }
+        .fa-caret-right{
+            opacity: 0;
+            padding-top: 10px;
+            width: 30%;
+        }        
+        .btn:hover .fa-caret-right{
+            opacity: 1;
+        }
+        .deduct{
+            opacity: 0;
+        }
+
     </style>
 </head>
 <body>
     <div class="box">
         <div class="title"></div>       
 
-        <div class="ochinchinHe">
+        <div class="contentHe">
             <img class="he" src="https://img1.picmix.com/output/stamp/normal/6/5/1/5/1905156_867bd.png" alt="">
-            <div class="He_dialogue_box"></div>
+                <div class="text"></div>            
+            <div class="He_dialogue_box">
+                <div class="name">野生貓貓</div>
+                <div class="blood">
+                    <div class="blood_bar blood_bar_he1 "></div>
+                    <div class="blood_bar blood_bar_he2"></div>
+                    <div class="blood_bar blood_bar_he3"></div>
+                    <div class="blood_bar blood_bar_he4"></div>
+                    <div class="blood_bar blood_bar_he5"></div>    
+                </div>
+            </div>
         </div>
-        <div class="ochinchin">
+        <div class="content">
             <img class="me" src="https://cdn130.picsart.com/317431294201211.png" alt="">
-            <div class="He_dialogue_box"></div>
+            <div class="He_dialogue_box">
+                <div class="name">哭泣貓貓</div>
+                <div class="blood">
+                    <div class="blood_bar blood_bar1"></div>
+                    <div class="blood_bar blood_bar2"></div>
+                    <div class="blood_bar blood_bar3"></div>
+                    <div class="blood_bar blood_bar4"></div>
+                    <div class="blood_bar blood_bar5"></div>                        
+                </div>
+            </div>
         </div>
         <div class="text_box">
             <div class="dialogue_box">
-                <div class="dialog">要出什麼拳呢?</div>
+                <div class="dialog">野生貓貓想和你猜拳<br>要出什麼拳呢?</div>
                 <div class="skill">
-                    <button class="button btn scissorsBtn">剪刀</button>
-                    <button class="button btn rockBtn">石頭</button>
-                    <button class="button btn paperBtn">布</button>
-                    <button class="button btn">逃跑</button>
+                    <button class="button btn scissorsBtn">
+                        <i class="fa-solid fa-caret-right"></i>
+                        剪刀
+                    </button>
+                    <button class="button btn rockBtn">
+                        <i class="fa-solid fa-caret-right"></i>
+                        石頭
+                    </button>
+                    <button class="button btn paperBtn">
+                        <i class="fa-solid fa-caret-right"></i>
+                         布 
+                    </button>
+                    <button class="button btn">
+                        <i class="fa-solid fa-caret-right"></i>
+                        逃跑
+                    </button>
                 </div>
             </div>
         </div> 
@@ -126,73 +211,70 @@
         let scissors = document.querySelector('.scissorsBtn');
         let rock = document.querySelector('.rockBtn');
         let paper = document.querySelector('.paperBtn');
-        let scissors2 = document.querySelector('.scissors');
-        let rock2 = document.querySelector('.rock');
-        let paper2 = document.querySelector('.paper');
-        let button = document.querySelector('.button');
-        let start = document.querySelector('.title');
         let btn = document.querySelector('.btn');
         const dialog = document.querySelector('.dialog');
+        let text = document.querySelector('.text');
 
-        function colorbtn(){
-            if(scissors2.classList.contains('color') || rock2.classList.contains('color') || paper2.classList.contains('color')){
-                        scissors2.classList.remove('color');
-                        rock2.classList.remove('color');
-                        paper2.classList.remove('color');
-            };
-        }
+        // function colorbtn(){
+        //     if(scissors2.classList.contains('color') || rock2.classList.contains('color') || paper2.classList.contains('color')){
+        //                 scissors2.classList.remove('color');
+        //                 rock2.classList.remove('color');
+        //                 paper2.classList.remove('color');
+        //     };
+        // }
 
 
         scissors.addEventListener("click", function(){
-            colorbtn();
+            // colorbtn();
             let a = Math.floor(Math.random()*3) + 1;
             console.log(a);
 
             if(a == 1){
-                dialog.innerHTML='平'
-                scissors2.classList.add('color');
+                dialog.innerHTML='平手';
+                text.innerHTML='剪刀';
+
             }else if(a == 2){
-                dialog.innerHTML='輸'
-                rock2.classList.add('color');
+                dialog.innerHTML='你輸了'
+                text.innerHTML='石頭';
             }else if(a == 3){
-                dialog.innerHTML='贏'
-                paper2.classList.add('color');
+                dialog.innerHTML='你贏了'
+                text.innerHTML='布';
             }
 
         });
         
 
         rock.addEventListener("click", function(){
-            colorbtn();
+            // colorbtn();
             let a = Math.floor(Math.random()*3) + 1;
             console.log(a);
 
             if(a == 1){
-                dialog.innerHTML='贏'
-                scissors2.classList.add('color');
+                dialog.innerHTML='你贏了'
+                text.innerHTML='剪刀';
             }else if(a == 2){
-                dialog.innerHTML='平'
-                rock2.classList.add('color');
+                dialog.innerHTML='平手'
+                text.innerHTML='石頭';
             }else if(a == 3){
-                dialog.innerHTML='輸'
-                paper2.classList.add('color');
+                dialog.innerHTML='你輸了'
+                text.innerHTML='布';
             }
 
         });
         paper.addEventListener("click", function(){
-            colorbtn();
+            // colorbtn();
             let a = Math.floor(Math.random()*3) + 1;
             console.log(a);
 
             if(a == 1){
-                dialog.innerHTML='輸'
-                scissors2.classList.add('color');
+                dialog.innerHTML='你輸了'
+                text.innerHTML='剪刀';
             }else if(a == 2){
-                dialog.innerHTML='贏'
-                rock2.classList.add('color');
+                dialog.innerHTML='你贏了'
+                text.innerHTML='石頭';
             }else if(a == 3){
-                dialog.innerHTML='平'
-                paper2.classList.add('color');
+                dialog.innerHTML='平手'
+                text.innerHTML='布';
             }
         });
            
