@@ -206,9 +206,8 @@ ul li a:hover{
     }
     .xyz{
         flex-wrap: wrap;
-        width: calc(100% - 30px);
-        height: calc(100% - 65px);
-        margin: 2.5px;
+        width: 75%;
+        margin: 0px auto;
     }
     .x{
         width: 100%;
@@ -240,6 +239,93 @@ ul li a:hover{
         text-decoration: none;
         color: steelblue;
     }
+}
+@media (max-width: 576px){
+    .left-background{
+        width: 100%;
+        height: 100px;
+        background-color: lightcyan;
+        position: relative;
+    }
+    .right-background{
+        width: 100%;
+        height: 100vh;
+        background-color: lightblue;
+        float: right;
+        box-sizing: border-box;
+        padding-top: 25px;
+        padding-bottom: 40px;
+    }
+    .logo{
+        width: 80px;
+        height: 80px;
+        margin: 0px;
+        position: absolute;
+        left: calc(50% - 40px);
+        top: calc(50% - 40px);
+    }
+    .xyz{
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 0px auto;
+    }
+    .x, .y, .z{
+        width: 100%;
+        height: 50%;
+    }
+    .burger{
+        width: 60px;
+        height: 60px;
+        margin: 20px;
+        background-color: rgb(150, 179, 248);
+        
+    }
+    .burger:hover + ul{
+        display: block;
+
+    }
+    ul{
+        display: none;
+        background-color: rgb(197, 219, 237);
+        width: 100px;
+        height: 150px;
+        border: 1px solid black;
+        position: absolute;
+        left: 20px;
+        top: 80px;
+        z-index: 5;
+    }
+    
+    li{
+        display: block;
+        width: 80px;
+        padding: 0px;
+        margin: 20px 10px;
+
+    }
+    
+    ul li a{
+        
+        font-size: 16px;
+        text-decoration: none;
+        color: steelblue;
+    }
+    .x:hover + .a{
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+    } 
+    .y:hover +.b {
+        width: 100%;
+        left: 0px;
+        z-index: 2;
+    }
+    .z:hover+.c {
+        width: 100%;
+        z-index: 2;
+        left: 0px;
+    }
+    
 }
 
 
