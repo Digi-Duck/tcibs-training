@@ -1,0 +1,14 @@
+            let str="野生貓貓想和你猜拳 要出什麼拳呢?";
+            let dialog = document.querySelector('.dialog');
+
+            dialog.innerHTML+=str.charAt(i);
+
+            i++;
+
+            let id=setTimeout(typing,80);
+
+            if(i==str.length){
+
+            clearTimeout(id);
+            
+            }
