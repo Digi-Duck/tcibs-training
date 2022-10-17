@@ -171,7 +171,8 @@
             background-repeat: no-repeat;
             width: 100px;
             height: 100px;
-            
+            transition: 1s;
+            opacity: 1;
         }
         .love2{
             background-image: url(../14.JS/love.jpg);
@@ -180,6 +181,8 @@
             background-repeat: no-repeat;
             width: 100px;
             height: 100px;
+            transition: 1s;
+            opacity: 1;
         }
         .love3{
             background-image: url(../14.JS/love.jpg);
@@ -188,6 +191,8 @@
             background-repeat: no-repeat;
             width: 100px;
             height: 100px;
+            transition: 1s;
+            opacity: 1;
         }
         .love4{
             background-image: url(../14.JS/love.jpg);
@@ -196,6 +201,8 @@
             background-repeat: no-repeat;
             width: 100px;
             height: 100px;
+            transition: 1s;
+            opacity: 1;
         }
         .love5{
             background-image: url(../14.JS/love.jpg);
@@ -204,6 +211,8 @@
             background-repeat: no-repeat;
             width: 100px;
             height: 100px;
+            transition: 1s;
+            opacity: 1;
         }
         .love6{
             background-image: url(../14.JS/love.jpg);
@@ -212,6 +221,8 @@
             background-repeat: no-repeat;
             width: 100px;
             height: 100px;
+            transition: 1s;
+            opacity: 1;
         }
         .love7{
             background-image: url(../14.JS/love.jpg);
@@ -220,6 +231,8 @@
             background-repeat: no-repeat;
             width: 100px;
             height: 100px;
+            transition: 1s;
+            opacity: 1;
         }
         .love8{
             background-image: url(../14.JS/love.jpg);
@@ -228,6 +241,8 @@
             background-repeat: no-repeat;
             width: 100px;
             height: 100px;
+            transition: 1s;
+            opacity: 1;
         }
         .love9{
             background-image: url(../14.JS/love.jpg);
@@ -236,6 +251,9 @@
             background-repeat: no-repeat;
             width: 100px;
             height: 100px;
+            transition: 1s;
+            opacity: 1;
+            
         }
         .love10{
             background-image: url(../14.JS/love.jpg);
@@ -244,9 +262,18 @@
             background-repeat: no-repeat;
             width: 100px;
             height: 100px;
+            transition: 1s;
+            opacity: 1;
         }
         .display{
-            display: none;
+            opacity: 0;
+        }
+        .yellowlove{
+            background-image: url(../14.JS/love2.jpg);
+        }
+        .b{
+            position: relative;
+            
         }
     </style>
 </head>
@@ -286,8 +313,12 @@
     <div class="troduce2">在某天，你遇上了他想與你蕉流蕉流<br>
         你需要戰勝他，否則你將後門不保
     </div>
-    <div class="winBox">
+    <div class="b">
+        <div class="winBox">
+        </div>
+
     </div>
+    <iframe style="display: none;" width="560" height="315" src="https://www.youtube.com/embed/CrG1biKr6Mw?autoplay=1&loop=1&playlist=CrG1biKr6Mw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <script>
         let text = document.querySelector('.text');
         let knife = document.querySelector('.knife');
@@ -311,11 +342,14 @@
         let l8 = document.querySelector('.love8');
         let l9 = document.querySelector('.love9');
         let l10 = document.querySelector('.love10');
-        
+        let body = document.querySelector('body');
         // hisg.innerHTML = hisgra;
         // myg.innerHTML = mygra;
         // 1=stone 2=knife 3=paper
-
+        winBox.addEventListener('click',function(){
+            console.log(1);
+            location.reload();
+            })
         knife.addEventListener('click', function () {
             var a = Math.floor(Math.random()*3) + 1;
             
@@ -330,6 +364,7 @@
                 text.innerHTML = '你輸了';
                 his.classList.add('stone2');
                 mygra = mygra - 1;
+                
             }else if(a==2){
                 text.innerHTML = '平手';
                 his.classList.add('knife2');
@@ -354,8 +389,11 @@
                     l2.classList.add('display');
                 }else if(hisgra == 2){
                     l3.classList.add('display');
-                }else if(hisgra == 3){
+                }else if(hisgra == 3){  
                     l4.classList.add('display');
+                    l1.classList.add('yellowlove');
+                    l2.classList.add('yellowlove');
+                    l3.classList.add('yellowlove');
                 }else if(hisgra == 4){
                     l5.classList.add('display');
                 }
@@ -367,16 +405,23 @@
                     l8.classList.add('display');
                 }else if(mygra == 3){
                     l7.classList.add('display');
+                    l8.classList.add('yellowlove');
+                    l9.classList.add('yellowlove');
+                    l10.classList.add('yellowlove');
                 }else if(mygra == 4){
                     l6.classList.add('display');
                 }
                 if(mygra == 0){
                 winBox.classList.add('win');
                 winBox.innerHTML = '你的後門將被玩破';
+                setTimeout(() => console.log(1), 1000)
+                
+                winBox.innerHTML = '<iframe style="position: absolute;left:calc(50% - 750px);top:-200px;" width="1500px" height="750px" src="https://www.youtube.com/embed/u-8nrB6EHcM?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
             }else if(hisgra == 0){
                 winBox.classList.add('win');
                 winBox.innerHTML = '你守住了你的屁股';
             }
+            
         })
         stone.addEventListener('click', function () {
             his.classList.remove('stone2');
@@ -419,6 +464,9 @@
                     l4.classList.add('display');
                 }else if(hisgra == 4){
                     l5.classList.add('display');
+                    l1.classList.add('yellowlove');
+                    l2.classList.add('yellowlove');
+                    l3.classList.add('yellowlove');
                 }
                 if(mygra == 0){
                     l10.classList.add('display');
@@ -434,6 +482,11 @@
                 if(mygra == 0){
                 winBox.classList.add('win');
                 winBox.innerHTML = '你的後門將被玩破';
+                setTimeout(function(){
+                    console.log('A');
+                },5000);
+                
+                winBox.innerHTML = '<iframe style="position: absolute;left:calc(50% - 750px);top:-200px;" width="1500px" height="750px" src="https://www.youtube.com/embed/u-8nrB6EHcM?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
             }else if(hisgra == 0){
                 winBox.classList.add('win');
                 winBox.innerHTML = '你守住了你的屁股';
@@ -480,6 +533,9 @@
                     l4.classList.add('display');
                 }else if(hisgra == 4){
                     l5.classList.add('display');
+                    l1.classList.add('yellowlove');
+                    l2.classList.add('yellowlove');
+                    l3.classList.add('yellowlove');
                 }
                 if(mygra == 0){
                     l10.classList.add('display');
@@ -495,6 +551,11 @@
                 if(mygra == 0){
                 winBox.classList.add('win');
                 winBox.innerHTML = '你的後門將被玩破';
+                setTimeout(function(){
+                    console.log('A');
+                },5000);
+                
+                winBox.innerHTML = '<iframe style="position: absolute;left:calc(50% - 750px);top:-200px;" width="1500px" height="750px" src="https://www.youtube.com/embed/u-8nrB6EHcM?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
             }else if(hisgra == 0){
                 winBox.classList.add('win');
                 winBox.innerHTML = '你守住了你的屁股';

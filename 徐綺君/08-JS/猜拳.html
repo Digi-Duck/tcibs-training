@@ -156,6 +156,7 @@
             padding: 10px 10px;
             padding-top: 10px;
             line-height: 1.15;
+            word-break: keep-all;
         }
         .skill{
             width: 50%;
@@ -243,7 +244,7 @@
         </div>
         <div class="text_box">
             <div class="dialogue_box">
-                <div class="dialog">野生貓貓想和你猜拳<br>要出什麼拳呢?</div>
+                <div class="dialog"></div>
                 <div class="skill">
                     <button class="button btn scissorsBtn">
                         <i class="fa-solid fa-caret-right"></i>
@@ -272,7 +273,7 @@
         let rock = document.querySelector('.rockBtn');
         let paper = document.querySelector('.paperBtn');
         let btn = document.querySelector('.btn');
-        const dialog = document.querySelector('.dialog');
+        let dialog = document.querySelector('.dialog');
         let text = document.querySelector('.text');
         let blood_he = 5;
         let blood = 5;
@@ -290,6 +291,24 @@
         const endText = document.querySelector('.endWindowText');
         const again = document.querySelector('.again');
         const again2 = document.querySelector('.again2');
+        
+        let i = 0;
+
+        let start ="野生貓貓想和你猜拳 要出什麼拳呢?"; 
+        let tie ="平手"; 
+        let lose ="你輸了"; 
+        let win ="你贏了"; 
+
+        window.onload=function runoob(){
+            dialog.innerHTML += start.charAt(i);
+            i++;
+            let id=setTimeout(runoob,100); 
+            if(i==start.runoob){
+                clearTimeout(id);
+            }
+
+        };
+
 
         again2.addEventListener("click", function(){
             location.reload();
@@ -304,9 +323,14 @@
             console.log(a);
 
             if(a == 1){
-                dialog.innerHTML='平手';
+                for (i = 0;i < tie.length; i++) {
+                    dialog.innerHTML += tie.charAt(i);
+                    let id=setTimeout(typing,100); 
+                    if(i==tie.length){
+                        clearTimeout(id);
+                    }                    
+                }                
                 text.innerHTML='剪刀';
-
             }else if(a == 2){
                 dialog.innerHTML='你輸了'
                 text.innerHTML='石頭';
