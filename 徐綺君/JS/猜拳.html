@@ -11,6 +11,50 @@
         body{
             margin: 0px;
         }
+        .endWindowBox{
+            position: absolute;
+            background-color: rgba(128, 128, 128, 0.212);
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+        .endWindow{
+            position: absolute;
+            left: calc(50% - 360px);
+            top: calc(50% - 310px);
+            z-index: 1;
+            border: 10px solid rgb(136, 118, 145);
+            border-radius: 50px;
+            width: 700px;
+            height: 600px;
+            background-color: rgb(233, 243, 230);
+            background-clip: content-box;
+            display: flex;
+            flex-direction: column;
+        }
+        .endWindowText{
+            font-size: 100px;
+            color: rgb(72, 72, 72);
+            text-shadow: 3px 3px rgb(208, 208, 200);
+            text-align: center;
+            margin-top: 80px;
+            font-weight: 600;
+        }
+        .endWindowBtn{
+            font-size: 150px;
+            color: rgb(72, 72, 72);
+            text-shadow: 3px 3px rgb(208, 208, 200);
+            margin: 0px 10px;
+            margin-top: 90px;
+            border: 15px solid rgb(190, 207, 185);
+            border-radius: 20px;
+            background-color: white;
+        }
+        .endWindowBtn:hover{
+            border: 15px inset rgb(177, 190, 173);
+            background-color: rgb(248, 248, 248);
+        }
         .box{
             height: 100vh;
             width: 100%;
@@ -60,12 +104,13 @@
             border: 20px solid rgb(56, 56, 56);
             border-radius: 25px;
             display: flex;
+            justify-content: flex-start;
         }
         .blood_bar{
             width: 20%;
             height: 100%;
-            background-color: brown;
-            
+            background-color: rgb(52, 165, 42);
+            transition: 1s;
         }
         .he{
             height: 100%;
@@ -145,22 +190,37 @@
             opacity: 1;
         }
         .deduct{
-            opacity: 0;
+            width: 0%;
         }
-
+        .yellow{
+            background-color: rgb(226, 226, 90);
+            transition: 2s;
+        }
+        .red{
+            background-color: brown;
+            transition: 2s;
+        }
+        .endShow{
+            display: block;
+        }
     </style>
 </head>
 <body>
+    <div class="endWindowBox">
+        <div class="endWindow">
+            <div class="endWindowText">你媽的</div>
+            <button class="endWindowBtn again">重新開始</button>
+        </div>
+    </div>
     <div class="box">
         <div class="title"></div>       
-
         <div class="contentHe">
             <img class="he" src="https://img1.picmix.com/output/stamp/normal/6/5/1/5/1905156_867bd.png" alt="">
                 <div class="text"></div>            
             <div class="He_dialogue_box">
                 <div class="name">野生貓貓</div>
                 <div class="blood">
-                    <div class="blood_bar blood_bar_he1 "></div>
+                    <div class="blood_bar blood_bar_he1"></div>
                     <div class="blood_bar blood_bar_he2"></div>
                     <div class="blood_bar blood_bar_he3"></div>
                     <div class="blood_bar blood_bar_he4"></div>
@@ -197,9 +257,9 @@
                         <i class="fa-solid fa-caret-right"></i>
                          布 
                     </button>
-                    <button class="button btn">
+                    <button class="button btn again2">
                         <i class="fa-solid fa-caret-right"></i>
-                        逃跑
+                        重新
                     </button>
                 </div>
             </div>
@@ -214,18 +274,32 @@
         let btn = document.querySelector('.btn');
         const dialog = document.querySelector('.dialog');
         let text = document.querySelector('.text');
+        let blood_he = 5;
+        let blood = 5;
+        const blood_bar_he1 = document.querySelector('.blood_bar_he1');
+        const blood_bar_he2 = document.querySelector('.blood_bar_he2');
+        const blood_bar_he3 = document.querySelector('.blood_bar_he3');
+        const blood_bar_he4 = document.querySelector('.blood_bar_he4');
+        const blood_bar_he5 = document.querySelector('.blood_bar_he5');
+        const blood_bar1 = document.querySelector('.blood_bar1');
+        const blood_bar2 = document.querySelector('.blood_bar2');
+        const blood_bar3 = document.querySelector('.blood_bar3');
+        const blood_bar4 = document.querySelector('.blood_bar4');
+        const blood_bar5 = document.querySelector('.blood_bar5');
+        const end = document.querySelector('.endWindowBox');
+        const endText = document.querySelector('.endWindowText');
+        const again = document.querySelector('.again');
+        const again2 = document.querySelector('.again2');
 
-        // function colorbtn(){
-        //     if(scissors2.classList.contains('color') || rock2.classList.contains('color') || paper2.classList.contains('color')){
-        //                 scissors2.classList.remove('color');
-        //                 rock2.classList.remove('color');
-        //                 paper2.classList.remove('color');
-        //     };
-        // }
+        again2.addEventListener("click", function(){
+            location.reload();
+        })
 
+        again.addEventListener("click", function(){
+            location.reload();
+        })
 
         scissors.addEventListener("click", function(){
-            // colorbtn();
             let a = Math.floor(Math.random()*3) + 1;
             console.log(a);
 
@@ -236,48 +310,120 @@
             }else if(a == 2){
                 dialog.innerHTML='你輸了'
                 text.innerHTML='石頭';
+                blood = blood - 1;
+                deduct();
             }else if(a == 3){
                 dialog.innerHTML='你贏了'
                 text.innerHTML='布';
+                blood_he = blood_he - 1;
+                deduct_he();
             }
 
         });
         
 
         rock.addEventListener("click", function(){
-            // colorbtn();
             let a = Math.floor(Math.random()*3) + 1;
             console.log(a);
 
             if(a == 1){
                 dialog.innerHTML='你贏了'
                 text.innerHTML='剪刀';
+                blood_he = blood_he - 1;
+                deduct_he();
             }else if(a == 2){
                 dialog.innerHTML='平手'
                 text.innerHTML='石頭';
             }else if(a == 3){
                 dialog.innerHTML='你輸了'
                 text.innerHTML='布';
+                blood = blood - 1;
+                deduct();
             }
 
         });
         paper.addEventListener("click", function(){
-            // colorbtn();
             let a = Math.floor(Math.random()*3) + 1;
             console.log(a);
 
             if(a == 1){
                 dialog.innerHTML='你輸了'
                 text.innerHTML='剪刀';
+                blood = blood - 1;
+                deduct();
             }else if(a == 2){
                 dialog.innerHTML='你贏了'
                 text.innerHTML='石頭';
+                blood_he = blood_he - 1;
+                deduct_he();
             }else if(a == 3){
                 dialog.innerHTML='平手'
                 text.innerHTML='布';
             }
         });
            
+        function deduct(){
+            switch (blood){
+                case 4:{
+                    blood_bar5.classList.add('deduct');
+                    break;
+                }
+                case 3:{
+                    blood_bar4.classList.add('deduct');
+                    break;
+                }
+                case 2:{
+                    blood_bar3.classList.add('yellow');
+                    blood_bar2.classList.add('yellow');
+                    blood_bar1.classList.add('yellow');
+                    blood_bar3.classList.add('deduct');
+                    break;
+                }
+                case 1:{
+                    blood_bar2.classList.add('red');
+                    blood_bar1.classList.add('red');
+                    blood_bar2.classList.add('deduct');
+                    break;
+                }
+                case 0:{
+                    blood_bar1.classList.add('deduct');
+                    end.classList.add('endShow');
+                    endText.innerHTML= '你失敗了!';
+                    break;
+                }
+            }
+        }
+        function deduct_he(){
+            switch (blood_he){
+                case 4:{
+                    blood_bar_he5.classList.add('deduct');
+                    break;
+                }
+                case 3:{
+                    blood_bar_he4.classList.add('deduct');
+                    break;
+                }
+                case 2:{
+                    blood_bar_he3.classList.add('yellow');
+                    blood_bar_he2.classList.add('yellow');
+                    blood_bar_he1.classList.add('yellow');
+                    blood_bar_he3.classList.add('deduct');
+                    break;
+                }
+                case 1:{
+                    blood_bar_he2.classList.add('red');
+                    blood_bar_he1.classList.add('red');
+                    blood_bar_he2.classList.add('deduct');
+                    break;
+                }
+                case 0:{
+                    blood_bar_he1.classList.add('deduct');
+                    end.classList.add('endShow');
+                    endText.innerHTML= '你成功了!';
+                    break;
+                }
+            }
+        }
 
     </script>
 
