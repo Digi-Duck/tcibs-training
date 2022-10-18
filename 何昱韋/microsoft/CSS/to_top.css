@@ -1,0 +1,12 @@
+.to_top{
+    width: 100%;
+    height: 65px;
+    padding: 12px;
+    display: flex;
+    justify-content: end;
+}
+.to_top_bottom{
+    width: 109px;
+    height: 34px;
+    background-color: red;
+}
