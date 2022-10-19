@@ -1,5 +1,12 @@
 .product_intro_link{
     width: 100%;
     height: 417px;
-    background-color: chartreuse;
+    display: flex;
+    justify-content: center;
+}
+.prod_intro_box{
+    width: 20%;
+    height: 100%;
+    background-color: blue;
+    margin: 0 8px;
 }

@@ -283,53 +283,33 @@ ul .font{
 
     margin-bottom: 41.5px;
 }
-.tran-page-2{
+/* .tran-page-2{
     position: relative;
     display: flex;
     align-items: center;
 
     margin-top: 5px;
-}
-.arrow{
-    width: 44px;
-    height: 44px;
+} */
+#swiper-button-next, #swiper-button-prev{
+    margin: 0 30px;
+    position: relative;
+    top: 0;
+    right: 0;
 
-    padding: 0 8px;
-
-    text-align: center;
-    font-size: 30px;
-    /* transition: all 1s ease; */
-    box-sizing: border-box;
-}
-.arrow-01:hover{
-   transform: translateX(-10px);
-   transition: all 1s ease;
-}
-.arrow-02:hover{
-    transform: translateX(10px);
-    transition: all 1s ease;
-}
-.circle-01{
-    width: 44px;
-    height: 24px;
-
-    padding-left: 16px;
-
-    text-align: center;
-    font-size: 5px;
+    color: black;
+    font-size: 10px;
 
     box-sizing: border-box;
 }
-.circle-02{
-    width: 44px;
-    height: 24px;
+#swiper-pagination{
+    width: 10%;
 
-    padding-right: 16px;
+    margin-top: 20px;
 
-    text-align: center;
-    font-size: 5px;
-
-    box-sizing: border-box;
+    position: relative;
+}
+#swiper-button-prev:hover{
+   right: 10px;
 }
 .buy-microsoft{
     display: flex;
