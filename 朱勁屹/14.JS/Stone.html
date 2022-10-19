@@ -115,11 +115,23 @@
             text-align: center;
         }
         .troduce2{
-            width: 300px;
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
             /* background-color: aqua; */
             margin: auto;
             font-size: 30px;
             text-align: center;
+            background-image: url(sky.gif);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            line-height: 800px;
+            text-shadow:15px 15px gray ;
+            font-size: 50px;
         }
         .hisgra{
             /* background-color: aqua; */
@@ -301,6 +313,9 @@
             width: 100px;
             height: 100px;
         }
+        .dis{
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -335,17 +350,16 @@
         </div>
 
     </div>
-    <div class="troduce1">介紹</div>
-    <div class="troduce2">在某天，你遇上了他想與你蕉流蕉流<br>
-        你需要戰勝他，否則你將後門不保
-    </div>
+    <!-- <div class="troduce1">介紹</div> -->
+   
+    
     <div class="b">
         <div class="winBox">
 
         </div>
 
     </div>
-
+     <div class="troduce2"></div>
     <!-- <iframe style="display: none;" width="560" height="315" src="https://www.youtube.com/embed/CrG1biKr6Mw?autoplay=1&loop=1&playlist=CrG1biKr6Mw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
     <script>
         let text = document.querySelector('.text');
@@ -373,6 +387,7 @@
         let body = document.querySelector('body');
         let him = document.querySelector('.him');
         let water = document.querySelector('.water');
+        
         // hisg.innerHTML = hisgra;
         // myg.innerHTML = mygra;
         // 1=stone 2=knife 3=paper
@@ -419,11 +434,11 @@
                     l2.classList.add('display');
                 }else if(hisgra == 2){
                     l3.classList.add('display');
+                }else if(hisgra == 3){  
+                    l4.classList.add('display');
                     l1.classList.add('yellowlove');
                     l2.classList.add('yellowlove');
                     l3.classList.add('yellowlove');
-                }else if(hisgra == 3){  
-                    l4.classList.add('display');
                     
                 }else if(hisgra == 4){
                     l5.classList.add('display');
@@ -435,10 +450,10 @@
                 }else if(mygra == 2){
                     l8.classList.add('display');
                 }else if(mygra == 3){
-                    l7.classList.add('display');
                     l8.classList.add('yellowlove');
                     l9.classList.add('yellowlove');
                     l10.classList.add('yellowlove');
+                    l7.classList.add('display');
                 }else if(mygra == 4){
                     l6.classList.add('display');
                 }
@@ -448,7 +463,7 @@
                 setTimeout(() => console.log(1), 1000)
                 
                 winBox.innerHTML = '<img class="freeMan" src="../14.JS/freeMan.gif" alt="">';
-            }else if(hisgra == 4){
+            }else if(hisgra == 0){
                 winBox.classList.add('win');
                 him.classList.add('badMan');
                 winBox.innerHTML = '你守住了你的屁股';
@@ -495,11 +510,11 @@
                     l3.classList.add('display');
                 }else if(hisgra == 3){
                     l4.classList.add('display');
-                }else if(hisgra == 4){
-                    l5.classList.add('display');
                     l1.classList.add('yellowlove');
                     l2.classList.add('yellowlove');
                     l3.classList.add('yellowlove');
+                }else if(hisgra == 4){
+                    l5.classList.add('display');
                 }
                 if(mygra == 0){
                     l10.classList.add('display');
@@ -508,6 +523,9 @@
                 }else if(mygra == 2){
                     l8.classList.add('display');
                 }else if(mygra == 3){
+                    l8.classList.add('yellowlove');
+                    l9.classList.add('yellowlove');
+                    l10.classList.add('yellowlove');
                     l7.classList.add('display');
                 }else if(mygra == 4){
                     l6.classList.add('display');
@@ -515,14 +533,13 @@
                 if(mygra == 0){
                 winBox.classList.add('win');
                 winBox.innerHTML = '你的後門將被玩破';
-                setTimeout(function(){
-                    console.log('A');
-                },5000);
                 
-                winBox.innerHTML = '';
+                winBox.innerHTML = '<img class="freeMan" src="../14.JS/freeMan.gif" alt="">';
+                
             }else if(hisgra == 0){
                 winBox.classList.add('win');
                 winBox.innerHTML = '你守住了你的屁股';
+                him.classList.add('badMan');
             }
         })
         paper.addEventListener('click', function () {
@@ -563,12 +580,12 @@
                 }else if(hisgra == 2){
                     l3.classList.add('display');
                 }else if(hisgra == 3){
-                    l4.classList.add('display');
-                }else if(hisgra == 4){
-                    l5.classList.add('display');
                     l1.classList.add('yellowlove');
                     l2.classList.add('yellowlove');
                     l3.classList.add('yellowlove');
+                    l4.classList.add('display');
+                }else if(hisgra == 4){
+                    l5.classList.add('display');
                 }
                 if(mygra == 0){
                     l10.classList.add('display');
@@ -577,6 +594,9 @@
                 }else if(mygra == 2){
                     l8.classList.add('display');
                 }else if(mygra == 3){
+                    l8.classList.add('yellowlove');
+                    l9.classList.add('yellowlove');
+                    l10.classList.add('yellowlove');
                     l7.classList.add('display');
                 }else if(mygra == 4){
                     l6.classList.add('display');
@@ -584,17 +604,75 @@
                 if(mygra == 0){
                 winBox.classList.add('win');
                 winBox.innerHTML = '你的後門將被玩破';
-                setTimeout(function(){
-                    console.log('A');
-                },5000);
                 
-                winBox.innerHTML = '<iframe style="position: absolute;left:calc(50% - 750px);top:-200px;" width="1500px" height="750px" src="https://www.youtube.com/embed/u-8nrB6EHcM?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                winBox.innerHTML = '<img class="freeMan" src="../14.JS/freeMan.gif" alt="">';
+                
+                
             }else if(hisgra == 0){
                 winBox.classList.add('win');
                 winBox.innerHTML = '你守住了你的屁股';
-
+                him.classList.add('badMan');
             }
         })
+
+        function delay(n){
+            return new Promise(function(resolve){
+                setTimeout(resolve,n*1000);
+            });
+        }
+
+
+
+        var i=0;
+        var e=0;
+        var a=0;
+        var str="在某天，你遇上了'他'";
+        let tro =document.querySelector('.troduce2');
+        window.onload=async function typing(){
+                //获取div
+        var mydiv=document.querySelector(".troduce2");
+        mydiv.innerHTML+=str.charAt(i);
+        i++;
+        var id=setTimeout(typing,80);
+        if(i==str.length){
+            clearTimeout(id);
+            await delay(2);
+            mydiv.innerHTML = "";
+            
+            t();
+            // a();
+            }
+          
+        }
+        async function t(){
+        var str="他想幹爆你的屁眼"; 
+        var mydiv=document.querySelector(".troduce2");
+        mydiv.innerHTML+=str.charAt(e);
+        e++;
+        var id=setTimeout(t,80);
+        if(e==str.length){
+            clearTimeout(id);
+            await delay(2);
+            mydiv.innerHTML = "";
+
+            j();
+            }
+        }
+        async function j(){
+            var str="你要守護住你的後門並且阻止他"; 
+            var mydiv=document.querySelector(".troduce2");
+            mydiv.innerHTML+=str.charAt(a);
+            a++;
+            var id=setTimeout(j,80);
+            if(a==str.length){
+                clearTimeout(id);
+                await delay(2);
+                
+                mydiv.innerHTML = "";
+                tro.classList.add('dis');
+            }
+        }
     </script>
+    
 </body>
 </html>
