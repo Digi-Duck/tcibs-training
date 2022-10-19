@@ -293,7 +293,6 @@
         const again2 = document.querySelector('.again2');
         
         let i = 0;
-
         let start ="野生貓貓想和你猜拳 要出什麼拳呢?"; 
         let tie ="平手"; 
         let lose ="你輸了"; 
@@ -302,13 +301,11 @@
         window.onload=function runoob(){
             dialog.innerHTML += start.charAt(i);
             i++;
-            let id=setTimeout(runoob,100); 
-            if(i==start.runoob){
+            let id=setTimeout(runoob,80); 
+            if(i==start.length){
                 clearTimeout(id);
             }
-
         };
-
 
         again2.addEventListener("click", function(){
             location.reload();
@@ -318,27 +315,32 @@
             location.reload();
         })
 
+        
         scissors.addEventListener("click", function(){
             let a = Math.floor(Math.random()*3) + 1;
             console.log(a);
-
-            if(a == 1){
-                for (i = 0;i < tie.length; i++) {
-                    dialog.innerHTML += tie.charAt(i);
-                    let id=setTimeout(typing,100); 
-                    if(i==tie.length){
-                        clearTimeout(id);
-                    }                    
-                }                
-                text.innerHTML='剪刀';
+            // dialog.innerHTML = '';
+            if(a == 1){ 
+                // dialog.innerHTML += tie.charAt(i);
+                // i++;
+                // console.log(i);
+                // let id = setTimeout(individuall,100);
+                // if(i == tie.length){
+                //     clearTimeout(id);
+                // }
+                dialog.innerHTML='野生貓貓使出了剪刀 你也使出了剪刀 平手!';
+                // let x = tie;
+                // WinLose(x);
             }else if(a == 2){
-                dialog.innerHTML='你輸了'
-                text.innerHTML='石頭';
+                dialog.innerHTML='野生貓貓使出了石頭 你使出了剪刀 你輸了!';
+                // let x = lose;
+                // WinLose(x);
                 blood = blood - 1;
                 deduct();
             }else if(a == 3){
-                dialog.innerHTML='你贏了'
-                text.innerHTML='布';
+                dialog.innerHTML='野生貓貓使出了布 你使出了剪刀 你贏了!';
+                // let x = win;
+                // WinLose(x);
                 blood_he = blood_he - 1;
                 deduct_he();
             }
@@ -351,16 +353,21 @@
             console.log(a);
 
             if(a == 1){
-                dialog.innerHTML='你贏了'
-                text.innerHTML='剪刀';
+                dialog.innerHTML='野生貓貓使出了剪刀 你使出了石頭 你贏了!'
+                // let x = win;
+                // WinLose(x);
                 blood_he = blood_he - 1;
                 deduct_he();
             }else if(a == 2){
-                dialog.innerHTML='平手'
-                text.innerHTML='石頭';
+                dialog.innerHTML='野生貓貓使出了石頭 你也使出了石頭 平手!'
+                // let x = tie;
+                // WinLose(x);
+                // text.innerHTML='石頭';
             }else if(a == 3){
-                dialog.innerHTML='你輸了'
-                text.innerHTML='布';
+                dialog.innerHTML='野生貓貓使出了布 你使出了石頭 你輸了!'
+                // let x = lose;
+                // WinLose(x);
+                // text.innerHTML='布';
                 blood = blood - 1;
                 deduct();
             }
@@ -371,21 +378,40 @@
             console.log(a);
 
             if(a == 1){
-                dialog.innerHTML='你輸了'
-                text.innerHTML='剪刀';
+                dialog.innerHTML='野生貓貓使出了剪刀 你使出了布 你輸了!';
+                // let x = lose;
+                // WinLose(x);
                 blood = blood - 1;
                 deduct();
             }else if(a == 2){
-                dialog.innerHTML='你贏了'
-                text.innerHTML='石頭';
+                dialog.innerHTML='野生貓貓使出了石頭 你使出了布 你贏了!';
+                // let x = win;
+                // WinLose(x);
                 blood_he = blood_he - 1;
                 deduct_he();
             }else if(a == 3){
-                dialog.innerHTML='平手'
-                text.innerHTML='布';
+                dialog.innerHTML='野生貓貓使出了布 你也使出了布 平手!';
+                // let x = tie;
+                // WinLose(x);
             }
         });
            
+
+        // function WinLose(x) {
+        //     dialog.addEventListener("click", function(){
+        //         if (x == tie){
+        //             dialog.innerHTML='平手!';
+        //         }else if(x == win){
+        //             dialog.innerHTML='你贏了!';
+        //         }else if(x == lose){
+        //             dialog.innerHTML='你輸了!';
+        //         }
+        //     });
+        // }
+
+
+
+
         function deduct(){
             switch (blood){
                 case 4:{
@@ -448,6 +474,9 @@
                 }
             }
         }
+
+
+
 
     </script>
 
