@@ -6,15 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .box1{
-            width: 100px;
-            height: 100px;
-            background-color: aqua;
+        body{
+            margin: 0;
         }
         .box{
             width: 100px;
             height: 100px;
             background-color: antiquewhite;
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
         }
         .bgc{
             background-color: bisque;
@@ -27,11 +30,12 @@
     <script>
         let box1 =document.querySelector('.box1');
         let box =document.querySelector('.box');
-        console.log(box);
-        box1.addEventListener('click',function(){
+        box1.addEventListener('click', function(){
             box1.classList.add('bgc');
+
             console.log(box1);
+            // console.log(box);
         });
-    </script>
+   </script>
 </body>
 </html>
