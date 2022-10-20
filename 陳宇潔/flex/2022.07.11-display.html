@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,32 +8,89 @@
     <title>Document</title>
 
     <style>
-        .box{
-            width: 200px;
-            height: 200px;
-            margin: 0 10px;
-            background-color: aquamarine;
+        .box {
+            width: 900px;
+            height: 800px;
+           
+            border: 1px solid black;
+
+            display: flex;
+            /* 換行 */
+            /* flex-wrap: wrap; */
+            /* 主軸線根交錯軸互換 */
+            /* flex-direction: row-reverse; */
+            /* 主軸線的位置調整 */
+            justify-content:space-around;
+            /* 交錯軸的位置調整 */
+            /* align-items:stretch; */
+            /* 換行後的位置調整 */
+            /* align-content: stretch; */
 
             /* display */
-            display: none; 
+            /* display: none;  */
             /* 暫時讓標籤在畫面上隱藏 */
-            display: block;
+            /* display: block; */
             /* 讓標籤占滿一橫行(div標籤預設) */
 
-            display: inline;
+            /* display: inline; */
             /* 讓標籤只佔有子層的體積，無法定義寬高(span標籤預設) */
 
-            display: inline-block;
+            /* display: inline-block; */
             /* 同時兼具block和inline的特性，能定義寬高但不會直接佔滿一橫行 */
-            
+
             /* 排版屬性 */
-            display: flex;
-            display: grid;
+            /* display: flex;
+            display: grid; */
         }
 
+        .box1 {
+            width: 300px;
+            height: 200px;
+            background-color: antiquewhite;
+        }
+
+        .box2 {
+            width: 300px;
+            height: 200px;
+            line-height: 200px;
+            background-color: rgb(203, 137, 51);
+        }
+
+        .box3 {
+            width: 300px;
+            height: 200px;
+            background-color: rgb(4, 186, 119);
+        }
+
+        .box4 {
+            width: 300px;
+            height: 200px;
+            background-color: rgb(226, 18, 11);
+        }
+
+        .box5 {
+            width: 300px;
+            height: 200px;
+            background-color: rgb(37, 9, 198);
+        }
+
+        .box6 {
+            width: 300px;
+            height: 200px;
+            background-color: rgb(30, 222, 193);
+        }
     </style>
 </head>
+
 <body>
-    <div class="box">123456</div>
+    <div class="box">
+        <div class="box1"></div>
+        <!-- <div class="box2">1234</div> -->
+        <!-- <div class="box3"></div>
+        <div class="box4"></div>
+        <div class="box5"></div>
+        <div class="box6"></div> -->
+    </div>
 </body>
+
 </html>

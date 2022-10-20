@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .active{
+            display: none;
+        }
+        .box{
+            width: 500px;
+            height: 500px;
+            background-color: antiquewhite;
+
+            background-image: url('./02-img/264828170_356247232927672_7580583740451996137_n.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .box1{
+            width: 500px;
+            height: 500px;
+            background-color: aqua;
+
+            background-image: url('./02-img/PE1rNM3.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .bgc{
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box active"></div>
+    <script>
+        let box1 =document.querySelector('.box1');
+        let box =document.querySelector('.box');
+        box1.addEventListener('click', function(){
+            box1.classList.add('active');
+            box.classList.remove('active');
+            console.log(box1);
+            // console.log(box);
+        });
+            
+        box.addEventListener('click', function(){
+            box.classList.add('active');
+            box1.classList.remove('active');
+        })
+   </script>
+</body>
+</html>
