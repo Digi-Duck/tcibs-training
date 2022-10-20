@@ -4,9 +4,37 @@
     display: flex;
     justify-content: center;
 }
-.prod_intro_box{
+.prod_intro_card{
     width: 20%;
     height: 100%;
-    background-color: blue;
     margin: 0 8px;
+}
+.card_picture{
+    height: 213px;
+}
+.card_new_demo{
+    width: 100%;
+    height: 48px;
+    padding-top: 16px;
+}
+.new_listing{
+    height: 28px;
+    background-color: #ffb900;
+    font-size: 1rem;
+    font-family: "Segoe UI",SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    display: inline-block;
+    padding: 6px 12px;
+}
+.card_header_title{
+    font-size: 29px;
+    margin-bottom: 16px;
+}
+.card_header_text{
+    word-break: keep-all;
+}
+.card_footer{
+    height: 56px;
+    padding-top: 16px;
+    text-align: left;
+    color: #0067b8;
 }
