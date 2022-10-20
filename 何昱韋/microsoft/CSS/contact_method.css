@@ -3,5 +3,13 @@
     height: 32px;
     margin: 96px 56.3px 48px 56.3px;
     padding: 0 95.1px;
-    background-color: darkgrey;
+    display: flex;
+}
+.contact_text{
+    display: flex;
+    align-items: center;
+    margin-right: 24px;
+}
+.contact_fb{
+    margin-right: 12px;
 }

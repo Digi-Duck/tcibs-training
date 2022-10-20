@@ -12,7 +12,14 @@
 }
 .layout_box{
     height: 72px;
-    background-color: aqua;
+    /* background-color: aqua; */
     margin: 16px 24px;
     font-size: 16px;
+}
+.layout_img_region{
+    display: flex;
+    justify-content: center;
+}
+.img_cannot_margin_auto{
+    margin-bottom: 8px;
 }
