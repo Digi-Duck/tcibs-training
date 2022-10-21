@@ -5,8 +5,155 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+        }
+        .bar{
+            width: 100%;
+            height: 150px;
+            background-color: gray;
+            font-size: 100px;
+            text-align: center;
+
+        }
+        .me,.him{
+            border: 1px solid black;
+            width: 500px;
+            height: 500px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .box{
+            margin-top: 100px;
+            display: flex;
+            width: 100%;
+            /* height: 500px; */
+            justify-content: space-around;
+        }
+        button{
+            width: 100px;
+            height: 100px;
+            font-size: 30px;
+        }
+        img{
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 10%;
+            height: 10%;
+            border: 1px solid black;
+            margin: 0px 50px;
+        }
+    </style>
 </head>
 <body>
+    <div class="bar">
+        擲骰子遊戲
+    </div>
+    <div class="box">
+        <div class="him">
     
+        </div>
+    
+        <div class="me">
+    
+        </div>
+        <!-- <img src="../14.JS/dice1.jpg" alt=""> -->
+    </div>
+    <div class="box">
+        <button>賭吧!</button>
+
+    </div>
+
+    <script>
+        let button = document.querySelector('button');
+        let me = document.querySelector('.me');
+        let him = document.querySelector('.him');
+
+        button.addEventListener('click',function(){
+            him.innerHTML = '';
+            for (let i = 0; i < 9; i++) {
+                let a = Math.floor(Math.random()*6 + 1);
+                let b = Math.floor(Math.random()*6 + 1);
+                let c = Math.floor(Math.random()*6 + 1);
+
+                console.log(a);
+                console.log(b);
+                console.log(c);
+
+                hran(a);
+                hran(b);
+                hran(c);
+                
+            }
+            me.innerHTML = '';
+            for (let i = 0; i < 9; i++) {
+                let a = Math.floor(Math.random()*6 + 1);
+                let b = Math.floor(Math.random()*6 + 1);
+                let c = Math.floor(Math.random()*6 + 1);
+
+                console.log(a);
+                console.log(b);
+                console.log(c);
+
+                mran(a);
+                mran(b);
+                mran(c);
+                
+            }
+        })
+        function hran(x) {
+            switch (x) {
+                case 1:
+                    him.innerHTML += '<img src="../14.JS/dice1.jpg" alt="">';
+                    break;
+                case 2:
+                    him.innerHTML += '<img src="../14.JS/dice2.jpg" alt="">';
+                    break;
+                case 3:
+                    him.innerHTML += '<img src="../14.JS/dice3.jpg" alt="">';
+                    break;
+                case 4:
+                    him.innerHTML += '<img src="../14.JS/dice4.jpg" alt="">';
+                    break;
+                case 5:
+                    him.innerHTML += '<img src="../14.JS/dice5.jpg" alt="">';
+                    break;
+                case 6:
+                    him.innerHTML += '<img src="../14.JS/dice6.jpg" alt="">';
+                    break;  
+
+                default:
+                    break;
+            }
+        }
+        function mran(x) {
+            switch (x) {
+                case 1:
+                    me.innerHTML += '<img src="../14.JS/dice1.jpg" alt="">';
+                    break;
+                case 2:
+                    me.innerHTML += '<img src="../14.JS/dice2.jpg" alt="">';
+                    break;
+                case 3:
+                    me.innerHTML += '<img src="../14.JS/dice3.jpg" alt="">';
+                    break;
+                case 4:
+                    me.innerHTML += '<img src="../14.JS/dice4.jpg" alt="">';
+                    break;
+                case 5:
+                    me.innerHTML += '<img src="../14.JS/dice5.jpg" alt="">';
+                    break;
+                case 6:
+                    me.innerHTML += '<img src="../14.JS/dice6.jpg" alt="">';
+                    break;  
+
+                default:
+                    break;
+            }
+        }
+    </script>
 </body>
 </html>
