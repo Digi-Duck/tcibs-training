@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function delay(n){
+            return new Promise(function(resolve){
+                setTimeout(resolve,n*1000);
+            });
+        }
+        async function t(){
+        var str="他想幹爆你的屁眼"; 
+        var mydiv=document.querySelector(".troduce2");
+        mydiv.innerHTML+=str.charAt(e);
+        e++;
+        var id=setTimeout(t,80);
+        if(e==str.length){
+            clearTimeout(id);
+            await delay(2);
+            mydiv.innerHTML = "";
+
+            j();
+            }
+        }
+    </script>
+</body>
+</html>
