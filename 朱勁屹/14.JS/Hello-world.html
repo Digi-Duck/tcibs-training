@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            width: 1900px;
+            /* height: 1000px; */
+            font-size: 50px;
+            height: 1000px;
+        }
+        .box{
+            margin: 10px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    
+    <script>
+        let body = document.querySelector('body');
+
+        function delay(n){
+            return new Promise(function(resolve){
+                setTimeout(resolve,n*1);
+            });
+        }
+        body.addEventListener('click',function(){
+            t();
+            console.log(1);
+        })
+        async function t() {
+            for (let i = 0; i < 1000000000000; i++) {
+                body.innerHTML += '<div class="box">Hello World</div>';
+                await delay();
+            }
+        }
+    </script>
+</body>
+</html>
