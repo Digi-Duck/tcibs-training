@@ -4,9 +4,13 @@
     padding: 12px;
     display: flex;
     justify-content: end;
+    /* position: fixed; */
 }
 .to_top_bottom{
     width: 109px;
     height: 34px;
-    background-color: red;
+    background-color: rgba(0,0,0,.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

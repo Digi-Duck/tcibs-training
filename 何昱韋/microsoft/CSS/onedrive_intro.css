@@ -4,9 +4,33 @@
     margin:72px 56.3px 48px 56.3px;
     padding: 0 95.1px;
 }
-.onedrive_demo_card{
-    width: 41.65%;
+.onedrive_intro_container{
+    width: 100%;
     height: 100%;
-    float: left;
+    background-image: url('https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/gldn-Soft-Hero-OneDriveCampaignRefresh-2:VP5-1596x600');
+    display: flex;
+    align-items: center;
+}
+.onedrive_intro_text_box{
     padding: 48px;
+    margin: 0 48px;
+    width: 33.3333%;
+    height: 45.333333%;
+}
+.onedrive_intro_text_1{
+    font-size: 37px;
+    font-family: inherit;
+    margin-bottom: 20px;
+}
+.onedrive_intro_text_2{
+    font-size: 17px;
+    word-break: keep-all;
+    margin-bottom: 24px;
+}
+.onedrive_intro_text_3{
+    padding: 10px 12px;
+    background-color: #0067b8;
+    font-size: 16px;
+    display: inline-block;
+    color: #fff;
 }
