@@ -18,7 +18,7 @@
 
         }
         .me,.him{
-            border: 1px solid black;
+            /* border: 1px solid black; */
             width: 500px;
             height: 500px;
             display: flex;
@@ -26,7 +26,8 @@
             flex-wrap: wrap;
         }
         .box{
-            margin-top: 100px;
+            margin-top: 30px;
+            margin-bottom: 30px;
             display: flex;
             width: 100%;
             /* height: 500px; */
@@ -34,7 +35,7 @@
         }
         button{
             width: 100px;
-            height: 100px;
+            height: 50px;
             font-size: 30px;
         }
         img{
@@ -44,7 +45,29 @@
             width: 10%;
             height: 10%;
             border: 1px solid black;
-            margin: 0px 50px;
+            margin: 0px 30px;
+        }
+        .anser{
+            font-size: 50px;
+            width: 10%;
+            height: 10%;
+            border: 1px solid black;
+            margin: 0px 30px;
+            text-align: center;
+            line-height: 50px;
+        }
+        .box2{
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .num1,.num2{
+            width: 100px;
+            height: 100px;
+            border: 1px black solid;
+            font-size: 100px;
+            text-align: center;
         }
     </style>
 </head>
@@ -62,18 +85,31 @@
         </div>
         <!-- <img src="../14.JS/dice1.jpg" alt=""> -->
     </div>
+    <div class="box2">
+        <div class="num1"></div>
+        <div class="num2"></div>
+    </div>
     <div class="box">
         <button>賭吧!</button>
-
+        
     </div>
-
+    
     <script>
+        
         let button = document.querySelector('button');
         let me = document.querySelector('.me');
         let him = document.querySelector('.him');
-
-        button.addEventListener('click',function(){
+        let num1 = document.querySelector('.num1');
+        let num2 = document.querySelector('.num2');
+        let hisgra = 0;
+        let mygra = 0;
+        num1.innerHTML = hisgra;
+        num2.innerHTML = mygra;
+        button.addEventListener('click',async function(){
+            hisgra = 0;
+            mygra = 0;
             him.innerHTML = '';
+            let hisAnser = [];
             for (let i = 0; i < 9; i++) {
                 let a = Math.floor(Math.random()*6 + 1);
                 let b = Math.floor(Math.random()*6 + 1);
@@ -86,9 +122,15 @@
                 hran(a);
                 hran(b);
                 hran(c);
+                let num = a + b + c;
                 
-            }
+                hisAnser.push(num);
+                console.log(hisAnser);
+                him.innerHTML += '<div class="anser">'+num+'</div>';
+                
+            };
             me.innerHTML = '';
+            let myAnser = [];
             for (let i = 0; i < 9; i++) {
                 let a = Math.floor(Math.random()*6 + 1);
                 let b = Math.floor(Math.random()*6 + 1);
@@ -101,8 +143,31 @@
                 mran(a);
                 mran(b);
                 mran(c);
-                
-            }
+                let num = a + b + c;
+               
+                myAnser.push(num);
+                console.log(myAnser);
+
+                me.innerHTML += '<div class="anser">'+num+'</div>';
+            };
+            let h = 0;
+            
+            hisAnser.forEach(element => {
+                console.log(element);
+                if(element > myAnser[h]){
+                    hisgra++;
+                }else if(element = myAnser[h]){
+                    console.log('超大香蕉');
+                }else if(element < myAnser[h]){
+                    mygra++;
+                    console.log(2222222);
+                }
+                num1.innerHTML = hisgra;
+                num2.innerHTML = mygra;
+                delay(10);
+            });
+            
+            
         })
         function hran(x) {
             switch (x) {
@@ -153,6 +218,11 @@
                 default:
                     break;
             }
+        }
+        function delay(n){
+            return new Promise(function(resolve){
+                setTimeout(resolve,n*1000);
+            });
         }
     </script>
 </body>
