@@ -32,6 +32,19 @@
             height: 30px;
             font-size: 30px;
         }
+        .flex{
+            display: flex;
+            justify-content: space-around;
+        }
+        .BMI{
+            width: 373px;
+            height: 40px;
+            margin: auto 0;
+            border: 1px solid black;
+
+            font-size: 30px;
+            text-align: center;
+        }
         .button{
             display: flex;
             justify-content: space-around;
@@ -52,31 +65,63 @@
     <div class="all">
         <div class="all-2">
             <h1 class="BMI-count">BMI計算機</h1>
-            <div class="high">
+            <div>
                 <p>
                     你的身高:
-                    <input type="text" placeholder="請輸入身高:">
+                    <input class="high" type="text" placeholder="請輸入身高:">
                     cm
                 </p> 
             </div>
-            <div class="kg">
+            <div>
                 <p>
                     你的體重:
-                    <input type="text" placeholder="請輸入體重:">
+                    <input class="kg" class="high" type="text" placeholder="請輸入體重:">
                     kg
                 </p>
             </div>
-            <div class="BMI">
-                <p>
-                    你的BMI:
-                    <input type="text">
-                </p>
+            <div class="flex">
+                <p>BMI為:</p>
+                <div class="BMI"></div>
             </div>
             <div class="button">
                 <button class="count">開始計算</button>
-                <button class="reset">重新計算</button>
+                <button type="reset" class="reset">重新計算</button>
             </div>
         </div>
     </div>
+    <script>
+        const btn =document.querySelector('.count');
+        const text =document.querySelector('.BMI');
+        const reset =document.querySelector('.reset');
+
+        btn.addEventListener('click',function(){
+            let he =document.querySelector('.high').value;
+            let we =document.querySelector('.kg').value;
+            let high = he/100;
+
+            const BMI = (we/(high*high)).toFixed(2);
+            if (!isNaN(he) && !isNaN(we)){
+                    if(BMI < 18.5){
+                        text.innerHTML = BMI + '過輕';
+                    }else if(BMI < 24){
+                        text.innerHTML = BMI + '正常';
+                    }else if(BMI < 27){
+                        text.innerHTML = BMI + '過重';
+                    }else if(BMI < 30){
+                        text.innerHTML = BMI + '輕度肥胖';
+                    }else if(BMI < 35){
+                        text.innerHTML = BMI + '中度肥胖';
+                    }else if(BMI >= 35){
+                        text.innerHTML = BMI + '重度肥胖';
+                    }
+                }else{
+                    text.innerHTML = '是不是打錯了';
+                }
+                console.log(btn);
+        })
+        reset.addEventListener('click',function(){
+            text.innerHTML = '';
+        })
+    </script>
 </body>
 </html>
