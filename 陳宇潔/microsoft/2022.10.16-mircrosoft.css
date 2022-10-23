@@ -81,27 +81,31 @@ body{
 .content{
     position: relative;
 }
-/* .tittle{
-    align-content: space-around;
-} */
+.tittle{
+    display: flex;
+    align-items: center;
+}
 .title_box{
-    width: calc(50% - 48px);
-    height: 190px;
+    width: 100%;
+    height: ; 
+    
+    background-color: rgb(190, 32, 32);
+
+    margin-left: 100%;
+
+    /* display: flex;
+    align-self: center; */
+}
+/* .title_box_right{
+    width: calc(100% / 3 + 96px);
+    height: calc(100% / 3 + 96px);
     background-color: black;
 
-    margin: 48px;
-
-    
-
-    position: absolute;
-
-}
-/* .computer_pic{
-    padding: 3px 3px 64px 3px;
+    padding: 48px;
+     margin-right: -5%;
+    margin-bottom: - calc(100% / 3); 
 } */
-#computer{
 
-}
 .list{
     height: 106px;
     justify-content: center;
