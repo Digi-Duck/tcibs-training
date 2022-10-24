@@ -41,7 +41,6 @@ nav{
 .user_action{
     width: 24.8%;
     height: 100%;
-    background-color: green;
 }
 .nav_list_B{
     width: 100%;
@@ -49,5 +48,46 @@ nav{
     display: flex;
 }
 .nav_list_B_box{
-    
+    font-size: 13px;
+    font-family: "Segoe UI",SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.mircosoft_menu{
+    padding: 16px 24px 16px 15px;
+    display: flex;
+}
+.mircosoft_menu_icon{
+    width: 12px;
+    height: 18px;
+}
+.search_box{
+    width: 90px;
+    padding: 15px 9px;
+    display: flex;
+}
+.search_box_text{
+    margin-right: 4px;
+}
+.fa-magnifting-glass{
+    width: 12px;
+    height: 18px;
+}
+.shopcar{
+    padding: 2px 0 8px 0;
+    margin:1px 4px 0 18px;
+    display: flex;
+    align-items: center;
+}
+.user_information{
+    margin-left: 1px;
+    display: flex;
+    align-items: center;
+}
+.user_login{
+    padding: 0 4px 0 12px;
+}
+.user_headimg{
+    margin: 8px;
+}
+.fa-circle-user{
+    width: 32px;height: 32px;
 }
