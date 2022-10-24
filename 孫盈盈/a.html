@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="show">
+        <label >你好,</label>
+        <label id="hello"></label>
+        <input type="text" id="hellotext"> 
+        <button onclick="changestring()">變更文字</button>
+        <button onclick="cleanstring()">清空文字</button>
+        <button onclick="Re()">重新</button>
+    </div>
+    <script>
+         function Re(){
+            document.getElementById("show").style.display="none"; //影藏div
+            document.getElementById("calchidden").style.display="";//顯示div
+            document.getElementById("count").innerHTML = ""; //清空數字
+            document.getElementById("icon").innerHTML = "";//清空*
+
+        }
+    </script>
+</body>
+</html>

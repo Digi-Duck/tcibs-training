@@ -34,12 +34,13 @@
         }
         .flex{
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
         }
         .BMI{
             width: 373px;
             height: 40px;
             margin: auto 0;
+            margin-left: 10px;
             border: 1px solid black;
 
             font-size: 30px;
@@ -65,28 +66,28 @@
     <div class="all">
         <div class="all-2">
             <h1 class="BMI-count">BMI計算機</h1>
-            <div>
-                <p>
-                    你的身高:
-                    <input class="high" type="text" placeholder="請輸入身高:">
-                    cm
-                </p> 
-            </div>
-            <div>
-                <p>
-                    你的體重:
-                    <input class="kg" class="high" type="text" placeholder="請輸入體重:">
-                    kg
-                </p>
-            </div>
-            <div class="flex">
-                <p>BMI為:</p>
-                <div class="BMI"></div>
-            </div>
-            <div class="button">
-                <button class="count">開始計算</button>
-                <button type="reset" class="reset">重新計算</button>
-            </div>
+            <form>
+                <label>
+                    <p>
+                        你的身高:
+                        <input class="high" type="text" placeholder="請輸入身高:">
+                        cm
+                    </p> 
+                    <p>
+                        你的體重:
+                        <input class="kg" class="high" type="text" placeholder="請輸入體重:">
+                        kg
+                    </p>
+                    <div class="flex">
+                        <p>BMI為:</p>
+                        <div class="BMI"></div>
+                    </div>
+                    <div class="button">
+                        <button type="button" class="count">開始計算</button>
+                        <button type="reset" class="reset">重新計算</button>
+                    </div>
+                </label>
+            </form>
         </div>
     </div>
     <script>
