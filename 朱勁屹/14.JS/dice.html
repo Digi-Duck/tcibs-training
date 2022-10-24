@@ -79,11 +79,36 @@
             text-align: center;
 
         }
+        .money{
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .hisMon,.myMon{
+            width: 500px;
+            height: 100px;
+            /* border: 1px solid black; */
+            font-size: 100px;
+            text-align: center;
+        }
+        input,.howMuch{
+            display: block;
+            margin: auto;
+            width: 200px;
+            height: 50px;
+            font-size: 50px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
-    <div class="bar">
+    <!-- <div class="bar">
         擲骰子遊戲
+    </div> -->
+    <div class="money">
+        
+        
     </div>
     <div class="box">
         <div class="him">
@@ -91,10 +116,11 @@
         </div>
         <div class="win"></div>
         <div class="me">
-    
         </div>
         <!-- <img src="../14.JS/dice1.jpg" alt=""> -->
     </div>
+    <div class="howMuch">下注多少</div>
+    <input type="text" id="input">
     <div class="box2">
         <div class="num1"></div>
         
@@ -115,10 +141,19 @@
         let hisgra = 0;
         let mygra = 0;
         let win = document.querySelector('.win');
+        let money = document.querySelector('.money'); 
+        let input = document.getElementById('input');
+        let moy = input.value;
+        console.log(moy);
         num1.innerHTML = hisgra;
         num2.innerHTML = mygra;
+        let myMoney = '1000';
+        let hisMoney = '1000';
+        money.innerHTML += '<div class="hisMon">'+hisMoney+'</div>';
+        money.innerHTML += '<div class="myMon">'+myMoney+'</div>';
 
         button.addEventListener('click',async function(){
+            win.innerHTML = '';
             hisgra = 0;
             mygra = 0;
             him.innerHTML = '';
