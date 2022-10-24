@@ -24,69 +24,214 @@
 
         .content{
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             margin-top: 50px;
         }
         .container{
+            display: flex;
+
+        }
+        .dice_box{
             width: 500px;
             display: flex;
             flex-wrap: wrap;
-            margin: 0px auto;
+            justify-content: center;
         }
         .dice{
             width: 50px;
-            margin: 10px 100px;
+            height: 50px;
+            margin: 10px 50px;
+        }
+        .num_box{
+            width: 50px;
+            display: flex;
+            flex-direction: column;
+        }
+        .num{
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            margin: 10px 0px;
+            font-size: 30px;
+        }
+        .win{
+            position: absolute;
+            left: calc(50% - 69px);
+            top: 150px;
+            border: 4px solid rgb(15, 15, 48);
+            border-radius: 20px;
+            font-size: 20px;
+            text-align: center;
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            padding: 10px 15px;
+        }
+        .box{
+            position: absolute;
+            left: calc(50% - 119px);
+            top: 250px;
+            border: 4px solid rgb(15, 15, 48);
+            border-radius: 20px;
+            font-size: 20px;
+            text-align: center;
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            padding: 10px 15px;
         }
         .strat{
             width: 60px;
             position: absolute;
             left: calc(50% - 30px);
+            bottom: 100px;
         }
     </style>
 </head>
 <body>
     <div class="title">骰子比大小</div>
+    <div class="win"></div>
+    <div class="box"></div>
     <div class="content">
-        <div class="mycontainer">
+        <div class="mycontainer container">
+            <div class="mydice_box dice_box">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">                
+            </div>
+            <div class="mynum_box num_box"></div>
         </div>
-        <div class="hecontainer">
+        
+        <div class="hecontainer container">
+            <div class="henum_box num_box"></div>
+            <div class="hedice_box dice_box">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">
+                <img class="dice" src="./dice_img/骰子1.png" alt="">                
+            </div>
         </div>
     </div>
     <button class="strat">開始</button>
 
     <script>
-        const mycontainer = document.querySelector('.mycontainer');
-        const hecontainer = document.querySelector('.hecontainer');
-        const strat = document.querySelector('.strat')
-        let mynum = [];
-        let henum = [];
-        let dice = document.querySelector('.dice')
+        const mydice_box = document.querySelector('.mydice_box');
+        const hedice_box = document.querySelector('.hedice_box');
+        const mynum_box = document.querySelector('.mynum_box');
+        const henum_box = document.querySelector('.henum_box');
+        const strat = document.querySelector('.strat');
+        let num = document.querySelector('.num');
+        let dice = document.querySelector('.dice');
+        let winbox = document.querySelector('.win');
+        let box = document.querySelector('.box');
+        let win = 0;
+
         strat.addEventListener("click", function(){ 
+            let mynum = [];
+            let henum = [];
+            win = 0;
+            mydice_box.innerHTML = ' ';
+            hedice_box.innerHTML = ' ';
+            mynum_box.innerHTML = ' ';
+            henum_box.innerHTML = ' ';
             for (let i = 0; i < 10; i++) {
-                
-                a = Math.floor(Math.random()*6) + 1;
-                b = Math.floor(Math.random()*6) + 1;
-                c = Math.floor(Math.random()*6) + 1;
-                d = a + b + c
-                diceShow(a,mycontainer);
-                diceShow(b,mycontainer);
-                diceShow(c,mycontainer);
+                let a = Math.floor(Math.random()*6) + 1;
+                let b = Math.floor(Math.random()*6) + 1;
+                let c = Math.floor(Math.random()*6) + 1;
+                let d = a + b + c
+                diceShow(a,mydice_box);
+                diceShow(b,mydice_box);
+                diceShow(c,mydice_box);
+                mynum_box.innerHTML += '<div class="num">'+d+'</div>';
                 mynum.push(d);
-                console.log(mynum);
+                // console.log(mynum);
             }        
             for (let i = 0; i < 10; i++) {
-                
-                a = Math.floor(Math.random()*6) + 1;
-                b = Math.floor(Math.random()*6) + 1;
-                c = Math.floor(Math.random()*6) + 1;
-                d = a + b + c
-                diceShow(a,hecontainer);
-                diceShow(b,hecontainer);
-                diceShow(c,hecontainer);
+                let a = Math.floor(Math.random()*6) + 1;
+                let b = Math.floor(Math.random()*6) + 1;
+                let c = Math.floor(Math.random()*6) + 1;
+                let d = a + b + c
+                diceShow(a,hedice_box);
+                diceShow(b,hedice_box);
+                diceShow(c,hedice_box);
+                henum_box.innerHTML += '<div class="num">'+d+'</div>';
+
                 henum.push(d);
-                console.log(henum);
-            }          
-        })
+                // console.log(henum);
+            }        
+            compare(mynum,henum);
+            winbox.innerHTML = win;
+            if(win > 5){
+                box.innerHTML='贏'
+            }else if(win == 5){
+                box.innerHTML='平'
+            }else{
+                box.innerHTML='輸'
+            }
+        });
+
+        function compare(x,y) {
+            for (let i = 0; i < 10; i++) {
+                if(x[i] > y[i]){
+                    win = win + 1;
+                    console.log(win);
+                }
+            } 
+        }
         
         function diceShow(x,y) {
             switch (x) {
@@ -111,7 +256,7 @@
                 default:
                     break;
             }
-        }
+        };
 
     </script>
 </body>
