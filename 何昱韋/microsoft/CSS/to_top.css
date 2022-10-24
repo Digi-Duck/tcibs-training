@@ -4,7 +4,8 @@
     padding: 12px;
     display: flex;
     justify-content: end;
-    /* position: fixed; */
+    position: sticky;
+    bottom: 20px;
 }
 .to_top_bottom{
     width: 109px;
