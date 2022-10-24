@@ -21,9 +21,9 @@
             /* border: 1px solid black; */
             width: 500px;
             height: 500px;
-            display: flex;
+            /* display: flex;
             justify-content: space-between;
-            flex-wrap: wrap;
+            flex-wrap: wrap; */
         }
         .box{
             margin-top: 30px;
@@ -46,6 +46,7 @@
             height: 10%;
             border: 1px solid black;
             margin: 0px 30px;
+            float: left;
         }
         .anser{
             font-size: 50px;
@@ -55,6 +56,7 @@
             margin: 0px 30px;
             text-align: center;
             line-height: 50px;
+            float: left;
         }
         .box2{
             width: 100%;
@@ -69,6 +71,14 @@
             font-size: 100px;
             text-align: center;
         }
+        .win{
+            width: 400px;
+            height: 200px;
+            /* border: 1px solid black; */
+            font-size: 70px;
+            text-align: center;
+
+        }
     </style>
 </head>
 <body>
@@ -77,9 +87,9 @@
     </div>
     <div class="box">
         <div class="him">
-    
+        
         </div>
-    
+        <div class="win"></div>
         <div class="me">
     
         </div>
@@ -87,13 +97,14 @@
     </div>
     <div class="box2">
         <div class="num1"></div>
+        
         <div class="num2"></div>
     </div>
     <div class="box">
         <button>賭吧!</button>
         
     </div>
-    
+
     <script>
         
         let button = document.querySelector('button');
@@ -103,69 +114,78 @@
         let num2 = document.querySelector('.num2');
         let hisgra = 0;
         let mygra = 0;
+        let win = document.querySelector('.win');
         num1.innerHTML = hisgra;
         num2.innerHTML = mygra;
+
         button.addEventListener('click',async function(){
             hisgra = 0;
             mygra = 0;
             him.innerHTML = '';
             let hisAnser = [];
-            for (let i = 0; i < 9; i++) {
-                let a = Math.floor(Math.random()*6 + 1);
-                let b = Math.floor(Math.random()*6 + 1);
-                let c = Math.floor(Math.random()*6 + 1);
-
-                console.log(a);
-                console.log(b);
-                console.log(c);
-
-                hran(a);
-                hran(b);
-                hran(c);
-                let num = a + b + c;
+            // for (let i = 0; i < 9; i++) {
                 
-                hisAnser.push(num);
-                console.log(hisAnser);
-                him.innerHTML += '<div class="anser">'+num+'</div>';
+
                 
-            };
+
+                
+                
+                
+                
+                
+            //     await delay(1);
+            // };
             me.innerHTML = '';
             let myAnser = [];
             for (let i = 0; i < 9; i++) {
                 let a = Math.floor(Math.random()*6 + 1);
                 let b = Math.floor(Math.random()*6 + 1);
                 let c = Math.floor(Math.random()*6 + 1);
+                let d = Math.floor(Math.random()*6 + 1);
+                let e = Math.floor(Math.random()*6 + 1);
+                let f = Math.floor(Math.random()*6 + 1);
 
                 console.log(a);
                 console.log(b);
                 console.log(c);
+                console.log(d);
+                console.log(e);
+                console.log(f);
 
                 mran(a);
                 mran(b);
                 mran(c);
+                hran(d);
+                hran(e);
+                hran(f);
                 let num = a + b + c;
+                let num20 = d + e + f;
                
                 myAnser.push(num);
+                hisAnser.push(num20);
                 console.log(myAnser);
-
+                console.log(hisAnser);
+                him.innerHTML += '<div class="anser">'+num20+'</div>';
                 me.innerHTML += '<div class="anser">'+num+'</div>';
-            };
-            let h = 0;
-            
-            hisAnser.forEach(element => {
-                console.log(element);
-                if(element > myAnser[h]){
+                if(num20 > num){
                     hisgra++;
-                }else if(element = myAnser[h]){
-                    console.log('超大香蕉');
-                }else if(element < myAnser[h]){
+                }else if(num20 < num){
                     mygra++;
-                    console.log(2222222);
+                    // console.log(2222222);
                 }
                 num1.innerHTML = hisgra;
                 num2.innerHTML = mygra;
-                delay(10);
-            });
+                await delay(1);
+            };
+            if(hisgra > mygra){
+                    win.innerHTML = '你輸了<br>臭鮑魚';
+                }else if(mygra > hisgra){
+                    win.innerHTML = '你贏了<br>臭鮑魚';
+                }else{
+                    win.innerHTML = '平手了<br>臭鮑魚';
+                }
+            
+            
             
             
         })
@@ -221,7 +241,7 @@
         }
         function delay(n){
             return new Promise(function(resolve){
-                setTimeout(resolve,n*1000);
+                setTimeout(resolve,n*500);
             });
         }
     </script>
