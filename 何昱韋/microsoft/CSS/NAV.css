@@ -67,10 +67,6 @@ nav{
 .search_box_text{
     margin-right: 4px;
 }
-.fa-magnifting-glass{
-    width: 12px;
-    height: 18px;
-}
 .shopcar{
     padding: 2px 0 8px 0;
     margin:1px 4px 0 18px;
@@ -87,7 +83,10 @@ nav{
 }
 .user_headimg{
     margin: 8px;
-}
-.fa-circle-user{
-    width: 32px;height: 32px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    text-align: center;
+    border: 1px solid black;
+    font-size: 20px;
 }
