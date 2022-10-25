@@ -26,7 +26,7 @@
             flex-wrap: wrap; */
         }
         .box{
-            margin-top: 30px;
+            margin-top: 0px;
             margin-bottom: 30px;
             display: flex;
             width: 100%;
@@ -79,14 +79,22 @@
             text-align: center;
 
         }
-        .money{
+        .money1{
+            width: 200px;
+            height: 100px;
+        }
+        .money2{
+            width: 200px;
+            height: 100px;
+        }
+        .moneyBox{
             width: 100%;
             height: 100px;
             display: flex;
             justify-content: space-between;
         }
         .hisMon,.myMon{
-            width: 500px;
+            /* width: 500px; */
             height: 100px;
             /* border: 1px solid black; */
             font-size: 100px;
@@ -100,15 +108,20 @@
             font-size: 50px;
             margin-top: 10px;
         }
+        .assBox{
+            width: 100%;
+            height: 200px;
+
+        }
     </style>
 </head>
 <body>
     <!-- <div class="bar">
         擲骰子遊戲
     </div> -->
-    <div class="money">
-        
-        
+    <div class="moneyBox">
+        <div class="money1"></div>
+        <div class="money2"></div>
     </div>
     <div class="box">
         <div class="him">
@@ -126,11 +139,15 @@
         
         <div class="num2"></div>
     </div>
+    <div class="assBox">
+        <div class="hisAss"></div>
+        <div class="myAss"></div>
+    </div>
     <div class="box">
         <button>賭吧!</button>
         
     </div>
-
+    
     <script>
         
         let button = document.querySelector('button');
@@ -141,16 +158,17 @@
         let hisgra = 0;
         let mygra = 0;
         let win = document.querySelector('.win');
-        let money = document.querySelector('.money'); 
+        let money1 = document.querySelector('.money1'); 
+        let money2 = document.querySelector('.money2'); 
         let input = document.getElementById('input');
         let moy = input.value;
         console.log(moy);
         num1.innerHTML = hisgra;
         num2.innerHTML = mygra;
-        let myMoney = '1000';
-        let hisMoney = '1000';
-        money.innerHTML += '<div class="hisMon">'+hisMoney+'</div>';
-        money.innerHTML += '<div class="myMon">'+myMoney+'</div>';
+        let myMoney = 1000;
+        let hisMoney =1000;
+        money1.innerHTML = '<div class="hisMon">'+hisMoney+'</div>';
+        money2.innerHTML = '<div class="myMon">'+myMoney+'</div>';
 
         button.addEventListener('click',async function(){
             win.innerHTML = '';
@@ -159,8 +177,13 @@
             him.innerHTML = '';
             let hisAnser = [];
             // for (let i = 0; i < 9; i++) {
+                let input = document.getElementById('input');
+                let moy = input.value;
                 
-
+                if(!moy){
+                    moy = 100;
+                }
+                console.log(moy);
                 
 
                 
@@ -212,17 +235,26 @@
                 num2.innerHTML = mygra;
                 await delay(1);
             };
+
             if(hisgra > mygra){
                     win.innerHTML = '你輸了<br>臭鮑魚';
+                    myMoney = myMoney - moy;
+                    moy = moy/2;
+                    hisMoney = hisMoney + moy;
+                    money1.innerHTML = '<div class="hisMon">'+hisMoney+'</div>';
+                    money2.innerHTML = '<div class="myMon">'+myMoney+'</div>';
                 }else if(mygra > hisgra){
                     win.innerHTML = '你贏了<br>臭鮑魚';
+                    hisMoney = hisMoney - moy;
+                    moy = moy/2;
+                    myMoney = myMoney + moy;
+                    
+                    money1.innerHTML = '<div class="hisMon">'+hisMoney+'</div>';
+                    money2.innerHTML = '<div class="myMon">'+myMoney+'</div>';
                 }else{
                     win.innerHTML = '平手了<br>臭鮑魚';
                 }
-            
-            
-            
-            
+
         })
         function hran(x) {
             switch (x) {
