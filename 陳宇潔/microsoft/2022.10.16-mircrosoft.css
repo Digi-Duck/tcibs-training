@@ -4,6 +4,11 @@
 body{
     padding: 0px 0px;
     margin: 0px 0px;
+
+    font-family: "Segoe UI",SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
 }
 .header{
     width: 100%;
@@ -81,30 +86,103 @@ body{
 .content{
     position: relative;
 }
-.tittle{
+picture{
+    width: 100%;
+}
+picture img{
+    width: 100%;
+}
+.computer_pic{
+    width: 100%;
+
+    position: relative;
+    /* display: flex;
+    align-items: center; */
+} 
+.title_box_right{
+    /* background-color: rgb(128, 37, 37); */
+    padding: 48px;
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 250px;
+}
+.new{
+    background-color: #FFB900;
+
+    padding: 6px 12px;
+    margin-bottom: 8px;
+
+    display: inline-block;
+    
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    /* vertical-align: top; */
+    /* max-width: 100%; */
+    /* overflow-wrap: break-word; */
+
+ } 
+.surface_pro_9{
+    margin-bottom: 20px;
+
+    font-size: 2.3125rem;
+    font-family: inherit;
+    font-weight: 600;
+    line-height: 1.2;
+}
+.introduce{
+    margin-bottom: 24px;
+}
+.understand{
+    width: 92px;
+    height: 40px;
+
+    background-color: #1e68b7;
+
+    margin: 8px 0px;
+    padding: 10px 12px;
+
     display: flex;
     align-items: center;
-}
-.title_box{
-    width: 100%;
-    height: ; 
+
+    color: rgb(255, 255, 255);
+
+    font-weight: 600;
+    border: 2px solid transparent;
     
-    background-color: rgb(190, 32, 32);
+    border-radius: 0.125rem;
 
-    margin-left: 100%;
+} 
+.slide{
+    width: 200px;
 
-    /* display: flex;
-    align-self: center; */
+    margin: auto;
+    margin-bottom: 58px;
+    display: flex;
+    justify-content: space-around;
 }
-/* .title_box_right{
-    width: calc(100% / 3 + 96px);
-    height: calc(100% / 3 + 96px);
-    background-color: black;
-
-    padding: 48px;
-     margin-right: -5%;
-    margin-bottom: - calc(100% / 3); 
-} */
+.left_highlight{
+    font-size: 30px;
+}
+.circle_white{
+    font-size: 12px;
+    padding: 12px 0;
+}
+.circle_white{
+    font-size: 12px;
+    padding: 12px 0;
+}
+.circle_black{
+    font-size: 12px;
+    padding: 12px 0;
+    padding: 12px 0;
+}
+.right_highlight{
+    font-size: 30px;
+}
 
 .list{
     height: 106px;
