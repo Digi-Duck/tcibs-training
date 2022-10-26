@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="all">
+        <div class="you">
+            you:
+            <span class="you-2"></span>
+        </div>
+        <div class="me">
+            me:
+            <button class="knife">剪刀</button>
+            <button class="stone"> 石頭</button>
+            <button class="paper">布</button>
+        </div>
+        <div class="last"></div>
+    </div>
+    <script>
+        const knife =document.querySelector('.knife');
+        const stone =document.querySelector('.stone');
+        const paper =document.querySelector('.paper');
+        const you =document.querySelector('.you-2');
+        const last =document.querySelector('.last');
+
+        knife.addEventListener('click', function(){
+            let a = Math.floor(Math.random()*3); 
+            let b;
+            if( a == 0){
+                you.innerHTML = '剪刀';
+            }else if(a == 1){
+                you.innerHTML= '石頭';
+            }else{
+                you.innerHTML = '布';
+            }
+
+            const c = 0;
+            let d;
+            if(c == a){
+                last.innerHTML = '平手';
+            }else{
+                d = a - c*2;
+                if(d == 2){
+                    last.innerHTML = '贏';
+                }else{
+                    last.innerHTML = '輸';
+                }
+            }
+        })
+        stone.addEventListener('click', function(){
+            let a = Math.floor(Math.random()*3); 
+            let b;
+            if( a == 0){
+                you.innerHTML = '剪刀';
+            }else if(a == 1){
+                you.innerHTML= '石頭';
+            }else{
+                you.innerHTML = '布';
+            }
+
+            let c= 1;
+            let d;
+            if(c == a){
+                last.innerHTML = '平手';
+            }else{
+                d = a - c*2;
+                if(d == -2){
+                    last.innerHTML = '贏';
+                }else{
+                    last.innerHTML = '輸';
+                }
+            }
+        })
+        paper.addEventListener('click', function(){
+            let a = Math.floor(Math.random()*3); 
+            let b;
+            if( a == 0){
+                you.innerHTML = '剪刀';
+            }else if(a == 1){
+                you.innerHTML= '石頭';
+            }else{
+                you.innerHTML = '布';
+            }
+
+            let c = 2;
+            let d;
+            if(c == a){
+                last.innerHTML = '平手';
+            }else{
+                d = a - c*2;
+                if(d == -3){
+                    last.innerHTML = '贏';
+                }else{
+                    last.innerHTML = '輸';
+                }
+            }
+        })
+    </script>
+</body>
+</html>

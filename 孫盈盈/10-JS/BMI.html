@@ -13,13 +13,20 @@
         }
         .all{
             display: flex;
-            align-items: center;
+            flex-wrap: wrap;
+            /* align-items: center; */
             justify-content: center;
 
             width: 100%;
             height: 100%;
+
+            padding: 5% 31%;
+            box-sizing: border-box;
         }
         .all-2{
+            width: 100%;
+            height: 50%;
+
             background-image: url('./02-img/full.jpeg');
             background-size: cover;
             background-position: center;
@@ -27,6 +34,7 @@
 
             border-radius: 10px;
             border: 5px solid black;
+            box-sizing: border-box;
         }
         .BMI-count{
             font-size: 50px;
@@ -52,19 +60,25 @@
         .flex{
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
         }
         .BMI{
-            width: 373px;
-            height: 40px;
+            width: 100%;
+            height: 30%;
             margin: auto 0;
             margin-left: 10px;
             border: 1px solid black;
+            border-radius: 10px;
 
             font-size: 30px;
             text-align: center;
 
             background-color: black;
             color: white;
+        }
+        .BMI p{
+            width: 100%;
+            margin: 10px;
         }
         .button{
             display: flex;
@@ -96,6 +110,9 @@
             color: black;
             border: 1px solid white;
         }
+        .active{
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -114,10 +131,6 @@
                         <input class="kg" class="high" type="text" placeholder="請輸入體重:">
                         kg
                     </p>
-                    <div class="flex">
-                        <p>BMI為:</p>
-                        <div class="BMI"></div>
-                    </div>
                     <div class="button">
                         <button type="button" class="count">開始計算</button>
                         <button type="reset" class="reset">重新計算</button>
@@ -125,21 +138,25 @@
                 </label>
             </form>
         </div>
+        <div class="flex BMI active"></div>
     </div>
     <script>
         const btn =document.querySelector('.count');
         const text =document.querySelector('.BMI');
         const reset =document.querySelector('.reset');
 
-        for($i=0; $i>=5; $i++){
+        // for($i=0; $i>=5; $i++){
             
-        }
+        // }
         btn.addEventListener('click',function(){
             let he =document.querySelector('.high').value;
             let we =document.querySelector('.kg').value;
+
+            text.classList.remove('active');
+            
             if (!isNaN(he) && !isNaN(we)){
                 if(he < 0 || we < 0){
-                    text.innerHTML = '負的?';
+                    text.innerHTML = '<p>負的?</p>';
                 }else if(he == 0 | we == 0){
                     text.innerHTML = '一個點?';
                 }else if(he > 300 | he < 56 | we >= 727){
@@ -150,17 +167,29 @@
                     const BMI = (we/(high*high)).toFixed(2);    
 
                         if(BMI < 18.5){
-                            text.innerHTML = BMI + '過輕';
+                            text.innerHTML = `<p>BMI為:${BMI}</p>
+                                                <p>健康狀態:過輕</p>
+                                                <p>建議:</p>`;
                         }else if(BMI < 24){
-                            text.innerHTML = BMI + '正常';
+                            text.innerHTML = `<p>BMI為:${BMI}</p>
+                                                <p>健康狀態:正常</p>
+                                                <p>建議:</p>`;
                         }else if(BMI < 27){
-                            text.innerHTML = BMI + '過重';
+                            text.innerHTML = `<p>BMI為:${BMI}</p>
+                                                <p>健康狀態:過重</p>
+                                                <p>建議:</p>`;
                         }else if(BMI < 30){
-                            text.innerHTML = BMI + '輕度肥胖';
+                            text.innerHTML = `<p>BMI為:${BMI}</p>
+                                                <p>健康狀態:輕度肥胖</p>
+                                                <p>建議:</p>`;
                         }else if(BMI < 35){
-                            text.innerHTML = BMI + '中度肥胖';
+                            text.innerHTML = `<p>BMI為:${BMI}</p>
+                                                <p>健康狀態:中度肥胖</p>
+                                                <p>建議:</p>`;
                         }else if(BMI >= 35){
-                            text.innerHTML = BMI + '重度肥胖';
+                            text.innerHTML = `<p>BMI為:${BMI}</p>
+                                                <p>健康狀態:重度肥胖</p>
+                                                <p>建議:</p>`;
                         }
                     }
                 }     
@@ -170,6 +199,7 @@
         })
         reset.addEventListener('click',function(){
             text.innerHTML = '';
+            text.classList.add('active');
         })
     </script>
 </body>
