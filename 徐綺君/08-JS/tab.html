@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .tab_box{
+            display: flex;
+        }
+        .tab{
+            width: 150px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            background-color: rgb(54, 141, 199);
+            border: 4px solid rgb(30, 83, 119);
+            margin-left: 5px;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+        }
+
+        .cont_box{
+            width: 1000px;
+            height: 200px;
+            margin: 5px;
+            background-color: rgb(54, 141, 199);
+            border: 4px solid rgb(30, 83, 119);
+        }
+        .cont{
+            display: none;
+        }
+        .block{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab_box">
+        <a href="#tab1" class="tab" data-target="tab1">tab1</a>
+        <a href="#tab2" class="tab" data-target="tab2">tab2</a>
+        <a href="#tab3" class="tab" data-target="tab3">tab3</a>   
+    </div>
+
+    <div class="cont_box">
+        <div class="cont" data-cont="tab1">cont1</div>
+        <div class="cont" data-cont="tab2">cont2</div>
+        <div class="cont" data-cont="tab3">cont3</div>
+    </div>
+
+    </div>
+
+    <script>
+        let tab = document.querySelectorAll('.tab');
+        let cont = document.querySelectorAll('.cont');
+
+        tab.forEach(function (x) {
+            
+            x.addEventListener('click',function(){
+                let data_target = x.dataset.target;
+                console.log(data_target);
+                cont.forEach(function (y){
+                    let data_cont = y.dataset.cont;
+                    console.log(data_cont);
+                    if(data_cont === data_target){
+                        cont.classList.add('block');
+
+                    }else{
+                        cont.classList.remove('block');
+                    };
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
