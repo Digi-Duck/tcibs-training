@@ -1,9 +1,9 @@
 .banner{
     width: 100%;
     height: 594.6px;
-    background-image: url('https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-M1-Family-02-1:VP5-1920x600');
-    margin-bottom: 24px;
-    padding: 165px 0;
+}
+.banner_picture{
+    width: 100%;
 }
 .demo_container{
     width: calc(100% - 110px);
@@ -11,6 +11,7 @@
     margin: 0px 56px 0px 56px;
     padding: 0 95.1px;
 }
+
 .demo_card{
     width: 41.65%;
     height: 100%;
@@ -43,6 +44,8 @@
     padding: 10px 12px;
     margin: 8px 0;
 }
+
+
 .banner_action{
     width: 100%;
     height: 64px;
