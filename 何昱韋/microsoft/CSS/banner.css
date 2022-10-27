@@ -1,15 +1,21 @@
 .banner{
     width: 100%;
-    height: 594.6px;
+    height: 664px;
+    margin-bottom: 48px;
+    padding-bottom: 64px;
+    position: relative;
 }
 .banner_picture{
     width: 100%;
 }
+
 .demo_container{
     width: calc(100% - 110px);
     height: 284px;
     margin: 0px 56px 0px 56px;
     padding: 0 95.1px;
+    position: absolute;
+    top: calc(50% - 248px);
 }
 
 .demo_card{
@@ -49,7 +55,7 @@
 .banner_action{
     width: 100%;
     height: 64px;
-    margin-bottom: 48px;
+    margin-bottom: 0px;
 }
 .banner_action_region{
     width: 176px;
