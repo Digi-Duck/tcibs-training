@@ -99,7 +99,7 @@ picture img{
     /* display: flex;
     align-items: center; */
 } 
-.title_box_right{
+.title_box{
     /* background-color: rgb(128, 37, 37); */
     padding: 48px;
 
@@ -125,7 +125,7 @@ picture img{
     /* overflow-wrap: break-word; */
 
  } 
-.surface_pro_9{
+.big_title{
     margin-bottom: 20px;
 
     font-size: 2.3125rem;
@@ -186,7 +186,7 @@ picture img{
 
 .list{
     height: 136px;
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
 
     padding: 0 12px;
     margin-bottom: 48px;
@@ -202,21 +202,79 @@ picture img{
     flex-wrap: wrap;
 }
 li{
+    color: #1e68b7;
     list-style: none;
     font-weight: 600!important;
     align-items: center!important;
 }
+a{
+    color: #1e68b7;
+}
 .list_btn{
     margin: 16px 24px;
-    /* display: flex;
-    align-items: center; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+
 }
 .list_logo{
     width: 40px;
     height: 40px;
-
+    
     margin-bottom: 8px;
 
     /* display: flex;
     align-items: center; */
+}
+.product{
+    width: 100%;
+    /* background-color: rgb(80, 20, 143); */
+
+    padding: 0 5%;
+    margin: 48px 0;
+    /* margin: 0 7.5%; */
+
+    display: flex;
+}
+.product_box{
+    width: 25%;
+    
+    padding: 0 12px;
+}
+.product_img{
+    width: 100%;
+}
+.product_new{
+    padding-top: 16px;
+
+ } 
+.product_title{
+    margin-bottom: 16px;
+
+    font-size: 1.8125rem;
+    font-family: inherit;
+    font-weight: 600;
+    line-height: 1.2;
+}
+.sell{
+    color: #0067b8;
+}
+.funtion{
+    margin: 48px 0;
+}
+.funtion_img{
+    width: 100%;
+}
+.follow{
+    padding: 0 calc(5% + 12px);
+}
+.back{
+    height: 65px;
+}
+.backhome{
+    background-color: gray;
+    border: 2px;
+    padding: 10px 12px;
+
 }
