@@ -80,11 +80,11 @@
 
         }
         .money1{
-            width: 200px;
+            /* width: 200px; */
             height: 100px;
         }
         .money2{
-            width: 200px;
+            /* width: 200px; */
             height: 100px;
         }
         .moneyBox{
@@ -110,7 +110,7 @@
         }
         .assBox{
             width: 100%;
-            height: 200px;
+            /* height: 200px; */
 
         }
         .hisAss{
@@ -176,17 +176,15 @@
     <input type="text" id="input">
     <div class="box2">
         <div class="num1"></div>
-        
+        <button>賭吧!</button>
         <div class="num2"></div>
     </div>
     <div class="assBox">
         <div class="myAss"></div>
         <div class="heatAssMy"></div>
+        
     </div>
-    <div class="box">
-        <button>賭吧!</button>
-
-    </div>
+    
     
     <script>
         
@@ -226,18 +224,7 @@
                 console.log(1);
             }
         });
-        hisAss.addEventListener('click', function(){
-            hisMoney = hisMoney + 500;
-            money1.innerHTML = '<div class="hisMon">'+hisMoney+'</div>';
-            assKiler = Math.floor(Math.random()*2);
-            if(assKiler == 0){
-                hisAss.classList.remove('hisAss');
-                heatAssHis.classList.add('display-block');
-                console.log(0);
-            }else{
-                console.log(1);
-            }
-        });
+        
 
         button.addEventListener('click',async function(){
             win.innerHTML = '';
