@@ -113,6 +113,46 @@
             height: 200px;
 
         }
+        .hisAss{
+            background-image: url(../14.JS/ass.jpg);
+            width: 100px;
+            height: 100px;
+            background-size: cover;
+            background-position: center;
+            float: left;
+        }
+        .myAss{
+            background-image: url(../14.JS/ass.jpg);
+            height: 100px;
+            width: 100px;
+            background-size: cover;
+            background-position: center;
+            float: right;
+        }
+        .heatAssHis{
+            background-image: url(../14.JS/ass2.jpg);
+            width: 100px;
+            height: 100px;
+            background-size: cover;
+            background-position: center;
+            float: left;
+            display: none;
+        }
+        .heatAssMy{
+            background-image: url(../14.JS/ass2.jpg);
+            width: 100px;
+            height: 100px;
+            background-size: cover;
+            background-position: center;
+            float: right;
+            display: none;
+        }
+        .display-block{
+            display: block;
+        }
+        .display-none{
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -140,8 +180,8 @@
         <div class="num2"></div>
     </div>
     <div class="assBox">
-        <div class="hisAss"></div>
         <div class="myAss"></div>
+        <div class="heatAssMy"></div>
     </div>
     <div class="box">
         <button>賭吧!</button>
@@ -169,6 +209,35 @@
         let hisMoney =1000;
         money1.innerHTML = '<div class="hisMon">'+hisMoney+'</div>';
         money2.innerHTML = '<div class="myMon">'+myMoney+'</div>';
+        hisAss = document.querySelector('.hisAss');
+        myAss = document.querySelector('.myAss');
+        heatAssHis = document.querySelector('.heatAssHis');
+        heatAssMy = document.querySelector('.heatAssMy');
+
+        myAss.addEventListener('click', function(){
+            myMoney = myMoney + 500;
+            money2.innerHTML = '<div class="myMon">'+myMoney+'</div>';
+            assKiler = Math.floor(Math.random()*2);
+            if(assKiler == 0){
+                myAss.classList.remove('myAss');
+                heatAssMy.classList.add('display-block');
+                console.log(0);
+            }else{
+                console.log(1);
+            }
+        });
+        hisAss.addEventListener('click', function(){
+            hisMoney = hisMoney + 500;
+            money1.innerHTML = '<div class="hisMon">'+hisMoney+'</div>';
+            assKiler = Math.floor(Math.random()*2);
+            if(assKiler == 0){
+                hisAss.classList.remove('hisAss');
+                heatAssHis.classList.add('display-block');
+                console.log(0);
+            }else{
+                console.log(1);
+            }
+        });
 
         button.addEventListener('click',async function(){
             win.innerHTML = '';
