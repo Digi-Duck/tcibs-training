@@ -61,16 +61,18 @@
             x.addEventListener('click',function(){
                 let data_target = x.dataset.target;
                 console.log(data_target);
+                
                 cont.forEach(function (y){
                     let data_cont = y.dataset.cont;
                     console.log(data_cont);
                     if(data_cont === data_target){
-                        cont.classList.add('block');
-
-                    }else{
-                        cont.classList.remove('block');
+                        y.classList.toggle('block');
+                    }
+                    else{
+                        y.classList.remove('block');
                     };
                 });
+                
             });
         });
     </script>
