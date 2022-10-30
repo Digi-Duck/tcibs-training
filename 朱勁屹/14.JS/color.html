@@ -40,7 +40,7 @@
             margin: 10px 0px;
         }
         .button{
-
+            opacity: 0.1;
         }
     </style>
 </head>
@@ -48,17 +48,70 @@
     <div class="bar">色弱Game</div>
     <div class="box">
         <div class="box3">
-            <div class="box2"></div>
-            <div class="box2"></div>
-        </div>
-        <div class="box3">
-            <div class="box2"></div>
-            <div class="box2"></div>
+            <div class="box2 button"></div>
         </div>
     </div>
+    
     <script>
         // document.getElementById("myDIV").style.opacity = "0.5";
         
+        const button = document.querySelector('.button');
+        const box = document.querySelector('.box');
+        let x =2;
+        let y =2;
+        let a =[[],[]];
+        b = [];
+        
+        
+        // console.log(g);
+        
+        
+        function s() {
+            box.innerHTML = '';
+            let num1 = Math.floor(Math.random()*x) ;
+            let num2 = Math.floor(Math.random()*y) ;
+            
+
+            for(let i = 0;i < x;i++){
+                box.innerHTML += '<div class="box3"></div>';
+                a[i] = b;
+                // console.log(a);
+            }
+
+            const box3 = document.querySelectorAll('.box3');
+            
+
+            for(let j = 0;j < y;j++){
+                b[j] = j + 1;
+                // console.log(b);
+                
+                box3.forEach(function (x,index) {
+                    if(j == num1&index == num2){
+                        x.innerHTML += '<div class="box2 button"id="opacity"></div>';
+                        let c = y - 1;
+                        let o = c*0.1;
+                        document.getElementById("opacity").style.opacity = o;
+                        console.log(o);
+                        
+                    }else{
+                        x.innerHTML += '<div class="box2"></div>';
+                    }
+                })
+                
+            }
+            const ans = document.querySelector('.button');
+            // let button = document.querySelector('.button');
+            // n.classList.add('button');
+            console.log(ans);
+            x++;
+            y++;
+            ans.addEventListener('click',function() {
+                s();
+            })
+         
+        }
+
+        s()
     </script>
 </body>
 </html>
