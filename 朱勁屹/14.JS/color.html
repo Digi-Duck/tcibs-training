@@ -42,10 +42,22 @@
         .button{
             opacity: 0.1;
         }
+        .time{
+            width: 100%;
+            height: 60px;
+            font-size: 60px;
+            text-align: center;
+        }
+        .start{
+            margin: auto;
+            display: block;
+        }
     </style>
 </head>
 <body>
     <div class="bar">色弱Game</div>
+    <div class="timeBox"><button class="start">開始</button></div>
+    
     <div class="box">
         <div class="box3">
             <div class="box2 button"></div>
@@ -61,12 +73,15 @@
         let y =2;
         let a =[[],[]];
         b = [];
-        
+        let timeBox = document.querySelector('.timeBox');
+        let time = 60;
+        // timeBox.innerHTML = '<div class="time">'+time+'</div>';
         
         // console.log(g);
         
         
         function s() {
+            
             box.innerHTML = '';
             let num1 = Math.floor(Math.random()*x) ;
             let num2 = Math.floor(Math.random()*y) ;
@@ -88,6 +103,7 @@
                 box3.forEach(function (x,index) {
                     if(j == num1&index == num2){
                         x.innerHTML += '<div class="box2 button"id="opacity"></div>';
+                        
                         let c = y - 1;
                         let o = c*0.1;
                         document.getElementById("opacity").style.opacity = o;
@@ -107,11 +123,21 @@
             y++;
             ans.addEventListener('click',function() {
                 s();
+                
             })
          
         }
+        let start = document.querySelector('.start');
+        start.addEventListener('click',function () {
+            console.log(1);
+            s();
+            setInterval(function(){
+                time = time - 1;
+                timeBox.innerHTML = '<div class="time">'+time+'</div>';
+            },1000);
 
-        s()
+            
+        })
     </script>
 </body>
 </html>
