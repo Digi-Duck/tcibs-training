@@ -34,8 +34,9 @@
             height: 100%;
             margin: 0px 2.5px;
             border-radius: 10px;
-            background-color: aqua;
+            background-color: #00ffff;
         }
+
     </style>
 </head>
 <body>
@@ -43,7 +44,7 @@
     <div class="wrapper">
         <div class="content">
             <div class="box_column">
-                <div class="box_row"></div>
+                <div class="box_row" ></div>
                 <div class="box_row"></div>
             </div>
             <div class="box_column">
@@ -52,15 +53,37 @@
             </div>
         </div>
     </div>
-    <button>____</button>
 
     <script>
-        let button = document.querySelector('button');
         let content = document.querySelector('.content');
+        let box = document.querySelectorAll('.box_row');
+        let click_num = 2;
+        let a = [[],[]];
+        
 
-        button.addEventListener('click', function(){
+        content.addEventListener("click", function(){
+            content.innerHTML = ' ';
+            click_num ++;
 
-        })
+            for (let i = 0; i < click_num; i++) {
+                content.innerHTML += '<div class="box_column"></div>';
+            };
+            let box_column = document.querySelectorAll('.box_column');  
+            box_column.forEach(function (box_column){
+                for (let j = 0; j < click_num; j++) {
+                    box_column.innerHTML += '<div class="box_row"></div>';
+                }      
+            }); 
+
+            let r = Math.floor(Math.random() * 256);
+            let g = Math.floor(Math.random() * 256);
+            let b = Math.floor(Math.random() * 256);
+            let box = document.querySelectorAll('.box_row');
+            box.forEach(function (box) {
+                box.style = "background-color: rgb("+ r +","+ g +","+ b +")" ;
+            });
+
+        });
     </script>
 </body>
 </html>
