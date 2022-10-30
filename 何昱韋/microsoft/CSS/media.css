@@ -20,11 +20,6 @@
     .user_login{
         display: none;
     }
-    .banner{
-        position: relative;
-    }
-    
-    
 }
 @media(max-width:1084px){
     .container{
@@ -32,11 +27,39 @@
         padding: 0 24px;
     }
     .banner{
+        display: block;
         position: relative;
+    }
+    .demo_container{
+        margin: 0;
+    }
+    .display-block{
+        display: block;
+    }
+    .demo_container{
+        padding: 0 12px;
+    }
+    .demo_small_container{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: white;
+        position: absolute;
+        top: 540px;
+    }
+    .demo_card{
+        width: 100%;
+    }
+    .demo-header{
+        font-size: 24px;
+        margin: 8px 0 12px 0;
     }
 }
 
 
-@media(max-width:860px){
+
+@media(max-width:860px){}
+
+@media (max-width:540px) {
     
 }

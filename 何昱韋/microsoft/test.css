@@ -1,0 +1,64 @@
+.demo_card{
+    width: 41.65%;
+    height: 100%;
+    float: right;
+    padding: 48px;
+}
+.text_box_1{
+    padding: 4px 12px;
+    margin: 0 0 8px 0;
+    background-color: #ffb900;
+    font-size: 1rem;
+    font-family: "Segoe UI",SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    display: inline-block;
+}
+.text_box_2{
+    font-size: 37px;
+    font-family: 'Segoe UI',SegoeUI,'Microsoft JhengHei',微軟正黑體,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin: 0 0 20px 0;
+}
+.text_box_3{
+    font-size: 15px;
+    font-family: 'Segoe UI',SegoeUI,'Microsoft JhengHei',微軟正黑體,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin: 0 0 24px 0 ;
+}
+.text_box_4{
+    background-color: #0067b8;
+    font-size: 16px;
+    color: white;
+    display: inline-block;
+    padding: 10px 12px;
+    margin: 8px 0;
+}
+
+
+
+
+
+
+
+.banner_action{
+    width: 100%;
+    height: 64px;
+    margin-bottom: 0px;
+}
+.banner_action_region{
+    width: 176px;
+    height: 44px;
+    margin: auto;
+    display: flex;
+}
+.banner_action_box{
+    width: 44px;
+    height: 44px;
+}
+.banner_action_dot{
+    font-size: 12px;
+    text-align: center;
+    padding: 12px 0;
+}
+.banner_action_arrow{
+    font-size: 25px;
+    text-align: center;
+    padding: 6px ;
+}
