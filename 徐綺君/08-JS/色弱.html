@@ -33,37 +33,35 @@
             width: 100%;
             height: 100%;
             margin: 0px 2.5px;
-            border-radius: 10px;
-            background-color: #00ffff;
+            border-radius: 10px;        
+            background-color: aqua; 
+        }
+        .btn{
+            opacity: 1;
         }
 
     </style>
 </head>
 <body>
     <div class="title">色弱遊戲</div>
-    <div class="wrapper">
+    <div class="wrapper ">
         <div class="content">
-            <div class="box_column">
-                <div class="box_row" ></div>
-                <div class="box_row"></div>
-            </div>
-            <div class="box_column">
-                <div class="box_row"></div>
-                <div class="box_row"></div>
-            </div>
         </div>
     </div>
 
     <script>
         let content = document.querySelector('.content');
-        let box = document.querySelectorAll('.box_row');
-        let click_num = 2;
-        let a = [[],[]];
-        
+        let click_num = 1;
+        let a = [];
 
-        content.addEventListener("click", function(){
+        
+        window.onload = addbox();
+
+
+        function addbox(){
             content.innerHTML = ' ';
             click_num ++;
+            let num = Math.floor(Math.random() *click_num *click_num);
 
             for (let i = 0; i < click_num; i++) {
                 content.innerHTML += '<div class="box_column"></div>';
@@ -75,15 +73,28 @@
                 }      
             }); 
 
+            let box = document.querySelectorAll('.box_row');
             let r = Math.floor(Math.random() * 256);
             let g = Math.floor(Math.random() * 256);
             let b = Math.floor(Math.random() * 256);
-            let box = document.querySelectorAll('.box_row');
+            
             box.forEach(function (box) {
+                let i = 0;
+                i++;
+                a[i] = box;
                 box.style = "background-color: rgb("+ r +","+ g +","+ b +")" ;
+
             });
 
-        });
+            box[num].classList.add('btn');
+            let btn = box[num];
+            
+            btn.style = "background-color: rgb("+ r +","+ g +","+ b +") ;opacity: 0.1;"
+            console.log(btn);
+        }
+
+        
+
     </script>
 </body>
 </html>
