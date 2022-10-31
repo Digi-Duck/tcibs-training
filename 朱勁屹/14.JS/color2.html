@@ -7,7 +7,7 @@
     <title>Document</title>
     <style>
         body{
-            margin: 0px;
+            margin: 0;
         }
         .bar{
             width: 100%;
@@ -17,54 +17,44 @@
             margin-bottom: 10px;
             font-size: 70px;
         }
-        .box{
-            width: 800px;
-            height: 800px;
-            /* border: 1px solid black; */
-            margin: auto;
-            display: flex;
-            /* flex-wrap: wrap; */
-            flex-direction: column;
-        }
-        .box2{
+        .maxBox{
             width: 100%;
-            height: 100%;
-            margin: 0px 10px;
-            background-color: blueviolet;
-            border: 1px solid black;
+            height: calc(100vh - 147px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .box2{
+            background-color: aqua;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
         }
         .box3{
-            width: 100%;
-            height: 50%;
             display: flex;
-            margin: 10px 0px;
-        }
-        .button{
-            opacity: 0.1;
-        }
-        .time{
-            width: 100%;
-            height: 60px;
-            font-size: 60px;
-            text-align: center;
         }
         .start{
-            margin: auto;
-            display: block;
             width: 100px;
-            font-size: 40px;
-            
+            height: 50px;
+            font-size: 30px;
+            display: block;
+            margin: auto;
+        }
+        .timeBox{
+            font-size: 50px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <div class="bar">色弱Game</div>
+    <div class="bar">色弱Game2</div>
     <div class="timeBox"><button class="start">開始</button></div>
-    
-    <div class="box">
-        
+    <div class="maxBox">
+        <div class="box">
+           
+        </div>
     </div>
-    
     <script>
         // document.getElementById("myDIV").style.opacity = "0.5";
         
@@ -139,7 +129,7 @@
                 time = time - 1;
                 timeBox.innerHTML = '<div class="time">'+time+'</div>';
                 if(time == 0){
-                alert('時間到了，你得了'+score+'');
+                alert('時間到了，你得了'+score+'分');
                 location.reload();
             }
             },1000);
