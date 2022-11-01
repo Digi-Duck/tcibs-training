@@ -66,7 +66,7 @@ body{
     color: #262626;
     font-size: 13px;
     padding: 16px 8px 10px 8px;
-    margin: 1px;
+    margin: 1px 4px;
 
 }
 
@@ -77,7 +77,7 @@ body{
 }
 .right_options_button{
     border: 1px;
-    background-color: blue;
+    /* background-color: blue; */
 
     padding: 16px 8px 10px 8px;
     margin: 1px;
@@ -85,6 +85,8 @@ body{
 }
 .content{
     position: relative;
+    width: calc(1600px + 10%) ;
+    margin: 0 auto;
 }
 picture{
     width: 100%;
@@ -109,7 +111,7 @@ picture img{
     right: 250px;
 }
 .new{
-    background-color: #FFB900;
+    background-color: #950C17;
 
     padding: 6px 12px;
     margin-bottom: 8px;
@@ -120,6 +122,7 @@ picture img{
     font-weight: 600;
     line-height: 1;
     text-decoration: none;
+    color: white;
     /* vertical-align: top; */
     /* max-width: 100%; */
     /* overflow-wrap: break-word; */
@@ -140,7 +143,7 @@ picture img{
     width: 92px;
     height: 40px;
 
-    background-color: #1e68b7;
+    background-color: #000000;
 
     margin: 8px 0px;
     padding: 10px 12px;
@@ -202,13 +205,13 @@ picture img{
     flex-wrap: wrap;
 }
 li{
-    color: #1e68b7;
+    color: #000000;
     list-style: none;
     font-weight: 600!important;
     align-items: center!important;
 }
 a{
-    color: #1e68b7;
+    color: #000000;
 }
 .list_btn{
     margin: 16px 24px;
@@ -260,7 +263,7 @@ a{
 }
 
 .sell{
-    color: #0067b8;
+    color: #950C17;
     padding-top: 16px;
 }
 .function{
@@ -271,15 +274,56 @@ a{
 .funtion_img{
     width: 100%;
 }
+.title_product{
+    margin-bottom: 20px;
+}
 .follow{
     padding: 0 calc(5% + 12px);
+    display: flex;
+}
+.follow_micro{
+    margin-right: 12px;
+}
+.app_icon{
+    width: 32px;
+    height: 32px;
+
+    margin-right: 12px;
 }
 .back{
     height: 65px;
+
+    padding: 12px;
+
+    display: flex;
+    justify-content: flex-end;
 }
 .backhome{
-    background-color: gray;
+    background-color: #d9d9d9;
     border: 2px;
     padding: 10px 12px;
 
+}
+.footer{
+    background-color: #f2f2f2;
+
+    margin-top: 48px;
+    padding: 0 5%;
+
+    display: flex;
+}
+.footer_box{
+    padding: 0 12px;
+}
+.footer_title{
+    height: 60px;
+
+    padding: 36px 0 4px 0;
+
+    color: #616161;
+}
+.footer_content{
+    height: 32px;
+
+    padding: 8px 0px;
 }
