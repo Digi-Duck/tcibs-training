@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.nav-container{
+    width: 84.2%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+}
+.mirco_logo{
+    width: 108px;
+    height: 23px;
+    margin: 15px 10px;
+}
+.soft_product{
+    width: 66.7%;
+    height: 100%;
+    padding: 0 1px 5px 2px;
+}
+.nav-prod-list{
+    height: 100%;
+    list-style: none;
+    display: flex;
+}
+.nav-prod-list-box{
+    height: 48px;
+    font-size: 13px;
+    font-family: 'Segoe UI',SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    border: 1px solid transparent;
+    padding: 16px 8px 10px 8px;
+    margin: 1px 4px 0 4px;
+}
+.user_action{
+    width: 382px;
+    height: 100%;
+}
+.nav-user-list{
+    width: 100%;
+    list-style: none;
+    display: flex;
+}
+.nav-user-list-box{
+    font-size: 13px;
+    font-family: "Segoe UI",SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.mircosoft_menu{
+    height: 52px;
+    padding: 16px 12px 16px 15px;
+    margin-top: 1px;  
+    border: 1px solid transparent;
+    display: flex;
+}
+.mircosoft_menu_text{
+    width: 85px;
+}
+.mircosoft_menu_icon{
+    font-size: 16px;
+    padding-top: 4px;
+}
+
+.search_box{
+    width: 90px;
+    height: 52px;
+    padding: 16px 9px 16px 9px;
+    border: 1px solid transparent;
+    display: flex;
+}
+.search_box_icon{
+    font-size: 16px;
+    margin-left: 2px;
+}
+
+.shopcar{
+    width: 61px;
+    padding: 2px 0 2px 0;
+    margin:1px 4px 0 18px;
+    border: 1px solid transparent;
+    display: flex;
+}
+.shopcar_text{
+    width: 39px;
+    line-height: 48px;
+    margin-right: 4px;
+}
+.shopcar_icon{
+    line-height: 48px;
+}
+
+.user_information{
+    margin-left: 1px;
+    display: flex;
+    align-items: center;
+}
+.user_login{
+    width: 52px;
+    padding: 0 4px 1px 12px;
+}
+.user_headimg{
+    margin: 8px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    text-align: center;
+    border: 1px solid black;
+    font-size: 20px;
+}

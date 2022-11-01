@@ -1,0 +1,29 @@
+.banner{
+    width: 100%;
+    display: flex;
+}
+.justify-content-start{
+    display: flex;
+    justify-content: start;
+}
+.picture_container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.banner-demo-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: -100%;
+}
+.small-demo-container{
+    width: 90%;
+    padding-right: 5%;
+    padding-left: 5%;
+    margin: 0 auto;
+}
+.demo_card{
+    width: 37%;
+    padding: 48px;
+}
