@@ -1,0 +1,38 @@
+.product_intro_demo{
+    width: 90%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin: 0 auto;
+    display: flex;
+}
+.product-intro-card{
+    width: 25%;
+    padding: 0 12px;
+}
+.card-picture{
+    width: 100%;
+}
+
+.card-onsell{
+    padding-top: 1rem;
+}
+.card-onsell-text{
+    background-color: #950c17!important;
+    color: #FFFFFF !important;
+    padding: 0.375em 0.75em;
+    margin-bottom: 0.3rem;
+    display: inline-block;
+}
+.card-header{
+    font-size: 1.8125rem;
+    margin-bottom: 1rem;
+}
+.card-body{
+    word-wrap: break-word;
+    font-size: 1rem;
+}
+.card-about-learn{
+    padding-top: 1rem;
+    color: #950c17 ;
+    margin: 16px 0;
+}

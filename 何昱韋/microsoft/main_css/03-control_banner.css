@@ -1,0 +1,22 @@
+.control_banner{
+    display: flex;
+    justify-content: center;
+}
+.control_ban_act{
+    width: 176px;
+    height: 44px;
+    display: flex;
+}
+.control_box{
+    width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.arrow{
+    font-size: 16px;
+    padding: 0 8px;
+}
+.dot{
+    font-size: 12px;
+}

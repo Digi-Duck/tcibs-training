@@ -1,0 +1,25 @@
+.layout_region{
+    width: 100%;
+    height: 120px;
+    margin: 48px 0;   
+}
+.layout_flexbox{
+    width: 84%;
+    height: 104px;
+    margin: 0 auto 16px;
+    display: flex;
+    justify-content: center;
+}
+.layout_box{
+    height: 72px;
+    /* background-color: aqua; */
+    margin: 16px 24px;
+    font-size: 16px;
+}
+.layout_img_region{
+    display: flex;
+    justify-content: center;
+}
+.img_cannot_margin_auto{
+    margin-bottom: 8px;
+}

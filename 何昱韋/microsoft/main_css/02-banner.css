@@ -27,3 +27,31 @@
     width: 37%;
     padding: 48px;
 }
+
+.big-onsell{
+    font-size: 1rem;
+    padding: 6px 12px;
+    margin-bottom: 8px;
+    color: #950c17;
+    background-color: #fff;
+    display: inline-block;
+}
+.big-demo-header{
+    font-size: 2.3125rem;
+    font-family: inherit;
+    margin-bottom: 20px;
+}
+.big-demo-body{
+    font-size: 1rem;
+    margin-bottom: 24px;
+    word-wrap: break-word;
+}
+.big-about-learn{
+    font-size: 1rem;
+    padding: 10px 12px;
+    border: 0.125rem solid transparent;
+    margin: 8px 0;
+    background-color: black;
+    color: #fff;
+    display: inline-block;
+}
