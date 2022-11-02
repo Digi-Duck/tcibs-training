@@ -16,10 +16,11 @@
             background-color: cornflowerblue;
             margin-bottom: 10px;
             font-size: 70px;
+            
         }
         .maxBox{
             width: 100%;
-            height: calc(100vh - 147px);
+            height: 700px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -30,9 +31,11 @@
             width: 100px;
             height: 100px;
             margin: 10px;
+            border-radius: 10%;
         }
         .box3{
             display: flex;
+            border-radius: 10%;
         }
         .start{
             width: 100px;
@@ -40,10 +43,12 @@
             font-size: 30px;
             display: block;
             margin: auto;
+            border-radius: 10%;
         }
         .timeBox{
             font-size: 50px;
             text-align: center;
+            border-radius: 10%;
         }
     </style>
 </head>
@@ -74,11 +79,20 @@
         function s() {
             bar.innerHTML = score;
             box.innerHTML = '';
-            let num1 = Math.floor(Math.random()*x) ;
-            let num2 = Math.floor(Math.random()*y) ;
+            let yNum;
+            let xNum;
+            if(y > 5){
+                yNum = y - 2;
+                xNum = x - 2;
+            }else if(y > 4&&x > 4){
+                yNum = Math.floor(y/2);
+                xNum = Math.floor(x/2);
+            }else{
+                yNum = 2;
+                xNum = 2;
+            }
             
-            
-            for(let i = 0;i < x;i++){
+            for(let i = 0;i < xNum;i++){
                 box.innerHTML += '<div class="box3"></div>';
                 a[i] = b;
                 // console.log(a);
@@ -90,45 +104,59 @@
             var colorNum1 = Math.floor(Math.random()*256);
             var colorNum2 = Math.floor(Math.random()*256);
             var colorNum3 = Math.floor(Math.random()*256);
-            for(let j = 0;j < y;j++){
+            
+            let num1 = Math.floor(Math.random()*xNum) ;
+            let num2 = Math.floor(Math.random()*yNum) ;
+            console.log(xNum);
+            console.log(yNum);
+            for(let j = 0;j < yNum;j++){
                 b[j] = j + 1;
                 // console.log(b);
+                
                 box3.forEach(function (x,index) {
-                    if(j == num1&index == num2){
+                    if(j == num1&&index == num2){
                         x.innerHTML += '<div class="box2 button"id="opacity" style="background-color: rgb('+colorNum1+','+colorNum2+' ,'+colorNum3+');"></div>';
-                        
                         let c = y - 1;
                         let o = c*0.1;
                         document.getElementById("opacity").style.opacity = o;
-                        console.log(o);
+                        // console.log(o);
                     }else{
-                        x.innerHTML += '<div class="box2" style="background-color: rgb('+colorNum1+','+colorNum2+' ,'+colorNum3+');"></div>';
+                        x.innerHTML += '<div class="box2 button2"  style="background-color: rgb('+colorNum1+','+colorNum2+' ,'+colorNum3+');"></div>';
                     }
                 })
                 
             }
             const ans = document.querySelector('.button');
+            const ans2 = document.querySelectorAll('.button2');
             // let button = document.querySelector('.button');
             // n.classList.add('button');
-            console.log(ans);
-            x++;
-            y++;
+            // console.log(ans);
+            
+            ans2.forEach(function (l) {
+                l.addEventListener('click',function () {
+                    s();
+                })
+            })
             ans.addEventListener('click',function() {
                 score++;
                 s();
+                if(x < 9){
+                x++;
+                y++;
                 
+                }
             })
          
         }
         let start = document.querySelector('.start');
         start.addEventListener('click',function () {
-            console.log(1);
+            // console.log(1);
             s();
             timeBox.innerHTML = '<div class="time">'+time+'</div>';
             setInterval(function(){
                 time = time - 1;
                 timeBox.innerHTML = '<div class="time">'+time+'</div>';
-                if(time == 0){
+                if(time == -1){
                 alert('時間到了，你得了'+score+'分');
                 location.reload();
             }

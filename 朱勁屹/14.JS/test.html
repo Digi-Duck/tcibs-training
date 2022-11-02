@@ -6,28 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body{
-            margin: 0px;
-            /* background-color: red; */
-        }
-        .box{
-            background-image: url(../14.JS/water.jpg);
-            width: 1000px;
-            height: 1000px;
-        }
-        img{
-            width: 1000px;
-            height: 1000px;
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
+        
     </style>
 </head>
 <body>
     
     <script>
-        setInterval(function(){console.log(1);},3000);
+        fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-E920CBD5-2EB7-41D7-98C1-5D771A61D84A&format=JSON')
+        .then(function(response) {
+            return response.json();
+         })
+        .then(function(weather) {
+            console.log(weather);
+        });
     </script>
 </body>
 </html>
