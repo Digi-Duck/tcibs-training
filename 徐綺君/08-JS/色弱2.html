@@ -52,26 +52,27 @@
             top: 200px;
             right: 200px;
         }
-
+        .main{
+            height: calc(100vh - 220px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         .content{
             border: 1px solid black;
             border-radius: 10px;
-            width: 800px;
-            height: 800px;
-            display: flex;
+            display: inline-flex;
             flex-direction: column;
             margin: 0px auto;
             padding: 2.5px;
         }
         .box_column{
-            width: 100%;
-            height: 100%;
             display: flex;
             margin: 2.5px 0px;
         }
         .box_row{
-            width: 100%;
-            height: 100%;
+            width: 100px;
+            height: 100px;
             margin: 0px 2.5px;
             border-radius: 10px;        
             background-color: aqua; 
@@ -83,7 +84,7 @@
     </style>
 </head>
 <body>
-    <div class="title">色弱遊戲</div>
+    <div class="title">色弱遊戲2</div>
     <div class="wrapper">
         <button class="star">開始</button>
     </div>
