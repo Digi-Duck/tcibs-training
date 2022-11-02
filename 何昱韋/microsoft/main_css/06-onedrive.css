@@ -1,0 +1,27 @@
+.soft-onedrive{
+    width: 100%;
+    margin: 96px 0;
+}
+.soft-onedrive-container{
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+}
+.onedrive-picture-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.onedrive-demo-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -100%;
+}
+.onedrive-small-container{
+    width: 90%;
+    padding: 48px;
+    margin:0 3rem;
+}

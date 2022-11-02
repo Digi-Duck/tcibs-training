@@ -16,6 +16,9 @@
 .card-onsell{
     padding-top: 1rem;
 }
+.not-onsell{
+    background-color: #FFFFFF;
+}
 .card-onsell-text{
     background-color: #950c17!important;
     color: #FFFFFF !important;
@@ -33,6 +36,6 @@
 }
 .card-about-learn{
     padding-top: 1rem;
-    color: #950c17 ;
+    color: #950c17;
     margin: 16px 0;
 }
