@@ -84,7 +84,7 @@ body{
 
 }
 .content{
-    position: relative;
+    
     width: calc(1600px + 10%) ;
     margin: 0 auto;
 }
@@ -96,22 +96,33 @@ picture img{
 }
 .computer_pic{
     width: 100%;
+    height: 595px;
 
     position: relative;
-    /* display: flex;
-    align-items: center; */
+    display: flex;
+    /* align-items: center; */
 } 
+.title_img{
+    position: absolute;
+
+    padding: 3px 3px 64px 3px;
+}
+.title_content{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+}
 .title_box{
+    width: 100%;
     /* background-color: rgb(128, 37, 37); */
-    padding: 48px;
+    padding: 48px calc(5% + 48px);
 
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 250px;
 }
 .new{
-    background-color: #950C17;
+    background-color: #ffffff;
 
     padding: 6px 12px;
     margin-bottom: 8px;
@@ -122,7 +133,7 @@ picture img{
     font-weight: 600;
     line-height: 1;
     text-decoration: none;
-    color: white;
+    color: red;
     /* vertical-align: top; */
     /* max-width: 100%; */
     /* overflow-wrap: break-word; */
@@ -160,31 +171,33 @@ picture img{
 
 } 
 .slide{
-    width: 200px;
-
-    margin: auto;
+    margin-top: 12px;
     margin-bottom: 58px;
+    
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+}
+.slide_box{
+    padding: 0 16px;
+
+    display: flex;
+    align-items: center;
 }
 .left_highlight{
     font-size: 30px;
+    padding: 0 8px;
 }
 .circle_white{
     font-size: 12px;
-    padding: 12px 0;
-}
-.circle_white{
-    font-size: 12px;
-    padding: 12px 0;
+    margin: 8px;
 }
 .circle_black{
     font-size: 12px;
-    padding: 12px 0;
-    padding: 12px 0;
+    margin: 8px;
 }
 .right_highlight{
     font-size: 30px;
+    padding: 0 8px;
 }
 
 .list{
@@ -248,10 +261,18 @@ a{
     width: 100%;
 }
 .product_new{
-    width: 100%;
-    height: 32px;
-    padding-top: 16px;
+    background-color: #950C17;
 
+    padding: 6px 12px;
+    margin-bottom: 8px;
+
+    display: inline-block;
+    
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    color: white;
  } 
 .product_title{
     margin-bottom: 16px;
@@ -269,13 +290,37 @@ a{
 .function{
     margin: 0 auto;
     padding: 48px 5% 0 5%;
-
 }
-.funtion_img{
+.function_img{
     width: 100%;
 }
+
+.function_pic{
+    width: 100%;
+    height: 600px;
+
+    position: relative;
+    display: flex;
+    /* align-items: center; */
+} 
+.function_content{
+    height: 100%;
+
+    margin-left: -100%;
+    display: flex;
+    align-items: center;
+}
+.function_box{
+    width: 100%;
+
+    padding: 48px calc(5% + 48px);
+
+    position: absolute;
+} 
+
 .title_product{
     margin-bottom: 20px;
+    padding: 0 5%;
 }
 .follow{
     padding: 0 calc(5% + 12px);
