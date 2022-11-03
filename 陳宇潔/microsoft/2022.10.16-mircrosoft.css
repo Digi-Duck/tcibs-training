@@ -10,6 +10,10 @@ body{
     font-weight: 400;
     line-height: 1.5;
 }
+h{
+    margin: 0px; 
+    padding: 0px;
+}
 .header{
     width: 100%;
     height: 54px;
@@ -83,8 +87,7 @@ body{
     margin: 1px;
 
 }
-.content{
-    
+.content{    
     width: calc(1600px + 10%) ;
     margin: 0 auto;
 }
@@ -115,7 +118,6 @@ picture img{
     align-items: center;
 }
 .title_box{
-    width: 100%;
     /* background-color: rgb(128, 37, 37); */
     padding: 48px calc(5% + 48px);
 
@@ -244,18 +246,18 @@ a{
     align-items: center; */
 }
 .product{
-    width: 100%;
+  width: 100%;
     /* background-color: rgb(80, 20, 143); */
 
     padding: 0 5%;
     margin-bottom: 48px;
 
     display: flex;
+    justify-content: space-between;
 }
 .product_box{
-    width: 25%;
-    
-    padding: 0 12px;
+    width: calc((100% - 72px) / 4);
+
 }
 .product_img{
     width: 100%;
@@ -264,6 +266,20 @@ a{
     background-color: #950C17;
 
     padding: 6px 12px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+
+    display: inline-block;
+    
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    color: white;
+ } 
+ .product_none{
+    padding: 6px 12px;
+    margin-top: 16px;
     margin-bottom: 8px;
 
     display: inline-block;
@@ -285,7 +301,7 @@ a{
 
 .sell{
     color: #950C17;
-    padding-top: 16px;
+    font-weight: 600;
 }
 .function{
     margin: 0 auto;
@@ -299,6 +315,8 @@ a{
     width: 100%;
     height: 600px;
 
+    margin: 48px 0 96px 0;
+
     position: relative;
     display: flex;
     /* align-items: center; */
@@ -306,12 +324,11 @@ a{
 .function_content{
     height: 100%;
 
-    margin-left: -100%;
+    margin-left: -99%;
     display: flex;
     align-items: center;
 }
 .function_box{
-    width: 100%;
 
     padding: 48px calc(5% + 48px);
 
@@ -321,6 +338,10 @@ a{
 .title_product{
     margin-bottom: 20px;
     padding: 0 5%;
+
+    font-size: 2.3125rem;
+    font-weight: 600;
+    line-height: 1.2;
 }
 .follow{
     padding: 0 calc(5% + 12px);
@@ -328,6 +349,9 @@ a{
 }
 .follow_micro{
     margin-right: 12px;
+
+    display: flex;
+    align-items: center;
 }
 .app_icon{
     width: 32px;
@@ -349,20 +373,24 @@ a{
     padding: 10px 12px;
 
 }
-.footer{
+.content_footer{
     background-color: #f2f2f2;
-
+}
+.footer{
     margin-top: 48px;
     padding: 0 5%;
 
     display: flex;
+    flex-wrap: wrap;
 }
 .footer_box{
+    width: calc(100% / 6) ;
     padding: 0 12px;
 }
 .footer_title{
-    height: 60px;
-
+    font-weight: 600;
+    font-size: 15px;
+    
     padding: 36px 0 4px 0;
 
     color: #616161;
@@ -370,5 +398,32 @@ a{
 .footer_content{
     height: 32px;
 
+    font-weight: 400;
+    font-size: 11px;
+
     padding: 8px 0px;
+}
+.last{
+    height: 72px;
+
+    padding-top: 30px;
+    padding-bottom: 16px; 
+
+    display: flex;
+    justify-content: space-between;
+}
+.last_box{
+    height: 20px;
+
+    margin: 3px 0;
+
+    display: flex;
+}
+.last_content{
+    font-size: 11px;
+    
+    padding-right: 24px;
+    padding-bottom: 4px;
+
+    color: #616161;
 }
