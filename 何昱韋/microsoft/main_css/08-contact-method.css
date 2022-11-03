@@ -1,0 +1,16 @@
+.contact-method{
+    width: 94%;
+    height: 32px;
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    margin: 48px auto;
+}
+.contact_text{
+    display: flex;
+    align-items: center;
+    margin-right: 24px;
+}
+.contact_fb{
+    margin-right: 12px;
+}

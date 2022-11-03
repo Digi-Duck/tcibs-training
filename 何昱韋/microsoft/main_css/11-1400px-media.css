@@ -1,0 +1,55 @@
+@media (max-width:1400px) {
+    /* nav */
+    .nav-container{
+        width: 90%;
+    }
+    .soft_product{
+        width: 65%;
+    }
+    .user_action{
+        width: 20%;
+    }
+    .mircosoft_menu_text{
+        width: 87px;
+    }
+    .search_box_text{
+        display: none;
+    }
+    .shopcar_text{
+        display: none;
+    }
+    .user_login{
+        display: none;
+    }
+
+    /* banner */
+    .demo-card{
+        width: 420px;
+    }
+
+    /* control nothing */
+    /* layout nothing*/
+
+    /* product intro*/
+    .product_intro_demo{
+        width: 100%;
+    }
+    /* ondrive nothing */
+
+    /* business */
+    .business-region{
+        width: 100%;
+    }
+
+    /* contact method*/
+    .contact-method{
+        width: 100%;
+    }
+
+    /* totop nothing */
+
+    /* footer */
+    .footer-link{
+        width: 100%;
+    }
+}

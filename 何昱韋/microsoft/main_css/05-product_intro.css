@@ -1,5 +1,5 @@
 .product_intro_demo{
-    width: 90%;
+    width: 94%;
     padding-left: 5%;
     padding-right: 5%;
     margin: 0 auto;
@@ -17,11 +17,11 @@
     padding-top: 1rem;
 }
 .not-onsell{
-    background-color: #FFFFFF;
+    background-color: #FFFFFF !important;
 }
 .card-onsell-text{
-    background-color: #950c17!important;
-    color: #FFFFFF !important;
+    background-color: #950c17;
+    color: #FFFFFF;
     padding: 0.375em 0.75em;
     margin-bottom: 0.3rem;
     display: inline-block;

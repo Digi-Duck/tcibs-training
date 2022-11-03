@@ -1,10 +1,19 @@
 .business-region{
-}
-.business-intro-region{
-    width: 90%;
+    width: 94%;
     padding-left: 5%;
     padding-right: 5%;
     margin: 0 auto;
+}
+.business-text{
+    font-size: 37px;
+    font-family: "Segoe UI",SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin-bottom: 20px;
+}
+.business-intro-region{
+    /* width: 90%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin: 0 auto; */
     display: flex;
 }
 .business-intro-card{
