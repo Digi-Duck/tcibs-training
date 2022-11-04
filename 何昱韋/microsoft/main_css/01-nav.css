@@ -8,6 +8,10 @@
     height: 100%;
     margin: auto;
     display: flex;
+    justify-content: space-between;
+}
+.container-left-region{
+    display: flex;
 }
 .mirco_logo{
     width: 108px;
@@ -15,7 +19,6 @@
     margin: 15px 10px;
 }
 .soft_product{
-    width: 66.7%;
     height: 100%;
     padding: 0 1px 5px 2px;
 }
@@ -33,11 +36,10 @@
     margin: 1px 4px 0 4px;
 }
 .user_action{
-    width: 382px;
+    width: 380px;
     height: 100%;
 }
 .nav-user-list{
-    width: 100%;
     list-style: none;
     display: flex;
 }
