@@ -6,15 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        body{
+            margin: 0;
+        }
         .card{
             width: 300px;
             height: 400px;
             border: 1px solid black;
             display: flex;
             flex-direction: column;
-            
+            background-color: yellow;
+            margin: 20px;
         }
-        .center{
+        .center,.center,.center,.center{
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
@@ -25,36 +29,166 @@
             height: 150px;
             border: 1px solid black;
             margin: auto;
+            background-position: center;
+            background-size: cover;
+            background-color: aqua;
         }
         .word{
             width: 100%;
             height: 40px;
-            border: 1px solid black;
+            /* border: 1px solid black; */
+            font-size: 30px;
+            text-align: center;
+            
+        }
+        .input{
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+            width: 230px;
+            height: 70px;
+            font-size: 20px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <div class="center">
-        <div class="card">
-            <div class="cardPhoto"></div>
-            <div class="city word"></div>
-            <div class="weather word"></div>
-            <div class="rain word"></div>
-            <div class="time word"></div>
-            <div class="corfortable word"></div>
-        </div>
-        
-    </div>
+    <select name="tTime" class="input" id="select">
+        <option value="0">2022-11-04 18:00:00</option>
+        <option value="1">2022-11-05 06:00:00</option>
+        <option value="2">2022-11-05 18:00:00</option>
+    </select>
+
+    <div class="center"></div>
+    
     <script>
+        const center =document.querySelector('.center');
+        let select = document.getElementById("select").value;
+        let location1;
         fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-E920CBD5-2EB7-41D7-98C1-5D771A61D84A&format=JSON')
         .then(function(response) {
             return response.json();
          })
-         .then(function(weather) {
-            const location = weather.records.location;
-            console.log(location);
-        });
+        .then(function(weather) {
+            location1 = weather.records.location;
+            console.log(location1);
 
+            location1.forEach((element)=>{
+                city = element.locationName;
+                weather = element.weatherElement[0].time[select].parameter.parameterName;
+                rain = element.weatherElement[1].time[select].parameter.parameterName;
+                confortable =  element.weatherElement[3].time[select].parameter.parameterName;
+                minT =  element.weatherElement[2].time[select].parameter.parameterName;
+                maxT =  element.weatherElement[4].time[select].parameter.parameterName;
+                
+                if(city == '臺北市' || city == '新北市'|| city == '基隆市'|| city == '宜蘭縣'|| city == '桃園市'|| city == '新竹縣'|| city == '新竹市'){
+                    a(weather);
+                    aa();
+                }
+
+            });
+            location1.forEach((element)=>{
+                city = element.locationName;
+                weather = element.weatherElement[0].time[select].parameter.parameterName;
+                rain = element.weatherElement[1].time[select].parameter.parameterName;
+                confortable =  element.weatherElement[3].time[select].parameter.parameterName;
+                minT =  element.weatherElement[2].time[select].parameter.parameterName;
+                maxT =  element.weatherElement[4].time[select].parameter.parameterName;
+                
+                if(city == '臺中市' || city == '苗栗縣'|| city == '彰化縣'|| city == '南投縣'|| city == '雲林縣'){
+                    a(weather);
+                    aa();
+                }
+
+            });
+            location1.forEach((element)=>{
+                city = element.locationName;
+                weather = element.weatherElement[0].time[select].parameter.parameterName;
+                rain = element.weatherElement[1].time[select].parameter.parameterName;
+                confortable =  element.weatherElement[3].time[select].parameter.parameterName;
+                minT =  element.weatherElement[2].time[select].parameter.parameterName;
+                maxT =  element.weatherElement[4].time[select].parameter.parameterName;
+                
+                if(city == '高雄市' || city == '臺南市'|| city == '嘉義市'|| city == '嘉義縣'|| city == '屏東縣'|| city == '新竹縣'|| city == '澎湖縣'){
+                    a(weather);
+                    aa();
+                }
+
+            });    
+            location1.forEach((element)=>{
+                city = element.locationName;
+                weather = element.weatherElement[0].time[select].parameter.parameterName;
+                rain = element.weatherElement[1].time[select].parameter.parameterName;
+                confortable =  element.weatherElement[3].time[select].parameter.parameterName;
+                minT =  element.weatherElement[2].time[select].parameter.parameterName;
+                maxT =  element.weatherElement[4].time[select].parameter.parameterName;
+                
+                if(city == '花蓮縣' || city == '臺東縣'){
+                    a(weather);
+                    aa();
+                }
+
+            });   
+        });
+        
+        function a(weather) {
+            switch (weather) {
+                    case '晴天':
+                        image = '../14.JS/晴天.gif';
+                        break;
+                    
+                    case '晴時多雲':
+                    image = '../14.JS/晴天.gif';
+                    break;
+
+                    case '多雲時晴':
+                    image = '../14.JS/多雲.gif';
+                    break;
+
+                    case '多雲':
+                    image = '../14.JS/多雲.gif';
+                    break;
+
+                    case '多雲時陰':
+                    image = '../14.JS/多雲.gif';
+                    break;
+
+                    case '陰時多雲':
+                    image = '../14.JS/陰天.gif';
+                    break;
+
+                    case '陰天':
+                    image = '../14.JS/陰天.gif';
+                    break;
+
+                    default:
+                    image = '../14.JS/下雨.gif';
+                        break;
+                }
+                
+                // console.log(minT);
+        }
+        function aa() {
+            center.innerHTML +=`
+                    <div class="card">
+                        <div class="cardPhoto" style="background-image: url(${image});"></div>
+                        <div class="city word">${city}</div>
+                        <div class="rain word">降雨機率為${rain}%</div>
+                        <div class="confortable word">${confortable}</div>
+                        <div class="hot word">${minT}c~${maxT}c</div>
+                        <div class="hot word"></div>
+                    </div>
+                `
+        }
+        
+        // switch (x) {
+        //     case value:
+                
+        //         break;
+        
+        //     default:
+        //         break;
+        // }
     </script>
 </body>
 </html>
