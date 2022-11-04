@@ -1,4 +1,46 @@
 @media (max-width:1084px) {
-    /* nav */
-    
+    /* nav nothing*/
+
+    /* banner */
+    .banner{
+        display: block;
+    }
+    .banner-demo-container{
+        width: 100%;
+        margin: 0;
+        display: block;
+    }
+    .small-demo-container{
+        width: 100%;
+        padding: 0 12px;
+        margin: 0;
+    }
+    .display-block{
+        display: block;
+    }
+    .demo-card{
+        width: 100%;
+        padding: 48px;
+        background-color: #fff;
+        transform: translate(0,-25%);
+        box-shadow: 0 0 5px;
+    }
+    .big-demo-header{
+        font-size: 24px;
+    }
+    .big-about-learn{
+        margin: 0;
+    }
+
+    /* control-banner */
+    .control_banner{
+    }
+
+    /* layout_region nothing*/
+
+    /* product-intro */
+    .product_intro_demo{
+        
+    }
+
 }
