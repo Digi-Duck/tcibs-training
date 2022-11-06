@@ -1,0 +1,55 @@
+@media (max-width:860px) {
+    /* nav */
+    .nav-container{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: unset;
+    }
+    .display-860-block{
+        display: block;
+    }
+    .display-860-none{
+        display: none;
+    }
+    .hamburger{
+        width: 48px;
+        height: 48px;
+        padding: 6px 0 8px 0;
+        background-color: aqua;
+        display: flex;
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+    }
+    .user_action{
+        width: calc(100% - 48px);
+    }
+    .nav-user-list{
+        font-size: 12px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .mirco_logo{
+        margin: 13px 10px;
+    }
+
+
+    /* banner */
+    .banner{
+        display: block;
+    }
+    .demo-card{
+        transform: translate(0,0);
+        padding: 24px 16px 24px 12px;
+        box-shadow: none;
+    }
+
+    /* layout-region */
+    .layout_region{
+        margin: 0;
+    }
+
+    
+}

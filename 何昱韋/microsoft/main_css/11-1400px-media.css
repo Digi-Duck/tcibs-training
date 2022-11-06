@@ -12,6 +12,9 @@
     .search_box_text{
         display: none;
     }
+    .shopcar{
+        width: 24px;
+    }
     .shopcar_text{
         display: none;
     }

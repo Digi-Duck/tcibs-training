@@ -1,0 +1,64 @@
+@media (max-width:540px) {
+    /* nav nothing */
+    /* banner nothing */
+
+    /* layout-region*/
+    .layout_region{
+        height: 210px;
+    }
+    .layout_flexbox{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .layout_box{
+        width: 34%;
+    }
+
+    /* product-intro */
+    .product-intro-card{
+        width: 100%;
+    }
+
+    /* mircosoft-onedrive-demo */
+    .soft-onedrive{
+        margin-top: 48px;
+    }
+
+    /* business */
+    .business-intro-card{
+        width: 100%;
+    }
+
+    /* contact-method*/
+    .contact-method{
+        margin: 0;
+        margin-top: 48px;
+    }
+
+    /* totop */
+    .to-top{
+        display: block;
+        position: unset;
+    }
+    .to-top-bottom{
+        width: 100%;
+    }
+
+    /* footer */
+    .footer_ul_box{
+        width: 100%;
+    }
+    .end-link{
+        float: left;
+        margin: 12px 0 3px 0;
+    } 
+    .end-ul-box{
+        display: block;
+        height: 103px;
+    }
+    .end-li{
+        font-size: 12px;
+        padding: 6px 10px 0 0;
+    }
+}

@@ -40,7 +40,72 @@
 
     /* product-intro */
     .product_intro_demo{
-        
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .product-intro-card{
+        width: 50%;
     }
 
+    /* mircosoft-onedrive */
+    .soft-onedrive{
+        margin-bottom: 0;
+    }
+    .soft-onedrive-container{
+        width: 100%;
+        padding: 0;
+        display: block;
+    }
+    .onedrive-demo-container{
+        margin: 0;
+    }
+    .onedrive-small-container{
+        width: 100%;
+        margin: 0;
+        padding: 0 12px;
+    }
+
+    /* business */
+    .business-region{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    .business-text{
+        font-size: 24px;
+        padding: 0 12px;
+    }
+    .business-intro-region{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .business-intro-card{
+        width: 50%;
+    }
+
+    /* contact-method*/
+    .contact-method{
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    /* to-top nothing */
+
+    /* footer */
+    .footer-link{
+        width: 100%;
+        padding: 0 12px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .footer_ul_box{
+        width: 33%;
+    }
+    .end-ul-box{
+        padding-left: 24px;
+        padding-right: 24px;
+    }
 }

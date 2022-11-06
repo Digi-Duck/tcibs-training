@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI',SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .nav-container{
     width: 84.2%;
@@ -108,4 +109,11 @@
     text-align: center;
     border: 1px solid black;
     font-size: 20px;
+}
+
+.nav-user-860-list-box{
+    display: flex;
+}
+.display-none{  
+    display: none;
 }
