@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .random img{
+            width: 100px;
+            height: 100px;
+            background-size: contain;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="you">
+        you:
+        <div class="you-show random"></div>
+        <button class="you-button">擲!</button>
+    </div>
+    <div class="me">
+        me:
+        <div class="me-show random"></div>
+        <button class="me-button">擲!</button>
+    </div>
+    <script>
+        const me=document.querySelector('.me-button');
+        const you=document.querySelector('.you-button');
+
+        const meShow= document.querySelector('.me-show');
+        const youShow= document.querySelector('.you-show');
+
+        function run(a, b){
+            a = Math.floor(Math.random()*6) + 1;
+            
+            console.log(a);
+            if(a == 1){
+                b = `<img src="./02-img/骰子1.png" alt="">`;
+            }else if(a == 2){
+                b = `<img src="./02-img/骰子2.png" alt="">`;
+            }else if(a == 3){
+                b = `<img src="./02-img/骰子3.png" alt="">`;
+            }else if(a == 4){
+                b = `<img src="./02-img/骰子4.png" alt="">`;
+            }else if(a == 5){
+                b = `<img src="./02-img/骰子5.png" alt="">`;
+            }else{
+                b = `<img src="./02-img/骰子6.png" alt="">`;
+            }
+            return b;
+            const c = a;
+        }
+
+            me.addEventListener('click', function(){    
+                meShow.innerHTML = run();
+                youShow.innerHTML = run();
+            })
+    </script>
+</body>
+</html>
