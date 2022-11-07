@@ -12,7 +12,6 @@
 }
 .layout_box{
     height: 72px;
-    /* background-color: aqua; */
     margin: 16px 24px;
     font-size: 16px;
 }
@@ -22,4 +21,10 @@
 }
 .img_cannot_margin_auto{
     margin-bottom: 8px;
+}
+.layout_text_region{
+    border-bottom: 2px solid black;
+}
+.layout_text_region:active{
+    border: 3px dotted black;
 }

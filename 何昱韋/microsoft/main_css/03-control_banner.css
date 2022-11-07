@@ -9,6 +9,7 @@
 }
 .control_box{
     width: 44px;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,4 +20,16 @@
 }
 .dot{
     font-size: 12px;
+}
+
+.arrow:hover{
+    font-size: 24px;
+}
+.arrow-left:hover{
+    margin-right: 10px;
+    transition: 0.5s;
+}
+.arrow-right:hover{
+    margin-left: 10px;
+    transition: 0.5s;
 }

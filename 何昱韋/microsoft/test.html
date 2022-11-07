@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="./main_css/01-nav.css">
@@ -32,23 +32,98 @@
                     <i class="fa-solid fa-bars"></i>
                 </div>
                 <div class="logo_region display-860-none">
-                    <img  class="mirco_logo" src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31" alt="">
+                    <a href="http://127.0.0.1:5500/test.html">
+                        <img  class="mirco_logo" src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31" alt="">
+                    </a>
                 </div>
                 <div class="soft_product display-860-none">
                     <ul class="nav-prod-list">
-                        <li class="nav-prod-list-box">Mircosoft 365</li>
-                        <li class="nav-prod-list-box">Teams</li>
-                        <li class="nav-prod-list-box">windows</li>
-                        <li class="nav-prod-list-box">Surface</li>
-                        <li class="nav-prod-list-box">Xbox</li>
-                        <li class="nav-prod-list-box">支援</li>
+                        <a href="https://www.microsoft.com/zh-tw/microsoft-365?rtc=1" class="nav-prod-list-box">
+                            <div class="nav-prod-list-box-text">Mircosoft</div>
+                        </a>
+                        <a href="https://www.microsoft.com/zh-tw/microsoft-teams/group-chat-software?rtc=1" class="nav-prod-list-box">
+                            <div class="nav-prod-list-box-text">Teams</div>
+                        </a>
+                        <a href="https://www.microsoft.com/zh-tw/windows/?r=1" class="nav-prod-list-box">
+                            <div class="nav-prod-list-box-text">Windows</div>
+                        </a>
+                        <a href="https://www.microsoft.com/en-us/surface" class="nav-prod-list-box">
+                            <div class="nav-prod-list-box-text">Surface</div>
+                        </a>
+                        <a href="https://www.xbox.com/zh-TW/" class="nav-prod-list-box">
+                            <div class="nav-prod-list-box-text">Xbox</div>
+                        </a>
+                        <a href="https://support.microsoft.com/zh-tw" class="nav-prod-list-box">
+                            <div class="nav-prod-list-box-text">支援</div>
+                        </a>
                     </ul>
                 </div>
             </div>
             <div class="user_action">
                 <ul class="nav-user-list">
                     <li class="nav-user-list-box mircosoft_menu display-860-none">
-                        <div class="mircosoft_menu_text">所以 Mircosoft</div>
+                        <div class="mircosoft_menu_text">所以 Mircosoft
+                            <div class="mircosoft-hamburger" id="burger">
+                                <div class="burger-flex-box">
+                                    <ul>
+                                        <li class="burder-li"><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                    </ul>
+                                </div>
+                                <div class="burger-flex-box">
+                                    <ul>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                    </ul>
+                                </div>
+                                <div class="burger-flex-box">
+                                    <ul>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                    </ul>
+                                </div>
+                                <div class="burger-flex-box">
+                                    <ul>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                    </ul>
+                                </div>
+                                <div class="burger-flex-box">
+                                    <ul>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                    </ul>
+                                </div>
+                                <div class="burger-flex-box">
+                                    <ul>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                        <li><bgtext></bgtext></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="mircosoft_menu_icon">
                             <i class="fa-solid fa-angle-down"></i>
                         </div>
@@ -82,35 +157,37 @@
     </nav>
 
  <!--banner  -->
-    <section class="banner">
-        <div class="picture_container">
-            <picture>
-                <source media="(min-width: 1400px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP5-1920x600">
-                <source media="(min-width: 1084px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP4-1399x600">
-                <source media="(min-width: 860px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP3-1083x600">
-                <source media="(min-width: 540px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP2-859x540">
-                <source media="(max-width: 540px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP1-539x440">
-                <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP5-1920x600" alt="" width="100%">
-            </picture>
-        </div>
-        <div class="banner-demo-container">
-            <div class="small-demo-container">
-                <div class="justify-content-start display-block">
-                    <div class="demo-card">
-                        <span class="big-onsell">新上市</span>
-                        <div class="big-demo-header">Surface Pro 9</div>
-                        <div class="big-demo-body">平板電腦的彈性和筆記型電腦的效能 — 全都在一台攜帶超方便的裝置</div>
-                        <div class="big-about-learn">深入了解</div>
+    <section class="banner-region">
+        <a href="https://www.microsoft.com/zh-tw/surface/devices/surface-pro-9?icid=mscom_marcom_H1a_SurfacePro9&FY23FallSurface#overview" class="banner">
+            <div class="picture_container">
+                <picture>
+                    <source media="(min-width: 1400px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP5-1920x600">
+                    <source media="(min-width: 1084px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP4-1399x600">
+                    <source media="(min-width: 860px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP3-1083x600">
+                    <source media="(min-width: 540px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP2-859x540">
+                    <source media="(max-width: 540px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP1-539x440">
+                    <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP5-1920x600" alt="" width="100%">
+                </picture>
+            </div>
+            <div class="banner-demo-container">
+                <div class="small-demo-container">
+                    <div class="justify-content-start display-block">
+                        <div class="demo-card">
+                            <span class="big-onsell">新上市</span>
+                            <div class="big-demo-header">Surface Pro 9</div>
+                            <div class="big-demo-body">平板電腦的彈性和筆記型電腦的效能 — 全都在一台攜帶超方便的裝置</div>
+                            <div class="big-about-learn">深入了解</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     </section>
 
 <!-- control_banner -->
     <section class="control_banner">
         <div class="control_ban_act">
-            <div class="control_box arrow">
+            <div class="control_box arrow arrow-left">
                 <i class="fa-solid fa-chevron-left"></i>
             </div>
             <div class="control_box dot">
@@ -119,7 +196,7 @@
             <div class="control_box dot">
                 <i class="fa-regular fa-circle"></i>
             </div>
-            <div class="control_box arrow">
+            <div class="control_box arrow arrow-right">
                 <i class="fa-solid fa-chevron-right"></i>
             </div>
         </div>
@@ -151,7 +228,7 @@
 
 <!-- product_intro -->
     <section class="product_intro_demo">
-        <div class="product-intro-card">
+        <a href="https://www.microsoft.com/zh-tw/surface/devices/surface-laptop-5?icid=mscom_marcom_CPH1a_SurfaceLaptop5&FY23FallSurface#overview" class="product-intro-card">
             <div class="card-picture">
                 <picture>
                     <source media="(min-width: 1400px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Surface-Laptop-5-Platinum-Alcantara-FY23HOL?wid=380&hei=213&fit=crop">
@@ -167,11 +244,13 @@
                 </div>
                 <div class="card-header">Surface Laptop 5</div>
                 <div class="card-body">配備細緻的風格和由第 12 代 Intel® Core 支援的多工速度，以及 Windows 11。</div>
-                <div class="card-about-learn">深入了解</div>
+                <div class="card-about-learn">
+                    <div class="card-about-learn-text">深入了解</div>
+                </div>
             </div>
-        </div>
+        </a>
 
-        <div class="product-intro-card">
+        <a href="https://www.microsoft.com/zh-tw/surface/devices/surface-studio-2-plus?icid=mscom_marcom_CPH2a_SurfaceStudio2Plus&FY23FallSurface#overview" class="product-intro-card">
             <div class="card-picture">
                 <picture>
                     <source media="(min-width: 1400px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Surface-Studio-2-Plus-FY23HOL?wid=380&hei=213&fit=crop">
@@ -187,10 +266,12 @@
                 </div>
                 <div class="card-header">Surface Studio 2+</div>
                 <div class="card-body">功能最多變的全方位裝置可當做大型畫布，讓您以任何角度展現自我。</div>
-                <div class="card-about-learn">深入了解</div>
+                <div class="card-about-learn">
+                    <div class="card-about-learn-text">深入了解</div>
+                </div>
             </div>
-        </div>
-        <div class="product-intro-card">
+        </a>
+        <a href="https://www.microsoft.com/zh-tw/edge?form=MI13F3&OCID=MI13F3" class="product-intro-card">
             <div class="card-picture">
                 <picture>
                     <source media="(min-width: 1400px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/gldn-MSFT-CP-Edge?wid=380&hei=213&fit=crop">
@@ -206,10 +287,12 @@
                 </div>
                 <div class="card-header">Microsoft Edge</div>
                 <div class="card-body">在您瀏覽時提供世界級的效能，以及更多的隱私、更充足的生產力與更高的價值。</div>
-                <div class="card-about-learn">立即下載</div>
+                <div class="card-about-learn">
+                    <div class="card-about-learn-text">立即下載</div>
+                </div>
             </div>
-        </div>
-        <div class="product-intro-card">
+        </a>
+        <a href="https://www.xbox.com/zh-tw/games/call-of-duty-modern-warfare-ii?icid=mscom_marcom_CPH4a_CallofDutyModernWarfareII" class="product-intro-card">
             <div class="card-picture">
                 <picture>
                     <source media="(min-width: 1400px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Game-Call-of-Duty-Modern-Warfare-2?wid=380&hei=213&fit=crop">
@@ -226,9 +309,11 @@
                 <div class="card-header">
                     Call of Duty®: Modern Warfare® II</div>
                 <div class="card-body">歡迎來到 Call of Duty 的新時代。 與好友組隊，並與由多名經典老兵組成的 141 特遣隊並肩作戰，為你帶來劃時代的遊玩體驗、進階 AI 等。</div>
-                <div class="card-about-learn">立即取得</div>
+                <div class="card-about-learn">
+                    <div class="card-about-learn-text">立即取得</div>
+                </div>
             </div>
-        </div>
+        </a>
     </section>
 
 <!-- mircosoft-onedrive-demo -->
@@ -277,7 +362,9 @@
                     </div>
                     <div class="card-header">Surface 商務版系列</div>
                     <div class="card-body">Surface 商務版裝置具備獲得成功所需的彈性、內建安全性和效能，可讓您的團隊依照自己的意願工作。</div>
-                    <div class="card-about-learn">深入了解</div>
+                    <div class="card-about-learn">
+                        <div class="card-about-learn-text">深入了解</div>
+                    </div>
                 </div>
             </div>
     
@@ -297,7 +384,9 @@
                     </div>
                     <div class="card-header">商務用 Windows 11 登場</div>
                     <div class="card-body">專為混合式辦公而設計。 為員工帶來實用性。 為 IT 帶來一致性。 為所有人帶來安全性。</div>
-                    <div class="card-about-learn">深入了解</div>
+                    <div class="card-about-learn">
+                        <div class="card-about-learn-text">深入了解</div>
+                    </div>
                 </div>
             </div>
     
@@ -317,7 +406,9 @@
                     </div>
                     <div class="card-header">Microsoft 365 商務版</div>
                     <div class="card-body">透過功能強大的應用程式提高生產力、聯繫和安全，始終領先一步。</div>
-                    <div class="card-about-learn">立即選購</div>
+                    <div class="card-about-learn">
+                        <div class="card-about-learn-text">立即選購</div>
+                    </div>
                 </div>
             </div>
     
@@ -337,7 +428,9 @@
                     </div>
                     <div class="card-header">免費取得 Microsoft Teams</div>
                     <div class="card-body">免費取得 Microsoft Teams</div>
-                    <div class="card-about-learn">免費註冊</div>
+                    <div class="card-about-learn">
+                        <div class="card-about-learn-text">免費註冊</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -355,7 +448,7 @@
     </section>
 
 <!-- to-top-bottom -->
-    <div class="to-top">
+    <div class="to-top" data-aos="fade-up">
         <div class="to-top-bottom">回到首頁</div>
     </div>
 
@@ -365,36 +458,36 @@
             <div class="footer_ul_box">
                 <div class="footer_banner font-15px">最新動向</div>
                 <ul class="">
-                    <li>Microsoft 365</li>
-                    <li>Surface Go</li>
-                    <li>Surface Book 2</li>
-                    <li>Surface Pro</li>
-                    <li>Windows 11 應用程式</li>
+                    <li><footer_text>Microsoft 365</footer_text></li>
+                    <li><footer_text>Surface Go</footer_text></li>
+                    <li><footer_text>Surface Book 2</footer_text></li>
+                    <li><footer_text>Surface Pro</footer_text></li>
+                    <li><footer_text>Windows 11 應用程式</footer_text></li>
                 </ul>
             </div>
 
             <div class="footer_ul_box">
                 <div class="footer_banner font-15px">Microsoft Store</div>
                 <ul class="">
-                    <li>帳戶設定檔</li>
-                    <li>下載中心</li>
-                    <li>Microsoft Store 支援</li>
-                    <li>退貨/退款</li>
-                    <li>訂單追蹤</li>
+                    <li><footer_text>帳戶設定檔</footer_text></li>
+                    <li><footer_text>下載中心</footer_text></li>
+                    <li><footer_text>Microsoft Store 支援</footer_text></li>
+                    <li><footer_text>退貨/退款</footer_text></li>
+                    <li><footer_text>訂單追蹤</footer_text></li>
                 </ul>
             </div>
 
             <div class="footer_ul_box">
                 <div class="footer_banner font-15px">教育</div>
                 <ul class=""> 
-                    <li>Microsoft 教育</li>
-                    <li>教育裝置</li>
-                    <li>Microsoft Teams 教育版</li>
-                    <li>Microsoft 365 教育版</li>
-                    <li>Office 教育版</li>
-                    <li>教育工作者訓練和發展</li>
-                    <li>學生和家長優惠</li>
-                    <li>Azure 學生版</li>
+                    <li><footer_text>Microsoft 教育</footer_text></li>
+                    <li><footer_text>教育裝置</footer_text></li>
+                    <li><footer_text>Microsoft Teams 教育版</footer_text></li>
+                    <li><footer_text>Microsoft 365 教育版</footer_text></li>
+                    <li><footer_text>Office 教育版</footer_text></li>
+                    <li><footer_text>教育工作者訓練和發展</footer_text></li>
+                    <li><footer_text>學生和家長優惠</footer_text></li>
+                    <li><footer_text>Azure 學生版</footer_text></li>
                 </ul>
             </div>
 
@@ -402,39 +495,39 @@
                 <div class="footer_banner font-15px">商務
                 </div>
                 <ul class="">
-                    <li>Microsoft Cloud</li>
-                    <li>Microsoft 安全性</li>
-                    <li>Azure</li>
-                    <li>Dynamics 365</li>
-                    <li>Microsoft 365</li>
-                    <li>Microsoft Advertising</li>
-                    <li>Microsoft 產業</li>
-                    <li>Microsoft Teams</li>
+                    <li><footer_text>Microsoft Cloud</footer_text></li>
+                    <li><footer_text>Microsoft 安全性</footer_text></li>
+                    <li><footer_text>Azure</footer_text></li>
+                    <li><footer_text>Dynamics 365</footer_text></li>
+                    <li><footer_text>Microsoft 365</footer_text></li>
+                    <li><footer_text>Microsoft Advertising</footer_text></li>
+                    <li><footer_text>Microsoft 產業</footer_text></li>
+                    <li><footer_text>Microsoft Teams</footer_text></li>
                 </ul>
             </div>
 
             <div class="footer_ul_box">
                 <div class="footer_banner font-15px">開發人員與 IT</div>
                 <ul class="">
-                    <li>開發人員中心</li>
-                    <li>文件</li>
-                    <li>Microsoft Learn</li>
-                    <li>Microsoft 技術社群</li>
-                    <li>Azure Marketplace</li>
-                    <li>AppSource</li>
-                    <li>Microsoft Power Platform</li>
-                    <li>Visual Studio</li>
+                    <li><footer_text>開發人員中心</footer_text></li>
+                    <li><footer_text>文件</footer_text></li>
+                    <li><footer_text>Microsoft Learn</footer_text></li>
+                    <li><footer_text>Microsoft 技術社群</footer_text></li>
+                    <li><footer_text>Azure Marketplace</footer_text></li>
+                    <li><footer_text>AppSource</footer_text></li>
+                    <li><footer_text>Microsoft Power Platform</footer_text></li>
+                    <li><footer_text>Visual Studio</footer_text></li>
                 </ul>
             </div>
 
             <div class="footer_ul_box">
                 <div class="footer_banner font-15px">公司</div>
                 <ul class="">
-                    <li>人才招募</li>
-                    <li>公司新聞</li>
-                    <li>Microsoft 隱私權</li>
-                    <li>投資者</li>
-                    <li>永續性</li>
+                    <li><footer_text>人才招募</footer_text></li>
+                    <li><footer_text>公司新聞</footer_text></li>
+                    <li><footer_text>Microsoft 隱私權</footer_text></li>
+                    <li><footer_text>投資者</footer_text></li>
+                    <li><footer_text>永續性</footer_text></li>
                 </ul>
             </div>
         </div>
@@ -453,5 +546,9 @@
             </div>
         </div>
     </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
 </body>
 </html>

@@ -38,4 +38,22 @@
     padding-top: 1rem;
     color: #950c17;
     margin: 16px 0;
+    position: relative;
+}
+.card-about-learn-text{
+    display: inline-block;
+    padding-right: 20px;
+}
+
+.card-about-learn-text::after{
+    content: "\f0da";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 120px);
+}
+
+.card-about-learn-text:active{
+    border: 2px dotted #950c17;
 }

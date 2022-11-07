@@ -49,3 +49,9 @@ ul{
     height: 20px;
     padding: 0 24px 4px 0;
 }
+
+.footer_ul_box>ul>li>footer_text:hover{
+    border-bottom: 1px solid black;
+}
+
+/* <footer_text></footer_text> */

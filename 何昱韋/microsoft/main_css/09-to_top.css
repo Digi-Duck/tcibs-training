@@ -15,3 +15,8 @@
     align-items: center;
     justify-content: center;
 }
+.to-top-bottom::before{
+    content: "\f30c";
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900;
+}

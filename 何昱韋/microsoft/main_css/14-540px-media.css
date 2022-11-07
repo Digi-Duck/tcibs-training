@@ -1,6 +1,9 @@
 @media (max-width:540px) {
     /* nav nothing */
-    /* banner nothing */
+    /* banner */
+    .banner-demo-container{
+        box-shadow: 0 1px 5px rgb(221, 212, 212);
+    }
 
     /* layout-region*/
     .layout_region{

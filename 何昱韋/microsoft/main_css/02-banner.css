@@ -55,3 +55,6 @@
     color: #fff;
     display: inline-block;
 }
+.big-about-learn:active{
+    border: 0.125rem dotted white;
+}

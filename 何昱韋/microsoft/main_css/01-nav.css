@@ -19,6 +19,9 @@
     height: 23px;
     margin: 15px 10px;
 }
+.logo_region:active{
+    border: 1px dotted black;
+}
 .soft_product{
     height: 100%;
     padding: 0 1px 5px 2px;
@@ -31,11 +34,17 @@
 .nav-prod-list-box{
     height: 48px;
     font-size: 13px;
-    font-family: 'Segoe UI',SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
     border: 1px solid transparent;
     padding: 16px 8px 10px 8px;
     margin: 1px 4px 0 4px;
 }
+.nav-prod-list-box:active{
+    border: 1px dotted black;
+}
+.nav-prod-list-box-text:hover{
+    border-bottom:2px solid black;
+}
+
 .user_action{
     width: 380px;
     height: 100%;
@@ -116,4 +125,28 @@
 }
 .display-none{  
     display: none;
+}
+
+a{
+    text-decoration: none;
+}
+a:visited{
+    color: black;
+}
+
+
+/* burger */
+.mircosoft_menu_text{
+    position: relative;
+}
+.mircosoft-hamburger{
+    width: 1500%;
+    height: 100px;
+    background-color: brown;
+    margin-left: -1200%;
+    margin-top: 20px;
+    /* display: none; */
+}
+.burger-li{
+    padding: 18px 0 18px 24px;
 }
