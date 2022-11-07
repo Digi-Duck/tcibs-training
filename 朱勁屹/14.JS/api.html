@@ -45,91 +45,275 @@
             display: block;
             margin: auto;
             margin-top: 20px;
-            width: 230px;
+            width: 450px;
             height: 70px;
             font-size: 20px;
+            text-align: center;
+        }
+        .input2{
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+            width: 100px;
+            height: 70px;
+            font-size: 40px;
             text-align: center;
         }
     </style>
 </head>
 <body>
     <select name="tTime" class="input" id="select">
-        <option value="0">2022-11-04 18:00:00</option>
-        <option value="1">2022-11-05 06:00:00</option>
-        <option value="2">2022-11-05 18:00:00</option>
+        <option value="0" class="time1"></option>
+        <option value="1" class="time2"></option>
+        <option value="2" class="time3"></option>
     </select>
 
+    <select name="tTime" class="input2 input" id="select2">
+        <option value="0" class="position1">北</option>
+        <option value="1" class="position2">中</option>
+        <option value="2" class="position3">南</option>
+        <option value="3" class="position4">東</option>
+        <option value="4" class="position4">全部</option>
+    </select>
     <div class="center"></div>
     
     <script>
         const center =document.querySelector('.center');
-        let select = document.getElementById("select").value;
+        let select = document.getElementById('select').value;
+        let select2 = document.getElementById('select2').value;
         let location1;
-        fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-E920CBD5-2EB7-41D7-98C1-5D771A61D84A&format=JSON')
-        .then(function(response) {
-            return response.json();
-         })
-        .then(function(weather) {
-            location1 = weather.records.location;
-            console.log(location1);
-
-            location1.forEach((element)=>{
-                city = element.locationName;
-                weather = element.weatherElement[0].time[select].parameter.parameterName;
-                rain = element.weatherElement[1].time[select].parameter.parameterName;
-                confortable =  element.weatherElement[3].time[select].parameter.parameterName;
-                minT =  element.weatherElement[2].time[select].parameter.parameterName;
-                maxT =  element.weatherElement[4].time[select].parameter.parameterName;
-                
-                if(city == '臺北市' || city == '新北市'|| city == '基隆市'|| city == '宜蘭縣'|| city == '桃園市'|| city == '新竹縣'|| city == '新竹市'){
-                    a(weather);
-                    aa();
-                }
-
-            });
-            location1.forEach((element)=>{
-                city = element.locationName;
-                weather = element.weatherElement[0].time[select].parameter.parameterName;
-                rain = element.weatherElement[1].time[select].parameter.parameterName;
-                confortable =  element.weatherElement[3].time[select].parameter.parameterName;
-                minT =  element.weatherElement[2].time[select].parameter.parameterName;
-                maxT =  element.weatherElement[4].time[select].parameter.parameterName;
-                
-                if(city == '臺中市' || city == '苗栗縣'|| city == '彰化縣'|| city == '南投縣'|| city == '雲林縣'){
-                    a(weather);
-                    aa();
-                }
-
-            });
-            location1.forEach((element)=>{
-                city = element.locationName;
-                weather = element.weatherElement[0].time[select].parameter.parameterName;
-                rain = element.weatherElement[1].time[select].parameter.parameterName;
-                confortable =  element.weatherElement[3].time[select].parameter.parameterName;
-                minT =  element.weatherElement[2].time[select].parameter.parameterName;
-                maxT =  element.weatherElement[4].time[select].parameter.parameterName;
-                
-                if(city == '高雄市' || city == '臺南市'|| city == '嘉義市'|| city == '嘉義縣'|| city == '屏東縣'|| city == '新竹縣'|| city == '澎湖縣'){
-                    a(weather);
-                    aa();
-                }
-
-            });    
-            location1.forEach((element)=>{
-                city = element.locationName;
-                weather = element.weatherElement[0].time[select].parameter.parameterName;
-                rain = element.weatherElement[1].time[select].parameter.parameterName;
-                confortable =  element.weatherElement[3].time[select].parameter.parameterName;
-                minT =  element.weatherElement[2].time[select].parameter.parameterName;
-                maxT =  element.weatherElement[4].time[select].parameter.parameterName;
-                
-                if(city == '花蓮縣' || city == '臺東縣'){
-                    a(weather);
-                    aa();
-                }
-
-            });   
+        let time1 = document.querySelector('.time1');
+        let time2 = document.querySelector('.time2');
+        let time3 = document.querySelector('.time3');
+        let input = document.querySelectorAll('.input');
+        tool(select,select2);
+        input.forEach(element => {
+            element.addEventListener('click',function () {
+                center.innerHTML = " ";
+                select = document.getElementById('select').value;;
+                select2 = document.getElementById('select2').value;;
+                console.log(select);
+                tool(select,select2);
+            })
+            
         });
+        
+        function tool(select,select2) {
+            fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-E920CBD5-2EB7-41D7-98C1-5D771A61D84A&format=JSON')
+            .then(function(response) {
+                return response.json();
+             })
+            
+            .then(function(weather) {
+                location1 = weather.records.location;
+                console.log(location1);
+                if(select2 == 0){
+                    location1.forEach((element)=>{
+                        let t1 = element.weatherElement[0].time[0].startTime;
+                        let t2 = element.weatherElement[0].time[1].startTime;
+                        let t3 = element.weatherElement[0].time[2].startTime;
+                        let t11 = element.weatherElement[0].time[0].endTime;
+                        let t22 = element.weatherElement[0].time[1].endTime;
+                        let t33 = element.weatherElement[0].time[2].endTime;
+                        
+                        time1.innerHTML = ''+t1+'~'+t11;
+                        time2.innerHTML = ''+t2+'~'+t22;
+                        time3.innerHTML = ''+t3+'~'+t33;
+                        city = element.locationName;
+                        weather = element.weatherElement[0].time[select].parameter.parameterName;
+                        rain = element.weatherElement[1].time[select].parameter.parameterName;
+                        confortable =  element.weatherElement[3].time[select].parameter.parameterName;
+                        minT =  element.weatherElement[2].time[select].parameter.parameterName;
+                        maxT =  element.weatherElement[4].time[select].parameter.parameterName;
+                        
+                        if(city == '臺北市' || city == '新北市'|| city == '基隆市'|| city == '宜蘭縣'|| city == '桃園市'|| city == '新竹縣'|| city == '新竹市'){
+                            a(weather);
+                            aa();
+                        }
+        
+                    });
+
+                }else if(select2 == 1){
+                    location1.forEach((element)=>{
+                        let t1 = element.weatherElement[0].time[0].startTime;
+                        let t2 = element.weatherElement[0].time[1].startTime;
+                        let t3 = element.weatherElement[0].time[2].startTime;
+                        let t11 = element.weatherElement[0].time[0].endTime;
+                        let t22 = element.weatherElement[0].time[1].endTime;
+                        let t33 = element.weatherElement[0].time[2].endTime;
+                        
+                        time1.innerHTML = ''+t1+'~'+t11;
+                        time2.innerHTML = ''+t2+'~'+t22;
+                        time3.innerHTML = ''+t3+'~'+t33;
+                        city = element.locationName;
+                        weather = element.weatherElement[0].time[select].parameter.parameterName;
+                        rain = element.weatherElement[1].time[select].parameter.parameterName;
+                        confortable =  element.weatherElement[3].time[select].parameter.parameterName;
+                        minT =  element.weatherElement[2].time[select].parameter.parameterName;
+                        maxT =  element.weatherElement[4].time[select].parameter.parameterName;
+                        
+                        if(city == '臺中市' || city == '苗栗縣'|| city == '彰化縣'|| city == '南投縣'|| city == '雲林縣'){
+                            a(weather);
+                            aa();
+                        }
+        
+                    });
+
+                }else if(select2 == 2){
+                    location1.forEach((element)=>{
+                        let t1 = element.weatherElement[0].time[0].startTime;
+                        let t2 = element.weatherElement[0].time[1].startTime;
+                        let t3 = element.weatherElement[0].time[2].startTime;
+                        let t11 = element.weatherElement[0].time[0].endTime;
+                        let t22 = element.weatherElement[0].time[1].endTime;
+                        let t33 = element.weatherElement[0].time[2].endTime;
+                        
+                        time1.innerHTML = ''+t1+'~'+t11;
+                        time2.innerHTML = ''+t2+'~'+t22;
+                        time3.innerHTML = ''+t3+'~'+t33;
+                        city = element.locationName;
+                        weather = element.weatherElement[0].time[select].parameter.parameterName;
+                        rain = element.weatherElement[1].time[select].parameter.parameterName;
+                        confortable =  element.weatherElement[3].time[select].parameter.parameterName;
+                        minT =  element.weatherElement[2].time[select].parameter.parameterName;
+                        maxT =  element.weatherElement[4].time[select].parameter.parameterName;
+                        
+                        if(city == '高雄市' || city == '臺南市'|| city == '嘉義市'|| city == '嘉義縣'|| city == '屏東縣'|| city == '新竹縣'|| city == '澎湖縣'){
+                            a(weather);
+                            aa();
+                        }
+        
+                    });    
+
+                }else if(select2 == 3){
+                    location1.forEach((element)=>{
+                        let t1 = element.weatherElement[0].time[0].startTime;
+                        let t2 = element.weatherElement[0].time[1].startTime;
+                        let t3 = element.weatherElement[0].time[2].startTime;
+                        let t11 = element.weatherElement[0].time[0].endTime;
+                        let t22 = element.weatherElement[0].time[1].endTime;
+                        let t33 = element.weatherElement[0].time[2].endTime;
+                        
+                        time1.innerHTML = ''+t1+'~'+t11;
+                        time2.innerHTML = ''+t2+'~'+t22;
+                        time3.innerHTML = ''+t3+'~'+t33;
+                        city = element.locationName;
+                        weather = element.weatherElement[0].time[select].parameter.parameterName;
+                        rain = element.weatherElement[1].time[select].parameter.parameterName;
+                        confortable =  element.weatherElement[3].time[select].parameter.parameterName;
+                        minT =  element.weatherElement[2].time[select].parameter.parameterName;
+                        maxT =  element.weatherElement[4].time[select].parameter.parameterName;
+                        
+                        if(city == '花蓮縣' || city == '臺東縣'){
+                            a(weather);
+                            aa();
+                        }
+        
+                    });   
+                    
+                }else{
+                    let select2 = document.getElementById('select2').value;
+location1.forEach((element)=>{
+                        let t1 = element.weatherElement[0].time[0].startTime;
+                        let t2 = element.weatherElement[0].time[1].startTime;
+                        let t3 = element.weatherElement[0].time[2].startTime;
+                        let t11 = element.weatherElement[0].time[0].endTime;
+                        let t22 = element.weatherElement[0].time[1].endTime;
+                        let t33 = element.weatherElement[0].time[2].endTime;
+                        
+                        time1.innerHTML = ''+t1+'~'+t11;
+                        time2.innerHTML = ''+t2+'~'+t22;
+                        time3.innerHTML = ''+t3+'~'+t33;
+                        city = element.locationName;
+                        weather = element.weatherElement[0].time[select].parameter.parameterName;
+                        rain = element.weatherElement[1].time[select].parameter.parameterName;
+                        confortable =  element.weatherElement[3].time[select].parameter.parameterName;
+                        minT =  element.weatherElement[2].time[select].parameter.parameterName;
+                        maxT =  element.weatherElement[4].time[select].parameter.parameterName;
+                        
+                        if(city == '臺北市' || city == '新北市'|| city == '基隆市'|| city == '宜蘭縣'|| city == '桃園市'|| city == '新竹縣'|| city == '新竹市'){
+                            a(weather);
+                            aa();
+                        }
+        
+                    });
+                    location1.forEach((element)=>{
+                        let t1 = element.weatherElement[0].time[0].startTime;
+                        let t2 = element.weatherElement[0].time[1].startTime;
+                        let t3 = element.weatherElement[0].time[2].startTime;
+                        let t11 = element.weatherElement[0].time[0].endTime;
+                        let t22 = element.weatherElement[0].time[1].endTime;
+                        let t33 = element.weatherElement[0].time[2].endTime;
+                        
+                        time1.innerHTML = ''+t1+'~'+t11;
+                        time2.innerHTML = ''+t2+'~'+t22;
+                        time3.innerHTML = ''+t3+'~'+t33;
+                        city = element.locationName;
+                        weather = element.weatherElement[0].time[select].parameter.parameterName;
+                        rain = element.weatherElement[1].time[select].parameter.parameterName;
+                        confortable =  element.weatherElement[3].time[select].parameter.parameterName;
+                        minT =  element.weatherElement[2].time[select].parameter.parameterName;
+                        maxT =  element.weatherElement[4].time[select].parameter.parameterName;
+                        
+                        if(city == '臺中市' || city == '苗栗縣'|| city == '彰化縣'|| city == '南投縣'|| city == '雲林縣'){
+                            a(weather);
+                            aa();
+                        }
+        
+                    });
+                        location1.forEach((element)=>{
+                        let t1 = element.weatherElement[0].time[0].startTime;
+                        let t2 = element.weatherElement[0].time[1].startTime;
+                        let t3 = element.weatherElement[0].time[2].startTime;
+                        let t11 = element.weatherElement[0].time[0].endTime;
+                        let t22 = element.weatherElement[0].time[1].endTime;
+                        let t33 = element.weatherElement[0].time[2].endTime;
+                        
+                        time1.innerHTML = ''+t1+'~'+t11;
+                        time2.innerHTML = ''+t2+'~'+t22;
+                        time3.innerHTML = ''+t3+'~'+t33;
+                        city = element.locationName;
+                        weather = element.weatherElement[0].time[select].parameter.parameterName;
+                        rain = element.weatherElement[1].time[select].parameter.parameterName;
+                        confortable =  element.weatherElement[3].time[select].parameter.parameterName;
+                        minT =  element.weatherElement[2].time[select].parameter.parameterName;
+                        maxT =  element.weatherElement[4].time[select].parameter.parameterName;
+                        
+                        if(city == '高雄市' || city == '臺南市'|| city == '嘉義市'|| city == '嘉義縣'|| city == '屏東縣'|| city == '新竹縣'|| city == '澎湖縣'){
+                            a(weather);
+                            aa();
+                        }
+        
+                    }); 
+                    
+                        location1.forEach((element)=>{
+                        let t1 = element.weatherElement[0].time[0].startTime;
+                        let t2 = element.weatherElement[0].time[1].startTime;
+                        let t3 = element.weatherElement[0].time[2].startTime;
+                        let t11 = element.weatherElement[0].time[0].endTime;
+                        let t22 = element.weatherElement[0].time[1].endTime;
+                        let t33 = element.weatherElement[0].time[2].endTime;
+                        
+                        time1.innerHTML = ''+t1+'~'+t11;
+                        time2.innerHTML = ''+t2+'~'+t22;
+                        time3.innerHTML = ''+t3+'~'+t33;
+                        city = element.locationName;
+                        weather = element.weatherElement[0].time[select].parameter.parameterName;
+                        rain = element.weatherElement[1].time[select].parameter.parameterName;
+                        confortable =  element.weatherElement[3].time[select].parameter.parameterName;
+                        minT =  element.weatherElement[2].time[select].parameter.parameterName;
+                        maxT =  element.weatherElement[4].time[select].parameter.parameterName;
+                        
+                        if(city == '花蓮縣' || city == '臺東縣'){
+                            a(weather);
+                            aa();
+                        }
+        
+                    }); 
+                }
+            });
+
+        }
         
         function a(weather) {
             switch (weather) {
