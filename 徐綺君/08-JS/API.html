@@ -13,15 +13,27 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
+            padding: 0px 15px;
+        }
+        .wrapper{
+            display: flex;
+            justify-content: space-around;
+        }
+        .in{
+            width: 800px;
+            font-size: 50px;
+            margin: 10px 15px;
+            padding: 10px;
+            text-align: center;
         }
         .card{
-            width: 330px;
+            width: calc(20% - 40px);
             height: 425px;
             border: 1px solid black;
             display: flex;
             align-items: center;
             flex-direction: column;
-            margin: 10px;
+            margin-bottom: 10px;
             padding: 10px;
         }
         .img{
@@ -29,20 +41,40 @@
             width: 90%;
             height: 200px;
             border: 1px solid black;
+            /* background-image: url(./weather/cloud.gif); */
+            background-size: cover;
+            background-position: center;
         }
         .box{
             font-size: 20px;
             margin: 5px;
+            
         }
     </style>
 </head>
 <body>
+    <div class="wrapper">
+        <select  class="in area" name="" id="">
+            <option value="0">北部</option>
+            <option value="1">中部</option>
+            <option value="2">南部</option>
+            <option value="2">東部</option>
+        </select>        
+        <select  class="in time" name="" id="">
+            <option value="0">北部</option>
+            <option value="1">西部</option>
+            <option value="2">南部</option>
+        </select>   
+    </div>
+
     <div class="content">
 
     </div>
 
     <script>
         const box = document.querySelector('.content');
+        let area = document.querySelector('.area');
+        let time = document.querySelector('.time');
         fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-F675BF26-4803-4F70-8916-0D4744773430&format=JSON')
         .then(function(response) {
             return response.json();
@@ -50,32 +82,54 @@
         .then(function(weather) {
             const location = weather.records.location;
             console.log(weather);
+
+            let area_num = document.querySelector('.area').value; 
+            console.log(area_num); 
+            area.addEventListener("change", function () {
+                area_num = document.querySelector('.area').value; 
+                console.log(area_num);  
+            })
+            
+                     
             location.forEach(function(x){
 
                 const city = x.locationName;
                 const startTime = x.weatherElement[0].time[0].startTime;
                 const endTime = x.weatherElement[0].time[0].endTime;
+                const weather = x.weatherElement[0].time[0].parameter.parameterName;
                 const rain = x.weatherElement[1].time[0].parameter.parameterName;
                 const min_t = x.weatherElement[2].time[0].parameter.parameterName;
                 const corfortable = x.weatherElement[3].time[0].parameter.parameterName;
                 const max_t = x.weatherElement[4].time[0].parameter.parameterName;
+                let gif;
 
-                console.log(city);
-                // content.innerHTML = '1';
+
+                console.log(weather);
+
+                if (weather == "陰時多雲" || weather == "多雲時晴" || weather == "晴時多雲" || weather == "多雲時陰") {
+                    gif = "cloud";
+                }else if(weather == "陰時多雲短暫雨" || weather == "陰短暫雨" || weather == "多雲時陰短暫雨" || weather == "多雲短暫雨"){
+                    gif = "rain";
+                }else {
+                    gif = "sun";
+                };
+
+
+
                 box.innerHTML += `
                 <div class="card">
-                    <div class="img"></div>
+                    <div class="img" style="background-image: url(./weather/${gif}.gif);"></div>
                     <div class="box city">${city}</div>
                     <div class="box time">${startTime}</div>
                     <div class="box time">${endTime}</div>
+                    <div class="box weather">${weather}</div>
                     <div class="box rain">${rain}%</div>
                     <div class="box corfortable">${corfortable}</div>
                     <div class="box t">${min_t}~${max_t}°C</div>
                 </div>
-                `
-
-                
+                `              
             });
+
         });
 
 
