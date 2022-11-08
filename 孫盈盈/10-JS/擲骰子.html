@@ -10,36 +10,82 @@
             margin: 0;
             box-sizing: border-box;
         }
+        .all{
+            display: flex;
+            justify-content: space-between;
+        }
+        .me,.you{
+            width: 400px;
+
+            font-size: 30px;
+            font-weight: bolder;
+            text-align: center;
+        }
         .random img{
             width: 100px;
             height: 100px;
             background-size: contain;
 
         }
+        .me-button{
+            width: 200px;
+            height: 100px;
+
+            font-size: 50px;
+
+            /* position: absolute;
+            bottom: 50px;
+            right: calc(50% - 100px); */
+        }
+        .active{
+            display: none;
+        }
+        .reset{
+            width: 200px;
+            height: 100px;
+
+            font-size: 50px;
+
+            /* position: absolute;
+            bottom: 50px;
+            right: calc(50% - 100px); */
+        }
+        .last{
+            display: flex;
+        }
     </style>
 </head>
 <body>
-    <div class="you">
-        you:
-        <div class="you-show random"></div>
-        <button class="you-button">擲!</button>
+    <div class="all">
+        <div class="you">
+            you:
+            <div class="you-show random"></div>
+        </div>
+        <div class="me">
+            me:
+            <div class="me-show random"></div>
+        </div>
     </div>
-    <div class="me">
-        me:
-        <div class="me-show random"></div>
+    <div class="last">
+        <div class="you-last"></div>
+        <div class="me-last"></div>
         <button class="me-button">擲!</button>
+        <button class="reset active">reset</button>
     </div>
     <script>
         const me=document.querySelector('.me-button');
-        const you=document.querySelector('.you-button');
+        const reset=document.querySelector('.reset');
 
         const meShow= document.querySelector('.me-show');
         const youShow= document.querySelector('.you-show');
 
+        const youLast= document.querySelector('.you-last');
+        const meLast= document.querySelector('.me-last');
+
+        let meCount = [];
+        let youCount = [];
+
         function run(a, b){
-            a = Math.floor(Math.random()*6) + 1;
-            
-            console.log(a);
             if(a == 1){
                 b = `<img src="./02-img/骰子1.png" alt="">`;
             }else if(a == 2){
@@ -52,15 +98,50 @@
                 b = `<img src="./02-img/骰子5.png" alt="">`;
             }else{
                 b = `<img src="./02-img/骰子6.png" alt="">`;
-            }
+            } 
+            
+            
             return b;
-            const c = a;
         }
+        me.addEventListener('click', function(){    
+            for($i = 0;$i < 10;$i++){
+                let a = Math.floor(Math.random()*6) + 1;
+                let c = Math.floor(Math.random()*6) + 1;
+                let d = Math.floor(Math.random()*6) + 1;
+                let f = Math.floor(Math.random()*6) + 1;
+                let g = Math.floor(Math.random()*6) + 1;
+                let h = Math.floor(Math.random()*6) + 1;
+                let e;
+            
+                const menum = a + c + d;
+                meCount.push(menum);
+                meShow.innerHTML += run(a, e)+run(c, e)+run(d, e) + menum + '<br>';
 
-            me.addEventListener('click', function(){    
-                meShow.innerHTML = run();
-                youShow.innerHTML = run();
-            })
+                const younum = f + g + h;
+                youCount.push(younum);
+                youShow.innerHTML += run(f, e)+run(g, e)+run(h, e) + younum + '<br>';
+           }
+           console.log(meCount,youCount);
+           let mesum = meCount.reduce(
+            (accumulator, currentValue) => accumulator + currentValue
+            );
+            meLast.innerHTML = mesum;
+
+            let yousum = youCount.reduce(
+            (accumulator, currentValue) => accumulator + currentValue
+            );
+            youLast.innerHTML = yousum;
+
+            me.classList.add('active');
+            reset.classList.remove('active');
+        })
+        reset.addEventListener('click', function(){
+            meShow.innerHTML = "";
+            youShow.innerHTML = "";
+
+            me.classList.remove('active');
+            reset.classList.add('active');
+        })
     </script>
 </body>
 </html>

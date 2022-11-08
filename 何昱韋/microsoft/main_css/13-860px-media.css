@@ -14,13 +14,13 @@
         display: none;
     }
     .hamburger{
-        width: 48px;
-        height: 48px;
-        padding: 6px 0 8px 0;
+        width: 100%;
+        background-color: aqua;
         display: flex;
         margin: auto;
         justify-content: center;
         align-items: center;
+        position: absolute;
     }
     .user_action{
         width: calc(100% - 48px);
@@ -50,5 +50,4 @@
         margin: 0;
     }
 
-    
 }

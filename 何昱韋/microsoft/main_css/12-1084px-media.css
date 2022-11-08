@@ -1,5 +1,13 @@
 @media (max-width:1084px) {
-    /* nav nothing*/
+    /* nav*/
+    .mircosoft-hamburger{
+        width: 1100%;
+        margin-left: -800%;
+    }
+    .burger-flex-box{
+        width: 20%;
+    }
+
 
     /* banner */
     .banner{
