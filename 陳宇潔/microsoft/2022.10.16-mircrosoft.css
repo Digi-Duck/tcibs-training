@@ -27,20 +27,18 @@ body{
 
 .microbox{
     width: 121px;
-    height: 22px;
+    height: 100%;
 
     margin-top: 1px;
-    margin-right: 20px;
-    padding: 16px 6px 10px 16px;
+    padding: 16px 6px 16px 10px;
     
     display: flex;
 }
-
 .micro_img{
     width: 108px;
     height: 23px;
 
-    margin-top: -3px;
+    margin-right: 3px;
 
     display: flex;
 
@@ -100,10 +98,12 @@ body{
 
 .title_img{
     width: 100%;
+    
    
 }
 #computer{
     width: 100%;
+    
 }
 #img{
     width: 100%;
@@ -114,6 +114,7 @@ body{
 
     display: flex;
     align-items: center;
+
 }
 .title_content{
     width: 100%;
@@ -255,10 +256,12 @@ a{
 
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 .product_box{
     width: calc((100% - 72px) / 4);
 
+    margin-bottom: 48px;
 }
 .product_img{
     width: 100%;
@@ -303,6 +306,8 @@ a{
 .sell{
     color: #950C17;
     font-weight: 600;
+
+    margin: 16px 0;
 }
 
 .function_img{
@@ -329,6 +334,8 @@ a{
 }
 .function_box{
     width: 33.3333%;
+    padding: 48px;
+    margin: 0 48px;
 } 
 
 .title_product{
@@ -378,14 +385,11 @@ a{
 
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
-.footer_box:first-child{
-    padding-left: 0;
-}
-.footer_box{
-    width: calc(100% / 6) ;
-    padding: 0 12px;
 
+.footer_box{
+    width: calc((100% - 120px) / 6) ;
 }
 
 .footer_title{
@@ -434,20 +438,63 @@ a{
     .content{
         width: 100%;
         margin: 0;
-    }
+
 }
 @media (max-width: 1400px){
     .content{
         width: 100%;
         margin: 0;
     }
-    /* .computer_pic{
-        height: 490px;
-    } */
+    .product_title{
+        font-size: 1.5rem;
+    }
+    .title_product{
+        font-size: 1.8125rem;
+    }
 }
 
 @media (max-width: 1084px){
+    .content{
+        padding: 0 12px;
+    }
+    .new{
+        background-color: white;
+    }
+    .title_content .content{
+        padding: 12px;
+    }
 
+    .title_box{
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 0.0625rem 0.125rem rgb(0 0 0 / 11%), 0 0.1875rem 0.4375rem rgb(0 0 0 / 13%); ;
+    }
+    .product_box{
+        width: calc((100% - 24px) / 2);
+    }
+    .function_pic{
+        
+    }
+
+    .function_box{
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 0.0625rem 0.125rem rgb(0 0 0 / 11%), 0 0.1875rem 0.4375rem rgb(0 0 0 / 13%); ;
+        margin: 0px;
+    }
+    .footer_box{
+        width: 33.33333% ;
+        padding: 0 12px;
+    }
+    .product_title{
+        font-size: 1.3125rem;
+    }
+    .product{
+        margin-bottom: 0;
+    }
+    .none{
+        display: none;
+    }
 }
 
 @media (max-width: 860px){
