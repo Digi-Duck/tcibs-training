@@ -1,0 +1,65 @@
+                            <div class="mircosoft-hamburger">
+                                <div class="burger-flex-box">
+                                    <div class="burger-header">軟體</div>
+                                    <ul class="">
+                                        <li class="burger-li"><bgtext>Windows 應用程式</bgtext></li>
+                                        <li class="burger-li"><bgtext>OneDrive</bgtext></li>
+                                        <li class="burger-li"><bgtext>Outlook</bgtext></li>
+                                        <li class="burger-li"><bgtext>Skype</bgtext></li>
+                                        <li class="burger-li"><bgtext>OneNote</bgtext></li>
+                                        <li class="burger-li"><bgtext>Mircosoft Teams</bgtext></li>
+                                    </ul>
+                                </div>
+                                <div class="burger-flex-box">
+                                    <div class="burger-header">個人電腦及設備</div>
+                                    <ul>
+                                        <li class="burger-li"><bgtext>選購 Xbox</bgtext></li>
+                                        <li class="burger-li"><bgtext>電腦配件</bgtext></li>
+                                    </ul>
+                                </div>
+                                <div class="burger-flex-box">
+                                    <div class="burger-header">娛樂</div>
+                                    <ul>
+                                        <li class="burger-li"><bgtext>Xbox Game Pass Ultimate</bgtext></li>
+                                        <li class="burger-li"><bgtext>Xbox Live Gold</bgtext></li>
+                                        <li class="burger-li"><bgtext>Xbox 與遊戲</bgtext></li>
+                                        <li class="burger-li"><bgtext>電腦遊戲</bgtext></li>
+                                        <li class="burger-li"><bgtext>Windows 遊戲</bgtext></li>
+                                    </ul>
+                                </div>
+                                <div class="burger-flex-box">
+                                    <div class="burger-header">商務適用</div>
+                                    <ul>
+                                        <li class="burger-li"><bgtext>Mircosoft Cloud</bgtext></li>
+                                        <li class="burger-li"><bgtext>Mircosoft 安全性</bgtext></li>
+                                        <li class="burger-li"><bgtext>Azure</bgtext></li>
+                                        <li class="burger-li"><bgtext>Dynamics 365</bgtext></li>
+                                        <li class="burger-li"><bgtext>商務用 Mircosoft 365</bgtext></li>
+                                        <li class="burger-li"><bgtext>Mircosoft 產業</bgtext></li>
+                                        <li class="burger-li"><bgtext>Mircisoft Power Platform</bgtext></li>
+                                        <li class="burger-li"><bgtext>Windows 365</bgtext></li>
+                                    </ul>
+                                </div>
+                                <div class="burger-flex-box">
+                                    <div class="burger-header">開發人員與IT</div>
+                                    <ul>
+                                        <li class="burger-li"><bgtext>開發人員中心</bgtext></li>
+                                        <li class="burger-li"><bgtext>文件</bgtext></li>
+                                        <li class="burger-li"><bgtext>Mircosoft Learn</bgtext></li>
+                                        <li class="burger-li"><bgtext>Mircosoft 技術社群</bgtext></li>
+                                        <li class="burger-li"><bgtext>Azure Marketplace</bgtext></li>
+                                        <li class="burger-li"><bgtext>AppSource</bgtext></li>
+                                        <li class="burger-li"><bgtext>Visual Studio</bgtext></li>
+                                    </ul>
+                                </div>
+                                <div class="burger-flex-box">
+                                    <div class="burger-header">其他</div>
+                                    <ul>
+                                        <li class="burger-li"><bgtext>Mircosoft Rewards</bgtext></li>
+                                        <li class="burger-li"><bgtext>免費下載及安全性</bgtext></li>
+                                        <li class="burger-li"><bgtext>教育</bgtext></li>
+                                        <li class="burger-li"><bgtext>禮品卡</bgtext></li>
+                                        <li class="burger-li"><bgtext>Licensing</bgtext></li>
+                                    </ul>
+                                </div>
+                            </div>

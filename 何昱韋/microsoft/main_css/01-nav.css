@@ -142,19 +142,54 @@ a:visited{
 }
 .mircosoft-hamburger{
     width: 1500%;
-    background-color: brown;
+    background-color: #e6e6e6;
     margin-left: -1200%;
-    margin-top: 20px;
-    display: flex;
-    /* display: none; */
+    margin-top: 22px;
+    display: none;
 }
 .burger-flex-box{
     width: 16.666%;
 }
 .burger-header{
     padding: 18px 0 18px 24px;
-
 }
 .burger-li{
     padding: 12px 0 12px 24px;
+}
+.burger-flex-box>ul>li>bgtext:hover{
+    border-bottom: 1px solid black;
+}
+label{
+    display: block;
+}   
+#burger:checked + .mircosoft-hamburger{
+    display: block;
+    display: flex;
+}
+
+/* phone-burger */
+.hamburger{
+    position: relative;
+}
+.phone-burger-bigul{
+    display: none;
+}
+#phone-burger:checked +.phone-burger-bigul{
+    display: block;
+}
+
+label{
+    padding: 0 17px;
+    line-height: 54px;
+}
+
+.phone-burger-bigul{
+    width: 100%;
+    background-color: #e6e6e6;
+    position: absolute;
+    top: 53px;
+}
+.phone-burger-flex-box{
+    padding: 14px 24px 15px 14px;
+    margin: 1px;
 }
