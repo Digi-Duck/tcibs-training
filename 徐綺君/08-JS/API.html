@@ -18,22 +18,23 @@
         .wrapper{
             display: flex;
             justify-content: space-around;
+            margin-bottom: 5px;
         }
         .in{
             width: 800px;
-            font-size: 50px;
-            margin: 10px 15px;
+            font-size: 35px;
+            margin: 5px 15px;
             padding: 10px;
             text-align: center;
         }
         .card{
             width: calc(20% - 40px);
-            height: 425px;
+            height: 400px;
             border: 1px solid black;
             display: flex;
             align-items: center;
             flex-direction: column;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             padding: 10px;
         }
         .img{
@@ -58,12 +59,12 @@
             <option value="0">北部</option>
             <option value="1">中部</option>
             <option value="2">南部</option>
-            <option value="2">東部</option>
+            <option value="3">東部</option>
         </select>        
         <select  class="in time" name="" id="">
-            <option value="0">北部</option>
-            <option value="1">西部</option>
-            <option value="2">南部</option>
+            <option value="0"></option>
+            <option value="1"></option>
+            <option value="2"></option>
         </select>   
     </div>
 
@@ -84,51 +85,92 @@
             console.log(weather);
 
             let area_num = document.querySelector('.area').value; 
-            console.log(area_num); 
+            let time_num = document.querySelector('.time').value;
+            console.log(time_num);
+            aa(area_num,time_num);
+
             area.addEventListener("change", function () {
                 area_num = document.querySelector('.area').value; 
-                console.log(area_num);  
+                box.innerHTML = ' ';
+                aa(area_num,time_num); 
+            })
+
+            time.addEventListener("change", function () {
+                time_num = document.querySelector('.time').value; 
+                box.innerHTML = ' ';
+                aa(area_num,time_num); 
+                console.log(time_num);
             })
             
-                     
-            location.forEach(function(x){
+            function aa(area_num,time_num) {
+                location.forEach(function(x){
+                    let i = time_num;
+                    const startTime = x.weatherElement[0].time[0].startTime;
+                    const endTime = x.weatherElement[0].time[0].endTime;
+                    const startTime2 = x.weatherElement[0].time[1].startTime;
+                    const endTime2 = x.weatherElement[0].time[1].endTime;
+                    const startTime3 = x.weatherElement[0].time[2].startTime;
+                    const endTime3 = x.weatherElement[0].time[2].endTime;
+                    const city = x.locationName;
+                    const weather = x.weatherElement[0].time[i].parameter.parameterName;
+                    const rain = x.weatherElement[1].time[i].parameter.parameterName;
+                    const min_t = x.weatherElement[2].time[i].parameter.parameterName;
+                    const corfortable = x.weatherElement[3].time[i].parameter.parameterName;
+                    const max_t = x.weatherElement[4].time[i].parameter.parameterName;  
 
-                const city = x.locationName;
-                const startTime = x.weatherElement[0].time[0].startTime;
-                const endTime = x.weatherElement[0].time[0].endTime;
-                const weather = x.weatherElement[0].time[0].parameter.parameterName;
-                const rain = x.weatherElement[1].time[0].parameter.parameterName;
-                const min_t = x.weatherElement[2].time[0].parameter.parameterName;
-                const corfortable = x.weatherElement[3].time[0].parameter.parameterName;
-                const max_t = x.weatherElement[4].time[0].parameter.parameterName;
-                let gif;
-
-
-                console.log(weather);
-
-                if (weather == "陰時多雲" || weather == "多雲時晴" || weather == "晴時多雲" || weather == "多雲時陰") {
-                    gif = "cloud";
-                }else if(weather == "陰時多雲短暫雨" || weather == "陰短暫雨" || weather == "多雲時陰短暫雨" || weather == "多雲短暫雨"){
-                    gif = "rain";
-                }else {
-                    gif = "sun";
-                };
+                    let gif;
 
 
+                    time.innerHTML = `
+                    <option value="0">${startTime}~${endTime}</option>
+                    <option value="1">${startTime2}~${endTime2}</option>
+                    <option value="2">${startTime3}~${endTime3}</option>`
 
-                box.innerHTML += `
-                <div class="card">
-                    <div class="img" style="background-image: url(./weather/${gif}.gif);"></div>
-                    <div class="box city">${city}</div>
-                    <div class="box time">${startTime}</div>
-                    <div class="box time">${endTime}</div>
-                    <div class="box weather">${weather}</div>
-                    <div class="box rain">${rain}%</div>
-                    <div class="box corfortable">${corfortable}</div>
-                    <div class="box t">${min_t}~${max_t}°C</div>
-                </div>
-                `              
-            });
+
+                    function a(){
+                        box.innerHTML += `
+                            <div class="card">
+                                <div class="img" style="background-image: url(./weather/${gif}.gif);"></div>
+                                <div class="box city">${city}</div>
+                                <div class="box time">${startTime}</div>
+                                <div class="box time">${endTime}</div>
+                                <div class="box weather">${weather}</div>
+                                <div class="box rain">${rain}%</div>
+                                <div class="box corfortable">${corfortable}</div>
+                                <div class="box t">${min_t}~${max_t}°C</div>
+                            </div>`
+                    }
+
+                    if (weather == "陰時多雲" || weather == "多雲時晴" || weather == "晴時多雲" || weather == "多雲時陰") {
+                        gif = "cloud";
+                    }else if(weather == "陰時多雲短暫雨" || weather == "陰短暫雨" || weather == "多雲時陰短暫雨" || weather == "多雲短暫雨"){
+                        gif = "rain";
+                    }else {
+                        gif = "sun";
+                    }
+
+                    
+                    if (area_num == 0) {
+                        if(city == "臺北市" || city == "新北市" || city == "基隆市" || city == "新竹市" || city == "桃園市" || city == "新竹縣" || city == "宜蘭縣"){
+                            a();                       
+                        }  
+                    }else if (area_num == 1) {
+                        if(city == "臺中市" || city == "苗栗縣" || city == "彰化縣" || city == "南投縣" || city == "雲林縣"){
+                            a();                       
+                        }
+                    }else if (area_num == 2) {
+                        if(city == "高雄市" || city == "臺南市" || city == "嘉義市" || city == "嘉義縣" || city == "澎湖縣" || city == "屏東縣"){
+                            a();                       
+                        }
+                    }else if (area_num == 3) {
+                        if(city == "花蓮縣" || city == "臺東縣"){
+                            a();                       
+                        }
+                    }   
+                    
+
+                });
+            }
 
         });
 
