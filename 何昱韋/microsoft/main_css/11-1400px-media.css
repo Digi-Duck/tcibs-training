@@ -21,6 +21,11 @@
     .user_login{
         display: none;
     }
+    
+    .mircosoft-hamburger{
+        width: 1500%;
+        margin-left: -1150%;
+    }
 
     /* banner */
     .demo-card{

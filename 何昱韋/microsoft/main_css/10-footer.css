@@ -44,6 +44,7 @@ ul{
 .end-link{
     float: right;
     display: flex;
+    flex-wrap: wrap;
 }
 .end-li{
     height: 20px;
