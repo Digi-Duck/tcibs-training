@@ -49,5 +49,18 @@
     .layout_region{
         margin: 0;
     }
+}
 
+@media (max-width:770px) {
+    /* footer 770px */
+    footer{
+        height: 715px;
+    }
+    .language{
+        float: none;
+    }
+    .end-link{
+        float: left;
+        margin: 12px 0 3px 0;
+    }
 }

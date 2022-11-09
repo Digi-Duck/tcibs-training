@@ -2,63 +2,64 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI',SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
-body{
-    font-family: "Segoe UI", SegoeUI, "Helvetica Neue", Helvetica, Arial, sans-serif;
+nav{
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-bottom: 2px;
 }
-.nav-container{
-    width: 84.2%;
-    height: 100%;
+a{
+    color: black;
+    text-decoration: none;
+}
+a:visited{
+    color: black;
+}
+.nav-display-flex{
+    display: flex;  
+}
+.nav-display-none{
+    display: none ;
+}
+.nav-big-container{
+    width: 94.2%;
+    height: 54px;
     margin: auto;
+}
+.small-container{
     display: flex;
     justify-content: space-between;
 }
-.container-left-region{
-    display: flex;
+ul{
+    list-style: none;
 }
 .mirco_logo{
-    width: 108px;
-    height: 23px;
-    margin: 15px 10px;
-}
-.logo_region:active{
-    border: 1px dotted black;
-}
-.soft_product{
-    height: 100%;
-    padding: 0 1px 5px 2px;
-}
-.nav-prod-list{
-    height: 100%;
-    list-style: none;
-    display: flex;
-}
+   width: 108px;
+   height: 23px;
+   margin: 15px 10px;
+}   
 .nav-prod-list-box{
     height: 48px;
     font-size: 13px;
     border: 1px solid transparent;
-    padding: 16px 8px 10px 8px;
-    margin: 1px 4px 0 4px;
+    padding: 18px 8px 10px 8px;
+    margin: 1px 4px 0 4px;    
 }
 .nav-prod-list-box:active{
-    border: 1px dotted black;
+   border: 1px dotted black;
 }
 .nav-prod-list-box-text:hover{
     border-bottom:2px solid black;
 }
 
-.user_action{
-    width: 380px;
+.user-action{
+    width: 390px;
     height: 100%;
-}
-.nav-user-list{
-    list-style: none;
     display: flex;
 }
-.nav-user-list-box{
+.user-action-box{
     font-size: 13px;
-    font-family: "Segoe UI",SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .mircosoft_menu{
@@ -66,6 +67,7 @@ body{
     padding: 16px 12px 16px 15px;
     margin-top: 1px;  
     border: 1px solid transparent;
+    display: inline-block;
 }
 .mircosoft_menu_text{
     width: 96px;
@@ -77,7 +79,7 @@ body{
     margin-left: 1px;
 }
 
-.search_box{
+.search-box{
     width: 90px;
     height: 52px;
     padding: 16px 9px 16px 9px;
@@ -112,86 +114,46 @@ body{
 }
 .user_login{
     width: 52px;
-    padding: 0 4px 1px 12px;
+    padding: 0 4px 0 12px;
 }
 .user_headimg{
     margin: 8px;
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid black;
     font-size: 20px;
 }
 
-.nav-user-860-list-box{
-    display: flex;
-}
-.display-none{  
-    display: none;
-}
-
-a{
-    color: black;
-    text-decoration: none;
-}
-a:visited{
-    color: black;
-}
-
-
-/* burger */
 .mircosoft_menu_text{
     position: relative;
 }
-.mircosoft-hamburger{
-    width: 1500%;
+.mircosoft_menu_burger{
+    width: 1230px;
+    position: absolute;
+    top: 56px;
+    left: 450px;
     background-color: #e6e6e6;
-    margin-left: -1200%;
-    margin-top: 22px;
     display: none;
-}
-.burger-flex-box{
-    width: 16.666%;
-}
-.burger-header{
-    padding: 18px 0 18px 24px;
-}
-.burger-li{
-    padding: 12px 0 12px 24px;
-}
-.burger-flex-box>ul>li>bgtext:hover{
-    border-bottom: 1px solid black;
 }
 label{
     display: block;
 }   
-#burger:checked + .mircosoft-hamburger{
+#burger:checked + .mircosoft_menu_burger{
     display: block;
     display: flex;
+    flex-wrap: wrap;
 }
 
-/* phone-burger */
-.hamburger{
-    position: relative;
+.menu_burger_title{
+    width: 16.666%;
 }
-.phone-burger-bigul{
-    display: none;
-}
-#phone-burger:checked +.phone-burger-bigul{
-    display: block;
-}
-
-label{
-}
-
-.phone-burger-bigul{
+.soft-burger-div{
     width: 100%;
-    background-color: #e6e6e6;
-    position: absolute;
-    top: 53px;
 }
-.phone-burger-flex-box{
-    padding: 14px 24px 15px 14px;
-    margin: 1px;
+.burger-text{
+    padding: 18px 0 18px 24px;
 }

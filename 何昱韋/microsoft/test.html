@@ -26,153 +26,182 @@
 <body>
 <!-- nav -->
     <nav>
-        <div class="nav-container">
-            <div class="container-left-region">
-                <label for="phone-burger">☰</label>
-                <div class="hamburger display-none display-860-block">
-                    <input type="checkbox" id="phone-burger" hidden>
-                    <ul class="phone-burger-bigul">
-                        <li class="phone-burger-flex-box">Mircosoft 365</li>
-                        <li class="phone-burger-flex-box">Teams</li>
-                        <li class="phone-burger-flex-box">Windows</li>
-                        <li class="phone-burger-flex-box">Surface</li>
-                        <li class="phone-burger-flex-box">Xbox</li>
-                        <li class="phone-burger-flex-box">支援</li>
-                        <li class="phone-burger-flex-box"></li>
-                        <li class="phone-burger-flex-box"></li>
-                        <li class="phone-burger-flex-box"></li>
-                        <li class="phone-burger-flex-box"></li>
-                        <li class="phone-burger-flex-box"></li>
-                        <li class="phone-burger-flex-box"></li>
-                        <li class="phone-burger-flex-box"></li>
+        <div class="nav-big-container">
+            <label for="nav-all-burger" class="nav-display-none">☰</label>
+            <div class="small-container">
+                <input type="checkbox" id="nav-all-burger" hidden>
+
+                <div class="title-part nav-display-flex">
+                    <div class="logo_region display-860-none">
+                        <a href="http://127.0.0.1:5500/test.html">
+                            <img  class="mirco_logo" src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31" alt="">
+                        </a>
+                    </div>
+
+                    <ul class="soft-product nav-display-flex">
+                        <li class="nav-prod-list-box">
+                            <a href="https://www.microsoft.com/zh-tw/microsoft-365?rtc=1">
+                                <div class="nav-prod-list-box-text">Mircosoft 365</div>
+                            </a>
+                        </li>
+                        <li class="nav-prod-list-box">
+                            <a href="https://www.microsoft.com/zh-tw/microsoft-teams/group-chat-software?rtc=1">
+                                <div class="nav-prod-list-box-text">Teams</div>
+                            </a>
+                        </li>
+                        <li class="nav-prod-list-box">
+                            <a href="https://www.microsoft.com/zh-tw/windows/?r=1">
+                                <div class="nav-prod-list-box-text">Windows</div>
+                            </a>
+                        </li>
+                        <li class="nav-prod-list-box">
+                            <a href="https://www.microsoft.com/en-us/surface">
+                                <div class="nav-prod-list-box-text">Surface</div>
+                            </a>
+                        </li>
+                        <label for="more" class="nav-prod-list-box nav-display-none display-900-block">更多</label>
+                        <input type="checkbox" id="more" hidden>
+                        <ul class="nav-more-container display-900-none">
+                            <li class="nav-prod-list-box">
+                                <a href="https://www.xbox.com/zh-TW/">
+                                    <div class="nav-prod-list-box-text pad-mar burger-text">Xbox</div>
+                                </a>
+                            </li>
+                            <li class="nav-prod-list-box">
+                                <a href="https://support.microsoft.com/zh-tw">
+                                    <div class="nav-prod-list-box-text pad-mar burger-text">支援</div>
+                                </a>
+                            </li>
+                        </ul>
                     </ul>
                 </div>
-                <div class="logo_region display-860-none">
-                    <a href="http://127.0.0.1:5500/test.html">
-                        <img  class="mirco_logo" src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31" alt="">
-                    </a>
-                </div>
-                <div class="soft_product display-860-none">
-                    <ul class="nav-prod-list">
-                        <a href="https://www.microsoft.com/zh-tw/microsoft-365?rtc=1" class="nav-prod-list-box">
-                            <div class="nav-prod-list-box-text">Mircosoft</div>
-                        </a>
-                        <a href="https://www.microsoft.com/zh-tw/microsoft-teams/group-chat-software?rtc=1" class="nav-prod-list-box">
-                            <div class="nav-prod-list-box-text">Teams</div>
-                        </a>
-                        <a href="https://www.microsoft.com/zh-tw/windows/?r=1" class="nav-prod-list-box">
-                            <div class="nav-prod-list-box-text">Windows</div>
-                        </a>
-                        <a href="https://www.microsoft.com/en-us/surface" class="nav-prod-list-box">
-                            <div class="nav-prod-list-box-text">Surface</div>
-                        </a>
-                        <a href="https://www.xbox.com/zh-TW/" class="nav-prod-list-box">
-                            <div class="nav-prod-list-box-text">Xbox</div>
-                        </a>
-                        <a href="https://support.microsoft.com/zh-tw" class="nav-prod-list-box">
-                            <div class="nav-prod-list-box-text">支援</div>
-                        </a>
-                    </ul>
-                </div>
-            </div>
-            <div class="user_action">
-                <ul class="nav-user-list">
-                    <li class="nav-user-list-box mircosoft_menu display-860-none">
-                        <label for="burger" class="mircosoft_menu_text">所以 Mircosoft</label>
+
+                <div class="user-action">
+                    <div class="user-action-box mircosoft_menu">
+                        <label for="burger" class="mircosoft_menu_text">所有 Mircosoft</label>
                         <input type="checkbox" id="burger" hidden>
-                        <div class="mircosoft-hamburger">
-                            <div class="burger-flex-box">
-                                <div class="burger-header">軟體</div>
+                        <ul class="mircosoft_menu_burger">
+
+                            <li class="menu_burger_title">
+                                <div class="soft-burger-div">
+                                    <label for="soft-burger" class="burger-text">軟體</label>
+                                    <input type="checkbox" id="soft-burger" hidden>
+                                    <ul class="">
+                                        <li class="burger-text">Windows 應用程式</li>
+                                        <li class="burger-text">OneDrive</li>
+                                        <li class="burger-text">Outlook</li>
+                                        <li class="burger-text">Skypt</li>
+                                        <li class="burger-text">OneNote</li>
+                                        <li class="burger-text">Mircosoft Teams</li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="menu_burger_title">
+                                <div class="soft-burger-div">
+                                <label for="pc-burger" class="burger-text">個人電腦及設備</label>
+                                <input type="checkbox" id="pc-burger" hidden>
                                 <ul class="">
-                                    <li class="burger-li"><bgtext>Windows 應用程式</bgtext></li>
-                                    <li class="burger-li"><bgtext>OneDrive</bgtext></li>
-                                    <li class="burger-li"><bgtext>Outlook</bgtext></li>
-                                    <li class="burger-li"><bgtext>Skype</bgtext></li>
-                                    <li class="burger-li"><bgtext>OneNote</bgtext></li>
-                                    <li class="burger-li"><bgtext>Mircosoft Teams</bgtext></li>
+                                    <li class="burger-text">選購 Xbox</li>
+                                    <li class="burger-text">電腦配件</li>
                                 </ul>
-                            </div>
-                            <div class="burger-flex-box">
-                                <div class="burger-header">個人電腦及設備</div>
+                                </div>
+                            </li>
+
+                            <li class="menu_burger_title">
+                                <div class="soft-burger-div">
+                                <label for="entertain-burger" class="burger-text">娛樂</label>
+                                <input type="checkbox" id="entertain-burger" hidden>
+                                <ul class="">
+                                    <li class="burger-text">Xbox Game Pass Ultimate</li>
+                                    <li class="burger-text">Xbox Live Gold</li>
+                                    <li class="burger-text">Xbox 與遊戲</li>
+                                    <li class="burger-text">電腦遊戲</li>
+                                    <li class="burger-text">Windows 遊戲</li>
+                                </ul>
+                                </div>
+                            </li>
+
+                            <li class="menu_burger_title">
+                                <div class="soft-burger-div">
+                                <label for="business-burger" class="burger-text">商務適用</label>
+                                <input type="checkbox" id="business-burger" hidden>
                                 <ul>
-                                    <li class="burger-li"><bgtext>選購 Xbox</bgtext></li>
-                                    <li class="burger-li"><bgtext>電腦配件</bgtext></li>
+                                    <li class="burger-text">Mircosoft Cloud</li>
+                                    <li class="burger-text">Mircosoft 安全性</li>
+                                    <li class="burger-text">Azure</li>
+                                    <li class="burger-text">Dynamics 365</li>
+                                    <li class="burger-text">商務用 Mircosoft 365</li>
+                                    <li class="burger-text">Mircosoft 產業</li>
+                                    <li class="burger-text">Mircisoft Power Platform</li>
+                                    <li class="burger-text">Windows 365</li>
                                 </ul>
-                            </div>
-                            <div class="burger-flex-box">
-                                <div class="burger-header">娛樂</div>
-                                <ul>
-                                    <li class="burger-li"><bgtext>Xbox Game Pass Ultimate</bgtext></li>
-                                    <li class="burger-li"><bgtext>Xbox Live Gold</bgtext></li>
-                                    <li class="burger-li"><bgtext>Xbox 與遊戲</bgtext></li>
-                                    <li class="burger-li"><bgtext>電腦遊戲</bgtext></li>
-                                    <li class="burger-li"><bgtext>Windows 遊戲</bgtext></li>
-                                </ul>
-                            </div>
-                            <div class="burger-flex-box">
-                                <div class="burger-header">商務適用</div>
-                                <ul>
-                                    <li class="burger-li"><bgtext>Mircosoft Cloud</bgtext></li>
-                                    <li class="burger-li"><bgtext>Mircosoft 安全性</bgtext></li>
-                                    <li class="burger-li"><bgtext>Azure</bgtext></li>
-                                    <li class="burger-li"><bgtext>Dynamics 365</bgtext></li>
-                                    <li class="burger-li"><bgtext>商務用 Mircosoft 365</bgtext></li>
-                                    <li class="burger-li"><bgtext>Mircosoft 產業</bgtext></li>
-                                    <li class="burger-li"><bgtext>Mircisoft Power Platform</bgtext></li>
-                                    <li class="burger-li"><bgtext>Windows 365</bgtext></li>
-                                </ul>
-                            </div>
-                            <div class="burger-flex-box">
-                                <div class="burger-header">開發人員與IT</div>
-                                <ul>
-                                    <li class="burger-li"><bgtext>開發人員中心</bgtext></li>
-                                    <li class="burger-li"><bgtext>文件</bgtext></li>
-                                    <li class="burger-li"><bgtext>Mircosoft Learn</bgtext></li>
-                                    <li class="burger-li"><bgtext>Mircosoft 技術社群</bgtext></li>
-                                    <li class="burger-li"><bgtext>Azure Marketplace</bgtext></li>
-                                    <li class="burger-li"><bgtext>AppSource</bgtext></li>
-                                    <li class="burger-li"><bgtext>Visual Studio</bgtext></li>
-                                </ul>
-                            </div>
-                            <div class="burger-flex-box">
-                                <div class="burger-header">其他</div>
-                                <ul>
-                                    <li class="burger-li"><bgtext>Mircosoft Rewards</bgtext></li>
-                                    <li class="burger-li"><bgtext>免費下載及安全性</bgtext></li>
-                                    <li class="burger-li"><bgtext>教育</bgtext></li>
-                                    <li class="burger-li"><bgtext>禮品卡</bgtext></li>
-                                    <li class="burger-li"><bgtext>Licensing</bgtext></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-user-list-box search_box">
+                                </div>
+                            </li>
+
+                            <li class="menu_burger_title">
+                                <div class="soft-burger-div">
+                                    <label for="it-burger" class="burger-text">開發人員與IT</label>
+                                    <input type="checkbox" id="it-burger" hidden>
+                                    <ul>
+                                        <li class="burger-text">開發人員中心</li>
+                                        <li class="burger-text">文件</li>
+                                        <li class="burger-text">Mircosoft Learn</li>
+                                        <li class="burger-text">Mircosoft 技術社群</li>
+                                        <li class="burger-text">Azure Marketplac</li>
+                                        <li class="burger-text">AppSource</li>
+                                        <li class="burger-text">Visual Studio</li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="menu_burger_title">
+                                <div class="soft-burger-div">
+                                    <label for="other-burger" class="burger-text">其他</label>
+                                    <input type="checkbox" id="other-burger" hidden>
+                                    <ul>
+                                        <li class="burger-text">Mircosoft Rewards</li>
+                                        <li class="burger-text">免費下載及安全性</li>
+                                        <li class="burger-text">教育</li>
+                                        <li class="burger-text">禮品卡</li>
+                                        <li class="burger-text">Licensing</li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="user-action-box search-box">
                         <div class="search_box_text">搜尋</div>
                         <div class="search_box_icon">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
-                    </li>
-                    <li class="nav-user-list-box  display-none display-860-block">
+                    </div>
+                    <div class="user-action-box nav-display-none">
                         <div class="logo_region">
-                            <img  class="mirco_logo" src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31" alt="">
+                            <a href="http://127.0.0.1:5500/test.html">
+                                <img  class="mirco_logo" src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31" alt="">
+                            </a>
                         </div>
-                    </li>
-                    <div class="nav-user-860-list-box">
-                        <li class="nav-user-list-box shopcar">
+                    </div>
+                    <div class="user-action-box nav-display-flex">
+                        <div class="shopcar">
                             <div class="shopcar_text">購物車</div>
                             <div class="shopcar_icon">
                                 <i class="fa-solid fa-cart-shopping"></i>
                             </div>
-                        </li>
-                        <li class="nav-user-list-box user_information">
+                        </div>
+                        <div class="user user_information ">
                             <div class="user_login">登入</div>
                             <div class="user_headimg"><i class="fa-regular fa-user"></i></div>
-                        </li>
+                        </div>
                     </div>
-                </ul>
+                </div>
+
             </div>
         </div>
-    </nav>
+</nav>
 
  <!--banner  -->
     <section class="banner-region">

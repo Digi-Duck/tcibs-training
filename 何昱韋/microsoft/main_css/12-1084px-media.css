@@ -1,14 +1,23 @@
 @media (max-width:1084px) {
     /* nav*/
-    .mircosoft-hamburger{
-        width: 1100%;
-        margin-left: -800%;
+    nav{
+        padding: 0 24px;
     }
-    .burger-flex-box{
+    .mircosoft_menu_burger{
+        width: 1025px;
+    }
+    .menu_burger_title{
         width: 20%;
     }
-
-
+    .mircosoft_menu_text{
+        position: relative;
+    }
+    .mircosoft_menu_burger{
+        position: absolute;
+        top: 56px;
+        left: 25px;
+        z-index: 1;
+    }
     /* banner */
     .banner{
         display: block;
@@ -115,5 +124,32 @@
     .end-ul-box{
         padding-left: 24px;
         padding-right: 24px;
+    }
+}
+
+@media (max-width:900px) {
+    .display-900-block{
+        display: block;
+        font-size: 13px;
+    }
+    .display-900-none{
+        display: none;
+    }
+    .pad-mar{
+        padding: 0;
+        margin: 0;
+    }
+    #more:checked + .nav-more-container{
+        display: block;
+    }
+    .nav-prod-list-box{
+        position: relative;
+    }
+    .nav-more-container{
+        width: 170px;
+        background-color: #e6e6e6;
+        position: absolute;
+        top: 56px;
+        right: 230px;
     }
 }

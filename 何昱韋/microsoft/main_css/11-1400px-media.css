@@ -3,11 +3,16 @@
     .nav-container{
         width: 90%;
     }
-    .user_action{
+    .user-action{
         width: 255px;
+        display: flex;
+        justify-content: end;
     }
     .mircosoft_menu_text{
-        width: 87px;
+        width: 96px;
+    }
+    .search-box{
+        width: 36px;
     }
     .search_box_text{
         display: none;
@@ -21,10 +26,13 @@
     .user_login{
         display: none;
     }
-    
-    .mircosoft-hamburger{
-        width: 1500%;
-        margin-left: -1150%;
+    .mircosoft_menu_text{
+        position: relative;
+    }
+    .mircosoft_menu_burger{
+        position: absolute;
+        top: 56px;
+        left: 100px;
     }
 
     /* banner */

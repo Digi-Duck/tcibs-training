@@ -30,7 +30,7 @@ ul{
 }
 
 .end{
-    font-size: 12px
+    font-size: 12px;
 }
 .end-ul-box{
     max-width: calc(1600px + 10%);

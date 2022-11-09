@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        nav{
+            width: 100%;
+            padding-left: 5%;
+            padding-right: 5%;
+            margin-bottom: 2px;
+        }
+        a{
+            color: black;
+            text-decoration: none;
+        }
+        a:visited{
+            color: black;
+        }
+        .nav-display-flex{
+            display: flex;  
+        }
+        .nav-display-none{
+            display: none ;
+        }
+        .nav-big-container{
+            width: 94.2%;
+            height: 54px;
+            margin: auto;
+            background-color: burlywood;
+        }
+        .small-container{
+            display: flex;
+            justify-content: space-between;
+        }
+        ul{
+            list-style: none;
+        }
+        .mirco_logo{
+           width: 108px;
+           height: 23px;
+           margin: 15px 10px;
+        }   
+        .nav-prod-list-box{
+            height: 48px;
+            font-size: 13px;
+            border: 1px solid transparent;
+            padding: 16px 8px 10px 8px;
+            margin: 1px 4px 0 4px;
+        }
+        .nav-prod-list-box:active{
+           border: 1px dotted black;
+        }
+        .nav-prod-list-box-text:hover{
+            border-bottom:2px solid black;
+        }
+
+        .user-action{
+            width: 390px;
+            height: 100%;
+            display: flex;
+        }
+        .user-action-box{
+            font-size: 13px;
+        }
+
+        .mircosoft_menu{
+            height: 52px;
+            padding: 16px 12px 16px 15px;
+            margin-top: 1px;  
+            border: 1px solid transparent;
+            display: inline-block;
+        }
+        .mircosoft_menu_text{
+            width: 96px;
+        }
+        .mircosoft_menu_text::after{
+            content: "\f107";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            margin-left: 1px;
+        }
+
+        .search-box{
+            width: 90px;
+            height: 52px;
+            padding: 16px 9px 16px 9px;
+            border: 1px solid transparent;
+            display: flex;
+        }
+        .search_box_icon{
+            font-size: 16px;
+            margin-left: 2px;
+        }
+
+        .shopcar{
+            width: 61px;
+            padding: 2px 0 2px 0;
+            margin:1px 4px 0 18px;
+            border: 1px solid transparent;
+            display: flex;
+        }
+        .shopcar_text{
+            width: 39px;
+            line-height: 48px;
+            margin-right: 4px;
+        }
+        .shopcar_icon{
+            line-height: 48px;
+        }
+
+        .user_information{
+            margin-left: 1px;
+            display: flex;
+            align-items: center;
+        }
+        .user_login{
+            width: 52px;
+            padding: 0 4px 0 12px;
+        }
+        .user_headimg{
+            margin: 8px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            font-size: 20px;
+        }
+
+        .mircosoft_menu_burger{
+            display: none;
+        }
+        label{
+            display: block;
+        }   
+        #burger:checked + .mircosoft_menu_burger{
+            display: block;
+            display: flex;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-big-container">
+            <label for="nav-all-burger" class="nav-display-none">☰</label>
+            <div class="small-container">
+                <input type="checkbox" id="nav-all-burger" hidden>
+
+                <div class="title-part nav-display-flex">
+                    <div class="logo_region display-860-none">
+                        <a href="http://127.0.0.1:5500/test.html">
+                            <img  class="mirco_logo" src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31" alt="">
+                        </a>
+                    </div>
+    
+                    <ul class="soft-product nav-display-flex">
+                        <li class="nav-prod-list-box">
+                            <a href="https://www.microsoft.com/zh-tw/microsoft-365?rtc=1">
+                                <div class="nav-prod-list-box-text">Mircosoft</div>
+                            </a>
+                        </li>
+                        <li class="nav-prod-list-box">
+                            <a href="https://www.microsoft.com/zh-tw/microsoft-teams/group-chat-software?rtc=1">
+                                <div class="nav-prod-list-box-text">Teams</div>
+                            </a>
+                        </li>
+                        <li class="nav-prod-list-box">
+                            <a href="https://www.microsoft.com/zh-tw/windows/?r=1">
+                                <div class="nav-prod-list-box-text">Windows</div>
+                            </a>
+                        </li>
+                        <li class="nav-prod-list-box">
+                            <a href="https://www.microsoft.com/en-us/surface">
+                                <div class="nav-prod-list-box-text">Surface</div>
+                            </a>
+                        </li>
+                        <li class="nav-prod-list-diff-box">
+                            <label for=""></label>
+                            <div class="nav-prod-list-container nav-display-flex">
+                                <div class="nav-prod-list-box">
+                                    <a href="https://www.xbox.com/zh-TW/">
+                                        <div class="nav-prod-list-box-text">Xbox</div>
+                                    </a>
+                                </div>
+                                <div class="nav-prod-list-box">
+                                    <a href="https://support.microsoft.com/zh-tw">
+                                        <div class="nav-prod-list-box-text">支援</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="user-action">
+                    <div class="user-action-box mircosoft_menu">
+                        <label for="burger" class="mircosoft_menu_text">所有 Mircosoft</label>
+                        <input type="checkbox" id="burger" hidden>
+                        <ul class="mircosoft_menu_burger">
+                            <li class="menu_burger_title">軟體</li>
+                            <li class="menu_burger_title">個人電腦及設備</li>
+                            <li class="menu_burger_title">娛樂</li>
+                            <li class="menu_burger_title">商務適用</li>
+                            <li class="menu_burger_title">開發人員與IT</li>
+                            <li class="menu_burger_title">其他</li>
+                        </ul>
+                    </div>
+
+                    <div class="user-action-box search-box">
+                        <div class="search_box_text">搜尋</div>
+                        <div class="search_box_icon">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                    </div>
+                    <div class="user-action-box nav-display-none">
+                        <div class="logo_region">
+                            <a href="http://127.0.0.1:5500/test.html">
+                                <img  class="mirco_logo" src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="user-action-box nav-display-flex">
+                        <div class="shopcar">
+                            <div class="shopcar_text">購物車</div>
+                            <div class="shopcar_icon">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                        </div>
+                        <div class="user user_information ">
+                            <div class="user_login">登入</div>
+                            <div class="user_headimg"><i class="fa-regular fa-user"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+</body>
+</html>

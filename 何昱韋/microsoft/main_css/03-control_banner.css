@@ -9,7 +9,6 @@
 }
 .control_box{
     width: 44px;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,10 +25,12 @@
     font-size: 24px;
 }
 .arrow-left:hover{
-    margin-right: 10px;
-    transition: 0.5s;
+    display: flex;
+    justify-content: start;
+    transition: 0.2s;
 }
 .arrow-right:hover{
-    margin-left: 10px;
-    transition: 0.5s;
+    display: flex;
+    justify-content: end;
+    transition: 0.2s;
 }
