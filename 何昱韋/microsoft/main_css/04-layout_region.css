@@ -1,10 +1,10 @@
 .layout_region{
     width: 100%;
     height: 120px;
-    margin: 48px 0;   
+    margin: 48px 0;  
 }
 .layout_flexbox{
-    width: 84%;
+    /* width: 84%; */
     height: 104px;
     margin: 0 auto 16px;
     display: flex;
@@ -13,7 +13,7 @@
 .layout_box{
     height: 72px;
     margin: 16px 24px;
-    font-size: 16px;
+    font-size: 1rem;
 }
 .layout_img_region{
     display: flex;
@@ -24,6 +24,7 @@
 }
 .layout_text_region{
     border-bottom: 2px solid black;
+    text-align: center;
 }
 .layout_text_region:active{
     border: 3px dotted black;

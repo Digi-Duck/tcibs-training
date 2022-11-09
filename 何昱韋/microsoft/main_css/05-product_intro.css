@@ -49,10 +49,14 @@
     border-bottom: 1px solid #950c17;
 }
 .card-about-learn-text::after{
-    content: "\f0da";
+    content: "\f105";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     margin-left: 5px;
+}
+.card-about-learn-text:hover::after{
+    margin-left: 10px;
+    transition: 0.5s;
 }
 
 .card-about-learn-text:active{

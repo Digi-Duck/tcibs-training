@@ -1,3 +1,14 @@
+@media (max-width:575px) {
+    .layout_region{
+        height: 210px;
+    }
+    .layout_flexbox{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
 @media (max-width:540px) {
     /* nav nothing */
     /* banner */
@@ -7,15 +18,15 @@
 
     /* layout-region*/
     .layout_region{
-        height: 210px;
+        /* height: 210px; */
     }
     .layout_flexbox{
-        display: flex;
+        /* display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: center; */
     }
     .layout_box{
-        width: 34%;
+        /* width: 34%; */
     }
 
     /* product-intro */

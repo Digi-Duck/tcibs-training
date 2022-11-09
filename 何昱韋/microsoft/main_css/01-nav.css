@@ -4,6 +4,9 @@
     box-sizing: border-box;
     font-family: 'Segoe UI',SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
+body{
+    font-family: "Segoe UI", SegoeUI, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 .nav-container{
     width: 84.2%;
     height: 100%;
@@ -63,14 +66,15 @@
     padding: 16px 12px 16px 15px;
     margin-top: 1px;  
     border: 1px solid transparent;
-    display: flex;
 }
 .mircosoft_menu_text{
-    width: 85px;
+    width: 96px;
 }
-.mircosoft_menu_icon{
-    font-size: 16px;
-    padding-top: 4px;
+.mircosoft_menu_text::after{
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-left: 1px;
 }
 
 .search_box{
@@ -179,8 +183,6 @@ label{
 }
 
 label{
-    padding: 0 17px;
-    line-height: 54px;
 }
 
 .phone-burger-bigul{
