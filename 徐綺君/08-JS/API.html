@@ -23,32 +23,32 @@
         .in{
             width: 800px;
             font-size: 35px;
-            margin: 5px 15px;
+            margin: 10px 15px;
             padding: 10px;
             text-align: center;
         }
         .card{
             width: calc(20% - 40px);
-            height: 400px;
+            height: 465px;
             border: 1px solid black;
             display: flex;
             align-items: center;
             flex-direction: column;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             padding: 10px;
         }
         .img{
             margin: 5px;
             width: 90%;
-            height: 200px;
+            height: 220px;
             border: 1px solid black;
             /* background-image: url(./weather/cloud.gif); */
             background-size: cover;
             background-position: center;
         }
         .box{
-            font-size: 20px;
-            margin: 5px;
+            font-size: 25px;
+            margin: 10px;
             
         }
     </style>
@@ -89,6 +89,19 @@
             console.log(time_num);
             aa(area_num,time_num);
 
+            const startTime = location[0].weatherElement[0].time[0].startTime;
+            const endTime = location[0].weatherElement[0].time[0].endTime;
+            const startTime2 = location[0].weatherElement[0].time[1].startTime;
+            const endTime2 = location[0].weatherElement[0].time[1].endTime;
+            const startTime3 = location[0].weatherElement[0].time[2].startTime;
+            const endTime3 = location[0].weatherElement[0].time[2].endTime;
+            
+            time.innerHTML = `
+            <option value="0">${startTime}~${endTime}</option>
+            <option value="1">${startTime2}~${endTime2}</option>
+            <option value="2">${startTime3}~${endTime3}</option>`
+
+
             area.addEventListener("change", function () {
                 area_num = document.querySelector('.area').value; 
                 box.innerHTML = ' ';
@@ -105,12 +118,12 @@
             function aa(area_num,time_num) {
                 location.forEach(function(x){
                     let i = time_num;
-                    const startTime = x.weatherElement[0].time[0].startTime;
-                    const endTime = x.weatherElement[0].time[0].endTime;
-                    const startTime2 = x.weatherElement[0].time[1].startTime;
-                    const endTime2 = x.weatherElement[0].time[1].endTime;
-                    const startTime3 = x.weatherElement[0].time[2].startTime;
-                    const endTime3 = x.weatherElement[0].time[2].endTime;
+                    // const startTime = x.weatherElement[0].time[0].startTime;
+                    // const endTime = x.weatherElement[0].time[0].endTime;
+                    // const startTime2 = x.weatherElement[0].time[1].startTime;
+                    // const endTime2 = x.weatherElement[0].time[1].endTime;
+                    // const startTime3 = x.weatherElement[0].time[2].startTime;
+                    // const endTime3 = x.weatherElement[0].time[2].endTime;
                     const city = x.locationName;
                     const weather = x.weatherElement[0].time[i].parameter.parameterName;
                     const rain = x.weatherElement[1].time[i].parameter.parameterName;
@@ -120,20 +133,11 @@
 
                     let gif;
 
-
-                    time.innerHTML = `
-                    <option value="0">${startTime}~${endTime}</option>
-                    <option value="1">${startTime2}~${endTime2}</option>
-                    <option value="2">${startTime3}~${endTime3}</option>`
-
-
                     function a(){
                         box.innerHTML += `
                             <div class="card">
                                 <div class="img" style="background-image: url(./weather/${gif}.gif);"></div>
                                 <div class="box city">${city}</div>
-                                <div class="box time">${startTime}</div>
-                                <div class="box time">${endTime}</div>
                                 <div class="box weather">${weather}</div>
                                 <div class="box rain">${rain}%</div>
                                 <div class="box corfortable">${corfortable}</div>
