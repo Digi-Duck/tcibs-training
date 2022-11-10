@@ -53,15 +53,16 @@ body {
 .options {
     width: 100%;
     height: 100%;
-    display: flex;
 
+    display: flex;
     justify-content: space-between;
     /* background-color: brown; */
 }
 
 .left_options {
-    display: flex;
+    width: 100%;
 
+    display: flex;
     align-items: center;
 }
 
@@ -82,8 +83,10 @@ body {
 
 .right_options {
     width: 100%;
+
     display: flex;
     align-items: center;
+    justify-content: end;
 }
 
 
@@ -227,7 +230,7 @@ body {
 }
 
 .list {
-    height: 136px;
+    width: 100%;
     /* background-color: aquamarine; */
 
     padding: 0 12px;
@@ -243,6 +246,7 @@ body {
 
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 li {
@@ -261,6 +265,7 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
+
 
 
 }
@@ -490,9 +495,6 @@ a {
 .none {
     display: flex;
 }
-.none_ex {
-    display: flex;
-}
 .fa-bars{
     display: none;
 }
@@ -502,6 +504,14 @@ a {
 .left_box{
     display: flex;
 }
+.microbox2{
+    display: none;
+}
+.function{
+    width: 100%;
+
+}
+
 @media (max-width: 1800px) {
     .content {
         width: 100%;
@@ -551,7 +561,7 @@ a {
     .content {
         padding: 0 12px;
     }
-
+    
     .new {
         background-color: white;
     }
@@ -560,11 +570,8 @@ a {
     }
     .title_content{
         margin: 0;
+        padding: 0;
         transform: translate(0, calc(-3rem - 12px));
-    }
-    .title_content .content {
-        padding: 12px;
-        
     }
     
     .title_box {
@@ -572,6 +579,10 @@ a {
         background-color: white;
         box-shadow: 0 0.0625rem 0.125rem rgb(0 0 0 / 11%), 0 0.1875rem 0.4375rem rgb(0 0 0 / 13%);
 
+    }
+    .big_title{
+        font-size: 1.5rem;
+        margin-bottom: 20px;
     }
     .slide{
         transform: translate(0, calc(-3rem - 12px));
@@ -583,25 +594,24 @@ a {
 
     .function_pic {
         flex-wrap: wrap;
-    }
 
-    .title_content{
-        margin: 0;
+        margin-bottom: calc(96px - 3rem - 12px );
+    }
+    .function_content{
+        margin: 0px;
+        padding: 0 12px;
         transform: translate(0, calc(-3rem - 12px));
     }
-    .title_content {
-        padding: 12px;  
-    }
-    
     .function_box {
         width: 100%;
         background-color: white;
         box-shadow: 0 0.0625rem 0.125rem rgb(0 0 0 / 11%), 0 0.1875rem 0.4375rem rgb(0 0 0 / 13%);
         ;
-        margin: 0px;
-
+        margin: 0;
     }
-
+    .title_product{
+        font-size: 1.5rem;
+    }
     .footer_box {
         width: 33.33333%;
         padding: 0 12px;
@@ -613,6 +623,10 @@ a {
 
     .product {
         margin-bottom: 0;
+    }
+    .function .content{
+        /* width: 100%; */
+        padding: 0;
     }
 
 }
@@ -627,10 +641,18 @@ a {
 
 
 @media (max-width: 860px) {
+    .fa-chevron-down{
+        display: none;
+    }
     .header{
         position: relative;
     }
-    .microbox2.0{
+    .microbox{
+        display: none;
+    }
+    .microbox2{
+        display: block;
+
         position: absolute;
         right: calc(50% - 60.5px);
     }
@@ -643,17 +665,72 @@ a {
     .fa-bars{
         display: block;
     }
-    .none_ex{
-        display: none;
-    }
     .right_options{
         justify-content: space-between;
     }
-
-    }
-    .microbox{
+    .left_options{
         display: none;
     }
+
 }
 
-@media (max-width: 540px) {}
+@media (max-width: 540px) {
+    .product_box{
+        width: 100%;
+    }
+    .title_content{
+        padding: 0;
+        transform: translate(0, 0);
+    }
+    .function_content{
+        padding: 0;
+        transform: translate(0, 0);
+    }
+    .title_box{
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 0.0625rem 0.125rem rgb(0 0 0 / 11%), 0 0.1875rem 0.4375rem rgb(0 0 0 / 13%);;
+        margin: 0;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    .function_box {
+        width: 100%;
+        background-color: white;
+        box-shadow: none;
+        margin: 0;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    .backhome {
+        padding: 12px;
+        float: none;
+        position: sticky;
+        bottom: -200px;
+        right: 12px;
+        /* top: 5px; */
+        display: flex;
+        justify-content: center;
+    }
+    .fa-arrow-up{
+        padding: 3px;
+    }
+    .footer_box{
+        width: 100%;
+    }
+    .footer{
+        height: 100%;
+        padding-bottom: 0;
+    }
+    .last{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .last_content{
+        width: 100%;
+    }
+    .last_box{
+        width: 100%;
+    }
+
+}
