@@ -32,33 +32,53 @@
             height: 100px;
 
             font-size: 50px;
+            margin: auto;
 
             /* position: absolute;
             bottom: 50px;
             right: calc(50% - 100px); */
         }
-        .active{
-            display: none;
-        }
         .reset{
             width: 200px;
             height: 100px;
-
+            
             font-size: 50px;
-
+            margin: auto;
+            
             /* position: absolute;
             bottom: 50px;
             right: calc(50% - 100px); */
         }
         .last{
             display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            
+            background-color: aqua;
+            padding: 20px 0;
+        }
+        .last-font{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            
+            width: 100%;
+            font-size: 50px;
+            font-weight: bolder;
+        }
+        .font{
+            width: 50%;
+            text-align: center;
+        }
+        .active{
+            display: none;
         }
     </style>
 </head>
 <body>
     <div class="all">
         <div class="you">
-            you:
+            computer:
             <div class="you-show random"></div>
         </div>
         <div class="me">
@@ -67,8 +87,11 @@
         </div>
     </div>
     <div class="last">
-        <div class="you-last"></div>
-        <div class="me-last"></div>
+        <div class="last-font">
+            <div class="you-last font"></div>
+            <div class="me-last font"></div>
+            <div class="race"></div>
+        </div>
         <button class="me-button">擲!</button>
         <button class="reset active">reset</button>
     </div>
@@ -81,6 +104,8 @@
 
         const youLast= document.querySelector('.you-last');
         const meLast= document.querySelector('.me-last');
+        const lastFont =document.querySelector('.last-font');
+        const race =document.querySelector('.race');
 
         let meCount = [];
         let youCount = [];
@@ -105,23 +130,26 @@
         }
         me.addEventListener('click', function(){    
             for($i = 0;$i < 10;$i++){
-                let a = Math.floor(Math.random()*6) + 1;
-                let c = Math.floor(Math.random()*6) + 1;
-                let d = Math.floor(Math.random()*6) + 1;
-                let f = Math.floor(Math.random()*6) + 1;
-                let g = Math.floor(Math.random()*6) + 1;
-                let h = Math.floor(Math.random()*6) + 1;
-                let e;
-            
-                const menum = a + c + d;
-                meCount.push(menum);
-                meShow.innerHTML += run(a, e)+run(c, e)+run(d, e) + menum + '<br>';
+                    let a = Math.floor(Math.random()*6) + 1;
+                    let c = Math.floor(Math.random()*6) + 1;
+                    let d = Math.floor(Math.random()*6) + 1;
+                    let f = Math.floor(Math.random()*6) + 1;
+                    let g = Math.floor(Math.random()*6) + 1;
+                    let h = Math.floor(Math.random()*6) + 1;
+                    let e;
+                    
+                    const menum = a + c + d;
+                    meCount.push(menum);
+                    meShow.innerHTML += run(a, e)+run(c, e)+run(d, e) + menum + '<br>';
+                    
+                    const younum = f + g + h;
+                    youCount.push(younum);
+                    youShow.innerHTML += run(f, e)+run(g, e)+run(h, e) + younum + '<br>';
 
-                const younum = f + g + h;
-                youCount.push(younum);
-                youShow.innerHTML += run(f, e)+run(g, e)+run(h, e) + younum + '<br>';
-           }
+                }
+
            console.log(meCount,youCount);
+
            let mesum = meCount.reduce(
             (accumulator, currentValue) => accumulator + currentValue
             );
@@ -132,13 +160,28 @@
             );
             youLast.innerHTML = yousum;
 
+            if(mesum == yousum){
+                race.innerHTML = '平手';
+            }else if(mesum > yousum){
+                race.innerHTML = '大獲全勝';
+            }else{
+                race.innerHTML = 'loser';
+            }
+
             me.classList.add('active');
             reset.classList.remove('active');
+            lastFont.classList.remove('active');
+            race.classList.remove('active');
         })
+            
         reset.addEventListener('click', function(){
-            meShow.innerHTML = "";
-            youShow.innerHTML = "";
+            youShow.innerHTML="";
+            meShow.innerHTML="";
+            meCount = [];
+            youCount = [];
 
+            race.classList.add('active');
+            lastFont.classList.add('active');
             me.classList.remove('active');
             reset.classList.add('active');
         })

@@ -1,7 +1,7 @@
 @media (max-width:1400px) {
     /* nav */
-    .nav-container{
-        width: 90%;
+    .nav-big-container{
+        width: 100%;
     }
     .user-action{
         width: 255px;
