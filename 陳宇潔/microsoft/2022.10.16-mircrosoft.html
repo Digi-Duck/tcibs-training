@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="2022.10.16-mircrosoft.css">
     <title>Microsoft</title>
-    <script src="https://kit.fontawesome.com/e97ab8904e.js" crossorigin="anonymous"></script>
+   
 </head>
 
 <body>
@@ -22,24 +23,35 @@
                 <div class="left_options">
                     <!-- 選項 options -->
                     <div class="none">
-                        <div class="button">Microsoft 365</div>
-                        <div class="button">Teams</div>
-                        <div class="button">Windows</div>
-                        <div class="button">Surface</div>
                         <div class="button">
-                            <div class="none">Xbox</div>
+                            <span>Microsoft 365</span> 
                         </div>
-                        <div class="button">支援</div>
+                        <div class="button">
+                            <span>Teams</span> 
+                        </div>
+                        <div class="button">
+                            <span>Windows</span>
+                        </div>
+                        <div class="button">
+                            <span>Surface</span>
+                        </div>
+                        <div class="button">
+                            <div class="none">
+                                <span>Xbox</span>
+                            </div>
+                        </div>
+                        <div class="button">
+                            <span>支援</span>
+                        </div>
                         <!--支援 support -->
                     </div>
                 </div>
                 <div class="right_options">
                     <div class="left_box">
                         <div class="button"> 
-                            <i class="fa-solid fa-bars btn"></i>
-                            <span class="none">所有Microsoft</span> 
+                            <i class="fa-solid fa-bars btn none" id="none"></i>
+                            <span class="ex">所有Microsoft</span> 
                             <i class="fa-solid fa-chevron-down btn "></i>
-                            
                         </div>
                         <div class="allmicro_bg">
                             <div class="allmicro_bg_tt_a">
@@ -121,7 +133,8 @@
             </div>
         </div>
     </div>
-    <div class="back">
+    <div class="back" >
+        
         <div class="title">
             <div class="computer_pic">
                 <a id="computer" href="">
@@ -204,7 +217,8 @@
                         <div class="product_new">新上市</div>
                         <div class="product_title">Surface Laptop 5</div>
                         <div class="introduce">配備細緻的風格和由第 12 代 Intel® Core 支援的多工速度，以及 Windows 11。</div>
-                        <div class="sell">深入了解
+                        <div class="sell">
+                            <span>深入了解</span>
                             <i class="fa-solid fa-angle-right"></i>
                         </div>
                     </div>
@@ -214,7 +228,8 @@
                         <div class="product_new">新上市</div>
                         <div class="product_title">Surface Studio 2+</div>
                         <div class="introduce">功能最多變的全方位裝置可當做大型畫布，讓您以任何角度展現自我。</div>
-                        <div class="sell">深入了解
+                        <div class="sell">
+                            <span>深入了解</span>
                             <i class="fa-solid fa-angle-right"></i>
                         </div>
                     </div>
@@ -224,7 +239,8 @@
                         <div class="product_none">新上市</div>
                         <div class="product_title">Mircrosoft Edge</div>
                         <div class="introduce">在您瀏覽時提供世界級的效能，以及更多的隱私、更充足的生產力與更高的價值。</div>
-                        <div class="sell">立即下載
+                        <div class="sell">
+                            <span>立即下載</span>
                             <i class="fa-solid fa-angle-right"></i>
                         </div>
                     </div>
@@ -235,7 +251,8 @@
                         <div class="product_title">Call of Duty®: Modern Warfare® II</div>
                         <div class="introduce">歡迎來到 Call of Duty 的新時代。 與好友組隊，並與由多名經典老兵組成的 141 特遣隊並肩作戰，為你帶來劃時代的遊玩體驗、進階 AI
                             等。</div>
-                        <div class="sell">立即加入
+                        <div class="sell">
+                            <span>立即加入</span>
                             <i class="fa-solid fa-angle-right"></i>
                         </div>
                     </div>
@@ -279,7 +296,8 @@
                         <div class="product_new">新上市</div>
                         <div class="product_title">Surface 商務版系列</div>
                         <div class="introduce">Surface 商務版裝置具備獲得成功所需的彈性、內建安全性和效能，可讓您的團隊依照自己的意願工作。</div>
-                        <div class="sell">深入了解
+                        <div class="sell">
+                            <span>深入了解</span>
                             <i class="fa-solid fa-angle-right"></i>
                         </div>
                     </div>
@@ -289,7 +307,8 @@
                         <div class="product_none">新上市</div>
                         <div class="product_title">商務用 Windows 11 登場</div>
                         <div class="introduce">專為混合式辦公而設計。 為員工帶來實用性。 為 IT 帶來一致性。 為所有人帶來安全性。</div>
-                        <div class="sell">深入了解
+                        <div class="sell">
+                            <span>深入了解</span>
                             <i class="fa-solid fa-angle-right"></i>
                         </div>
                     </div>
@@ -299,7 +318,8 @@
                         <div class="product_none">新上市</div>
                         <div class="product_title">Mircrosoft 365 商務版</div>
                         <div class="introduce">透過功能強大的應用程式提高生產力、聯繫和安全，始終領先一步。</div>
-                        <div class="sell">立即選購
+                        <div class="sell">
+                            <span>立即選購</span>
                             <i class="fa-solid fa-angle-right"></i>
                         </div>
                     </div>
@@ -309,7 +329,8 @@
                         <div class="product_none">新上市</div>
                         <div class="product_title">免費取得 Microsoft Teams</div>
                         <div class="introduce">線上會議、聊天和共用雲端儲存空間，盡在一處。</div>
-                        <div class="sell">免費註冊
+                        <div class="sell">
+                            <span>免費註冊</span>
                             <i class="fa-solid fa-angle-right"></i>
                         </div>
                     </div>
@@ -325,7 +346,7 @@
                     src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/YouTube%202x?scl=1">
             </div>
         </div>
-        <div class="backhome">
+        <div  class="backhome" data-aos="fade-up">
             <i class="fa-solid fa-arrow-up"></i>
             回到首頁
         </div>
@@ -337,65 +358,145 @@
             <div class="footer">
                 <div class="footer_box">
                     <div class="footer_title">最新動向
-                        <div class="footer_content">Microsoft 365</div>
-                        <div class="footer_content">Surface Go</div>
-                        <div class="footer_content">Surface Book 2</div>
-                        <div class="footer_content">Surface Pro</div>
-                        <div class="footer_content">Windows 11 應用程式</div>
+                        <div class="footer_content">
+                            <span>Microsoft 365</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>Surface Go</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>Surface Book 2</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>Surface Pro</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>Windows 11 應用程式</span>
+                        </div>
                     </div>
                 </div>
                 <div class="footer_box">
-                    <div class="footer_title">Microsoft Store
-                        <div class="footer_content">帳戶設定檔</div>
-                        <div class="footer_content">下載中心</div>
-                        <div class="footer_content">Microsoft Store 支援</div>
-                        <div class="footer_content">退貨/退款</div>
-                        <div class="footer_content">訂單追蹤</div>
+                    <div class="footer_title">
+                        <span>Microsoft Store</span>
                     </div>
+                    <div class="footer_content">
+                        <span>帳戶設定檔</span>
+                    </div>
+                    <div class="footer_content">
+                        <span>下載中心</span>
+                    </div>
+                    <div class="footer_content">
+                        <span>Microsoft Store 支援</span>
+                    </div>
+                    <div class="footer_content">
+                        <span>退貨/退款</span>
+                    </div>
+                    <div class="footer_content">
+                        <span>訂單追蹤</span>
+                    </div>
+                    
                 </div>
                 <div class="footer_box">
                     <div class="footer_title">教育
-                        <div class="footer_content">Microsoft 教育</div>
-                        <div class="footer_content">教育裝置</div>
-                        <div class="footer_content">Microsoft Teams 教育版</div>
-                        <div class="footer_content">Microsoft 365 教育版</div>
-                        <div class="footer_content">Office 教育版</div>
-                        <div class="footer_content">教育工作者訓練和發展</div>
-                        <div class="footer_content">學生和家長優惠</div>
-                        <div class="footer_content">Azure 學生版</div>
+                        <div class="footer_content">
+                            <span>Microsoft 教育</span> 
+                        </div>
+                        <div class="footer_content">
+                            <span>教育裝置</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>Microsoft Teams 教育版</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>Microsoft 365 教育版</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>Office 教育版</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>教育工作者訓練和發展</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>學生和家長優惠</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>Azure 學生版</span>
+                        </div>
                     </div>
                 </div>
                 <div class="footer_box">
                     <div class="footer_title">商務
-                        <div class="footer_content">Microsoft Cloud</div>
-                        <div class="footer_content">Microsoft 安全性</div>
-                        <div class="footer_content">Azure</div>
-                        <div class="footer_content">Dynamics 365</div>
-                        <div class="footer_content">Microsoft 365</div>
-                        <div class="footer_content">Microsoft Advertising</div>
-                        <div class="footer_content">Microsoft 產業</div>
-                        <div class="footer_content">Microsoft Teams</div>
+                        <div class="footer_content">
+                            <span>Microsoft Cloud</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>Microsoft 安全性</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>Azure</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>Dynamics 365</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>Microsoft 365</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>Microsoft Advertising</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>Microsoft 產業</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>Microsoft Teams</span>
+                        </div>
                     </div>
                 </div>
                 <div class="footer_box">
                     <div class="footer_title">開發人員與 IT
-                        <div class="footer_content">開發人員中心</div>
-                        <div class="footer_content">文件</div>
-                        <div class="footer_content">Microsoft Learn</div>
-                        <div class="footer_content">Microsoft 技術社群</div>
-                        <div class="footer_content">Azure Marketplace</div>
-                        <div class="footer_content">AppSource</div>
-                        <div class="footer_content">Microsoft Power Platform</div>
-                        <div class="footer_content">Visual Studio</div>
+                        <div class="footer_content">
+                            <span>開發人員中心</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>文件</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>Microsoft Learn</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>Microsoft 技術社群</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>Azure Marketplace</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>AppSource</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>Microsoft Power Platform</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>Visual Studio</span>
+                        </div>
                     </div>
                 </div>
                 <div class="footer_box">
                     <div class="footer_title">公司
-                        <div class="footer_content">人才招募</div>
-                        <div class="footer_content">公司新聞</div>
-                        <div class="footer_content">Microsoft 隱私權</div>
-                        <div class="footer_content">投資者</div>
-                        <div class="footer_content">永續性</div>
+                        <div class="footer_content">
+                            <span>人才招募</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>公司新聞</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>Microsoft 隱私權</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>投資者</span>
+                        </div>
+                        <div class="footer_content">
+                            <span>永續性</span>
+                        </div>
                     </div>
                 </div>
                 <div class="last">
@@ -404,17 +505,34 @@
                         中文(台灣)
                     </div>
                     <div class="last_box">
-                        <div class="last_content">連絡 Microsoft</div>
-                        <div class="last_content">隱私權</div>
-                        <div class="last_content">使用規定</div>
-                        <div class="last_content">商標</div>
-                        <div class="last_content">有關我們的廣告訊息</div>
-                        <div class="last_content">© Microsoft 2022</div>
+                        <div class="last_content">
+                            <span>連絡 Microsoft</span>
+                        </div>
+                        <div class="last_content">
+                            <span>隱私權</span>
+                        </div>
+                        <div class="last_content">
+                            <span>使用規定</span>
+                        </div>
+                        <div class="last_content">
+                            <span>商標</span>
+                        </div>
+                        <div class="last_content">
+                            <span>有關我們的廣告訊息</span>
+                        </div>
+                        <div class="last_content">
+                            <span>© Microsoft 2022</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://kit.fontawesome.com/e97ab8904e.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
 </body>
 
 </html>
