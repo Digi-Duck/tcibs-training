@@ -135,6 +135,9 @@
     .display-900-none{
         display: none;
     }
+    .burger-900-text{
+        padding: 18px 0 18px 24px;
+    }
     .pad-mar{
         padding: 0;
         margin: 0;

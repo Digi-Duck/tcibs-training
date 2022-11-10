@@ -1,11 +1,19 @@
 @media (max-width:860px) {
     /* nav */
-    .nav-container{
+    nav{
+        padding: 2px 0;
+        margin: 0;
+    }
+    .nav-big-container{
         width: 100%;
         padding: 0;
         margin: 0;
         display: flex;
         justify-content: unset;
+    }
+    .small-container{
+        width: 100%;
+        display: block;
     }
     .display-860-block{
         display: block;
@@ -13,25 +21,54 @@
     .display-860-none{
         display: none;
     }
-    .hamburger{
-        width: 100%;
-        background-color: aqua;
-        display: flex;
-        margin: auto;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-    }
+
     .user_action{
-        width: calc(100% - 48px);
+        display: flex;
+        justify-content: space-between;
     }
     .nav-user-list{
+        width: 100%;
         font-size: 12px;
         display: flex;
         justify-content: space-between;
     }
     .mirco_logo{
         margin: 13px 10px;
+    }
+
+    .nav-all-hamburger{
+        width: 48px;
+        height: 48px;
+        padding: 6px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    label{
+        display: block;
+    }
+    #nav-all-burger:checked + .nav-all-burger-ul{
+        display:block;
+    }
+    .nav-all-hamburger{
+        position: relative;
+    }
+    .nav-all-burger-ul{
+        width: 100%;
+        background-color: bisque;
+        position: absolute;
+        top: 56px;
+        left: 0%;
+        z-index: 1;
+        display: none;
+    }
+
+    .menu_burger{
+        display: none;
+    }
+    #soft-burger:checked +.menu_burger{
+        display: block;
     }
 
 
