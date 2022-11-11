@@ -50,58 +50,69 @@
                 <div class="right_options">
                     <div class="left_box">
                         <div class="button"> 
-                            <i class="fa-solid fa-bars btn none" id="none"></i>
+                            <!-- <i class="fa-solid fa-bars btn none" id="none1"></i> -->
+                            <label for="burger" id="none1">☰</label>
+                            <input type="checkbox" id="burger" class="none2">
                             <span class="ex">所有Microsoft</span> 
-                            <i class="fa-solid fa-chevron-down btn "></i>
+                            <i class="fa-solid fa-chevron-down btn" id="none2"></i>
+                            <ul>
+                                <div class="allmicro_bg">
+                                    <div class="button_title"> 
+                                        <span>軟體</span> 
+                                        <div class="button">Windows 應用程式</div>
+                                        <div class="button">OneDrive</div>
+                                        <div class="button">Outlook</div>
+                                        <div class="button">Skype</div>
+                                        <div class="button">OneNote</div>
+                                        <div class="button">Microsoft Teams</div>
+                                    </div>
+                                    <div class="button_title">
+                                        <span>個人電腦和設備</span>
+                                        <div class="button">選購 Xbox</div>
+                                        <div class="button">電腦配件</div>
+                                    </div>
+                                    <div class="button_title">
+                                        <span>娛樂</span> 
+                                        <div class="button">Xbox Game Pass Ultimate</div>
+                                        <div class="button">Xbox Live Gold</div>
+                                        <div class="button">Xbox 與遊戲</div>
+                                        <div class="button">電腦遊戲</div>
+                                        <div class="button">Windows 遊戲</div>
+                                    </div>
+                                    <div class="button_title">
+                                        <span>商務適用</span>       
+                                        <div class="button">Microsoft Cloud</div>
+                                        <div class="button">Microsoft 安全性</div>
+                                        <div class="button">Azure</div>
+                                        <div class="button">Dynamics 365</div>
+                                        <div class="button">商務用 Microsoft 365</div>
+                                        <div class="button">Microsoft 產業</div>
+                                        <div class="button">Microsoft Power Platform</div>
+                                        <div class="button">Windows 365</div>
+                                    </div>
+                                    <div class="button_title">
+                                        <span>開發人員與 IT</span>
+                                        <div class="button">開發人員中心</div>
+                                        <div class="button">文件</div>
+                                        <div class="button">Microsoft Learn</div>
+                                        <div class="button">Microsoft 技術社群</div>
+                                        <div class="button">Azure Marketplace</div>
+                                        <div class="button">AppSource</div>
+                                        <div class="button">Visual Studio</div>
+                                    </div>
+                                    <div class="button_title">
+                                        <span>其他</span>
+                                        <div class="button">Microsoft Rewards</div>
+                                        <div class="button">免費下載與安全性</div>
+                                        <div class="button">教育</div>
+                                        <div class="button">禮品卡</div>
+                                        <div class="button">Licensing</div>
+                                    </div>
+                                    <div class="webmap"></div>
+                                </div>
+                            </ul>
                         </div>
-                        <div class="allmicro_bg">
-                            <div class="allmicro_bg_tt_a">
-                                <div class="wds_app"></div>
-                                <div class="onedrive"></div>
-                                <div class="outlook"></div>
-                                <div class="skype"></div>
-                                <div class="onenote"></div>
-                                <div class="micro_teams"></div>
-                            </div>
-                            <div class="allmicro_bg_tt_b">
-                                <div class="buy_xbox"></div>
-                                <div class="computer_accessories"></div><!-- 配件 Accessories -->
-                            </div>
-                            <div class="allmicro_bg_tt_c">
-                                <div class="xbox_game_pass_ultimate"></div>
-                                <div class="xbox_live_gold"></div>
-                                <div class="xbox_game"></div>
-                                <div class="computer_game"></div>
-                                <div class="windows_game"></div>
-                            </div>
-                            <div class="allmicro_bg_tt_d">
-                                <div class="micro_cloud"></div>
-                                <div class="micro_safe"></div>
-                                <div class="azure"></div>
-                                <div class="dynamics365"></div>
-                                <div class="business_micro365"></div>
-                                <div class="micro_industry"></div><!-- 產業 industry -->
-                                <div class="micro_power_platform"></div>
-                                <div class="wds365"></div>
-                            </div>
-                            <div class="allmicro_bg_tt_e">
-                                <div class="developer_center"></div>
-                                <div class="document"></div>
-                                <div class="micro_learn"></div>
-                                <div class="micro_technical_community"></div>
-                                <div class="azure_marketplace"></div>
-                                <div class="appsource"></div>
-                                <div class="visual_studio"></div>
-                            </div>
-                            <div class="allmicro_bg_tt_f">
-                                <div class="micro_rewards"></div>
-                                <div class="free_download"></div>
-                                <div class="education"></div>
-                                <div class="gift_card"></div>
-                                <div class="licensing"></div>
-                            </div>
-                            <div class="webmap"></div>
-                        </div>
+                        
                         <div class="button">
                             <span class="none">搜尋</span>
                             <i class="fa-solid fa-magnifying-glass btn vvv"></i>
@@ -122,14 +133,6 @@
                             <i class="fa-regular fa-circle-user btn user_btn"></i>
                         </div>
                     </div>
-                    <!-- <div class="left_box">
-                        <i class="fa-solid fa-bars"></i>
-                        <i class="fa-solid fa-chevron-down btn"></i>
-                    </div>
-                    <div class="right_box">
-                        <i class="fa-solid fa-magnifying-glass btn vvv"></i>
-                        <i class="fa-regular fa-circle-user btn user_btn"></i>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -347,7 +350,7 @@
                     src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/YouTube%202x?scl=1">
             </div>
         </div>
-        <a href="#to_top">
+        <a href="#to_top" id="home">
             <div  class="backhome" data-aos="fade-up">
             <i class="fa-solid fa-arrow-up"></i>
             回到首頁
