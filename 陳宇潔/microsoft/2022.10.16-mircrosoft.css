@@ -10,6 +10,8 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
+
+
 }
 
 /* h{
@@ -518,15 +520,16 @@ a {
     margin-right: 10px;
 }
 .fa-angle-left:hover{
-    transform: translate(-1rem,0);
+    transform: translate(-5px,0);
     transition: all 0.5s ease;
 }
-.fa-angle-right:hover{
-    transform: translate(1rem,0);
+.right_highlight .fa-angle-right:hover{
+    transform: translate(5px,0);
     transition: all 0.5s ease;
 }
+
 .button span:hover{
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid black;
 }
 /* .button .ex:hover{
     border-bottom: 1px solid black;
@@ -534,16 +537,25 @@ a {
 .sell span:hover{
     border-bottom: 1px solid #950c17;
 }
+.sell:hover  .fa-angle-right{
+    transform: translate(5px,0);
+    transition: all 0.5s ease;
+}
+
 .footer_content span:hover{
     border-bottom: 1px solid black;
 }
 .last_content span:hover{
     border-bottom: 1px solid black;
 }
-.last .last_content:hover{
+ .last_content span:hover{
     border-bottom: 1px solid black;
 }
-
+.backhome:hover{
+    background-color: white;
+    box-shadow: 0 0.0625rem 0.125rem rgb(0 0 0 / 11%), 0 0.1875rem 0.4375rem rgb(0 0 0 / 13%);
+        ;
+}
 
 @media (max-width: 1800px) {
     .content {
@@ -770,6 +782,11 @@ a {
         /* top: 5px; */
         display: flex;
         justify-content: center;
+        margin: 12px;
+    
+    }
+    #to_top{
+        text-decoration:none!important;
     }
     .fa-arrow-up{
         padding: 3px;
