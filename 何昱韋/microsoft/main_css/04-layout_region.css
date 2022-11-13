@@ -23,8 +23,11 @@
     margin-bottom: 8px;
 }
 .layout_text_region{
-    border-bottom: 2px solid black;
+    text-decoration: underline;
     text-align: center;
+    font-family: "Segoe UI",SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
 }
 .layout_text_region:active{
     border: 3px dotted black;

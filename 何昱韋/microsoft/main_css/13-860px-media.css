@@ -48,8 +48,8 @@
     label{
         display: block;
     }
-    #nav-all-burger:checked + .nav-all-burger-ul{
-        display:block;
+    #nav-all-burger:checked+.nav-all-burger-ul{
+        display: block;
     }
     .nav-all-hamburger{
         position: relative;
@@ -128,8 +128,11 @@
         transform: translate(0,0);
         padding: 24px 16px 24px 12px;
         box-shadow: none;
-    }
 
+    }
+    .control_banner{
+        transform: translate(0,0);
+    }
     /* layout-region */
     .layout_region{
         margin: 0;

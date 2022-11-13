@@ -8,29 +8,34 @@
     display: flex;
 }
 .control_box{
-    width: 44px;
+    width: 66px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .arrow{
-    font-size: 16px;
+    font-size: 24px;
     padding: 0 8px;
 }
+/* .arrow-left{
+    display: flex;
+    justify-content: end;
+}
+.arrow-right{
+    display: flex;
+    justify-content: start;
+} */
 .dot{
     font-size: 12px;
 }
 
-.arrow:hover{
-    font-size: 24px;
-}
 .arrow-left:hover{
     display: flex;
     justify-content: start;
-    transition: 0.2s;
+    transition: 10s;
 }
 .arrow-right:hover{
     display: flex;
     justify-content: end;
-    transition: 0.2s;
+    transition: 10s;
 }

@@ -1,6 +1,8 @@
 .banner{
     width: 100%;
     display: flex;
+    font-family: "Segoe UI",SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 600;
 }
 .justify-content-start{
     display: flex;
@@ -18,7 +20,7 @@
     margin-left: -100%;
 }
 .small-demo-container{
-    width: 90%;
+    width: 94.1%;
     padding-right: 5%;
     padding-left: 5%;
     margin: 0 auto;
@@ -35,20 +37,31 @@
     color: #950c17;
     background-color: #fff;
     display: inline-block;
+    
+    font-family: "Segoe UI",SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 600;
+}
+.big-notonsell{
+    display: none;
 }
 .big-demo-header{
     font-size: 2.3125rem;
     font-family: inherit;
+    font-weight: 600;
     margin-bottom: 20px;
 }
 .big-demo-body{
+    font-family: "Segoe UI",SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 1rem;
+    font-weight: 400;
     margin-bottom: 24px;
     word-wrap: break-word;
 }
 .big-about-learn{
+    font-family: "Segoe UI",SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 1rem;
-    padding: 10px 12px;
+    font-weight: 400;
+    padding: 8px 12px;
     border: 0.125rem solid transparent;
     margin: 8px 0;
     background-color: black;

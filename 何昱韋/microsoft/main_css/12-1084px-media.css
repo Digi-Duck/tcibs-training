@@ -40,7 +40,7 @@
         padding: 48px;
         background-color: #fff;
         transform: translate(0,-25%);
-        box-shadow: 0 0 5px;
+        box-shadow: 0 0 5px rgb(185, 184, 184);
     }
     .big-demo-header{
         font-size: 24px;
@@ -51,10 +51,13 @@
 
     /* control-banner */
     .control_banner{
+        transform: translate(0,-125%);
     }
 
-    /* layout_region nothing*/
-
+    /* layout_region */
+    .layout_region{
+        margin-top: 0;
+    }
     /* product-intro */
     .product_intro_demo{
         width: 100%;
