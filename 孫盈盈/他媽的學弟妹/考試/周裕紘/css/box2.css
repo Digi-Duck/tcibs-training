@@ -1,0 +1,157 @@
+#main{
+    width: 966px;
+    height: 690px;
+}
+#house_top_box{
+    width: 800px;
+    height: 188px;
+    background-color: brown;
+    position:relative;
+    left:-800px;
+    bottom:-1px
+}
+#house_top_left{
+    width: 0;
+    height: 0;
+    border-width: 0 0 189px 82px;
+    border-style: solid;
+    border-color: transparent transparent brown;
+    position: relative;
+    right: 82px;
+    top:-1px;
+}
+#house_top_right{
+    width: 0;
+    height: 0;
+    border-width: 0 82px 189px 0;
+    border-style: solid;
+    border-color: transparent transparent brown;
+    position: relative;
+    left: 800px;
+}
+#house_top_box_border{
+    width: 800px;
+    height: 190px;
+    background-color: rgb(0, 0, 0);
+    position:absolute;
+    left:83px
+}
+#house_top_left_border{
+    width: 0;
+    height: 0;
+    border-width: 0 0 190px 83px;
+    border-style: solid;
+    border-color: transparent transparent rgb(0, 0, 0);
+    position: relative;
+    right: 83px;
+}
+#house_top_right_border{
+    width: 0;
+    height: 0;
+    border-width: 0 83px 190px 0;
+    border-style: solid;
+    border-color: transparent transparent rgb(0, 0, 0);
+    position: relative;
+    left: 800px;
+    
+}
+#mini{
+    width: 770px;
+    height: 50px;
+    margin: auto;
+    position: relative;
+    top:-130px
+}
+.minibox{
+    width: 48px;
+    height: 48px;
+    border-width:1px; 
+    border-style:solid;
+}
+.mini_interval{
+    margin-left: 5px;
+    margin-right: 5px;
+    float: left;
+    background-color:rgb(255, 251, 0);
+}
+.mini_interval2{
+    margin-left: 5px;
+    margin-right: 5px;
+    float: left;
+    background-color:rgb(255, 0, 242);
+}
+
+.mini_interval_frist{
+    margin-right: 5px;
+    float: left;
+    background-color:rgb(255, 251, 0);
+}
+.mini_interval_last{
+    margin-left: 5px;
+    float: left;
+    background-color:rgb(255, 251, 0);
+}
+#house{
+    width: 600px;
+    height: 500px;
+    background-color: rgb(160, 0, 0);
+    position: relative;
+    left: 183px;
+    top: 190px;
+}
+#windows{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border-width:1px; 
+    border-style:solid;
+    background-color: blue;
+    position: relative;
+    top: 87.5px;
+    left: 30px;
+}
+#smallwindows{
+    width: 175px;
+    height: 175px;
+    background-color: chartreuse;
+    border-width:1px; 
+    border-style:solid;
+    margin: auto; 
+    margin: 37.5px;
+}
+#mini_windows1{
+    width: 87.5px;
+    height: 87.5px;
+    background-color: rgb(255, 0, 0);
+    border-width:1px; 
+    border-style:solid; 
+    float: right;
+}
+#mini_windows2{
+    width: 87.5px;
+    height: 87.5px;
+    background-color: rgb(255, 0, 0);
+    border-width:1px; 
+    border-style:solid;
+    float: left;
+}
+#door{
+    width: 200px;
+    height: 350px;
+    background-color: white;
+    border-width:1px; 
+    border-style:solid; 
+    float: right;
+    position: relative;
+    top:-104px;
+    right: 60px;
+}
+#handle{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+    margin-top: 175px;
+    margin-left: 10px;
+}

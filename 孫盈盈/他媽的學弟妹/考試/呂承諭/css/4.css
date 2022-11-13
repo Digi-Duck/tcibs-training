@@ -1,0 +1,138 @@
+.tail{
+    border-right: 13px solid transparent;
+    border-left: 13px solid transparent;
+    border-bottom: 26px solid #d0d0d0;
+    display:inline-block;
+}
+#main{
+    width: 2000px;
+    height: 1300px;
+}
+#b1{
+    width: 198px;
+    height: 58px;
+    background-color: yellow;
+    border-color: black;
+    border-width: 1px;
+    border-style:solid;
+}
+#mouth{
+    float: left;
+    margin-top: 100px;
+}
+#brain{
+    float: left;
+    width: 1348px;
+    height: 448px;
+    background-color: lawngreen;
+    border-color: black;
+    border-width: 1px;
+    border-style:solid;
+    position: relative;
+}
+#left_eye{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    position: absolute;
+    top: 150px;
+    left: 100px;
+}
+#left_eye_ball{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #000000;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+#right_eye{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    position: absolute;
+    top: 150px;
+    right: 100px;
+}
+#right_eye_ball1{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #000000;
+    position: absolute;
+    top: 8px;
+    left: 17px;
+}
+#right_eye_ball2{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #000000;
+    position: absolute;
+    top: 27px;
+    left: 17px;
+}
+#neck{
+    width: 198px;
+    height: 198px;
+    background-color: blue;
+    position: absolute;
+    border-color: black;
+    border-width: 1px;
+    border-style:solid;
+    top: 458px;
+    left: 350px;
+}
+#duck_body{
+    width: 1748px;
+    height: 198px;
+    background-color: blue;
+    position: absolute;
+    top: 658px;
+    left: 100px;
+    z-index: 1;
+    border-color: black;
+    border-width: 1px;
+    border-style:solid;
+}
+#arm{
+    border-top: 65px solid transparent;
+    border-bottom: 65px solid transparent;
+    border-left: 130px solid green;
+    display:inline-block;
+    position: absolute;
+    top: 730px;
+    left: 980px;
+    z-index: 2;
+}
+#foot1{
+    border-right: 65px solid transparent;
+    border-left: 65px solid transparent;
+    border-bottom: 130px solid green;
+    display:inline-block;
+    position: absolute;
+    top: 800px;
+    left: 380px;
+    z-index: 0;
+}
+#foot2{
+    border-right: 65px solid transparent;
+    border-left: 65px solid transparent;
+    border-bottom: 130px solid green;
+    display:inline-block;
+    position: absolute;
+    top: 800px;
+    left: 1430px;
+    z-index: 2;
+}
+#tails{
+    width: 200px;
+    height: 26px;
+    position: absolute;
+    top: 630px;
+    left: 1400px;
+    z-index: 2;
+}

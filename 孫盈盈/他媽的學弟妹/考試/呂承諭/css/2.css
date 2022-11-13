@@ -1,0 +1,94 @@
+.trapezoid {
+    border-color: transparent transparent brown transparent;
+    border-style: solid solid solid solid;
+    border-width: 190px 83px 190px 83px;
+    height: 1200px;
+    width: 800px;
+}
+.yellow{
+    background-color: yellow;
+}
+.violet{
+    background-color: violet;
+}
+.block{
+    float: left;
+    width: 50px;
+    height: 50px;
+}
+.bigblock{
+    width: 87.5px;
+    height: 87.5px;
+    float: left;
+}
+.green{
+    background-color: lightgreen;
+}
+.red{
+    background-color: lightcoral;
+}
+.mar_10{
+    margin-left: 10px;
+}
+#main{
+    width: 100%;
+    height: 1000px;
+}
+#trapezoid{
+    margin-top: -1400px;
+    position: relative;
+}
+#block_se{
+    float: left;
+    width: 800px;
+    height: 50px;
+    margin-left: 15px;
+    position: absolute;
+    bottom: -125px;
+}
+#house_block{
+    width: 600px;
+    height: 500px;
+    margin-left: 183px;
+    background-color: rgb(199, 106, 0);
+    position: relative;
+}
+#window_circle{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-color: blue;
+    position: absolute;
+    top: 135px;
+    left: 37.5px;
+}
+#window_top{
+    width: 175px;
+    height: 87.5px;
+}
+#window_bottom{
+    width: 175px;
+    height: 87.5px;
+}
+#window{
+    position: absolute;
+    left: 37.5px;
+    top: 40px;
+}
+#door{
+    width: 200px;
+    height: 350px;
+    background-color: #ffffff;
+    position: absolute;
+    right: 37.5px;
+    bottom: 0px;
+}
+#door_lock{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+    right: 150px;
+    bottom: 160px;
+}

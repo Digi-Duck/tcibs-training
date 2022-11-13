@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        .trapezoid {
+            border-color: transparent transparent #5c1a05 transparent;
+            border-style: solid solid solid solid;
+            border-width: 190px;
+            width: 800px;
+            margin: auto;
+            position: relative;
+        }
+        #littleboxback{
+            height: 190px;
+            width: 800px;
+            background-color: #5c1a05;
+            position: absolute;
+        }
+        .littlebox1{
+            height: 50px;
+            width: 50px;
+            background-color: yellow;
+            margin-top: 70px;
+            margin-right: 10px;
+            float: left;
+        }
+        .littlebox2{
+            height: 50px;
+            width: 50px;
+            background-color: rgb(212, 0, 159);
+            margin-top: 70px;
+            margin-right: 10px;
+            float: left;
+        }
+        #housebody{
+            height: 500px;
+            width: 600px;
+            background-color: #923418;
+            margin: auto;
+            position: relative;
+        }
+        #bluecircle{
+            width:250px;
+            height:250px;
+            border-radius:999em;
+            background-color:blue;
+            position: absolute;
+            top: 135px;
+            margin-left: 37.5px;
+        }
+        #windowback{
+            height: 175px;
+            width: 175px;
+            background-color: white;
+            margin: auto;
+            margin-top: 40px;
+        }
+        .square{
+            height: 50%;
+            width: 50%;
+            background-color: greenyellow;
+            float: left;
+        }
+        #door{
+            height: 350px;
+            width: 200px;
+            background-color: white;
+            position: absolute;
+            right: 37.5px;
+            bottom: 0px;
+        }
+        #doorknob{
+            height: 30px;
+            width: 30px;
+            background-color: black;
+            border-radius:999em;
+            margin-top: 170px;
+            margin-left: 10px;
+        }
+
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="trapezoid">
+        <div id="littleboxback">
+            <div class="littlebox1" style="margin-left: 20px;"></div>
+            <div class="littlebox2"></div>
+            <div class="littlebox1"></div>
+            <div class="littlebox2"></div>
+            <div class="littlebox1"></div>
+            <div class="littlebox2"></div>
+            <div class="littlebox1"></div>
+            <div class="littlebox2"></div>
+            <div class="littlebox1"></div>
+            <div class="littlebox2"></div>
+            <div class="littlebox1"></div>
+            <div class="littlebox2"></div>
+            <div class="littlebox1"></div>
+        </div>
+    </div>
+    <div id="housebody">
+        <div id="bluecircle">
+            <div id="windowback">
+                <div class="square"></div>
+                <div class="square" style="background-color: red;"></div>
+                <div class="square" style="background-color: red;"></div>
+                <div class="square"></div>
+            </div>
+        </div>
+        <div id="door">
+            <div id="doorknob"></div>
+        </div>
+    </div>
+</body>
+</html>
