@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>題目二</title>
+
+    <style>
+        .main{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .top{
+            width: 800px;
+            height: 0px;
+            border-width: 0px 83px 190px 83px;
+            border-style: solid;
+            border-color:transparent transparent rgb(87, 27, 1);
+            display: flex;
+            justify-content: center;
+        }
+        .box_box{
+            width: 966px;
+            height: 190px;
+            display: flex;
+        }
+        .box{
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            margin: auto 5px;
+            background-color: rgb(255, 255, 33);
+        }
+        .color{
+            background-color: rgb(255, 46, 251);
+        }
+        .bottom{
+            width: 600px;
+            height: 500px;
+            border: 1px solid black;
+            background-color: rgb(160, 68, 55);
+            display: flex;
+            justify-content: space-around;
+        }
+        .circle{
+            width: 250px;
+            height: 250px;
+            background-color: rgb(41, 1, 162);
+            border: 1px solid black;
+            border-radius: 50%;
+            margin: auto 0px;
+            display: flex;
+        }
+        .big_box{
+            width: 175px;
+            height: 175px;
+            display: flex;
+            flex-wrap: wrap;
+            margin: auto;
+        }
+        .small_box{
+            width: calc(50% - 3px);
+            height: calc(50% - 3px);
+            border: 1px solid black;
+            background-color: rgb(255, 56, 1);
+        }
+        .green{
+            background-color: rgb(65, 254, 46);
+        }
+        .door{
+            width: 200px;
+            height: 350px;
+            border: 1px solid black;
+            margin-top: 148px;
+            display: flex;
+            background-color: white;
+        }
+        .small_circle{
+            width: 30px;
+            height: 30px;
+            border: 1px solid black;
+            border-radius: 50%;
+            margin: auto 10px;
+            background-color: rgb(13, 0, 46);
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="top_boder">
+            <div class="top">
+                <div class="box_box">
+                    <div class="box"></div>
+                    <div class="box color"></div>
+                    <div class="box"></div>
+                    <div class="box color"></div>
+                    <div class="box"></div>
+                    <div class="box color"></div>
+                    <div class="box"></div>
+                    <div class="box color"></div>
+                    <div class="box"></div>
+                    <div class="box color"></div>
+                    <div class="box"></div>
+                    <div class="box color"></div>
+                    <div class="box"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bottom">
+            <div class="circle">
+                <div class="big_box">
+                    <div class="small_box green"></div>
+                    <div class="small_box"></div>
+                    <div class="small_box"></div>
+                    <div class="small_box green"></div>                    
+                </div>
+            </div>
+            <div class="door">
+                <div class="small_circle"></div>
+            </div>
+        </div>        
+    </div>
+
+</body>
+</html>

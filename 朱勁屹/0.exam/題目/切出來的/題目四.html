@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>題目四</title>
+
+    <style>
+        .top{
+            display: flex;
+        }        
+        .mouth{
+            width: 200px;
+            margin-top: -100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .mouth1{
+            width: 100%;
+            height: 60px;
+            border: 1px solid black;
+            background-color: yellow;
+        }
+        .head{
+            width: 1350px;
+            height: 450px;
+            border: 1px solid black;
+            background-color: greenyellow;
+            display: flex;
+        }
+        .eye1{
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            border-radius: 50%;
+            margin: 150px auto;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .line{
+            width: 1px;
+            height: 100%;
+            background-color: black;
+            position: absolute;
+            left: calc(50% - 0.5px);
+        }
+        .line1{
+            transform: rotateZ(60deg);
+        }
+        .line2{
+            transform: rotateZ(-60deg);
+        }
+        .eye1_black{
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            left: calc(50% - 12.5px);
+            top: calc(50% - 12.5px);            
+            background-color: black;
+            border-radius: 50%;
+            margin: auto;
+        }
+        
+        .eye2_box{
+            margin: auto 0px;
+        }
+        .eye2_black{
+            width: 15px;
+            height: 15px;
+            background-color: black;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+        .center{
+            width: 1750px;
+            display: flex;
+        }
+        .neck{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            background-color: blue;
+            margin: 0 auto;
+        }
+        .tail_all{
+            display: flex;
+            margin: 0 auto;
+            margin-top: 170px;
+        }
+        .tail{
+            width: 34.64101615137755px;
+            height: 30px;
+            border-width: 0px 17.32050807568878px 30px 17.32050807568878px;
+            border-style: none solid solid;
+            border-color: transparent transparent bisque;
+            box-sizing: border-box;
+        }
+        .body{
+            position: relative;
+            width: 1750px;
+            height: 200px;
+            border: 1px solid black;
+            background-color: blue;
+            margin-left: 50px;
+            display: flex;
+        }
+        .wing{
+            width: 173.2050807568877px;
+            height: 150px;
+            border-width: 86.6025403784439px 150px;
+            border-style: solid none solid solid;
+            border-color: transparent rgb(255, 255, 23);
+            box-sizing: border-box;
+            margin: auto;
+        }
+        .foot{
+            width: 1750px;
+            display: flex;
+        }
+        .foot1{
+            width: 173.2050807568877px;
+            height: 150px;
+            border-width: 0px 86.6025403784439px 150px 86.6025403784439px;
+            border-style: none solid solid;
+            border-color: transparent transparent rgb(255, 202, 137);
+            box-sizing: border-box;
+            margin: auto;
+            margin-top: -60px;
+
+        }
+        .foot2{
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="All">
+        <div class="top">
+            <div class="mouth">
+                <div class="mouth1"></div>
+                <div class="mouth1"></div>
+            </div>               
+            <div class="head">
+                <div class="eye1">
+                    <div class="eye1_black"></div>
+                        <div class="line"></div>
+                        <div class="line line1"></div>
+                        <div class="line line2"></div>                                               
+                </div>
+                <div class="eye1 eye2">
+                    <div class="eye2_box">
+                        <div class="eye2_black"></div>
+                        <div class="eye2_black"></div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="center">
+            <div class="neck"></div>
+            <div class="tail_all">
+                <div class="tail"></div>
+                <div class="tail"></div>
+                <div class="tail"></div>
+            </div>            
+        </div>
+
+        <div class="body">
+        <div class="wing"></div>
+        </div>
+        <div class="foot">
+            <div class="foot1"></div>
+            <div class="foot1 foot2"></div>
+        </div>        
+        
+    </div>
+</body>
+</html>
