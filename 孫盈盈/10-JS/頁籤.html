@@ -13,6 +13,7 @@
         }
         .nav{
             display: flex;
+
             justify-content: space-around;
 
             width: 100%;
@@ -20,8 +21,11 @@
             font-size: 50px;
             
         }
-        .active{
+        .text{
             display: none;
+        }
+        .active{
+            display: block;
         }
     </style>
 </head>
@@ -29,34 +33,58 @@
 <body>
     <div class="all">
         <div class="nav">
-            <div class="box" data-box="1">first</div>
-            <div class="box" data-box="2">scoend</div>
-            <div class="box" data-box="3">third</div>
+            <div class="box">first</div>
+            <div class="box">second</div>
+            <div class="box">third</div>
         </div>
         <div class="contnet"> 
-            <div class="text active" data-text="1">first</div>
-            <div class="text active" data-text="2">scoend</div>
-            <div class="text active" data-text="3">third</div>
+            <div class="text active">first</div>
+            <div class="text ">second</div>
+            <div class="text ">third</div>
         </div>
     </div>
     <script>
         let box =document.querySelectorAll('.box');
         const text =document.querySelectorAll('.text');
 
-        box.forEach((a)=>{
-            a.addEventListener('click',()=>{
-                const d = a.dataset.box;
+        
+        // box[0].addEventListener('click', function(){
+        //     text[0].classList.add('active');
+        //     text[1].classList.remove('active');
+        //     text[2].classList.remove('active');
+        // })
+
+        
+        // box[1].addEventListener('click', function(){
+        //     text[1].classList.add('active');
+        //     text[0].classList.remove('active');
+        //     text[2].classList.remove('active');
+        // })
+
+        // box[2].addEventListener('click', function(){
+        //     text[2].classList.add('active');
+        //     text[0].classList.remove('active');
+        //     text[1].classList.remove('active');
+        // })
+
+        box.forEach((a,index)=>{
+            a.addEventListener('click', function(){
                 text.forEach((b)=>{
-                    const c = b.dataset.text;
-                    console.log(c,d);
-                    if(d == c){
-                        b.classList.remove('active');
-                    }else{
-                        b.classList.add('active');
-                    }
+                    b.classList.remove('active');
                 })
+                text[index].classList.add('active');
             })
         })
+        
+
+        // box.forEach((a)=>{
+        //     a.addEventListener('click',()=>{
+        //         console.log(a);
+        //         text.forEach((b)=>{
+                    
+        //         })
+        //     })
+        // })
     </script>
 </body>
 

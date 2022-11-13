@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+        }
+        .headBox{
+            width: 1550px;
+            height: 450px;
+            margin: auto;
+            display: flex;
+            padding-top: 20px;
+        }
+        .head{
+            width: 1348px;
+            height: 448px;
+            border: 1px solid black;
+            /* margin-top: 20px; */
+            background-color: rgb(3, 214, 3);
+        }
+        .mouth{
+            width: 200px;
+            height: 120px;
+            display: flex;
+            border: 1px solid black;
+            margin-top: 100px;
+            background-color: yellow;
+        }
+        .line{
+            margin: auto;
+            width: 100%;
+            height: 1px;
+            background-color: black;
+        }
+        .eyes{
+            width: 100%;
+            display: flex;
+        }
+        .eye{
+            margin: auto;
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            margin-top: 100px;
+            border-radius: 50%;
+            background-color: white;
+            position: relative;
+        }
+        
+        .blackBall{
+            width: 25px;
+            height: 25px;
+            background-color: black;
+            margin: auto;
+            border-radius: 50%;
+            margin-top: 12.5px;
+            
+        }
+        .eyeLine1{
+            height: 50px;
+            width: 1px;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 24.5px;
+            transform: rotate(0deg)
+        }
+        .eyeLine2{
+            height: 50px;
+            width: 1px;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 24.5px;
+            transform: rotate(120deg)
+        }
+        .eyeLine3{
+            height: 50px;
+            width: 1px;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 24.5px;
+            transform: rotate(240deg)
+        }
+        .towBall{
+            width: 15px;
+            height: 15px;
+            border-radius:50% ;
+            background-color: black;
+            margin: auto;
+            margin-top: 10px;
+        }.towBall2{
+            width: 15px;
+            height: 15px;
+            border-radius:50% ;
+            background-color: black;
+            margin: auto;
+            /* margin-top: 10px; */
+        }
+        .centerBox{
+            width: 100%;
+            height: 200px;
+            display: flex;
+        }
+        .neck{
+            width: 200px;
+            height: 200px;
+            margin: auto;
+            background-color: blue;
+        }
+        .tails{
+            width: 200px;
+            height: 200px;
+            margin: auto;
+            display: flex;
+            align-items: flex-end;
+        }
+        .tail{
+            border-right: 15px solid white;
+            border-left: 15px solid white;
+            border-bottom: 30px solid blue;
+            display:inline-block;
+            
+
+        }
+        .body{
+            width: 1750px;
+            height: 200px;
+            background-color: blue;
+            margin: auto;
+            position: relative;
+        }
+        .wing{
+            border-top: 75px solid blue;
+            border-bottom: 75px solid blue;
+            border-left: 150px solid green;
+            /* display:inline-block; */
+            position: absolute;
+            top: calc(50% - 75px);
+            left: calc(50% - 75px);
+        }
+        .foot1{
+            border-color: transparent transparent yellow transparent;
+            border-style: solid solid solid solid;
+            border-width: 120px 45px;
+        
+            /* 設定 width、height 可更好理解原理 */
+            height: 0px;
+            width: 60px;
+            position: absolute;
+            bottom: -120px;
+            left: 407px;
+        }
+        .foot2{
+            border-right: 75px solid transparent;
+            border-left: 75px solid transparent;
+            border-bottom: 150px solid yellow;
+            display:inline-block;
+            position: absolute;
+            right: 407px;
+            bottom: -120px;
+        }
+    </style>
+</head>
+<body>
+    <div class="headBox">
+        <div class="mouth">
+            <div class="line"></div>
+        </div>
+        <div class="head">
+            <div class="eyes">
+                <div class="eye">
+                    <div class="blackBall">
+                        <div class="eyeLine1"></div>
+                        <div class="eyeLine2"></div>
+                        <div class="eyeLine3"></div>
+                    </div>
+                </div>
+                <div class="eye">
+                    <div class="towBall"></div>
+                    <div class="towBall2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="centerBox">
+        <div class="neck">
+
+        </div>
+        <div class="tails">
+            <div class="tail"></div>
+            <div class="tail"></div>
+            <div class="tail"></div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="wing"></div>
+        <div class="foot1"></div>
+        <div class="foot2"></div>
+    </div>
+</body>
+</html>

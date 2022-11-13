@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+        }
+        .candles{
+            display: flex;
+            justify-content: space-between;
+            width: 220px;
+            margin: auto;
+            margin-top: 100px;
+        }
+        .fire{
+            border-color: #ff0000 transparent transparent transparent;
+            border-style: solid solid solid solid; 
+        
+            /* 設定邊框依上、下；左右，各為一群組，相同群組須設定為相同尺寸，調整尺寸可拼湊出任意形狀的三角形 */
+            border-width: 17px 10px; 
+        
+            /* 設定 width、height 可更好理解原理 */
+            height: 0px;
+            width: 0px;
+            /* border: 1px solid black; */
+            transform: rotate(180deg);
+        }
+        
+        .candleFeet{
+            width: 18px;
+            height: 98px;
+            border: 1px solid black;
+        }
+        .first{
+            border-color: transparent transparent yellow transparent;
+            border-style: solid solid solid solid; 
+            border-width: 150px 75px; 
+            width: 300px;
+            height: 0px;
+            margin: auto;
+            margin-top: -150px;
+            /* padding-top: 200px; */
+        }
+        .circles{
+            width: 300px;
+            display: flex;
+        }
+        .circle{
+            width: 30px;
+            height: 15px;
+            /* border: 1px solid black; */
+            background-color: blue;
+            border-radius:0 0 30px 30px;
+            /* margin-top: 20px; */
+        }
+        .purple{
+            background-color: purple;
+        }
+        .brown{
+            background-color: brown;
+        }
+        .second{
+            width: 498px;
+            height: 198px;
+            background-color: rgb(99, 40, 40);
+            margin: auto;
+            border: 1px solid black;
+            /* display: flex; */
+            /* float: left; */
+        }
+        .tris{
+            width: 49.8px;
+            display: flex;
+            float: left;
+        }
+        .tri1{
+            border-top: 12.5px solid transparent;
+            border-bottom: 12.5px solid transparent;
+            border-left: 25px solid yellow;
+            display:inline-block;
+        }
+        .tri2{
+            border-top: 12.5px solid transparent;
+            border-bottom: 12.5px solid transparent;
+            border-right: 25px solid yellow;
+            display:inline-block;
+        }
+        .tri3{
+            border-top: 12.5px solid transparent;
+            border-bottom: 12.5px solid transparent;
+            border-left: 25px solid brown;
+            display:inline-block;
+        }
+        .tri4{
+            border-top: 12.5px solid transparent;
+            border-bottom: 12.5px solid transparent;
+            border-right: 25px solid brown;
+            display:inline-block;
+        }
+        .brownTri{
+            border-right: 25px solid brown;
+        }
+        .last{
+            border-color: transparent transparent yellow transparent;
+            border-style: solid solid solid solid; 
+            border-width: 300px 150px; 
+            width: 600px;
+            height: 0px;
+            margin: auto;
+            margin-top: -300px;
+        }
+        .boxs{
+            width: 600px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .box{
+            width: 28px;
+            height: 29px;
+            border: 1px solid black;
+            border-top:0px ;
+        }
+    </style>
+</head>
+<body>
+    <div class="candles">
+        <div class="candle">
+            <div class="fire"></div>
+            <div class="candleFeet purple"></div>
+        </div>
+        <div class="candle">
+            <div class="fire"></div>
+            <div class="candleFeet brown"></div>
+        </div>
+        <div class="candle">
+            <div class="fire"></div>
+            <div class="candleFeet purple"></div>
+        </div>
+        <div class="candle">
+            <div class="fire"></div>
+            <div class="candleFeet brown"></div>
+        </div>
+        <div class="candle">
+            <div class="fire"></div>
+            <div class="candleFeet purple"></div>
+        </div>
+    </div>
+    <div class="first">
+        <div class="circles">
+            <div class="circle"></div>
+            <div class="circle brown"></div>
+            <div class="circle"></div>
+            <div class="circle brown"></div>
+            <div class="circle"></div>
+            <div class="circle brown"></div>
+            <div class="circle"></div>
+            <div class="circle brown"></div>
+            <div class="circle"></div>
+            <div class="circle brown"></div>
+        </div>
+    </div>
+    <div class="second">
+        <div class="tris">
+            <div class="tri1"></div>
+            <div class="tri2"></div>
+        </div>
+        <div class="tris">
+            <div class="tri1"></div>
+            <div class="tri2"></div>
+        </div>
+        <div class="tris">
+            <div class="tri1"></div>
+            <div class="tri2"></div>
+        </div>
+        <div class="tris">
+            <div class="tri1"></div>
+            <div class="tri2"></div>
+        </div>
+        <div class="tris">
+            <div class="tri1"></div>
+            <div class="tri2"></div>
+        </div>
+        <div class="tris">
+            <div class="tri3"></div>
+            <div class="tri4"></div>
+        </div>
+        <div class="tris">
+            <div class="tri3"></div>
+            <div class="tri4"></div>
+        </div>
+        <div class="tris">
+            <div class="tri3"></div>
+            <div class="tri4"></div>
+        </div>
+        <div class="tris">
+            <div class="tri3"></div>
+            <div class="tri4"></div>
+        </div>
+        <div class="tris">
+            <div class="tri3"></div>
+            <div class="tri4"></div>
+        </div>
+    </div>
+    <div class="last">
+        <div class="boxs">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+    </div>
+</body>
+</html>
