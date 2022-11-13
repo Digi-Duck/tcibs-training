@@ -16,9 +16,14 @@ body {
 label{
     display: block;
 }
-#burger:checked + ul{
+
+input{
+    display: none;
+}
+#burger:checked ~ ul{
     display:block;
 }
+
 /* h{
     margin: 0px; 
     padding: 0px;
@@ -90,28 +95,58 @@ label{
 }
 
 ul{
-    width: 700%;
+    width: 1230px;
     background-color: #f2f2f2;
     z-index: 10;
 
+    margin-left: -875px;
     padding: 0;
 
     position: absolute;
     top: 40px;
-    right: 25%;
 
-/* 
-    display: none; */
+    display: none; 
+}
+.burger_phone{
+    display: none;
+}
+.burger_phone > .button{
+    width: 100%;
+}
+.webmap{
+    width: 100%;
+    background-color: #e6e6e6;
+}
+.webmap .button{
+
+    justify-content: center;
 }
 .allmicro_bg{
     width: 100%;
 
-    display: flex;
+    border: 1px solid rgba(0,0,0,.05);
+    border-bottom: 2px solid #000000;
 
+    display: flex;
+    flex-wrap: wrap;
 }
+.allmicro_top{
+    width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+.button_title{
+    width: 16.666%;
+}
+.button_title .button{
+    padding: 12px 0 12px 24px;
+}
+
 .button span{
     font-weight: 600;
 }
+
 .right_options {
     width: 100%;
     height: 100%;
@@ -524,12 +559,22 @@ a {
     -o-transform: scaleX(-1);
     transform: scaleX(-1);
 }
-
+#burger{
+    display: none;
+}
 .none {
     display: flex;
 }
-
+.block{
+    display: block;
+}
 #none1{
+    display: none;
+}
+.ex2{
+display: none;
+}
+#none3{
     display: none;
 }
 .right_box{
@@ -603,7 +648,6 @@ a {
         width: 100%;
         margin: 0;
     }
-
     .product_title {
         font-size: 1.5rem;
     }
@@ -616,7 +660,7 @@ a {
         display: none;
     }
 
-    .right_options .button {
+    .right_options > .button {
         padding: 0;
     }
 
@@ -629,17 +673,32 @@ a {
 
         margin: 1px 4px;
         padding: 16px 8px 10px 8px;
-
+/* 
         display: flex;
-        align-items: center;
+        align-items: center; */
     }
 }
-
+@media (max-width: 1260px) {
+    .button_title{
+        width: 20%;
+    }
+    ul{
+        width: 1025px;
+        margin-left: -700px;
+    }
+    
+}
 @media (max-width: 1084px) {
     .content {
         padding: 0 12px;
     }
-    
+    .button_title{
+        width: 25%;
+    }
+    ul{
+        width: 820px;
+        margin-left: -520px;
+    }
     .new {
         background-color: white;
     }
@@ -719,6 +778,13 @@ a {
 
 
 @media (max-width: 860px) {
+    .left_box > .button:first-child{
+        padding: 0;
+    }
+    #burger:checked ~ ul{
+        display: none;
+    }
+
     .fa-chevron-down{
         display: none;
     }
@@ -746,6 +812,9 @@ a {
     .right_options{
         justify-content: space-between;
     }
+    .right_box > .button{
+        padding: 0;
+    }
     .left_options{
         display: none;
     }
@@ -756,6 +825,72 @@ a {
         display: none;
     }
     #none1{
+        font-size: 20px;
+        padding-top: 4px;
+        display: block;
+    }
+    .burger_phone{
+        width: 100%;
+        background-color: #f2f2f2;
+    
+        z-index: 10;
+    }
+    .left_box > .button{
+        position: unset;
+    }
+    .header{
+        position: unset;
+    }
+    #burger2:checked ~ .burger_phone{
+        display:block;
+    }
+    body{
+        position: relative;
+    }
+    .burger_phone{
+        width: 100%;
+
+        position: absolute;
+        top: 55px;
+        right: 0;
+    }
+    .burger_phone  .button{
+        font-size: 15px;
+        margin: 0;
+        padding: 14px 24px 15px 15px;
+
+        border-bottom: 1px solid #e6e6e6;
+
+        display: flex;
+        flex-direction: column;
+        align-items: unset;
+
+    }
+    .pull{
+        width: 100%;
+
+        display: flex;
+        justify-content: space-between;
+    }
+    .hidden{
+        display: none;
+    }
+    #burger_pull_a:checked ~ .hidden{
+        display: block;
+    }
+    #burger_pull_b:checked ~ .hidden{
+        display: block;
+    }
+    #burger_pull_c:checked ~ .hidden{
+        display: block;
+    }
+    #burger_pull_d:checked ~ .hidden{
+        display: block;
+    }
+    #burger_pull_e:checked ~ .hidden{
+        display: block;
+    }
+    #burger_pull_f:checked ~ .hidden{
         display: block;
     }
 }
