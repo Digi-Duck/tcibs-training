@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .bar{
+            width: 100%;
+            height: 130px;
+            text-align: center;
+            background-color: cornflowerblue;
+            margin-bottom: 10px;
+            font-size: 70px;
+            
+        }
+        .maxBox{
+            width: 100%;
+            height: 700px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .box2{
+            background-color: aqua;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 10%;
+        }
+        .box3{
+            display: flex;
+            border-radius: 10%;
+        }
+        .start{
+            width: 100px;
+            height: 50px;
+            font-size: 30px;
+            display: block;
+            margin: auto;
+            border-radius: 10%;
+        }
+        .timeBox{
+            font-size: 50px;
+            text-align: center;
+            border-radius: 10%;
+        }
+    </style>
+</head>
+<body>
+    <div class="bar">色弱Game2</div><button class="start">開始</button>
+    <div class="timeBox"></div>
+    <div class="maxBox">
+        <div class="box">
+           
+        </div>
+    </div>
+    <script>
+        // document.getElementById("myDIV").style.opacity = "0.5";
+        
+        const button = document.querySelector('.button');
+        const box = document.querySelector('.box');
+        let x =2;
+        let y =2;
+        let a =[[],[]];
+        b = [];
+        let timeBox = document.querySelector('.timeBox');
+        let time = 60;
+        // timeBox.innerHTML = '<div class="time">'+time+'</div>';
+        let score = 0;
+        // console.log(g);
+        let bar = document.querySelector('.bar');
+        
+        function s() {
+            bar.innerHTML = score;
+            box.innerHTML = '';
+            let yNum;
+            let xNum;
+            if(y > 5){
+                yNum = y - 2;
+                xNum = x - 2;
+            }else if(y > 4&&x > 4){
+                yNum = Math.floor(y/2);
+                xNum = Math.floor(x/2);
+            }else{
+                yNum = 2;
+                xNum = 2;
+            }
+            
+            for(let i = 0;i < xNum;i++){
+                box.innerHTML += '<div class="box3"></div>';
+                a[i] = b;
+                // console.log(a);
+            }
+
+            const box3 = document.querySelectorAll('.box3');
+            
+
+            var colorNum1 = Math.floor(Math.random()*256);
+            var colorNum2 = Math.floor(Math.random()*256);
+            var colorNum3 = Math.floor(Math.random()*256);
+            
+            let num1 = Math.floor(Math.random()*xNum) ;
+            let num2 = Math.floor(Math.random()*yNum) ;
+            console.log(xNum);
+            console.log(yNum);
+            for(let j = 0;j < yNum;j++){
+                b[j] = j + 1;
+                // console.log(b);
+                
+                box3.forEach(function (x,index) {
+                    if(j == num1&&index == num2){
+                        x.innerHTML += '<div class="box2 button"id="opacity" style="background-color: rgb('+colorNum1+','+colorNum2+' ,'+colorNum3+');"></div>';
+                        let c = y - 1;
+                        let o = c*0.1;
+                        document.getElementById("opacity").style.opacity = o;
+                        // console.log(o);
+                    }else{
+                        x.innerHTML += '<div class="box2 button2"  style="background-color: rgb('+colorNum1+','+colorNum2+' ,'+colorNum3+');"></div>';
+                    }
+                })
+                
+            }
+            const ans = document.querySelector('.button');
+            const ans2 = document.querySelectorAll('.button2');
+            // let button = document.querySelector('.button');
+            // n.classList.add('button');
+            // console.log(ans);
+            
+            ans2.forEach(function (l) {
+                l.addEventListener('click',function () {
+                    s();
+                })
+            })
+            ans.addEventListener('click',function() {
+                score++;
+                s();
+                if(x < 9){
+                x++;
+                y++;
+                
+                }
+            })
+         
+        }
+        let start = document.querySelector('.start');
+        start.addEventListener('click',function () {
+            // console.log(1);
+            s();
+            timeBox.innerHTML = '<div class="time">'+time+'</div>';
+            setInterval(function(){
+                time = time - 1;
+                timeBox.innerHTML = '<div class="time">'+time+'</div>';
+                if(time == -1){
+                alert('時間到了，你得了'+score+'分');
+                location.reload();
+            }
+            },1000);
+            
+            
+        })
+    </script>
+</body>
+</html>
