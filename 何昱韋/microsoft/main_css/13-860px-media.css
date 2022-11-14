@@ -128,7 +128,9 @@
         transform: translate(0,0);
         padding: 24px 16px 24px 12px;
         box-shadow: none;
-
+    }
+    .banner-demo-container{
+        border-bottom:2px solid rgb(228, 225, 225) ;
     }
     .control_banner{
         transform: translate(0,0);
@@ -136,6 +138,11 @@
     /* layout-region */
     .layout_region{
         margin: 0;
+    }
+
+
+    .soft-onedrive{
+        margin: 48px 0;
     }
 }
 

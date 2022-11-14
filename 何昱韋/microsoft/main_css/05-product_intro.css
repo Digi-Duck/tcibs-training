@@ -25,20 +25,30 @@
     padding: 0.375em 0.75em;
     margin-bottom: 0.3rem;
     display: inline-block;
+    font-family: "Segoe UI",SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
 }
 .card-header{
     font-size: 1.8125rem;
+    font-family: inherit;
+    font-weight: 600;
     margin-bottom: 1rem;
 }
 .card-body{
     word-wrap: break-word;
     font-size: 1rem;
+    font-family: "Segoe UI",SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
 }
 .card-about-learn{
     padding-top: 1rem;
     color: #950c17;
     margin: 16px 0;
     position: relative;
+    font-weight: 600;
+    font-family: "Segoe UI",SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 1rem;
 }
 .card-about-learn-text{
     display: inline-block;

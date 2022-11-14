@@ -6,8 +6,9 @@
 }
 .business-text{
     font-size: 37px;
-    font-family: "Segoe UI",SegoeUI,"Helvetica Neue",Helvetica,Arial,sans-serif;
     margin-bottom: 20px;
+    font-family: inherit;
+    font-weight: 600;
 }
 .business-intro-region{
     /* width: 90%;

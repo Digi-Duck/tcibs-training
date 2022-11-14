@@ -17,9 +17,6 @@
     }
 
     /* layout-region*/
-    .layout_region{
-        /* height: 210px; */
-    }
     .layout_flexbox{
         /* display: flex;
         flex-wrap: wrap;
@@ -63,6 +60,9 @@
     .footer_ul_box{
         width: 100%;
     }
+    footer{
+        height: auto;
+    }
     .end-link{
         float: left;
         margin: 12px 0 3px 0;
@@ -74,5 +74,11 @@
     .end-li{
         font-size: 12px;
         padding: 6px 10px 0 0;
+    }
+}
+
+@media (max-width:360px) {
+    .layout_region{
+        height: 315px;
     }
 }
