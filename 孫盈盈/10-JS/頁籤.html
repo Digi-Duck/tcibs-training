@@ -7,9 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        body{
+            margin: 0;
+        }
         .all{
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
+
+            padding-top: 20px;
+            box-sizing: border-box;
         }
         .nav{
             display: flex;
@@ -19,10 +26,30 @@
             width: 100%;
 
             font-size: 50px;
-            
+        }
+        .box{
+            width: 20%;
+            text-align: center;
+
+            background-color: aquamarine;
+            font-weight: bolder;
+        }
+        .box:hover{
+            background-color: chartreuse;
+        }
+        .color{
+            background-color: chartreuse;
         }
         .text{
             display: none;
+            width: 500px;
+            height: 100px;
+            
+            margin: 50px auto;
+            background-color: chartreuse;
+            
+            font-size: 40px;
+            text-align: center;
         }
         .active{
             display: block;
@@ -33,7 +60,7 @@
 <body>
     <div class="all">
         <div class="nav">
-            <div class="box">first</div>
+            <div class="box color">first</div>
             <div class="box">second</div>
             <div class="box">third</div>
         </div>
@@ -69,6 +96,10 @@
 
         box.forEach((a,index)=>{
             a.addEventListener('click', function(){
+                box.forEach((c)=>{
+                    c.classList.remove('color');
+                })
+                a.classList.add('color');
                 text.forEach((b)=>{
                     b.classList.remove('active');
                 })
