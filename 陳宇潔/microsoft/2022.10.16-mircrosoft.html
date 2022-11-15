@@ -6,12 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+  />
     <link rel="stylesheet" href="2022.10.16-mircrosoft.css">
     <title>Microsoft</title>
    
 </head>
 
 <body>
+    <nav>
+         
+    </nav>
     <div class="content">
         <div id="to_top"></div>
         <div class="header">
@@ -224,7 +231,7 @@
                                 <div class="button">Surface</div>
                                 <div class="button">Xbox</div>
                                 <div class="button">支援</div>
-                                <div class="button"> 
+                                <div class="button" id="padding0"> 
                                     <input type="checkbox" id="burger_pull_a" >
                                     <label for="burger_pull_a" class="pull" >
                                         <span>軟體</span> 
@@ -239,7 +246,7 @@
                                         <div class="button">Microsoft Teams</div>
                                     </div>                       
                                 </div>
-                                <div class="button">
+                                <div class="button" id="padding0">
                                     <input type="checkbox" id="burger_pull_b" >
                                     <label for="burger_pull_b" class="pull" >
                                         <span>個人電腦和設備</span> 
@@ -250,7 +257,7 @@
                                         <div class="button">電腦配件</div>
                                     </div>
                                 </div>
-                                <div class="button">
+                                <div class="button" id="padding0">
                                     <input type="checkbox" id="burger_pull_c" >
                                     <label for="burger_pull_c" class="pull" >
                                         <span>娛樂</span> 
@@ -264,7 +271,7 @@
                                         <div class="button">Windows 遊戲</div>
                                     </div>
                                 </div>
-                                <div class="button">  
+                                <div class="button" id="padding0">  
                                     <input type="checkbox" id="burger_pull_d" >
                                     <label for="burger_pull_d" class="pull" >
                                         <span>商務適用</span> 
@@ -282,7 +289,7 @@
                                     </div>
                                     
                                 </div>
-                                <div class="button">  
+                                <div class="button" id="padding0">  
                                     <input type="checkbox" id="burger_pull_e" >
                                     <label for="burger_pull_e" class="pull" >
                                         <span>開發人員與IT</span> 
@@ -298,7 +305,7 @@
                                         <div class="button">Visual Studio</div>
                                     </div>
                                 </div>
-                                <div class="button">
+                                <div class="button" id="padding0">
                                     <input type="checkbox" id="burger_pull_f" >
                                     <label for="burger_pull_f" class="pull" >
                                         <span>其他</span> 
@@ -343,48 +350,72 @@
     <div class="back" >
         
         <div class="title">
-            <div class="computer_pic">
-                <a id="computer" href="">
-                    <picture>
-                        <source media="(min-width: 1400px)"
-                            srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP5-1920x600">
-                        <source media="(min-width: 1084px)"
-                            srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP4-1399x600">
-                        <source media="(min-width: 860px)"
-                            srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP3-1083x600">
-                        <source media="(min-width: 540px)"
-                            srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP2-859x540">
-                        <img class="title_img"
-                            src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP1-539x440">
-                    </picture>
-                </a>
-                <div class="title_content">
-                    <div class="content">
-                        <div class="title_box">
-                            <div class="new">新上市</div>
-                            <div class="big_title">Surface Pro 9</div>
-                            <div class="introduce">
-                                平板電腦的彈性和筆記型電腦的效能 — 全都在一台攜帶超方便的裝置
+     
+           
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="computer_pic">
+                            <a id="computer" href="">
+                                <picture>
+                                    <source media="(min-width: 1400px)"
+                                        srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP5-1920x600">
+                                    <source media="(min-width: 1084px)"
+                                        srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP4-1399x600">
+                                    <source media="(min-width: 860px)"
+                                        srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP3-1083x600">
+                                    <source media="(min-width: 540px)"
+                                        srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP2-859x540">
+                                    <img class="title_img"
+                                        src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Surface-Pro-9-All-Colors-FY23HOL:VP1-539x440">
+                                </picture>
+                            </a>
+                            <div class="title_content">
+                                <div class="content">
+                                    <div class="title_box">
+                                        <div class="new">新上市</div>
+                                        <div class="big_title">Surface Pro 9</div>
+                                        <div class="introduce">
+                                            平板電腦的彈性和筆記型電腦的效能 — 全都在一台攜帶超方便的裝置
+                                        </div>
+                                        <div class="understand">深入了解</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="understand">深入了解</div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="computer_pic">
+                            <a id="computer2" href="">
+                                <picture>
+                                    <source media="(min-width: 1400px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-PC-GamePass-Light-FY23HOL:VP5-1920x600">
+                                    <source media="(min-width: 1084px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-PC-GamePass-Light-FY23HOL:VP4-1399x600">
+                                    <source media="(min-width: 860px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-PC-GamePass-Light-FY23HOL:VP3-1083x600">
+                                    <source media="(min-width: 540px)" srcset="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-PC-GamePass-Light-FY23HOL:VP2-859x540">
+                                    <img  class="title_img" src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-PC-GamePass-Light-FY23HOL:VP1-539x440">
+                                </picture>
+                            </a>
+                            <div class="title_content">
+                                <div class="content">
+                                    <div class="title_box">
+                                        <div class="big_title">PC Game Pass</div>
+                                        <div class="introduce">
+                                            開箱 100 多款精彩遊戲和 EA Play，而且首月只需 NT$30。 此優惠僅適用於新訂閱者。
+                                        </div>
+                                        <div class="understand">立即加入</div>
+                                    </div> 
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-           
+              </div>
             <div class="content">
                 <div class="slide">
                     <div class="left_highlight">
                         <i class="fa-solid fa-angle-left"></i>
                     </div>
-                    <div class="slide_box">
-                        <div class="circle_white">
-                            <i class="fa-regular fa-circle"></i>
-                        </div>
-                        <div class="circle_black">
-                            <i class="fa-solid fa-circle"></i>
-                        </div>
-                    </div>
+                    <div class="swiper-pagination"></div>
                     <div class="right_highlight">
                         <i class="fa-solid fa-angle-right"></i>
                     </div>
@@ -739,8 +770,22 @@
     </div>
     <script src="https://kit.fontawesome.com/e97ab8904e.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
         AOS.init();
+        var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".left_highlight",
+          prevEl: ".right_highlight",
+        },
+      });
       </script>
 </body>
 

@@ -177,6 +177,10 @@ ul{
     width: 100%;
 
 }
+#computer2 {
+    width: 100%;
+
+}
 
 #img {
     width: 100%;
@@ -232,6 +236,7 @@ ul{
 }
 
 .introduce {
+    height: 100%;
     margin-bottom: 24px;
 }
 
@@ -275,20 +280,14 @@ ul{
     font-size: 30px;
     padding: 0 8px;
 }
-
-.circle_white {
-    font-size: 12px;
-    margin: 8px;
-}
-
-.circle_black {
-    font-size: 12px;
-    margin: 8px;
+.swiper-pagination{
+    /* transform: translate(0,-250px); */
 }
 
 .right_highlight {
     font-size: 30px;
     padding: 0 8px;
+    margin-left: 80px;
 }
 
 .list {
@@ -643,6 +642,11 @@ display: none;
 .more_box{
     display: none;
 }
+:root{
+    --swiper-theme-color: #000000;
+}
+
+
 @media (max-width: 1800px) {
     .content {
         width: 100%;
