@@ -50,6 +50,7 @@
     }
     #nav-all-burger:checked+.nav-all-burger-ul{
         display: block;
+        z-index: 9999999;
     }
     .nav-all-hamburger{
         position: relative;
