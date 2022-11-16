@@ -11,18 +11,38 @@
             height: 100px;
             border: 1px solid black;
         }
-        .lightblue{
-            background-color: lightblue;
+        .box-all.active{
+            background-color: aqua;
         }
     </style>
 </head>
 <body>
+    <!-- <button type="button" class="modeSw">changeMode</button> -->
+  
     <div class="box-all boxA"></div>
     <div class="box-all boxB"></div>
-    <script>
-        let boxA = document.querySelector('.boxA');
-        boxA.classList.add("lightblue");
-        
+    <script>    
+        // let pointer = 0;
+        // let sw = document.querySelector(".modeSw");
+
+        let boxA = document.querySelector(".boxA");
+        let boxB = document.querySelector(".boxB");
+
+        boxA.onclick =function(){
+            if(boxA.classList.contains("active")){
+                boxA.classList.remove("active");
+            }else{
+                boxA.classList.add("active");
+            }
+        }
+        boxB.onclick =function(){
+            if(boxB.classList.contains("active")){
+                boxB.classList.remove("active");
+            }else{
+                boxB.classList.add("active");
+            }
+        }
+
     </script>
 </body>
 </html>
