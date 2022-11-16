@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('texts', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->nullable();
-            $table->longText('piscture')->nullable();
-            $table->integer('number')->nullable();
-            $table->integer('pay')->nullable();
-            
+        Schema::table('texts', function (Blueprint $table) {
+            //
+            $table->integer('content')->change();
         });
     }
 
@@ -30,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('texts');
+        Schema::table('texts', function (Blueprint $table) {
+            //
+        });
     }
 };
