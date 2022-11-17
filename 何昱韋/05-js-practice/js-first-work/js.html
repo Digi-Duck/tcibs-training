@@ -11,38 +11,83 @@
             height: 100px;
             border: 1px solid black;
         }
-        .box-all.active{
+        .box-all.active-1{
             background-color: aqua;
+        }
+        .box-all.active-2{
+            background-color: rgb(222, 136, 136);
         }
     </style>
 </head>
 <body>
-    <!-- <button type="button" class="modeSw">changeMode</button> -->
-  
+    <button type="button" class="modeSw">changeMode</button>
     <div class="box-all boxA"></div>
     <div class="box-all boxB"></div>
     <script>    
-        // let pointer = 0;
-        // let sw = document.querySelector(".modeSw");
-
+        let pointer = 0;
+        let sw = document.querySelector(".modeSw");
         let boxA = document.querySelector(".boxA");
         let boxB = document.querySelector(".boxB");
-
-        boxA.onclick =function(){
-            if(boxA.classList.contains("active")){
-                boxA.classList.remove("active");
+        sw.addEventListener('click', function(event){
+            if (pointer == 0){
+                pointer =1;
             }else{
-                boxA.classList.add("active");
+                pointer =0;
+            }
+            // A mode
+        if (pointer == 0){
+            boxA.onclick = function(){
+                boxA.classList.toggle("active-1");
+            }
+            boxB.onclick = function(){
+                boxB.classList.toggle("active-1");
             }
         }
-        boxB.onclick =function(){
-            if(boxB.classList.contains("active")){
-                boxB.classList.remove("active");
-            }else{
-                boxB.classList.add("active");
+// B mode
+        if(pointer == 1){
+            boxA.onclick = function(){
+                boxB.classList.toggle("active-2");
+            }
+            boxB.onclick = function(){
+                boxA.classList.toggle("active-2");
             }
         }
+        });
 
+// // A mode
+//         if (pointer == 0){
+//             boxA.onclick = function(){
+//                 if(boxA.classList.contains("active-1")){
+//                     boxA.classList.remove("active-1");
+//                 }else{
+//                     boxA.classList.add("active-1");
+//                 }
+//             }
+//             boxB.onclick = function(){
+//                 if(boxB.classList.contains("active-1")){
+//                     boxB.classList.remove("active-1");
+//                 }else{
+//                     boxB.classList.add("active-1");
+//                 }
+//             }
+//         }
+// // B mode
+//         if(pointer == 1){
+//             boxA.onclick = function(){
+//                 if (boxB.classList.contains("active-2")){
+//                     boxB.classList.remove("active-2");
+//                 }else{
+//                     boxB.classList.add("active-2");
+//                 }
+//             }
+//             boxB.onclick = function(){
+//                 if(boxA.classList.contains("active-2")){
+//                     boxA.classList.remove("active-2");
+//                 }else{
+//                     boxA.classList.add("active-2");
+//                 }   
+//             }
+//         }
     </script>
 </body>
 </html>
