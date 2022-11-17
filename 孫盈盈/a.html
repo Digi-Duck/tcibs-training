@@ -1,28 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<html>
 <body>
-    <div id="show">
-        <label >你好,</label>
-        <label id="hello"></label>
-        <input type="text" id="hellotext"> 
-        <button onclick="changestring()">變更文字</button>
-        <button onclick="cleanstring()">清空文字</button>
-        <button onclick="Re()">重新</button>
-    </div>
-    <script>
-         function Re(){
-            document.getElementById("show").style.display="none"; //影藏div
-            document.getElementById("calchidden").style.display="";//顯示div
-            document.getElementById("count").innerHTML = ""; //清空數字
-            document.getElementById("icon").innerHTML = "";//清空*
 
-        }
-    </script>
+<p id="p1">Hello World!</p>
+<p id="p2">Hello World!</p>
+
+<script>
+    var p2 =document.getElementById("p2");
+    p2.style.opacity = "0.2";
+    p2.style.fontFamily = "Arial";
+    p2.style.fontSize = "larger";
+</script>
+
+<p>第二个段落的样式已被脚本修改。</p>
+
 </body>
 </html>

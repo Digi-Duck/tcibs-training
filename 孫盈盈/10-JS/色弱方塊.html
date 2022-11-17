@@ -42,6 +42,29 @@
 
             font-size: 50px;
         }
+        .playing{
+            height: 100%;
+        }
+        .click-area{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+
+            width: 600px;
+            height: 600px;
+
+            padding: 10px;
+            background-color: white;
+            box-sizing: border-box;
+        }
+        .click{
+            width: 48%;
+            height: 48%;
+
+            background-color: olive;
+            box-sizing: border-box;
+        }
         .box{
             width: 100px;
             height: 100px;
@@ -50,42 +73,66 @@
         .active{
             display: none;
         }
+        .opacity{
+            opacity: 0.7;
+        }
     </style>
 </head>
 <body>
     <div class="all">
-        <div class="start">
+        <div class="start active">
             <span class="start-font">color</span>
             <button class="start-button">start!!!</button>
         </div>
-        <div class="playing active">
+        <div class="playing">
+            <div class="click-area">
+                <div class="click"></div>
+                <div class="click"></div>
+                <div class="click"></div>
+                <div class="click"></div>
+            </div>
             <div class="box"></div>
         </div>
         <div class="ending active"></div>
     </div>
     <script>
-        
         const start =document.querySelector('.start');
         const startButton =document.querySelector('.start-button');
         
         const playing =document.querySelector('.playing');
+        const click =document.querySelectorAll('.click');
         const box =document.querySelector('.box');
 
+        console.log(click);
+        let count;
+        click.forEach((clickOne, index)=>{
+            // console.log(count);
+            // click[count].classList.add('opacity')
+            clickOne.addEventListener('click', ()=>{
+                count =Math.floor(Math.random()*4);
+                console.log(count);
+                click.forEach((clean)=>{
+                    clean.classList.remove('opacity');
+                })
+                click[count].classList.add('opacity');
+                console.log(count, index);
+            })
+        })
         startButton.addEventListener('click', ()=>{
             start.classList.add('active');
             playing.classList.remove('active');
             
-            let time = 60;
-            let timeout =setInterval(times, 1000);
-            function times(){
-                time = time - 1;
-                if(time == 0){
-                    clearInterval(timeout);
-                }else{
-                    box.innerHTML = time;
-                }
-            }
-            console.log(timeout);
+            // let time = 60;
+            // let timeout =setInterval(times, 1000);
+            // function times(){
+            //     time = time - 1;
+            //     if(time == 0){
+            //         clearInterval(timeout);
+            //     }else{
+            //         box.innerHTML = time;
+            //     }
+            // }
+            // console.log(timeout);
         })
     </script>
 </body>
