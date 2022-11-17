@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            box-sizing: border-box;
+            width: 225px;
+            height: 225px;
+            border: 1px solid black;
+        }
+        .box.picture1{
+            background-image: url('https://storage.googleapis.com/libraries-lib-production/images/GoogleLogo-canvas-404-300px.original.png');
+            background-repeat: no-repeat;
+
+        }
+        .box.picture2{
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9_BrxrdoT_ej_oTpPJHG2g55g2ZE-N8_NtA&usqp=CAU');
+            background-repeat: no-repeat;
+
+        }
+        .box.picture3{
+            background-image: url('https://cf.shopee.tw/file/a8e0b7dbf8ffa43ef188ed4f51310dcd');
+            background-repeat: no-repeat;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <script>
+        let pic1 = document.querySelector(".picture1");
+        let pic2 = document.querySelector(".picture2");
+        let pic3 = document.querySelector(".picture3");
+        var img =["picture1", "picture2", "picture3",];
+        let box = document.querySelector(".box");
+        var x = 0;
+        box.onclick = function(){
+            if(x%3 == 0){
+                box.classList.remove("picture3")
+            }
+            box.classList.remove(img[x%3-1]);
+            box.classList.add(img[x%3]);
+            x++;
+        }
+    </script>
+</body>
+</html>
