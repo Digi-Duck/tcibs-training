@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+
+    <style>
+        body{
+            margin: 0px;
+        }
+        .main{
+            display: flex;
+            height: 100vh;
+        }
+        .circle{
+            width: 800px;
+            height: 800px;
+            border: 4px solid black;
+            margin: auto;
+            border-radius: 50%;
+            position: relative;
+        }
+        .line{
+            width: 1px;
+            height: 325px;
+            background-color: black;
+            position: absolute;
+            left: calc(50% - 0.5px);
+            bottom: 50%;
+            transform-origin: 50% 100%;
+            
+        }
+        .hour{
+            width: 5px;
+            height: 150px;
+            left: calc(50% - 2.5px);
+            bottom: 50%;
+        }
+        .min{
+            width: 3px;
+            height: 250px;
+            left: calc(50% - 1.5px);
+            bottom: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="circle">
+            <div class="line hour"></div>
+            <div class="line min"></div>
+            <div class="line sec"></div>
+        </div>
+    </div>
+
+    <script>
+        const hour_line = document.querySelector('.hour');
+        const min_line = document.querySelector('.min');
+        const sec_line = document.querySelector('.sec');
+        let hour = 0;
+        let min = 0;
+        let sec = 0;
+        
+        setInterval(function(){
+        
+            sec_line.style = "transform: rotate("+ sec +"deg);";
+            min_line.style = "transform: rotate("+ min +"deg);";
+            hour_line.style = "transform: rotate("+ hour +"deg);";
+
+            sec = sec + 6;
+            min = min + 0.1;
+            hour = hour + (0.5/60);
+            
+            console.log(sec);
+
+        },1000);    
+
+
+
+    </script>
+</body>
+</html>
