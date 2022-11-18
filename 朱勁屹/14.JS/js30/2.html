@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .circle{
+            width: 500px;
+            height: 500px;
+            border: 5px solid black;
+            border-radius: 50%;
+            margin: 200px auto;
+            position: relative;
+        }
+        .ho{
+            width: 5px;
+            height: 20%;
+            background-color: black;
+            position: absolute;
+            bottom: 50%;
+            left: calc(50% - 1px);
+            transform:rotate(0deg);
+            transform-origin: bottom;
+        }
+        .min{
+            width: 3px;
+            height: 35%;
+            background-color: black;
+            position: absolute;
+            bottom: 50%;
+            left: calc(50% - 1px);
+            transform:rotate(0deg);
+            transform-origin: bottom;
+        }
+        .se{
+            width: 1px;
+            height: 50%;
+            background-color: black;
+            position: absolute;
+            bottom: 50%;
+            left: calc(50% - 1px);
+            transform:rotate(0deg);
+            transform-origin: bottom;
+        }
+    </style>
+</head>
+<body>
+    <div class="circle">
+        <div class="ho"></div>
+        <div class="min"></div>
+        <div class="se"></div>
+    </div>
+    <script>
+        const h = document.querySelector('.ho');
+        const m = document.querySelector('.min');
+        const s = document.querySelector('.se');
+        let hn = 0;    
+        let mn = 0;
+        let sn = 0;
+        setInterval(function () {
+            h.style = "transform: rotate(" + hn + "deg)";
+            m.style = "transform: rotate(" + mn + "deg)";
+            s.style = "transform: rotate(" + sn + "deg)";
+            sn = sn +6;
+            mn = mn +0.1;
+            hn = hn + (0.5/60);
+            // console.log(sn);
+        },1);
+    </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style>
+        
+        .box{
+            width: 150px;
+            height: 150px;
+            /* border: 5px solid black; */
+            box-shadow:  0 0 0px 10px rgb(255, 255, 255);
+            font-size: 100px;
+            text-align: center;
+            line-height: 150px;
+            transition: 1s;
+        }
+        .boxs{
+            display: flex;
+            justify-content: space-around;
+            margin-top: 300px;
+        }
+        .hBox{
+            /* border: 5px solid yellow; */
+            box-shadow: 0 0 0px 50px rgb(255, 255, 0);
+        }
+    </style>
+<body>
+    <div class="boxs">
+        <div class="box box1">C4</div>
+        <div class="box box2">D4</div>
+        <div class="box box3">E4</div>
+        <div class="box box4">F4</div>
+        <div class="box box5">G4</div>
+        <div class="box box6">A4</div>
+        <div class="box box7">B4</div>
+        <div class="box box8">C5</div>
+        <div class="box box9">gui</div>
+    </div>
+    <script>
+        var body =  document.body;
+        function voice1() {
+            const voice1 = document.createElement("audio");
+            voice1.src = "../js30/voice/pianoC.mp3";
+            voice1.play();
+        }
+        function voice2() {
+            const voice2 = document.createElement("audio");
+            voice2.src = "../js30/voice/pianoD.mp3";
+            voice2.play();
+        }function voice3() {
+            const voice3 = document.createElement("audio");
+            voice3.src = "../js30/voice/pianoE.mp3";
+            voice3.play();
+        }function voice4() {
+            const voice4 = document.createElement("audio");
+            voice4.src = "../js30/voice/pianoF.mp3";
+            voice4.play();
+        }function voice5() {
+            const voice5 = document.createElement("audio");
+            voice5.src = "../js30/voice/pianoG.mp3";
+            voice5.play();
+        }function voice6() {
+            const voice6 = document.createElement("audio");
+            voice6.src = "../js30/voice/pianoA.mp3";
+            voice6.play();
+        }function voice7() {
+            const voice7 = document.createElement("audio");
+            voice7.src = "../js30/voice/pianoB.mp3";
+            voice7.play();
+        }function voice8() {
+            const voice8 = document.createElement("audio");
+            voice8.src = "../js30/voice/pianoC2.mp3";
+            voice8.play();
+        }function voice9() {
+            const voice9 = document.createElement("audio");
+            voice9.src = "../js30/voice/guitar.mp3";
+            voice9.play();
+        }
+        async function a(e){
+            console.log(e.keyCode);
+            switch (e.keyCode) {
+                case 65:
+                    voice1();
+                    let box = document.querySelector('.box1');
+                    box.classList.add('hBox');
+                    setTimeout(function () {
+                        box.classList.remove('hBox');
+                        
+                    },1000)
+                    break;
+
+                case 83:
+                    voice2();
+                    let box2 = document.querySelector('.box2');
+                    box2.classList.add('hBox');
+                    setTimeout(function () {
+                        box2.classList.remove('hBox');
+                        
+                    },1000)
+                    break;
+                case 68:
+                    voice3();
+                    let box3 = document.querySelector('.box3');
+                    box3.classList.add('hBox');
+                    setTimeout(function () {
+                        box3.classList.remove('hBox');
+                        
+                    },1000)
+                    break;
+                case 70:
+                    voice4();
+                    let box4 = document.querySelector('.box4');
+                    box4.classList.add('hBox');
+                    setTimeout(function () {
+                        box4.classList.remove('hBox');
+                        
+                    },1000)
+                    break;
+                case 71:
+                    voice5();
+                    let box5 = document.querySelector('.box5');
+                    box5.classList.add('hBox');
+                    setTimeout(function () {
+                        box5.classList.remove('hBox');
+                        
+                    },1000)
+                    break;
+                case 72:
+                    voice6();
+                    let box6 = document.querySelector('.box6');
+                    box6.classList.add('hBox');
+                    setTimeout(function () {
+                        box6.classList.remove('hBox');
+                        
+                    },1000)
+                    break;
+                case 74:
+                    voice7();
+                    let box7 = document.querySelector('.box7');
+                    box7.classList.add('hBox');
+                    setTimeout(function () {
+                        box7.classList.remove('hBox');
+                        
+                    },1000)
+                    break;
+                case 75:
+                    voice8();
+                    let box8 = document.querySelector('.box8');
+                    box8.classList.add('hBox');
+                    setTimeout(function () {
+                        box8.classList.remove('hBox');
+                        
+                    },1000)
+                    break;
+                case 76:
+                    voice9();
+                    let box9 = document.querySelector('.box9');
+                    box9.classList.add('hBox');
+                    setTimeout(function () {
+                        box9.classList.remove('hBox');
+                        
+                    },1000)
+                    break;
+                default:
+                break;
+                
+            }
+        } 
+        function delay(n){
+            return new Promise(function(resolve){
+                setTimeout(resolve,n*1000);
+            });
+        }
+        body.addEventListener('keydown', a ,false)
+    </script>
+</body>
+</html>
