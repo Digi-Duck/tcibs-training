@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SCORE</title>
     <style>
         *{
             box-sizing: border-box;
@@ -17,8 +17,10 @@
         .box{
             width: 601px;
             height: 601px;
+            background-color: antiquewhite;
 
             border: 1px solid#000000;
+            border-radius: 5%;
             padding: 50px;
 
             display: flex;
@@ -63,62 +65,15 @@
             align-items: center;
             justify-content: center;
         }
+        .point:hover{
+            color: white;
+            background-color: rgb(46, 46, 120);
+            border: 5px solid cornflowerblue;
+        }
         .frame{
             width: 100px;
             height: 100px;
             border: 1px solid rgb(46, 46, 120);
-        }
-        .Aplus{
-            width: 100px;
-            height: 100px;
-            /* carousel  */
-            background-image: url("https://i.pinimg.com/564x/c1/b2/ef/c1b2ef47207816628de90a60d8ae0b4e.jpg");
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        .A{
-            width: 100px;
-            height: 100px;
-            /* carousel  */
-            background-image: url("https://i.pinimg.com/564x/1c/2e/8c/1c2e8c0705b82c4277cac2dd7ac7382e.jpg");
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        .B{
-            width: 100px;
-            height: 100px;
-            /* carousel  */
-            background-image: url("https://i0.wp.com/www.lkldnow.com/wp-content/uploads/2019/07/b-grade.jpg?w=275&ssl=1");
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        .C{
-            width: 100px;
-            height: 100px;
-            /* carousel  */
-            background-image: url("https://www.photos-public-domain.com/wp-content/uploads/2012/07/c-school-letter-grade-600x400.jpg");
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        .D{
-            width: 100px;
-            height: 100px;
-            /* carousel  */
-            background-image: url("https://www.photos-public-domain.com/wp-content/uploads/2012/07/d-school-letter-grade.jpg");
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        .E{
-            width: 100px;
-            height: 100px;
-            /* carousel  */
-            background-image: url("https://securecdn.pymnts.com/wp-content/uploads/2015/01/E-Grade.jpg");
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        .frame{
-            width: 100px;
-            height: 100px;
 
             background-size: contain;
             background-position: center;
@@ -151,27 +106,34 @@
         const frame = document.querySelector(".frame");
         const level = document.querySelector(".grade");
         const button = document.querySelector(".point");
+
         console.log(level);
         
         button.onclick = function () {
-            const grade =level.value;
-            console.log(button);
-            console.log(grade);
-            if (grade == 100) {
-                frame.innerHTML =`<img src="https://i.pinimg.com/564x/c1/b2/ef/c1b2ef47207816628de90a60d8ae0b4e.jpg">`;
-            } else if (grade >= 90) {
-                frame.innerHTML =`<img src="https://i0.wp.com/www.lkldnow.com/wp-content/uploads/2019/07/b-grade.jpg?w=275&ssl=1">`;
-            } else if (grade >= 80) {
-                frame.innerHTML =`<img src="https://www.photos-public-domain.com/wp-content/uploads/2012/07/c-school-letter-grade-600x400.jpg"">`;
-            } else if (grade >= 70) {
-                frame.innerHTML =`<img src="https://i.pinimg.com/564x/c1/b2/ef/c1b2ef47207816628de90a60d8ae0b4e.jpg">`;
-            } else if (grade >= 60) {
-                frame.innerHTML =`<img src="https://www.photos-public-domain.com/wp-content/uploads/2012/07/d-school-letter-grade.jpg"">`;
-            } else if (grade < 60) {
-                frame.innerHTML =`<img src="https://securecdn.pymnts.com/wp-content/uploads/2015/01/E-Grade.jpg">`;
+            const grade = level.value;
+            if(isNaN(grade)){
+                console.log(123);
+                frame.innerHTML =`<img src="https://i.pinimg.com/236x/b7/9c/f7/b79cf7b36f702f622bb988efc6cd7434.jpg">`;
+            }else{
+                if(grade > 100 || grade < 0){
+                    frame.innerHTML =`<img src="https://i.pinimg.com/236x/b7/9c/f7/b79cf7b36f702f622bb988efc6cd7434.jpg">`;
+                }else{
+                    if (grade == 100) {
+                    frame.innerHTML =`<img src="https://i.pinimg.com/564x/c1/b2/ef/c1b2ef47207816628de90a60d8ae0b4e.jpg">`;
+                    } else if (grade >= 90) {
+                        frame.innerHTML =`<img src="https://i0.wp.com/www.lkldnow.com/wp-content/uploads/2019/07/b-grade.jpg?w=275&ssl=1">`;
+                    } else if (grade >= 80) {
+                        frame.innerHTML =`<img src="https://www.photos-public-domain.com/wp-content/uploads/2012/07/c-school-letter-grade-600x400.jpg"">`;
+                    } else if (grade >= 70) {
+                        frame.innerHTML =`<img src="https://i.pinimg.com/564x/c1/b2/ef/c1b2ef47207816628de90a60d8ae0b4e.jpg">`;
+                    } else if (grade >= 60) {
+                        frame.innerHTML =`<img src="https://www.photos-public-domain.com/wp-content/uploads/2012/07/d-school-letter-grade.jpg"">`;
+                    } else if (grade < 60) {
+                        frame.innerHTML =`<img src="https://securecdn.pymnts.com/wp-content/uploads/2015/01/E-Grade.jpg">`;
+                    }
+                }   
             }
         }
     </script>
 </body>
-
 </html>
