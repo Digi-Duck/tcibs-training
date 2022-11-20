@@ -43,6 +43,8 @@
             font-size: 50px;
         }
         .playing{
+            display: flex;
+
             height: 100%;
         }
         .click-area{
@@ -54,6 +56,7 @@
             width: 600px;
             height: 600px;
 
+            margin: auto;
             padding: 10px;
             background-color: white;
             box-sizing: border-box;
@@ -62,19 +65,21 @@
             width: 48%;
             height: 48%;
 
-            background-color: olive;
+            background-color: rgb(87, 162, 197);
             box-sizing: border-box;
         }
         .box{
             width: 100px;
             height: 100px;
             font-size: 50px;
+
+            position: absolute;
         }
         .active{
             display: none;
         }
         .opacity{
-            opacity: 0.7;
+            opacity: 0.3;
         }
     </style>
 </head>
@@ -100,24 +105,59 @@
         const startButton =document.querySelector('.start-button');
         
         const playing =document.querySelector('.playing');
-        const click =document.querySelectorAll('.click');
+        const clickArea =document.querySelector('.click-area');
+        let click =document.querySelectorAll('.click');
         const box =document.querySelector('.box');
 
-        console.log(click);
-        let count;
-        click.forEach((clickOne, index)=>{
-            // console.log(count);
-            // click[count].classList.add('opacity')
-            clickOne.addEventListener('click', ()=>{
-                count =Math.floor(Math.random()*4);
-                console.log(count);
-                click.forEach((clean)=>{
-                    clean.classList.remove('opacity');
+        let grade = 1;
+
+        function tran(){
+            click =document.querySelectorAll('.click');
+            console.log(click);
+
+            let count = 2;
+            click.forEach((clickOne, index)=>{
+
+                click[count].classList.add('opacity')
+
+                clickOne.style.width = '32.5%';
+                clickOne.style.height = '32.5%';
+                console.log(clickOne);
+                clickOne.addEventListener('click', ()=>{
+                    let r =Math.floor(Math.random()*255);
+                    let g =Math.floor(Math.random()*255);
+                    let b =Math.floor(Math.random()*255);
+
+                    if(count == index){
+                        count =Math.floor(Math.random()*(4));
+                        // console.log(count);
+                        click.forEach((clean)=>{
+                            clean.classList.remove('opacity');
+                            // console.log(clean);
+
+                            clean.style.backgroundColor =`rgb(${r},${g},${b})`;
+                        })
+                        click[count].classList.add('opacity');
+                        grade = grade + 1;
+                        return grade;
+                    }
+                    // console.log(grade);
                 })
-                click[count].classList.add('opacity');
-                console.log(count, index);
             })
-        })
+        }
+        if(grade == 1){
+            clickArea.innerHTML = '';
+            click = [];
+
+            for(let i=0;i<9;i++){
+                clickArea.innerHTML += '<div class="click"></div>';
+            }
+            
+            tran();
+        }else{
+            tran();
+            console.log();
+        }
         startButton.addEventListener('click', ()=>{
             start.classList.add('active');
             playing.classList.remove('active');
