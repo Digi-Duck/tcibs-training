@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .boxA {
+            width: 601px;
+            height: 601px;
+
+            border: 1px solid#000000;
+
+        }
+
+        .pic1 {
+            width: 601px;
+            height: 601px;
+            /* carousel  */
+            background-image: url("https://i.pinimg.com/564x/94/6b/ad/946badd91a076983d940594f1cf598b7.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .pic2 {
+            width: 601px;
+            height: 601px;
+            /* castle */
+            background-image: url("https://i.pinimg.com/736x/28/f3/44/28f344b2678cf39d316faab671cdd12a.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .pic3 {
+            width: 601px;
+            height: 601px;
+            /* Ferris wheel */
+            background-image: url("https://i.pinimg.com/564x/ba/a6/61/baa661b8be481f9e7bad3f12327755a8.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="boxA">
+        <div class="pic1"></div>
+    </div>
+
+
+    <script>
+        const pointa = document.querySelector('.pic1');
+
+
+        pointa.onclick = function () {
+            if (pointa.classList.length == 1) {
+                pointa.classList.add('pic2');
+            } else if (pointa.classList.length == 2) {
+
+                pointa.classList.add('pic3');
+            }else{
+                pointa.classList.remove('pic2');
+                pointa.classList.remove('pic3');
+            }
+        }
+    </script>
+</body>
+
+</html>

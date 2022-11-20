@@ -12,26 +12,55 @@
             justify-content: space-around;
             margin-top: 30px;
         }
+        .box{
+            margin: auto;
+            width: 800px;
+            height: 500px;
+            background-image: url(../js30/dog.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin-top: 100px;
+            /* border: 6px solid red; */
+            /* border-color: red;
+            border-width: 100px;
+            border-style: solid; */
+        }
     </style>
 </head>
 <body>
     <div class="top">
-        <input id="#border" type="range" min="0" max="5">
-        <input id="#blur" type="range" min="-10" max="10">
-        <input id="#color" type="color" value="#ff0000">
-
+        <input id="#border" type="range" min="0" max="100" value="0" class="border">
+        <input id="#blur" type="range" min="0" max="50" value="0" class="blur">
+        <input id="#color" type="color" value="#ff0000" class="color">
     </div>
+    <div class="box"></div>
     <script>
-        let border = document.getElementById('#border');
+        // let border = document.getElementById('#border');
+        // let blur = document.getElementById('#blur');
+        // let color = document.getElementById('#color');
+        let box = document.querySelector('.box');
+        let border = document.querySelector(".border");
+        let blur = document.querySelector(".blur");
+        let color = document.querySelector(".color");
         border.addEventListener('change',function () {
             console.log(border.value);
+            a = border.value;
+            console.log(color.value);
+            box.style = "filter: blur("+blur.value+"px);border-width: "+a+"px;border-style:solid;border-color:"+color.value+";"
+            
+            
         })
-        setInterval(function () {
-            let blur = document.getElementById('#blur');
-            let color = document.getElementById('#color');
+        blur.addEventListener('change',function () {
+            console.log(blur.value);
+            box.style = "filter: blur("+blur.value+"px);border-width: "+a+"px;border-style:solid;border-color:"+color.value+";"
+        })
+        color.addEventListener('change',function () {
+            console.log(color.value);
+            box.style = "filter: blur("+blur.value+"px);border-width: "+a+"px;border-style:solid;border-color:"+color.value+";"
             
-            
-        },1)
+
+        })
+        
     </script>
 </body>
 </html>

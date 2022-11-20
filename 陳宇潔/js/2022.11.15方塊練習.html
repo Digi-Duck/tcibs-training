@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .boxA{
+            width: 301px;
+            height: 301px;
+
+            border: 1px solid#000000;
+        }
+        .change{
+            background-color: cadetblue;
+        }
+        .boxB{
+            width: 301px;
+            height: 301px;
+
+            border: 1px solid#000000;
+        }
+    </style>
+</head>
+<body>
+    <div class="boxA"></div>
+    <div class="boxB"></div>
+    <script>
+        var pointa = document.querySelector(".boxA")
+        var pointb = document.querySelector(".boxB")
+        
+        //(1)
+        // pointa.onclick = function(){
+        //     pointa.classList.add("change")
+        // }
+        // pointb.onclick = function(){
+        //     pointb.classList.add("change")
+        // }
+
+
+        // (2)
+        // pointa.onclick = function(){
+        //     pointb.classList.add("change")
+        // }
+        // pointb.onclick = function(){
+        //     pointa.classList.add("change")
+        // }
+    </script>
+</body>
+</html>

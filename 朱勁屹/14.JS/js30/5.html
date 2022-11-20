@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+        }
+        .boxs{
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+        .box{
+            width: 20%;
+            height: 100%;
+            /* background-color: blue; */
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            transition: 1s;
+            /* display: flex;
+            align-content: center; */
+            
+        }
+        .box1{
+            background-image: url(../js30/photo/chicken.jpg);
+            
+        }
+        .box2{
+            background-image: url(../js30/photo/nochicken.jpg);
+        }
+        .box3{
+            background-image: url(../js30/photo/power.jpg);
+        }
+        .box4{
+            background-image: url(../js30/photo/shower.jpg);
+        }
+        .box5{
+            background-image: url(../js30/photo/finish.jpg);
+        }
+        
+        .top{
+            width: 100%;
+            height: 0%;
+            text-align: center;
+            line-height: 250px;
+            font-size: 0px;
+            /* background-color: black; */
+            transition: 1s;
+            border-top: 0px solid black;
+            border-bottom: 0px solid black;
+        }
+        .topBox{
+            width: 100%;
+            height: 33%;
+            margin: auto;
+            transition: 1s;
+            
+        }
+        .center{
+            width: 100%;
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            height: 33%;
+            margin: auto;
+            font-size: 50px;
+            text-align: center;
+            line-height: 250px;
+        }
+        .bottom{
+            width: 100%;
+            height: 0%;
+            text-align: center;
+            line-height: 250px;
+            font-size: 0px;
+            transition: 1s;
+            border-top: 0px solid black;
+            border-bottom: 0px solid black;
+            /* background-color: black; */
+        }
+        .bottomBox{
+            width: 100%;
+            height: 33%;
+            
+            margin: auto;
+            transition: 1s;
+        }
+        .big{
+            width: 100%;
+        }
+        .big2{
+            height: 100%;
+            font-size: 50px;
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="boxs">
+        <div class="box box1">
+            <div class="topBox topBox1">
+                <div class="top top1">極度可愛</div>
+            </div>
+            <div class="center center1">可愛寵物</div>
+            <div class="bottomBox bottomBox1">
+                <div class="bottom bottom1">極度肥美</div>
+            </div>
+        </div>
+        <div class="box box2">
+            <div class="topBox topBox2">
+                <div class="top top2">詩正同款髮型</div>
+            </div>
+            <div class="center center2">剪毛</div>
+            <div class="bottomBox bottomBox2">
+                <div class="bottom bottom2">簡單時尚</div>
+            </div>
+            
+        </div>
+        <div class="box box3">
+            <div class="topBox topBox3">
+                <div class="top top3">鹹鹹甜甜</div>
+            </div>
+            <div class="center center3">挑選沐浴用品</div>
+            <div class="bottomBox bottomBox3">
+                <div class="bottom bottom3">童年好味道</div>
+            </div>
+            
+            
+            
+        </div>
+        <div class="box box4">
+            <div class="topBox topBox4">
+                <div class="top top4">冰涼舒適</div>
+            </div>
+            <div class="center center4">開始洗澡</div>
+            <div class="bottomBox bottomBox4">
+               <div class="bottom bottom4">健康冷水浴</div> 
+            </div>
+            
+            
+        </div>
+        <div class="box box5">
+            <div class="topBox topBox5">
+                <div class="top top5">酥而脆</div>
+            </div>
+            <div class="center center5">獲得香香寵物</div>
+            <div class="bottomBox bottomBox5">
+                <div class="bottom bottom5">肥而不膩</div>
+            </div>
+            
+            
+        </div>
+    </div>
+    <script>
+        let box1 = document.querySelector('.box1');
+        let box2 = document.querySelector('.box2');
+        let box3 = document.querySelector('.box3');
+        let box4 = document.querySelector('.box4');
+        let box5 = document.querySelector('.box5');
+        let top1 = document.querySelector('.top1');
+        let top2 = document.querySelector('.top2');
+        let top3 = document.querySelector('.top3');
+        let top4 = document.querySelector('.top4');
+        let top5 = document.querySelector('.top5');
+        let bottom1 = document.querySelector('.bottom1');
+        let bottom2 = document.querySelector('.bottom2');
+        let bottom3 = document.querySelector('.bottom3');
+        let bottom4 = document.querySelector('.bottom4');
+        let bottom5 = document.querySelector('.bottom5');
+        box1.addEventListener('click',function () {
+            box1.classList.toggle("big");
+            top1.classList.toggle('big2');
+            bottom1.classList.toggle('big2');
+        });
+        box2.addEventListener('click',function () {
+            box2.classList.toggle("big");
+            top2.classList.toggle('big2');
+            bottom2.classList.toggle('big2');
+        });
+        box3.addEventListener('click',function () {
+            box3.classList.toggle("big");
+            top3.classList.toggle('big2');
+            bottom3.classList.toggle('big2');
+        });
+        box4.addEventListener('click',function () {
+            box4.classList.toggle("big");
+            top4.classList.toggle('big2');
+            bottom4.classList.toggle('big2');
+        });
+        box5.addEventListener('click',function () {
+            box5.classList.toggle("big");
+            top5.classList.toggle('big2');
+            bottom5.classList.toggle('big2');
+        });
+    </script>
+</body>
+</html>

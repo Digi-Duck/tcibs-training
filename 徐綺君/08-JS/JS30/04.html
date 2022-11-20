@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const arr = ['a', 'a', 'b', 'c', 'c', 'c', 'e'];
+        const reduceArr = arr.reduce((accumulator, currentValue) => {
+        if(accumulator[currentValue]) {
+            
+            console.log(accumulator);
+            console.log(currentValue);            
+            console.log(accumulator[currentValue]);
+            accumulator[currentValue] ++;
+
+        } else {
+            accumulator[currentValue] = 1;
+        }
+        return accumulator;
+        }, {});
+        console.log(reduceArr); // { a: 2, b: 1, c: 3, e: 1 }
+
+    </script>
+</body>
+</html>
