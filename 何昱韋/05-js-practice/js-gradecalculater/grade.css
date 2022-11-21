@@ -36,3 +36,8 @@
     display: flex;
     justify-content: center;
 }
+.comment-content{
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+}
