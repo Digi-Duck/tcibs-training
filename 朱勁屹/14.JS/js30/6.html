@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            width: 1000px;
+            height: 50px;
+            display: block;
+            font-size: 30px;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="搜索..." id="input">
+    <ul id="ul">
+        
+    </ul>
+    <script>
+        fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-E920CBD5-2EB7-41D7-98C1-5D771A61D84A&format=JSON')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(weather){
+            console.log(weather);
+            let yy = document.getElementById('#input');
+            let weather1 = weather.records.location;
+            // console.log(weather1);
+            let city = weather1[0].locationName;
+            let p = weather1[0].weatherElement[0].time[1].parameter.parameterName;
+            let ul = document.getElementById('ul');
+            let all
+            weather1.forEach(function (ele) {
+                all += `
+                <li>${ele.locationName}</li>
+                `
+            })
+            yy.addEventListener('change',function () {
+                console.log(1);
+                // if(all.indexOf(input)>-1){
+                //     console.log(1);
+                // }else{
+                //     console.log(0);
+                // }
+                
+            })
+            // console.log(all);
+        })
+    </script>
+</body>
+</html>
