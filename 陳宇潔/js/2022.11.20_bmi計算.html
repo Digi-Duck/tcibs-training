@@ -81,6 +81,8 @@
         .frame{
             width: 602px;
             height: 200px;
+            font-size: 20px;
+            font-weight: 600;
             background-color: beige;
             border: 5px solid rgb(80, 60, 34);
             border-radius: 20px;
@@ -90,6 +92,16 @@
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
+
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        span{
+            padding: 10px;
+            display: flex;
+            align-items: center;
         }
     </style>
 </head>
@@ -99,17 +111,23 @@
         <div class="box">
             <h1>BMI計算機</h1>
             <div class="input">
-                <h3>請輸入你的體重(kg)：</h3><input class="weight" type="number" >
-                <h3>請輸入你的身高(cm)：</h3><input class="height" type="number" >
+                <h3>請輸入你的體重(kg)：</h3><input class="weight" type="number" placeholder="體重">
+                <h3>請輸入你的身高(cm)：</h3><input class="height" type="number" placeholder="身高">
             </div>
             <button class="point start">開始計算</button> 
             <button class="point clear">重新計算</button> 
         </div>
         <div class="output">
             <div class="frame">
-                <span>BMI值：</span><div id="result_BMI"></div>
-                <span>身體狀態：</span><div id="result_body"></div>
-                <span>建議參考：</span><div id="result_advice">
+                <span>
+                    <div id="result_BMI"></div>
+                </span>
+                <span>
+                    <div id="result_body"></div>
+                </span>
+                <span>
+                    <div id="result_advice"></div>
+                </span>
             </div>
         </div>
     </div>
@@ -119,31 +137,54 @@
         const weight = document.querySelector(".weight");
         const height = document.querySelector(".height");      
         const button = document.querySelector(".start");
+        const re = document.querySelector(".clear");
+        const result_BMI = document.querySelector("#result_BMI");
+        const result_body = document.querySelector("#result_body");
+        const result_advice = document.querySelector("#result_advice");
 
+
+        frame.classList.remove("frame");
         button.onclick = function () {
+            frame.classList.add("frame");
             const w = Number(weight.value);
             const h = Number(height.value);
             const BMI = w / (h * h / 10000);
 
             if(w <= 0 || h <= 0){
-                frame.innerHTML =`錯誤`;
-            }else{
-
-                frame.innerHTML =`你的BMI是${BMI}`;
+                alert("error");
+            }else if(w >590  || h > 272){
+                alert("error");
+            }
+            else{
+                result_BMI.innerHTML =`BMI值：${BMI}`;
                 if(BMI < 18.5){
-                    frame.innerHTML =`體重過輕`;
+                    result_body.innerHTML =`身體狀態：體重過輕`;
+                    result_advice.innerHTML =`建議參考：我分一點肉給你好嗎`;
                 }else if(18.5 <= BMI && BMI < 24){
-                    frame.innerHTML =`體重適中`;
+                    result_body.innerHTML =`身體狀態：體重適中`;
+                    result_advice.innerHTML =`建議參考：繼續保持`;
                 }else if(24 <= BMI && BMI < 27){
-                    frame.innerHTML =`體重過重`;
+                    result_body.innerHTML =`身體狀態：體重過重`;
+                    result_advice.innerHTML =`建議參考：減肥變漂亮`;
                 }else if(27 <= BMI && BMI < 30){
-                    frame.innerHTML =`輕度肥胖`;
+                    result_body.innerHTML =`身體狀態：輕度肥胖`;
+                    result_advice.innerHTML =`建議參考：注意健康`;
                 }else if(30 <= BMI && BMI < 35){
-                    frame.innerHTML =`中度肥胖`;
+                    result_body.innerHTML =`身體狀態：中度肥胖`;
+                    result_advice.innerHTML =`建議參考：不減不行`;
                 }else if(35 < BMI){
-                    frame.innerHTML =`重度肥胖`;
+                    result_body.innerHTML =`身體狀態：重度肥胖`;
+                    result_advice.innerHTML =`建議參考：跟我一樣`;
                 }
             }
+        }
+        re.onclick = function () {
+            frame.classList.remove("frame");
+            document.querySelector(".weight").value = "";//清空input
+            document.querySelector(".height").value = "";
+            result_BMI.innerHTML =` `
+            result_body.innerHTML =` `;
+            result_advice.innerHTML =` `;
         }
     </script>
 </body>

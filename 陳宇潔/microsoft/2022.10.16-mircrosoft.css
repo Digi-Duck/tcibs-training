@@ -645,6 +645,9 @@ display: none;
 :root{
     --swiper-theme-color: #000000;
 }
+.swiper-pagination {
+    
+}
 
 
 @media (max-width: 1800px) {
