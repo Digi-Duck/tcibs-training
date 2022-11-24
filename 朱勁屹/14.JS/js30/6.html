@@ -42,8 +42,9 @@
             let p = weather1[0].weatherElement[0].time[1].parameter.parameterName;
             let ul = document.getElementById('ul');
             
-            weather1.forEach(function (ele) {
-                all = ele
+            weather1.forEach(function (ele,i) {
+                console.log(ele.locationName);
+                all[i] += ele.locationName;
             }) 
            
             // console.log(all);
@@ -52,13 +53,13 @@
                 // console.log(1);
                 console.log(all);
                 if(all.indexOf(input.value)>-1){
-                    // all.forEach(function(ele){
-                    //     if(ele.indexOf(input.value)>-1){
-                    //         console.log(4);
-                    //     }else{
-                    //         console.log(3);
-                    //     }
-                    // })
+                    all.forEach(function(ele){
+                        // if(ele.indexOf(input.value)>-1){
+                        //     console.log(4);
+                        // }else{
+                        //     console.log(3);
+                        // }
+                    })
                 }else{
                     console.log(0);
                 }
