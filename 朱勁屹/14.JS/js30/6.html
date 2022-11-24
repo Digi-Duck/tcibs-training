@@ -21,36 +21,49 @@
     <ul id="ul">
         
     </ul>
+    <div class="box"></div>
     <script>
+        // let box = document.querySelector('.box');
+        // box.addEventListener('click',function () {
+            
+        // })
+        let all = [];
         fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-E920CBD5-2EB7-41D7-98C1-5D771A61D84A&format=JSON')
         .then(function(response) {
             return response.json();
         })
+        
         .then(function(weather){
             console.log(weather);
-            let yy = document.getElementById('#input');
+            let input = document.getElementById('#input');
             let weather1 = weather.records.location;
             // console.log(weather1);
             let city = weather1[0].locationName;
             let p = weather1[0].weatherElement[0].time[1].parameter.parameterName;
             let ul = document.getElementById('ul');
-            let all
+            
             weather1.forEach(function (ele) {
-                all += `
-                <li>${ele.locationName}</li>
-                `
-            })
-            yy.addEventListener('change',function () {
-                console.log(1);
-                // if(all.indexOf(input)>-1){
-                //     console.log(1);
-                // }else{
-                //     console.log(0);
-                // }
-                
-            })
+                all = ele
+            }) 
+           
             // console.log(all);
         })
+        input.addEventListener('change',function () {
+                // console.log(1);
+                console.log(all);
+                if(all.indexOf(input.value)>-1){
+                    // all.forEach(function(ele){
+                    //     if(ele.indexOf(input.value)>-1){
+                    //         console.log(4);
+                    //     }else{
+                    //         console.log(3);
+                    //     }
+                    // })
+                }else{
+                    console.log(0);
+                }
+                
+            })
     </script>
 </body>
 </html>
