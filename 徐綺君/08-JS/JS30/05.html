@@ -21,58 +21,84 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             transition: 0.5s;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
         }
         .text{
-            display: none;
-            height: 0%;
-            border: 2px solid blue;
-            line-height: calc(100vh/3);
+            height: 1%;
+            border: 0px solid blue;
+            font-size: 0px;
+            line-height: 0px;
             text-align: center;
-            font-size: 50px;
             transition: 0.5s;
         }
-        .text2{
-            display: block;
+        .text2{  
+            border: 1px solid blue;
             height: calc(100%/3);
+            line-height: calc(100vh/3);
+            font-size: 50px;           
+        }        
+        .big_text{
+            flex-shrink: 0;
+            height: 38%;
+            font-size: 100px; 
+            /* line-height: 30vh; */
+        }        
+        .text3{  
+            border: 1px solid blue;
+            height: calc(100%/3);
+            line-height: 30vh;
+            font-size: 50px;           
         }
         .big{
             width: 100%;
-            
         }
-        /* .big_text{
-            height: 40%;
-            font-size: 100px; 
-        } */
+        .img1{
+            background-image: url(./cat_img/food1.jpg);
+        }
+        .img2{
+            background-image: url(./cat_img/food2.jpg);
+        }
+        .img3{
+            background-image: url(./cat_img/food5.jpg);
+        }
+        .img4{
+            background-image: url(./cat_img/food3.jpg);
+        }
+        .img5{
+            background-image: url(./cat_img/food4.jpg);
+        }
     </style>
 </head>
 <body>
     <div class="main">
         <div class="img img1">
-            <div class="text top">fuck</div>
+            <div class="text top">top</div>
             <div class="text text2">text</div>
-            <div class="text bottom">duck</div>
+            <div class="text bottom">bottom</div>
         </div>
         <div class="img img2">
-            <div class="text top">fuck</div>
+            <div class="text top">top</div>
             <div class="text text2">text</div>
-            <div class="text bottom">duck</div>
+            <div class="text bottom">bottom</div>
         </div>
         <div class="img img3">
-            <div class="text top">fuck</div>
+            <div class="text top">top</div>
             <div class="text text2">text</div>
-            <div class="text bottom">duck</div>
+            <div class="text bottom">bottom</div>
         </div>
         <div class="img img4">
-            <div class="text top">fuck</div>
+            <div class="text top">top</div>
             <div class="text text2">text</div>
-            <div class="text bottom">duck</div>
+            <div class="text bottom">bottom</div>
         </div>
         <div class="img img5">
-            <div class="text top">fuck</div>
+            <div class="text top">top</div>
             <div class="text text2">text</div>
-            <div class="text bottom">duck</div>
+            <div class="text bottom">bottom</div>
         </div>
     </div>
 
@@ -89,11 +115,11 @@
                         img.addEventListener('click',function(){
                             img.classList.toggle('big');
                             if(i == j && i == n && i == m){
-                                text.classList.toggle('big_text');
-                                setTimeout(() => {
-                                    top.classList.toggle('text2');
-                                    bottom.classList.toggle('text2');                                       
-                                }, 1000);
+                                text.classList.toggle('big_text');                                                                     
+                                setTimeout(() => {                                     
+                                    top.classList.toggle('text3');
+                                    bottom.classList.toggle('text3');                                       
+                                }, 500);
                             }
                         })
                     })
