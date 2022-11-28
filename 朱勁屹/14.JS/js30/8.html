@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+            /* background-color: rgb(255, 0, 34); */
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let x = 0;
+        let y = 0;
+        let z = 0;
+        let w = 1;
+        let t = 0;
+        ctx.strokeStyle = "rgb("+x+", "+y+", "+z+")";
+        ctx.lineJoin = "round";// 指定兩條線連結處的屬性，這裡選擇用圓角
+        ctx.lineCap = "round";// 指定每一條線末端的屬性，這裡選擇用圓角
+
+        let isDrawing = false; // 用來判斷是否正在畫圖
+        let lastX = 0; //用來設定畫筆的X座標
+        let lastY = 0; //用來設定畫筆的Y座標
+
+        canvas.addEventListener("mousemove", draw);
+
+        function draw(e) {
+            console.log(e);
+        }
+        canvas.addEventListener("mousemove", draw);
+        canvas.addEventListener("mousedown", () => (isDrawing = true));
+        canvas.addEventListener("mouseup", () => (isDrawing = false));
+        canvas.addEventListener("mouseout", () => (isDrawing = false));
+
+        function draw(e) {
+            if (!isDrawing) return; //如果不是在mousedown的時候，這個function不作用
+            // console.log(e);
+            ctx.beginPath() //產生一個新路徑，產生後再使用繪圖指令來設定路徑
+            ctx.moveTo(lastX, lastY) //moveTo()不會畫任何圖形，但卻是上述路徑清單的一部分，這大概有點像是把筆從紙上一點提起來，然後放到另一個點。
+            ctx.lineTo(e.offsetX, e.offsetY)//從目前繪圖點畫一條直線到指定的(x, y)座標點。
+            ctx.stroke()//stroke() 會繪製出通過 moveTo() 和 lineTo() 方法定義的路径。默認颜色是黑色。
+            lastX = e.offsetX; // 
+            lastY = e.offsetY; //
+            ctx.lineWidth = w;
+            if (x < 360) {
+                x++;
+                
+            }else{
+                x = 0;
+            }
+            if(w == 300){
+                t = 1;
+            }else if(w == 1){
+                t = 0;
+            }
+            if(t == 0){
+                w++;
+            }else if(t ==1){
+                w--;
+            }
+            ctx.strokeStyle = "hsl("+x+",100%,50%)";
+        }
+        canvas.addEventListener("mousedown", (e) => {
+            // console.log(e);
+            isDrawing = true;
+            lastX = e.offsetX;
+            lastY = e.offsetY;
+        });
+    </script>
+</body>
+</html>
