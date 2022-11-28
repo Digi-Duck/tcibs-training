@@ -12,7 +12,8 @@
         }
         .main{
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             padding-top: 5px;
         }
         input{
@@ -22,12 +23,63 @@
             border: 10px solid rgb(243, 242, 248);
             border-radius: 10px;
             box-shadow: 0px 1px 5px 0px rgb(137, 135, 143);
+            z-index: 1;
+        }
+        input:focus-visible{
+            outline: none;
+            border: 10px solid rgb(229, 229, 235);
+        }
+        ul{
+            width: 540px;
+            list-style: none;
+            padding: 0px;
+            margin-top: -10px;
+            border: 1px solid rgba(61, 60, 63, 0.685);
+            border-top: none;
+            border-radius: 5px;
+            /* box-shadow: 0px 2px 4px 1px rgba(77, 75, 82, 0.199); */
+        }
+        li{
+            font-size: 45px;
+            border-top: 1px solid rgba(151, 145, 145, 0.5);
+            padding: 5px 10px;
+            
         }
     </style>
 </head>
 <body>
     <div class="main">
-        <input type="text" name="" id="" placeholder="輸入城市">
+        <input class="input" type="text" name="" id="" placeholder="輸入城市">
+        <ul class="ul">
+            
+            
+        </ul>        
     </div>
+
+    <script>
+        const ul = document.querySelector('.ul')
+        const city = [];
+        const input = document.querySelector('.input');
+        fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-F675BF26-4803-4F70-8916-0D4744773430&format=JSON')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(weather) {
+            const location = weather.records.location;
+            location.forEach(function(location,i) {
+                city[i] = location.locationName;
+            });
+        });
+        input.addEventListener('change',function() {
+            ul.innerHTML = ` `;
+            let keyword = input.value;
+            console.log(keyword);
+            city.forEach(function(x){
+                if(x.match(keyword) && keyword != '') {
+                    ul.innerHTML += `<li>${x}</li>`;
+                }
+            })
+        })
+    </script>
 </body>
 </html>
