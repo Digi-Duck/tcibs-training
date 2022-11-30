@@ -5,8 +5,122 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+            background-color: tan;
+            
+        }
+        .box{
+            width: 600px;
+            /* border: 1px solid black; */
+            margin: auto;
+            margin-top: 100px;
+        }
+        .things{
+            width: 100%;
+            height: 50px;
+            display: flex;
+        }
+        .check{
+            display: block;
+            margin: auto;
+        }
+        .checkBox{
+            width: 50px;
+            height: 100%;
+            border: 1px solid black;
+            display: flex;
+        }
+        .thing{
+            width: calc(100% - 50px);
+            height: 100%;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 50px;
+            font-size: 30px;
+            
+        }
+        .line{
+            text-decoration: line-through;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="box">
+        <div class="things">
+            <div class="checkBox">
+                <input type="checkbox" class="check">
+            </div>
+            <div class="thing">785414</div>
+        </div>
+        <div class="things">
+            <div class="checkBox">
+                <input type="checkbox" class="check">
+            </div>
+            <div class="thing">4156</div>
+        </div>
+        <div class="things">
+            <div class="checkBox">
+                <input type="checkbox" class="check">
+            </div>
+            <div class="thing">7854551</div>
+        </div>
+        <div class="things">
+            <div class="checkBox">
+                <input type="checkbox" class="check">
+            </div>
+            <div class="thing">4585</div>
+        </div>
+        <div class="things">
+            <div class="checkBox">
+                <input type="checkbox" class="check">
+            </div>
+            <div class="thing">4585</div>
+        </div>
+        <div class="things">
+            <div class="checkBox">
+                <input type="checkbox" class="check" >
+            </div>
+            <div class="thing">4585</div>
+        </div>
+    </div>
+    <script>
+        let check = document.querySelectorAll('.check');
+        let thing = document.querySelectorAll('.thing');
+        check.forEach(function (ele,index) {
+            // console.log(ele.checked);
+            
+            // console.log(b);
+            ele.addEventListener('click',function (x,index) {
+                
+                let b = thing[index];
+                // ele.checked = false;
+                // b.classList.remove('line');
+                
+            })
+        })
+        window.addEventListener('keydown',function (ele1) {
+                    
+                    if(ele1.key == 'Shift'){
+                        check.forEach(function (ele,index) {
+                        // console.log(ele.checked);
+                        
+                        // console.log(b);
+                        ele.addEventListener('click',function () {
+                            thing.forEach(function (ele2) {
+                            
+                            check.forEach(function (ele3) {
+                                ele3.checked = true;
+                                ele2.classList.add('line');
+                            })
+                            console.log(ele.checked);
+                        })
+                        })
+                    })
+                        
+                    }
+                })
+    </script>
 </body>
 </html>
