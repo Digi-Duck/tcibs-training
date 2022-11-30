@@ -14,6 +14,29 @@
         let ctx = canvas.getContext("2d");
         canvas.height = window.innerHeight;
         canvas.width = window.innerWidth;
+
+        
+        // ctx.lineWidth = 100;
+        // ctx.beginPath();
+
+        canvas.addEventListener('mousedown', function(){
+            let a = true;     
+            aa(a);       
+        });
+        canvas.addEventListener('mouseup', function(){
+            a = false;
+        }) 
+
+        function aa(a) {
+            ctx.beginPath();
+            
+            ctx.arc(event.pageX,event.pageY,50,0,Math.PI*2);
+            
+            ctx.fill();     
+            ctx.stroke(); 
+            ctx.closePath();
+        }
+
     </script>
 </body>
 </html>
