@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: rgb(250, 215, 17);
+}
+.big-container{
+    width: 50%;
+    background-image: url('https://2.bp.blogspot.com/-H3JXh2cIKHs/WuwLvnz19cI/AAAAAAAAMXs/-qySdr5zEcc-kcLC4arf5m5H3F_trN7sgCK4BGAYYCw/s1600/kristopher-roller-110203-unsplash-m.jpg');
+    margin: auto;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.title{
+    margin-bottom: 36px;
+    font-size: 48px;
+    font-family: inherit;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+}
+
+.input-container{
+    padding: 5%;
+}
+.weight-region{
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+.height-region{
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+.button-part{
+    display: flex;
+    justify-content: center;
+}
+.submit-text{
+    color: black;
+    font-size: 16px;
+}
+.clear-text{
+    color: black;
+    font-size: 16px;
+}
+
+.comment-part{
+    padding: 5%;
+}
+
+.display-flex{
+    display: flex;
+}
+.display-none{
+    display: none;
+}
+.justify-content{
+    justify-content: center;
+}
