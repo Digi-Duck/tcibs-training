@@ -126,17 +126,18 @@
         // console.log(grade);
 
         function tran() {
-            click = document.querySelectorAll('.click');
             console.log(click);
 
-            click.forEach((clickOne, index) => {
-                let count = 2;
+            let count = 2;
 
+            click.forEach((clickOne, index) => {
+                let num = click.length;
+                console.log(num);
                 click[count].classList.add('opacity')
 
-                // clickOne.style.width = '32.5%';
-                // clickOne.style.height = '32.5%';
                 console.log(clickOne);
+                clickOne.style.width = `clac(${100/Math.sqrt(num)}% - 10px)`;
+                clickOne.style.height = `clac(${100/Math.sqrt(num)}% - 10px)`;
                 clickOne.addEventListener('click', () => {
                     if (grade >= 1) {
                         clickArea.innerHTML = '';
@@ -146,14 +147,17 @@
                             clickArea.innerHTML += '<div class="click"></div>';
                         }
 
-                        console.log(clickArea);
+                        num = 9;
+                        click = document.querySelectorAll('.click');
+
+                        console.log(click);
                     }
                     let r = Math.floor(Math.random() * 255);
                     let g = Math.floor(Math.random() * 255);
                     let b = Math.floor(Math.random() * 255);
 
                     if (count == index) {
-                        count = Math.floor(Math.random() * (4));
+                        count = Math.floor(Math.random() * (num));
                         // console.log(count);
                         click.forEach((clean) => {
                             clean.classList.remove('opacity');
@@ -169,22 +173,22 @@
                 })
             })
         }
-        // tran();
-        if (grade >= 1) {
-            clickArea.innerHTML = '';
-            click = [];
+        tran();
+        // if (grade >= 1) {
+        //     clickArea.innerHTML = '';
+        //     click = [];
 
-            for (let i = 0; i < 9; i++) {
-                clickArea.innerHTML += '<div class="click"></div>';
-            }
+        //     for (let i = 0; i < 9; i++) {
+        //         clickArea.innerHTML += '<div class="click"></div>';
+        //     }
 
-            tran();
+        //     tran();
 
-            console.log(clickArea);
-        } else {
-            tran();
-        }
-        console.log(grade);
+        //     console.log(clickArea);
+        // } else {
+        //     tran();
+        // }
+        // console.log(grade);
         startButton.addEventListener('click', () => {
             start.classList.add('active');
             playing.classList.remove('active');
