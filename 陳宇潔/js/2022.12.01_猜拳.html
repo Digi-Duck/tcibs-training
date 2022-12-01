@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猜拳</title>
+</head>
+<body>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .bg{
+            width: 1200px;
+            height: 940px;
+            background-color: antiquewhite;
+
+            border: 5px solid#000000;
+            margin: 0 auto;
+            border-radius: 20px;
+            padding: 50px;
+
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .big_title{
+            width: 100%;
+            font-size: 50px;
+            font-weight: 700;
+
+            display: flex;
+            justify-content: center;
+        }
+        .player{
+            width: 50%;
+            height: 100%;
+            /* background-color: rgb(132, 0, 255); */
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .title{
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+        }
+        .paper{
+
+        }
+        .rock{
+            
+        }
+        .box{
+            margin-bottom: 50px;             
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .btn{
+            width: 100px;
+            height: 40px;
+            background-color: rgb(187, 182, 174);
+            border: 5px solid rgb(161, 148, 128);
+            border-radius: 5px;
+            padding: 20px 10px;
+            margin: 10px;
+            font-size: 25px;
+            font-weight: 700;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn:hover{
+            color: white;
+            background-color: rgb(161, 148, 128);
+            border: 5px solid rgb(187, 182, 174);
+        }
+        .computer{
+            width: 50%;
+            height: 100%;
+            /* background-color: aqua; */
+        }
+        .avatar{
+            width: 300px;
+            height: 360px;
+
+            background-position: center;
+            background-repeat: no-repeat;
+
+            margin: 20px auto;
+        }
+        .avatar_player{
+            background-image: url("https://i.pinimg.com/564x/1e/0f/ba/1e0fba73b74892182845b48b61bade4f.jpg");
+        }
+        .avatar_computer{
+            background-image: url("https://i.pinimg.com/564x/cc/dc/09/ccdc09dde3cc070ebfa98a00027996e7.jpg");
+        }
+    </style>
+</body>
+    <div class="bg">
+        <div class="big_title">猜拳</div>
+        <div class="player">
+            <div class="avatar_player avatar"></div>
+            <div class="box">
+                <h1 class="title">出拳</h1>
+                <div class="blood"></div>
+                <button class="scissors btn">剪刀</button>
+                <button class="stone btn">石頭</button>
+                <button class="paper btn">布</button>
+            </div>
+        </div>
+        <div class="computer">
+            <div class="avatar_computer avatar"></div>
+        </div>
+    </div>  
+    <script>
+        const computer = document.querySelector(".frame");
+        const c = document.querySelector(".")
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        
+
+        console.log(getRandomInt(3));
+        // expected output: 0, 1 or 2
+        console.log(Math.random());
+
+
+        Math.random()
+    </script>
+</html>
+<!-- stone.innerHTML =`<img src="https://www.pinterest.com/pin/918101074011869243/">` -->
+<!-- scissors.innerHTML =`<img src="https://www.pinterest.com/pin/918101074011869243/">` -->
+<!-- paper.innerHTML =`<img src="https://i.pinimg.com/564x/49/eb/5b/49eb5bb05380b8e95a45b0599ba806d4.jpg">` -->
