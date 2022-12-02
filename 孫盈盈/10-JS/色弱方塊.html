@@ -71,9 +71,8 @@
         }
 
         .click {
-            width: 48%;
-            height: 48%;
-
+            /* width: 48%;
+            height: 48%; */
             background-color: rgb(87, 162, 197);
             box-sizing: border-box;
         }
@@ -103,106 +102,80 @@
             <button class="start-button">start!!!</button>
         </div>
         <div class="playing">
-            <div class="click-area">
-                <div class="click"></div>
-                <div class="click"></div>
-                <div class="click"></div>
-                <div class="click"></div>
-            </div>
+            <div class="click-area"></div>
             <div class="box"></div>
         </div>
         <div class="ending active"></div>
     </div>
     <script>
+        //抓取開始介面
         const start = document.querySelector('.start');
+        //抓取開始按鈕
         const startButton = document.querySelector('.start-button');
-
+        //抓取遊戲介面
         const playing = document.querySelector('.playing');
+        //抓取放方塊的地方
         const clickArea = document.querySelector('.click-area');
-        let click = document.querySelectorAll('.click');
         const box = document.querySelector('.box');
 
-        let grade = 0;
-        // console.log(grade);
+        //分數
+        const grade = 0;
+        //邊長
+        const num = 2;
+        //高寬
+        const w = 95/num;
+        //生方塊
+        for(let i = 0;i < num*num;i++){
+            clickArea.innerHTML += '<div class="click" style="width: '+w+'%;height:'+w+'%;"></div>';
+        }
+        //選取所有按的方塊
+        const click = document.querySelectorAll('.click');
+        function random(){
+            //隨機答案
+            randomAnswer = Math.floor(Math.random()*(num*num));
+            
+            //隨機顏色
+            r = Math.floor(Math.random()*255);
+            g = Math.floor(Math.random()*255);
+            b = Math.floor(Math.random()*255); 
+        }
+        //隨機值
+        random();
+        //答案透明
+        click[randomAnswer].classList.add('opacity');
+        click.forEach((clickOne, index)=>{
+            //套顏色
+            clickOne.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 
-        function tran() {
-            console.log(click);
-
-            let count = 2;
-
-            click.forEach((clickOne, index) => {
-                console.log(click);
-                let num = click.length;
-                console.log(num);
-                click[count].classList.add('opacity')
-
-                console.log(clickOne);
-                clickOne.style.width = `clac(${100/Math.sqrt(num)}% - 10px)`;
-                clickOne.style.height = `clac(${100/Math.sqrt(num)}% - 10px)`;
-                clickOne.addEventListener('click', () => {
-                    if (grade >= 1) {
-                        clickArea.innerHTML = '';
+            clickOne.addEventListener('click', function(){
+                console.log(index);
+                //如果按到對的
+                if(index == randomAnswer){
+                    grade = grade + 1;
+                    if(grade > 1){
+                        clickArea = '';
                         click = [];
 
-                        for (let i = 0; i < 9; i++) {
-                            clickArea.innerHTML += '<div class="click"></div>';
+                        num = 3;
+                        for(let i = 0;i < num*num;i++){
+                            clickArea.innerHTML += '<div class="click" style="width: '+w+'%;height:'+w+'%;"></div>';
                         }
-                        click = document.querySelectorAll('.click');
                     }
-                    let r = Math.floor(Math.random() * 255);
-                    let g = Math.floor(Math.random() * 255);
-                    let b = Math.floor(Math.random() * 255);
+                    //清當前答案
+                    click[randomAnswer].classList.remove('opacity');
+                    //換顏色，換答案
+                    random()
+                    click.forEach((tranColor)=>{
+                        // 全部套新顏色
+                        tranColor.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                    })
+                    // 套新答案
+                    click[randomAnswer].classList.add('opacity');
 
-                    if (count == index) {
-                        count = Math.floor(Math.random() * (num));
-                        // console.log(count);
-                        click.forEach((clean) => {
-                            clean.classList.remove('opacity');
-                            // console.log(clean);
-
-                            clean.style.backgroundColor = `rgb(${r},${g},${b})`;
-                        })
-                        click[count].classList.add('opacity');
-
-                        grade = grade + 1;
-                        console.log(grade);
-                    }
-                })
+                }
             })
-        }
-        tran();
-        // if (grade >= 1) {
-        //     clickArea.innerHTML = '';
-        //     click = [];
 
-        //     for (let i = 0; i < 9; i++) {
-        //         clickArea.innerHTML += '<div class="click"></div>';
-        //     }
-
-        //     tran();
-
-        //     console.log(clickArea);
-        // } else {
-        //     tran();
-        // }
-        // console.log(grade);
-        startButton.addEventListener('click', () => {
-            start.classList.add('active');
-            playing.classList.remove('active');
-
-            // let time = 60;
-            // let timeout =setInterval(times, 1000);
-            // function times(){
-            //     time = time - 1;
-            //     if(time == 0){
-            //         clearInterval(timeout);
-            //     }else{
-            //         box.innerHTML = time;
-            //     }
-            // }
-            // console.log(timeout);
-        })
-
+            })
     </script>
 </body>
 
