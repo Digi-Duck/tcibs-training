@@ -6,21 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+
+    <body>
+        <input type="text" onkeydown="isKeyPressed(event)">
+
+<p id="demo"></p>
     <script>
-        const arr = ['a', 'a', 'b', 'c', 'c', 'c', 'e'];
-        const reduceArr = arr.reduce((accumulator, currentValue) => {
-            console.log(accumulator);
-            console.log(currentValue);
-            console.log(accumulator[currentValue]);
-        if(accumulator[currentValue]) {
-            accumulator[currentValue] ++;
+        function isKeyPressed(event) {
+        var x = document.getElementById("demo");
+        if (event.shiftKey) {
+            x.innerHTML = "The SHIFT key was pressed!";
         } else {
-            accumulator[currentValue] = 1;
+            x.innerHTML = "The SHIFT key was NOT pressed!";
         }
-        return accumulator;
-        }, {});
-        // console.log(reduceArr); // { a: 2, b: 1, c: 3, e: 1 }
+        }
     </script>
 </body>
 </html>

@@ -80,7 +80,7 @@
         </div>
         <div class="things">
             <div class="checkBox">
-                <input type="checkbox" class="check" >
+                <input type="checkbox" class="check">
             </div>
             <div class="thing">4585</div>
         </div>
@@ -88,38 +88,106 @@
     <script>
         let check = document.querySelectorAll('.check');
         let thing = document.querySelectorAll('.thing');
-        check.forEach(function (ele,index) {
-            // console.log(ele.checked);
+        let cg = false;
+
+        // check.forEach(function (ele,index) {
+        //     // console.log(ele.checked);
             
-            // console.log(b);
-            ele.addEventListener('click',function (x,index) {
+        //     // console.log(b);
+        //     ele.addEventListener('click',function (x,index) {
                 
-                let b = thing[index];
-                // ele.checked = false;
-                // b.classList.remove('line');
+        //         let b = thing[index];
+        //         // ele.checked = false;
+        //         // b.classList.remove('line');
                 
-            })
-        })
+        //     })
+        // })
+        // window.onkeypress = function(event) {
+        // // 鍵盤按住時觸發
+        // console.log(1);
+        // };
+        // if(ele1.key == 'Shift'){
+        //     check.forEach(function (ele,index) {
+        //     // console.log(ele.checked);
+        //     // console.log(b);
+        //     ele.addEventListener('click',function () {
+        //         thing.forEach(function (ele2) {
+                
+        //         check.forEach(function (ele3) {
+        //             ele3.checked = true;
+        //             ele2.classList.add('line');
+        //         })
+        //         console.log(ele.checked);
+        //     })
+        //     })
+        // })
+            
+        // }
         window.addEventListener('keydown',function (ele1) {
+            cg = true;
+            // console.log(cg);
+            
+            if (ele1.key == 'Shift') {
                     
-                    if(ele1.key == 'Shift'){
-                        check.forEach(function (ele,index) {
-                        // console.log(ele.checked);
-                        // console.log(b);
-                        ele.addEventListener('click',function () {
-                            thing.forEach(function (ele2) {
-                            
-                            check.forEach(function (ele3) {
-                                ele3.checked = true;
-                                ele2.classList.add('line');
-                            })
-                            console.log(ele.checked);
-                        })
+                    check.forEach(function (x) {
+                        x.addEventListener('click',function () {
+                            // check.foreach(function (ele) {
+                            //     ele.checked = true;
+                                
+                            // })
+                            if(cg){
+                                for (let i = 0; i < check.length; i++) {
+
+                                    check[i].checked = true;
+                                    
+                                }
+
+                            }
+                            console.log(1);
                         })
                     })
+                }
+                
+            
+            // console.log(ele1);
+            })
+        window.addEventListener('keyup',function () {
+            cg = false;
+            
+            if(cg == false){
+                    // check.forEach(function (x) {
+                    //     x.addEventListener('click',function () {
+                    //         x.checked = false;
+        
+                    //         // console.log(1);
+                    //     })
+                    // })
+            }
+        })
+        
+        check.forEach(function (x,index) {
+            // console.log(x);
+            // console.log(index);
+            // for (let i = 0; i < check.length; i++) {
+                // x = check[i];
+                x.addEventListener('change',function () {
+                    console.log(x.checked);
+                    if(x.checked){
                         
+                            thing[index].classList.add('line');
+                            console.log(index);
+    
+                    }else{
+                        
+                            thing[index].classList.remove('line');
+                            console.log(0);
+                            
                     }
+                    
                 })
+                
+            // }
+        })
     </script>
 </body>
 </html>
