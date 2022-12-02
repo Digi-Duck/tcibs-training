@@ -12,8 +12,8 @@
             box-sizing: border-box;
         }
         .bg{
-            width: 1200px;
-            height: 940px;
+            width: 100%;
+            height: 941px;
             background-color: antiquewhite;
 
             border: 5px solid#000000;
@@ -34,13 +34,9 @@
             justify-content: center;
         }
         .player{
-            width: 50%;
+            width: 33.3333%;
             height: 100%;
             /* background-color: rgb(132, 0, 255); */
-
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
         .title{
             width: 100%;
@@ -48,16 +44,12 @@
             display: flex;
             justify-content: center;
         }
-        .paper{
-
-        }
-        .rock{
-            
-        }
         .box{
+            margin-top: 50px;
             margin-bottom: 50px;             
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
         }
         .btn{
             width: 100px;
@@ -74,22 +66,37 @@
             align-items: center;
             justify-content: center;
         }
+        .blood_box{
+            width: 100%;
+            height: 12%;
+            display: flex;
+            justify-content: center;
+        }
+        .blood{
+            width: 100px;
+            height: 100%;
+            background-image: url("/./陳宇潔/image/blood.png");
+        }
         .btn:hover{
             color: white;
             background-color: rgb(161, 148, 128);
             border: 5px solid rgb(187, 182, 174);
         }
+        .mora{
+            width: 33.333%;
+            height: 100%;
+
+            display: flex;
+            justify-content: space-between;
+        }
         .computer{
-            width: 50%;
+            width: 33.3333%;
             height: 100%;
             /* background-color: aqua; */
         }
         .avatar{
             width: 300px;
             height: 360px;
-
-            background-position: center;
-            background-repeat: no-repeat;
 
             margin: 20px auto;
         }
@@ -99,42 +106,157 @@
         .avatar_computer{
             background-image: url("https://i.pinimg.com/564x/cc/dc/09/ccdc09dde3cc070ebfa98a00027996e7.jpg");
         }
+        .trans{
+            transform: translate(0,150px);
+        }
+        .img_rock{         
+            width: 120px;
+            height: 100px; 
+            background-image: url("/./陳宇潔/image/rock.png");
+        }
+        .img_paper{
+            width: 105px;
+            height: 100px;
+            background-image: url("/./陳宇潔/image/paper.png");
+        }
+        .img_scissors{
+            width: 80px;
+            height: 130px;
+            background-image: url("/./陳宇潔/image/scissors.png");
+        }
+        .mirror{
+            transform: rotateY(180deg);
+        }
+        .vs{
+            width: 300px;
+            height: 300px;
+            background-image: url("/./陳宇潔/image/vs.png");
+
+            transform: translate(0,100px);
+        }
+        .pic{
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        } 
+         .left{
+            width: calc((100% - 300px)/2);
+            height: 100%;
+        }
+        .right{
+            width: calc((100% - 300px)/2);
+            height: 100%;
+        }
+  
     </style>
 </body>
     <div class="bg">
         <div class="big_title">猜拳</div>
-        <div class="player">
-            <div class="avatar_player avatar"></div>
+        <div class="player place">
+            <div class="avatar_player avatar pic"></div>
+            <div class="blood_box">
+                <div class="blood pic"></div>
+                <div class="blood pic"></div>
+                <div class="blood pic"></div>
+                <div class="blood pic"></div>
+                <div class="blood pic"></div>
+            </div>  
             <div class="box">
                 <h1 class="title">出拳</h1>
-                <div class="blood"></div>
                 <button class="scissors btn">剪刀</button>
-                <button class="stone btn">石頭</button>
+                <button class="rock btn">石頭</button>
                 <button class="paper btn">布</button>
             </div>
         </div>
-        <div class="computer">
-            <div class="avatar_computer avatar"></div>
+        <div class="mora">
+            <div class="left">
+                <div class="img_rock pic trans"></div> 
+                <div class="img_scissors pic trans"></div>          
+                <div class="img_paper pic trans"></div> 
+            </div>
+            <div class="vs pic"></div>
+            <div class="right">
+                <div class="img_rock pic trans mirror"></div> 
+                <div class="img_scissors pic trans mirror"></div>          
+                <div class="img_paper pic trans mirror"></div> 
+            </div>
+        </div>
+        <div class="computer place">
+            <div class="avatar_computer avatar pic"></div>
+            <div class="blood_box">
+                <div class="blood pic"></div>
+                <div class="blood pic"></div>
+                <div class="blood pic"></div>
+                <div class="blood pic"></div>
+                <div class="blood pic"></div>
+            </div>         
         </div>
     </div>  
     <script>
-        const computer = document.querySelector(".frame");
-        const c = document.querySelector(".")
-
-        function getRandomInt(max) {
-            return Math.floor(Math.random() * max);
-        }
-
+        const scissors = document.querySelector(".scissors")
+        const rock = document.querySelector(".rock")
+        const paper = document.querySelector(".paper")
         
+        const right = document.querySelector(".right")
+        const left = document.querySelector(".left")
 
-        console.log(getRandomInt(3));
-        // expected output: 0, 1 or 2
-        console.log(Math.random());
+        right.classList.remove("right");
+        left.classList.remove("left");
+        scissors.onclick = function(){
+            let enemy = Math.floor(Math.random()*3)
+            //他出 石頭 他初步 他出剪刀
+            left.innerHTML=`<img src="/./陳宇潔/image/scissors.png" class="img_scissors pic trans">`;
+            if (enemy == 0){
+                //他出 石頭
+                console.log("輸")
+                right.innerHTML=`<img src="/./陳宇潔/image/rock.png" class="img_rock pic trans mirror">`;
+            }else if(enemy == 1){
+                //他出 步
+                console.log("贏")
+                right.innerHTML=`<img src="/./陳宇潔/image/paper.png" class="img_paper pic trans mirror">`;
+            }else{
+                //他出剪刀
+                console.log("平手")
+                right.innerHTML=`<img src="/./陳宇潔/image/scissors.png" class="img_scissors pic trans mirror">`
+            }
+        }
+        rock.onclick = function(){
+            let enemy = Math.floor(Math.random()*3)
+            //他出 石頭 他初步 他出剪刀
+            left.innerHTML=`<img src="/./陳宇潔/image/rock.png" class="img_rock pic trans">`;
+            if (enemy == 0){
+                //他出 石頭
+                console.log("平手")
+                right.innerHTML=`<img src="/./陳宇潔/image/rock.png" class="img_rock pic trans mirror">`;
+            }else if(enemy == 1){
+                //他出 步
+                console.log("輸")
+                right.innerHTML=`<img src="/./陳宇潔/image/paper.png" class="img_paper pic trans mirror">`;
+            }else{
+                //他出剪刀
+                console.log("贏")
+                right.innerHTML=`<img src="/./陳宇潔/image/scissors.png" class="img_scissors pic trans mirror">`
+            }
+        }
+        paper.onclick = function(){
+            let enemy = Math.floor(Math.random()*3)
+            //他出 石頭 他初步 他出剪刀
+            left.innerHTML=`<img src="/./陳宇潔/image/paper.png" class="img_paper pic trans">`;
+            if (enemy == 0){
+                //他出 石頭
+                console.log("贏")
+                right.innerHTML=`<img src="/./陳宇潔/image/rock.png" class="img_rock pic trans mirror">`;
+            }else if(enemy == 1){
+                //他出 步
+                console.log("平手")
+                right.innerHTML=`<img src="/./陳宇潔/image/paper.png" class="img_paper pic trans mirror">`;
+            }else{
+                //他出剪刀
+                console.log("輸")
+                right.innerHTML=`<img src="/./陳宇潔/image/scissors.png" class="img_scissors pic trans mirror">`
+            }
 
 
-        Math.random()
+        }
     </script>
 </html>
-<!-- stone.innerHTML =`<img src="https://www.pinterest.com/pin/918101074011869243/">` -->
-<!-- scissors.innerHTML =`<img src="https://www.pinterest.com/pin/918101074011869243/">` -->
-<!-- paper.innerHTML =`<img src="https://i.pinimg.com/564x/49/eb/5b/49eb5bb05380b8e95a45b0599ba806d4.jpg">` -->
