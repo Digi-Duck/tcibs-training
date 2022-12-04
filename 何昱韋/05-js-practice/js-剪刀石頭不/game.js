@@ -1,11 +1,11 @@
-var scissor_index,stone_index,no_index;
-var scissor_index = 1;
-function game(scissor_index,stone_index,no_index){
-    if(scissor_index == 1){
-        
-    }else if(stone_index == 1){
+var selector = Math.floor(Math.random()*2);
+// if selector = 0 --> win
+// if selector = 1 --> lose
+// if selector = 2 --> equal
+if(selector == 0){
+    
+}else if(selector == 1){
 
-    }else if(no_index == 1){
+}else if(selector == 2){
 
-    }
 }
