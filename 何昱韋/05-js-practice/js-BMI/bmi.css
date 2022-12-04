@@ -31,6 +31,9 @@
     font-size: 24px;
     margin-bottom: 12px;
 }
+.black{
+    color: #000;
+}
 .button-part{
     display: flex;
     justify-content: center;

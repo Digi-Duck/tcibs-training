@@ -1,5 +1,6 @@
 var wValue,hValue;
-let comment = document.querySelector(".comment-text");
+let BMInum = document.querySelector(".comment-BMI");
+let comment = document.querySelector(".comment-suggest");
 let commentpart = document.querySelector(".comment-part");
 
 
@@ -8,17 +9,23 @@ function BMIcalc(wValue,hValue){
     let BMIindex = wValue/hsquare;
     if(BMIindex > 0){
         if(BMIindex < 18.5){
-            comment.innerHTML = "BMI:too light";
+            BMInum.innerHTML ="BMI:" + BMIindex;
+            comment.innerHTML = "situation:too light";
         }else if(BMIindex < 24){
-            comment.innerHTML = "BMI:standard";
+            BMInum.innerHTML ="BMI:" + BMIindex;
+            comment.innerHTML = "situation:standard";
         }else if(BMIindex < 27){
-            comment.innerHTML = "BMI:overweight";
+            BMInum.innerHTML ="BMI:" + BMIindex;
+            comment.innerHTML = "situation:overweight";
         }else if(BMIindex < 30){
-            comment.innerHTML ="BMI:mildly obese";
+            BMInum.innerHTML ="BMI:" + BMIindex;
+            comment.innerHTML =" situation:mildly obese";
         }else if(BMIindex < 35){
-            comment.innerHTML = "BMI:Moderate obesity";
+            BMInum.innerHTML ="BMI:" + BMIindex;
+            comment.innerHTML = "situation:Moderate obesity";
         }else if(BMIindex > 35){
-            comment.innerHTML = "BMI:severe obesity";
+            BMInum.innerHTML ="BMI:" + BMIindex;
+            comment.innerHTML = "situation:severe obesity";
         }
     }else{
         comment.innerHTML = "error!";
