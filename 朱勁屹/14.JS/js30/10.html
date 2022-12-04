@@ -139,11 +139,13 @@
                                 for (let i = 0; i < check.length; i++) {
 
                                     check[i].checked = true;
-                                    
+                                    thing[i].classList.add('line');
+                                    // console.log(check);
+
                                 }
 
                             }
-                            console.log(1);
+                            // console.log(1);
                         })
                     })
                 }
@@ -165,7 +167,9 @@
             }
         })
         
+
         check.forEach(function (x,index) {
+        //     console.log(1);
             // console.log(x);
             // console.log(index);
             // for (let i = 0; i < check.length; i++) {
@@ -173,21 +177,18 @@
                 x.addEventListener('change',function () {
                     console.log(x.checked);
                     if(x.checked){
-                        
                             thing[index].classList.add('line');
                             console.log(index);
-    
                     }else{
-                        
                             thing[index].classList.remove('line');
                             console.log(0);
-                            
                     }
                     
                 })
                 
             // }
-        })
+        })            
+
     </script>
 </body>
 </html>

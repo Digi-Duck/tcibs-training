@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        video{
+            width: 800px;
+            margin: auto;
+            display: block;
+            margin-top: 100px;
+        }
+        body{
+            margin: 0;
+        }
+        .stop{
+            display: block;
+            margin: auto;
+        }
+        .speed{
+            display: block;
+            margin: auto;
+        }
+        .vol{
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <video src="../js30/01.mp4" class="video"></video>
+    <input  type="range" min="0.1" max="1" value="0" class="speed" step="0.1">
+    <input type="range" min="0" max="1" value="0.5" class="vol" step="0.1">
+    <button class="stop"></button>
+    <script>
+        let video = document.querySelector('.video');
+        let stopbtn = document.querySelector('.stop');
+        let speed = document.querySelector('.speed');
+        let vol = document.querySelector('.vol');
+        stopbtn.innerHTML = '開始';
+        let stopnum = 0;
+        
+        stopbtn.addEventListener('click',function () {
+            console.log(stopnum);
+            if(stopnum == 0){
+                video.play();
+                stopbtn.innerHTML = '暫停';
+                stopnum =1;
+            }else if(stopnum == 1){
+                video.pause();
+                stopbtn.innerHTML = '開始';
+                stopnum =0;
+            }
+        })
+        speed.addEventListener('change',function () {
+            let speedNum = speed.value;
+            console.log(speedNum);
+            video.playbackRate = speedNum;
+        })
+        vol.addEventListener('change',function () {
+            let volNum = vol.value;
+            video.volume = volNum;
+        })
+    </script>
+</body>
+</html>
