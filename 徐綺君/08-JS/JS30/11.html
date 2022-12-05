@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11</title>
+
+    <style>
+        body{
+            margin: 0px;
+        }
+        .main{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid black;
+            background-color: rgba(209, 244, 248, 0.808);
+        }
+        video{
+            width: 65%;
+            /* height: 800px; */
+            margin-top: 100px;
+        }
+        .bottom{
+            width: calc(65% + 5px);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        input{
+            width: 40%;
+            margin: 0px;
+            padding: 0px;
+            margin-top: -4px;
+        }
+        .time{
+            width: 100%;
+            margin-top: -10px;
+        }
+        button{
+            font-size: 20px;
+            margin: 10px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0);
+            margin: 0px;
+            margin-top: -4px;
+            padding: 5px 10px;
+        }
+        button:hover{
+            background-color: rgba(132, 187, 187, 0.445);
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <video class="video" src="./video/cowvideo.mp4"></video>    
+        <div class="bottom">      
+            <input class="time" type="range" min="0" max="50" value="0">
+            <button class="start">開始</button>
+            <input class="volume" type="range" min="0" max="100">
+            <input class="speed" type="range" min="-1" max="2">
+            <button class="back">« 10s</button>
+            <button class="forward">15s »</button>
+        </div>
+    </div>
+
+    <script>
+        const video = document.querySelector('.video');
+        const volume = document.querySelector('.volume');
+        const time = document.querySelector('.time');
+        const start = document.querySelector('.start');
+        const speed = document.querySelector('.speed');
+        const back = document.querySelector('.back');
+        const forward = document.querySelector('.forward');
+
+        volume.addEventListener('change',function(){
+            console.log(volume.value * 0.01);
+            video.volumevalue = volume.value * 0.01;
+        })
+
+        speed.addEventListener('change',function(){
+            console.log(speed.value * 0.01);
+            video.playbackRate = speed.value * 0.01;
+        })
+
+
+    </script>
+</body>
+</html>
