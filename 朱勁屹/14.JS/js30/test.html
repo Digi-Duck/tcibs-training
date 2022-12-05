@@ -9,17 +9,19 @@
 
     <body>
         <input type="text" onkeydown="isKeyPressed(event)">
-
+        <button class="btn">45648545</button>
 <p id="demo"></p>
     <script>
-        function isKeyPressed(event) {
-        var x = document.getElementById("demo");
-        if (event.shiftKey) {
-            x.innerHTML = "The SHIFT key was pressed!";
-        } else {
-            x.innerHTML = "The SHIFT key was NOT pressed!";
+        let btn = document.querySelector('.btn');
+        let c = 0;
+        function a() {
+            c++;
         }
-        }
+        a();
+        
+            
+            console.log(c);
+        
     </script>
 </body>
 </html>
