@@ -1,18 +1,5 @@
-var selector = Math.floor(Math.random()*2);
-// if selector = 0 --> lose
-// if selector = 1 --> win
-// if selector = 2 --> equal
-if(selector == 0){
-    
-}else if(selector == 1){
-
-}else if(selector == 2){
-
-}
-function test(){
-    alert("asdf");
-}
-
+let win_index=0,lose_index=0,round=0;
+let roundDisplay = document.querySelector(".round");
 function scissorBtn(){
     var selector = Math.floor(Math.random()*3);
     if(selector == 0){
@@ -22,6 +9,8 @@ function scissorBtn(){
     }else if(selector == 2){
         console.log("equal");
     }
+    round++;
+    roundDisplay.innerHTML ="回合" + round;
 }
 function stoneBtn(){
     var selector = Math.floor(Math.random()*3);
@@ -32,6 +21,8 @@ function stoneBtn(){
     }else if(selector == 2){
         console.log("equal");
     }
+    round++;
+    roundDisplay.innerHTML ="回合" + round;
 }
 function clothBtn(){
     var selector = Math.floor(Math.random()*3);
@@ -42,6 +33,8 @@ function clothBtn(){
     }else if(selector == 2){
         console.log("equal");
     }
+    round++;
+    roundDisplay.innerHTML ="回合" + round;
 }
 
 

@@ -8,10 +8,10 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 500;
     padding: 1%;
-    display: flex;
-    justify-content: center;
 }
-
+.display-none{
+    display: none;
+}
 .container{
     display: flex;
 }
@@ -24,15 +24,22 @@
 .text-48{
     font-size: 48px;
 }
+.text-36{
+    font-size: 36px;
+}
 .text-24{
     font-size: 24px;
+}
+.middle{
+    display: flex;
+    justify-content: center;
 }
 p{
     display: flex;
     justify-content: center;
 }
-img{
-    width: 100%;
+.condition{
+    word-break: keep-all;
 }
 .pc_text{
     margin-bottom: 24px;
