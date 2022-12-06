@@ -90,7 +90,7 @@
         }
 
         .opacity {
-            opacity: 0.3;
+            opacity: 0.2;
         }
     </style>
 </head>
@@ -117,65 +117,80 @@
         //抓取放方塊的地方
         const clickArea = document.querySelector('.click-area');
         const box = document.querySelector('.box');
+        const opacity = document.querySelector('.opacity');
 
         //分數
-        const grade = 0;
+        let grade = 0;
         //邊長
-        const num = 2;
+        let num = 2;
+        let o = 100 - num;
+        let output = o/100;
         //高寬
-        const w = 95/num;
+        let w = 95 / num;
         //生方塊
-        for(let i = 0;i < num*num;i++){
-            clickArea.innerHTML += '<div class="click" style="width: '+w+'%;height:'+w+'%;"></div>';
+        for (let i = 0; i < num * num; i++) {
+            clickArea.innerHTML += '<div class="click" style="width: ' + w + '%;height:' + w + '%;"></div>';
         }
-        //選取所有按的方塊
-        const click = document.querySelectorAll('.click');
-        function random(){
+        function random() {
+            //選取所有按的方塊
+            let click = document.querySelectorAll('.click');
             //隨機答案
-            randomAnswer = Math.floor(Math.random()*(num*num));
-            
+            randomAnswer = Math.floor(Math.random() * (num * num));
+
             //隨機顏色
-            r = Math.floor(Math.random()*255);
-            g = Math.floor(Math.random()*255);
-            b = Math.floor(Math.random()*255); 
-        }
-        //隨機值
-        random();
-        //答案透明
-        click[randomAnswer].classList.add('opacity');
-        click.forEach((clickOne, index)=>{
-            //套顏色
-            clickOne.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+            r = Math.floor(Math.random() * 255);
+            g = Math.floor(Math.random() * 255);
+            b = Math.floor(Math.random() * 255);
+            
+            // 套新答案
+            click[randomAnswer].classList.add('opacity');
+            click.forEach((clickOne, index) => {
+                //套顏色
+                clickOne.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 
-            clickOne.addEventListener('click', function(){
-                console.log(index);
-                //如果按到對的
-                if(index == randomAnswer){
-                    grade = grade + 1;
-                    if(grade > 1){
-                        clickArea = '';
-                        click = [];
+                clickOne.addEventListener('click', function () {
+                    console.log(randomAnswer);
 
-                        num = 3;
-                        for(let i = 0;i < num*num;i++){
-                            clickArea.innerHTML += '<div class="click" style="width: '+w+'%;height:'+w+'%;"></div>';
+                    //如果按到對的
+                    if (index == randomAnswer) {
+                        grade = grade + 1;
+
+                        if (grade > 3) {
+                            //清空方塊
+                            clickArea.innerHTML = '';
+
+                            num = 4;
+                            o = 100 - num;
+                            output = o/100;
+                            w = 95 / num
+                            for (let i = 0; i < num * num; i++) {
+                                clickArea.innerHTML += '<div class="click" style="width: ' + w + '%;height:' + w + '%;"></div>';
+                            }
+                            opacity.style.opacity = output;
+                        }else if(grade > 1){
+                            clickArea.innerHTML = '';
+
+                            num = 3;
+                            o = 100 - num;
+                            output = o/100;
+                            w = 95 / num
+                            for (let i = 0; i < num * num; i++) {
+                                clickArea.innerHTML += '<div class="click" style="width: ' + w + '%;height:' + w + '%;"></div>';
+                            }
+                            opacity.style.opacity = output;
                         }
+
+                        //清當前答案
+                        console.log(click);
+                        click[randomAnswer].classList.remove('opacity');
+                        
+                        random()
                     }
-                    //清當前答案
-                    click[randomAnswer].classList.remove('opacity');
-                    //換顏色，換答案
-                    random()
-                    click.forEach((tranColor)=>{
-                        // 全部套新顏色
-                        tranColor.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-                    })
-                    // 套新答案
-                    click[randomAnswer].classList.add('opacity');
-
-                }
+                })
             })
+        }
 
-            })
+        random();
     </script>
 </body>
 
