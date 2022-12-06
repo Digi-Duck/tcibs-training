@@ -6,7 +6,8 @@ let commentpart = document.querySelector(".comment-part");
 
 function BMIcalc(wValue,hValue){
     let hsquare = hValue*hValue;
-    let BMIindex = wValue/hsquare;
+    let num = wValue/hsquare;
+    BMIindex = Math.round(num*10)/10;
     if(BMIindex > 0){
         if(BMIindex < 18.5){
             BMInum.innerHTML ="BMI:" + BMIindex;
