@@ -10,7 +10,7 @@
     padding: 1%;
 }
 .display-none{
-    display: none;
+    display: none !important;
 }
 .container{
     display: flex;
@@ -72,3 +72,16 @@ p{
     color: rgb(0, 140, 255);
     background-color: #fff;   
 }
+
+.finish_type{
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(49, 45, 45);
+    transition: 2s;
+}
+.win_result{
+    font-size: 24px;
+    color: brown;
+}
+
+

@@ -3,7 +3,10 @@ let roundDisplay = document.querySelector(".round");
 let winDisplay = document.querySelector(".win_score");
 let loseDisplay = document.querySelector(".lose_score");
 let equalDisplay = document.querySelector(".equal_score");
-let gaming = document.querySelector(".game_type");
+let title = document.querySelector(".title");  
+let container = document.querySelector(".container");
+let typemode = document.querySelector(".mode");
+let finish_region = document.querySelector(".finish_region");
 function scissorBtn(){
     var selector = Math.floor(Math.random()*3);
     if(selector == 0){
@@ -22,9 +25,10 @@ function scissorBtn(){
     loseDisplay.innerHTML = "輸:" + lose_index +"場";
     equalDisplay.innerHTML = "平:" + equal_index + "場";
     if(win_index == 3){
-        gaming.classList.add("display-none");
-    }else if(lose_index == 3){
-        gaming.classList.add()
+        title.classList.add("display-none");
+        container.classList.add("display-none");
+        typemode.classList.add("finish_type");
+        finish_region.classList.remove("display-none");
     }
 }
 function stoneBtn(){
