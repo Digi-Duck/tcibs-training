@@ -40,6 +40,11 @@
             background-color: red;
             border-right: 2px solid black;
         }
+        .btnBox{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
@@ -50,6 +55,10 @@
     </div>
     <input  type="range" min="0.1" max="1" value="0" class="speed" step="0.1">
     <input type="range" min="0" max="1" value="0.5" class="vol" step="0.1">
+    <div class="btnBox">
+        <button class="timeBtn1">-10</button>
+        <button class="timeBtn2">+10</button>
+    </div>
     
     <button class="stop"></button>
     <script>
@@ -59,6 +68,8 @@
         let vol = document.querySelector('.vol');
         let vLong = document.querySelector('.vLong');
         let vLongBox = document.querySelector('.vlongBox');
+        let timeBtn1 = document.querySelector('.timeBtn1');
+        let timeBtn2 = document.querySelector('.timeBtn2');
 
         stopbtn.innerHTML = '開始';
         let stopnum = 0;
@@ -66,6 +77,14 @@
         let vLongTurn = 0;
         let pornTurn = 1;
 
+        timeBtn1.addEventListener('click',function () {
+            // console.log(video.currentTime);
+            video.currentTime = video.currentTime - 10;
+        })
+        timeBtn2.addEventListener('click',function () {
+            // console.log(video.currentTime);
+            video.currentTime = video.currentTime + 10;
+        })
         // video.currentTime = 20;
         // console.log(video.duration );
         vLongBox.addEventListener('mousedown',function (e) {
@@ -90,13 +109,13 @@
         })
 
         setInterval(function () {
-            if(vTime == 1){
+            
                 if(pornTurn = 1){
                     ps = (video.currentTime/video.duration)*100;
                     vLong.style = 'width: '+ps+'%;';
-                    // console.log(ps);
+                    console.log(ps);
                 }
-            }
+            
         },1000)
 
         stopbtn.addEventListener('click',function () {
