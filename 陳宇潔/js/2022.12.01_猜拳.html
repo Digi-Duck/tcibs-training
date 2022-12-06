@@ -132,7 +132,7 @@
             height: 300px;
             background-image: url("/./陳宇潔/image/vs.png");
 
-            transform: translate(0,100px);
+            position: relative;
         }
         .pic{
             background-position: center;
@@ -170,15 +170,15 @@
         </div>
         <div class="mora">
             <div class="left">
-                <div class="img_rock pic trans"></div> 
-                <div class="img_scissors pic trans"></div>          
-                <div class="img_paper pic trans"></div> 
+                <div class="img_rock pic trans hand"></div> 
+                <div class="img_scissors pic trans hand"></div>          
+                <div class="img_paper pic trans hand"></div> 
             </div>
             <div class="vs pic"></div>
             <div class="right">
-                <div class="img_rock pic trans mirror"></div> 
-                <div class="img_scissors pic trans mirror"></div>          
-                <div class="img_paper pic trans mirror"></div> 
+                <div class="img_rock pic trans mirror hand"></div> 
+                <div class="img_scissors pic trans mirror hand"></div>          
+                <div class="img_paper pic trans mirror hand"></div> 
             </div>
         </div>
         <div class="computer place">
@@ -202,6 +202,7 @@
 
         right.classList.remove("right");
         left.classList.remove("left");
+
         scissors.onclick = function(){
             let enemy = Math.floor(Math.random()*3)
             //他出 石頭 他初步 他出剪刀
