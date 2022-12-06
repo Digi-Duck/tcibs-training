@@ -15,7 +15,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            border: 1px solid black;
             background-color: rgba(209, 244, 248, 0.808);
         }
         video{
@@ -60,7 +59,7 @@
             <input class="time" type="range" min="0" max="50" value="0">
             <button class="start">開始</button>
             <input class="volume" type="range" min="0" max="100">
-            <input class="speed" type="range" min="-1" max="2">
+            <input class="speed" type="range" min="1" max="5" value="3">
             <button class="back">« 10s</button>
             <button class="forward">15s »</button>
         </div>
@@ -74,15 +73,35 @@
         const speed = document.querySelector('.speed');
         const back = document.querySelector('.back');
         const forward = document.querySelector('.forward');
+        let i = 0;
+        // video.volume = 0;
 
         volume.addEventListener('change',function(){
             console.log(volume.value * 0.01);
-            video.volumevalue = volume.value * 0.01;
+            video.volume = volume.value * 0.01;
         })
 
         speed.addEventListener('change',function(){
-            console.log(speed.value * 0.01);
-            video.playbackRate = speed.value * 0.01;
+            console.log(speed.value);
+            if (speed.value == 1) {
+                video.playbackRate = 0.5;
+            }else if(speed.value == 2){
+                video.playbackRate = 0.75;
+            }else if(speed.value == 3){
+                video.playbackRate = 1;
+            }else if(speed.value == 4){
+                video.playbackRate = 1.5;
+            }else if(speed.value == 5){
+                video.playbackRate = 2;
+            }
+        })
+
+        start.addEventListener('click',function() {
+            if (video.paused) {
+                video.play();               
+            }else{
+                video.pause();
+            }
         })
 
 
