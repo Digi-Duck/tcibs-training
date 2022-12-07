@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 1000px;
+            height: 1000px;
+            margin: auto;
+            text-align: center;
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        let a = ['f','u','c','k'];
+        let b = [];
+        let box = document.querySelector('.box');
+        
+        window.addEventListener('keydown',function (e) {
+            // console.log(e.key);
+            let num = 0;
+            b.push(e.key);
+            // console.log(b);
+            b.forEach(function (n,index) {
+                if(n == a[index]){
+                    num++;
+                    console.log(1);
+                }
+            })
+            if(num == 4){
+                box.innerHTML = "amongus";
+            }
+        })
+    </script>
+</body>
+</html>
