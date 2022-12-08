@@ -201,6 +201,8 @@
         const total = document.querySelector('.total');
         const reset = document.querySelector('.reset-button');
 
+        //分數
+        let grade = 0;
         function createblock(num){
             //清空方塊
             clickArea.innerHTML = '';
@@ -212,8 +214,6 @@
             //隨機答案
             randomAnswer = Math.floor(Math.random() * (num * num));
         }
-        //分數
-        let grade = 0;
 
         function opacity(x){
             answer = x*0.1;
@@ -275,26 +275,32 @@
             })
         }
         startButton.addEventListener('click', ()=>{
+            grade = 0
+            ending.classList.add('unactive');
             playing.classList.remove('unactive');
-            random();
             start.classList.add('unactive');
-            timeset();
+            random();
+
         })
         function timeset(){
             let time = 60;
-            setInterval(function(){
+            const timeSet = setInterval(()=>{
                 time = time - 1;
+                console.log(time);
                 if(time < 0){
                     time = 0
                     playing.classList.add('unactive');
                     ending.classList.remove('unactive');
                     total.innerHTML = grade;
+                    
+                    clearInterval(timeSet);
                 }
                 timer.innerHTML = time;            
             },1000);
         }
         reset.addEventListener('click', ()=>{
             ending.classList.add('unactive');
+            playing.classList.add('unactive');
             start.classList.remove('unactive');
         })
     </script>
