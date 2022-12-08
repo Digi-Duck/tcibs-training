@@ -25,21 +25,37 @@
             position: absolute;
             left: 250px;
             top: 300px;
-            border: 1px solid black;
+            /* border: 1px solid black; */
             line-height: 200px;
             font-size: 100px;
+            transition: 1ms;
         }
     </style>
 </head>
 <body>
     <div class="wordBox">
         <div class="word1 word">SUS</div>
-        <!-- <div class="word2 word">SUS</div>
+        <div class="word2 word">SUS</div>
         <div class="word3 word">SUS</div>
-        <div class="word4 word">SUS</div> -->
+        <div class="word4 word">SUS</div>
+        <div class="word5 word">SUS</div>
 
     </div>
     <script>
+        let word2 = document.querySelector('.word2');
+        let word3 = document.querySelector('.word3');
+        let word4 = document.querySelector('.word4');
+        let word5 = document.querySelector('.word5');
+
+        window.addEventListener('mousemove',function (e) {
+            x1 = e.offsetX/10;
+            y1 = e.offsetY/10;
+            
+            word2.style = 'left: calc(250px + '+x1+'px);top: calc(300px + '+y1+'px)';
+            word3.style = 'left: calc(250px + '+x1+'px);top: calc(300px - '+y1+'px)';
+            word4.style = 'left: calc(250px - '+x1+'px);top: calc(300px + '+y1+'px)';
+            word5.style = 'left: calc(250px - '+x1+'px);top: calc(300px - '+y1+'px)';
+        })
 
     </script>
 </body>

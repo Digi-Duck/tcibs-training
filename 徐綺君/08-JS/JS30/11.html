@@ -86,8 +86,10 @@
         const speed = document.querySelector('.speed');
         const back = document.querySelector('.back');
         const forward = document.querySelector('.forward');
+        const timeBar = document.querySelector('.timeBar');
         const timeBtn = document.querySelector('.timeBtn')
-        let sec = 0;
+        let lastTime;
+        let i = 0;
 
         volume.addEventListener('change',function(){
             video.volume = volume.value * 0.01;
@@ -108,17 +110,32 @@
         })
 
         start.addEventListener('click',function() {
-            if(sec < 243 && video.paused){
+            if(video.paused){
                 video.play();
+                console.log(video.paused);
                 setInterval(function() {
-                    sec = sec + 1;
-                    // console.log(sec);
-                    timeBtn.style = "width: calc(100%/243*" + sec + ");"
-                }, 1000);  
+                    if (video.paused == false) {
+                        
+                        i++;
+                        console.log(i);
+                        timeBtn.style = "width: calc(100%/243*" + video.currentTime + ");"                        
+                    }
+                }, 1000); 
             }else{
                 video.pause();
-                
             }             
+
+            // setInterval(function() {
+            // if(video.paused){
+            //     // video.play();
+            //     console.log(video.currentTime);
+            //     timeBtn.style = "width: calc(100%/243*" + video.currentTime + ");"
+            //     lastTime = video.currentTime;
+            // }else{
+            //     // video.pause();
+            //     timeBtn.style = "width: calc(100%/243*" + lastTime + ");"
+            // }
+            // }, 1000);
         })
 
         time.addEventListener('change',function(){
@@ -135,12 +152,21 @@
             time.value = video.currentTime;
         })
 
-        timeBtn.addEventListener('mosuedown',function(){
-            timeBtn.addEventListener('mosuemove',function(){
-
-            })
+        timeBar.addEventListener('mousedown',function(){
+            timeBar.addEventListener('mousemove',move)
         })
 
+        timeBar.addEventListener('mouseup',function(){
+            timeBar.removeEventListener('mousemove',move)
+        })
+
+
+
+        function move(e) {
+                let long = e.clientX - 273;
+                console.log(long);
+                timeBtn.style = "width: calc("+long+"px);"
+        }
     </script>
 </body>
 </html>
