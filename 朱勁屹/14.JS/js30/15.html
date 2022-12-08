@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+        }
+        .centerBox{
+            width: 500px;
+            /* height: 500px; */
+            margin: auto;
+            border: 1px solid black;
+            margin-top: 100px;
+        }
+        .list{
+            border: 1px solid black;
+            padding: 20px;
+            margin: 20px;
+        }
+        .wordBox{
+            display: flex;
+            margin: 10px;
+        }
+        .word{
+            width: 80%;
+            text-align: center;
+        }
+        .inputBox{
+            width: 100%;
+            /* margin: auto; */
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="centerBox">
+        <div class="list">
+            <!-- <div class="wordBox">
+                <input type="checkbox" class="check">
+                <div class="word">85674865</div>
+            </div> -->
+        </div>
+        <div class="inputBox">
+            <input type="text" class="input">
+            <button class="btn">上傳</button>
+        </div>
+    </div>
+
+    <script>
+        // sessionStorage.setItem(key, value);
+        let btn = document.querySelector('.btn');
+        let input = document.querySelector('.input');
+        let num = 1;
+        let list = document.querySelector('.list');
+        btn.addEventListener('click',function () {
+            // console.log(input.value);
+            list.innerHTML = '';
+            sessionStorage.setItem(num,input.value);
+            for (let i = 0; i < num; i++) {
+                console.log(sessionStorage.getItem(i+1));
+                list.innerHTML += `
+                <div class="wordBox">
+                <input type="checkbox" class="check">
+                <div class="word">${sessionStorage.getItem(i+1)}</div>
+            </div>
+                `;
+            }
+            input.value = '';
+            num++;
+        })
+    </script>
+</body>
+</html>

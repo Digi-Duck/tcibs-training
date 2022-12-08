@@ -1,0 +1,164 @@
+*{
+    box-sizing: border-box;
+}
+.start{
+    display: flex;
+    justify-content: center;
+}
+.start .btn{
+    width: 200px;
+    height: 75px;
+    font-size: 30px;
+}
+.bg{
+    width: 100%;
+    height: 941px;
+    background-color: antiquewhite;
+
+    border: 5px solid#000000;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 50px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.big_title{
+    width: 100%;
+    font-size: 50px;
+    font-weight: 700;
+
+    display: flex;
+    justify-content: center;
+}
+.player{
+    width: 33.3333%;
+    height: 100%;
+    /* background-color: rgb(132, 0, 255); */
+}
+.title{
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+.box{
+    margin-top: 50px;
+    margin-bottom: 50px;             
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.btn{
+    width: 100px;
+    height: 40px;
+    background-color: rgb(187, 182, 174);
+    border: 5px solid rgb(161, 148, 128);
+    border-radius: 5px;
+    padding: 20px 10px;
+    margin: 10px;
+    font-size: 25px;
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.blood_box{
+    width: 100%;
+    height: 12%;
+    display: flex;
+    justify-content: center;
+}
+.blood{
+    width: 100px;
+    height: 100%;
+    background-image: url("/./陳宇潔/image/blood.png");
+}
+.btn:hover{
+    color: white;
+    background-color: rgb(161, 148, 128);
+    border: 5px solid rgb(187, 182, 174);
+}
+.mora{
+    width: 33.333%;
+    height: 100%;
+
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.computer{
+    width: 33.3333%;
+    height: 100%;
+    /* background-color: aqua; */
+}
+.avatar{
+    width: 300px;
+    height: 360px;
+
+    margin: 20px auto;
+}
+.avatar_player{
+    background-image: url("https://i.pinimg.com/564x/1e/0f/ba/1e0fba73b74892182845b48b61bade4f.jpg");
+}
+.avatar_computer{
+    background-image: url("https://i.pinimg.com/564x/cc/dc/09/ccdc09dde3cc070ebfa98a00027996e7.jpg");
+}
+.trans{
+    transform: translate(0,150px);
+}
+.img_rock{         
+    width: 120px;
+    height: 100px; 
+    background-image: url("/./陳宇潔/image/rock.png");
+}
+.img_paper{
+    width: 105px;
+    height: 100px;
+    background-image: url("/./陳宇潔/image/paper.png");
+}
+.img_scissors{
+    width: 80px;
+    height: 130px;
+    background-image: url("/./陳宇潔/image/scissors.png");
+}
+.mirror{
+    transform: rotateY(180deg);
+}
+.vs{
+    width: 300px;
+    height: 300px;
+    background-image: url("/./陳宇潔/image/vs.png");
+
+    position: absolute;
+    right: 155px;
+    top: 75px;
+}
+.pic{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+} 
+.left{
+    width: calc((100% - 300px)/2);
+    height: 100%;
+}
+.right{
+    width: calc((100% - 300px)/2);
+    height: 100%;
+
+    position: absolute;
+    right: 0px;
+}
+.appear{
+    width: 100%;
+    display: flex;
+}
+.disappear{
+    width: 100%;
+    display: none;
+}

@@ -23,7 +23,7 @@
             margin-top: 100px;
         }
         .bottom{
-            width: calc(65% + 5px);
+            width: 65%;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -32,11 +32,21 @@
             width: 40%;
             margin: 0px;
             padding: 0px;
-            margin-top: -4px;
+            /* margin-top: -4px; */
+        }
+        .timeBar{
+            width: 100%;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.075);
+        }
+        .timeBtn{
+            width: 0px;
+            height: 100%;
+            background-color: rgb(0, 95, 102);
         }
         .time{
             width: 100%;
-            margin-top: -10px;
+            /* margin-top: -10px; */
         }
         button{
             font-size: 20px;
@@ -56,7 +66,10 @@
     <div class="main">
         <video class="video" src="./video/cowvideo.mp4"></video>    
         <div class="bottom">      
-            <input class="time" type="range" min="0" max="50" value="0">
+            <div class="timeBar">
+                <div class="timeBtn"></div>
+            </div>
+            <input class="time" type="range" min="0" max="243" value="0">
             <button class="start">開始</button>
             <input class="volume" type="range" min="0" max="100">
             <input class="speed" type="range" min="1" max="5" value="3">
@@ -73,16 +86,14 @@
         const speed = document.querySelector('.speed');
         const back = document.querySelector('.back');
         const forward = document.querySelector('.forward');
-        let i = 0;
-        // video.volume = 0;
+        const timeBtn = document.querySelector('.timeBtn')
+        let sec = 0;
 
         volume.addEventListener('change',function(){
-            console.log(volume.value * 0.01);
             video.volume = volume.value * 0.01;
         })
 
         speed.addEventListener('change',function(){
-            console.log(speed.value);
             if (speed.value == 1) {
                 video.playbackRate = 0.5;
             }else if(speed.value == 2){
@@ -97,13 +108,38 @@
         })
 
         start.addEventListener('click',function() {
-            if (video.paused) {
-                video.play();               
+            if(sec < 243 && video.paused){
+                video.play();
+                setInterval(function() {
+                    sec = sec + 1;
+                    // console.log(sec);
+                    timeBtn.style = "width: calc(100%/243*" + sec + ");"
+                }, 1000);  
             }else{
                 video.pause();
-            }
+                
+            }             
         })
 
+        time.addEventListener('change',function(){
+            video.currentTime = time.value;
+        })
+
+        back.addEventListener('click',function(){
+            video.currentTime = video.currentTime - 10;
+            time.value = video.currentTime;
+        })
+
+        forward.addEventListener('click',function(){
+            video.currentTime = video.currentTime + 15;
+            time.value = video.currentTime;
+        })
+
+        timeBtn.addEventListener('mosuedown',function(){
+            timeBtn.addEventListener('mosuemove',function(){
+
+            })
+        })
 
     </script>
 </body>

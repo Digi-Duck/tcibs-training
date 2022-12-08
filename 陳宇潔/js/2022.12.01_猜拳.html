@@ -5,161 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>猜拳</title>
+    <link rel="stylesheet" href="./2022.12.01_猜拳.css">
 </head>
 <body>
     <style>
-        *{
-            box-sizing: border-box;
-        }
-        .bg{
-            width: 100%;
-            height: 941px;
-            background-color: antiquewhite;
-
-            border: 5px solid#000000;
-            margin: 0 auto;
-            border-radius: 20px;
-            padding: 50px;
-
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        .big_title{
-            width: 100%;
-            font-size: 50px;
-            font-weight: 700;
-
-            display: flex;
-            justify-content: center;
-        }
-        .player{
-            width: 33.3333%;
-            height: 100%;
-            /* background-color: rgb(132, 0, 255); */
-        }
-        .title{
-            width: 100%;
-
-            display: flex;
-            justify-content: center;
-        }
-        .box{
-            margin-top: 50px;
-            margin-bottom: 50px;             
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .btn{
-            width: 100px;
-            height: 40px;
-            background-color: rgb(187, 182, 174);
-            border: 5px solid rgb(161, 148, 128);
-            border-radius: 5px;
-            padding: 20px 10px;
-            margin: 10px;
-            font-size: 25px;
-            font-weight: 700;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .blood_box{
-            width: 100%;
-            height: 12%;
-            display: flex;
-            justify-content: center;
-        }
-        .blood{
-            width: 100px;
-            height: 100%;
-            background-image: url("/./陳宇潔/image/blood.png");
-        }
-        .btn:hover{
-            color: white;
-            background-color: rgb(161, 148, 128);
-            border: 5px solid rgb(187, 182, 174);
-        }
-        .mora{
-            width: 33.333%;
-            height: 100%;
-
-            display: flex;
-            justify-content: space-between;
-        }
-        .computer{
-            width: 33.3333%;
-            height: 100%;
-            /* background-color: aqua; */
-        }
-        .avatar{
-            width: 300px;
-            height: 360px;
-
-            margin: 20px auto;
-        }
-        .avatar_player{
-            background-image: url("https://i.pinimg.com/564x/1e/0f/ba/1e0fba73b74892182845b48b61bade4f.jpg");
-        }
-        .avatar_computer{
-            background-image: url("https://i.pinimg.com/564x/cc/dc/09/ccdc09dde3cc070ebfa98a00027996e7.jpg");
-        }
-        .trans{
-            transform: translate(0,150px);
-        }
-        .img_rock{         
-            width: 120px;
-            height: 100px; 
-            background-image: url("/./陳宇潔/image/rock.png");
-        }
-        .img_paper{
-            width: 105px;
-            height: 100px;
-            background-image: url("/./陳宇潔/image/paper.png");
-        }
-        .img_scissors{
-            width: 80px;
-            height: 130px;
-            background-image: url("/./陳宇潔/image/scissors.png");
-        }
-        .mirror{
-            transform: rotateY(180deg);
-        }
-        .vs{
-            width: 300px;
-            height: 300px;
-            background-image: url("/./陳宇潔/image/vs.png");
-
-            position: relative;
-        }
-        .pic{
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        } 
-         .left{
-            width: calc((100% - 300px)/2);
-            height: 100%;
-        }
-        .right{
-            width: calc((100% - 300px)/2);
-            height: 100%;
-        }
-  
     </style>
 </body>
+    <div class="start">
+        <button class="btn">遊戲開始</button>
+    </div>
     <div class="bg">
         <div class="big_title">猜拳</div>
         <div class="player place">
             <div class="avatar_player avatar pic"></div>
             <div class="blood_box">
-                <div class="blood pic"></div>
-                <div class="blood pic"></div>
-                <div class="blood pic"></div>
-                <div class="blood pic"></div>
-                <div class="blood pic"></div>
+                <div class="blood b1 pic"></div>
+                <div class="blood b2 pic"></div>
+                <div class="blood b3 pic"></div>
+                <div class="blood b4 pic"></div>
+                <div class="blood b5 pic"></div>
             </div>  
             <div class="box">
                 <h1 class="title">出拳</h1>
@@ -180,84 +44,18 @@
                 <div class="img_scissors pic trans mirror hand"></div>          
                 <div class="img_paper pic trans mirror hand"></div> 
             </div>
+            <div class="grade"></div>
         </div>
         <div class="computer place">
             <div class="avatar_computer avatar pic"></div>
             <div class="blood_box">
-                <div class="blood pic"></div>
-                <div class="blood pic"></div>
-                <div class="blood pic"></div>
-                <div class="blood pic"></div>
-                <div class="blood pic"></div>
+                <div class="blood b11 pic"></div>
+                <div class="blood b12 pic"></div>
+                <div class="blood b13 pic"></div>
+                <div class="blood b14 pic"></div>
+                <div class="blood b15 pic"></div>
             </div>         
         </div>
     </div>  
-    <script>
-        const scissors = document.querySelector(".scissors")
-        const rock = document.querySelector(".rock")
-        const paper = document.querySelector(".paper")
-        
-        const right = document.querySelector(".right")
-        const left = document.querySelector(".left")
-
-        right.classList.remove("right");
-        left.classList.remove("left");
-
-        scissors.onclick = function(){
-            let enemy = Math.floor(Math.random()*3)
-            //他出 石頭 他初步 他出剪刀
-            left.innerHTML=`<img src="/./陳宇潔/image/scissors.png" class="img_scissors pic trans">`;
-            if (enemy == 0){
-                //他出 石頭
-                console.log("輸")
-                right.innerHTML=`<img src="/./陳宇潔/image/rock.png" class="img_rock pic trans mirror">`;
-            }else if(enemy == 1){
-                //他出 步
-                console.log("贏")
-                right.innerHTML=`<img src="/./陳宇潔/image/paper.png" class="img_paper pic trans mirror">`;
-            }else{
-                //他出剪刀
-                console.log("平手")
-                right.innerHTML=`<img src="/./陳宇潔/image/scissors.png" class="img_scissors pic trans mirror">`
-            }
-        }
-        rock.onclick = function(){
-            let enemy = Math.floor(Math.random()*3)
-            //他出 石頭 他初步 他出剪刀
-            left.innerHTML=`<img src="/./陳宇潔/image/rock.png" class="img_rock pic trans">`;
-            if (enemy == 0){
-                //他出 石頭
-                console.log("平手")
-                right.innerHTML=`<img src="/./陳宇潔/image/rock.png" class="img_rock pic trans mirror">`;
-            }else if(enemy == 1){
-                //他出 步
-                console.log("輸")
-                right.innerHTML=`<img src="/./陳宇潔/image/paper.png" class="img_paper pic trans mirror">`;
-            }else{
-                //他出剪刀
-                console.log("贏")
-                right.innerHTML=`<img src="/./陳宇潔/image/scissors.png" class="img_scissors pic trans mirror">`
-            }
-        }
-        paper.onclick = function(){
-            let enemy = Math.floor(Math.random()*3)
-            //他出 石頭 他初步 他出剪刀
-            left.innerHTML=`<img src="/./陳宇潔/image/paper.png" class="img_paper pic trans">`;
-            if (enemy == 0){
-                //他出 石頭
-                console.log("贏")
-                right.innerHTML=`<img src="/./陳宇潔/image/rock.png" class="img_rock pic trans mirror">`;
-            }else if(enemy == 1){
-                //他出 步
-                console.log("平手")
-                right.innerHTML=`<img src="/./陳宇潔/image/paper.png" class="img_paper pic trans mirror">`;
-            }else{
-                //他出剪刀
-                console.log("輸")
-                right.innerHTML=`<img src="/./陳宇潔/image/scissors.png" class="img_scissors pic trans mirror">`
-            }
-
-
-        }
-    </script>
+    <script src="./2022.12.01_猜拳.js"></script>
 </html>

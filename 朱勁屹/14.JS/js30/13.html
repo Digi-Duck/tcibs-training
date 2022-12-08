@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100000px;
+            margin: 0px;
+        }
+        .big{
+            width: 1000px;
+            height: 1000px;
+            background-color: black;
+            opacity: 0;
+            margin-top: 100px;
+            transition: 2ms;
+        }
+    </style>
+</head>
+<body>
+    <div class="big"></div>
+    <script>
+        let y = 0;
+        let big = document.querySelector('.big');
+        window.addEventListener('mousemove',function (e) {
+            y = e.pageY - e.clientY;
+            console.log(y);
+            if(y > 100){
+                big.style = 'opacity: 1;';
+            }
+
+        })
+    </script>
+</body>
+</html>
