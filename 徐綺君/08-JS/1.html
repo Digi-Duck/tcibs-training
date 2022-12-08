@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="h1">Seconds: 0</h1>
+    <button class="play" onclick="play()">Play</button>
+    <button class="pause" onclick="pause()">Pause</button>
+
+    <script>
+        var output = document.getElementById("h1");
+        var isPaused = false;
+        var time = 0;
+        setInterval(function() {
+        if(!isPaused) {
+                time++;
+                output.innerText = "Seconds: " + time;
+            }
+        }, 1000);
+
+        function play(){
+            isPaused = false;
+        }
+        function pause(){
+            isPaused = true;
+        }
+    </script>
+</body>
+</html>

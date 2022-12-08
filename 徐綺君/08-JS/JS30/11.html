@@ -19,7 +19,6 @@
         }
         video{
             width: 65%;
-            /* height: 800px; */
             margin-top: 100px;
         }
         .bottom{
@@ -32,7 +31,6 @@
             width: 40%;
             margin: 0px;
             padding: 0px;
-            /* margin-top: -4px; */
         }
         .timeBar{
             width: 100%;
@@ -46,7 +44,6 @@
         }
         .time{
             width: 100%;
-            /* margin-top: -10px; */
         }
         button{
             font-size: 20px;
@@ -54,7 +51,6 @@
             border: none;
             background-color: rgba(255, 255, 255, 0);
             margin: 0px;
-            margin-top: -4px;
             padding: 5px 10px;
         }
         button:hover{
@@ -69,7 +65,6 @@
             <div class="timeBar">
                 <div class="timeBtn"></div>
             </div>
-            <input class="time" type="range" min="0" max="243" value="0">
             <button class="start">開始</button>
             <input class="volume" type="range" min="0" max="100">
             <input class="speed" type="range" min="1" max="5" value="3">
@@ -81,15 +76,12 @@
     <script>
         const video = document.querySelector('.video');
         const volume = document.querySelector('.volume');
-        const time = document.querySelector('.time');
         const start = document.querySelector('.start');
         const speed = document.querySelector('.speed');
         const back = document.querySelector('.back');
         const forward = document.querySelector('.forward');
         const timeBar = document.querySelector('.timeBar');
-        const timeBtn = document.querySelector('.timeBtn')
-        let lastTime;
-        let i = 0;
+        const timeBtn = document.querySelector('.timeBtn');       
 
         volume.addEventListener('change',function(){
             video.volume = volume.value * 0.01;
@@ -112,35 +104,16 @@
         start.addEventListener('click',function() {
             if(video.paused){
                 video.play();
-                console.log(video.paused);
-                setInterval(function() {
-                    if (video.paused == false) {
-                        
-                        i++;
-                        console.log(i);
-                        timeBtn.style = "width: calc(100%/243*" + video.currentTime + ");"                        
-                    }
-                }, 1000); 
             }else{
                 video.pause();
             }             
-
-            // setInterval(function() {
-            // if(video.paused){
-            //     // video.play();
-            //     console.log(video.currentTime);
-            //     timeBtn.style = "width: calc(100%/243*" + video.currentTime + ");"
-            //     lastTime = video.currentTime;
-            // }else{
-            //     // video.pause();
-            //     timeBtn.style = "width: calc(100%/243*" + lastTime + ");"
-            // }
-            // }, 1000);
         })
 
-        time.addEventListener('change',function(){
-            video.currentTime = time.value;
-        })
+        setInterval(function() {
+            if (!video.paused) {
+                timeBtn.style = "width: calc(100%/"+video.duration+"*" + video.currentTime + ");"               
+            }
+        }, 1000);        
 
         back.addEventListener('click',function(){
             video.currentTime = video.currentTime - 10;
@@ -160,13 +133,13 @@
             timeBar.removeEventListener('mousemove',move)
         })
 
-
-
         function move(e) {
-                let long = e.clientX - 273;
-                console.log(long);
-                timeBtn.style = "width: calc("+long+"px);"
+            let long = e.clientX - 273;
+            longTime = video.duration*long/1016.59;
+            timeBtn.style = "width: calc("+long+"px);"
+            video.currentTime = longTime;
         }
+
     </script>
 </body>
 </html>
