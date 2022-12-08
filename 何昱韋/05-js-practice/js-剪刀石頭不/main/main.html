@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>THE 騙</title>
+</head>
+<body>
+    <div class="container container-decoration">
+        <div class="title text-72 set-in">剪刀石頭不</div>
+        <div class="game_region">
+            <div class="adversary-card w-40">
+                <p class="cardText text-48 set-in">你的對手</p>
+                <div class="adversaryPic set-in">
+                    <img src="https://static-s.aa-cdn.net/img/gp/20600014351032/d-hjWhHCWknYs8xwsr0loWayviNqMoN8lUdxl49rvROgFq671EQSCUfK2-3kML7JZF0?v=1" alt="">
+                </div>
+            </div>
+            <div class="game-situation w-20">
+                <p class="cardText text-48 set-in">V.S</p>
+                <div class="round-display text-48 set-in"></div>
+            </div>
+            <div class="player-card w-40">
+                <p class="cardText text-48 set-in">YOU</p>
+                <div class="player-button-region set-in">
+                    <button type="button" class="scissor-button button-decorate text-36">剪刀</button>
+                    <button type="button" class="stone-button button-decorate text-36">石頭</button>
+                    <button type="button" class="cloth-button button-decorate text-36">不</button>
+                </div>
+            </div>
+        </div>
+        <!-- gamefinish -->
+        <div class="finish_win display-none">
+            <p class="win_text text-96 set-in">VICTORY</p>
+            <div class="button-region set-in">
+                <button type="button" class="win_button text-36">
+                    <a href="javascript:window.location.reload()">重新開始</a>
+                </button>
+                <button type="button" class="win_button text-36">
+                    <a href="javascript:window.location.reload()">在玩一次</a>
+                </button>
+            </div>
+        </div>
+        <div class="finish_lose display-none">
+            <p class="lose_text text-96 set-in">Game Over</p>
+            <div class="button-region set-in">
+                <button type="button" class="lose_button text-36">
+                    <a href="javascript:window.location.reload()">重新開始</a>
+                </button>
+                <button type="button" class="lose_button text-36">
+                    <a href="javascript:window.location.reload()">在玩一次</a>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>

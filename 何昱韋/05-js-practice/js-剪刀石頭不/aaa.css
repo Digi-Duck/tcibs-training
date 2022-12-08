@@ -9,6 +9,7 @@
     font-weight: 500;
     padding: 1%;
 }
+
 .display-none{
     display: none !important;
 }
@@ -37,6 +38,7 @@
     display: flex;
     justify-content: center;
 }
+
 p{
     display: flex;
     justify-content: center;
@@ -79,9 +81,6 @@ p{
     background-color: rgb(49, 45, 45);
     transition: 2s;
 }
-.win_result{
-    font-size: 24px;
-    color: brown;
-}
+
 
 

@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.text-96{
+    font-size: 96px;
+}
+.text-72{
+    font-size: 72px;
+}
+.text-48{
+    font-size: 48px;
+}
+.text-36{
+    font-size: 36px;
+}
+.text-24{
+    font-size: 24px;
+}
+.text-20{
+    font-size: 20px;
+}
+.w-20{
+    width: 20%;
+}
+.w-40{
+    width: 40%;
+}
+.display-none{
+    display: none !important;
+}
+.set-in{
+    display: flex;
+    justify-content: center;
+}
+
+.container-decoration{
+    height: 100vh;
+    background-image: url('https://static.wixstatic.com/media/28648b_060e4b3f83124fe9a6e3e9ad27642dda~mv2_d_3500_1440_s_2.jpg/v1/fill/w_1633,h_919,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/28648b_060e4b3f83124fe9a6e3e9ad27642dda~mv2_d_3500_1440_s_2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.title{
+    padding: 1%;
+    color: rgb(232, 171, 38);
+}
+.game_region{
+    display: flex;
+}
+.adversaryPic{
+    padding: 10%;
+}
+.button-decorate{
+    padding: 10px;
+    margin: 25px;
+    border-radius: 10px;
+    color: #7edf41;
+    box-shadow: 1px 1px rgb(207, 234, 149);
+    border: 2px solid rgb(136, 228, 50);
+}
+.button-decorate:hover{
+    background-image: radial-gradient(100% 100% at 100% 0, #e0ef10 0, #7edf41 100%);
+    color: #fff;
+    transform: translate(0,5px);
+    transition: 0.5s;
+}
+
+/* finish */
+
+.finish_type{
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(49, 45, 45);
+    transition: 0.5s;
+}
+
+
+.win_text{
+    color: gold;
+    padding: 10%;
+}
+.lose_text{
+    padding: 10%;
+    color: #ff0000;
+}
+.win_button{
+    background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #f7cb19 100%);
+    cursor: pointer;
+    color: #fff;
+    border: 2px solid rgb(212, 186, 38);
+    border-radius: 20px;
+    box-shadow: 1px 2px rgb(146, 146, 143);
+    margin: 30px;
+    padding: 10px;
+}
+.lose_button{
+    background-image: radial-gradient(100% 100% at 100% 0, #c17653 0, #e30906 100%);
+    cursor: pointer;
+    color: #fff;
+    border: 2px solid rgb(236, 8, 8);
+    border-radius: 20px;
+    box-shadow: 1px 2px rgb(146, 146, 143);
+    margin: 30px;
+    padding: 10px;
+}
+button:hover{
+    transform: translate(0,-5px);
+    transition: 0.5s;
+}
+
+a{
+    color: #fff;
+    text-decoration: none;
+}

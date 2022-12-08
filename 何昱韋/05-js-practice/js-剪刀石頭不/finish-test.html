@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>finish</title>
+</head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .set-in{
+            display: flex;
+            justify-content: center;
+        }
+        .display-none{
+            display: none;
+        }
+        .text-96{
+            font-size: 96px;
+        }
+        .text-36{
+            font-size: 36px;
+        }
+        .win_text{
+            color: gold;
+            padding: 10%;
+        }
+        .lose_text{
+            padding: 10%;
+            color: #ff0000;
+        }
+        .win_button{
+            background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #f7cb19 100%);
+            cursor: pointer;
+            color: #fff;
+            border: 2px solid rgb(212, 186, 38);
+            border-radius: 20px;
+            box-shadow: 1px 2px rgb(146, 146, 143);
+            margin: 30px;
+            padding: 10px;
+        }
+        .lose_button{
+            background-image: radial-gradient(100% 100% at 100% 0, #c17653 0, #e30906 100%);
+            cursor: pointer;
+            color: #fff;
+            border: 2px solid rgb(236, 8, 8);
+            border-radius: 20px;
+            box-shadow: 1px 2px rgb(146, 146, 143);
+            margin: 30px;
+            padding: 10px;
+        }
+        button:hover{
+            transform: translate(0,-5px);
+            transition: 0.5s;
+        }
+    </style>
+<body>
+    <div class="container">
+        <div class="middle-win-box display-none">
+            <p class="win_text text-96 set-in">VICTORY</p>
+            <div class="button-region set-in">
+                <button type="button" class="win_button text-36">重新開始</button>
+                <button type="button" class="win_button text-36">在玩一次</button>
+            </div>
+        </div>
+        <div class="middle-lose-box">
+            <p class="lose_text text-96 set-in">Game Over</p>
+            <div class="button-region set-in">
+                <button type="button" class="lose_button text-36">重新開始</button>
+                <button type="button" class="lose_button text-36">在玩一次</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
