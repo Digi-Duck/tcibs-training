@@ -114,43 +114,43 @@ function heart(){
     if(result == 1){
          console.log("輸");
             if(length_player == 5){
-                b5.classList.add("disappear")
+                b5.classList.add("blood_disappear")
                 b5.remove();
                 console.log(length_player);
             }else if(length_player == 4){
-                b4.classList.add("disappear")
+                b4.classList.add("blood_disappear")
                 b4.remove();
             }else if(length_player == 3){
-                b3.classList.add("disappear")
+                b3.classList.add("blood_disappear")
                 b3.remove();
             }else if(length_player == 2){
-                b2.classList.add("disappear")
+                b2.classList.add("blood_disappear")
                 b2.remove();
             }else if(length_player == 1){
-                b1.classList.add("disappear")
+                b1.classList.add("blood_disappear")
                 b1.remove();
             }
             gameover();
     }else if(result == 2){
         console.log("贏");
             if(length_computer == 5){
-                b15.classList.add("disappear")
+                b15.classList.add("blood_disappear")
                 b15.remove();
             }
              if(length_computer == 4){
-                b14.classList.add("disappear")
+                b14.classList.add("blood_disappear")
                 b14.remove();
             }
              if(length_computer == 3){
-                b13.classList.add("disappear")
+                b13.classList.add("blood_disappear")
                 b13.remove();
             }
              if(length_computer == 2){
-                b12.classList.add("disappear")
+                b12.classList.add("blood_disappear")
                 b12.remove();
             }
             if(length_computer == 1){
-                b11.classList.add("disappear")
+                b11.classList.add("blood_disappear")
                 b11.remove();
             }
             gameover();
