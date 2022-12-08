@@ -1,10 +1,15 @@
 const start = document.querySelector(".start")
+const end = document.querySelector(".end")
+
 const all = document.querySelector(".bg")
+
 const scissors = document.querySelector(".scissors")
 const rock = document.querySelector(".rock")
 const paper = document.querySelector(".paper")
+
 const right = document.querySelector(".right")
 const left = document.querySelector(".left")
+
 const blood = document.querySelector(".blood")
 
 const b1 = document.querySelector(".b1")
@@ -23,9 +28,14 @@ var result;
 left.classList.add("disappear");
 right.classList.add("disappear");
 all.classList.add("disappear");
+end.classList.add("disappear");
 start.onclick = function(){
     all.classList.remove("disappear");
     start.classList.add("disappear");
+}
+end.onclick = function(){
+    // all.classList.add("disappear");
+    // end.classList.remove("disappear");
 }
 scissors.onclick = function(){
     left.classList.remove("disappear");
@@ -35,24 +45,22 @@ scissors.onclick = function(){
     left.innerHTML=`<img src="/./陳宇潔/image/scissors.png" class="img_scissors pic trans">`;
     if (enemy == 0){
         //他出 石頭 
-        console.log("輸")
         result = 1;
         console.log(result)
         right.innerHTML=`<img src="/./陳宇潔/image/rock.png" class="img_rock pic trans mirror">`;
         // blood.classList.remove("blood:nth(5)")
     }else if(enemy == 1){
         //他出 步
-        console.log("贏")
         result = 2;
         console.log(result)
         right.innerHTML=`<img src="/./陳宇潔/image/paper.png" class="img_paper pic trans mirror">`;
     }else{
         //他出剪刀
-        console.log("平手")
         result = 3;
         console.log(result)
         right.innerHTML=`<img src="/./陳宇潔/image/scissors.png" class="img_scissors pic trans mirror">`
     }
+    heart();
 }
 rock.onclick = function(){
     left.classList.remove("disappear");
@@ -62,23 +70,19 @@ rock.onclick = function(){
     left.innerHTML=`<img src="/./陳宇潔/image/rock.png" class="img_rock pic trans">`;
     if (enemy == 0){
         //他出 石頭
-        console.log("平手")
         result = 3;
-        console.log(result)
         right.innerHTML=`<img src="/./陳宇潔/image/rock.png" class="img_rock pic trans mirror">`;
     }else if(enemy == 1){
         //他出 步
-        console.log("輸")
         result = 1;
-        console.log(result)
         right.innerHTML=`<img src="/./陳宇潔/image/paper.png" class="img_paper pic trans mirror">`;
+        b5.classList.add("disappear");
     }else{
         //他出剪刀
-        console.log("贏")
         result = 2;
-        console.log(result)
         right.innerHTML=`<img src="/./陳宇潔/image/scissors.png" class="img_scissors pic trans mirror">`
     }
+    heart();
 }
 paper.onclick = function(){
     left.classList.remove("disappear");
@@ -88,39 +92,76 @@ paper.onclick = function(){
     left.innerHTML=`<img src="/./陳宇潔/image/paper.png" class="img_paper pic trans">`;
     if (enemy == 0){
         //他出 石頭
-        console.log("贏")
         result = 2;
-        console.log(result)
         right.innerHTML=`<img src="/./陳宇潔/image/rock.png" class="img_rock pic trans mirror">`;
     }else if(enemy == 1){
         //他出 步
-        console.log("平手")
         result = 3;
-        console.log(result)
         right.innerHTML=`<img src="/./陳宇潔/image/paper.png" class="img_paper pic trans mirror">`;
     }else{
         //他出剪刀
-        console.log("輸")
         result = 1;
-        console.log(result)
         right.innerHTML=`<img src="/./陳宇潔/image/scissors.png" class="img_scissors pic trans mirror">`
     }
+    heart();
 }
-
 function heart(){
-    switch(result){
-    case 1:
-        console.log("輸");
-        b5.classList.add("disappear")
-    break;
-    case 2:
+    let player = document.querySelectorAll('.player_blood > .blood');
+    let length_player = player.length;
+    let computer = document.querySelectorAll('.computer_blood > .blood');
+    let length_computer = computer.length;
+    console.log(length_player);
+    if(result == 1){
+         console.log("輸");
+            if(length_player == 5){
+                b5.classList.add("disappear")
+                b5.remove();
+                console.log(length_player);
+            }else if(length_player == 4){
+                b4.classList.add("disappear")
+                b4.remove();
+            }else if(length_player == 3){
+                b3.classList.add("disappear")
+                b3.remove();
+            }else if(length_player == 2){
+                b2.classList.add("disappear")
+                b2.remove();
+            }else if(length_player == 1){
+                b1.classList.add("disappear")
+                b1.remove();
+            }
+            gameover();
+    }else if(result == 2){
         console.log("贏");
-    break;
-    case 3:
+            if(length_computer == 5){
+                b15.classList.add("disappear")
+                b15.remove();
+            }
+             if(length_computer == 4){
+                b14.classList.add("disappear")
+                b14.remove();
+            }
+             if(length_computer == 3){
+                b13.classList.add("disappear")
+                b13.remove();
+            }
+             if(length_computer == 2){
+                b12.classList.add("disappear")
+                b12.remove();
+            }
+            if(length_computer == 1){
+                b11.classList.add("disappear")
+                b11.remove();
+            }
+            gameover();
+    }else{
         console.log("平手");
-    break;
-    default: 
-        console.log("else");
-    break;
+    }
+}
+function gameover(){
+    if(length_player == 0){
+        innerHTML=`你輸了！`;
+    }else if(length_computer == 0){
+        innerHTML=`你贏了！`;
     }
 }

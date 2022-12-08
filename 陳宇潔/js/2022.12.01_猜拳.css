@@ -1,7 +1,14 @@
 *{
     box-sizing: border-box;
 }
+body{
+    background-color: rgb(63, 59, 54);
+}
 .start{
+    display: flex;
+    justify-content: center;
+}
+.end{
     display: flex;
     justify-content: center;
 }
@@ -10,10 +17,15 @@
     height: 75px;
     font-size: 30px;
 }
+.end .btn{
+    width: 200px;
+    height: 75px;
+    font-size: 30px;
+}
 .bg{
     width: 100%;
     height: 941px;
-    background-color: antiquewhite;
+    background-color: rgb(211, 198, 182);
 
     border: 5px solid#000000;
     margin: 0 auto;
