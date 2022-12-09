@@ -87,7 +87,6 @@ body{
     width: 100px;
     height: 100%;
     background-image: url("/./陳宇潔/image/blood.png");
-    transition: 1s;
     opacity: 1;
 }
 .btn:hover{
@@ -178,5 +177,5 @@ body{
 }
 .blood_disappear{
     opacity: 0;
-    
+    transition: 0.5s;
 }

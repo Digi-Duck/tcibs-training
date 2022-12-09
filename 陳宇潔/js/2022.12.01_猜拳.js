@@ -115,53 +115,52 @@ function heart(){
          console.log("輸");
             if(length_player == 5){
                 b5.classList.add("blood_disappear")
-                b5.remove();
-                console.log(length_player);
+                setTimeout(() => b5.remove(), 500)
             }else if(length_player == 4){
                 b4.classList.add("blood_disappear")
-                b4.remove();
+                setTimeout(() => b4.remove(), 500)
             }else if(length_player == 3){
                 b3.classList.add("blood_disappear")
-                b3.remove();
+                setTimeout(() => b3.remove(), 500)
             }else if(length_player == 2){
                 b2.classList.add("blood_disappear")
-                b2.remove();
+                setTimeout(() => b2.remove(), 500)
             }else if(length_player == 1){
                 b1.classList.add("blood_disappear")
-                b1.remove();
+                setTimeout(() => b1.remove(), 500)
             }
-            gameover();
+            // gameover();
     }else if(result == 2){
         console.log("贏");
             if(length_computer == 5){
                 b15.classList.add("blood_disappear")
-                b15.remove();
+                setTimeout(() => b15.remove(), 500)
             }
              if(length_computer == 4){
                 b14.classList.add("blood_disappear")
-                b14.remove();
+                setTimeout(() => b14.remove(), 500)
             }
              if(length_computer == 3){
                 b13.classList.add("blood_disappear")
-                b13.remove();
+                setTimeout(() => b13.remove(), 500)
             }
              if(length_computer == 2){
                 b12.classList.add("blood_disappear")
-                b12.remove();
+                setTimeout(() => b12.remove(), 500)
             }
             if(length_computer == 1){
                 b11.classList.add("blood_disappear")
-                b11.remove();
+                setTimeout(() => b11.remove(), 500)
             }
-            gameover();
+            // gameover();
     }else{
         console.log("平手");
     }
 }
-function gameover(){
-    if(length_player == 0){
-        innerHTML=`你輸了！`;
-    }else if(length_computer == 0){
-        innerHTML=`你贏了！`;
-    }
-}
+// function gameover(){
+//     if(length_player == 0){
+//         innerHTML=`你輸了！`;
+//     }else if(length_computer == 0){
+//         innerHTML=`你贏了！`;
+//     }
+// }
