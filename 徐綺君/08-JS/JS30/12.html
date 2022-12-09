@@ -5,13 +5,75 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        body{
+            margin: 0;
+        }
+        .text1{
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-size: 80px;
+        }
+        .main{
+            width: 100%;
+            height: 100vh;
+            display: none;
+            background-image: url('./cat_img/duck.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .text{
+            display: block;
+            width: 100%;
+            position: absolute;
+            left: 0px;
+            top: calc(50% - 53px);
+            text-align: center;
+            font-size: 80px;
+            color: rgb(207, 205, 201);
+            text-shadow: 2px 2px rgb(88, 71, 51);
+        }
+        .block{
+            display: block;
+        }
+        .none{
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <script>
-        let text = [d,u,c,k];
+    <div class="text1">請輸入密碼(duck)</div>        
+    <div class="main">
+        <div class="text">答對了鴨!!!!</div>        
+    </div>
 
-        window.addEventListener('keydown',function(e){
+    <script>
+        const text = document.querySelector('.text1');
+        const box = document.querySelector('.main');
+        let pwset = ['d','u','c','k'];
+        let pw = [4];
+        let i = 0;
+
+
+        window.addEventListener('keyup',function(e){
             console.log(e.key);
+
+            if (i < 4) {
+                pw[i] = e.key;
+                i++;
+            }else{
+                i = 4;
+                for (let index = 0; index < 4; index++) {
+                    pw[index] = pw[index+1]                    
+                }
+                pw[3] = e.key;
+                if (JSON.stringify(pw) === JSON.stringify(pwset)) {
+                    box.classList.add('block');
+                    text.classList.add('none');
+                }
+            }
         })
     </script>
 </body>
