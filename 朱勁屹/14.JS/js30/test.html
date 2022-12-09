@@ -12,10 +12,16 @@
 <body>
     
     <script>
-        let a = 'fuck';
-
         
-        console.log(Array.from(a));
+        console.log('1a122n2'.match(/[0-9]/g,""));
+        
+        a = '1a122n2'.replace(/[^0-9]/ig," ");
+        console.log(a);
+        const paragraph = 'The quick brown fox jumps over the lazy dog. It barked.';
+        const regex = /[A-Z]/g;
+        const found = paragraph.match(regex);
+
+        console.log(found);
     </script>
 </body>
 </html>

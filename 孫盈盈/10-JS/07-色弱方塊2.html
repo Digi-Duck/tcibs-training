@@ -207,6 +207,10 @@
             //清空方塊
             clickArea.innerHTML = '';
 
+            area = num*100;
+            clickArea.style.width = `${area}px`;
+            clickArea.style.height = `${area}px`;
+
             w = 93/num;
             for (let i = 0; i < num * num; i++) {
                 clickArea.innerHTML += '<div class="click" style="width: ' + w + '%;height:' + w + '%;"></div>';
@@ -283,6 +287,7 @@
             start.classList.add('unactive');
             random();
 
+            timer.innerHTML = '60';  
             timeset()
         })
         function timeset(){
