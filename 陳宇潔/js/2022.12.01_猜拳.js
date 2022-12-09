@@ -1,5 +1,6 @@
 const start = document.querySelector(".start")
 const end = document.querySelector(".end")
+const frame = document.querySelector(".frame");
 
 const all = document.querySelector(".bg")
 
@@ -29,6 +30,7 @@ left.classList.add("disappear");
 right.classList.add("disappear");
 all.classList.add("disappear");
 end.classList.add("disappear");
+frame.classList.remove("frame");
 start.onclick = function(){
     all.classList.remove("disappear");
     start.classList.add("disappear");
@@ -46,18 +48,15 @@ scissors.onclick = function(){
     if (enemy == 0){
         //他出 石頭 
         result = 1;
-        console.log(result)
         right.innerHTML=`<img src="/./陳宇潔/image/rock.png" class="img_rock pic trans mirror">`;
         // blood.classList.remove("blood:nth(5)")
     }else if(enemy == 1){
         //他出 步
         result = 2;
-        console.log(result)
         right.innerHTML=`<img src="/./陳宇潔/image/paper.png" class="img_paper pic trans mirror">`;
     }else{
         //他出剪刀
         result = 3;
-        console.log(result)
         right.innerHTML=`<img src="/./陳宇潔/image/scissors.png" class="img_scissors pic trans mirror">`
     }
     heart();
@@ -110,7 +109,6 @@ function heart(){
     let length_player = player.length;
     let computer = document.querySelectorAll('.computer_blood > .blood');
     let length_computer = computer.length;
-    console.log(length_player);
     if(result == 1){
          console.log("輸");
             if(length_player == 5){
@@ -128,39 +126,47 @@ function heart(){
             }else if(length_player == 1){
                 b1.classList.add("blood_disappear")
                 setTimeout(() => b1.remove(), 500)
-            }
-            // gameover();
+                console.log(length_player)
+                length_player -= 1;
+            }  
+            gameover(length_player,length_computer); 
     }else if(result == 2){
         console.log("贏");
             if(length_computer == 5){
                 b15.classList.add("blood_disappear")
                 setTimeout(() => b15.remove(), 500)
-            }
-             if(length_computer == 4){
+            }else if(length_computer == 4){
                 b14.classList.add("blood_disappear")
                 setTimeout(() => b14.remove(), 500)
-            }
-             if(length_computer == 3){
+            }else if(length_computer == 3){
                 b13.classList.add("blood_disappear")
                 setTimeout(() => b13.remove(), 500)
-            }
-             if(length_computer == 2){
+            }else if(length_computer == 2){
                 b12.classList.add("blood_disappear")
                 setTimeout(() => b12.remove(), 500)
-            }
-            if(length_computer == 1){
+            }else if(length_computer == 1){
                 b11.classList.add("blood_disappear")
                 setTimeout(() => b11.remove(), 500)
+                length_computer -= 1;
             }
-            // gameover();
+            gameover(length_player,length_computer);
     }else{
         console.log("平手");
     }
 }
-// function gameover(){
-//     if(length_player == 0){
-//         innerHTML=`你輸了！`;
-//     }else if(length_computer == 0){
-//         innerHTML=`你贏了！`;
-//     }
-// }
+function gameover(length_player,length_computer){
+    if(length_player == 0){
+        setTimeout(() => all.classList.add("disappear"), 500)
+        setTimeout(() => end.classList.remove("disappear"), 500)
+        frame.classList.add("frame");
+        frame.innerHTML=`WIN`;
+    }else if(length_computer == 0){
+        setTimeout(() => all.classList.add("disappear"), 500)
+        setTimeout(() => end.classList.remove("disappear"), 500)
+        frame.classList.add("frame");
+        frame.innerHTML=`LOSE`;
+    }
+}
+end.onclick = function(){
+    window.location.reload();
+}
