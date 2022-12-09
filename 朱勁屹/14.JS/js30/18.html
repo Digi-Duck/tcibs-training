@@ -14,17 +14,31 @@
     <li data-time="1:10"></li>
     <li data-time="1:10"></li>
     <li data-time="1:10"></li>
-    <li data-time="1:10"></li>
+    <li data-time="1:0"></li>
 
     <script>
         let lis = document.querySelectorAll('li');
         let a;
-        lis.forEach(function (e) {
-            console.log(e.dataset.time);
-            a +=e.dataset.time;
-            // console.log(a);
+        let b = [];
+        let c = 0;
+        // 'lis'.match(/[0~9]+/);
+        // console.log();
+        let min = 0;
+        let sec = 0;
+        lis.forEach(function (e,index) {
+            n = e.dataset.time;
+            j = n.split(':');
+            b[index] = j;
+            // console.log(j);
         })
-        
+        b.forEach(function (e) {
+            min = min + parseInt(e[0]);
+            sec = sec + parseInt(e[1]);
+        })
+        console.log(min);
+        console.log(sec);
+        // z = b.reduce()
+        // console.log();
     </script>
 </body>
 </html>
