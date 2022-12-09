@@ -129,13 +129,18 @@
             timeBar.addEventListener('mousemove',move)
         })
 
+        timeBar.addEventListener('click',move)
+
         timeBar.addEventListener('mouseup',function(){
+            timeBar.removeEventListener('mousemove',move)
+        })
+        timeBar.addEventListener('mouseleave',function(){
             timeBar.removeEventListener('mousemove',move)
         })
 
         function move(e) {
-            let long = e.clientX - 273;
-            longTime = video.duration*long/1016.59;
+            let long = e.clientX - window.innerWidth*0.35/2;
+            longTime = video.duration * (long/(window.innerWidth*0.65));
             timeBtn.style = "width: calc("+long+"px);"
             video.currentTime = longTime;
         }

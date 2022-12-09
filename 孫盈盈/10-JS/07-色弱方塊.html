@@ -270,6 +270,8 @@
                         //清當前答案
                         click[randomAnswer].style.opacity = '1';
                         random()
+                    }else{
+                        random()
                     }
                 })
             })
@@ -281,6 +283,7 @@
             start.classList.add('unactive');
             random();
 
+            timeset()
         })
         function timeset(){
             let time = 60;
@@ -288,7 +291,7 @@
                 time = time - 1;
                 console.log(time);
                 if(time < 0){
-                    time = 0
+                    time = 0;
                     playing.classList.add('unactive');
                     ending.classList.remove('unactive');
                     total.innerHTML = grade;
