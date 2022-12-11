@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+        }
+        .bonkShiba{
+            width: 0px;
+            height: 0px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            /* transition: 4ms; */
+            /* background-image: url(../js30/shiba/bonkedFal.jpg); */
+            /* background-position: center;
+            background-size: cover; */
+            transform: scaleX(-1);
+            /* left: calc(); */
+            -webkit-user-select: none;
+        }
+        .center{
+            width: 1000px;
+            height: 700px;
+            border: 1px solid black;
+            margin: auto;
+            margin-top: 100px;
+            display: flex;
+            /* justify-content: space-around; */
+            flex-wrap: wrap;
+        }
+        .dogBox{
+            width: 33.3%;
+            height: 33.3%;
+            /* border: 0.5px solid black; */
+            /* background-color: black; */
+        }
+    </style>
+</head>
+<body>
+    <img class="bonkShiba" src="../js30/shiba/attak.png" alt="">
+    
+    <div class="center">
+        <!--  -->
+        <div class="dogBox">
+
+        </div>
+        <div class="dogBox">
+
+        </div>
+        <div class="dogBox">
+
+        </div>
+        <!--  -->
+        <!--  -->
+        <div class="dogBox">
+
+        </div>
+        <div class="dogBox">
+
+        </div>
+        <div class="dogBox">
+
+        </div>
+        <!--  -->
+        <!--  -->
+        <div class="dogBox">
+
+        </div>
+        <div class="dogBox">
+
+        </div>
+        <div class="dogBox">
+
+        </div>
+        <!--  -->
+    </div>
+
+    <script>
+        let bonkShiba = document.querySelector('.bonkShiba');
+
+        window.addEventListener('mousemove',function (e) {
+            // console.log(e.clientX);
+
+            if (e.clientX > window.innerWidth/2) {
+                bonkShiba.style = `
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                left: ${e.clientX}px;
+                top: ${e.clientY}px;
+                transform: scaleX(1);
+                `                
+            }else{
+                bonkShiba.style = `
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                left: calc(${e.clientX}px - 100px);
+                top: ${e.clientY}px;
+                transform: scaleX(-1);
+                `       
+            }
+        })
+        window.addEventListener('mousedown',function () {
+            bonkShiba.src = '../js30/shiba/bonkedFal.png';
+        })
+        window.addEventListener('mouseup',function () {
+            bonkShiba.src = '../js30/shiba/attak.png';
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+            background-color: gray;
+        }
+        .top{
+            width: 1000px;
+            /* height: 300px; */
+            border: 1px solid black;
+            margin: auto;
+            margin-top: 100px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .center{
+            width: 1000px;
+            height: 300px;
+            border: 1px solid black;
+            margin: auto;
+            /* margin-top: 100px; */
+            position: relative;
+        }
+        .title{
+            /* margin-top: 50px; */
+            font-size: 50px;
+            text-align: center;
+        }
+        .white{
+            background-color: white;
+            transition: 2s;
+            width: 0px;
+            height: 0px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .w1{
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            left: 0;
+        }
+        .w2{
+            width: 200px;
+            height: 100px;
+            position: absolute;
+            left: calc(50% - 100px);
+        }
+        .w3{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: calc(100% - 230px);
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <div class="title title1">4541</div>
+        <div class="title title2">744</div>
+        <div class="title title3">75441</div>
+    </div>
+    <div class="center">
+        <div class="white">
+
+        </div>
+    </div>
+    <script>
+
+        let title1 = document.querySelector('.title1');
+        let title2 = document.querySelector('.title2');
+        let title3 = document.querySelector('.title3');
+        let white = document.querySelector('.white');
+        let num = 0;
+        white.addEventListener('mouseover',function () {
+            num = 1;
+        })
+        white.addEventListener('mouseout',function () {
+            num = 0;
+            white.classList.remove('w1');
+            white.classList.remove('w2');
+            white.classList.remove('w3');
+        })
+        title1.addEventListener('mouseover',function () {
+            white.classList.add('w1');
+        })
+        title1.addEventListener('mouseout',function () {
+            setTimeout(function () {
+                if(num == 0){
+                    white.classList.remove('w1');
+                }
+                
+            },100)
+        })
+
+        title2.addEventListener('mouseover',function () {
+            white.classList.add('w2');
+        })
+        title2.addEventListener('mouseout',function () {
+            setTimeout(function () {
+                if(num == 0){
+                    white.classList.remove('w2');
+                }
+                
+            },100)
+        })
+
+        title3.addEventListener('mouseover',function () {
+            white.classList.add('w3');
+        })
+        title3.addEventListener('mouseout',function () {
+            console.log(num);
+            setTimeout(function () {
+                if(num == 0){
+                    white.classList.remove('w3');
+                }
+                
+            },100)
+        })
+    </script>
+</body>
+</html>
