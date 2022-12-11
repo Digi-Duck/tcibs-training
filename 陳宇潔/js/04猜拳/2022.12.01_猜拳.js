@@ -159,12 +159,12 @@ function gameover(length_player,length_computer){
         setTimeout(() => all.classList.add("disappear"), 500)
         setTimeout(() => end.classList.remove("disappear"), 500)
         frame.classList.add("frame");
-        frame.innerHTML=`WIN`;
+        frame.innerHTML=`LOSE`;
     }else if(length_computer == 0){
         setTimeout(() => all.classList.add("disappear"), 500)
         setTimeout(() => end.classList.remove("disappear"), 500)
         frame.classList.add("frame");
-        frame.innerHTML=`LOSE`;
+        frame.innerHTML=`WIN`;
     }
 }
 end.onclick = function(){
