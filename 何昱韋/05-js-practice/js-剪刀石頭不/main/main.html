@@ -8,11 +8,18 @@
     <title>THE 騙</title>
 </head>
 <body>
-    <div class="container container-decoration">
-        <div class="title text-72 set-in">剪刀石頭不</div>
+    <div class="game_start">
+        <div class="game_name text-96 set-in">猜拳</div>
+        <div class="start_game_button_region set-in">
+            <button type="button" class="game_start_button button-decorate text-36 set-in">gameStart</button>
+        </div>
+    </div>
+    <div class="container container-decoration display-none">
+        <div class="title text-72 set-in">剪刀石頭布</div>
         <div class="game_region">
             <div class="adversary-card w-40">
                 <p class="cardText text-48 set-in">你的對手</p>
+                <div class="ADgameProcess set-in text-36"></div>
                 <div class="adversaryPic set-in">
                     <img src="https://static-s.aa-cdn.net/img/gp/20600014351032/d-hjWhHCWknYs8xwsr0loWayviNqMoN8lUdxl49rvROgFq671EQSCUfK2-3kML7JZF0?v=1" alt="">
                 </div>
@@ -23,10 +30,11 @@
             </div>
             <div class="player-card w-40">
                 <p class="cardText text-48 set-in">YOU</p>
+                <div class="MYgameProcess set-in text-36"></div>
                 <div class="player-button-region set-in">
                     <button type="button" class="scissor-button button-decorate text-36">剪刀</button>
                     <button type="button" class="stone-button button-decorate text-36">石頭</button>
-                    <button type="button" class="cloth-button button-decorate text-36">不</button>
+                    <button type="button" class="cloth-button button-decorate text-36">布</button>
                 </div>
             </div>
         </div>

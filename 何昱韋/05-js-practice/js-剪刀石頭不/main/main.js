@@ -4,18 +4,25 @@ let game_region = document.querySelector(".game_region");
 let finish_win = document.querySelector(".finish_win");
 let finish_lose = document.querySelector(".finish_lose");
 let container = document.querySelector(".container");
+let ADGP = document.querySelector(".ADgameProcess");
+let MYGP = document.querySelector(".MYgameProcess");
+let tranbox = document.querySelector(".transition-box");
 
 function scissorBtn(){
     var selector = Math.floor(Math.random()*3);
+    MYGP.innerHTML = "你出 剪刀";
     if(selector == 0){
         console.log("lose");
         lose_index++;
+        ADGP.innerHTML = "出 石頭";
     }else if(selector == 1){
         console.log("win");
         win_index++;
+        ADGP.innerHTML = "出 布";
     }else if(selector == 2){
         console.log("equal");
         equal_index++;
+        ADGP.innerHTML = "出 剪刀";
     }
     round++;
     roundDisplay.innerHTML = "round" + round;
@@ -33,15 +40,19 @@ function scissorBtn(){
 }
 function stoneBtn(){
     var selector = Math.floor(Math.random()*3);
+    MYGP.innerHTML = "你出 石頭";
     if(selector == 0){
         console.log("lose");
         lose_index++;
+        ADGP.innerHTML = "出 布";
     }else if(selector == 1){
         console.log("win");
         win_index++;
+        ADGP.innerHTML = "出 剪刀";
     }else if(selector == 2){
         console.log("equal");
         equal_index++;
+        ADGP.innerHTML = "出 石頭";
     }
     round++;
     roundDisplay.innerHTML = "round" + round;
@@ -59,15 +70,19 @@ function stoneBtn(){
 }
 function clothBtn(){
     var selector = Math.floor(Math.random()*3);
+    MYGP.innerHTML = "你出 布";
     if(selector == 0){
         console.log("lose");
         lose_index++;
+        ADGP.innerHTML = "出 剪刀";
     }else if(selector == 1){
         console.log("win");
         win_index++;
+        ADGP.innerHTML = "出 石頭";
     }else if(selector == 2){
         console.log("equal");
         equal_index++;
+        ADGP.innerHTML = "出 布";
     }
     round++;
     roundDisplay.innerHTML = "round" + round;
@@ -91,4 +106,12 @@ scissor_btn.addEventListener("click",scissorBtn);
 stone_btn.addEventListener("click",stoneBtn);
 cloth_btn.addEventListener("click",clothBtn);
 
+// start
+let start_btn = document.querySelector(".game_start_button");
+let start_part = document.querySelector(".game_start");
 
+function start(){
+    start_part.classList.add("hidden");
+    container.classList.remove("display-none");
+}
+start_btn.addEventListener("click",start,);
