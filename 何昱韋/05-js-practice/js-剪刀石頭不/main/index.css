@@ -43,11 +43,6 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.hidden{
-    opacity: 0;
-    visibility: hidden;
-    z-index: -999;
-}
 .container-decoration{
     height: 100vh;
     background-image: url('https://static.wixstatic.com/media/28648b_060e4b3f83124fe9a6e3e9ad27642dda~mv2_d_3500_1440_s_2.jpg/v1/fill/w_1633,h_919,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/28648b_060e4b3f83124fe9a6e3e9ad27642dda~mv2_d_3500_1440_s_2.jpg');
@@ -64,6 +59,27 @@
 .adversaryPic{
     padding: 10%;
 }
+
+.blood_region{
+    width: 100%;
+    height: 80px;
+    padding: 2% 5%;
+    margin: auto;
+}
+.wrap{
+    width: 60%;
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    justify-self: left;
+}
+.hp{
+    width: 33.333%;
+    height: 100%;
+    background-color: #e30906;
+    transition: 1s;
+}
+
 .button-decorate{
     padding: 10px;
     margin: 25px;

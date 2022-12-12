@@ -8,6 +8,13 @@ let ADGP = document.querySelector(".ADgameProcess");
 let MYGP = document.querySelector(".MYgameProcess");
 let tranbox = document.querySelector(".transition-box");
 
+let ADhp1 = document.querySelector(".ADhp1");
+let ADhp2 = document.querySelector(".ADhp2");
+let ADhp3 = document.querySelector(".ADhp3");
+let MYhp1 = document.querySelector(".MYhp1");
+let MYhp2 = document.querySelector(".MYhp2");
+let MYhp3 = document.querySelector(".MYhp3");
+
 function scissorBtn(){
     var selector = Math.floor(Math.random()*3);
     MYGP.innerHTML = "你出 剪刀";
@@ -24,6 +31,18 @@ function scissorBtn(){
         equal_index++;
         ADGP.innerHTML = "出 剪刀";
     }
+
+    if(win_index == 1){
+        ADhp3.style.width = 0;
+    }else if(win_index == 2){
+        ADhp2.style.width = 0;
+    }
+    if(lose_index == 1){
+        MYhp3.style.width = 0;
+    }else if(lose_index == 2){
+        MYhp2.style.width = 0;
+    }
+
     round++;
     roundDisplay.innerHTML = "round" + round;
     if(win_index == 3){
@@ -54,6 +73,18 @@ function stoneBtn(){
         equal_index++;
         ADGP.innerHTML = "出 石頭";
     }
+
+    if(win_index == 1){
+        ADhp3.style.width = 0;
+    }else if(win_index == 2){
+        ADhp2.style.width = 0;
+    }
+    if(lose_index == 1){
+        MYhp3.style.width = 0;
+    }else if(lose_index == 2){
+        MYhp2.style.width = 0;
+    }
+
     round++;
     roundDisplay.innerHTML = "round" + round;
     if(win_index == 3){
@@ -84,6 +115,18 @@ function clothBtn(){
         equal_index++;
         ADGP.innerHTML = "出 布";
     }
+
+    if(win_index == 1){
+        ADhp3.style.width = 0;
+    }else if(win_index == 2){
+        ADhp2.style.width = 0;
+    }
+    if(lose_index == 1){
+        MYhp3.style.width = 0;
+    }else if(lose_index == 2){
+        MYhp2.style.width = 0;
+    }
+    
     round++;
     roundDisplay.innerHTML = "round" + round;
     if(win_index == 3){
@@ -111,7 +154,7 @@ let start_btn = document.querySelector(".game_start_button");
 let start_part = document.querySelector(".game_start");
 
 function start(){
-    start_part.classList.add("hidden");
+    start_part.classList.add("display-none");
     container.classList.remove("display-none");
 }
 start_btn.addEventListener("click",start,);
