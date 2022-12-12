@@ -9,6 +9,14 @@
         body{
             margin: 0px;
         }
+        .top{
+            width: 100%;
+            height: 200px;
+            background-color: gray;
+            font-size: 100px;
+            text-align: center;
+            line-height: 200px;
+        }
         .bonkShiba{
             width: 0px;
             height: 0px;
@@ -22,66 +30,132 @@
             transform: scaleX(-1);
             /* left: calc(); */
             -webkit-user-select: none;
+            z-index: 99;
         }
         .center{
             width: 1000px;
             height: 700px;
-            border: 1px solid black;
+            /* border: 1px solid black; */
             margin: auto;
-            margin-top: 100px;
+            margin-top: 50px;
             display: flex;
             /* justify-content: space-around; */
             flex-wrap: wrap;
+            
         }
         .dogBox{
             width: 33.3%;
             height: 33.3%;
             /* border: 0.5px solid black; */
             /* background-color: black; */
+            position: relative;
+        }
+        .hole{
+            width: 70%;
+            height: 30%;
+            background-image: url(../js30/shiba/hole.png);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            /* margin: auto; */
+            position: absolute;
+            left: calc(50% - 117px);
+            bottom: 0;
+        }
+        .shiba{
+            width: 50%;
+            height: 0%;
+            background-image: url(../js30/shiba/shiba.png);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: absolute;
+            left: calc(50% - 83px) ;
+            bottom: 30px;
+            transition: 1s;
         }
     </style>
 </head>
 <body>
     <img class="bonkShiba" src="../js30/shiba/attak.png" alt="">
-    
+    <div class="top">
+        BONK
+    </div>
     <div class="center">
         <!--  -->
-        <div class="dogBox">
-
+        <div class="dogBox" >
+            <div class="shiba"></div>
+            <div class="hole"></div>
         </div>
         <div class="dogBox">
-
+            <div class="shiba"></div>
+            <div class="hole"></div>
         </div>
         <div class="dogBox">
-
-        </div>
-        <!--  -->
-        <!--  -->
-        <div class="dogBox">
-
-        </div>
-        <div class="dogBox">
-
-        </div>
-        <div class="dogBox">
-
+            <div class="shiba"></div>
+            <div class="hole"></div>
         </div>
         <!--  -->
         <!--  -->
         <div class="dogBox">
-
+            <div class="shiba"></div>
+            <div class="hole"></div>
         </div>
         <div class="dogBox">
-
+            <div class="shiba"></div>
+            <div class="hole"></div>
         </div>
         <div class="dogBox">
-
+            <div class="shiba"></div>
+            <div class="hole"></div>
+        </div>
+        <!--  -->
+        <!--  -->
+        <div class="dogBox">
+            <div class="shiba"></div>
+            <div class="hole"></div>
+        </div>
+        <div class="dogBox">
+            <div class="shiba"></div>
+            <div class="hole"></div>
+        </div>
+        <div class="dogBox">
+            <div class="shiba"></div>
+            <div class="hole"></div>
         </div>
         <!--  -->
     </div>
 
     <script>
         let bonkShiba = document.querySelector('.bonkShiba');
+        const dogBox = document.querySelectorAll('.dogBox');
+        let shiba = document.querySelectorAll('.shiba');
+
+        time = 500;
+
+        b = Math.floor(Math.random()*8);
+        a = Math.floor(Math.random()*800 + 300);
+        t = Math.floor(Math.random()*800 + 300)+ a;  
+        setInterval(function () {
+            // console.log(a);
+            
+            // console.log(b);
+            c = a - 100;
+            shiba[b].style = 'height: 70%;';
+            
+            a = Math.floor(Math.random()*1200 + 100);
+            // t = Math.floor(Math.random()*800)+ a;  
+            // console.log(a);
+        },a)
+            // time = 0;
+        setInterval(function () {
+            time = 0;
+            shiba[b].style = 'height: 0%;';
+            // console.log(b);
+            // console.log(a);
+            b = Math.floor(Math.random()*8);
+        }, a + time);
+
 
         window.addEventListener('mousemove',function (e) {
             // console.log(e.clientX);
