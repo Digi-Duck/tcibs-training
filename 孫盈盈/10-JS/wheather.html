@@ -5,10 +5,89 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body, html{
+            margin: 0 ;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .all{
+            display: flex;
+            flex-wrap: wrap;
+
+            width: 100%;
+            height: 100%;
+
+            padding: 50px;
+            padding-bottom: 0;
+
+            background-color: rgb(127, 187, 255);
+            box-sizing: border-box;
+        }
+        .card{
+            display: flex;
+            flex-wrap: wrap;
+            
+            width: 18%;
+            height: 50%;
+
+            background-color: rgb(255, 255, 255);
+        }
+        .frame{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 100%;
+        }
+        .img{
+            width: 100%;
+            height: 40%;
+
+            background-image:url('./02-img/雨天.png') ;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        p{
+            margin: 5px 0;
+            
+            font-size: 25px;
+            font-weight: bolder;
+        }
+    </style>
 </head>
 <body>
-
-    時間
+    <div class="all">
+        <div class="card">
+            <div class="time-frame frame">
+                <p class="time">2022/05/30</p>
+            </div>
+            <div class="img"></div>
+            <div class="area frame">
+                <p class="area">台中市</p>
+            </div>
+            <div class="temp frame">
+                <div class="high-temp-frame frame">
+                    <p class="font">最高溫:</p>
+                    <p class="high-temp">37</p>
+                </div>
+                <div class="low-temp-frame frame">
+                    <p class="font">最低溫:</p>
+                    <p class="low-temp">36</p>
+                </div>
+            </div>
+            <div class="comfort-frame frame">
+                <p class="font">舒適度:</p>
+                <p class="comfort">36</p>
+            </div>
+            <div class="rain-frame frame">
+                <p class="font">降雨機率:</p>
+                <p class="rain">50%</p>
+            </div>
+        </div>
+    </div>
+    <!-- 時間
     地區
     圖片
     最高溫~最低溫
@@ -18,12 +97,35 @@
     21%~40% 陰天
     41%~60% 下雨
     60%~100% 雷雨
-    https://opendata.cwb.gov.tw/api/v1/rest/datastore/W-C0033-001?Authorization=CWB-AD3A294A-5F1F-4950-B305-D2187793B3A0
+    https://opendata.cwb.gov.tw/api/v1/rest/datastore/W-C0033-001?Authorization=CWB-AD3A294A-5F1F-4950-B305-D2187793B3A0 -->
     <script>
+        const time = document.querySelector('.time');
+        const img = document.querySelector('.img');
+        const highTemp = document.querySelector('.high-temp');
+        const lowTemp = document.querySelector('.low-temp');
+        const comfort = document.querySelector('.comfort');
+        const rain = document.querySelector('.rain');
+
         fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/W-C0033-001?Authorization=CWB-AD3A294A-5F1F-4950-B305-D2187793B3A0')
         .then(function(response){
             return 
         })
+
+        let rains = 35;
+        if( rains >= 0){
+            rain.innerHTML = `${rains}%`;
+            if(20 >= rains){
+                img.style.backgroundImage = 'url("./02-img/太陽.png")';
+            }else if(40 >= rains){
+                img.style.backgroundImage = 'url("./02-img/陰天.png")';
+            }else if(60 >= rains){
+                img.style.backgroundImage = 'url("./02-img/雨天.png")';
+            }else{
+                img.style.backgroundImage = 'url("./02-img/雷雨.png")';
+            }
+        }else{
+            rain.innerHTML = '無';
+        }
     </script>
 </body>
 </html>
