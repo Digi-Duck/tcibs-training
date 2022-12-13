@@ -154,7 +154,15 @@ let start_btn = document.querySelector(".game_start_button");
 let start_part = document.querySelector(".game_start");
 
 function start(){
-    start_part.classList.add("display-none");
-    container.classList.remove("display-none");
+    let starttext = document.querySelector(".starttext");
+    let box = document.querySelector(".box");
+    box.classList.add("become");
+    starttext.innerHTML = "GAMESTART";
+    setTimeout(() => {
+        start_part.classList.add("display-none");
+        container.classList.remove("display-none");
+    }, 3000)
+    // start_part.classList.add("display-none");
+    // container.classList.remove("display-none");
 }
-start_btn.addEventListener("click",start,);
+start_btn.addEventListener("click",start);
