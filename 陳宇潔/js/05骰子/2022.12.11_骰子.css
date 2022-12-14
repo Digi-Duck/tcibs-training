@@ -1,5 +1,6 @@
 *{
     box-sizing: border-box;
+    opacity: 1;
 }
 body{
     background-color: rgb(102, 96, 89);
@@ -23,7 +24,8 @@ body{
     flex-wrap: wrap;
     justify-content: space-between;
 
-    transition: 0.5s;
+    opacity: 1;
+    transition: 1s;
 }
 .start{
     display: flex;
@@ -134,4 +136,7 @@ body{
 }
 .final{
     transition: 1s;
+}
+.disappear{
+    display: none;
 }
