@@ -15,7 +15,8 @@
             background-color: gray;
             font-size: 100px;
             text-align: center;
-            line-height: 200px;
+            /* line-height: 200px; */
+            -webkit-user-select: none;
         }
         .bonkShiba{
             width: 0px;
@@ -37,7 +38,7 @@
             height: 700px;
             /* border: 1px solid black; */
             margin: auto;
-            margin-top: 50px;
+            margin-top: 0px;
             display: flex;
             /* justify-content: space-around; */
             flex-wrap: wrap;
@@ -61,6 +62,7 @@
             position: absolute;
             left: calc(50% - 117px);
             bottom: 0;
+            z-index: 99;
         }
         .shiba{
             width: 50%;
@@ -70,56 +72,122 @@
             background-size: cover;
             background-repeat: no-repeat;
             position: absolute;
+            
             left: calc(50% - 83px) ;
             bottom: 30px;
             transition: 1s;
         }
+        .bonk{
+           width: 70%;
+           height: 70%;
+           background-image: url(../js30/shiba/bonk100.jpg); 
+           background-size: contain;
+           background-position: center;
+           position: absolute;
+           background-repeat: no-repeat;
+           bottom: 10px;
+           left: calc(50% - 110px);
+           z-index: 99;
+           display: none;
+        }
+        .grade{
+            width: 400px;
+            height: 100px;
+            position: absolute;
+            top: 200px;
+            font-size: 100px;
+            text-align: center;
+        }
+        .time{
+            width: 400px;
+            height: 100px;
+            position: absolute;
+            top: 400px;
+            font-size: 100px;
+            text-align: center;
+        }
+        .start{
+            width: 300px;
+            height: 100px;
+            position: absolute;
+            top: 700px;
+            left: 50px;
+            font-size: 70px;
+            text-align: center;
+        }
+        .finish{
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(62, 135, 87, 0.566);
+            z-index: 100;
+            font-size: 100px;
+            text-align: center;
+            line-height: 600px;
+            display: none;
+        }
     </style>
 </head>
 <body>
+    
     <img class="bonkShiba" src="../js30/shiba/attak.png" alt="">
     <div class="top">
         BONK
     </div>
+    <div class="finish"></div>
+    <button class="start">開始</button>
+    <div class="time"></div>
+    <div class="grade"></div>
     <div class="center">
         <!--  -->
         <div class="dogBox" >
+            <div class="bonk"></div>
             <div class="shiba"></div>
             <div class="hole"></div>
         </div>
         <div class="dogBox">
+            <div class="bonk"></div>
             <div class="shiba"></div>
             <div class="hole"></div>
         </div>
         <div class="dogBox">
-            <div class="shiba"></div>
-            <div class="hole"></div>
-        </div>
-        <!--  -->
-        <!--  -->
-        <div class="dogBox">
-            <div class="shiba"></div>
-            <div class="hole"></div>
-        </div>
-        <div class="dogBox">
-            <div class="shiba"></div>
-            <div class="hole"></div>
-        </div>
-        <div class="dogBox">
+            <div class="bonk"></div>
             <div class="shiba"></div>
             <div class="hole"></div>
         </div>
         <!--  -->
         <!--  -->
         <div class="dogBox">
+            <div class="bonk"></div>
             <div class="shiba"></div>
             <div class="hole"></div>
         </div>
         <div class="dogBox">
+            <div class="bonk"></div>
             <div class="shiba"></div>
             <div class="hole"></div>
         </div>
         <div class="dogBox">
+            <div class="bonk"></div>
+            <div class="shiba"></div>
+            <div class="hole"></div>
+        </div>
+        <!--  -->
+        <!--  -->
+        <div class="dogBox">
+            <div class="bonk"></div>
+            <div class="shiba"></div>
+            <div class="hole"></div>
+        </div>
+        <div class="dogBox">
+            <div class="bonk"></div>
+            <div class="shiba"></div>
+            <div class="hole"></div>
+        </div>
+        <div class="dogBox">
+            <div class="bonk"></div>
             <div class="shiba"></div>
             <div class="hole"></div>
         </div>
@@ -130,31 +198,82 @@
         let bonkShiba = document.querySelector('.bonkShiba');
         const dogBox = document.querySelectorAll('.dogBox');
         let shiba = document.querySelectorAll('.shiba');
+        let bonk = document.querySelectorAll('.bonk');
+        let grade = document.querySelector('.grade');
+        let gameTime = document.querySelector('.time');
+        let start = document.querySelector('.start');
+        let finish = document.querySelector('.finish');
+        let gra = 0;
+        let gTime = 20;
 
+        grade.innerHTML = gra+'分';
+        gameTime.innerHTML = gTime+'秒';
+
+        secTime = 200;
         time = 500;
 
-        b = Math.floor(Math.random()*8);
-        a = Math.floor(Math.random()*800 + 300);
-        t = Math.floor(Math.random()*800 + 300)+ a;  
-        setInterval(function () {
-            // console.log(a);
+        cTime = 0;
+
+        finish.addEventListener('click',function () {
+            location.reload();
+        })
+
+        start.addEventListener('click',function () {
+            start.style = 'display:none;';
             
-            // console.log(b);
-            c = a - 100;
-            shiba[b].style = 'height: 70%;';
-            
-            a = Math.floor(Math.random()*1200 + 100);
-            // t = Math.floor(Math.random()*800)+ a;  
-            // console.log(a);
-        },a)
-            // time = 0;
-        setInterval(function () {
-            time = 0;
-            shiba[b].style = 'height: 0%;';
-            // console.log(b);
-            // console.log(a);
+            setInterval(function () {
+                
+                console.log(gTime);
+                gameTime.innerHTML = gTime+'秒';
+                if(gTime < 1){
+                    finish.style = 'display:block;';
+                    finish.innerHTML = '你拿了'+gra+'分';
+                }else{
+                    gTime--;
+                }
+            },1000)
+            let e;
             b = Math.floor(Math.random()*8);
-        }, a + time);
+            a = Math.floor(Math.random()*1200 + 900);
+            
+            let remain;
+            setInterval(function () {
+                // console.log(a);
+                
+                // console.log(b);
+                c = a - 100;
+                shiba[b].style = 'height: 70%;';
+                e = b ;
+                shiba[e].addEventListener('click',function () {
+                    bonk[e].style = 'display: block;';
+                    gra++;
+                    grade.innerHTML = gra+'分';
+
+                })
+                a = Math.floor(Math.random()*1200 + 900);
+                // t = Math.floor(Math.random()*800)+ a;  
+                // console.log(a);
+            },a)
+                // time = 0;
+            setInterval(async function () {
+                
+                time = 0;
+                shiba[b].style = 'height: 0%;';
+                // console.log(b);
+                // console.log(a);
+                b = Math.floor(Math.random()*8);
+                
+            }, a + time);
+    
+            setInterval(function () {
+                secTime = 0;
+                bonk.forEach(function (e) {
+                    e.style = 'display: none;';
+                    
+                })
+    
+            }, a + time + secTime)
+        })
 
 
         window.addEventListener('mousemove',function (e) {
@@ -164,8 +283,8 @@
                 bonkShiba.style = `
                 width: 100px;
                 height: 100px;
-                position: absolute;
-                left: ${e.clientX}px;
+                position: fixed;
+                left: calc(${e.clientX}px + 10px);
                 top: ${e.clientY}px;
                 transform: scaleX(1);
                 `                
@@ -173,11 +292,11 @@
                 bonkShiba.style = `
                 width: 100px;
                 height: 100px;
-                position: absolute;
+                position: fixed;
                 left: calc(${e.clientX}px - 100px);
                 top: ${e.clientY}px;
                 transform: scaleX(-1);
-                `       
+                `
             }
         })
         window.addEventListener('mousedown',function () {
@@ -187,6 +306,11 @@
             bonkShiba.src = '../js30/shiba/attak.png';
 
         })
+        function delay(n){
+            return new Promise(function(resolve){
+                setTimeout(resolve,n*1000);
+            });
+        }
     </script>
 </body>
 </html>
