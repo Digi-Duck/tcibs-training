@@ -29,7 +29,7 @@
         .content{
             margin: auto;
             width: 400px;
-            height: 600px;
+            min-height: 600px;
             background-color: rgb(223, 211, 198);
             box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.384);
             display: flex;
@@ -100,24 +100,7 @@
         <div class="black">
             <div class="content">
                 <ul>
-                    <!-- <li>
-                        <div class="box">
-                            <div class="check click"></div>123
-                        </div>
-                        <i class="fa-solid fa-xmark"></i>
-                    </li>
-                    <li>
-                        <div class="box">
-                            <div class="check"></div>duck
-                        </div>
-                        <i class="fa-solid fa-xmark"></i>
-                    </li>
-                    <li>
-                        <div class="box">
-                            <div class="check"></div>duck
-                        </div>
-                        <i class="fa-solid fa-xmark"></i>
-                    </li> -->
+
                 </ul>
                 <div class="bottom">
                     <input class="input" type="text"><div class="button">增加</div>                    
@@ -131,9 +114,58 @@
         const input = document.querySelector('.input');
         const btn = document.querySelector('.button');
         let check = document.querySelectorAll('.check');
+        let remove = document.querySelectorAll('.remove');
+        let i = 0;
+        let j = 0;
+        let list = [];
+        // let click = [];
 
-        btn.addEventListener('click',function(){
+        window.onload = function(){
+            if (JSON.parse(localStorage.getItem('li'))) {
+                list = JSON.parse(localStorage.getItem('li'));
+                
+                list.forEach(function(li){
+                    ul.innerHTML += `
+                    <li>
+                        <div class="box">
+                            <div class="check"></div>${li}
+                        </div>
+                        <i class="remove fa-solid fa-xmark"></i>
+                    </li>`
+
+                    i = list.length;
+                    check = document.querySelectorAll('.check');
+                    remove = document.querySelectorAll('.remove');
+
+                    check.forEach(function(checkbox){
+                        checkbox.addEventListener('click',function(){
+                            checkbox.classList.toggle('click');                 
+                        })
+                    })
+
+                    remove.forEach(function(removebox){
+                        removebox.addEventListener('click',function(){              
+                            removebox.remove()
+                        })
+                    })
+                });           
+            }
+        }
+
+
+        btn.addEventListener('click',listadd)
+
+        input.addEventListener('keydown',function(e){
+            if(e.key == 'Enter'){
+                listadd();
+            }
+        })
+       
+        function listadd() {
             let value = input.value;
+            list[i] = value;
+            i++;            
+            localStorage.setItem('li',JSON.stringify(list));
             ul.innerHTML += `
             <li>
                 <div class="box">
@@ -143,16 +175,26 @@
             </li>`
 
             check = document.querySelectorAll('.check');
-            console.log(check);
-     
-        })
+            remove = document.querySelectorAll('.remove');
 
-        check.forEach(function(check){
-            ul.addEventListener('click',function(){
-                check.classList.toggle('click');
-                console.log(1);
+            check.forEach(function(checkbox){
+                checkbox.addEventListener('click',function(){              
+                    checkbox.classList.toggle('click');
+                })
             })
-        })       
+
+            remove.forEach(function(removebox){
+                removebox.addEventListener('click',function(){              
+                    ul.innerHTML -= `
+                    <li>
+                        <div class="box">
+                            <div class="check"></div>${value}
+                        </div>
+                        <i class="fa-solid fa-xmark"></i>
+                    </li>`
+                })
+            })
+        }
 
     </script>
 </body>
