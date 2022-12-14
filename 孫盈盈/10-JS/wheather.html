@@ -64,7 +64,7 @@
                 <p class="time">2022/05/30</p>
             </div>
             <div class="img"></div>
-            <div class="area frame">
+            <div class="area-frame frame">
                 <p class="area">台中市</p>
             </div>
             <div class="temp frame">
@@ -99,18 +99,30 @@
     60%~100% 雷雨
     https://opendata.cwb.gov.tw/api/v1/rest/datastore/W-C0033-001?Authorization=CWB-AD3A294A-5F1F-4950-B305-D2187793B3A0 -->
     <script>
+        const card = document.querySelector('.card');
         const time = document.querySelector('.time');
         const img = document.querySelector('.img');
+        const area = document.querySelector('.area');
         const highTemp = document.querySelector('.high-temp');
         const lowTemp = document.querySelector('.low-temp');
         const comfort = document.querySelector('.comfort');
         const rain = document.querySelector('.rain');
 
-        fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/W-C0033-001?Authorization=CWB-AD3A294A-5F1F-4950-B305-D2187793B3A0')
+        console.log(card);
+        fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-71BFA974-BB32-477B-9B86-9D862699CEB5')
         .then(function(response){
-            return 
+            return response.json();
         })
+        .then(function(weather){
+            let city = weather.records.location;
 
+            city.forEach((location, index) => {
+                
+                cityName = location.locationName;
+                area.innerHTML = `${cityName}`;
+            });
+        });
+       
         let rains = 35;
         if( rains >= 0){
             rain.innerHTML = `${rains}%`;
