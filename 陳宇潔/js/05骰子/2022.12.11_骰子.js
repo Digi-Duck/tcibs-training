@@ -35,6 +35,7 @@ start.onclick = function(){
     // console.log(enermy_result);
     start.classList.add("disappear")
     re.classList.remove("disappear")
+    compare(me_result,enermy_result);
 }
 function vs(chracter){
     total = 0;
