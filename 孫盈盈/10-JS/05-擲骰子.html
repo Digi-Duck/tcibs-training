@@ -39,8 +39,13 @@
             bottom: 50px;
             right: calc(50% - 100px); */
         }
+        .dice-card{
+            display: flex;
+            width: 360px;
+            height: 100px;
+        }
         .dice{
-            width: 100px;
+            width: 120px;
             height: 100px;
 
             background-size: contain;
@@ -123,7 +128,7 @@
             let time = 4;
             const timeSet = setInterval(()=>{
                 time = time - 1;
-                console.log(time);
+                // console.log(time);
 
                 a = Math.floor(Math.random()*6) + 1;
                 run(a,b)
@@ -131,7 +136,7 @@
                 if(time < 0){
                     time = 0;
                     clearInterval(timeSet);
-                    console.log(a);
+                    // console.log(a);
                     return a;
                 }
                 
@@ -156,9 +161,21 @@
         }
         me.addEventListener('click', function(){    
             for(let i = 0;i < 10;i++){
-                    for(let i=0;i< 3;i++){ 
-                        meShow.innerHTML += `<div class="dice"></div>`;
-                    }
+                meShow.innerHTML += `<div class="dice-card"></div>`;
+            }
+            const diceCard = document.querySelectorAll('.dice-card');
+            diceCard.forEach((card)=>{
+                console.log(card);
+                for(let i=0;i< 3;i++){ 
+                    card.innerHTML += `<div class="dice"></div>`;
+                }
+            })
+            const Dcard = document.querySelectorAll('.dice'); 
+            Dcard.forEach((dice)=>{
+                let a = 0; 
+                runAni(a,dice);
+                console.log(a);
+            })
                     // let c = Math.floor(Math.random()*6) + 1;
                     // let d = Math.floor(Math.random()*6) + 1;
                     // let f = Math.floor(Math.random()*6) + 1;
@@ -175,14 +192,14 @@
                     
                     // meShow.innerHTML += run(a, e)+run(c, e)+run(d, e) + menum + '<br>';
                     // youShow.innerHTML += run(f, e)+run(g, e)+run(h, e) + younum + '<br>';
-                    const meShower = document.querySelectorAll('.dice');
+                    // const meShower = document.querySelectorAll('.dice');
     
-                    meShower.forEach((some) => {
-                        let a = 0; 
-                        runAni(a,some);
+                    // meShower.forEach((some) => {
+                    //     let a = 0; 
+                    //     runAni(a,some);
                           
-                    });
-                }
+                    // });
+                
 
            console.log(meCount,youCount);
 
