@@ -1,46 +1,68 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <meta charset="utf-8"/>
-        <meta name="author" content="http://www.softwhy.com/" />
-        <title>視窗登陸效果-螞蟻部落</title>
-        <style type="text/css">
-            #win
-            {
-            position:relative;
-            width:100px;
-            height:100px;
-            background-color:#666;
-            }
-            </style>
-            <script type="text/javascript"> 
-            var a=['top','left'];
-            var b=0; 
-            var u;
-            function fudu()
-            { 
-            win.style[a[b%2]]=(b++)%4<2?"0px":"4px"; 
-            if(b>15)
-            {
-                clearInterval(u);
-                b=0
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .class{
+            width: 100px;
+            height: 100px;
+
+            background-image: url('./02-img/骰子1.png');
+            background-size: contain;
+        }
+    </style>
+</head>
+<body>
+    <div class="class"></div>
+    
+    <script>
+        let a = 0;
+        let b = 0;
+        let r;
+
+        
+        let c = document.querySelector('.class');
+
+        console.log(c);
+        function runAni(a,b){
+            let time = 6;
+            const timeSet = setInterval(()=>{
+                time = time - 1;
+
+                a = Math.floor(Math.random()*6) + 1;
+                console.log(a);
+                run(a,b)
+                
+                if(time < 0){
+                    time = 0;
+                    clearInterval(timeSet);
+
+                }
+                
+            },100);
+        }
+        function run(a, b){
+            if(a == 1){
+                b.style.backgroundImage = `url('./02-img/骰子1.png')`;
+            }else if(a == 2){
+                b.style.backgroundImage = `url('./02-img/骰子2.png')`;
+            }else if(a == 3){
+                b.style.backgroundImage = `url('./02-img/骰子3.png')`;
+            }else if(a == 4){
+                b.style.backgroundImage = `url('./02-img/骰子4.png')`;
+            }else if(a == 5){
+                b.style.backgroundImage = `url('./02-img/骰子5.png')`;
+            }else{
+                b.style.backgroundImage = `url('./02-img/骰子6.png')`;
             } 
-            }
-            function zd()
-            {
-            clearInterval(u); 
-            u=setInterval(fudu,32) 
-            } 
-            window.onload=function()
-            {
-            var bt=document.getElementById("bt");
-            var win=document.getElementById("win");
-            bt.onclick=zd;
-            }
-        </script> 
-    </head> 
-    <body > 
-        <button id="bt">點擊振動</button> 
-        <div id="win"></div> 
-    </body> 
+            
+            return b;
+        }
+        runAni(a,c)
+        runAni(b,c)
+    </script>
+</body>
 </html>

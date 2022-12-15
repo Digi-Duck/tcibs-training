@@ -38,6 +38,12 @@
             bottom: 50px;
             right: calc(50% - 100px); */
         }
+        .dice{
+            width: 100px;
+            height: 100px;
+
+            background-size: contain;
+        }
         .reset{
             width: 200px;
             height: 100px;
@@ -70,6 +76,7 @@
             width: 50%;
             text-align: center;
         }
+
         .active{
             display: none;
         }
@@ -110,27 +117,46 @@
         let meCount = [];
         let youCount = [];
 
+        function runAni(a,b){
+            let time = 3;
+            const timeSet = setInterval(()=>{
+                time = time - 1;
+                console.log(time);
+
+                a = Math.floor(Math.random()*6) + 1;
+                run(a,b)
+
+                if(time < 0){
+                    time = 0;
+                    clearInterval(timeSet);
+                }
+                
+            },100);
+        }
         function run(a, b){
             if(a == 1){
-                b = `<img src="./02-img/骰子1.png" alt="">`;
+                b.style.backgroundImage = `url('./02-img/骰子1.png')`;
             }else if(a == 2){
-                b = `<img src="./02-img/骰子2.png" alt="">`;
+                b.style.backgroundImage = `url('./02-img/骰子2.png')`;
             }else if(a == 3){
-                b = `<img src="./02-img/骰子3.png" alt="">`;
+                b.style.backgroundImage = `url('./02-img/骰子3.png')`;
             }else if(a == 4){
-                b = `<img src="./02-img/骰子4.png" alt="">`;
+                b.style.backgroundImage = `url('./02-img/骰子4.png')`;
             }else if(a == 5){
-                b = `<img src="./02-img/骰子5.png" alt="">`;
+                b.style.backgroundImage = `url('./02-img/骰子5.png')`;
             }else{
-                b = `<img src="./02-img/骰子6.png" alt="">`;
+                b.style.backgroundImage = `url('./02-img/骰子6.png')`;
             } 
-            
             
             return b;
         }
         me.addEventListener('click', function(){    
-            for($i = 0;$i < 10;$i++){
-                    let a = Math.floor(Math.random()*6) + 1;
+            for(let i = 0;i < 10;i++){
+                    for(let i=0;i< 3;i++){
+                        meShow.innerHTML += `<div class="dice"></div>`;
+                    }
+                    meShow += `<br>`;
+                    const meShower = document.querySelectorAll('.dice');
                     let c = Math.floor(Math.random()*6) + 1;
                     let d = Math.floor(Math.random()*6) + 1;
                     let f = Math.floor(Math.random()*6) + 1;
@@ -138,35 +164,40 @@
                     let h = Math.floor(Math.random()*6) + 1;
                     let e;
                     
-                    const menum = a + c + d;
-                    meCount.push(menum);
-                    meShow.innerHTML += run(a, e)+run(c, e)+run(d, e) + menum + '<br>';
+                    // const menum = a + c + d;
+                    // meCount.push(menum);
                     
-                    const younum = f + g + h;
-                    youCount.push(younum);
-                    youShow.innerHTML += run(f, e)+run(g, e)+run(h, e) + younum + '<br>';
+                    // const younum = f + g + h;
+                    // youCount.push(younum);
+                    
+                    meShower.forEach((some) => {
+                        let a = Math.floor(Math.random()*6) + 1;
+                        runAni(a,some)                      
+                    });
 
+                    // meShow.innerHTML += run(a, e)+run(c, e)+run(d, e) + menum + '<br>';
+                    // youShow.innerHTML += run(f, e)+run(g, e)+run(h, e) + younum + '<br>';
                 }
 
            console.log(meCount,youCount);
 
-           let mesum = meCount.reduce(
-            (accumulator, currentValue) => accumulator + currentValue
-            );
-            meLast.innerHTML = mesum;
+        //    let mesum = meCount.reduce(
+        //     (accumulator, currentValue) => accumulator + currentValue
+        //     );
+        //     meLast.innerHTML = mesum;
 
-            let yousum = youCount.reduce(
-            (accumulator, currentValue) => accumulator + currentValue
-            );
-            youLast.innerHTML = yousum;
+        //     let yousum = youCount.reduce(
+        //     (accumulator, currentValue) => accumulator + currentValue
+        //     );
+        //     youLast.innerHTML = yousum;
 
-            if(mesum == yousum){
-                race.innerHTML = '平手';
-            }else if(mesum > yousum){
-                race.innerHTML = '大獲全勝';
-            }else{
-                race.innerHTML = 'loser';
-            }
+            // if(mesum == yousum){
+            //     race.innerHTML = '平手';
+            // }else if(mesum > yousum){
+            //     race.innerHTML = '大獲全勝';
+            // }else{
+            //     race.innerHTML = 'loser';
+            // }
 
             me.classList.add('active');
             reset.classList.remove('active');

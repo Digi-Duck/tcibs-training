@@ -99,45 +99,46 @@
     60%~100% 雷雨
     https://opendata.cwb.gov.tw/api/v1/rest/datastore/W-C0033-001?Authorization=CWB-AD3A294A-5F1F-4950-B305-D2187793B3A0 -->
     <script>
-        const card = document.querySelector('.card');
-        const time = document.querySelector('.time');
-        const img = document.querySelector('.img');
-        const area = document.querySelector('.area');
-        const highTemp = document.querySelector('.high-temp');
-        const lowTemp = document.querySelector('.low-temp');
-        const comfort = document.querySelector('.comfort');
-        const rain = document.querySelector('.rain');
+        // const card = document.querySelector('.card');
+        // const time = document.querySelector('.time');
+        // const img = document.querySelector('.img');
+        // const area = document.querySelector('.area');
+        // const highTemp = document.querySelector('.high-temp');
+        // const lowTemp = document.querySelector('.low-temp');
+        // const comfort = document.querySelector('.comfort');
+        // const rain = document.querySelector('.rain');
 
+        
         console.log(card);
-        fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-71BFA974-BB32-477B-9B86-9D862699CEB5')
-        .then(function(response){
-            return response.json();
-        })
-        .then(function(weather){
-            let city = weather.records.location;
+        // fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-71BFA974-BB32-477B-9B86-9D862699CEB5')
+        // .then(function(response){
+        //     return response.json();
+        // })
+        // .then(function(weather){
+        //     let city = weather.records.location;
 
-            city.forEach((location, index) => {
+        //     city.forEach((location, index) => {
                 
-                cityName = location.locationName;
-                area.innerHTML = `${cityName}`;
-            });
-        });
+        //         cityName = location.locationName;
+        //         area.innerHTML = `${cityName}`;
+        //     });
+        // });
        
-        let rains = 35;
-        if( rains >= 0){
-            rain.innerHTML = `${rains}%`;
-            if(20 >= rains){
-                img.style.backgroundImage = 'url("./02-img/太陽.png")';
-            }else if(40 >= rains){
-                img.style.backgroundImage = 'url("./02-img/陰天.png")';
-            }else if(60 >= rains){
-                img.style.backgroundImage = 'url("./02-img/雨天.png")';
-            }else{
-                img.style.backgroundImage = 'url("./02-img/雷雨.png")';
-            }
-        }else{
-            rain.innerHTML = '無';
-        }
+        // let rains = 35;
+        // if( rains >= 0){
+        //     rain.innerHTML = `${rains}%`;
+        //     if(20 >= rains){
+        //         img.style.backgroundImage = 'url("./02-img/太陽.png")';
+        //     }else if(40 >= rains){
+        //         img.style.backgroundImage = 'url("./02-img/陰天.png")';
+        //     }else if(60 >= rains){
+        //         img.style.backgroundImage = 'url("./02-img/雨天.png")';
+        //     }else{
+        //         img.style.backgroundImage = 'url("./02-img/雷雨.png")';
+        //     }
+        // }else{
+        //     rain.innerHTML = '無';
+        // }
     </script>
 </body>
 </html>
