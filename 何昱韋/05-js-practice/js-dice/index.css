@@ -69,14 +69,137 @@
     width: 100%;
     height: calc(100% - 64px);
 }
-.box{
+.throw_btn_region{
+    margin-top: 30px;
+}
+.throw_btn_decorate{
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 2px solid rgb(240, 214, 12);
+    background-color: #fff;
+    color: rgb(253, 233, 12);
+    transition: 0.5s;
+}
+.throw_btn_decorate:hover{
+    color: #fff;
+    background-image: radial-gradient(100% 100% at 100% 0, #eff311 0, #eec212 100%);;
+    transform: translate(0,7.5px);
+}
+.game_result{
+    margin-top: 30px;
+}
+.dice_region_part{
+    width: 100%;
+    height: 90%;
+}
+.dice_region_decorate{
     width: 100%;
     height: 10%;
-    display: flex;
 }
-.boxxx{
-    width: 48px;
-    height: 48px;
-    margin: 1px;
-    background-color: aqua;
+
+
+
+
+/* ---dice_part--- */
+.dice_box{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dot{
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+/* dice1 */
+.dice1{
+    width: 42px;
+    height: 42px;
+    padding: 6px;
+    background-color: tomato;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* dice2 */
+.dice2{
+    width: 42px;
+    height: 42px;
+    padding: 6px;
+    background-color: tomato;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.dice2 .dot:nth-of-type(2){
+    align-self: flex-end;
+}
+/* dice3 */
+.dice3{
+    width: 42px;
+    height: 42px;
+    padding: 6px;
+    background-color: tomato;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.dice3 .dot:nth-of-type(2){
+    align-self: center;
+}
+.dice3 .dot:nth-of-type(3){
+    align-self: flex-end;
+}
+/* dice4 */
+.dice4{
+    width: 42px;
+    height: 42px;
+    padding: 6px;
+    background-color: tomato;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.dice4 .row{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* dice5 */
+.dice5{
+    width: 42px;
+    height: 42px;
+    padding: 6px;
+    background-color: tomato;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.dice5 .row{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.dice5 .row:nth-of-type(2){
+    justify-content: center;
+}
+/* dice6 */
+.dice6{
+    width: 42px;
+    height: 42px;
+    padding: 6px;
+    background-color: tomato;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.dice6 .row{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
