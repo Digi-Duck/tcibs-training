@@ -30,7 +30,7 @@ body{
 }
 .btn:hover{
     color: white;
-    background-color: rgb(187, 182, 174);
+    background-color: #a5a3a0;
 }
 .page_box{
     width: 100%
