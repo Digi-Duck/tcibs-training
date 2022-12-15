@@ -21,9 +21,10 @@
             font-weight: bolder;
             text-align: center;
         }
-        .random img{
-            width: 100px;
-            height: 100px;
+        .random{
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
             background-size: contain;
 
         }
@@ -43,6 +44,7 @@
             height: 100px;
 
             background-size: contain;
+            background-repeat:no-repeat ;
         }
         .reset{
             width: 200px;
@@ -118,7 +120,7 @@
         let youCount = [];
 
         function runAni(a,b){
-            let time = 3;
+            let time = 4;
             const timeSet = setInterval(()=>{
                 time = time - 1;
                 console.log(time);
@@ -129,6 +131,8 @@
                 if(time < 0){
                     time = 0;
                     clearInterval(timeSet);
+                    console.log(a);
+                    return a;
                 }
                 
             },100);
@@ -152,17 +156,15 @@
         }
         me.addEventListener('click', function(){    
             for(let i = 0;i < 10;i++){
-                    for(let i=0;i< 3;i++){
+                    for(let i=0;i< 3;i++){ 
                         meShow.innerHTML += `<div class="dice"></div>`;
                     }
-                    meShow += `<br>`;
-                    const meShower = document.querySelectorAll('.dice');
-                    let c = Math.floor(Math.random()*6) + 1;
-                    let d = Math.floor(Math.random()*6) + 1;
-                    let f = Math.floor(Math.random()*6) + 1;
-                    let g = Math.floor(Math.random()*6) + 1;
-                    let h = Math.floor(Math.random()*6) + 1;
-                    let e;
+                    // let c = Math.floor(Math.random()*6) + 1;
+                    // let d = Math.floor(Math.random()*6) + 1;
+                    // let f = Math.floor(Math.random()*6) + 1;
+                    // let g = Math.floor(Math.random()*6) + 1;
+                    // let h = Math.floor(Math.random()*6) + 1;
+                    // let e;
                     
                     // const menum = a + c + d;
                     // meCount.push(menum);
@@ -170,13 +172,16 @@
                     // const younum = f + g + h;
                     // youCount.push(younum);
                     
-                    meShower.forEach((some) => {
-                        let a = Math.floor(Math.random()*6) + 1;
-                        runAni(a,some)                      
-                    });
-
+                    
                     // meShow.innerHTML += run(a, e)+run(c, e)+run(d, e) + menum + '<br>';
                     // youShow.innerHTML += run(f, e)+run(g, e)+run(h, e) + younum + '<br>';
+                    const meShower = document.querySelectorAll('.dice');
+    
+                    meShower.forEach((some) => {
+                        let a = 0; 
+                        runAni(a,some);
+                          
+                    });
                 }
 
            console.log(meCount,youCount);
