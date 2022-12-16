@@ -39,7 +39,7 @@
             bottom: 50px;
             right: calc(50% - 100px); */
         }
-        .dice-card{
+        .card{
             display: flex;
             width: 360px;
             height: 100px;
@@ -121,14 +121,15 @@
         const lastFont =document.querySelector('.last-font');
         const race =document.querySelector('.race');
 
-        let meCount = [];
-        let youCount = [];
+        let cardArray = [];
+        let diceArray = [];
 
         function delay(n){
             return new Promise(function(resolve){
                 setTimeout(resolve,n*500);
             });
         }
+        let ccc;
         function runAni(a,b){
             let time = 4;
             const timeSet = setInterval(()=>{
@@ -136,13 +137,16 @@
                 // console.log(time);
 
                 a = Math.floor(Math.random()*6) + 1;
+                // b = Math.floor(Math.random()*6) + 1;
+                // c = Math.floor(Math.random()*6) + 1;
                 run(a,b)
 
                 if(time < 0){
                     time = 0;
                     clearInterval(timeSet);
                     // console.log(a);
-                    return a;
+                    ccc = a;
+                    // return a;
                 }
                 
             },100);
@@ -166,23 +170,33 @@
         }
         me.addEventListener('click',async function(){    
             for(let i = 0;i < 10;i++){
-                meShow.innerHTML += `<div class="dice-card"></div>`;
-            }
-            const diceCard = document.querySelectorAll('.dice-card');
-            diceCard.forEach(async function(card){
-                console.log(card);
-                for(let i=0;i< 3;i++){ 
-                    card.innerHTML += `<div class="dice"></div>`;
-                }
-                const Dcard = document.querySelectorAll('.dice'); 
-                Dcard.forEach(async(dice)=>{
-                    let a = 0; 
-                    runAni(a,dice);
-                    
-                    await delay(2);
-                    console.log(a);
+                meShow.innerHTML += `<div class="dice-card${i} card"></div>`;
+                
+                // console.log(cardArray);
+                const diceCard = document.querySelectorAll(`.dice-card${i}`);
+                // console.log(diceCard);
+
+                let aaa = [];
+                let bbb= [];
+
+                diceCard.forEach(async function(card,index){
+                    // console.log(card);
+                    for(let j=0;j< 3;j++){ 
+                        // aaa.push();
+                        card.innerHTML += `<div class="dice"></div>`;
+                    }
+                    diceCard[i] = document.querySelectorAll('.dice');
+                    const Dcard = document.querySelectorAll('.dice'); 
+                    Dcard.forEach((dice)=>{
+                        let a;
+                        runAni(a,dice);
+                        // console.log(runAni(a,dice));
+                        
+                        console.log(a);
+                    })
                 })
-            })
+                await delay(2);
+        }
             // Dcard.forEach(async(dice)=>{
             // })
                     // let c = Math.floor(Math.random()*6) + 1;
@@ -210,7 +224,7 @@
                     // });
                 
 
-           console.log(meCount,youCount);
+        //    console.log(meCount,youCount);
 
         //    let mesum = meCount.reduce(
         //     (accumulator, currentValue) => accumulator + currentValue
