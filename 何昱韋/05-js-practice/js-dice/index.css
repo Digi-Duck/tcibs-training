@@ -88,16 +88,13 @@
 .game_result{
     margin-top: 30px;
 }
-.dice_region_part{
+.AD_dice_region_part{
     width: 100%;
-    height: 90%;
 }
 .dice_region_decorate{
     width: 100%;
     height: 10%;
 }
-
-
 
 
 /* ---dice_part--- */

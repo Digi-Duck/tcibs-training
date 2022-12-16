@@ -13,6 +13,10 @@
             justify-content: center;
             align-items: center;
         }
+        .dice{
+            width: 48px;
+            height: 48px;
+        }
         .dot{
             display: block;
             width: 12px;
@@ -68,12 +72,9 @@
             background-color: tomato;
             border-radius: 5px;
             display: flex;
+
             justify-content: space-between;
-        }
-        .dice4 .row{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            flex-wrap: wrap;
         }
         /* dice5 */
         .dice5{
@@ -112,52 +113,38 @@
 </head>
 <body>
     <div class="dice_box">
-        <div class="dice1">
-            <span class="dot"></span>
+        <div class="dice dice1">
+            <div class="dot"></div>
         </div>
-        <div class="dice2">
-            <span class="dot"></span>
-            <span class="dot"></span>
+        <div class="dice dice2">
+            <div class="dot"></div>
+            <div class="dot"></div>
         </div>
-        <div class="dice3">
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+        <div class="dice dice3">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
         </div>
-        <div class="dice4">
-            <div class="row">
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
-            <div class="row">
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
+        <div class="dice dice4">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
         </div>
-        <div class="dice5">
-            <div class="row">
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
-            <div class="row">
-                <span class="dot"></span>
-            </div>
-            <div class="row">
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
+        <div class="dice dice5">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
         </div>
-        <div class="dice6">
-            <div class="row">
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
-            <div class="row">
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
+        <div class="dice dice6">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
         </div>
     </div>
 </body>

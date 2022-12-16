@@ -1,30 +1,29 @@
-let MY_dice_region1 = document.querySelector(".MY_dice_region_box1");
-let MY_dice_region2 = document.querySelector(".MY_dice_region_box2");
-let MY_dice_region3 = document.querySelector(".MY_dice_region_box3");
-let MY_dice_region4 = document.querySelector(".MY_dice_region_box4");
-let MY_dice_region5 = document.querySelector(".MY_dice_region_box5");
-let MY_dice_region6 = document.querySelector(".MY_dice_region_box6");
-let MY_dice_region7 = document.querySelector(".MY_dice_region_box7");
-let MY_dice_region8 = document.querySelector(".MY_dice_region_box8");
-let MY_dice_region9 = document.querySelector(".MY_dice_region_box9");
-let MY_dice_region10 = document.querySelector(".MY_dice_region_box10");
-
-let game_result = document.querySelector(".game_result");
-
-let dice_css = {
+const diceTemplate = {
+    1: document.querySelector("div.dice1").cloneNode(true),
+    2: document.querySelector("div.dice2").cloneNode(true),
+    3: document.querySelector("div.dice3").cloneNode(true),
+    4: document.querySelector("div.dice4").cloneNode(true),
+    5: document.querySelector("div.dice5").cloneNode(true),
+    6: document.querySelector("div.dice6").cloneNode(true),
 }
-
-function gameResult(){
-    var test = [ , , ];
-    for (var i=0;i<3;i++){
-        let num = Math.floor(Math.random()*6);
-        // math.ramdom --> 0,1,2,3,4,5;
-        test[i] = num;
-    }    
-
+function gameResult() {
+    let ADGameRegion = document.querySelector(".AD_dice_region_part");
+    let data = [];
+    let dataLen = 10;
+    for (let rowIndex = 0; rowIndex < dataLen; rowIndex += 1) {
+        let row = [];
+        for (let _ = 0; _ < 3; _ += 1){
+            let num = Math.floor(Math.random() * 6) + 1;
+            row.push(num);
+            ADGameRegion.appendChild(diceTemplate[num]);
+            console.log(diceTemplate[num]);
+        }
+        data[rowIndex] = row;
+    }
+    console.log(data);
 }
 
 let throw_btn = document.querySelector(".throw_btn");
-throw_btn.addEventListener("click",gameResult);
+throw_btn.addEventListener("click", gameResult);
 
 
