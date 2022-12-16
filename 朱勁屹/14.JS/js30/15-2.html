@@ -53,31 +53,25 @@
     </div>
 
     <script>
-        // localStorage.setItem(key, value);
+        let list = document.querySelector('.list');
         let btn = document.querySelector('.btn');
         let input = document.querySelector('.input');
-        let num = 1;
-        let list = document.querySelector('.list');
-        btn.addEventListener('click',function () {
-            
-            // console.log(1);
-            // console.log(input.value);
-            list.innerHTML = '';
-            localStorage.setItem(num,input.value);
+        let inputValue;
+        // localStorage.setItem(key, value);
 
+        a = [];
+        b = [];
+
+        btn.addEventListener('click',function () {
+            // a = localStorage.getItem(1);;
+            inputValue = input.value;
+            a.push(inputValue);
+            localStorage.setItem(1, a);
+            c = localStorage.getItem(1);
             
-            for (let i = 0; i < num; i++) {
-                // console.log(localStorage.getItem(i+1));
-                list.innerHTML += `
-                <div class="wordBox">
-                <input type="checkbox" class="check">
-                <div class="word">${localStorage.getItem(i+1)}</div>
-            </div>
-                `;
-            }
-            input.value = '';
-            num++;
         })
+
+
     </script>
 </body>
 </html>
