@@ -117,37 +117,15 @@
         let remove = document.querySelectorAll('.remove');
         let i = 0;
         let j = 0;
-        let list = [];
+        let list = [[],[]];
         // let click = [];
 
         window.onload = function(){
-            if (JSON.parse(localStorage.getItem('li'))) {
+            console.log(JSON.parse(localStorage.getItem('li')));             
+            if (JSON.parse(localStorage.getItem('li')) && JSON.parse(localStorage.getItem('li')) != [[],[]]) {
                 list = JSON.parse(localStorage.getItem('li'));
-                
-                list.forEach(function(li){
-                    ul.innerHTML += `
-                    <li>
-                        <div class="box">
-                            <div class="check"></div>${li}
-                        </div>
-                        <i class="remove fa-solid fa-xmark"></i>
-                    </li>`
-
-                    i = list.length;
-                    check = document.querySelectorAll('.check');
-                    remove = document.querySelectorAll('.remove');
-
-                    check.forEach(function(checkbox){
-                        checkbox.addEventListener('click',function(){
-                            checkbox.classList.toggle('click');                 
-                        })
-                    })
-
-                    remove.forEach(function(removebox){
-                        removebox.addEventListener('click',function(){              
-                            removebox.remove()
-                        })
-                    })
+                list[0].forEach(function(li){
+                    add(li);
                 });           
             }
         }
@@ -162,39 +140,57 @@
         })
        
         function listadd() {
+            i = list[0].length;                
             let value = input.value;
-            list[i] = value;
-            i++;            
+            list[0][i] = value;
+            list[1][i] = 0;
+            input.value = '';
             localStorage.setItem('li',JSON.stringify(list));
+            add(value)
+        }
+
+        function add(value) {
             ul.innerHTML += `
             <li>
                 <div class="box">
                     <div class="check"></div>${value}
                 </div>
-                <i class="fa-solid fa-xmark"></i>
+                <i class="remove fa-solid fa-xmark"></i>
             </li>`
 
             check = document.querySelectorAll('.check');
             remove = document.querySelectorAll('.remove');
+            let li = document.querySelectorAll('li');
+            let index0 = 0;
 
-            check.forEach(function(checkbox){
+            check.forEach(function(checkbox,index){
                 checkbox.addEventListener('click',function(){              
                     checkbox.classList.toggle('click');
+                    if (list[1][index] == 0) {
+                        list[1][index] = 1;                        
+                    }else{
+                        list[1][index] = 0;      
+                    }
                 })
             })
 
-            remove.forEach(function(removebox){
-                removebox.addEventListener('click',function(){              
-                    ul.innerHTML -= `
-                    <li>
-                        <div class="box">
-                            <div class="check"></div>${value}
-                        </div>
-                        <i class="fa-solid fa-xmark"></i>
-                    </li>`
+
+            remove.forEach(function(removebox,index){
+                removebox.addEventListener('click',function(){   
+                    removebox.remove();                                          
+                    li[index].remove();                         
+
+                    console.log(remove);
+                    console.log(index);
+                    list[0].splice(index, 1);
+                    list[1].splice(index, 1);  
+                    localStorage.setItem('li',JSON.stringify(list));          
+                                         
                 })
-            })
-        }
+            })    
+            console.log(remove);  
+        }            
+
 
     </script>
 </body>
