@@ -8,6 +8,7 @@
     <style>
         body{
             margin: 0px;
+            background-color: aliceblue;
         }
         .top{
             background-color: aqua;
@@ -22,6 +23,18 @@
             font-size: 50px;
             text-align: center;
             background-color: aqua;
+            /* display: block; */
+        }
+        .time{
+            width: 300px;
+            height: 100px;
+            border: 1px solid black;
+            margin: auto;
+            margin-top: 100px;
+            background-color: white;
+            text-align: center;
+            font-size: 70px;
+            line-height: 100px;
         }
     </style>
 </head>
@@ -35,30 +48,54 @@
         <input class="button" type="text">
 
     </div>
+    <div class="time"></div>
+    
     <script>
         let button = document.querySelectorAll('.button');
+        let time = document.querySelector('.time');
+        let a = 0;
+
+        setInterval(function () {
+            a--;
+            if (a == 0) {
+                time.innerHTML = '時間到了';
+            }else if(a > 0){
+                time.innerHTML = a+'秒';
+            }
+            console.log(a);
+        },1000)
 
         button.forEach(function (e,index) {
             e.addEventListener('click',function () {
                 switch (index) {
                     case 0:
                         
+                    a = 20;
+
                         break;
                 
                     case 1:
                         
+                    a = 40;
+
                         break;
 
                     case 2:
                         
+                    a = 60;
+
                         break;
                     
                     case 3:
                         
+                    a = 120;
+
                         break;
 
                     case 4:
                         
+                    a = 600;
+
                         break;
 
                     default:
