@@ -124,6 +124,11 @@
         let meCount = [];
         let youCount = [];
 
+        function delay(n){
+            return new Promise(function(resolve){
+                setTimeout(resolve,n*500);
+            });
+        }
         function runAni(a,b){
             let time = 4;
             const timeSet = setInterval(()=>{
@@ -159,23 +164,27 @@
             
             return b;
         }
-        me.addEventListener('click', function(){    
+        me.addEventListener('click',async function(){    
             for(let i = 0;i < 10;i++){
                 meShow.innerHTML += `<div class="dice-card"></div>`;
             }
             const diceCard = document.querySelectorAll('.dice-card');
-            diceCard.forEach((card)=>{
+            diceCard.forEach(async function(card){
                 console.log(card);
                 for(let i=0;i< 3;i++){ 
                     card.innerHTML += `<div class="dice"></div>`;
                 }
+                const Dcard = document.querySelectorAll('.dice'); 
+                Dcard.forEach(async(dice)=>{
+                    let a = 0; 
+                    runAni(a,dice);
+                    
+                    await delay(2);
+                    console.log(a);
+                })
             })
-            const Dcard = document.querySelectorAll('.dice'); 
-            Dcard.forEach((dice)=>{
-                let a = 0; 
-                runAni(a,dice);
-                console.log(a);
-            })
+            // Dcard.forEach(async(dice)=>{
+            // })
                     // let c = Math.floor(Math.random()*6) + 1;
                     // let d = Math.floor(Math.random()*6) + 1;
                     // let f = Math.floor(Math.random()*6) + 1;
