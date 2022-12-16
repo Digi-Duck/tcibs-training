@@ -1,9 +1,34 @@
-const p1 = document.querySelector(".p1")
-const p2 = document.querySelector(".p2")
-const p3 = document.querySelector(".p3")
+const btn = document.querySelectorAll(".btn")
+const page = document.querySelectorAll(".page")
 
-const page1 = document.querySelector(".page1")
-const page2 = document.querySelector(".page2")
-const page3 = document.querySelector(".page3")
+// p1.style.backgroundColor = "#a5a3a0";
+btn[0].classList.add("color");
+btn.forEach(function(element,index) {
+    console.log(index,element);
+    element.addEventListener('click', function () {
+        console.log(index);
+        console.log(page[index]);
+        page[index].style = "display: block";
+        element.classList.toggle("color");
+        // if(index == 0){
+        //     btn[2].classList.remove("color");
+        //     btn[1].classList.remove("color");
+        //     page[2].style = "display: none";
+        //     page[1].style = "display: none";
+        // }else if(index == 1){
+        //     btn[0].classList.remove("color");
+        //     btn[2].classList.remove("color");
+        //     page[0].style = "display: none";
+        //     page[2].style = "display: none";
+        // }else if(index == 2){
+        //     btn[0].classList.remove("color");
+        //     btn[1].classList.remove("color");
+        //     page[0].style = "display: none";
+        //     page[1].style = "display: none";
+        // }
+    });
+});
 
-p1.style.backgroundColor = "#a5a3a0";
+page.forEach(function(element,index) {
+    console.log(index,element);
+});
