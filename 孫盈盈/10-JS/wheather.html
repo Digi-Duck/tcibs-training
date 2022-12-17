@@ -8,15 +8,14 @@
     <style>
         body, html{
             margin: 0 ;
-            height: 100%;
             box-sizing: border-box;
         }
         .all{
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
 
             width: 100%;
-            height: 100%;
 
             padding: 50px;
             padding-bottom: 0;
@@ -28,8 +27,9 @@
             display: flex;
             flex-wrap: wrap;
             
-            width: 18%;
-            height: 50%;
+            width: 300px;
+            height: 400px;
+            margin: 0 10px 20px;
 
             background-color: rgb(255, 255, 255);
         }
@@ -45,7 +45,6 @@
             width: 100%;
             height: 40%;
 
-            background-image:url('./02-img/雨天.png') ;
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
@@ -73,13 +72,13 @@
     https://opendata.cwb.gov.tw/api/v1/rest/datastore/W-C0033-001?Authorization=CWB-AD3A294A-5F1F-4950-B305-D2187793B3A0 -->
     <script>
         const all = document.querySelector('.all');
-        let time ;
+        let timer ;
         let img;
-        let area ;
-        let highTemp ; 
-        let lowTemp; 
-        let rain ;
-        let comfort ;
+        let area ='';
+        let highTemp = '' ; 
+        let lowTemp = ''; 
+        let rains = 0;
+        let comfort ='' ;
 
         
         console.log(card);
@@ -90,74 +89,65 @@
         .then(function(weather){
             let city = weather.records.location;
 
-            console.log(weather);
+            // console.log(weather);
             city.forEach((location, index) => {
                 let cityName = location.locationName;
+                area = cityName;
                 console.log(location);
 
                 let element =location.weatherElement;
 
-                element.forEach((Name,index) => {
-                    console.log(Name); 
-                    let EName = Name.elementName;
-                    let answer = Name.time;
-                    if(EName === 'Wx'){
-                        answer(answer,comfort);
-                    }else if(EName === 'PoP'){
-                        answer(answer,rains);
-                    }
+                timer = element[0].time[0].startTime;
+                
+                comfort = element[0].time[0].parameter.parameterName;
+                rains = element[1].time[0].parameter.parameterName;
+                lowTemp = element[2].time[0].parameter.parameterName;
+                highTemp = element[4].time[0].parameter.parameterName;
+
+                card();
                 });
             });
-        });
        
         // let rains = 35;
         function picture() {
-            if( rains >= 0){
-                if(20 >= rains){
-                    img = 'url("./02-img/太陽.png")';
-                }else if(40 >= rains){
-                    img = 'url("./02-img/陰天.png")';
-                }else if(60 >= rains){
-                    img = 'url("./02-img/雨天.png")';
-                }else{
-                    img = 'url("./02-img/雷雨.png")';
-                }
+            if(rains <= 20){
+                img = "url('./02-img/太陽.png')";
+            }else if(rains <= 40){
+                img = "url('./02-img/陰天.png')";
+            }else if(rains <= 60){
+                img = "url('./02-img/雨天.png')";
             }else{
-                rain.innerHTML = '無';
+                img = "url('./02-img/雷雨.png')";
             }
-        }
-        function answer(a,object) {
-            a.forEach((value)=>{
-                // console.log(value);
-                object = answer.parameter.parameterName;
-            })
+            return img;
         }
         function card() {
-            all.innerHTML = `<div class="card">
+            picture();
+            all.innerHTML += `<div class="card">
             <div class="time-frame frame">
-                <p class="time">2022/05/30</p>
+                <p class="time">${timer}</p>
             </div>
             <div class="img" style = "background-image:${img};"></div>
             <div class="area-frame frame">
-                <p class="area">${cityName}</p>
+                <p class="area">${area}</p>
             </div>
             <div class="temp frame">
                 <div class="high-temp-frame frame">
                     <p class="font">最高溫:</p>
-                    <p class="high-temp">37</p>
+                    <p class="high-temp">${highTemp}</p>
                 </div>
                 <div class="low-temp-frame frame">
                     <p class="font">最低溫:</p>
-                    <p class="low-temp">36</p>
+                    <p class="low-temp">${lowTemp}</p>
                 </div>
             </div>
             <div class="comfort-frame frame">
                 <p class="font">舒適度:</p>
-                <p class="comfort">36</p>
+                <p class="comfort">${comfort}</p>
             </div>
             <div class="rain-frame frame">
                 <p class="font">降雨機率:</p>
-                <p class="rain">50%</p>
+                <p class="rain">${rains}%</p>
             </div>
         </div>`
         }
