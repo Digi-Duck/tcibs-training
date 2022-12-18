@@ -118,6 +118,7 @@
         let i = 0;
         let j = 0;
         let list = [[],[]];
+        let index1 = 0;
         // let click = [];
 
         window.onload = function(){
@@ -174,21 +175,26 @@
                 })
             })
 
+            ul.addEventListener('click',function(){
+                    remove = document.querySelectorAll('.remove');
+                    remove.forEach(function(removebox,index){
+                        removebox.addEventListener('click',function(){
+                            removebox.remove();
+                            li[index].remove();
 
-            remove.forEach(function(removebox,index){
-                removebox.addEventListener('click',function(){   
-                    removebox.remove();                                          
-                    li[index].remove();                         
+                            console.log(index);
+                            console.log(remove);
 
-                    console.log(remove);
-                    console.log(index);
-                    list[0].splice(index, 1);
-                    list[1].splice(index, 1);  
-                    localStorage.setItem('li',JSON.stringify(list));          
-                                         
-                })
+                            list[0].splice(index, 1);
+                            list[1].splice(index, 1);                        
+
+                            index1 = index;
+                            localStorage.setItem('li',JSON.stringify(list));
+                            remove = document.querySelectorAll('.remove');
+                        })
+                    })    
             })    
-            console.log(remove);  
+            // console.log(remove);  
         }            
 
 
