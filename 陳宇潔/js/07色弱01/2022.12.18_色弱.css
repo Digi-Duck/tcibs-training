@@ -23,8 +23,9 @@ body{
     border-radius: 5px;
     padding: 20px 10px;
     margin: 10px;
-    font-size: 25px;
+    font-size: 30px;
     font-weight: 700;
+    box-shadow: 0 5px rgb(86, 79, 71);
 
     display: flex;
     align-items: center;
@@ -34,12 +35,14 @@ body{
     color: white;
     background-color: rgb(161, 148, 128);
     border: 7.5px solid rgb(187, 182, 174);
+    box-shadow: 0 5px rgb(139, 135, 128);
 }
 .game{
     width: 800px;
     height: 800px;
     background-color: white;
 
+    border-radius: 10px;
     margin: 20px;
 
     display: flex;
@@ -48,7 +51,7 @@ body{
     align-items: center;
 }
 .box{
-    width: 48%;
-    height: 48%;
-    
+    width: calc((100% - 72px) / 2);
+    height: calc((100% - 72px) / 2);
+    border-radius: 7.5px;
 }
