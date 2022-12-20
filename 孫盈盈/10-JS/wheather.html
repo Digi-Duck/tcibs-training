@@ -7,6 +7,7 @@
     <title>Document</title>
     <style>
         body, html{
+            height: 100%;
             margin: 0 ;
             box-sizing: border-box;
         }
@@ -16,6 +17,28 @@
             justify-content: center;
 
             width: 100%;
+            height: 100%;
+
+            padding: 50px;
+            padding-bottom: 0;
+
+            background-color: rgb(127, 187, 255);
+            box-sizing: border-box;
+        }
+        .part1{
+            display: flex;
+            justify-content: center;
+
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .part2{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            width: 100%;
+            height: 100%;
 
             padding: 50px;
             padding-bottom: 0;
@@ -49,6 +72,15 @@
             background-position: center;
             background-repeat: no-repeat;
         }
+        #select{
+            width: 45%;
+            height: 50px;
+
+            margin-bottom: 20px;
+            margin-right: 20px;
+
+            font-size: 40px;
+        }
         p{
             margin: 5px 0;
             
@@ -58,7 +90,23 @@
     </style>
 </head>
 <body>
-    <div class="all"></div>
+    <div class="all">
+        <div class="part1">
+            <select name="1" id="select">
+                <option id="area" value="0">北部</option>
+                <option id="area" value="1">中部</option>
+                <option id="area" value="2">南部</option>
+                <option id="area" value="3">東部</option>
+                <option id="area" value="4">離島</option>
+            </select>
+            <select name="2" id="select">
+                <option value="0">06:00</option>
+                <option value="1">12:00</option>
+                <option value="2">18:00</option>
+            </select>
+        </div>
+        <div class="part2"></div>
+    </div>
     <!-- 時間
     地區
     圖片
@@ -71,7 +119,7 @@
     60%~100% 雷雨
     https://opendata.cwb.gov.tw/api/v1/rest/datastore/W-C0033-001?Authorization=CWB-AD3A294A-5F1F-4950-B305-D2187793B3A0 -->
     <script>
-        const all = document.querySelector('.all');
+        const all = document.querySelector('.part2');
         let timer ;
         let img;
         let area ='';
@@ -80,8 +128,12 @@
         let rains = 0;
         let comfort ='' ;
 
-        
-        console.log(card);
+        let north = [];
+        let middle = [];
+        let south = [];
+        let east = [];
+        let out = [];
+
         fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-71BFA974-BB32-477B-9B86-9D862699CEB5')
         .then(function(response){
             return response.json();
@@ -89,23 +141,58 @@
         .then(function(weather){
             let city = weather.records.location;
 
+
+            // console.log(Value);
             // console.log(weather);
-            city.forEach((location, index) => {
-                let cityName = location.locationName;
-                area = cityName;
-                console.log(location);
-
-                let element =location.weatherElement;
-
-                timer = element[0].time[0].startTime;
-                
-                comfort = element[0].time[0].parameter.parameterName;
-                rains = element[1].time[0].parameter.parameterName;
-                lowTemp = element[2].time[0].parameter.parameterName;
-                highTemp = element[4].time[0].parameter.parameterName;
-
-                card();
-                });
+            const local = document.querySelectorAll('#area');
+            console.log(city);
+            local.forEach((locals)=>{
+                // locals.addEventListener('click', ()=>{
+                    let num = locals.value;
+                    console.log(num);
+                    if(num == 0){
+                        all.innerHTML = '';
+                        north.push(city[1],city[3],city[4],city[5],city[7],city[13],city[18]);
+                        loca(north);
+                    }else if(num == 1){
+                        all.innerHTML = ''
+                        middle.push(city[8],city[9],city[11],city[14],city[20]);
+                        console.log(num);
+                        loca(middle);
+                    }else if(num == 2){
+                        all.innerHTML = ''
+                        south.push(city[0],city[2],city[6],city[15],city[19]);
+                        loca(south);
+                    }else if(num == 3){
+                        all.innerHTML = ''
+                        east.push(city[10],city[12]);
+                        loca(east);
+                    }else{
+                        all.innerHTML = ''
+                        out.push(city[16],city[21]);
+                        loca(out);
+                    }
+                // })
+            })
+            function loca(city) {
+                city.forEach((location, index) => {
+                    let cityName = location.locationName;
+                    area = cityName;
+                    // console.log(location);
+    
+                    let element =location.weatherElement;
+    
+                  
+                    timer = element[0].time[0].startTime;
+                    
+                    comfort = element[0].time[0].parameter.parameterName;
+                    rains = element[1].time[0].parameter.parameterName;
+                    lowTemp = element[2].time[0].parameter.parameterName;
+                    highTemp = element[4].time[0].parameter.parameterName;
+    
+                    card();
+                    });
+            }
             });
        
         // let rains = 35;
@@ -122,6 +209,7 @@
             return img;
         }
         function card() {
+            // all.innerHTML = '';
             picture();
             all.innerHTML += `<div class="card">
             <div class="time-frame frame">
@@ -134,11 +222,11 @@
             <div class="temp frame">
                 <div class="high-temp-frame frame">
                     <p class="font">最高溫:</p>
-                    <p class="high-temp">${highTemp}</p>
+                    <p class="high-temp">${highTemp}°C</p>
                 </div>
                 <div class="low-temp-frame frame">
                     <p class="font">最低溫:</p>
-                    <p class="low-temp">${lowTemp}</p>
+                    <p class="low-temp">${lowTemp}°C</p>
                 </div>
             </div>
             <div class="comfort-frame frame">
