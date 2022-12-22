@@ -18,9 +18,7 @@
 
             width: 100%;
             height: 100%;
-
-            padding: 50px;
-            padding-bottom: 0;
+            padding-top: 20px;
 
             background-color: rgb(127, 187, 255);
             box-sizing: border-box;
@@ -30,6 +28,7 @@
             justify-content: center;
 
             width: 100%;
+            height: 7%;
             box-sizing: border-box;
         }
         .part2{
@@ -38,7 +37,7 @@
             justify-content: center;
 
             width: 100%;
-            height: 100%;
+            height: 93%;
 
             padding: 50px;
             padding-bottom: 0;
@@ -72,7 +71,7 @@
             background-position: center;
             background-repeat: no-repeat;
         }
-        #select{
+        .select{
             width: 45%;
             height: 50px;
 
@@ -92,17 +91,17 @@
 <body>
     <div class="all">
         <div class="part1">
-            <select name="1" id="select">
+            <select name="1" class="select" id="site">
                 <option id="area" value="0">北部</option>
                 <option id="area" value="1">中部</option>
                 <option id="area" value="2">南部</option>
                 <option id="area" value="3">東部</option>
                 <option id="area" value="4">離島</option>
             </select>
-            <select name="2" id="select">
-                <option value="0">06:00</option>
-                <option value="1">12:00</option>
-                <option value="2">18:00</option>
+            <select name="2" class="select" id="time">
+                <option value="0" class="time">06:00</option>
+                <option value="1" class="time">12:00</option>
+                <option value="2" class="time">18:00</option>
             </select>
         </div>
         <div class="part2"></div>
@@ -139,60 +138,96 @@
             return response.json();
         })
         .then(function(weather){
+
             let city = weather.records.location;
+            let Atime = document.querySelectorAll('.time');
 
+            Atime.forEach((time, index)=>{
+                Atime[index].innerHTML = `${city[0].weatherElement[0].time[index].startTime}`;
+            })
 
-            // console.log(Value);
-            // console.log(weather);
-            const local = document.querySelectorAll('#area');
-            console.log(city);
-            local.forEach((locals)=>{
-                // locals.addEventListener('click', ()=>{
-                    let num = locals.value;
-                    console.log(num);
+            const site = document.querySelector('#site');
+            const times = document.querySelector('#time');
+            let num = site.value;
+            let values = 0;
+            if(num == 0){
+                all.innerHTML = '';
+                north.push(city[1],city[3],city[4],city[5],city[7],city[13],city[18]);
+                loca(north);
+                north = [];
+            }
+                times.addEventListener('change',()=>{
+                    values = times.value;
+                    all.innerHTML = '';
                     if(num == 0){
-                        all.innerHTML = '';
                         north.push(city[1],city[3],city[4],city[5],city[7],city[13],city[18]);
                         loca(north);
+                        north = [];
                     }else if(num == 1){
-                        all.innerHTML = ''
                         middle.push(city[8],city[9],city[11],city[14],city[20]);
-                        console.log(num);
                         loca(middle);
+                        middle = [];
                     }else if(num == 2){
-                        all.innerHTML = ''
                         south.push(city[0],city[2],city[6],city[15],city[19]);
                         loca(south);
+                        south = [];
                     }else if(num == 3){
-                        all.innerHTML = ''
                         east.push(city[10],city[12]);
                         loca(east);
+                        east = [];
                     }else{
-                        all.innerHTML = ''
                         out.push(city[16],city[21]);
                         loca(out);
-                    }
-                // })
-            })
+                        out = [];
+                    }     
+                })
+                site.addEventListener('change',()=>{
+                    num = site.value;
+    
+                    const local = document.querySelectorAll('#area');
+                    
+                    all.innerHTML = '';
+                    
+                    console.log(num);
+                    if(num == 0){
+                        north.push(city[1],city[3],city[4],city[5],city[7],city[13],city[18]);
+                        loca(north);
+                        north = [];
+                    }else if(num == 1){
+                        middle.push(city[8],city[9],city[11],city[14],city[20]);
+                        loca(middle);
+                        middle = [];
+                    }else if(num == 2){
+                        south.push(city[0],city[2],city[6],city[15],city[19]);
+                        loca(south);
+                        south = [];
+                    }else if(num == 3){
+                        east.push(city[10],city[12]);
+                        loca(east);
+                        east = [];
+                    }else{
+                        out.push(city[16],city[21]);
+                        loca(out);
+                        out = [];
+                    }     
+                })
             function loca(city) {
                 city.forEach((location, index) => {
-                    let cityName = location.locationName;
-                    area = cityName;
-                    // console.log(location);
+                        console.log(values);
+                        let cityName = location.locationName;
+                        area = cityName;
+                        let element =location.weatherElement;
+             
+                        timer = element[0].time[values].startTime;
+                        
+                        comfort = element[0].time[values].parameter.parameterName;
+                        rains = element[1].time[values].parameter.parameterName;
+                        lowTemp = element[2].time[values].parameter.parameterName;
+                        highTemp = element[4].time[values].parameter.parameterName;
     
-                    let element =location.weatherElement;
-    
-                  
-                    timer = element[0].time[0].startTime;
-                    
-                    comfort = element[0].time[0].parameter.parameterName;
-                    rains = element[1].time[0].parameter.parameterName;
-                    lowTemp = element[2].time[0].parameter.parameterName;
-                    highTemp = element[4].time[0].parameter.parameterName;
-    
-                    card();
+                        card();
                     });
-            }
+                }
             });
        
         // let rains = 35;
@@ -208,8 +243,8 @@
             }
             return img;
         }
+        
         function card() {
-            // all.innerHTML = '';
             picture();
             all.innerHTML += `<div class="card">
             <div class="time-frame frame">

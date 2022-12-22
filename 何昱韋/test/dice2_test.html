@@ -7,25 +7,141 @@
     <title>dice2</title>
     <style>
         .dice{
-            width: 100px;
-            height: 100px;
+            width: 48px;
+            height: 48px;
+            background-color: tomato;
+            border-radius: 10px;
+            padding: 6px;
+            margin: 8px;
         }
-        *[class="dice first"]::before{
+        .dot{
+            width: 12px;
+            height: 12px;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+        .first-dice{
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        *[class="dice second"]::before{
-
+        .second-dice{
+            display: flex;
+            justify-content: space-between;
+        }
+        .second-dice .dot:nth-of-type(2){
+            align-self: flex-end;
+        }
+        .third-dice{
+            display: flex;
+            justify-content: space-between;
+        }
+        .third-dice .dot:nth-of-type(2){
+            align-self: center;
+        }
+        .third-dice .dot:nth-of-type(3){
+            align-self: flex-end;
+        }
+        .fourth-dice{
+            display: flex;
+            position: relative;
+        }
+        .fourth-dice .dot:nth-of-type(2){
+            position: absolute;
+            right: 8px;
+        }
+        .fourth-dice .dot:nth-of-type(3){
+            position: absolute;
+            bottom: 8px;
+        }
+        .fourth-dice .dot:nth-of-type(4){
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+        }
+        .fifth-dice{
+            display: flex;
+            position: relative;
+        }
+        .fifth-dice .dot:nth-of-type(2){
+            position: absolute;
+            right: 8px;
+        }
+        .fifth-dice .dot.dot:nth-of-type(3){
+            position: absolute;
+            bottom: 8px;
+        }
+        .fifth-dice .dot:nth-of-type(4){
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+        }
+        .fifth-dice .dot.dot:nth-of-type(5){
+            position: absolute;
+            right: calc(50% - 6px);
+            bottom: calc(50% - 6px);
+        }
+        .sixth-dice{
+            display: flex;
+            position: relative;
+        }
+        .sixth-dice .dot:nth-of-type(2){
+            position: absolute;
+            right: 8px;
+        }
+        .sixth-dice .dot.dot:nth-of-type(3){
+            position: absolute;
+            bottom: calc(50% - 6px);
+        }
+        .sixth-dice .dot.dot:nth-of-type(4){
+            position: absolute;
+            bottom: calc(50% - 6px);
+            right: 8px;
+        }
+        .sixth-dice .dot.dot:nth-of-type(5){
+            position: absolute;
+            bottom: 8px;
+        }
+        .sixth-dice .dot.dot:nth-of-type(6){
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
         }
     </style>
 </head>
 <body>
-    <div class="dice first"></div>
-    <div class="dice second"></div>
-    <div class="dice third"></div>
-    <div class="dice fourth"></div>
-    <div class="dice fifth"></div>
-    <div class="dice sixth"></div>
+    <div class="dice first-dice">
+        <div class="dot"></div>
+    </div>
+    <div class="dice second-dice">
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+    <div class="dice third-dice">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+    <div class="dice fourth-dice">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+    <div class="dice fifth-dice">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+    <div class="dice sixth-dice">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
 </body>
 </html>
