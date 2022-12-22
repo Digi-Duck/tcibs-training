@@ -1,30 +1,39 @@
-const diceTemplate = {
-    1: document.querySelector("div.dice1").cloneNode(true),
-    2: document.querySelector("div.dice2").cloneNode(true),
-    3: document.querySelector("div.dice3").cloneNode(true),
-    4: document.querySelector("div.dice4").cloneNode(true),
-    5: document.querySelector("div.dice5").cloneNode(true),
-    6: document.querySelector("div.dice6").cloneNode(true),
-}
-function gameResult() {
-    let ADGameRegion = document.querySelector(".AD_dice_region_part");
-    let MYGameRegion = document.querySelector(".MY_dice_region_part");
+function advarsary(){
+    let gameDisplay = document.querySelector(".adversary-game-display");
     let data = [];
-    let dataLen = 10;
-    let ADTotalIndex = 0;
-    for (let rowIndex = 0; rowIndex < dataLen; rowIndex += 1) {
-        let row = [];
-        for (let _ = 0; _ < 3; _ += 1){
-            let num = Math.floor(Math.random() * 6) + 1;
-            row.push(num);
-            ADGameRegion.innerHTML += String(diceTemplate[num].outerHTML);
-            ADTotalIndex = ADTotalIndex + num;
+    let dataLenth = 10;
+    let adversaryPoint = 0;
+    for(let rowIndex = 0;rowIndex < dataLenth;rowIndex++){
+        let row =[];
+        for(let _ = 0;_ < 3;_++){
+            let randomNum = Math.floor(Math.random()*6) + 1;
+            row.push(randomNum);
+            adversaryPoint = adversaryPoint + randomNum;
         }
         data[rowIndex] = row;
     }
+    console.log(adversaryPoint);
+}
+function mygame(){
+    let data = [];
+    let dataLenth = 10;
+    let myPoint = 0;
+    for(let rowIndex = 0;rowIndex < dataLenth;rowIndex++){
+        let row =[];
+        for(let _ = 0;_ < 3;_++){
+            let randomNum = Math.floor(Math.random()*6) + 1;
+            row.push(randomNum);
+            myPoint = myPoint + randomNum;
+        }
+        data[rowIndex] = row;
+    }
+    console.log(myPoint);
+}
+function gameResult(){
+    advarsary();
+    mygame();
+    // alert("I am handsome");
 }
 
-let throw_btn = document.querySelector(".throw_btn");
-throw_btn.addEventListener("click", gameResult);
-
-
+let startBtn = document.querySelector(".throw_btn");
+startBtn.addEventListener("click",gameResult);

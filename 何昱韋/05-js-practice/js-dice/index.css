@@ -88,124 +88,108 @@
 .game_result{
     margin-top: 30px;
 }
-.AD_dice_region_part{
-    width: 228px;
-    display: flex;
-    flex-wrap: wrap;
-}
-.dice_region_decorate{
-    width: 100%;
-    height: 10%;
-}
 
 
 
 /* ---dice_part--- */
-.dice_box{
-    width: 100%;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.dice{
+    width: 48px;
+    height: 48px;
+    background-color: tomato;
+    border-radius: 10px;
+    padding: 6px;
+    margin: 8px;
 }
 .dot{
-    display: block;
     width: 12px;
     height: 12px;
     background-color: #fff;
     border-radius: 50%;
 }
-/* dice1 */
-.dice1{
-    width: 60px;
-    height: 60px;
-    padding: 6px;
-    margin: 8px;
-    background-color: tomato;
-    border-radius: 5px;
+.first-dice{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-/* dice2 */
-.dice2{
-    width: 60px;
-    height: 60px;
-    padding: 6px;
-    margin: 8px;
-    background-color: tomato;
-    border-radius: 5px;
+.second-dice{
     display: flex;
     justify-content: space-between;
 }
-.dice2 .dot:nth-of-type(2){
+.second-dice .dot:nth-of-type(2){
     align-self: flex-end;
 }
-/* dice3 */
-.dice3{
-    width: 60px;
-    height: 60px;
-    padding: 6px;
-    margin: 8px;
-    background-color: tomato;
-    border-radius: 5px;
+.third-dice{
     display: flex;
     justify-content: space-between;
 }
-.dice3 .dot:nth-of-type(2){
+.third-dice .dot:nth-of-type(2){
     align-self: center;
 }
-.dice3 .dot:nth-of-type(3){
+.third-dice .dot:nth-of-type(3){
     align-self: flex-end;
 }
-/* dice4 */
-.dice4{
-    width: 60px;
-    height: 60px;
-    padding: 6px;
-    margin: 8px;
-    background-color: tomato;
-    border-radius: 5px;
+.fourth-dice{
     display: flex;
-    justify-content: space-between;
+    position: relative;
 }
-.dice4 .row{
+.fourth-dice .dot:nth-of-type(2){
+    position: absolute;
+    right: 8px;
+}
+.fourth-dice .dot:nth-of-type(3){
+    position: absolute;
+    bottom: 8px;
+}
+.fourth-dice .dot:nth-of-type(4){
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+}
+.fifth-dice{
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    position: relative;
 }
-/* dice5 */
-.dice5{
-    width: 60px;
-    height: 60px;
-    padding: 6px;
-    margin: 8px;
-    background-color: tomato;
-    border-radius: 5px;
+.fifth-dice .dot:nth-of-type(2){
+    position: absolute;
+    right: 8px;
+}
+.fifth-dice .dot.dot:nth-of-type(3){
+    position: absolute;
+    bottom: 8px;
+}
+.fifth-dice .dot:nth-of-type(4){
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+}
+.fifth-dice .dot.dot:nth-of-type(5){
+    position: absolute;
+    right: calc(50% - 6px);
+    bottom: calc(50% - 6px);
+}
+.sixth-dice{
     display: flex;
-    justify-content: space-between;
+    position: relative;
 }
-.dice5 .row{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.sixth-dice .dot:nth-of-type(2){
+    position: absolute;
+    right: 8px;
 }
-.dice5 .row:nth-of-type(2){
-    justify-content: center;
+.sixth-dice .dot.dot:nth-of-type(3){
+    position: absolute;
+    bottom: calc(50% - 6px);
 }
-/* dice6 */
-.dice6{
-    width: 60px;
-    height: 60px;
-    padding: 6px;
-    margin: 8px;
-    background-color: tomato;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
+.sixth-dice .dot.dot:nth-of-type(4){
+    position: absolute;
+    bottom: calc(50% - 6px);
+    right: 8px;
 }
-.dice6 .row{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.sixth-dice .dot.dot:nth-of-type(5){
+    position: absolute;
+    bottom: 8px;
+}
+.sixth-dice .dot.dot:nth-of-type(6){
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
 }
