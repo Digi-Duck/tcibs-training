@@ -55,3 +55,6 @@ body{
     height: calc((100% - 72px) / 2);
     border-radius: 7.5px;
 }
+.disappear{
+    opacity: 0;
+}
