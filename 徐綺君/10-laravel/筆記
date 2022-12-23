@@ -1,0 +1,22 @@
+composer create-project laravel/laravel example-app 	"7" 
+; 建立專案						            檔案名    可輸入版本也可空白
+
+
+php artisan serve
+;輸入後會出現一個網址 按著ctrl點他 成功的話會出現一個網頁
+
+composer -> php 套件管理工具
+npm -> js 套件管理工具
+composer install -> 安裝PHP套件
+npm install -> 安裝JS套件
+php artisan serve -> 執行專案
+php artisan key:gen -> 產生金鑰
+;影片補充會常用到的
+
+;-------------------------------------------------------------------------------------
+
+;介紹專案的內容
+
+composer.json -> 管理專案內所有PHP會用到的相關套件
+package.json -> 管理JS會用到的套件
+.env -> 環境變數 放私密的東東
