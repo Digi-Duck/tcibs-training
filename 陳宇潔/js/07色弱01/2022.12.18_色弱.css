@@ -54,4 +54,8 @@ body{
     width: calc((100% - 72px) / 2);
     height: calc((100% - 72px) / 2);
     border-radius: 7.5px;
+    opacity: 1;
+}
+.opacity{
+    opacity: 0.1;
 }

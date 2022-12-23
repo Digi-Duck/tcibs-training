@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./2022.12.18_色弱.css">
+    <title>色弱</title>
+    <style>
+        *{
+    box-sizing: border-box;
+    opacity: 1;
+}
+body{
+    background-color: rgb(102, 96, 89);
+}
+.bg{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.btn{
+    width: 200px;
+    height: 80px;
+    background-color: rgb(187, 182, 174);
+    border: 7.5px solid rgb(161, 148, 128);
+    border-radius: 5px;
+    padding: 20px 10px;
+    margin: 10px;
+    font-size: 30px;
+    font-weight: 700;
+    box-shadow: 0 5px rgb(86, 79, 71);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn:hover{
+    color: white;
+    background-color: rgb(161, 148, 128);
+    border: 7.5px solid rgb(187, 182, 174);
+    box-shadow: 0 5px rgb(139, 135, 128);
+}
+.game{
+    width: 800px;
+    height: 800px;
+    background-color: white;
+
+    border-radius: 10px;
+    margin: 20px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.box{
+    width: calc((100% - 72px) / 2);
+    height: calc((100% - 72px) / 2);
+    border-radius: 7.5px;
+    opacity: 1;
+}
+.opacity{
+    opacity: 0.1;
+}
+    </style>
+</head>
+<body>
+    <div class="bg">
+        <div class="button">
+            <button class="btn">開始遊戲</button>
+            <!-- <button class="btn"></button> -->
+        </div>
+        <div class="data">
+            <div class="grade"></div>
+            <div class="second"></div>
+        </div>
+        <div class="game">
+            <div class="box">0</div>
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+        </div>
+        
+    </div>
+    
+    <script>
+        const start = document.querySelector(".btn")
+const box = document.querySelectorAll(".box")
+
+function getrandom(){
+     r = Math.floor(Math.random() * 256);
+     g = Math.floor(Math.random() * 256);
+     b = Math.floor(Math.random() * 256);
+     x = Math.floor(Math.random() * 4)
+    return r,g,b,x;
+}
+
+start.addEventListener('click', function() {
+    start.removeEventListener('click', () => {})
+    again();
+})
+
+
+function again(){
+    getrandom();
+    box.forEach(element => {
+        element.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")"; 
+        element.classList.remove("opacity") ;
+        element.removeEventListener("click", () => {})
+    });
+    let opacity = box[x]
+    opacity.classList.add("opacity");
+    
+    opacity.addEventListener('click', function() {
+        opacity.removeEventListener('click', () => {})
+        again();
+    })
+    
+}
+    </script>
+</body>
+</html>
+
+
