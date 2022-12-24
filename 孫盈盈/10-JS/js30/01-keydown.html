@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,html{
+            height: 100%;
+            margin: 0;
+        }
+        .all{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .key{
+            width: 8%;
+            height: 10%;
+
+            background-color: rgba(0, 255, 255, 0.442);
+            text-align: center;
+            transition: all .07s;
+            border: 4px rgb(0, 0, 0) solid;
+            border-radius: 10px;
+        }
+        .playing{
+            transform: scale(1.2);
+            border-color:yellow;        }
+        p{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div data-key="65" class="key">
+            <p>A</p>
+        </div>
+        <div data-key="83" class="key">
+            <p>S</p>
+        </div>
+        <div data-key="68" class="key">
+            <p>D</p>
+        </div>
+        <div data-key="70" class="key">
+            <p>F</p>
+        </div>
+        <div data-key="71" class="key">
+            <p>G</p>
+        </div>
+        <div data-key="72" class="key">
+            <p>H</p>
+        </div>
+        <div data-key="74" class="key">
+            <p>J</p>
+        </div>
+        <div data-key="75" class="key">
+            <p>K</p>
+        </div>
+    </div>
+
+
+    <script>
+        window.addEventListener('keydown',(e)=>{
+            const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+            key.classList.add('playing');
+
+            setTimeout(()=>{
+                key.classList.remove('playing');
+            },200);
+        })
+    </script>
+</body>
+</html>
