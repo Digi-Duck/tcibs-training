@@ -117,3 +117,5 @@ Route::get('/hello/{number1}',function($a = null){
 
 ;-------------------------------------------------------------------------------------
 
+composer install
+;根據composer.json安裝php套件,套件會存在vendor資料夾內
