@@ -20,3 +20,100 @@ php artisan key:gen -> 產生金鑰
 composer.json -> 管理專案內所有PHP會用到的相關套件
 package.json -> 管理JS會用到的套件
 .env -> 環境變數 放私密的東東
+.gitignore -> 放在裡面的檔案的內容都不會被上傳到github上
+
+
+app -> 控制流程類 console models
+config -> 設定值
+database -> 資料庫類
+public -> 公開資料夾
+resources -> 放網站所有內容的地方 html css js 
+
+;-------------------------------------------------------------------------------------
+;php基本語言
+
+dd(); dump die 類似log 到這句停止並傳()中的值 如果有很多值 用,分開
+;當有兩行dd()時
+dd('1'); -->只會執行這行, 到這句就會停止
+dd('2');
+
+gettype(); 辨識資料型態
+;字串   string 
+;整數   integer
+;浮點數 double
+;布林值 boolean
+;陣列   array
+
+$box = '123';
+;變數 -- $變數名 = 值;
+;小駝峰
+
+;---運算子---
+;算數運算子 + - * / %
+;指定運算子 += -= *= /= %=
+;比較運算子 == === != <> !== > < >= <=
+;<> 不等於
+;邏輯運算子 && || !
+;三元運算子 條件 ? true : false
+
+dd($box1 ?? '123');
+;當前面的東西不存在時用??後的代替
+
+if($box == 0){
+    dd('1');
+}elseif($box == 1){
+    dd('1');
+}else{
+    dd('0');
+}
+;elseif 沒空格
+
+;---陣列---
+
+$box = ['a',['b'],['c',['d'],'e'],'f','g'];
+//d
+dd($box[2][1][0]);
+
+$box = ['abd'=>'123']; key -> value
+dd($box['abc']); "123"
+
+$box = [1,2,3,4,5,6,7];
+foreach($box as $item){
+    echo $item;
+};
+
+;echo 類似印出
+;dump() 
+;die() 終止 
+;return 會結束這個function()
+
+$box = ['A','B','C','D','E','F','G'];
+foreach($box as $index => $value){
+    echo($index); 
+    echo($value); 
+    ;0A1B2C3D4E5F6G
+    ;//dump($item);
+};
+
+;-------------------------------------------------------------------------------------
+
+Route::get('/hello/{number}',function($number){
+    dd($number);
+    return '123';
+});
+;{number}和function($number) -> number是可自己設置的名稱 前後名稱盡量相同
+
+Route::get('/hello/{number1}/{number2}',function($a,$b){
+    dd($a,$b);
+    return '123';
+});
+;可以有多個變數
+
+Route::get('/hello/{number1}',function($a = null){
+    dd($a,$b);
+    return '123';
+});
+;設預設值 這樣打網址時 即使沒打變數也不會出錯
+
+;-------------------------------------------------------------------------------------
+
