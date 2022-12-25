@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+        .all{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 100%;
+            height: 100%;
+            background-color: aqua;
+        }
+        .clock{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 700px;
+            height: 700px;
+
+            background-image: url('./img/15051862738023115.jpg');
+            background-size: contain;
+            background-position: center;
+
+            border-radius: 50%;
+            border: 9px black solid;
+        }
+        .hr{
+            width: 5px;
+            height: 700px;
+
+            position: absolute;
+            padding-top: 150px;
+
+            transform: rotate(0deg);
+            box-sizing: border-box;
+        }
+        .hr-in{
+            width: 5px;
+            height: 200px;
+
+            background-color: black;
+        }
+        .min{
+            width: 3px;
+            height: 700px;
+
+            position: absolute;
+            padding-top: 50px;
+            
+            box-sizing: border-box;
+        }
+        .min-in{
+            width: 3px;
+            height: 300px;
+
+            background-color: black;
+            position: absolute;
+        }
+        .s{
+            width: 1px;
+            height: 700px;
+
+            position: absolute;
+            
+        }
+        .s-in{
+            width: 1px;
+            height: 350px;
+
+            background-color: black;
+            position: absolute;
+        }
+        .circle{
+            width: 20px;
+            height: 20px;
+
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="clock">
+            <div class="hr">
+                <div class="hr-in"></div>
+            </div>
+            <div class="min">
+                <div class="min-in"></div>
+            </div>
+            <div class="s">
+                <div class="s-in"></div>
+            </div>
+            <div class="circle"></div>
+        </div>
+    </div>
+    <script>
+        let hr = document.querySelector('.hr');
+        let min = document.querySelector('.min');
+        let s = document.querySelector('.s');
+
+        let hrs = 0;
+        let mins = 0;
+        let sc = 0;
+        //跑1秒,秒針轉6度,分針轉6/60度,時針轉6/3600度
+
+        setInterval(()=>{
+            hr.style.transform = `rotate(${hrs}deg)`;
+            min.style.transform = `rotate(${mins}deg)`;
+            s.style.transform = `rotate(${sc}deg)`;
+
+            hrs = hrs + 30/3600;
+            mins = mins + 6/60;
+            sc = sc + 6;
+        },1000)
+    </script>
+</body>
+</html>

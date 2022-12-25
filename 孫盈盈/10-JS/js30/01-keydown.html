@@ -16,20 +16,35 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
+            flex-wrap: wrap;
+
+            background-image: url("https://ch-image-resizer.cwg.tw/resize/uri/https%3A%2F%2Fas.chdev.tw%2Fweb%2Farticle%2F7%2F9%2F4%2F7a35ba89-9daa-45d8-866d-e7d588c226c91611056102.jpg/?w=621");
+            background-size: cover;
         }
         .key{
             width: 8%;
             height: 10%;
 
-            background-color: rgba(0, 255, 255, 0.442);
+            background-color: rgba(0, 0, 0, 0.442);
             text-align: center;
-            transition: all .07s;
-            border: 4px rgb(0, 0, 0) solid;
+            transition: all 2.07s;
+
+            color: rgb(255, 255, 255);
+            border: 4px rgb(139, 228, 143) solid;
             border-radius: 10px;
         }
         .playing{
             transform: scale(1.2);
-            border-color:yellow;        }
+            background-color: rgba(168, 148, 124, 0.589);
+            border-color:yellow;        
+        }
+        h1{
+            width: 100%;
+            text-align: center;
+
+            color: black;
+            background-color: rgba(127, 255, 212, 0.658);
+        }
         p{
             font-size: 20px;
         }
@@ -37,6 +52,7 @@
 </head>
 <body>
     <div class="all">
+        <h1>push button</h1>
         <div data-key="65" class="key">
             <p>A</p>
         </div>
@@ -63,16 +79,39 @@
         </div>
     </div>
 
+    <audio data-key="65" src="./sound/pianoC.mp3"></audio>
+    <audio data-key="83" src="./sound/pianoD.mp3"></audio>
+    <audio data-key="68" src="./sound/pianoE.mp3"></audio>
+    <audio data-key="70" src="./sound/pianoF.mp3"></audio>
+    <audio data-key="71" src="./sound/pianoG.mp3"></audio>
+    <audio data-key="72" src="./sound/pianoA.mp3"></audio>
+    <audio data-key="74" src="./sound/pianoB.mp3"></audio>
+    <audio data-key="75" src="./sound/pianoC2.mp3"></audio>
 
     <script>
-        window.addEventListener('keydown',(e)=>{
-            const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+        window.addEventListener('keydown',function(e){
+            const keys = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+            const audio = document.querySelectorAll('audio');
+            let a = e.keyCode; 
+            
+            keys.classList.add('playing');
+            
+            audio.forEach((audios,index)=>{
+                let num = audio[index].dataset.key;
+                if(a == num){
+                    audio[index].play(0);
+                    setTimeout(()=>{
+                        keys.classList.remove('playing');
+        
+                        console.log('a');
+                    },4000);
+                }else{
 
-            key.classList.add('playing');
+                }
+            })
+            
 
-            setTimeout(()=>{
-                key.classList.remove('playing');
-            },200);
+
         })
     </script>
 </body>
