@@ -119,3 +119,17 @@ Route::get('/hello/{number1}',function($a = null){
 
 composer install
 ;根據composer.json安裝php套件,套件會存在vendor資料夾內
+
+npm install
+;根據package.json安裝js套件,套件會存放在node_modules內
+
+複製一份.env.example,並改名為.env
+;設定開發環境資料庫連線資訊用
+
+php artisan key:generate
+;產生app key
+
+php artisan serve
+;執行專案
+
+
