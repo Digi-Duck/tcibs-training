@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./A/index.css">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <section class="bookmark">
+            <div class="chapter chmain" onclick="test123('main')">main</div>
+            <div class="chapter chapter1" onclick="test123('art1')">chapter1</div>
+            <div class="chapter chapter2" onclick="test123('art2')">chapter2</div>
+            <div class="chapter chapter3" onclick="test123('art3')">chapter3</div>
+        </section>
+        <section class="content">
+            <div id="main" class="artmain article">挖喜main</div>
+            <div id="art1" class="article1 article">chapter1Content</div>
+            <div id="art2" class="article2 article">chapter2Content</div>
+            <div id="art3" class="article3 article">chapter3Content</div>
+        </section>
+    </main>
+    <script>
+        function test123(idname){
+            let article = document.getElementsByClassName("article");
+            for(let i=0; i<article.length; i++){
+                article[i].style.display ="none";
+            }
+            document.getElementById(idname).style.display = "block";
+        }
+    </script>
+</body>
+</html>
