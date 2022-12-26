@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,html{
+            margin: 0;
+        }
+        .frame{
+            width: 500px;
+            height: 300px;
+
+            background-image: url('./img/15051862738023115.jpg');
+            background-size: cover;
+            background-position: center;
+            
+            border: 10px black solid;
+        }
+        .picture{
+           width: 100%;
+           height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="move">
+            <input class="spacing" type="range">
+            <input class="blur" type="range">
+            <input class="color" type="color">
+        </div>
+        <div class="picture">
+            <div class="frame"></div>
+        </div>
+    </div>
+    <script>
+        let spacing = document.querySelector('.spacing');
+        let blurs = document.querySelector('.blur');
+        let color = document.querySelector('.color');
+
+        let space = document.querySelector('.frame');
+        let picture = document.querySelector('.picture-in');
+
+        let spacingNum = spacing.value;
+        let blurNum = blurs.value;
+        let colorNum = color.value;
+
+        spacing.addEventListener('input',()=>{
+            spacingNum = spacing.value;
+            console.log(spacingNum);
+
+            space.style.borderWidth = `calc(${spacingNum}px + 10px)`
+        })
+        blurs.addEventListener('input',()=>{
+            blurNum = blurs.value;
+            // console.log(blurNum);
+
+            let blurValue = blurNum/10;
+            space.style.filter = `blur(${blurValue}px)`
+        })
+        color.addEventListener('change',()=>{
+            colorNum = color.value;
+            console.log(colorNum);
+
+            space.style.borderColor = `${colorNum}`
+        })
+    </script>
+</body>
+</html>
