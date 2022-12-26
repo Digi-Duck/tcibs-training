@@ -6,9 +6,14 @@
 .bookmark{
     width: 100%;
     height: 60px;
-    background-color: aqua;
+    display: flex;
 }
-
+.chapter{
+    width: 200px;
+    height: 100%;
+    background-color: bisque;
+    border: 1px solid black;
+}
 .content{
     width: 100%;
     height: calc(100vh - 60px);
