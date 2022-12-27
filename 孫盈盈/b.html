@@ -1,28 +1,27 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <title>get select value</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <script>
+        function myFunction() {
+            let x = document.getElementById("myRange").value;
+
+            document.getElementById("demo").innerHTML = "目前數字:" + x + "%";
+            // submit reload了你的page
+            // document.myform.submit(); 
+           
+        }
+    </script>
+
 </head>
- 
-<script>
-function print_value() {
-	<!-- 將 select 的值在印出 -->
-	document.getElementById("result").innerHTML = document.getElementById("number").value
-}
-</script>
- 
 <body>
- 
-<select name="number" id="number" onchange="print_value();">
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-</select>
- 
- 
-<!-- 印出結果 -->
-<div id="result"></div>
- 
+<form method="GET" name="myform">
+    <div class="slidecontainer">
+        <input type="range" min="0" max="100" oninput="myFunction()" id="myRange" name="value">
+        <p id="demo">目前數字:</p>
+    </div>
+</form>
 </body>
 </html>

@@ -147,7 +147,7 @@
             list[1][i] = 0;
             input.value = '';
             localStorage.setItem('li',JSON.stringify(list));
-            add(value)
+            add(value);
         }
 
         function add(value) {
@@ -175,28 +175,26 @@
                 })
             })
 
-            ul.addEventListener('click',function(){
-                    remove = document.querySelectorAll('.remove');
-                    remove.forEach(function(removebox,index){
-                        removebox.addEventListener('click',function(){
-                            removebox.remove();
-                            li[index].remove();
 
-                            console.log(index);
-                            console.log(remove);
+            remove.forEach(function(removebox,index){
+                removebox.addEventListener('click',function(){
+                    remove = document.querySelectorAll('.remove');         
+                               
+                    removeebox.remove();
+                    li[index].remove();
 
-                            list[0].splice(index, 1);
-                            list[1].splice(index, 1);                        
+                    console.log(index);
+                    console.log(remove);
 
-                            index1 = index;
-                            localStorage.setItem('li',JSON.stringify(list));
-                            remove = document.querySelectorAll('.remove');
-                        })
-                    })    
+                    list[0].splice(index, 1);
+                    list[1].splice(index, 1);
+                    
+
+                    localStorage.setItem('li',JSON.stringify(list));   
+                })
             })    
             // console.log(remove);  
         }            
-
 
     </script>
 </body>

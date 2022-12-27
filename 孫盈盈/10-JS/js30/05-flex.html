@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,html{
+            margin: 0;
+            height: 100%;
+        }
+        .all{
+            display: flex;
+            height: 100%;
+        }
+        .click{
+            width: 20%;
+            height: 100%;
+
+            transition: all 1s;
+
+            border: 1px black solid;
+            box-sizing: border-box;
+
+            background-size: cover;
+            background-position: center;
+        }
+        .img1{
+            background-image: url('./img/b4=+_ma-85LXebOIdzso+d8tc_sicsI7c2NK_09FaGLs+mZFMgBgy8A2yjfHmUGIMjy+c_ppg.jpeg');
+        }
+        .img2{
+            background-image: url('./img/4705_RmFm8b_VZRJCEF.jpg!r800x0\ \(1\).jpg');
+        }
+        .img3{
+            background-image: url('./img/初音02.jpg');
+        }
+        .img4{
+            background-image: url('./img/初音04.jpg');
+        }
+        .img5{
+            background-image: url('./img/15051862738023115.jpg');
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="click img1"></div>
+        <div class="click img2"></div>
+        <div class="click img3"></div>
+        <div class="click img4"></div>
+        <div class="click img5"></div>
+    </div>
+    <script>
+        let clicks = document.querySelectorAll('.click');
+        
+        clicks.forEach((f,index)=>{
+            let num = 0;
+            clicks[index].addEventListener('click',()=>{
+                if(num == 0){
+                    clicks[index].style.width = '40%';
+                    num = 1;
+                }else{
+                    clicks[index].style.width = '20%';
+                    num = 0;
+                }
+            })
+        })
+    </script>
+</body>
+</html>
