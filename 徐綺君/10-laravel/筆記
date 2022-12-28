@@ -132,4 +132,29 @@ php artisan key:generate
 php artisan serve
 ;執行專案
 
+;-------------------------------------------------------------------------------------
 
+Route::get('/hello', function () {
+    $name = 'jenny';
+    return view('hello',['abc' => '123']);
+    ;將參數傳進網頁裡     [key => value]
+    ;會將參數傳入views的hello.blade.php裡
+});
+
+{{$key}}
+;使用傳入的參數 
+
+dd(compact('name','age')); 
+
+; array:2 [▼ // routes\web.php:24
+;   "name" => "jenny"
+;   "age" => "16"
+; ]
+
+compact()
+;會自動產生key => value
+
+return view('hello',compact('name','age'));
+return view('hello',)->with('name',$name)->with('age',$age);
+
+;都可以用來傳參數
