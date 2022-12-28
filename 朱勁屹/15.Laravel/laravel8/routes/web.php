@@ -27,5 +27,6 @@ Route::get('/', function () {
 // });
 
 Route::get('/hello',[FrontController::class,'hello']);
+Route::get('/news',[FrontController::class,'news']);
 // Route::get('/hello','FrontController@hello');
 
