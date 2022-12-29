@@ -17,4 +17,10 @@ class FrontController extends Controller
         
         return view('hello');
     }
+    public function news()
+    {
+        
+        return view('news');
+    }
 }
+

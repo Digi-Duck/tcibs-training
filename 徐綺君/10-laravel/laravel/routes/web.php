@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/hello/{id}', function ($id) {
+    $name = 'jenny';
+    $age = 16;
+
+    // dd(compact('name','age'));
+
+    // return view('hello',['name' => $name,'age' => $age]);
+    return view('hello',compact('name','age','id'));
+    // return view('hello',)->with('name',$name)->with('age',$age);
+});
+

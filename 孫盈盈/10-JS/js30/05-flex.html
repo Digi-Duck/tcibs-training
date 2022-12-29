@@ -15,12 +15,16 @@
             height: 100%;
         }
         .click{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+
             width: 20%;
             height: 100%;
 
-            transition: all 1s;
+            transition: all 0.5s;
 
-            border: 1px black solid;
             box-sizing: border-box;
 
             background-size: cover;
@@ -41,31 +45,92 @@
         .img5{
             background-image: url('./img/15051862738023115.jpg');
         }
+        p{
+            width: 100%;
+            height: 33.3333333%;
+
+            margin: 0;
+
+
+            text-align: center;
+            font-size: 50px;
+
+            border: 1px rgb(229, 134, 248) solid;
+
+            line-height: 600%;
+            transition: all 0.5s;
+            /* margin: auto; */
+            box-sizing: border-box;
+        }
+        .move{
+            height: 0;
+            padding: 0;
+            padding-bottom: 70px;
+
+            font-size: 0;
+            border: 0;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
     <div class="all">
-        <div class="click img1"></div>
-        <div class="click img2"></div>
-        <div class="click img3"></div>
-        <div class="click img4"></div>
-        <div class="click img5"></div>
+        <div class="click img1">
+            <p class="move-top move">top</p>
+            <p>text</p>
+            <p class="move-bottom move">bottom</p>
+        </div>
+        <div class="click img2">
+            <p class="move-top move">top</p>
+            <p>text</p>
+            <p class="move-bottom move">bottom</p>
+        </div>
+        <div class="click img3">
+            <p class="move-top move">top</p>
+            <p>text</p>
+            <p class="move-bottom move">bottom</p>
+        </div>
+        <div class="click img4">
+            <p class="move-top move">top</p>
+            <p>text</p>
+            <p class="move-bottom move">bottom</p>
+        </div>
+        <div class="click img5">
+            <p class="move-top move">top</p>
+            <p>text</p>
+            <p class="move-bottom move">bottom</p>
+        </div>
     </div>
     <script>
         let clicks = document.querySelectorAll('.click');
-        
+        let moveTop = document.querySelectorAll('.move-top');
+        let moveBottom = document.querySelectorAll('.move-bottom');
+
         clicks.forEach((f,index)=>{
             let num = 0;
-            clicks[index].addEventListener('click',()=>{
+            clicks[index].addEventListener('click',async()=>{
                 if(num == 0){
                     clicks[index].style.width = '40%';
                     num = 1;
+                    
+                    await delay(0.5);
+                    moveTop[index].classList.remove('move');
+                    moveBottom[index].classList.remove('move');
                 }else{
                     clicks[index].style.width = '20%';
                     num = 0;
+
+                    await delay(0.5);
+                    moveTop[index].classList.add('move');
+                    moveBottom[index].classList.add('move');
                 }
             })
         })
+        function delay(n){
+            return new Promise(function(resolve){
+                setTimeout(resolve,n*1000);
+            });
+        }
     </script>
 </body>
 </html>
