@@ -8,13 +8,49 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="game_start_region display-none">
+    <div class="deflautbox" style="display: none;">
+        <div class="dice first-dice">
+            <div class="dot"></div>
+        </div>
+        <div class="dice second-dice">
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <div class="dice third-dice">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <div class="dice fourth-dice">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <div class="dice fifth-dice">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <div class="dice sixth-dice">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        
+    </div>
+    <div class="game_start_region">
         <div class="title text-96 set-in">擲骰子遊戲</div>
         <div class="GS_btn_region set-in">
             <button type="button" class="game_start_btn btn-decorate-blue text-48">game start</button>
         </div>
     </div>
-    <div class="game_container">
+    <div class="game_container displa">
         <div class="intro text-48 set-in">請擲骰子</div>
         <div class="game_display_region set-in">
             <div class="adversary_region w-33 h-100 ">
@@ -22,6 +58,7 @@
                 <div class="adversary-game-display-container set-in">
                     <div class="adversary-game-display"></div>
                 </div>
+                <div class="adversary-game-score text-60 set-in"></div>
             </div>
 
             <div class="game_result_region w-33 h-100">
@@ -33,42 +70,22 @@
 
             <div class="player_region w-33 h-100">
                 <div class="Myname text-36 set-in">我:</div>
+                <div class="My-game-display-container set-in">
+                    <div class="My-game-display"></div>
+                </div>
+                <div class="My-game-score text-60 set-in"></div>
             </div>
         </div>
     </div>
-    <!--     <div class="dice first-dice">
-        <div class="dot"></div>
+
+    <div class="game-end display-none">
+        <p class="game-end-text text-72 set-in">遊戲結束</p>
+        <div class="game-end-btn-container set-in">
+            <button type="button" class="againBtn text-60 btn-decorate-blue">
+                <a href="javascript:window.location.reload()">在玩一次</a>
+            </button>
+        </div>
     </div>
-    <div class="dice second-dice">
-        <div class="dot"></div>
-        <div class="dot"></div>
-    </div>
-    <div class="dice third-dice">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-    </div>
-    <div class="dice fourth-dice">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-    </div>
-    <div class="dice fifth-dice">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-    </div>
-    <div class="dice sixth-dice">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-    </div> -->
     <script src="./test.js"></script>
 </body>
 </html>

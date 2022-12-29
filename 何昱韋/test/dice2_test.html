@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dice2</title>
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         .dice{
             width: 48px;
             height: 48px;
@@ -15,8 +20,8 @@
             margin: 8px;
         }
         .dot{
-            width: 12px;
-            height: 12px;
+            width: 8px;
+            height: 8px;
             background-color: #fff;
             border-radius: 50%;
         }
@@ -78,8 +83,8 @@
         }
         .fifth-dice .dot.dot:nth-of-type(5){
             position: absolute;
-            right: calc(50% - 6px);
-            bottom: calc(50% - 6px);
+            right: calc(50% - 4px);
+            bottom: calc(50% - 4px);
         }
         .sixth-dice{
             display: flex;
@@ -91,11 +96,11 @@
         }
         .sixth-dice .dot.dot:nth-of-type(3){
             position: absolute;
-            bottom: calc(50% - 6px);
+            bottom: calc(50% - 4px);
         }
         .sixth-dice .dot.dot:nth-of-type(4){
             position: absolute;
-            bottom: calc(50% - 6px);
+            bottom: calc(50% - 4px);
             right: 8px;
         }
         .sixth-dice .dot.dot:nth-of-type(5){

@@ -23,7 +23,18 @@
         </section>
     </main>
     <script>
-        
+        // 當bookmark 被點及 顯示其中一篇
+        let selector = document.querySelectorAll(".chapter");
+        let article = document.querySelectorAll(".article");
+        selector.forEach(function(element,index){
+            article[index].style.display = "none";
+            element.addEventListener("click",function(){
+                selector.forEach(function(deflaut,secIndex){
+                    article[secIndex].style.display = "none";
+                })
+                article[index].style.display = "block";
+            })
+        })  
     </script>
 </body>
 </html>
