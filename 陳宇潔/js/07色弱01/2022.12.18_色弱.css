@@ -9,6 +9,8 @@ body{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+
+    position: relative;
 }
 .button{
     width: 100%;
@@ -52,7 +54,16 @@ body{
 }
 .box{
     border-radius: 7.5px;
+    margin: 10px;
 }
 .disappear{
-    opacity: 0;
+    display: none;
 }
+.ans{
+    opacity: 0.1;
+}
+.room{
+    width: 100%;
+    height: 100px;
+}
+
