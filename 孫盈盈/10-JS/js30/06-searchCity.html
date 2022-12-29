@@ -9,6 +9,8 @@
         body,html{
             height: 100%;
             margin: 0;
+
+            background-color: rgb(255, 206, 71);
         }
         .all{
             display: flex;
@@ -18,14 +20,13 @@
             flex-wrap: wrap;
 
             width: 100%;
-            height: 100%;
+            /* height: 100%; */
 
             padding-top: 50px;
 
-            background-color: rgb(255, 206, 71);
         }
         .search{
-            width: 300px;
+            width: 500px;
             height: 80px;
 
             font-size: 30px;
@@ -35,20 +36,23 @@
             border-radius: 5px;
         }
         .result{
-            width: 250px;
+            width: 400px;
             margin: 0 auto;
         }
         .card{
             width: 100%;
             height: 70px;
 
-            line-height: 70px;
+            padding: 10px;
+
+            line-height: 50px;
 
             display: flex;
             justify-content: space-between;
+            border-bottom:2px black solid;
 
             background-color: aliceblue;
-            
+            box-sizing: border-box;
         }
         p{
             margin: 0;
@@ -59,14 +63,50 @@
     <div class="all">
         <input class="search" type="search" name="search" placeholder="city or state">
         <div class="result">
-            <div class="card">
-                <p>城市,地點</p>
-                <p>人口</p>
-            </div>
+
         </div>
     </div>
     <script>
+        let cardAll = document.querySelector('.result');
+        let find = document.querySelector('.search');
 
+        let cityName;
+        let people;
+        let state;
+        //https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json
+        fetch('https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json')
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(city){
+            console.log(city);
+
+            find.addEventListener('input', ()=>{
+                cardAll.innerHTML = '';
+
+                city.forEach((cityarea, index) => {
+                // console.log(cityarea);
+                    cityName = cityarea.city;
+                    people = cityarea.population;
+                    state = cityarea.state;
+
+                    let search = cityName.search(find.value);
+                    console.log(find.value);
+                    if(search != -1){
+                        card();
+                    }
+                })
+            });
+        })
+        function card(){
+            cardAll.innerHTML += `
+            <div class="card">
+                <p>${cityName},${state}</p>
+                <p>${people}</p>
+            </div>
+            `
+        }
+        
     </script>
 </body>
 </html>
