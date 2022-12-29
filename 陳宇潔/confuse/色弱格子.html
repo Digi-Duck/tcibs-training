@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .game{
+        width: 800px;
+        height: 800px;
+        background-color: rgb(26, 4, 4);
+
+        border-radius: 10px;
+        margin: 20px;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        }
+        
+        .box{
+            background-color: rgb(174, 122, 122);
+            width: calc((100% - 10px*2*2) / 2) ;
+            height: calc((100% - 10px*2*2) / 2) ;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+</body>
+</html>
