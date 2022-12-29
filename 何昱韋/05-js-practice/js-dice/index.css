@@ -86,9 +86,38 @@
     transform: translate(0,7.5px);
 }
 .game_result{
+    width: 100%;
+    height: 100px;
     margin-top: 30px;
 }
 
+.adversary-game-display{
+    width: 192px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.My-game-display{
+    width: 192px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.game-end{
+    width: 100%;
+    height: 100vh;
+    background-image: url('https://pic.616pic.com/bg_w1180/00/10/52/djRwP5S3EJ.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.game-end-text{
+    margin:0 0 60px 0;
+}
+a{
+    text-decoration: none;
+}
+a:active{
+    color: #fff;
+}
 
 
 /* ---dice_part--- */
@@ -101,8 +130,8 @@
     margin: 8px;
 }
 .dot{
-    width: 12px;
-    height: 12px;
+    width: 8px;
+    height: 8px;
     background-color: #fff;
     border-radius: 50%;
 }
@@ -164,8 +193,8 @@
 }
 .fifth-dice .dot.dot:nth-of-type(5){
     position: absolute;
-    right: calc(50% - 6px);
-    bottom: calc(50% - 6px);
+    right: calc(50% - 4px);
+    bottom: calc(50% - 4px);
 }
 .sixth-dice{
     display: flex;
@@ -177,11 +206,11 @@
 }
 .sixth-dice .dot.dot:nth-of-type(3){
     position: absolute;
-    bottom: calc(50% - 6px);
+    bottom: calc(50% - 4px);
 }
 .sixth-dice .dot.dot:nth-of-type(4){
     position: absolute;
-    bottom: calc(50% - 6px);
+    bottom: calc(50% - 4px);
     right: 8px;
 }
 .sixth-dice .dot.dot:nth-of-type(5){
