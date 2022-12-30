@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+    // return view('index');
+// });
+
+Route::get('/',[FrontController::class,'index']);
 
 Route::get('/hello/{id}', function ($id) {
     $name = 'jenny';

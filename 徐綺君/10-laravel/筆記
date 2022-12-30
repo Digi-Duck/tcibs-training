@@ -158,3 +158,10 @@ return view('hello',compact('name','age'));
 return view('hello',)->with('name',$name)->with('age',$age);
 
 ;都可以用來傳參數
+
+;-------------------------------------------------------------------------------------
+
+css,js,img都要放在public資料夾中
+
+php artisan make:controller FrontController
+;                           大駝峰,單數
