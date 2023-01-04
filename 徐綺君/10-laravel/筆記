@@ -109,7 +109,7 @@ Route::get('/hello/{number1}/{number2}',function($a,$b){
 });
 ;可以有多個變數
 
-Route::get('/hello/{number1}',function($a = null){
+Route::get('/hello/{number1?}',function($a = null){
     dd($a,$b);
     return '123';
 });
@@ -165,3 +165,7 @@ css,js,img都要放在public資料夾中
 
 php artisan make:controller FrontController
 ;                           大駝峰,單數
+;如果後面發現controller的名字取錯,把那個controller檔案刪掉重建
+
+
+;-------------------------------------------------------------------------------------

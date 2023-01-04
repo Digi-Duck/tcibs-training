@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,19 +15,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::get('/', function () {
-    // return view('index');
+//     return view('index');
 // });
 
 Route::get('/',[FrontController::class,'index']);
 
-Route::get('/hello/{id}', function ($id) {
-    $name = 'jenny';
-    $age = 16;
 
-    // dd(compact('name','age'));
 
-    // return view('hello',['name' => $name,'age' => $age]);
-    return view('hello',compact('name','age','id'));
-    // return view('hello',)->with('name',$name)->with('age',$age);
-});
+// Route::get('/hello/{id?}', function ($id = null){
+//     $name = 'jenny';
+//     $age = 16;
 
+//     dd(compact('name','age','id'));
+
+//     // return view('hello',['name' => $name,'age' => $age]);
+//     return view('hello',compact('name','age','id'));
+//     // return view('hello',)->with('name',$name)->with('age',$age);
+// });
+
+Route::get('/hello/{id?}',[FrontController::class,'hello']);
+
+Route::get('/news',[FrontController::class,'news']);
+
+Route::get('/news/{id}',[FrontController::class,'newsContent']);

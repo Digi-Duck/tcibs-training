@@ -13,6 +13,7 @@
 
     <!-- nav bar -->
     <nav>
+        nav bar
     </nav>
 
     <main>
@@ -21,6 +22,7 @@
 
     <!-- footer -->
     <footer>
+        footer
     </footer>
 
     @yield('js')
