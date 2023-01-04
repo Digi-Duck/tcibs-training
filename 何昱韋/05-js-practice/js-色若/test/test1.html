@@ -4,9 +4,68 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>第一塊板(遊戲開始介面)</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        img{
+            width: 100%;
+        }
+        /* test1 & test2 都用到 */
+        .gameStartContent{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+        }
+        .gameStartBackground{
+            width: 100%;
+            height: 100%;
+        }
+        .gameStartDemo{
+            width: 100%;
+            height: 100%;
+            margin-left: -100%;
+        }
+        /*  */
+        .gameStartBtnPart{
+            display: flex;
+            justify-content: center;
+        }
+        .titleDecorate{
+            font-size: 100px;
+            padding: 150px;
+            display: flex;
+            justify-content: center;
+        }
+        .btnDecorate-typeone{
+            font-size: 48px;
+            color: rgb(240, 121, 121);
+            padding: 10px;
+            border: 3px solid rgb(240, 121, 121);
+            border-radius: 10px;
+        }
+        .btnDecorate-typeone:hover{
+            color: #fff;
+            background-image: radial-gradient(100% 100% at 100% 0,#fff 0,rgb(240, 184, 184) 100%);
+        }
+    </style>
 </head>
 <body>
-    
+    <section>
+        <div class="gameStartContent">
+            <div class="gameStartBackground">
+                <img src="https://img.tukuppt.com/bg_grid/00/13/79/7HTTCCwOTz.jpg!/fh/350" alt="">
+            </div>  
+            <div class="gameStartDemo">
+                <div class="gameStartTitle titleDecorate">色弱遊戲</div>
+                <div class="gameStartBtnPart">
+                    <button type="button" class="gameStartBtn btnDecorate-typeone">前往遊戲說明</button>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
