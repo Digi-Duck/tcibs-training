@@ -2,24 +2,40 @@ const start = document.querySelector(".btn")
 const room = document.querySelector(".top")
 const game = document.querySelector(".game")
 const score = document.querySelector(".score")
+const timer = document.querySelector(".timer")
+const over = document.querySelector(".over")
+const bg = document.querySelector(".bg")
 
-let i;
+let i,r,g,b,x;
+let t = 6;
 let s = 0;
 let o = 0.1;
 let num = 2;
 
+//倒數計時
+function myTime(){
+    const clock = setInterval(function(){
+        t--;
+        timer.innerHTML = `時間：${t}`;
+        if (t <= 0) {
+            //停止計時
+            clearInterval(clock);
+            score.innerHTML = ``;
+            bg.style.opacity = "0";
+            setTimeout(() => window.location.reload(),1000)
+            over.innerHTML = `Time up！`
+          } 
+    },1000)
+}
 
 //增加box
 function addbox() {  
-    // a = 0.15;
-    // ans.style.opacity = a;
     if(num > 6){
         num = 7;
         i = 49;
     }
     game.innerHTML = ` `; 
     for(i = 0; i < num * num; i++){
-        // a = a * 1.5;
         game.innerHTML += `<div class="box"></div>`;
     }   
 }
@@ -39,39 +55,45 @@ function main(){ //產生變數 每個方塊加顏色 按下答案 增加方塊
     const box = document.querySelectorAll(".box") 
     // 產生變數
     getrandom();
-
     box.forEach(function(element, index){
         // 改變透明度
         box[x].style.opacity = o;
-        const ans = document.querySelector(".ans")
         element.style.width = "calc((100% - 10 * 2px *" + num + ") /" + num + ") ";
         element.style.height = "calc((100% - 10 * 2px *" + num + ") /" + num + ") ";
         element.style.backgroundColor = "rgb("+ r + "," + g + "," + b + ")"; 
         element.addEventListener('click',function(){
             // 答案被按下
-            if(index == x){
+            if(num < 7 && index == x){
+                o = o * 1.4;
+                score_();
+            }else if(index == x && num <= 10){
                 //改變答案透明度
-                o = o * 1.05;
-                console.log(o);
-                console.log(ans);
-                //增加box
-                num++;
-                //增加分數
-                s++;
-                score.innerHTML = `分數：${s}`
-                box[x].classList.remove('ans')
-                //再跑一次
-                main(); 
+                o = o * 1.02;
+                score_();
             }
         })
     })
 }
 
+function score_(){
+    const box = document.querySelectorAll(".box")
+    //增加box
+    num++;
+    //增加分數
+    s++;
+    score.innerHTML = `分數：${s}`
+    box[x].classList.remove('ans')
+    //再跑一次
+    console.log(o);
+    main(); 
+}
 //開始
 start.addEventListener("click", function (){
+    game.style.backgroundColor = "white";
     start.classList.add("disappear")
     room.classList.add("room")
     score.innerHTML = `分數：${s}`
+    timer.innerHTML = `時間：${t}`;
+    myTime();
     main(); 
-
 })
