@@ -169,3 +169,14 @@ php artisan make:controller FrontController
 
 
 ;-------------------------------------------------------------------------------------
+php artisan make:migration create_news_table
+;                          create_名字(複數)_table
+
+php artisan migrate
+;執行migrations裡的up,建立過的就不會再建立
+
+$table->longText('content');
+;     資料型態(小駝峰)(名稱)
+
+php artisan migrate:rollback
+;回上一步,執行down

@@ -38,3 +38,5 @@ Route::get('/hello/{id?}',[FrontController::class,'hello']);
 Route::get('/news',[FrontController::class,'news']);
 
 Route::get('/news/{id}',[FrontController::class,'newsContent']);
+
+Route::get('/create-news',[FrontController::class,'createNews']);
