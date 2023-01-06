@@ -54,6 +54,25 @@ class FrontController extends Controller
         return 'success';
         //新增model->php artisan make:model Name
     }
+    public function updateNews($id)
+    {
+        News::find($id)->update([
+            'title'=>'5555',
+        ]);
+
+        return 'success';
+    }
+
+    public function deleteNews($id)
+    {
+        News::find($id)->delete();
+        return 'success';
+    }
+
+    public function content(Request $request)
+    {
+        //傳過來的值會在->$request
+    }
 }
 //建migration
 //php artisan make:migration_name_name

@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('news', function (Blueprint $table) {
+            //建migrate->php artisan make:migration create_name_table
             //執行->php artisan migrate
             //回上一步->php artisan migrate:rollback
             $table->id();
