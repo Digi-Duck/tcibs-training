@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class News extends Model
 {
+    //建model->php artisan make:model Name
+    //傳表單需->@csrf
     use HasFactory;
     protected $table = 'news';
 
