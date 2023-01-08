@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;//controller 導入
 
 use App\Models\News;//導入Models->News
+use App\Models\Indb;
 use Illuminate\support\facades\DB;//導入資料庫
 use Illuminate\Http\Request;//HTTP 請求
 
@@ -71,7 +72,32 @@ class FrontController extends Controller
 
     public function content(Request $request)
     {
+        Contect::create([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'content' => $request->content,
+        ]);
+        //$request->key
         //傳過來的值會在->$request
+        //return redirect("/news);
+    }
+    public function inputform()
+    {
+        return view("/inputform");
+    }
+    public function inDB(Request $a)
+    {
+        Indb::insert([
+            'name'=> $a->name,
+            'thing'=> $a->thing,
+            'number'=> $a->number,
+        ]);
+        return 'succes';
+    }
+    public function index()
+    {
+        return view('welcome');
     }
 }
 //建migration
