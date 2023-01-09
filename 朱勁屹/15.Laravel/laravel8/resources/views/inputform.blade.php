@@ -20,6 +20,8 @@
             auth->建立會員系統
             npm install->js套件
             npm run dev
+
+            {{asset('/news/'.$id)}}
             --}}
     <form action="{{asset('/inDB')}}" method="POST">
         @csrf

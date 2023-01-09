@@ -7,12 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    @foreach ($news as $i)
-    {{-- b:foreach --}}
-        {{$i->title}}
-        @php
-            //bphp
-        @endphp
-    @endforeach
+    
 </body>
 </html>

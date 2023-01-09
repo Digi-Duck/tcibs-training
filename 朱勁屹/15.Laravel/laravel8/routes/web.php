@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\FrontController;//導入
+use App\Http\Controllers\NewsController;//導入
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +39,21 @@ Route::post('/inDB',[FrontController::class,'inDB']);
 // Route::get('/hello','FrontController@hello');
 
 
+// Route::prefix('/news')->group(function ()
+// {
+//     Route::get('/',FrontController::class,'news');//通往news
+// });
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//後台
+Route::prefix('/admin')->group(function ()
+{
+    Route::prefix('/news')->group(function ()
+    {
+        Route::get('/',[NewsController::class,'index']);
+    });
+});
