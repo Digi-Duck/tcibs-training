@@ -15,9 +15,10 @@
         @endguest
         --}}
         {{-- 
-            composer require laravel/ui
+            composer require laravel/ui->不重要
             php artisan ui bootstrap --auth
-            npm install
+            auth->建立會員系統
+            npm install->js套件
             npm run dev
             --}}
     <form action="{{asset('/inDB')}}" method="POST">
