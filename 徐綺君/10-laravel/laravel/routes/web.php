@@ -41,6 +41,8 @@ Route::get('/news/{id}',[FrontController::class,'newsContent']);
 
 Route::get('/create-news',[FrontController::class,'createNews']);
 
+Route::post('/store-news',[FrontController::class,'storeNews']);
+
 Route::get('/update-news/{id}',[FrontController::class,'updateNews']);
 
 Route::get('/destroy-news/{id}',[FrontController::class,'destroyNews']);

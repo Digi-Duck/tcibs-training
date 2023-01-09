@@ -13,7 +13,12 @@
 
     <!-- nav bar -->
     <nav>
-        nav bar
+        <a class="logo" href="{{asset('/')}}">
+            <img src="{{asset('img/logo.png')}}" alt="">
+        </a>
+        <a href="{{asset('/news')}}" class="news">news</a>
+        <a href="{{asset('/create-news')}}" class="news">news-create</a>
+        <div class="text">nav bar</div>
     </nav>
 
     <main>
