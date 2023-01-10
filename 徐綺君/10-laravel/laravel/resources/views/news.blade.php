@@ -13,7 +13,7 @@
             <img src="{{$item->image_url}}" alt="">
             <div class="content">
                 <span class="tag"></span>
-                <a href="http://127.0.0.1:8000/news/{{$item->id}}">{{$item->title}}</a>
+                <a href="/news/{{$item->id}}">{{$item->title}}</a>
                 <span class="date">{{$item->date}}</span>
                 <p>{{$item->content}}</p>
             </div>
