@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    opacity: 1;
+}
+.bg{
+    width: 100%;
+    height: 100vh;
+    background-image: url("/陳宇潔/image/摩天輪.jpg");
+    opacity: 0.8;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.frame{
+    width: 100%;
+
+    margin: 100px;
+    padding: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box{
+    width: 100px;
+    height: 100px;
+    background-color: #000;
+    color: aliceblue;
+    opacity: 0.25;
+    box-shadow: 0 5px rgb(7, 7, 7);
+
+    margin: 30px;
+
+    font-size: 75px;
+    font-weight: 600;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

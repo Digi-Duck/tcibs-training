@@ -7,6 +7,8 @@ const over = document.querySelector(".over")
 const bg = document.querySelector(".bg")
 
 let i,r,g,b,x;
+let w = 200;
+let h = 200;
 let t = 60;
 let s = 0;
 let o = 0.1;
@@ -50,6 +52,13 @@ function getrandom(){
 }
 
 function main(){ //產生變數 每個方塊加顏色 按下答案 增加方塊 
+    //增加方塊長寬
+    game.style.width = w + "px";
+    game.style.height = h + "px";
+    if(num < 7){
+        w = w + 100;
+        h = h + 100;   
+    }
     //增加方塊
     addbox();
     const box = document.querySelectorAll(".box") 
@@ -84,7 +93,6 @@ function score_(){
     score.innerHTML = `分數：${s}`
     box[x].classList.remove('ans')
     //再跑一次
-    console.log(o);
     main(); 
 }
 //開始
