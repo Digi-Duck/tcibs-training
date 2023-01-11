@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FrontController;
 
 /*
@@ -15,7 +16,7 @@ use App\Http\Controllers\FrontController;
 */
 
 // Route::get('/', function () {
-//     return view('index');
+//     return view('welcome');
 // });
 
 Route::get('/',[FrontController::class,'index']);
@@ -48,3 +49,7 @@ Route::get('/update-news/{id}',[FrontController::class,'updateNews']);
 Route::get('/destroy-news/{id}',[FrontController::class,'destroyNews']);
 
 Route::post('/contact',[FrontController::class,'contact']);
+
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
