@@ -180,3 +180,16 @@ $table->longText('content');
 
 php artisan migrate:rollback
 ;回上一步,執行down
+
+;-------------------------------------------------------------------------------------
+
+;_______________建立會員系統_______________
+
+composer require laravel/ui 
+;安裝laravel php 套件
+
+php artisan ui bootstrap --auth
+
+npm install
+
+npm run dev

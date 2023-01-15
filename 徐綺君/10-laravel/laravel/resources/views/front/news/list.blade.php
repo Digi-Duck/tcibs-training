@@ -14,10 +14,12 @@
             <div class="content">
                 <span class="tag"></span>
                 <a href="/news/{{$item->id}}">{{$item->title}}</a>
+                {{-- <a href={{asset("/news/".$item->id)}}>{{$item->title}}</a> --}}
                 <span class="date">{{$item->date}}</span>
                 <p>{{$item->content}}</p>
             </div>
         </div>
+        <hr>
     @endforeach
 @endsection
 

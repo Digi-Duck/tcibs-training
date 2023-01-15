@@ -13,8 +13,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @yield('css')
 </head>
 <body>
     <div id="app">
@@ -30,7 +29,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                        @guest
 
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{asset('admin/news')}}">最新消息管理</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{asset('admin/news')}}">{{ __('news') }}</a>
+                            </li>
+                        @endguest
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -74,7 +82,12 @@
 
         <main class="py-4">
             @yield('content')
+            @yield('main')
         </main>
     </div>
+
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @yield('js')
 </body>
 </html>

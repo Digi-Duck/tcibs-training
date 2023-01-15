@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\FrontController;
 
 /*
@@ -31,3 +32,10 @@ Route::post('/contact',[FrontController::class,'contact']);
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+//後台
+Route::prefix('/admin')->group(function () {
+    Route::prefix('/news')->group(function () {
+        Route::get('/',[NewsController::class,'index']);
+    });
+});
