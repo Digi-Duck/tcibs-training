@@ -52,6 +52,7 @@ function getrandom(){
 }
 
 function main(){ //產生變數 每個方塊加顏色 按下答案 增加方塊 
+    console.log(111);
     //增加方塊長寬
     game.style.width = w + "px";
     game.style.height = h + "px";
