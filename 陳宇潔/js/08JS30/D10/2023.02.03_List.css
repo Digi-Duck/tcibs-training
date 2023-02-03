@@ -1,0 +1,77 @@
+body{
+    background-color: rgb(194, 208, 200);
+}
+.bg{
+    margin: 50px;
+
+    display: flex;
+    justify-content: center;
+}
+.box{
+    width: 300px;
+    background-color: rgb(168, 180, 164);
+
+    padding: 40px 100px;
+    border-radius: 50px;
+    box-shadow: 10px 10px rgb(96, 111, 96);
+}
+.row{
+    height: 50px;
+
+    font-size: 40px;
+    font-weight: 600;
+    text-shadow: rgb(96, 111, 96) 4px 4px;
+    color: azure;
+    margin: 25px;
+
+    display: flex;
+    align-items: center;
+
+    transition: 1s;
+}
+input[type="checkbox"]{
+    appearance: none;
+
+    width: 50px;
+    height: 50px;
+    background-color: azure;
+    box-shadow: 4px 4px rgb(96, 111, 96);
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 75px;
+}
+.img0{
+    background-image: url("./img/妮妮.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.img1{
+    background-image: url("./img/正男.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.img2{
+    background-image: url("./img/小新.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.img3{
+    background-image: url("./img/風間.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.img4{
+    background-image: url("./img/阿呆.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.line{
+    text-decoration: line-through;
+    text-shadow: none;
+    color: rgb(96, 111, 96);
+}

@@ -1,0 +1,90 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #aaa;
+}
+
+:root{
+	--base: #636262;
+    --blur: 5px;
+    --spacing: 20px;
+}
+img{
+    width: 900px;
+    margin: 10px;
+
+    border: var(--spacing) solid var(--base);
+    filter: blur(var(--blur));
+}
+
+input[type="range"],
+input[type="range"]::-webkit-slider-runnable-track,
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type="range"] {
+    height: 60px;
+    width: 180px;
+    background-color: white;      
+    cursor: pointer;              /* 滑鼠放上會改變鼠標樣式 */        
+
+    border-radius: 10px;
+    margin: 10px;
+    box-shadow: 5px 5px #cdcdcd;
+}
+    /* 滑動軌道 樣式 */
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 10px;
+    width: 180px;
+    border-radius: 4px;
+    background: #aaa;
+}
+    /* 滑動鈕 樣式 */
+input[type="range"]::-webkit-slider-thumb {
+    position: relative;
+    height: 30px;
+    width: 30px;
+    margin-top: -10px;           /* 會受到寬高影響定位，需微調 */
+    background-color: var(--base);  
+    border-radius: 50%;
+    border: 5px solid #fff;
+}
+input[type="color"]{
+    height: 60px;
+    width: 180px;
+    background-color: white;      
+    cursor: pointer;              /* 滑鼠放上會改變鼠標樣式 */        
+
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    box-shadow: 5px 5px #cdcdcd;
+}
+.bg{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.nav{
+    margin: 40px 100px;
+    display: flex;
+    justify-content: center;
+}
+.box{
+    margin: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.font{
+    font-style: oblique;
+    font-weight: 600;
+    font-size: 50px;
+    color: azure;
+    padding: 10px;
+}
