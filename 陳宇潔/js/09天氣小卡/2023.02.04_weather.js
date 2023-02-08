@@ -1,8 +1,6 @@
 const content = document.querySelector('.content');
 const district = document.querySelector('#district');
 const date = document.querySelector('#date');
-const times = document.querySelectorAll('#date option');
-
 let locat;
 let districtvalue;
 let datevalue;
@@ -12,40 +10,33 @@ let weather;//Wx
 let rain;//PoP
 let maxt;//MaxT
 let mint;//MinT
-let w; //wheather
-let ww; //wheather[i]
-
+let w;
+let ww;
 let north = [];
 let middle = [];
 let south = [];
 let east = [];
 let island = [];
-
 fetch("https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-71BFA974-BB32-477B-9B86-9D862699CEB5")
 .then(function(response){
     return response.json();
 })
 .then(function(data){
     locat = data.records.location;
-
     datevalue = 0;
     districtvalue = 0;
     if(districtvalue == 0){
-        north.push(locat[1], locat[5], locat[3], locat[4], locat[7], locat[13], locat[18]);
+        change(districtvalue, datevalue);
         value(north, datevalue);
         north = [];
     }
-
-    times.forEach((option,index) => {
-        option.innerHTML = locat[0].weatherElement[0].time[index].startTime;
-    })
+    for(i = 0; i < 3; i++){
+        date.innerHTML += `<option value="${i}">${locat[0].weatherElement[0].time[i].startTime}</option>`
+    }
     date.addEventListener('change', function(){
-        datevalue = date.value;
         datevalue = parseInt(date.value);
-        value(island, datevalue);
         change(districtvalue, datevalue);
     })
-
     district.addEventListener('change', function(){
         districtvalue = parseInt(district.value);
         change(districtvalue, datevalue);
@@ -85,14 +76,12 @@ function value(locat, datevalue){
     locat.forEach(function (element){
         area = element.locationName;
         weatherelement = element.weatherElement;
-
         comfortable = weatherelement[3].time[datevalue].parameter.parameterName;//CI
         weather = weatherelement[0].time[datevalue].parameter.parameterName;//Wx
         weathervalue = weatherelement[0].time[datevalue].parameter.parameterValue;
         rain = weatherelement[1].time[datevalue].parameter.parameterName;//PoP
         maxt = weatherelement[4].time[datevalue].parameter.parameterName;//MaxT
         mint = weatherelement[2].time[datevalue].parameter.parameterName;//MinT
-
         w = ['Sunny', 'Cloudy', 'Rainy', 'Thunder', 'snowy'];
         if(weathervalue <= 3){
             ww = 0;
@@ -110,7 +99,7 @@ function value(locat, datevalue){
 }
 function card(){
     content.innerHTML +=
-    `<div class="card"> 
+    `<div class="card center"> 
         <div class="in center">${area}</div> 
         <img src="./img/${w[ww]}.gif" class="img">
         <div class="feel center">${w[ww]}</div>
