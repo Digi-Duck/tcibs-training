@@ -1,0 +1,62 @@
+<?php
+    //啟動session
+    session_start();
+?>
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>The CS coffee</title>
+</head>
+<body>
+    <?php
+        //使用 isset方法，判別有沒有此變數可以使用
+    ?>
+    <form action="login.php" method="post">
+        <div class="center">
+            <div class="bg">
+                <div class="title center">
+                    咖啡商品展示系統
+                </div>
+                <div class="content">
+                    <div class="group">
+                        <span>帳號</span> 
+                        <input type="text" name="account" placeholder="請輸入帳號">
+                    </div>
+                    <div class="group">
+                        <span>密碼</span>
+                        <input type="password" name="password" placeholder="請輸入密碼">
+                    </div>
+                    <div class="group">  
+                        <span>驗證碼</span>      
+                        <div class="verify">
+                            <img src="" alt="" draggable="true">
+                            <img src="" alt="" draggable="true">
+                            <img src="" alt="" draggable="true">
+                            <img src="" alt="" draggable="true">
+                            <button>重新產生</button>
+                        </div>
+                    </div>
+                    <div class="group">
+                        <span>由小到大排列</span>
+                        <div class="verify">
+                            <div class="box"></div>
+                            <div class="box"></div>
+                            <div class="box"></div>
+                            <div class="box"></div>
+                        </div>
+                    </div>
+                    <div class="group">
+                        <button type="submit">清除</button>
+                        <button type="submit">登入</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="./js/index.js"></script>
+</body>
+</html>
