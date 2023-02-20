@@ -17,8 +17,8 @@ body{
 }
 .title{
     color: white;
-    text-shadow: 1px 1px #4b3d2e;
-    font-size: 40px;
+    text-shadow: 1.5px 1.5px #4b3d2e;
+    font-size: 50px;
     font-weight: 900;
     font-family: sans-serif;
     margin-bottom: 20px;
@@ -32,7 +32,8 @@ body{
     flex-direction: column;
 }
 input{
-    height: 30px;
+    width: 300px;
+    height: 40px;
     padding: 10px;
     border-radius: 5px;
     border: none;
@@ -44,31 +45,31 @@ input{
     align-items: center;
 }
 .verify img, .verify .box{
-    width: 25px;
-    height: 25px;
+    width: 40px;
+    height: 40px;
     background-color: aliceblue;
     border: 1px solid aliceblue;
     border-radius: 2.5px;
-    margin: 0 1px;
+    margin: 0 2px;
     cursor: pointer;
 }
 .group{
-    margin: 7.5px;
+    margin: 15px;
     display: flex;
     flex-direction: column;
 }
 .group span{
-    font-size: 12.5px;
+    font-size: 18px;
     font-weight: 800;
     margin-bottom: 3px;
 }
-.group:nth-child(3) button{
-    height: 23px;
+.refresh{
+    height: 35px;
     color: #4b3d2e;
-    font-size: 10px;
+    font-size: 15px;
     font-weight: 600;
-    margin: 0 0 0 30px;
-    border-radius: 7.5px;
+    margin-left: 50px;
+    border-radius: 5px;
     border: none;
     cursor: pointer;
 }
@@ -78,11 +79,11 @@ input{
 }
 .group:last-child button{
     width: 75px;
-    height: 25px;
+    height: 40px;
     background-color: #4b3d2e;
     color: #ededea;
     font-weight: 700;
-    font-size: 12.5px;
+    font-size: 17px;
     margin: 20px 0 0 0px;
     border-radius: 10px;
     border: none;

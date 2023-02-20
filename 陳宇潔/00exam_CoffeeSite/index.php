@@ -9,12 +9,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/index.css">
-    <title>The CS coffee</title>
+    <title>咖啡商品展示系統</title>
 </head>
 <body>
-    <?php
-        //使用 isset方法，判別有沒有此變數可以使用
-    ?>
     <form action="login.php" method="post">
         <div class="center">
             <div class="bg">
@@ -22,6 +19,9 @@
                     咖啡商品展示系統
                 </div>
                 <div class="content">
+                    <?php
+                        echo "<p>".$_SESSION['msg']."</p>";
+                    ?>
                     <div class="group">
                         <span>帳號</span> 
                         <input type="text" name="account" placeholder="請輸入帳號">
@@ -33,11 +33,11 @@
                     <div class="group">  
                         <span>驗證碼</span>      
                         <div class="verify">
-                            <img src="" alt="" draggable="true">
-                            <img src="" alt="" draggable="true">
-                            <img src="" alt="" draggable="true">
-                            <img src="" alt="" draggable="true">
-                            <button>重新產生</button>
+                            <img src="verify0.php" draggable="true">
+                            <img src="verify1.php" draggable="true">
+                            <img src="verify2.php" draggable="true">
+                            <img src="verify3.php" draggable="true">
+                            <button type="button" class="refresh">重新產生</button>
                         </div>
                     </div>
                     <div class="group">
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="group">
-                        <button type="submit">清除</button>
+                        <button type="button" class="clear">清除</button>
                         <button type="submit">登入</button>
                     </div>
                 </div>
