@@ -35,7 +35,7 @@
     }
     .link_box1{
         margin: 16px 24px 16px 0;
-        
+
     }
     .link_box2{
         margin-right: 15px;
@@ -141,7 +141,7 @@
         margin-bottom: 8px;
     }
     .title_text{
-        margin-left: 12px; 
+        margin-left: 12px;
     }
     .icon_box{
         padding-left:12px;
@@ -149,7 +149,7 @@
     .box_column{
         flex-wrap: wrap;
         padding: 0px 12px;
-    }    
+    }
     .column{
         width: calc(100% / 3);
     }
@@ -244,12 +244,12 @@
         font-size: 19px;
     }
     .right_menu_box{
-        width: 100%; 
+        width: 100%;
         justify-content: space-between;
         padding: 0 7px;
         padding-bottom: 5px;
     }
-    
+
     .bar_ul, .bar_li_ul{
         display: flex;
         flex-direction: column;
@@ -273,7 +273,7 @@
         margin: 1px;
         padding: 13px 20px 16px 15px;
         border-bottom: 1px solid #e6e6e6;
-        
+
     }
     .bar_li{
         display: flex;
@@ -319,7 +319,7 @@
         box-shadow: 0 2px 2px 0 rgb(223, 223, 223);
     }
     .m_text{
-        padding: 20px 24px 16px;        
+        padding: 20px 24px 16px;
         box-shadow: 0 0 ;
         margin: 0px;
     }

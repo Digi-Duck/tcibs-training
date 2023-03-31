@@ -45,7 +45,7 @@ a{
 }
 .leftbar{
     margin: 0px;
-    margin-left: 8px; 
+    margin-left: 8px;
     padding: 0px;
     display: flex;
 }
@@ -213,6 +213,7 @@ input:checked ~ .menu_box{
 
 .main_img{
     display: flex;
+    flex-wrap: nowrap;
     cursor: pointer;
 }
 .m_img{
@@ -220,7 +221,9 @@ input:checked ~ .menu_box{
 
 }
 .m_text_box{
+    float: left;
     width: 100%;
+    margin-top: 10%;
     margin-left: -100%;
     display: flex;
 }
@@ -260,7 +263,7 @@ input:checked ~ .menu_box{
 }
 .text_box2_1{
     padding-bottom: 18px;
-}   
+}
 .text_box3{
     word-break: keep-all;
     word-wrap: break-word;
@@ -381,7 +384,7 @@ ul{
     color: black;
     display: inline-block;
     word-break: keep-all;
-    word-wrap: break-word;      
+    word-wrap: break-word;
 }
 .word-break{
     word-break: normal;

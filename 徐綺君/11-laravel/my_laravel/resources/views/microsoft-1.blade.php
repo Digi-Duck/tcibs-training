@@ -15,7 +15,7 @@
         <div class="top_box">
             <div class="topbar" id="topbar">
                 <div class="left">
-                    <a class="logo_btn" href="">
+                    <a class="logo_btn" href="/">
                         <img class="logo" src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31" alt="">
                     </a>
                     <ul class="leftbar">
