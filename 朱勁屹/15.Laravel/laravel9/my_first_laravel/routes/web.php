@@ -15,12 +15,17 @@ use App\Http\Controllers\NewsController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 Route::get("/test",function()
 {
     return view("welcome");
 });
 
 Route::get('/mi' ,[NewsController::class,'mi']);
+
+Route::get('/tem',function ()
+{
+    return view('tem');
+});
