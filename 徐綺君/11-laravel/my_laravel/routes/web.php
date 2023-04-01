@@ -22,5 +22,6 @@ Route::get('/', [NewsController::class, 'index']);
 // });
 
 Route::get('/say', [Controller::class, 'say']);
+Route::get('/comment', [Controller::class, 'comment']);
 
 Route::get('/microsoft',[Controller::class, 'microsoft']);

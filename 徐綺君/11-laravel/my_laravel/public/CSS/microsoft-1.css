@@ -209,8 +209,6 @@ input:checked ~ .menu_box{
 }
 
 
-
-
 .main_img{
     display: flex;
     flex-wrap: nowrap;
@@ -368,7 +366,24 @@ ul{
     padding-left: 12px;
 }
 .ct_img{
-    width: 100%;
+    width: 500px;
+    height: 280px;
+    overflow: hidden;
+    object-position: center center;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.no_img{
+    width: 500px;
+    height: 280px;
+    display: flex;
+    font-weight: 600;
+    justify-content: center;
+    align-items: center;
+    color: #D9D9D9;
+    background-color: #979797;
+    border-radius: 5px;
+    font-size: 50px;
 }
 .title{
     word-break: keep-all;
@@ -525,6 +540,7 @@ ul{
     display: flex;
     margin: 0px auto;
     padding: 0px 8%;
+
 }
 .column{
     width: calc(100%/6);
@@ -578,3 +594,4 @@ ul{
     line-height: 16px;
     font-size: 11px;
 }
+

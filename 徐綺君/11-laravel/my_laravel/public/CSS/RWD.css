@@ -1,3 +1,5 @@
+
+
 @media screen and (max-width:1780px) {
     .leftbar{
         margin-left: 4px;
@@ -16,6 +18,7 @@
         margin-left: 37px;
     }
 }
+
 @media screen and (max-width:1480px) {
     .m_text{
         width: 26.01%;
