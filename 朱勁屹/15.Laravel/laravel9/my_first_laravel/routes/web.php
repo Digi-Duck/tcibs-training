@@ -29,3 +29,9 @@ Route::get('/tem',function ()
 {
     return view('tem');
 });
+Route::get('/new',[Controller::class,'new']);
+Route::get('/cool',[NewsController::class,'cool']);
+Route::get('/insert',[NewsController::class,'insert']);
+Route::get('/update/{id}',[NewsController::class,'update']);
+Route::get('/updateup',[NewsController::class,'updateup']);
+Route::get('/delete/{id}',[NewsController::class,'delete']);
