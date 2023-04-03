@@ -23,5 +23,9 @@ Route::get('/', [NewsController::class, 'index']);
 
 Route::get('/say', [Controller::class, 'say']);
 Route::get('/comment', [Controller::class, 'comment']);
+Route::get('/comment/save', [Controller::class, 'save_comment']);
+Route::get('/comment/dalete/{id}', [Controller::class, 'dalete_comment']);
+Route::get('/comment/update/update/{id}', [Controller::class, 'update_update_comment']);
+Route::get('/comment/update/{id}', [Controller::class, 'update_comment']);
 
 Route::get('/microsoft',[Controller::class, 'microsoft']);
