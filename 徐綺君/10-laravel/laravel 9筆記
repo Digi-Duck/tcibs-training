@@ -67,3 +67,8 @@ php artisan make:migration change_author_to_comments_table
 composer require doctrine/dbal
 
 php artisan migrate
+
+-----------------------------------------------------------------------------------------------
+
+php artisan make:model 對應資料表名稱(大駝峰,單數)
+

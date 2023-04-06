@@ -40,7 +40,7 @@ class Controller extends BaseController
         return redirect('/comment');
     }
 
-    public function update_comment($id)
+    public function edit_comment($id)
     {
         // $comment = DB::table('comments')->where('id',$id)->first();
         $comment =  DB::table('comments')->find($id);
@@ -48,7 +48,7 @@ class Controller extends BaseController
         return view('update',compact('comment'));
     }
 
-    public function update_update_comment($id, Request $request)
+    public function update_comment($id, Request $request)
     {
 
         //DB操作
