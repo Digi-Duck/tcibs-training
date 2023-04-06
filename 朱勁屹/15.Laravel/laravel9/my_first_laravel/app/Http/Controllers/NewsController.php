@@ -22,6 +22,7 @@ class NewsController extends Controller
 
         return view('cool',compact('data'));
     }
+
     public function insert(Request $request)
     {
         DB::table('news_tabe')->insert([
@@ -32,11 +33,14 @@ class NewsController extends Controller
         
         return redirect("/cool");
     }
+
     public function update($id)
     {
+        
         $data = DB::table('news_tabe')->where('id',$id)->first();
        return view("updateView",compact('data'));
     }
+
     public function updateup(Request $re)
     {
         $id = $re->id;
@@ -48,6 +52,7 @@ class NewsController extends Controller
         return redirect('/cool');
 
     }
+
     public function delete($id)
     {
         DB::table('news_tabe')->where('id',$id)->delete();

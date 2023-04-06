@@ -1,7 +1,9 @@
 @extends('tem')
 @section('css')
 <style>
-    
+    *{
+        font-size: 100px;
+    }
     body{
         width: 100%;
         height: 100%;

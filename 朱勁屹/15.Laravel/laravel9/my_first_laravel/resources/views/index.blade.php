@@ -1,4 +1,5 @@
 @extends('tem')
+
 @section('paTitle')
     microfloat
 @endsection

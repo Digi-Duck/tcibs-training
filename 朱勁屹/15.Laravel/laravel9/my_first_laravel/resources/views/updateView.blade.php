@@ -25,7 +25,7 @@
         height: 100%;
     }
     button{
-        font-size: 30px
+        font-size: 30px;
     }
 </style>
 @endsection
