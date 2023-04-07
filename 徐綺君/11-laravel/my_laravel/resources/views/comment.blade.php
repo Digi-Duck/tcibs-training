@@ -112,10 +112,6 @@
                     <div class="text">內容</div>
                     <input type="text" class="input" name="content">
                 </div>
-                <div class="box">
-                    <div class="text">Email</div>
-                    <input type="text" class="input" name="email">
-                </div>
                 <button>送出</button>
             </form>
             @foreach ($comments as $comment)
