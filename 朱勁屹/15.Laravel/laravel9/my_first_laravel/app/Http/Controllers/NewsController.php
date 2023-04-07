@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\NewTabe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -18,19 +19,26 @@ class NewsController extends Controller
     }
     public function cool()
     {
-        $data = DB::table('news_tabe')->get();
+        $comments = NewTabe::orderby('id','desc')->get();
+        // dd($comments);
+        // $data = DB::table('news_tabe')->get();
+        $data = $comments;
 
         return view('cool',compact('data'));
     }
 
     public function insert(Request $request)
     {
-        DB::table('news_tabe')->insert([
+        // DB::table('news_tabe')->insert([
+        //     'title'=>$request->title,
+        //     'content'=>$request->content,
+        //     'img'=>$request->img
+        // ]);
+        NewTabe::create([
             'title'=>$request->title,
             'content'=>$request->content,
             'img'=>$request->img
         ]);
-        
         return redirect("/cool");
     }
 
