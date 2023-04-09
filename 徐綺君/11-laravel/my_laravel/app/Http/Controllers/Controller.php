@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use App\Models\Comment;
 
 class Controller extends BaseController
 {
@@ -18,38 +19,46 @@ class Controller extends BaseController
     }
 
     public function comment(){
-        $comments = DB::table('comments')->orderby('id','desc')->get();
+        // $comments = DB::table('comments')->orderby('id','desc')->get();
+
+        $comments = Comment::orderby('id','desc')->get();
+
+        // dd($comments);
+
         return view('comment',compact('comments'));
     }
 
-    public function save_comment(Request $request)
-    {
-        DB::table('comments')->insert([
+    public function save_comment(Request $request){
+        // DB::table('comments')->insert([
+        //     'title' => $request -> title,
+        //     'name' => $request -> name,
+        //     'content' => $request -> content,
+        //     'email' => '',
+        // ]);
+
+        Comment::create([
             'title' => $request -> title,
             'name' => $request -> name,
             'content' => $request -> content,
-            'email' => $request -> email,
+            'email' => '',
         ]);
 
         return redirect('/comment');
     }
 
-    public function dalete_comment($id)
-    {
+    public function dalete_comment($id){
         $deleted = DB::table('comments')->where('id',$id)->delete();
         return redirect('/comment');
     }
 
-    public function edit_comment($id)
-    {
+    public function edit_comment($id){
         // $comment = DB::table('comments')->where('id',$id)->first();
         $comment =  DB::table('comments')->find($id);
         // dd($comment);
         return view('update',compact('comment'));
     }
 
-    public function update_comment($id, Request $request)
-    {
+    public function update_comment($id, Request $request){
 
         //DB操作
         $comment =  DB::table('comments')->where('id',$id)->update([
@@ -64,6 +73,8 @@ class Controller extends BaseController
 
     public function microsoft(){
         $data = DB::table('news')->orderBy('id','desc')->take(4)->get();
-        return view('microsoft-1',['data' => $data]);
+
+
+        return view('microsoft-1',compact('data'));
     }
 }
