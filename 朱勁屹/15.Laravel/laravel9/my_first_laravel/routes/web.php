@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ImgController;
 use App\Http\Controllers\NewsController;
 
 /*
@@ -42,3 +43,15 @@ Route::get('/insert',[NewsController::class,'insert']);
 Route::get('/update/{id}',[NewsController::class,'update']);
 Route::get('/updateup',[NewsController::class,'updateup']);
 Route::get('/delete/{id}',[NewsController::class,'delete']);
+
+Route::prefix('/imgTest')->group(function () {
+    Route::get('/',[ImgController::class,'index']);
+
+    Route::get('/create',[ImgController::class,'create']);
+    Route::get('/store',[ImgController::class,'store']);
+
+    Route::get('/edit',[ImgController::class,'edit']);
+    Route::get('/update',[ImgController::class,'update']);
+
+    Route::get('/destroy',[ImgController::class,'destroy']);
+});
