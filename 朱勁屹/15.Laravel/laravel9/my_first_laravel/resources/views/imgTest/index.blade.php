@@ -25,6 +25,11 @@
             color: white;
             text-align: center;
         }
+        img{
+            width: 200px;
+            height: 200px;
+            border:1px solid black;
+        }
     </style>
 </head>
 <body>
@@ -33,5 +38,9 @@
             Amongus
         </div>
     </main>
+    <img src="{{asset('img/img1.png')}}" alt="">
+    <form action="" enctype="multipart/form-data" method="POST">
+        <input type="file">
+    </form>
 </body>
 </html>

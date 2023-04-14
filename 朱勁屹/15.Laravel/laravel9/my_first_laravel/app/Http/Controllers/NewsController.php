@@ -14,7 +14,7 @@ class NewsController extends Controller
     public function mi()
     {
         $data = DB::table('news_tabe')->get();
-        dd($data);
+        
         return view('index');
     }
     public function cool()
