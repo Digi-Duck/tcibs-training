@@ -26,7 +26,7 @@
                         <li><a class="menu menu_L" id="under_line" href="/microsoft">Microsoft</a></li>
                         <li><a class="menu menu_L" id="under_line" href="/say">say</a></li>
                         <li><a class="menu menu_L" id="under_line" href="/comment">留言</a></li>
-                        <li><a class="menu menu_L" id="under_line" href="">Surface</a></li>
+                        <li><a class="menu menu_L" id="under_line" href="/banner/create">banner</a></li>
                         <li><a class="menu menu_L none" id="under_line" href="">Xbox</a></li>
                         <li><a class="menu menu_L none" id="under_line" href="">支援</a></li>
                         <input type="checkbox" id="switch_l">

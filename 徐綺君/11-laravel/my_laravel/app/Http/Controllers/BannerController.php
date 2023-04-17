@@ -3,31 +3,34 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Banner;
 
 class BannerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $banners = Banner::get();
+        return view('banner.index',compact('banners'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('banner.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $path = Storage::disk('local')->put('public/banner', $request->banner_img);
+        $path = str_replace("public","storage",$path);
+
+        Banner::create([
+            'img_path' => $path,
+            'img_opacity' => $request->opacity,
+            'weight'=> $request->weight,
+        ]);
+
+        return redirect('/banner');
     }
 
     /**
