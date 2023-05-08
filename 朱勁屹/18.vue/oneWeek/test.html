@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@next"></script> 
+    <title>Document</title>
+    <style>
+        img{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        {{ text }}
+        <input type="number" v-model="num">
+        {{ num }}
+        <img :src="person.img" alt="">
+        <div class="gen" v-if="person.gender == 'man'">such dick</div>
+        <div class="gen" v-else>such pussy</div>
+        <hr>
+        <ul>
+            <li v-for="item in person">
+                <img :src="item.img" alt="">
+                <div class="name">{{ item.name }}</div>
+                <div class="gen" v-if="item.gender == 'man'">such dick</div>
+                <div class="gen" v-else>such pussy</div>
+                <div class="cash">{{ item.cash }}</div>
+                <button @click="cl" type="button">
+                    增加
+                </button>
+            </li>
+        </ul>
+    </div>
+    <script>
+        Vue.createApp({
+            data:function(){
+                return{
+                    text:'amongus',
+                    num:0,
+                    person:[
+                        {
+                            name:'dick',
+                            img:'https://imgs.gvm.com.tw/upload/gallery/20221204/125075.jpg',
+                            gender:'man',
+                            cash:1000
+                        },
+                        {
+                            name:'pussy',
+                            img:'https://imgs.gvm.com.tw/upload/gallery/20221204/125075.jpg',
+                            gender:'female',
+                            cash:300,
+                        }
+                ],
+                };
+            },
+            methods:{
+                
+                cl() {
+                    alert('吃屌');
+                }
+            },
+            mounted(){
+                console.log(this.text);
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
