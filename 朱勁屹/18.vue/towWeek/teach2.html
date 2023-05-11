@@ -1,13 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://unpkg.com/vue@next"></script> 
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 <body>
-     
+  <div id="app">
+    <!-- #1 呈現 text 在畫面上 -->
+
+    <!-- #2 使用 v-model 綁定 num 資料 -->
+
+    <!-- #3 綁定 num 同時使用修飾符確保型別為 number -->
+
+    <!-- #4 呈現 person.name 在畫面上 -->
+
+    <!-- #5 取出 person . image 並以圖片形式呈現在畫面上（使用 v-bind） -->
+
+    <!-- #6 將上述的 v-bind 改為縮寫形式 -->
+
+    <!-- #7 使用 a 標籤搭配 method 將 person 參數傳入，用以修改 cash 金額 -->
+
+    <!-- #8 為 v-on 加入修飾符 -->
+
+    <!-- #9 使用 v-if 判斷 gender 的 icon 切換 -->
+
+    <!-- #10 使用 v-else 判斷另一個 -->
+
+    <!-- #11 使用 v-for 迴圈呈現 people 資料 -->
+
+    <!-- #12 將 people 改為物件展示 -->
+
+    <!-- #13 v-for 搭配 :key -->
+
+    <!-- #14 v-for key 之問題（須將 people 改為陣列形式） -->
+
+    <!-- #15 呈現 people 中的資料 -->
+
+    <!-- #16 將 people 中的 name 綁定 v-model -->
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.1.4/vue.global.min.js"></script>
+  <script>
+    // 方式二：整包 Vue
+    // 適合直接在網頁上呈現
+    const app = Vue.createApp({
+      data() {
+        // 資料集
+        return {
+          text: '我是卡斯伯',
+          num: 1,
+          person: {
+            name: '小明',
+            image: 'https://images.unsplash.com/photo-1593052393678-d1c690c76071?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+            cash: 1000,
+            gender: 'male'
+          },
+          people: [
+            {
+              name: '小明',
+              image: 'https://images.unsplash.com/photo-1593052393678-d1c690c76071?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+              cash: 1000,
+              gender: 'male'
+            },
+            {
+              name: '漂亮阿姨',
+              image: 'https://images.unsplash.com/photo-1526107557768-2073f33a8596?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+              cash: 50000,
+              gender: 'female'
+            },
+            {
+              name: '杰倫',
+              image: 'https://images.unsplash.com/photo-1504593811423-6dd665756598?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+              cash: 1000000,
+              gender: 'male'
+            },
+          ]
+        };
+      },
+      methods: {
+        // 方法集
+      },
+      mounted() {
+      }
+    });
+    app.mount('#app');
+
+  </script>
 </body>
 </html>
