@@ -8,17 +8,32 @@
 </head>
 <body>
     <div id="app">
-        {{ text }}
+        <!-- 使用 v-model 綁定 text1   -->
+       <input type="number" v-model.number ="text1">
+       
+        <!-- 使用 v-model 綁定 text2   -->
+       <input type="number" v-model="text2">
+       
+       <button type="button" @click.prevent="lookText">
+       查看 型別差異</button>
     </div>
+     
+    <script src="https://unpkg.com/vue@next"></script>
 
     <script src="https://unpkg.com/vue@next"></script> 
     <script>
         const app = Vue.createApp({
-            data(){
-                return{
-                    text:'顯示文字',
-                }
-            },
+        data() {
+            return {
+                text1: "123",
+                text2: "456"
+            }
+        },
+        methods:{
+            lookText(){ 
+                console.log(typeof(this.text1),typeof(this.text2))
+            }
+        }
         })
         app.mount('#app');
     </script>

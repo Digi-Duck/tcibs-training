@@ -21,6 +21,7 @@
             height: 500px;
             margin: auto;
             display: flex;
+            justify-content: space-around;
         }
         .top{
             width: 100%;
@@ -34,6 +35,9 @@
             flex-direction: column;
             justify-content: space-between;
             margin-right: 20px;
+        }
+        .right{
+            width: 30%;
         }
         .num_in{
             width: 300px;
@@ -54,19 +58,19 @@
                 </div>
             </div>
             <div class="btn-group" role="group">
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" v-model="action" value="0" checked>
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" v-model.number="action" value="+" checked>
                 <label class="btn btn-outline-primary" for="btnradio1">+</label>
               
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" v-model="action" value="1">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" v-model.number="action" value="-">
                 <label class="btn btn-outline-primary" for="btnradio2">-</label>
               
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" v-model="action" value="2">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" v-model.number="action" value="*">
                 <label class="btn btn-outline-primary" for="btnradio3">*</label>
 
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio4" v-model="action" value="3">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio4" v-model.number="action" value="/">
                 <label class="btn btn-outline-primary" for="btnradio4">/</label>
             </div>
-            <button type="button" class="btn btn-primary" @click="calculate(result)">計算</button>
+            <button type="button" class="btn btn-primary" @click="calculate()">計算</button>
             <h3>
                 結果: {{result}}
             </h3>
@@ -74,9 +78,9 @@
         <div class="right">
             <h3>歷史紀錄</h3>
             <ul>
-                {{num1}}
-                {{num2}}
-                {{action}}
+                <li v-for="(item,key) in history">
+                    {{ item }}
+                </li>
             </ul>
         </div>
                     
@@ -88,32 +92,45 @@
                 return{
                     num1: 0,
                     num2: 0,
-                    action: 0,
+                    action: "+",
                     result: 0,
+                    history: JSON.parse(localStorage.getItem('history')),
                 };
             },
             methods:{
-                calculate(result){
-                    // switch (action) {
-                    //     case 0:
-                    //         result = num1 + num2;
-                    //         break;
-                    //     case 1:
-                    //         result = num1 - num2;
-                    //         break;
-                    //     case 2:
-                    //         result = num1 * num2;
-                    //         break;
-                    //     case 3:
-                    //         result = num1 / num2;
-                    //         break;                    
-                    //     default:
-                    //         break;
-                    // }
-                    result += 1;
-                }
+                calculate(){
+                    switch (this.action) {
+                        case "+":
+                            this.result = this.num1 + this.num2;
+                            break;
+                        case "-":
+                            this.result = this.num1 - this.num2;
+                            break;
+                        case "*":
+                            this.result = this.num1 * this.num2;
+                            break;
+                        case "/":
+                            this.result = this.num1 / this.num2;
+                            break;                    
+                        default:
+                            break;
+                    }
+                    if (this.history.length >= 10) {
+                        this.history.shift(); 
+                        this.history.push(this.num1 + this.action + this.num2 + '=' + this.result);
+                    }else{
+                        this.history.push(this.num1 + this.action + this.num2 + '=' + this.result);
+                    }
+                    this.num1 = this.num2 = 0;
+                    this.action = '+';
+                    let history = JSON.stringify(this.history);
+                    localStorage.setItem('history', history);
+                },
             },
             mounted: function(){
+                if(this.history == null){
+                    this.history = [];
+                }
             },
         }).mount('#app');
     </script>

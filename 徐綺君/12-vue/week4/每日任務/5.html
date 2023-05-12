@@ -8,23 +8,19 @@
 </head>
 <body>
     <div id="app">
-        {{ text1 }}
+        {{ text }}
     </div>
-        
-    <script src="https://unpkg.com/vue@next"></script>
+
+    <script src="https://unpkg.com/vue@next"></script> 
     <script>
         const app = Vue.createApp({
-            data() {
-                return {
-                text1:"Vue 夏令營",
+            data(){
+                return{
+                    text:'顯示文字',
                 }
-            },
-            mounted(){
-                this.text1 = "並在 mounted 中使用 this 指向的方法，來調整 data 中 text1 的資料。";
             },
         })
         app.mount('#app');
-
     </script>
 </body>
 </html>

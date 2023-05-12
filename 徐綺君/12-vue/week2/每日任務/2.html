@@ -7,13 +7,41 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="app">
+    <!-- 在此使用 {{}} 綁定 text1 -->
+    <div>
+        {{ text1 }}
+    </div>
+    
+    <!-- 在此使用 v-text 綁定 text2 -->
+    <div v-text="text2"></div>
+    
+    <!-- 在此使用 v-model 綁定 text3 -->
+    <input type="text" v-model="text3">
+    
+    <input type="file" @click="file" name="img" accept=".png"   />
+    
+    </div>
+     
+    <script src="https://unpkg.com/vue@next"></script>
+     
     <script>
-        const array = ['100', '1500', '2000', '99']
-        const newArray = []
-        array.forEach(element => {
-            newArray.push(element * 2)
-        });
-        console.log(newArray)
+        const app = Vue.createApp({
+            data() {
+                return {
+                    text1: "Vue 夏令營",
+                    text2: "Day 8 每日任務",
+                    text3: "d(`･∀･)b"
+                }
+            },
+            methods:{
+                file(e){
+                        console.log('test',e.target )
+                    }
+                }
+            })
+        app.mount('#app');
+
     </script>
 </body>
 </html>

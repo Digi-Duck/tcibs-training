@@ -11,27 +11,17 @@
 </head>
 <body>
     <div id="app">
-        <input type="text" v-model="text1">
-        <button type="button" @click.prevent="lookText">
-        查看 text1</button>
+        {{ text }}
     </div>
       
-    <script src="https://unpkg.com/vue@next"></script>
-      
     <script>
-        const app = Vue.createApp({
-        data() {
-            return {
-                text1:"Vue 夏令營", 
+        Vue.createApp({
+            data(){
+                return{
+                    text:'測試文字',
+                };
             }
-        },
-        methods:{
-            lookText(){
-                console.log(this.text1)
-            }
-            }
-        })
-        app.mount('#app');
+        }).mount('#app');
     </script>
 </body>
 </html>
