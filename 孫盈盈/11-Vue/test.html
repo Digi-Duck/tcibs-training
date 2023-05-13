@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{text}}
+        {{name}}
+        {{num}}
+        <input type="number" v-model="num">
+        
+        <hr>
+        {{ person.name }}
+        <img :src="person.image" :alt="person.name">
+        <p v-if="person.gender === 'male'">boy</p>
+        <p v-else="person.gender === 'female'">girl</p>
+    </div>
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    text:'Hello World!',
+                    name: 'Emma',
+                    num: 0,
+                    person: {
+                        name: 'Arashi',
+                        image: 'https://www.google.com.tw/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+                        cash: 500,
+                        gender: 'female'
+                    },
+                }
+            },
+        }).mount('#app');
+    </script>
+</body>
+</html>
