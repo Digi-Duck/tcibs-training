@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        <nav class="chapternav theme-dark">
+          <div class="chapternav-wrapper">
+            <ul class="chapternav-items" id="listScroll">
+              <li class="chapternav-item"><i class="fa fa-laptop"></i></li>
+              <li class="chapternav-item"><i class="fa fa-desktop"></i></li>
+              <li class="chapternav-item"><i class="fa fa-compass"></i></li>
+              <li class="chapternav-item"><i class="fa fa-user"></i></li>
+              <li class="chapternav-item"><i class="fa fa-comment"></i></li>
+              <li class="chapternav-item"><i class="fa fa-bomb"></i></li>
+              <li class="chapternav-item"><i class="fa fa-book"></i></li>
+              <li class="chapternav-item"><i class="fa fa-calculator"></i></li>
+            </ul>
+            <div class="chapternav-paddles" style="display: block;">
+              <button v-if="leftBtnShow" @click="scrollLeft" class="chapternav-paddle chapternav-paddle-left" aria-hidden="true">
+                <i class="fa fa-chevron-left"></i>
+              </button>
+              <button v-if="rightBtnShow" @click="scrollRight" class="chapternav-paddle chapternav-paddle-right" aria-hidden="true">
+                <i class="fa fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </nav>
+    </div>
+    
+    <script src="https://unpkg.com/vue@next"></script>
+</body>
+</html>

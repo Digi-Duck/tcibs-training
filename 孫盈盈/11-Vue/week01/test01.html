@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{text}}
+        {{name}}
+        {{num}}
+        <input type="number" v-model="num">
+        
+        <hr>
+        {{ person.name }}
+        <img :src="person.image" :alt="person.name">
+        <p v-if="person.gender === 'male'">boy</p>
+        <p v-else="person.gender === 'female'">girl</p>
+        {{person.cash}}
+        <button @click="AlertClilk()">增加</button>
+        <hr>
+        <ul>
+            <li v-for="item in people">
+                {{ item.name }}
+                <img :src="item.image" alt="">
+                <p v-if="item.gender === 'male'">boy</p>
+                <p v-else="item.gender === 'female'">girl</p>
+                <hr>
+                {{item.cash}}
+                <button @click="numAdd(item)">增加</button>
+                <hr>
+            </li>
+        </ul>
+    </div>
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    text:'Hello World!',
+                    name: 'Emma',
+                    num: 0,
+                    person:{
+                        name: 'Arashi',
+                        image: 'https://www.google.com.tw/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+                        cash: 500,
+                        gender: 'female'
+                    },
+                    people:[ 
+                        {
+                            name: '拉拉拉',
+                            image: 'https://www.google.com.tw/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+                            cash: 500,
+                            gender: 'female'
+                        },
+                        {
+                            name: '哈哈',
+                            image: 'https://stickershop.line-scdn.net/stickershop/v1/product/7028/LINEStorePC/main.png',
+                            cash: 300,
+                            gender: 'male'
+                        },
+                        {
+                            name: 'Arashi',
+                            image: 'https://media3.giphy.com/media/gdwf3hCno7Uouwdjmf/giphy.gif?cid=6c09b95288a5744bc7ff071dd54605afa04cecddd54e04c6&ep=v1_internal_gifs_gifId&rid=giphy.gif&ct=g',
+                            cash: 400,
+                            gender: 'female'
+                        },
+                    ]
+                }
+            },
+            methods: {
+                AlertClilk(){
+                    alert('click')
+                },
+                numAdd(num){
+                    num.cash++
+                }
+
+            },
+            mounted: function(){
+                console.log(this.text);
+                this.text = 'Arashi';
+                console.log(this.name);
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

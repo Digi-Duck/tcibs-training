@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 使用 v-model 綁定 text1   -->
+       <input type="number" v-model.number="text1">
+       
+        <!-- 使用 v-model 綁定 text2   -->
+       <input type="number" v-model="text2">
+       
+       <button type="button" @click.prevent="lookText">
+       查看 型別差異</button>
+     </div>
+     
+     <script src="https://unpkg.com/vue@next"></script>
+     <script>
+        const app = Vue.createApp({
+        data() {
+            return {
+                text1: "123",
+                text2: "456"
+            }
+        },
+        methods:{
+            lookText(){ 
+                console.log(typeof(this.text1),typeof(this.text2))
+            }
+        }
+        })
+        app.mount('#app');
+     </script>
+</body>
+</html>
