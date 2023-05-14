@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    
+</head>
+<body>
+    <div id="app" class="container">
+        <div class="row">
+          <div class="col-3 mb-3" v-for="item in data" :key="item.cell">
+            <div class="card">
+              <img :src="item.picture.large" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{ item.email }}</h5>
+                <p class="card-text">
+                  <!-- #3 把 age * 100 當作金額吧（套用 toCurrency 的方法） -->
+                  {{ toCurrency(item.dob.age * 100) }}
+                  <!-- {{ cash }} -->
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <hr>
+        dollarSign: {{ num }}
+    </div>
+
+    <script>
+        Vue.createApp({
+            data(){
+                return {
+                    text: '我是卡斯伯',
+                    num: 10000.01,
+                    person: {
+                        name: '小明',
+                        image: 'https://images.unsplash.com/photo-1593052393678-d1c690c76071?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+                        cash: 1000,
+                        gender: 'male'
+                    },
+                    data: []
+                };
+            },
+            methods: {
+                getRandomUser() {
+                axios.get('https://randomuser.me/api/?results=10')
+                    .then((res) => {
+                        // #2 如何把資料加入至 data 內
+                        console.log(res);
+                        this.data = res.data.results
+                    })
+                },
+                // #3 如何加入千分號
+                toCurrency(num) {
+                    const parts = num.toString().split('.');
+                    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                    return `$${parts.join('.')}`;
+                }
+            },
+            mounted(){
+                // #1 觸發取得遠端資料
+                this.getRandomUser()
+            },
+        }).mount('#app');
+    </script>
+</body>
+</html>
