@@ -5,9 +5,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <script src="https://unpkg.com/vue@next"></script> 
+
 </head>
 <body>
-    
+    <div id="app">
+        <input type="text" v-model="text">
+        <button @click="add">新增</button>
+        <input type="text" v-model="edi">
+        <button @click="update(editid)">更改</button>
+            <div class="box" v-for="item in data" :key="item.id">
+                {{item.text}}
+                <button @click="del(item.id)">刪除</button>
+                <button @click="edit(item.id)">更改</button>
+            </div>
+
+    </div>
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    data:[],
+                    text:'',
+                    edi:'',
+                    editid:0,
+                }
+            },
+            methods:{
+                add(){
+                    this.data.push({
+                        id: this.data.length + 1,
+                        text: this.text,
+                    });
+                    this.text = '';
+                },
+                del(id){
+                    index = this.data.findIndex((item) => item.id == id);
+                    this.data.splice(index,1);
+                },
+                edit(id){
+                    this.editid = id;
+                    index = this.data.findIndex((item) => item.id == id);
+                    console.log(index);
+                    this.edi = this.data[index].text;
+                    
+                },
+                update(id){
+                    this.editid = 0;
+                    index = this.data.findIndex((item) => item.id == id);
+                    this.data[index].text = this.edi;
+                    this.edi = '';
+
+                }
+
+            },
+            mouted(){
+
+            }
+        }).mount("#app");
+    </script>
 </body>
 </html>
