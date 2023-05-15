@@ -11,14 +11,26 @@
 </head>
 <body>
     <div id="app">
+        <select name="" id="" v-model="select">
+            <option value="0">全部</option>
+            <option value="false">未完成</option>
+            <option value="true">完成</option>
+        </select>
         <input type="text" v-model="text">
         <button @click="add">新增</button>
         <input type="text" v-model="edi">
         <button @click="update(editid)">更改</button>
-            <div class="box" v-for="item in data" :key="item.id">
-                {{item.text}}
-                <button @click="del(item.id)">刪除</button>
-                <button @click="edit(item.id)">更改</button>
+        {{select}}
+            <div class="box" v-for="item in fill" :key="item.id">
+                    {{item.text}}
+                    {{item.work}}
+                    <input type="checkbox" v-model="item.work">
+                    <button @click="del(item.id)">刪除</button>
+                    <button @click="edit(item.id)">更改</button>
+
+                <!-- <div class="box" v-if="item.work.toString() == select || select == 0 ">
+
+                </div> -->
             </div>
 
     </div>
@@ -30,6 +42,7 @@
                     text:'',
                     edi:'',
                     editid:0,
+                    select:'0',
                 }
             },
             methods:{
@@ -37,9 +50,11 @@
                     this.data.push({
                         id: this.data.length + 1,
                         text: this.text,
+                        work:'false',
                     });
                     this.text = '';
                 },
+                
                 del(id){
                     index = this.data.findIndex((item) => item.id == id);
                     this.data.splice(index,1);
@@ -59,6 +74,14 @@
 
                 }
 
+            },
+            computed:{
+                fill(){
+                    let newData = this.data.filter(item => {
+                        return item.work.toString() == this.select || this.select == 0
+                    })
+                    return newData;
+                },
             },
             mouted(){
 
