@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h4>缺少 key</h4>
+        <ul>
+          <li v-for="(item, key) in arrayData">
+            {{ key }} - {{ item.name }} {{ item.age }} 歲 <input type="text" />
+          </li>
+        </ul>
+      
+        <h4>加上 key</h4>
+        <ul>
+          <li v-for="(item, key) in arrayData" :key="item.age">
+            {{ key }} - {{ item.name }} {{ item.age }} 歲 <input type="text" />
+          </li>
+        </ul>
+        <button class="btn btn-outline-primary" @click="reverseArray">
+          反轉陣列
+        </button>
+      </div>
+    <script>
+        const app = {
+        data() {
+            return {
+                arrayData: [
+                    {
+                        name: '卡斯伯',
+                        age: 35
+                    },
+                    {
+                        name: 'Ray',
+                        age: 28 // 我還很年輕不要幫我加歲數。
+                    },
+                    {
+                        name: '洧杰',
+                        age: 33
+                    }
+                ]
+            }
+        },
+        methods: {
+            reverseArray: function () {
+                this.arrayData.reverse()
+                console.log(this.arrayData)
+            },
+        },
+        mounteds(){
+
+        }
+        }
+
+        Vue.createApp(app).mount('#app')
+    </script>
+</body>
+</html>
