@@ -29,11 +29,21 @@
                 <button class="btn btn-outline-secondary" type="button" @click="craete">加入</button>
             </div>
             <ul class="list-group">
-                <li class="list-group-item" v-for="(item, key) in data" :key="item.key">
-                    <input class="form-check-input me-1" type="checkbox">
-                    <input type="text" v-model="item" @dblclick="edit" readonly>
-                    <button type="button" class="btn-close"></button>
+                <li class="list-group-item" v-for="item in filter" :key="item.id">
+                    <input class="form-check-input me-1" type="checkbox" @click="item.completed = !item.completed" :checked="item.completed">
+                    <input v-if="modifiable == item.id" class="todo_list" type="text" v-model="cacheTitle" @keyup.enter="updata(item.id,item.text)" @blur="leave">
+                    <label v-else @dblclick="edit(item.id,item.text)">{{item.text}}</label>
+                    <button type="button" class="btn-close" @click="destroy(item.id)"></button>
                 </li>
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" checked>
+                    <label class="btn btn-outline-secondary" for="btnradio1" @click="visibility = 'all'">全部</label>
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2">
+                    <label class="btn btn-outline-secondary" for="btnradio2" @click="visibility = 'undone'">未完成</label>
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3">
+                    <label class="btn btn-outline-secondary" for="btnradio3" @click="visibility = 'finish'">已完成</label>
+                    <button type="button" class="btn btn-outline-secondary" @click="removeAll">清除全部</button>
+                </div>
             </ul>
         </div>
     </div>
@@ -43,22 +53,73 @@
             data(){
                 return{
                     value:'',
-                    data:['123456'],
+                    modifiable: 0,
+                    data:[],
+                    cacheTitle:'',
+                    id: 1,
+                    visibility: 'all',
                 }
             },
             methods:{
                 craete(){
-                    this.data.push(this.value)
+                    this.data.push({
+                        id: this.id, 
+                        text: this.value,
+                        completed: false,
+                    })
+                    this.value = '';
+                    console.log(this.data);
+                    this.id++;
                 },
-                edit(e){
-                    console.log(e.toElement.readonly);
-                    // e.toElement.readonly;
+                edit(id,text){
+                    this.modifiable = id;
+                    this.cacheTitle = text;
                 },
-                updata(){
-                    
+                leave(){
+                    this.modifiable = 0;
                 },
-                delete(){
-
+                updata(id){
+                    this.modifiable = 0;
+                    this.data.forEach((e,i) => {
+                        if (e.id == id) {
+                            this.data[i].text = this.cacheTitle;
+                        }
+                    });
+                },
+                destroy(id){
+                    this.data.forEach((e,i) => {
+                        if (e.id == id) {
+                            this.data.splice(i,1)
+                        }
+                    });
+                },
+                removeAll(){
+                    if (confirm('確定刪除全部?')) {
+                        this.data.splice(0);
+                        this.id = 1;       
+                        console.log('tttt');                 
+                    }
+                }
+            },
+            computed:{
+                filter(){
+                    switch (this.visibility) {
+                        case 'undone':
+                            return this.data.filter((item) =>
+                                item.completed != true
+                            );
+                            break;
+                        case 'finish':
+                            return this.data.filter((item) =>
+                                item.completed != false
+                            );
+                            break;
+                        case 'all':
+                            return this.data
+                        default:
+                            break;
+                    }
+                    console.log(this.data);
                 }
             },
             mounted(){
