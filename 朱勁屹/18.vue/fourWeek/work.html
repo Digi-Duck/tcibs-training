@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/vue@next"></script> 
+
+</head>
+<body>
+    <div id="app">
+        <select name="" id="" v-model="select">
+            <option value="0">全部</option>
+            <option value="false">未完成</option>
+            <option value="true">完成</option>
+        </select>
+        <input type="text" v-model="text">
+        <button @click="add">新增</button>
+        <input type="text" v-model="edi">
+        <button @click="update(editid)">更改</button>
+        {{select}}
+            <div class="box" v-for="item in fill" :key="item.id">
+                    {{item.text}}
+                    {{item.work}}
+                    <input type="checkbox" v-model="item.work">
+                    <button @click="del(item.id)">刪除</button>
+                    <button @click="edit(item.id)">更改</button>
+
+                <!-- <div class="box" v-if="item.work.toString() == select || select == 0 ">
+
+                </div> -->
+            </div>
+
+    </div>
+    <script type="module">
+        import {createApp , ref , reactive , onMounted , computed} from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.0-beta.7/vue.esm-browser.min.js';
+
+        const app = createApp({
+            setup(){
+
+                const data = ref([]);
+                let id = 0;
+                const text = ref('');
+                const edi = ref('');
+                const editid = ref(0);
+                const select = ref(0);
+
+                function add(){
+                    data.value.push({
+                        id: id,
+                        text: text.value,
+                        work:'false',
+                    });
+                    id++;
+                    text.value = '';
+                    console.log(data.value);
+                };
+                
+                function del(id){
+                    index = data.findIndex((item) => item.id == id);
+                    data.value.splice(index,1);
+                };
+                function edit(id){
+                    editid = id;
+                    index = data.findIndex((item) => item.id == id);
+                    console.log(index);
+                    edi.value = data.value[index].text;
+                    
+                };
+                function update(id){
+                    editid = 0;
+                    index = data.findIndex((item) => item.id == id);
+                    data.value[index].text = edi;
+                    edi.value = '';
+
+                };
+
+                const fill = computed(() => {
+                    let newData = data.value.filter(item => {
+                        return item.work.toString() == select || select == 0
+                    })
+                    return newData;
+                
+
+                })
+                return{
+                    data,
+                    text,
+                    edi,
+                    editid,
+                    select,
+                    add,
+                    del,
+                    edit,
+                    update,
+                    fill,
+                }
+            }
+        }) 
+        app.mount('#app');
+        // Vue.createApp({
+        //     data(){
+        //         return{
+        //             data:[],
+        //             text:'',
+        //             edi:'',
+        //             editid:0,
+        //             select:'0',
+        //         }
+        //     },
+        //     methods:{
+        //         add(){
+        //             data.push({
+        //                 id: this.data.length + 1,
+        //                 text: this.text,
+        //                 work:'false',
+        //             });
+        //             this.text = '';
+        //         },
+                
+        //         del(id){
+        //             index = this.data.findIndex((item) => item.id == id);
+        //             this.data.splice(index,1);
+        //         },
+        //         edit(id){
+        //             this.editid = id;
+        //             index = this.data.findIndex((item) => item.id == id);
+        //             console.log(index);
+        //             this.edi = this.data[index].text;
+                    
+        //         },
+        //         update(id){
+        //             this.editid = 0;
+        //             index = this.data.findIndex((item) => item.id == id);
+        //             this.data[index].text = this.edi;
+        //             this.edi = '';
+
+        //         }
+
+        //     },
+        //     computed:{
+        //         fill(){
+        //             let newData = this.data.filter(item => {
+        //                 return item.work.toString() == this.select || this.select == 0
+        //             })
+        //             return newData;
+        //         },
+        //     },
+        //     mouted(){
+
+        //     }
+        // }).mount("#app");
+    </script>
+</body>
+</html>
