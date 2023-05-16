@@ -7,17 +7,25 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="app">
+        <div class="box"></div>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
     <script>
-        const array = [100, 1500, 2000, 99, 499, 555, 1200]
-        const newArray = []
-
-        array.forEach(element => {
-            if (element > 500) {
-                newArray.push(element)
-            }
-        });
-
-        console.log(newArray)
+        const app = Vue.createApp({
+            methods: {
+                seachBox() {
+                    const box = document.querySelector('.box');
+                    console.log(box)
+                }
+            },
+            created(){
+                this.seachBox();
+            },
+        })
+        
+        app.mount('#app');
     </script>
 </body>
 </html>

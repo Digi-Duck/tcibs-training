@@ -8,19 +8,26 @@
 </head>
 <body>
     <div id="app">
-        {{ text }}
+        線上課程價格：
+        <input type="number" v-model.number="price">
+        <br>
+        線上課程折扣價格為 {{ discountPrice }} 元
     </div>
 
     <script src="https://unpkg.com/vue@next"></script> 
     <script>
         const app = Vue.createApp({
-            data(){
-                return{
-                    text:'顯示文字',
+            data() {
+                return {
+                    price: 3500,
                 }
             },
-        })
-        app.mount('#app');
+            computed: {
+                discountPrice(){
+                    return parseInt(this.price*0.8);
+                }
+            }
+        }).mount('#app');
     </script>
 </body>
 </html>

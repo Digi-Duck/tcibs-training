@@ -5,120 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <style>
-    .theme-dark {
-        background-color: #141414;
-        color: #ccc;
-    }
-    .theme-dark .chapternav-paddle {
-        border-color: rgba(255,255,255,0.2);
-        color: #fff;
-    }
-    .chapternav-paddle-left {
-        border-right: 1px solid;
-        left: 0;
-    }
-    .chapternav-paddle-right {
-        border-left: 2px solid;
-        right: 0;
-    }
-    .chapternav {
-        overflow: hidden;
-        padding: 0;
-        padding-top: 12px;
-        padding-bottom: 12px;
-        position: relative;
-        text-align: center;
-        width: 100%;
-        height: 80px;
-        z-index: 9987;
-        .chapternav-wrapper {
-            position: relative;
-            height: 100%;
-            z-index: 1;
-            .chapternav-items {
-                list-style: none;
-                margin: 0 34px;
-                overflow-x: auto;
-                overflow-y: hidden;
-                -webkit-overflow-scrolling: touch;
-                padding: 0;
-                padding-bottom: 50px;
-                white-space: nowrap;
-                .chapternav-item {
-                    font-size: 4em;
-                    width: 80px;
-                    color: white;
-                    display: inline-block;
-                    vertical-align: top;
-                    padding: 0 5px;
-                }
-            } 
-        }
-    }
-
-    .chapternav-paddle {
-        font-size: 20px;
-        line-height: 1.5;
-        font-weight: 300;
-        letter-spacing: 0em;
-        font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
-        border: 0 solid rgba(17,17,17,0.2);
-        border-radius: 0;
-        color: #000;
-        opacity: 1;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        text-align: center;
-        width: 33px;
-        -webkit-transition: opacity 150ms ease-out;
-        transition: opacity 150ms ease-out;
-    }
-    button {
-        background: none;
-        border: 0;
-        -webkit-box-sizing: content-box;
-        box-sizing: content-box;
-        color: inherit;
-        cursor: pointer;
-        font: inherit;
-        line-height: inherit;
-        overflow: visible;
-        vertical-align: inherit;
-        &:focus {
-            outline: none;
-        }
-    }
-
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
 </head>
 <body>
     <div id="app">
-        <nav class="chapternav theme-dark">
-          <div class="chapternav-wrapper">
-            <ul class="chapternav-items" id="listScroll">
-              <li class="chapternav-item"><i class="fa fa-laptop"></i></li>
-              <li class="chapternav-item"><i class="fa fa-desktop"></i></li>
-              <li class="chapternav-item"><i class="fa fa-compass"></i></li>
-              <li class="chapternav-item"><i class="fa fa-user"></i></li>
-              <li class="chapternav-item"><i class="fa fa-comment"></i></li>
-              <li class="chapternav-item"><i class="fa fa-bomb"></i></li>
-              <li class="chapternav-item"><i class="fa fa-book"></i></li>
-              <li class="chapternav-item"><i class="fa fa-calculator"></i></li>
-            </ul>
-            <div class="chapternav-paddles" style="display: block;">
-              <button v-if="leftBtnShow" @click="scrollLeft" class="chapternav-paddle chapternav-paddle-left" aria-hidden="true">
-                <i class="fa fa-chevron-left"></i>
-              </button>
-              <button v-if="rightBtnShow" @click="scrollRight" class="chapternav-paddle chapternav-paddle-right" aria-hidden="true">
-                <i class="fa fa-chevron-right"></i>
-              </button>
-            </div>
-          </div>
-        </nav>
+        <div v-for="item in array" :key="item">{{item}}</div>
     </div>
     
     <script src="https://unpkg.com/vue@next"></script>
@@ -126,61 +19,11 @@
         const app = Vue.createApp({
             data() {
                 return {
-                    array:['JavaScript','HTML/CSS','Vue','Bootstrap'],
-                    test:'呵呵',
-                    leftBtnShow: false,
-                    rightBtnShow: true,
+                    array: ['JavaScript','HTML/CSS','Vue','Bootstrap'],
                 }
             },
-            methods:{
-                scrollLeft(){
-                let el = document.getElementById('listScroll')
-                el.scrollBy({ 
-                    top: 0,
-                    left: '-300', 
-                    behavior: 'smooth' 
-                })
-                setTimeout(()=>{
-                this.scorllControl()
-                },100)
-
-                },
-            scrollRight(){
-                let el = document.getElementById('listScroll')
-                
-                el.scrollBy({ 
-                    top: 0,
-                    left: '300', 
-                    behavior: 'smooth' 
-                })
-                setTimeout(()=>{
-                    this.scorllControl()
-                },100)
-
-            },
-            scorllControl(){
-                const scroll = document.querySelector('.chapternav-items')
-                const scrollLeft = scroll.scrollLeft
-                const DOMWidth = scroll.clientWidth 
-                const scrollWidth = scroll.scrollWidth
-                console.log(scrollLeft,scrollWidth ,DOMWidth)
-                // 左 BTN 判斷
-                if(scrollLeft > 0){
-                    this.leftBtnShow = true
-                }else{
-                    this.leftBtnShow = false
-                }
-            //       右 BTN 判斷
-                if(scrollWidth == Math.round(scrollLeft)  + DOMWidth ){
-                    this.rightBtnShow = false
-                }else{
-                    this.rightBtnShow = true
-                }
-            }
-        }
         })
         app.mount('#app');
-
     </script>
 </body>
 </html>

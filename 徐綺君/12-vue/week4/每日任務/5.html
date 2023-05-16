@@ -8,18 +8,23 @@
 </head>
 <body>
     <div id="app">
-        {{ text }}
+        <div class="box"></div>
     </div>
 
-    <script src="https://unpkg.com/vue@next"></script> 
+    <script src="https://unpkg.com/vue@next"></script>
     <script>
         const app = Vue.createApp({
-            data(){
-                return{
-                    text:'顯示文字',
+            methods: {
+                seachBox() {
+                    const box = document.querySelector('.box');
+                    console.log(box)
                 }
             },
+            created(){
+                this.seachBox();
+            },
         })
+        
         app.mount('#app');
     </script>
 </body>
