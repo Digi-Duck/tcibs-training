@@ -93,6 +93,7 @@
           <button
             type="button"
             class="btn btn-outline-primary d-block mt-3 w-100"
+            @click="result"
           >
             計算結果
           </button>
@@ -101,8 +102,8 @@
         <div class="col-3">
           <h5>歷史紀錄</h5>
           <ul>
-            <li>
-                
+            <li v-for="(element, key) in history" :key="key">
+                {{element}}
             </li>
           </ul>
         </div>
@@ -121,7 +122,7 @@
                 history:[]
             }
         },
-        motheds:{
+        methods:{
             result(){
                 switch(this.operator){
                     case '+':
@@ -140,12 +141,13 @@
                         break;
 
                 }
+                this.reset();
             },
             reset(){
-                this.history.push(this.numOne, this.numTwo, this.operator); 
+                this.history.push(`${this.numOne} ${this.operator} ${this.numTwo} = ${this.total}`); 
                 this.numOne = '';
                 this.numTwo = '';
-
+                this.operator = '+'
             }
         }
 

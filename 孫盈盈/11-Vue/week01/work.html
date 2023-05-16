@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+    <style>
+        body, html{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+        #card{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-start;
+            background-color: rgb(225, 241, 245);
+        }
+        .card{
+            display: flex;
+            align-items: center;
+            margin: 20px;
+            padding: 20px;
+
+            background-color: rgb(129, 196, 212);
+        }
+    </style>
+</head>
+<body>
+    <div id="card">
+        <div class="card" v-for="i in people">
+            <img :src="i.image" alt="">
+            <ul>
+                <li>{{ i.name }}</li>
+                <li>{{ i.email }}</li>
+                <li>{{ i.phone }}</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    people:[
+                        {
+                            name: 'Lily Scott',
+                            email: 'lily.scott@example.com',
+                            phone: '(757) 608-7633',
+                            image: 'https://randomuser.me/api/portraits/women/5.jpg'
+                        },
+                        {
+                            name: 'Loretta Lane',
+                            email: 'loretta.lane@example.com',
+                            phone: '(900) 716-2995',
+                            image: 'https://randomuser.me/api/portraits/men/86.jpg'
+                        },
+                        {
+                            name: 'Judd Romero',
+                            email: 'judd.romero@example.com',
+                            phone: '(596) 714-4352',
+                            image: 'https://randomuser.me/api/portraits/men/30.jpg'
+                        },
+                        {
+                            name: 'Dianne Fleming',
+                            email: 'dianne.fleming@example.com',
+                            phone: '(432) 932-5210',
+                            image: 'https://randomuser.me/api/portraits/men/75.jpg',
+                        },
+                    ]
+                }
+            },
+        }).mount('#card')
+    </script>
+</body>
+</html>
