@@ -7,13 +7,26 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="app">
+        線上課程價格：
+        <input type="number" v-model.number="price">
+        <br>
+        線上課程折扣價格為 {{ discountPrice }} 元
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
     <script>
-        const array = ['100', '1500', '2000', '99']
-        const newArray = []
-        array.forEach(element => {
-            newArray.push(element * 2)
-        });
-        console.log(newArray)
+        const app = Vue.createApp({
+            data() {
+                return {
+                    price: 3500,
+                    discountPrice: 2800,
+                }
+            },
+            watch: {
+     
+            }
+        }).mount('#app');
     </script>
 </body>
 </html>
