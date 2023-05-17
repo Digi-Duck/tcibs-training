@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script src="https://unpkg.com/vue@next"></script> -->
+    <script type="module">
+        import { createApp, ref, onMounted } from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.0-beta.7/vue.esm-browser.min.js";
+
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics.js";
+        import { getDatabase } from "http://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-database.min.js";
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyCB4Ppbiv8g7C5YCBAOuwyozKJJVs46CGY",
+          authDomain: "chatroom-fc8ea.firebaseapp.com",
+          projectId: "chatroom-fc8ea",
+          storageBucket: "chatroom-fc8ea.appspot.com",
+          messagingSenderId: "545978364186",
+          appId: "1:545978364186:web:b6b5e9331652ad4cddfca3",
+          measurementId: "G-NZZVEV8ECE",
+          databaseURL: "https://chatroom.firebaseio.com",
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getDatabase(app);
+
+        // Vue
+
+        createApp({
+        setup() {
+            // date
+            const message = ref("");
+            const username = ref("");
+            const chatroom = ref([]);
+            const tempUsername = ref("");
+            const msgRef = db.ref("message");
+
+            // methods
+            const addUsername = function () {
+            username.value = tempUsername.value;
+            };
+            const addMessage = function () {
+            // 這是 firebase 的內建幫我們建立亂數的 key
+            const key = msgRef.push().key;
+            // 這邊是把數據推到 realtime 資料庫中的 message 這個資料集合(不確定這詞有沒有用錯)裡面
+            msgRef.child(key).set({
+                message: message.value, // 這是用戶輸入的訊息內容
+                username: username.value, // 這是用戶的名稱
+                time: Date.now(), // 這是獲取現在的時間
+                key // 這個等同於 key: key
+            });
+
+            message.value = ""; // 把物件推給資料庫後我們要把 message 清空～
+            };
+
+            // mounted
+            onMounted(() => {
+            // 這是 firebase 獲取(連結)資料內容的方法
+                msgRef.on("value", (snapshot) => {
+                    // 把資料庫的數據丟給 chatroom 這個陣列 再到 DOM 上用 v-for 渲染資料
+                    chatroom.value = snapshot.val();
+                });
+            });
+            
+            // 最重要的一步 記得把宣告的東西塞進去 你就完成了👍
+            return {
+                message,
+                username,
+                tempUsername,
+                chatroom,
+                addMessage,
+                addUsername
+            };
+        }
+        }).mount("#app");
+    </script>
+
+    
+</body>
+</html>

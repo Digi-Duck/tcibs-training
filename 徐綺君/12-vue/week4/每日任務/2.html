@@ -24,7 +24,9 @@
                 }
             },
             watch: {
-     
+                price: function() {
+                    this.discountPrice = Number.parseInt(this.price*0.8);
+                }
             }
         }).mount('#app');
     </script>

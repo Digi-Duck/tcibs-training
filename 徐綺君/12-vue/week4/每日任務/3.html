@@ -8,21 +8,46 @@
 </head>
 <body>
     <div id="app">
-        <div class="box"></div>
+        <p> 請幫小孩的輸入適合的名子:
+            <input type="text" v-model="family.child.LastName" placeholder="小孩名字自己取">
+        </p>
+        <p>爸爸的全名: {{ family.dad.FullName }}</p>
+        <p>媽媽的全名: {{ family.mom.FullName }}</p>
+        <p>孩子的全名: {{ family.child.FullName }}</p>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
     <script>
         const app = Vue.createApp({
-            methods: {
-                seachBox() {
-                    const box = document.querySelector('.box');
-                    console.log(box)
+            data() {
+                return {
+                    family: {
+                        dad: {
+                            FirstName: '林',
+                            LastName: '天成',
+                            FullName: '林天成'
+                        },
+                        mom: {
+                            FirstName: '董',
+                            LastName: '淑芬',
+                            FullName: '董淑芬'
+                        },
+                        child: {
+                            FirstName: '林',
+                            LastName: '',
+                            FullName: '',
+                        }
+                    }
                 }
             },
-            created(){
-                this.seachBox();
-            },
+            watch: {
+                family:{
+                    handler: function(){
+                        this.family.child.FullName = this.family.child.FirstName + this.family.child.LastName;
+                    },
+                    deep:true,
+                }
+            }
         })
         
         app.mount('#app');
