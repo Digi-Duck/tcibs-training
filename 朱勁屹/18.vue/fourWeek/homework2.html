@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script> 
+</head>
+<body>
+    <div id="app">
+            線上課程價格：
+            <input type="number" v-model.number="price">
+            <br>
+            線上課程折扣價格為 {{ discountPrice }} 元
+    </div>
+      <script>
+          const app = Vue.createApp({
+                data() {
+                    return {
+                        price: 3500,
+                        discountPrice: 2800,
+                    }
+                },
+                watch: {
+                    price:function(){    
+                        this.discountPrice = Number.parseInt(this.price*0.8);
+                    }
+                },
+
+                
+            }).mount('#app');
+      </script>
+</body>
+</html>
