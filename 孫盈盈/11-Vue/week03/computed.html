@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, html{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+        #cards{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            background-color: rgb(225, 241, 245);
+        }
+        .card{
+            display: flex;
+            align-items: center;
+            margin: 20px;
+            padding: 20px;
+            
+            background-color: rgb(129, 196, 212);
+        }
+        </style>
+</head>
+<body>
+    <div id="card">
+        {{ doubleNum }}
+        <button @click="addNum">數{{ num }}</button>
+        <hr>
+        <select id="" v-model="genderFilter">
+            <option value="male">male</option>
+            <option value="female">female</option>
+        </select>
+        <div id="cards">
+            <div class="card" v-for="i in filterData">
+                <img :src="i.picture.large" alt="">
+                <ul>
+                    <!-- <li>{{ i.name }}</li> -->
+                    <li>{{ i.email }}</li>
+                    <li>{{ i.phone }}</li>
+                    <!-- age * 10當作Cash -->
+                    <li>{{ Cash(i.dob.age * 100) }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.1.4/vue.global.min.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return{
+                    genderFilter: 'male',
+                    num: 0,
+                    people:[
+                        {
+                            name: 'Lily Scott',
+                            email: 'lily.scott@example.com',
+                            phone: '(757) 608-7633',
+                            image: 'https://randomuser.me/api/portraits/women/5.jpg',
+                            cash: 100
+                        },
+                        {
+                            name: 'Loretta Lane',
+                            email: 'loretta.lane@example.com',
+                            phone: '(900) 716-2995',
+                            image: 'https://randomuser.me/api/portraits/men/86.jpg',
+                            cash: 200
+                        },
+                        {
+                            name: 'Judd Romero',
+                            email: 'judd.romero@example.com',
+                            phone: '(596) 714-4352',
+                            image: 'https://randomuser.me/api/portraits/men/30.jpg',
+                            cash: 300
+                        },
+                        {
+                            name: 'Dianne Fleming',
+                            email: 'dianne.fleming@example.com',
+                            phone: '(432) 932-5210',
+                            image: 'https://randomuser.me/api/portraits/men/75.jpg',
+                            cash: 1000
+                        },
+                    ],
+                    data:[]
+                }
+            },
+            methods:{
+                addNum(){
+                    this.num++;
+                },
+                getRandomUser(){
+                    axios.get('https://randomuser.me/api/?results=10')
+                    .then((res) =>{
+                        this.data = res.data.results;
+                        console.log(this.data);
+                    })
+                },
+                Cash(num){
+                    const parts = num.toString().split('.');
+                    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                    return `$${parts.join('.')}`;
+                }
+            },
+            computed: {
+                //watch 類似 methods, 會更動原始值
+                //不更動 "原始值" 產生新值
+                // 不修改原始數值的情況產生新值
+                // #1 雙倍運算 num
+                doubleNum(){
+                    return this.num * 2;
+                },    
+                // #2 過濾性別
+                //過濾列表
+                filterData(){
+                    const newData = this.data.filter(item => {
+                        return item.gender === this.genderFilter;
+                    })
+                    if(!this.genderFilter){
+                        return this.data;
+                    }
+                    return newData;
+                }
+            },
+            mounted(){
+                this.getRandomUser();
+            }
+        });
+        app.mount('#card');
+    </script>
+</body>
+</html>
