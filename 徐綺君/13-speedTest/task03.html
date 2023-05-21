@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo list</title>
+
+    <style>
+        input{
+            display: none;
+        }
+        .box{
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border: 1px solid rgb(0, 0, 0);
+            transition: 1s;
+        }
+        span{
+            opacity: 1;
+            transition: 1s;
+        }
+        input:checked+label>span{
+            font-style: oblique;
+            text-decoration: line-through;
+            opacity: 0.5;
+        }
+        input:checked+label>.box{
+            background-color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <input type="checkbox" name="" id="checkbox1">
+    <label for="checkbox1">
+        <div class="box"></div>
+        <span>全卵　１個</span>
+    </label><br>
+    <input type="checkbox" name="" id="checkbox2">
+    <label for="checkbox2">
+        <div class="box"></div>
+        <span>砂糖　３０ｇ</span>
+    </label><br>
+    <input type="checkbox" name="" id="checkbox3">
+    <label for="checkbox3">
+        <div class="box"></div>
+        <span>米粉　２３ｇ</span>
+    </label><br>
+    <input type="checkbox" name="" id="checkbox4">
+    <label for="checkbox4">
+        <div class="box"></div>
+        <span>生クリーム　１５ｇ</span>
+    </label><br>
+    <input type="checkbox" name="" id="checkbox5">
+    <label for="checkbox5">
+        <div class="box"></div>
+        <span>はちみつ</span>
+    </label><br>
+</body>
+</html>
