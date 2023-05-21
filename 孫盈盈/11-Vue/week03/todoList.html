@@ -27,13 +27,13 @@
         </div>
         <div class="card text-center">
           <ul class="list-group list-group-flush text-left" id="todoList">
-            <li  class="list-group-item" v-for="item in todoList">
+            <li  class="list-group-item" v-for="item in filterComplete" :key="item.id">
               <div class="d-flex">
                 <div class="form-check">
                   <div>
-                    <input @click="seccus(item)" id="a" type="checkbox" class="form-check-input">
-                    <label class="label" for="a" v-if="item.state === false">{{ item.text }}</label>
-                    <label class="label completed" for="a" v-else="item.state === true">{{ item.text }}</label>
+                    <input @click="seccus(item)" :id="item.id" type="checkbox" class="form-check-input a" :checked="item.state">
+                    <label class="label" :for="item.id" v-if="item.state === false">{{ item.text }}</label>
+                    <label class="label completed" :for="item.id" v-else="item.state === true">{{ item.text }}</label>
                   </div>
                 </div>
                 <a href="#" @click.prevent="update(item)">編輯</a>
@@ -75,6 +75,19 @@
             editText: ''
           }
         },
+        computed:{
+          filterComplete(){
+            switch(this.dataState){
+              case 'uncomplete':
+                return this.todoList.filter((item) => !item.state);
+              case 'complete':
+                return this.todoList.filter((item) => item.state);
+              default:
+                return this.todoList;
+            }
+            console.log(this.todoList);
+          }
+        },
         methods: {
           addThing(){
              this.todoList.push({
@@ -89,7 +102,7 @@
             this.todoList.splice(index, 1);
           },
           seccus(some){
-            const checkbox = document.querySelectorAll('#a');
+            const checkbox = document.querySelectorAll('.a');
             const index = this.todoList.findIndex(obj => obj.id === some.id);
             this.todoList[index].state = checkbox[index].checked;
             console.log(index, this.todoList[index].state);
@@ -102,19 +115,6 @@
           deleteAll(){
             this.todoList = [];
             this.newTodo = '';
-          }
-        },
-        computed:{
-          filterComplete(){
-            switch(this.dataState){
-              case 'uncomplete':
-                return this.todoList.filter((item) => !item.state);
-              case 'complete':
-                return this.todoList.filter((item) => item.state);
-              default:
-                return this.todoList;
-              }
-              console.log(this.dataState);
           }
         }
       }).mount('#app');
