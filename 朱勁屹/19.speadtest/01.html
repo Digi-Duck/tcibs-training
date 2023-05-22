@@ -5,26 +5,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-
-    </style>
 </head>
 <body>
-    <img id="img" src="../19.speadtest/img/he.jpg" alt="">
+    <canvas id="myCanvas">
+
+    </canvas>
     <script>
-        const grayscale = pixelData => {
-        for (let i = 0; i < pixelData.length; i += 4) {
-            const avg = (pixelData[i] + pixelData[i + 1] + pixelData[i + 2]) / 3
-            pixelData[i] = avg // red
-            pixelData[i + 1] = avg // green
-            pixelData[i + 2] = avg // blue
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let img = new Image();
+        img.src = '../19.speadtest/img/he.jpg';
+
+        img.onload = function () {
+            canvas.width = img.width;
+            const a = 320;
+            const b = (img.height/img.width)*a;
+            canvas.width = a;
+            canvas.height = b;
+            ctx.drawImage(img,0,0,a,b);
+            
+            const iData = ctx.getImageData(0,0,img.width,img.height);
+            console.log(iData.data.length);
+            for (let i = 0; i < iData.data.length; i += 4) {
+                // iData.data[i] = 255;
+                // iData.data[i+1] = 255;
+                // iData.data[i+2] = 255;
+                
+                total = iData.data[i] + iData.data[i+1]  + iData.data[i+2];
+                av = total/3;
+                iData.data[i] = av;
+                iData.data[i+1] = av;
+                iData.data[i+2] = av;
+
+            }
+
+            
+            
+            
+            
+            ctx.putImageData(iData,0,0);
+
+            const url = canvas.toDataURL();
+
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'bicth.jpg';
+
+            // link.click();
         }
-        return pixelData
-        }
-        let context = document.getElementById('img');
-        const pixelData = context.getImageData(0, 0, 100, 20);
-        filter.grayscale(pixelData.data);
-        context.putImageData(pixelData, 0, 0);
+
     </script>
 </body>
 </html>
