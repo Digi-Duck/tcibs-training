@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        reactive: {{ person }}
+        <br>
+        ref: {{ person2}}
+        <br>
+        {{ num }}
+        <input type="number" v-model="num">
+        {{ doubleNum }}
+    </div>
+
+    <script type="module">
+        import { createApp, ref, reactive, onMounted, computed} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
+        const app = createApp({
+            setup(){
+                //
+                const person = reactive({
+                    name: 'Emma'
+                });
+                console.log(person);
+                onMounted(() => {
+                    // person = {
+                    //     name: 'Arashi'
+                    // };
+                    person.name = 'Arashi';
+                    console.log(person);
+                })
+
+                //ref
+                //1. 不限制任何型別
+                //2. 一定要用 .value 取值
+                const person2 = ref({
+                    name: 'Dan'
+                });
+                onMounted(() => {
+                    person2.value = {
+                        name: '123'
+                    };
+                });
+
+                //computed 等其他生命週期
+                //1. 定義一個存值
+                //2. 定義一個新值，是使用 computed 產生的
+                const num  = ref(1);
+                const doubleNum = computed(() => {
+                    return num.value * 2; 
+                })
+                return{
+                    person,
+                    person2,
+                    num,
+                    doubleNum
+                }
+            }
+        })
+        app.mount('#app');
+    </script>
+</body>
+</html>

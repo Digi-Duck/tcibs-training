@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{ text }}
+    </div>
+    
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const { ref } = Vue
+        const app = Vue.createApp({
+        setup() {
+            const text = ref('composition');
+            text.value = 'text修改後';
+            return{
+                text,
+            }
+        }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+</html>

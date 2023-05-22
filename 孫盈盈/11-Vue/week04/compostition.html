@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, html{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+        #card{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-start;
+            background-color: rgb(225, 241, 245);
+        }
+        .card{
+            display: flex;
+            align-items: center;
+            margin: 20px;
+            padding: 20px;
+
+            background-color: rgb(129, 196, 212);
+        }
+    </style>
+</head>
+<body>
+    <div id="card">
+        <input type="text" v-model="text">
+        <button @click="addData">增加商品</button>
+        <ul class="card"  v-for="i in data" :key="i.id">
+            <li>{{ i.id }} {{ i.text }}
+                <button @click="deleteData(i)">移除商品</button>
+                <button @click="updateData(i)">編輯商品</button>
+            </li>
+        </ul>
+        <input type="text" v-model="temp.text">
+        <button @click="editData">編輯完成</button>
+    </div>
+    <script type="module">
+        import { createApp, ref, reactive, onMounted, computed} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
+        const  app = createApp({
+            setup(){
+                const text = ref('sd');
+                const data = ref([]);
+                const temp = ref({});
+
+                function addData(){
+                    data.value.push({
+                        id: data.value.length,
+                        text: text.value
+                    })
+                    text.value = '';
+                }
+                function deleteData(some){
+                    const index = data.value.findIndex(obj => obj.id === some.id);
+                    data.value.splice(index, 1);
+                    console.log(index);
+                }
+                function updateData(obj){
+                    temp.value ={
+                            id: obj.id,
+                            text: obj.text
+                        };
+                }
+                function editData(){
+                    const index = data.value.findIndex(obj => obj.id === temp.value.id);
+
+                    //data寫回索引
+                    data.value[index] = temp.value
+                    //清空索引
+                    temp.value = {};
+                }
+                return{
+                    text,
+                    data,
+                    temp,
+                    addData,
+                    deleteData,
+                    updateData,
+                    editData
+                }
+
+            }
+        });
+        app.mount('#card');
+        // Vue.createApp({
+        //     data(){
+        //         return{
+        //             temp: [],
+        //             text: '123',
+        //             data: [],
+        //         }
+        //     },
+        //     methods: {
+        //         //addData
+        //         addData(){
+        //             this.data.push({
+        //                 id: this.data.length,
+        //                 text: this.text
+        //             })
+        //             this.text = '';
+        //         },
+        //         //deleteData
+        //         deleteData(some){
+        //             const index = this.data.findIndex(obj => obj.id === some.id);
+        //             this.data.splice(index, 1);
+        //             console.log(index);
+        //         },
+        //         //updateData
+        //         updateData(obj){
+        //             this.temp ={
+        //                     id: obj.id,
+        //                     text: obj.text
+        //                 };
+        //         },
+        //         editData(){
+        //             const index = this.data.findIndex(obj => obj.id === this.temp.id);
+
+        //             //data寫回索引
+        //             this.data[index] = this.temp
+        //             //清空索引
+        //             this.temp = {};
+        //         }
+        //     }
+        // }).mount('#card')
+    </script>
+</body>
+</html>

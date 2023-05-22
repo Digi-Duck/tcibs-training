@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <style>
+      .completed {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div id="app" class="container my-3">
+        <div class="input-group mb-3">
+          <span class="input-group-text">待辦事項</span>
+          <input type="text" v-model="newTodo" class="form-control" placeholder="準備要做的任務"
+            id="newTodo">
+          <button class="btn btn-primary" type="button" id="addTodo" @click="addThing">新增</button>
+        </div>
+        <div class="card text-center">
+          <ul class="list-group list-group-flush text-left" id="todoList">
+            <li  class="list-group-item" v-for="item in filterComplete" :key="item.id">
+              <div class="d-flex">
+                <div class="form-check">
+                  <div>
+                    <input v-model="editText" v-if="editId === item.id" @keyup.enter="update(editId)" class="form-control" type="text" placeholder="編輯"/>
+                    <input @click="seccus(item)" :id="item.id" type="checkbox" class="form-check-input a" :checked="item.state">
+                    <label class="label" :for="item.id" v-if="item.state === false" @dblclick="edit(item.id, item.text)">{{ item.text }}</label>
+                    <label class="label completed" :for="item.id" v-else="item.state === true" @dblclick="edit(item.id, item.text)">{{ item.text }}</label>
+                </div>
+            </div>
+            <!-- <a href="#" @click.prevent="update(item)">編輯</a> -->
+                <button type="button" @click="deleteThing(item)" class="btn-close ms-auto remove">
+                </button>
+              </div>
+            </li>
+            <li  class="list-group-item">
+              <div class="d-flex">
+                <div class="form-check">
+                  
+                </div>
+              </div>
+            </li>
+          </ul>
+          <div class="card-footer d-flex justify-content-between">
+            <span>有 <span id="taskCount">1</span> 筆任務</span>
+            <div>
+              <a href="#" class="me-3" @click.prevent="dataState = 'all'">全部</a>
+              <a href="#" class="me-3" @click.prevent="dataState = 'uncomplete'">未完成</a>
+              <a href="#" class="me-3" @click.prevent="dataState = 'complete'">已完成</a>
+              <a href="#" @click.prevent="deleteAll">清除所有任務</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+      crossorigin="anonymous"></script>
+    <script type="module">
+        import {createApp, reactive, ref, onMounted, computed} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
+      
+      const app = createApp({
+        setup(){
+            const newTodo = ref('');
+            const todoList = ref([]);
+            const dataState = ref('all');
+            const editId = ref('');
+            const editText = ref('');
+
+            const filterComplete = computed(()=>{
+                  switch(dataState.value){
+                    case 'uncomplete':
+                      return todoList.value.filter((item) => !item.state);
+                    case 'complete':
+                      return todoList.value.filter((item) => item.state);
+                    default:
+                      return todoList.value;
+                  }
+                  console.log(todoList.value);
+            })
+
+            function addThing(){
+                todoList.value.push({
+                id: todoList.value.length,
+                text: newTodo.value,
+                state: false
+             });
+             newTodo.value = '';
+            }
+            function deleteThing(some){
+                const index = todoList.value.findIndex(obj => obj.id === some.id);
+                todoList.value.splice(index, 1);
+            }
+            function seccus(some){
+                const checkbox = document.querySelectorAll('.a');
+                const index = todoList.value.findIndex(obj => obj.id === some.id);
+                todoList.value[index].state = checkbox[index].checked;
+                console.log(index, todoList.value[index].state);
+            }
+            function edit(id, text){
+                editId.value = id;
+                editText.value = text;
+            }
+            function update(some){
+                const index = todoList.value.findIndex(obj => obj.id === some);
+                todoList.value[index].text = editText.value;
+                editText.value = '';
+                editId.value = '';
+            }
+            function deleteAll(){
+                const s = confirm('是否要清除全部');
+                if(s == 1){
+                    todoList.value = [];
+                    newTodo.value = '';
+                }
+            }
+            return {
+                newTodo,
+                todoList,
+                dataState,
+                editId,
+                editText,
+
+                filterComplete,
+
+                addThing,
+                deleteThing,
+                seccus,
+                update,
+                deleteAll,
+                edit
+            }
+        }
+        // data() {
+        //   return {
+        //     newTodo: '',
+        //     todoList: [],
+        //     dataState: 'all',
+        //     editID: 0,
+        //     editText: ''
+        //   }
+        // },
+        // computed:{
+        //   filterComplete(){
+        //     switch(this.dataState){
+        //       case 'uncomplete':
+        //         return this.todoList.filter((item) => !item.state);
+        //       case 'complete':
+        //         return this.todoList.filter((item) => item.state);
+        //       default:
+        //         return this.todoList;
+        //     }
+        //     console.log(this.todoList);
+        //   }
+        // },
+        // methods: {
+        //   addThing(){
+        //      this.todoList.push({
+        //       id: this.todoList.length,
+        //       text: this.newTodo,
+        //       state: false
+        //      });
+        //      this.newTodo = '';
+        //   },
+        //   deleteThing(some){
+        //     const index = this.todoList.findIndex(obj => obj.id === some.id);
+        //     this.todoList.splice(index, 1);
+        //   },
+        //   seccus(some){
+        //     const checkbox = document.querySelectorAll('.a');
+        //     const index = this.todoList.findIndex(obj => obj.id === some.id);
+        //     this.todoList[index].state = checkbox[index].checked;
+        //     console.log(index, this.todoList[index].state);
+        //   },
+        //   update(some){
+        //     const index = this.todoList.findIndex(obj => obj.id === some.id);
+        //     this.todoList[index].text = this.editText;
+        //     this.editText = '';
+        //   },
+        //   deleteAll(){
+        //     this.todoList = [];
+        //     this.newTodo = '';
+        //   }
+        // }
+      });
+      app.mount('#app');
+    </script>
+  </body>
+
+</html>
