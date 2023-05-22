@@ -5,18 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resize and Grayscale Multiple Images</title>
-
-    <style>
-        img{
-            -webkit-filter:grayscale(1);
-        }
-    </style>
+    <script src="https://unpkg.com/vue@next"></script> 
 </head>
 <body>
-    <img src="../04-Parallax/cat.jpg" alt="">
+    <input type="file" class="input">
+    <canvas class="canvas"></canvas>
 
     <script>
-        
+        let input = document.querySelector('.input') 
+
+        const canvas = document.querySelector('.canvas');
+        const ctx = canvas.getContext("2d");
+
+        input.addEventListener('change',()=>{
+            console.log(input.files[0]);
+        })
+
     </script>
 </body>
 </html>
