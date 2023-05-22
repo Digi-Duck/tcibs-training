@@ -1,9 +1,8 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome to Your Vue.js App 0.0"/>
-  <h1>dsfjlk;dsdlfjiejfsz;ads</h1>
-  <h2>dfjsjdfjepojfjdslkfklmcsdjfldmkfjlsdf</h2>
-  <h3>788945561212345ooooskdsifdjhfjrfdsddvdfdjdkndkdjsdjkjdfjfiwfdsijdhdfkjjkdfssdfljjjrujkfg</h3>
+  <input type="text" v-model="text">
+  {{ text }}
 </template>
 
 <script>
@@ -11,6 +10,11 @@ import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
+  data(){
+    return{
+      text: '',
+    }
+  },
   components: {
     HelloWorld
   }
