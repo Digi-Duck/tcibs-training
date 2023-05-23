@@ -5,22 +5,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resize and Grayscale Multiple Images</title>
-    <script src="https://unpkg.com/vue@next"></script> 
+    
+    <style>
+    </style>
 </head>
 <body>
-    <input type="file" class="input">
+    <div class="container">
+        <input type="file" name="images" accept="image/*" multiple>
+      </div>
+    <!-- <input type="file" class="input"> -->
+    <!-- <img src="../04-Parallax/cat.jpg" id="source" hidden></img> -->
     <canvas class="canvas"></canvas>
+    <div class="box"></div>
 
     <script>
-        let input = document.querySelector('.input') 
-
-        const canvas = document.querySelector('.canvas');
+        const canvas = document.querySelector("canvas");
         const ctx = canvas.getContext("2d");
 
-        input.addEventListener('change',()=>{
-            console.log(input.files[0]);
+        // 取得input
+        const input = document.querySelector('input')
+
+        // 當使用者修改內容(選擇檔案)
+        input.addEventListener('change', function(event){
+            const files = this.files  // 取得所有 file
+            const container = this.parentNode // 設定一個preview容器
+            
+            // 處理每一個檔案
+            Array.prototype.forEach.call(files, file => {
+                filePreview(file, container)
+            })
         })
 
+        // 這個將會把file的預覽圖加入指定container
+        function filePreview(file, container) {
+            const url = URL.createObjectURL(file)   // 建立檔案url
+            const image = new Image
+            image.alt = file.name
+            image.addEventListener('load', function(event) {
+                container.appendChild(this)
+            })
+            image.src = url
+
+            image.addEventListener("load", (e) => {
+                canvas.width = image.width;
+                canvas.height = image.height;
+                ctx.filter =  "grayscale(1)";
+                
+                ctx.drawImage(image, 0, 0, image.width, image.height);
+                image.src = canvas.toDataURL("image/png");
+                ctx.clearRect(0, 0, image.width, image.height);
+            });
+        }
     </script>
 </body>
 </html>
