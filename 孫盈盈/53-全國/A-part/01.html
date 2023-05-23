@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .oldImg{
+            width: 640px;
+        }
+    </style>
+</head>
+<body>
+    <input type="file" class="file">
+    <img class="oldImg" src="" alt="">
+    <img class="newImg" src="" alt="">
+    <script>
+        const file = document.querySelector('.file');
+        const oldImg = document.querySelector('.oldImg');
+        const newImg = document.querySelector('.newImg');
+
+        file.addEventListener('change',()=>{
+            if(file != ''){
+                const files = file.files[0];
+               
+                const reader = new FileReader();
+                reader.readAsDataURL(files);
+
+                reader.addEventListener('load',(e)=>{
+                    console.log(reader);
+                    oldImg.src = reader.result
+
+                    newImg.style.width = '320px';
+                    newImg.style.filter = 'grayscale(100%)';
+                    newImg.src = reader.result;
+                })
+
+                // console.log(files);
+            }
+        })
+    </script>
+</body>
+</html>
