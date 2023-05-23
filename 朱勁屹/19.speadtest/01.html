@@ -23,9 +23,10 @@
             const b = (img.height/img.width)*a;
             canvas.width = a;
             canvas.height = b;
+            ctx.filter = "saturate(0)";
             ctx.drawImage(img,0,0,a,b);
             
-            const iData = ctx.getImageData(0,0,img.width,img.height);
+            // const iData = ctx.getImageData(0,0,img.width,img.height);
             console.log(iData.data.length);
             for (let i = 0; i < iData.data.length; i += 4) {
                 // iData.data[i] = 255;
@@ -44,7 +45,7 @@
             
             
             
-            ctx.putImageData(iData,0,0);
+            // ctx.putImageData(iData,0,0);
 
             const url = canvas.toDataURL();
 
@@ -52,7 +53,7 @@
             link.href = url;
             link.download = 'bicth.jpg';
 
-            // link.click();
+            link.click();
         }
 
     </script>
