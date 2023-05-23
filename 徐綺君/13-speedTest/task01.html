@@ -35,26 +35,23 @@
                 filePreview(file, container)
             })
         })
-
-        // 這個將會把file的預覽圖加入指定container
+        
         function filePreview(file, container) {
             const url = URL.createObjectURL(file)   // 建立檔案url
             const image = new Image
+            const image1 = new Image
             image.alt = file.name
+            image.src = url
             image.addEventListener('load', function(event) {
                 container.appendChild(this)
-            })
-            image.src = url
-
-            image.addEventListener("load", (e) => {
-                canvas.width = image.width;
-                canvas.height = image.height;
+                container.appendChild(image1)
+                canvas.width = 320;
+                canvas.height = image.height/image.width * 320;
                 ctx.filter =  "grayscale(1)";
-                
-                ctx.drawImage(image, 0, 0, image.width, image.height);
-                image.src = canvas.toDataURL("image/png");
+                ctx.drawImage(image, 0, 0, 320, image.height/image.width * 320);
+                image1.src = canvas.toDataURL("image/png");
                 ctx.clearRect(0, 0, image.width, image.height);
-            });
+            })
         }
     </script>
 </body>
