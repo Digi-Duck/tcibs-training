@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive grid layout</title>
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+            font-weight: 600;
+            border: 1px solid black;
+        }
+        .all{
+            height: calc(100vh - 20px);
+            background-color: rgb(90, 172, 219);
+            padding: 10px 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        .header{
+            width: 100%;
+            background-color: white;
+            flex-grow: 1;
+            margin: 5px 0px;
+            border: 1px solid black;
+        }
+        .contant{
+            width: 100%;
+            flex-grow: 3;
+            background-color: rgb(140, 179, 211);
+            margin: 5px 0px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .left{
+            width: 69.5%;
+            display: flex;
+            justify-content: space-between;
+            align-content: space-between;
+            flex-wrap: wrap;
+        }
+        .adSpace{
+            width: 30%;
+        }
+        .new{
+            width: 49.5%;
+            height: 29%;
+        }
+        .newC{
+            height: 69%;
+            flex-grow: 1;
+        }
+        .footer{
+            width: 100%;
+            flex-grow: 1;
+            background-color: white;
+            margin: 5px 0px;
+            border: 1px solid black;
+        }
+
+        @media screen and (max-width:480px) {
+            .contant{
+                flex-direction: column;
+            }
+            .left{
+                width: 100%;
+                flex-direction: column;
+                flex-wrap: nowrap;
+            }
+            .adSpace{
+                width: 100%;
+                flex-grow: 1;
+                margin: 5px 0px;
+            }
+            .new{
+                margin: 5px 0px;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="box header">Header</div>
+        <div class="contant">
+            <div class="left">
+                <div class="box new newA">NewA</div>
+                <div class="box new newB">NewB</div>
+                <div class="box new newC">NewC</div>
+            </div>
+            <div class="box adSpace">Ad Space</div>
+        </div>
+        <div class="box footer">Footer</div>
+    </div>
+</body>
+</html>

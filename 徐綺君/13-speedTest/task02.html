@@ -7,6 +7,9 @@
     <title> Add a filter</title>
     
     <style>
+        body{
+            cursor : url(../04-Parallax/cat2.jpg),auto; 
+        }
     </style>
 </head>
 <body>
@@ -43,13 +46,9 @@
                 const iData = ctx.getImageData(0,0,image.width,image.height);
                 iData.data.forEach((e,i)=>{
                     let num  = Math.random()
-                    if(Math.random() < 0.5){
-                        if(Math.random() > 2/3){
-                            iData.data[i] = iData.data[i] - Math.random()*255+1;
-                            iData.data[i + 1] = iData.data[i+1] - Math.random()*255+1;
-                            iData.data[i + 2] = iData.data[i+2] - Math.random()*255+1;
-                        }
-                    }
+                    iData.data[i] = iData.data[i] - Math.random()*25+1;
+                    iData.data[i + 1] = iData.data[i+1] - Math.random()*25+1;
+                    iData.data[i + 2] = iData.data[i+2] - Math.random()*25+1;
                 })
                 console.log(Math.random()*255+1);
                 ctx.putImageData(iData,0,0);
