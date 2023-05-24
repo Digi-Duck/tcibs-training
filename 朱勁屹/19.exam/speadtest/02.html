@@ -34,8 +34,8 @@
                 const iData = ctx.getImageData(0,0,image.width,image.height);
 
                 for (let i = 0; i < iData.data.length; i += 4) {
-                    if(Math.random() > 0.6){
-                        if(Math.random() < 0.2){
+                    if(Math.random() > 0.1){
+                        if(Math.random() < 0.1){
                             iData.data[i] = 1;
                             iData.data[i + 1] = 1;
                             iData.data[i + 2] = 255;
