@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .noisy-filter {
+      position: relative;
+      width: 800px;
+      height: 400px;
+      overflow: hidden;
+
+      background-size: contain;
+    }
+  </style>
+  <script>
+    function applyNoiseFilter() {
+      var elements = document.getElementsByClassName('noisy-filter');
+      for (var i = 0; i < elements.length; i++) {
+        var container = elements[i];
+        var imageUrl = container.getAttribute('data-image');
+        var noiseIntensity = 80; // 调整噪点的强度
+
+        var img = new Image();
+        img.onload = function() {
+          var canvas = document.createElement('canvas');
+          var ctx = canvas.getContext('2d');
+          var width = img.width;
+          var height = img.height;
+
+          canvas.width = width;
+          canvas.height = height;
+          ctx.drawImage(img, 0, 0, width, height);
+
+          var imageData = ctx.getImageData(0, 0, width, height);
+          var data = imageData.data;
+
+          console.log(imageData);
+          for (var j = 0; j < data.length; j += 4) {
+            var noise = Math.random() * 60;
+
+            // 将像素的 R、G、B 值随机扰动
+            data[j] += noise; // Red 值
+            data[j + 1] += noise; // Green 值
+            data[j + 2] += noise; // Blue 值
+          }
+
+          ctx.putImageData(imageData, 0, 0);
+          var noiseImageUrl = canvas.toDataURL();
+          container.style.backgroundImage = "url(" + noiseImageUrl + ")";
+        };
+
+        img.src = imageUrl;
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", applyNoiseFilter);
+  </script>
+</head>
+<body>
+    <img src="./img/PE1rNM3.jpg" alt="">
+  <div class="noisy-filter" data-image="./img/PE1rNM3.jpg">
+    <!-- 这里是要添加噪点滤镜的内容 -->
+  </div>
+</body>
+</html>
