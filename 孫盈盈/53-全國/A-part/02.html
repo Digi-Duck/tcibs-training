@@ -6,27 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .noisy-filter {
-            background-image: url('https://www.w3schools.com/graphics/pic_the_scream.jpg');
-            filter: noise(0.3) grayscale(1);
-            /* 这里的0.3是噪点的强度，可以根据需要进行调整 */
-            }
-        .oldImg{
-            width: 640px;
-        }
     </style>
 </head>
 <body>
     <input type="file" class="file">
-    <div class="noisy-filter">
-        <!-- 这里是要添加噪点滤镜的内容 -->
-        <img class="oldImg" src="" alt="">
-      </div>
+    <img class="oldImg" src="" alt="">
     <canvas id="canvas">
 
     </canvas>
     <script>
-        const noise = document.querySelector('.noisy-filter');
         const file = document.querySelector('.file');
         const oldImg = document.querySelector('.oldImg');
         const newImg = document.getElementById('canvas');
@@ -47,16 +35,28 @@
                     oldImg.addEventListener('load', ()=>{
                         //照片寫進canvas
                         newImg.width = oldImg.width;
-                        newImg.height = oldImg.height;
+                        newImg.height = oldImg.height
                         console.log(ctx.width);
-                        ctx.filter = 'grayscale(1)';
+
                         ctx.drawImage(oldImg, 0, 0);
+                        const imageData = ctx.getImageData(0, 0, oldImg.width, oldImg.width);
+                        const data = imageData.data;
+                        console.log(data);
                         
+                        for(let i = 0; i < data.length; i+=4){
+                            const noise = Math.random() * 70;
+
+                            data[i] += noise;
+                            data[i + 1] += noise;
+                            data[i + 2] += noise;
+
+                        }
+                        ctx.putImageData(imageData, 0, 0);
                         //下載圖片
                         // const hrefs = newImg.toDataURL();
                         // const link = document.createElement('a');
                         // link.href = hrefs;
-                        // link.download = 'img.png';
+                        // link.download = 'result.jpg';
                         
                         // link.click();
                     })                   

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        li{
+            display: flex;
+        }
+        span{
+            display: flex;
+
+            position: relative;
+        }
+        input[type=checkbox] {
+            display: none; /* 隐藏原始复选框 */
+        }
+
+        input[type=checkbox] + span:before {
+            content: ""; /* Unicode 编码为勾勾符号 ✓ */
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin-right: 5px;
+            border: 1px solid gray;
+            border-radius: 3px;
+            background-color: #fdfdfd;
+            text-align: center;
+        }
+
+        input[type=checkbox]:checked + span::before {
+            content: "\2714";
+            background-color: rgba(128, 255, 0, 0);
+            border: 0;
+            text-decoration: none;
+        }
+        input[type=checkbox]:checked + span{
+            text-decoration: none;
+        }
+        input[type=checkbox]:checked + span::after {
+            content: "";
+            display: block;
+            width: calc(100% - 12px);
+            height: 1px;
+
+            position: absolute;
+            right: 0;
+            top: calc(50% - 0.5px);
+
+            background-color: black;
+        }
+    </style>
+</head>
+<body>  
+    <ul>
+        <li>
+            <label>
+                <input type="checkbox" name="" id="">
+                <span> item1</span>
+            </label>
+        </li>
+        <li>
+            <label>
+                <input type="checkbox" name="" id="">
+                <span> item2</span>
+            </label>
+        </li>
+        <li>
+            <label>
+                <input type="checkbox" name="" id="">
+                <span> item3</span>
+            </label>
+        </li>
+    </ul>
+</body>
+</html>
