@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Add a filter</title>
+    
+    <style>
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="file" name="images" accept="image/*">
+    </div>
+    <canvas class="canvas"></canvas>
+
+    <script>
+        const canvas = document.querySelector("canvas");
+        const ctx = canvas.getContext("2d");
+        const input = document.querySelector('input')
+
+        input.addEventListener('change', function(event){
+            let file = input.files[0];
+            const container = document.querySelector('.container')
+            filePreview(file, container)
+        })
+
+        function filePreview(file, container) {
+            const url = URL.createObjectURL(file)
+            const image = new Image
+            const image1 = new Image
+            image.alt = file.name
+            image.src = url
+            image.addEventListener('load', function(event) {
+                container.appendChild(this)
+                container.appendChild(image1)
+                canvas.width = image.width;
+                canvas.height = image.height;
+                ctx.filter =  "";
+                ctx.drawImage(image, 0, 0, image.width, image.height);
+
+                const iData = ctx.getImageData(0,0,image.width,image.height);
+                iData.data.forEach((e,i)=>{
+                    let num  = Math.random()
+                    if(Math.random() < 0.5){
+                        if(Math.random() > 2/3){
+                            iData.data[i] = iData.data[i] - Math.random()*255+1;
+                            iData.data[i + 1] = iData.data[i+1] - Math.random()*255+1;
+                            iData.data[i + 2] = iData.data[i+2] - Math.random()*255+1;
+                        }
+                    }
+                })
+                console.log(Math.random()*255+1);
+                ctx.putImageData(iData,0,0);
+                image1.src = canvas.toDataURL("image/png");
+                ctx.clearRect(0, 0, image.width, image.height);
+            })
+        }
+    </script>
+</body>
+</html>
