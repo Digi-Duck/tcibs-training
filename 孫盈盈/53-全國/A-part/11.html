@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, html{
+            margin: 0;
+
+            width: 100%;
+            height: 100%;
+        }
+        .all{
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: white;
+        }
+        .text{
+            color: black;
+        }
+        .button{
+            position: absolute;
+
+            bottom: 20px;
+            right: 20px;
+        }
+</style>
+</head>
+<body>
+    <div class="all">
+        <div class="text">
+            Light Mode Test
+        </div>
+        <div class="button">
+            <button id="light">日間模式</button>
+            <button id="night">夜間模式</button>
+        </div>
+    </div>
+    <script>
+        let light = document.getElementById('light');
+        let night = document.getElementById('night');
+
+        let color = document.querySelector('.all');
+        let text = document.querySelector('.text');
+
+        light.onclick = (()=> {
+            color.style.backgroundColor = '#ffffff';
+            text.style.color = '#000000';
+
+            text.innerHTML = 'Light Mode Test'
+        }) 
+        night.onclick = (()=> {
+            color.style.backgroundColor = '#000000';
+            text.style.color = '#ffffff';
+
+            text.innerHTML = 'Night Mode Test'
+        }) 
+    </script>
+</body>
+</html>
