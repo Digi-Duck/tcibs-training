@@ -50,6 +50,7 @@
         }
         #buger:checked ~ .longBuger{
             height: 500px;
+            opacity: 1;
         }
 
         .bar{
@@ -59,7 +60,7 @@
             width: 75px;
             height: 75px;
             position: fixed;
-            left: 130px;
+            left: 80px;
             bottom: 110px;
             border-radius: 50%;
             font-size: 75px;
@@ -70,10 +71,11 @@
             transform: rotate(0deg);
             user-select: none;
             z-index: 99;
+            opacity: 0.6;
         }
         .longBuger{
             position: fixed;
-            left: 132px;
+            left: 82px;
             bottom: 130px;
             border-radius: 30px;
             width: 90px;
@@ -82,6 +84,7 @@
             padding: 10px;
             transition: 0.5s;
             z-index: 98;
+            opacity: 0;
         }
         .rightBox{
             /* filter: brightness(.8); */
@@ -121,6 +124,7 @@
             background-size: cover;
             border-radius: 5px;
         }
+        
         .box1{
             width: calc(100% - 300px);
             height: 850px;
@@ -186,6 +190,7 @@
             opacity: 1;
             text-shadow: 0px -100px rgb(146, 96, 72,0.3);
         }
+        
         .img2{
             width: 100%;
         }
@@ -281,7 +286,7 @@
             /* background-color: rgba(214, 214, 214); */
             position: absolute;
             top: calc(50% - 250px);
-            left: 20%;
+            left: 25%;
             /* opacity: 0; */
             transition: 1s;
             font-size: 30px;
@@ -295,42 +300,42 @@
         .card12{
             position: absolute;
             top: 20px;
-            left: 100px;
+            left: 200px;
         }
         .card22{
             position: absolute;
             top: 270px;
-            left: 100px;
+            left: 200px;
         }
         .card32{
             position: absolute;
             top: 520px;
-            left: 100px;
+            left: 200px;
         }
         .card42{
             position: absolute;
             top: 770px;
-            left: 100px;
+            left: 200px;
         }
         .card1{
             position: absolute;
             top: 20px;
-            left: 100px;
+            left: 200px;
         }
         .card2{
             position: absolute;
             top: 270px;
-            left: 100px;
+            left: 200px;
         }
         .card3{
             position: absolute;
             top: 520px;
-            left: 100px;
+            left: 200px;
         }
         .card4{
             position: absolute;
             top: 770px;
-            left: 100px;
+            left: 200px;
         }
         .cardInput{
             display: none;
@@ -340,28 +345,28 @@
             height: 500px;
             position: absolute;
             top: calc(50% - 250px);
-            left: calc(50% + 100px);
+            left: calc(50% + 200px);
         }
         .card22:hover ~ .card2{
             width: 400px;
             height: 500px;
             position: absolute;
             top: calc(50% - 250px);
-            left: calc(50% + 100px);
+            left: calc(50% + 200px);
         }
         .card32:hover ~ .card3{
             width: 400px;
             height: 500px;
             position: absolute;
             top: calc(50% - 250px);
-            left: calc(50% + 100px);
+            left: calc(50% + 200px);
         }
         .card42:hover ~ .card4{
             width: 400px;
             height: 500px;
             position: absolute;
             top: calc(50% - 250px);
-            left: calc(50% + 100px);
+            left: calc(50% + 200px);
         }
         .card12:hover ~ .cardText1{
             opacity: 1;
@@ -390,15 +395,15 @@
         .squ{
             position: absolute;
             top: calc(50% - 400px);
-            left: calc(50% - 100px);
+            left: calc(50% + 0px);
             transform: rotate(0deg);
             width: 800px;
             height: 800px;
-            border: 2px solid rgb(216, 184, 0);
+            border: 2px solid rgb(10, 10, 10);
             border-radius: 50% 5px 5px 5px;
             position: relative;
             transition: 1s;
-            background-color: rgb(146, 96, 72);
+            /* background-color: rgb(146, 96, 72); */
         }
         .cBox1{
             width: 200px;
@@ -408,6 +413,9 @@
             transform: rotate(45deg);
             opacity: 0.7;
             border-radius: 5px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
         }
         .cBox2{
             width: 200px;
