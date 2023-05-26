@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyword Highlighter</title>
+</head>
+<body>
+    <h3>Contents</h3>
+    <p class="contant">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum quis culpa sit. Exercitationem id necessitatibus voluptatem magni inventore sequi amet doloremque quisquam, laborum odit eius consequatur pariatur expedita officiis at. Pariatur animi fuga beatae exercitationem facere tempore explicabo rerum! Laboriosam soluta incidunt rem, consectetur illum eum nesciunt a praesentium. Quam, animi possimus minima consequatur labore neque. Cumque iure minus numquam perspiciatis quisquam velit, exercitationem vero, sapiente illum illo voluptatem nam voluptatum ullam pariatur sit. Reiciendis quasi in officia exercitationem deserunt cupiditate! Maxime tempore quibusdam reiciendis nemo nostrum, molestiae asperiores dolorum delectus nulla. Natus officia, quibusdam harum quidem quas inventore ullam.</p>
+    <input class="input" type="text">
+    <button class="btn">Search</button>
+
+    <script>
+        const input = document.querySelector('.input');
+        const btn = document.querySelector('.btn');
+        const contant = document.querySelector('.contant');
+        const search = [];
+        let text = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum quis culpa sit. Exercitationem id necessitatibus voluptatem magni inventore sequi amet doloremque quisquam, laborum odit eius consequatur pariatur expedita officiis at. Pariatur animi fuga beatae exercitationem facere tempore explicabo rerum! Laboriosam soluta incidunt rem, consectetur illum eum nesciunt a praesentium. Quam, animi possimus minima consequatur labore neque. Cumque iure minus numquam perspiciatis quisquam velit, exercitationem vero, sapiente illum illo voluptatem nam voluptatum ullam pariatur sit. Reiciendis quasi in officia exercitationem deserunt cupiditate! Maxime tempore quibusdam reiciendis nemo nostrum, molestiae asperiores dolorum delectus nulla. Natus officia, quibusdam harum quidem quas inventore ullam.'
+
+        btn.addEventListener('click',()=>{
+            console.log(search);
+            const reg = new RegExp(input.value,'g');
+            let r = Math.floor(Math.random() * 256);
+            let g = Math.floor(Math.random() * 256);
+            let b = Math.floor(Math.random() * 256);
+            console.log();
+            v = (text.match(/(<([^>]+)>)/g) || []);
+            console.log(v);
+            text = text.replace(reg,'<span style="background-color: rgb( '+r+', '+g+', '+b+' );">'+input.value+'</span>');
+            contant.innerHTML = text;
+            input.value = '';
+        })
+
+        function filterHtml(str) {
+            let output = '';
+            if(typeof(str)=='string'){
+                output = str.replace(/(<([^>]+)>)/ig,"");
+            }
+            return output;
+        }
+    </script>
+</body>
+</html>
