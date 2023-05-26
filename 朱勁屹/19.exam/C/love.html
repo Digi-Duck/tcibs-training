@@ -19,9 +19,7 @@
             height: 100%;
             margin: 0px;
         }
-        .bar{
-            
-        }
+        
         .box{
             width: 100%;
             height: 850px;
@@ -36,18 +34,54 @@
             /* background-color: aqua; */
         }
         .logo{
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             background-image: url(../speadtest/img/logo.png);
             background-position: center;
             background-size: cover;
             border-radius: 5px;
 
         }
-        .logoText{
-            margin-top: 450px;
+        #buger{
+            display: none;
+        }
+        #buger:checked + .bar{
+            transform: rotate(360deg);
+        }
+        #buger:checked ~ .longBuger{
+            height: 500px;
+        }
+
+        .bar{
+            /* margin-top: 450px; */
             text-align: center;
-            font-size: 20px;
+            background-color: rgb(160, 160, 160);
+            width: 75px;
+            height: 75px;
+            position: fixed;
+            left: 130px;
+            bottom: 110px;
+            border-radius: 50%;
+            font-size: 75px;
+            line-height: 75px;
+            padding: 20px;
+            color: white;
+            transition: 0.5s;
+            transform: rotate(0deg);
+            user-select: none;
+            z-index: 99;
+        }
+        .longBuger{
+            position: fixed;
+            left: 132px;
+            bottom: 130px;
+            border-radius: 30px;
+            width: 90px;
+            height: 50px;
+            background-color: rgb(230, 227, 227);
+            padding: 10px;
+            transition: 0.5s;
+            z-index: 98;
         }
         .rightBox{
             /* filter: brightness(.8); */
@@ -62,56 +96,407 @@
             /* border-left: 10px solid black;
             border-bottom:10px solid black; */
         }
+        .rightBox:hover > .rightBoxText{
+            text-shadow: 30px 30px rgb(214, 104, 104);
+
+        }
         .rightBoxText{
-            height: calc(100% - 20px);
-            writing-mode: vertical-rl;
+            height: calc(100% - 10px);
+            /* width: 500px; */
+            background-color: rgb(255, 255, 255, 0.01);
+            writing-mode:   vertical-rl;
             position: absolute;
-            right: -60px;
-            padding-top: 20px;
-            font-size: 120px;
+            right: 60px;
+            padding-top: 10px;
+            font-size: 110px;
             font-weight: 800;
             line-height: 1.8;
-            text-align: center;
             color: rgb(39, 34, 28);
-            text-shadow: 30px 30px rgb(214, 104, 104);
+            transition: 1s;
+            z-index: 100;
         }
         .img{
             height: 100%;
             background-position: center;
             background-size: cover;
+            border-radius: 5px;
         }
         .box1{
             width: calc(100% - 300px);
             height: 850px;
             display: flex;
             margin-bottom: 150px;
-            margin: 0px 150px;
+            margin: 50px 150px;
+            position: relative;
+        }
+        .box1Text1{
+            height: calc(100% - 20px);
+            writing-mode: vertical-rl;
+            position: absolute;
+            right: calc(20% - 200px);
+            /* padding-top: 10px; */
+            font-size: 30px;
+            font-weight: 800;
+            line-height: 1.8;
+            text-align: center;
+            color: rgb(39, 34, 28);
+            /* text-shadow: 3px 3px gray; */
+            transition: 1s;
+            opacity: 0;
+            background-color: rgb(255, 255, 255);
+            text-shadow: 0px -0px rgb(146, 96, 72,0.3);
+            padding-right: 200px;
+        }
+        .box1Text2{
+            height: calc(100% - 20px);
+            /* writing-mode: vertical-rl; */
+            position: absolute;
+            left: calc(50% - 200px);
+            top: 500px;
+            /* padding-top: 10px; */
+            font-size: 30px;
+            font-weight: 800;
+            line-height: 1.8;
+            text-align: center;
+            color: rgb(39, 34, 28);
+            /* text-shadow: 3px 3px gray; */
+            transition: 1s;
+            opacity: 0;
+            text-shadow: 0px 0px rgb(146, 96, 72,0.3);
+            padding-right: 200px;
+        }
+        .box1Text3{
+            height: calc(100% - 20px);
+            writing-mode: vertical-rl;
+            position: absolute;
+            left: 20%;
+            /* padding-top: 10px; */
+            font-size: 30px;
+            font-weight: 800;
+            line-height: 1.8;
+            text-align: center;
+            color: rgb(39, 34, 28);
+            /* text-shadow: 3px 3px gray; */
+            transition: 1s;
+            opacity: 0;
+            text-shadow: 0px -0px rgb(146, 96, 72,0.3);
+            padding-right: 200px;
+        }
+        .img:hover + .box1Text{
+            opacity: 1;
+            text-shadow: 0px -100px rgb(146, 96, 72,0.3);
+        }
+        .img2{
+            width: 100%;
+        }
+        .box13{
+            display: flex;
+            justify-content: right;
+        }
+        .sBox1{
+            border: 2px solid black;
+            border-radius: 3px;
+            width: 250px;
+            height: 250px;
+            position: absolute;
+            top: -100px;
+            left: 550px;
+        }
+        .sBox2{
+            border: 2px solid black;
+            border-radius: 3px;
+            width: 250px;
+            height: 250px;
+            position: absolute;
+            bottom: -150px;
+            right: -100px;
+            z-index: 97;
+        }
+        .sBox3{
+            border: 2px solid black;
+            border-radius: 3px;
+            width: 250px;
+            height: 250px;
+            position: absolute;
+            top: 500px;
+            left: -50px;
+            z-index: 97;
+        }
+        .sBox4{
+            border: 2px solid black;
+            border-radius: 3px;
+            width: 250px;
+            height: 250px;
+            position: absolute;
+            top: -100px;
+            right: 0px;
+            z-index: 97;
+        }
+        .sBox5{
+            border: 2px solid black;
+            border-radius: 3px;
+            width: 250px;
+            height: 250px;
+            position: absolute;
+            bottom: -100px;
+            left: -50px;
+            z-index: 97;
+        }
+        .cardBox{
+            width: 100%;
+            height: 900px;
+            /* border: 1px solid black; */
+            margin-top: 100px;
+            position: relative;
+
+            /* background-color: rgb(152, 223, 233); */
+        }
+        .card{
+            width: 100px;
+            height: 125px;
+            border: 1px solid black;
+            display: block;
+            border-radius: 5px;
+            background-image: url(../speadtest/img/he.jpg);
+            background-position: center;
+            background-size: cover;
+            transition: 1s;
+            position: relative;
+            z-index: 95;
+        }
+        .card111{
+            width: 100px;
+            height: 125px;
+            /* border: 1px solid black;  */
+            display: block;
+            border-radius: 5px;
+            /* background-image: url(../speadtest/img/he.jpg); */
+            background-position: center;
+            background-size: cover;
+            transition: 1s;
+            position: relative;
+            z-index: 97;
+        }
+        .cardText{
+            /* background-color: rgba(214, 214, 214); */
+            position: absolute;
+            top: calc(50% - 250px);
+            left: 20%;
+            /* opacity: 0; */
+            transition: 1s;
+            font-size: 30px;
+            /* display: none; */
+            width: 300px;
+            height: 500px;
+            text-align: center;
+            border-radius: 5px;
+            opacity: 0;
+        }
+        .card12{
+            position: absolute;
+            top: 20px;
+            left: 100px;
+        }
+        .card22{
+            position: absolute;
+            top: 270px;
+            left: 100px;
+        }
+        .card32{
+            position: absolute;
+            top: 520px;
+            left: 100px;
+        }
+        .card42{
+            position: absolute;
+            top: 770px;
+            left: 100px;
+        }
+        .card1{
+            position: absolute;
+            top: 20px;
+            left: 100px;
+        }
+        .card2{
+            position: absolute;
+            top: 270px;
+            left: 100px;
+        }
+        .card3{
+            position: absolute;
+            top: 520px;
+            left: 100px;
+        }
+        .card4{
+            position: absolute;
+            top: 770px;
+            left: 100px;
+        }
+        .cardInput{
+            display: none;
+        }
+        .card12:hover ~ .card1{
+            width: 400px;
+            height: 500px;
+            position: absolute;
+            top: calc(50% - 250px);
+            left: calc(50% + 100px);
+        }
+        .card22:hover ~ .card2{
+            width: 400px;
+            height: 500px;
+            position: absolute;
+            top: calc(50% - 250px);
+            left: calc(50% + 100px);
+        }
+        .card32:hover ~ .card3{
+            width: 400px;
+            height: 500px;
+            position: absolute;
+            top: calc(50% - 250px);
+            left: calc(50% + 100px);
+        }
+        .card42:hover ~ .card4{
+            width: 400px;
+            height: 500px;
+            position: absolute;
+            top: calc(50% - 250px);
+            left: calc(50% + 100px);
+        }
+        .card12:hover ~ .cardText1{
+            opacity: 1;
+        }
+        .card22:hover ~ .cardText2{
+            opacity: 1;
+        }
+        .card32:hover ~ .cardText3{
+            opacity: 1;
+        }
+        .card42:hover ~ .cardText4{
+            opacity: 1;
+        }
+        .circle{
+            position: absolute;
+            /* top: calc(50% - 400px);
+            left: calc(50% - 100px); */
+            transform: rotate(0deg);
+            width: 800px;
+            height: 800px;
+            /* border: 2px solid black; */
+            border-radius: 50%;
+            position: relative;
+            transition: 1s;
+        }
+        .squ{
+            position: absolute;
+            top: calc(50% - 400px);
+            left: calc(50% - 100px);
+            transform: rotate(0deg);
+            width: 800px;
+            height: 800px;
+            border: 2px solid rgb(216, 184, 0);
+            border-radius: 50% 5px 5px 5px;
+            position: relative;
+            transition: 1s;
+            background-color: rgb(146, 96, 72);
+        }
+        .cBox1{
+            width: 200px;
+            height: 200px;
+            /* border: 5px solid rgb(202, 202, 202); */
+            background-color: rgb(235, 210, 74);
+            transform: rotate(45deg);
+            opacity: 0.7;
+            border-radius: 5px;
+        }
+        .cBox2{
+            width: 200px;
+            height: 250px;
+            /* border: 5px solid rgb(214, 213, 213); */
+            opacity: 0.7;
+            background-color: rgb(96, 212, 228);
+            position: absolute;
+            bottom: 50px;
+            right: -50px;
+            border-radius: 5px;
+        }
+        .card12:hover ~ .squ>.circle{
+            transform: rotate(-288deg);
+        }
+        .card22:hover ~ .squ>.circle{
+            transform: rotate(144deg);
+        }
+        .card32:hover ~ .squ>.circle{
+            transform: rotate(-144deg);
+        }
+        .card42:hover ~ .squ>.circle{
+            transform: rotate(288deg);
         }
      </style>
 </head>
 <body>
-    <div class="bar">
-
-    </div>
+    
     <div class="box">
         <div class="leftBox">
             <div class="logo"></div>
-            <p class="logoText">
-                愛無所不在<br>
-                所以快去做愛
+            <input type="checkbox" id="buger">
+            <label for="buger" class="bar">
+                &#9776
+            </label>
+            <div class="longBuger">
 
-            </p>
+            </div>
         </div>
         <div class="rightBox">
-            <p class="rightBoxText">
-                泳 綦 的 愛 ，<br>
-                無 所 不 在 。
-            </p>
+            <div class="rightBoxText">
+                愛 的 基 礎 ，<br>
+                真 正 的 和 平 。
+            </div>
         </div>
     </div>
     <div class="box1">
-        <img class="img" src="../speadtest/img/he.jpg" alt="">
+        <div class="sBox1"></div>
+        <div class="sBox2"></div>
+        <img class="img img1" src="../speadtest/img/he.jpg" alt="">
+        <div class="box1Text box1Text1">5415541564541521547<br>1514418411441545<br>151441841145378741545<br>15144184121441545<br>1514418418676871441545<br>1514418411441545</div>
+    </div>
+    <div class="box1">
+        <div class="sBox3"></div>
+        <img class="img img2" src="../C/oiimg/LINE_ALBUM_偶宜_230526.jpg" alt="">
+        <div class="box1Text box1Text2">5415541564541521547<br>1514418411441545<br>151441841145378741545<br>15144184121441545<br>1514418418676871441545<br>1514418411441545</div>
+    </div>
+    <div class="box1 box13">
+        <div class="sBox4"></div>
+        <!-- <div class="sBox5"></div> -->
+        <img class="img img3" src="../speadtest/img/he.jpg" alt="">
+        <div class="box1Text box1Text3">5415541564541521547<br>1514418411441545<br>151441841145378741545<br>15144184121441545<br>1514418418676871441545<br>1514418411441545</div>
+    </div>
 
+    <div class="cardBox">
+        <input class="cardInput" id="cardInput1" type="radio" name="card" checked>
+        <input class="cardInput" id="cardInput2" type="radio" name="card">
+        <input class="cardInput" id="cardInput3" type="radio" name="card">
+        <input class="cardInput" id="cardInput4" type="radio" name="card">
+
+        <div class="card111 card12"></div>
+        <div class="card111 card22"></div>
+        <div class="card111 card32"></div>
+        <div class="card111 card42"></div>
+        <label for="cardInput1" class="card card1"></label>
+        <label for="cardInput2" class="card card2"></label>
+        <label for="cardInput3" class="card card3"></label>
+        <label for="cardInput4" class="card card4"></label>
+        <div class="cardText cardText1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates voluptatem accusantium alias debitis necessitatibus sapiente mollitia dolor</div>
+        <div class="cardText cardText2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto incidunt cumque ad recusandae ill cum rerum amet saepe fuga! Laboriosam facere veritatis ex. Dolores aperiam, ipsa earum beatae accusantium nobis.</div>
+        <div class="cardText cardText3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Con</div>
+        <div class="cardText cardText4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo necessitatibus fuga qui et eum doloremque nostrum recusandae dolorem id laboriosam quaerat, aut eos assumenda beatae! Blanditiis earum vitae exercitationem. Voluptas?</div>
+        <div class="squ">
+            <div class="circle">
+                <div class="cBox1"></div>
+                <div class="cBox2"></div>
+            </div>
+
+        </div>
     </div>
 </body>
 </html>
