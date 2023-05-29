@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="text">
+        
+    </div>
+    <input type="text" class="search">
+    <button id="btn">search</button>
+
+    <script>
+        let str = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi laboriosam perspiciatis velit totam aut voluptatum atque aliquam nemo nam hic delectus neque fugiat reprehenderit, placeat eos, impedit repellat sequi nihil.Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quisquam cupiditate facilis perspiciatis, illo sint consectetur tempora error iusto! Nisi dolore a culpa non fuga eius at accusamus quibusdam ratione. Provident doloremque, sequi alias distinctio architecto modi totam eligendi, dolorum cum, eveniet quod enim maiores. Eum, cumque quisquam harum possimus culpa consequatur, explicabo quibusdam corrupti officia tempore sit iure odio?";
+        let btn = document.getElementById('btn');
+        let search = document.querySelector('.search');
+        let text = document.querySelector('text');
+
+        btn.addEventListener('click',()=>{
+            let answer = str.match(search.value);
+
+            console.log(answer);
+        })
+    </script>
+</body>
+</html>
