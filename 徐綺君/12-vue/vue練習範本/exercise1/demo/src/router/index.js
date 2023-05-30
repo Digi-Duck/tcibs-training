@@ -1,6 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import CounterVeu from '../views/CounterView'
+import CounterView from '../views/CounterView'
+import Btn1View from '../views/Btn1View'
+import ExerciseView from '../views/ExerciseView'
 
 const routes = [
   {
@@ -19,8 +21,18 @@ const routes = [
   {
     path: '/counter',
     name: 'counter',
-    component: CounterVeu,
-  }
+    component: CounterView,
+  },
+  {
+    path: '/btn1',
+    name: 'btn1',
+    component: Btn1View,
+  },
+  {
+    path: '/exercise',
+    name: 'exercise',
+    component: ExerciseView,
+  },
 ]
 
 const router = createRouter({
