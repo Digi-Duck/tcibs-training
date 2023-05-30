@@ -17,7 +17,11 @@ const routes = [
   },
   {
     path:'/amongus',
-    
+    component: () => import('../views/AmongUs.vue') 
+  },
+  {
+    path:'/2',
+    component: () => import('../views/2.vue')  
   }
 ]
 
