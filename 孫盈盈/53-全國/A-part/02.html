@@ -42,7 +42,7 @@
                         const imageData = ctx.getImageData(0, 0, oldImg.width, oldImg.width);
                         const data = imageData.data;
                         console.log(data);
-                        
+                        //加噪點
                         for(let i = 0; i < data.length; i+=4){
                             const noise = Math.random() * 70;
 
@@ -53,12 +53,12 @@
                         }
                         ctx.putImageData(imageData, 0, 0);
                         //下載圖片
-                        // const hrefs = newImg.toDataURL();
-                        // const link = document.createElement('a');
-                        // link.href = hrefs;
-                        // link.download = 'result.jpg';
+                        const hrefs = newImg.toDataURL();
+                        const link = document.createElement('a');
+                        link.href = hrefs;
+                        link.download = 'result.jpg';
                         
-                        // link.click();
+                        link.click();
                     })                   
                 })
 
