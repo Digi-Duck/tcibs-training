@@ -2,9 +2,11 @@
     <div class="counter">
         <h1>計數器</h1>
         set Number <input type="number" v-model.number="num">
-        <btn @click="add" btnText="+1" />
-        <btn @click="reduce" btnText="-1" />
-        <btn @click="clear" btnText="歸零" />
+        <div class="btns">
+            <btn @click="add" btnText="+1" />
+            <btn @click="reduce" btnText="-1" />
+            <btn @click="clear" btnText="歸零" />
+        </div>
     </div>
 </template>
 
@@ -36,3 +38,9 @@
         }
     }
 </script>
+<style scoped>
+    .btns{
+        display: flex;
+        justify-content: center;
+    }
+</style>

@@ -32,14 +32,6 @@
                 checked1: true,
             }
         },
-        methods:{
-            click(){
-                
-            },
-        },
-        mounted(){
-
-        },
     }
 </script>
 
