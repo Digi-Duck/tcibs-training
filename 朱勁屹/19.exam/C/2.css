@@ -1,0 +1,73 @@
+@media screen and (max-width:1600px){ 
+    .leftBox{
+        display: none;
+    }
+    .logo2{
+        display: block;
+        margin: auto;
+    }
+    .box{
+        display: block;
+        margin-bottom: 250px;
+    }
+    .rightBox{
+        border-radius: 3px;
+        width: 100%;
+    }
+    .rightBoxText{
+        display: none;
+    }
+    .rightBoxText2{
+        display: block;
+        position: absolute;
+        bottom: 100px;
+        left: calc(50% - 200px);
+        font-size: 7vw;
+        text-align: center;
+        transition: 1s;
+        text-shadow: 0px 0px rgba(255, 0, 0, 0);
+        font-weight: 600;
+    }
+    .rightBox:hover > .rightBoxText2{
+        text-shadow: 30px 30px rgb(214, 104, 104);
+    
+    }
+    .ssBox{
+        display: none;
+    }
+    .box1{
+        /* position:inherit; */
+        margin-bottom: 100px;
+        border-bottom: 2px solid black;
+    }
+    .img{
+        width: 60%;
+        object-fit: contain;
+        position: absolute;
+        left: 20%;
+    }
+    .box1Text{
+        width: 400px;
+        text-align: center;
+        /* writing-mode: vertical-rl; */
+        position: absolute;
+        left: calc(50% - 200px);
+        top: 350px;
+        /* padding-top: 10px; */
+        font-size: 30px;
+        font-weight: 800;
+        line-height: 1.8;
+        color: rgb(39, 34, 28);
+        /* text-shadow: 3px 3px gray; */
+        transition: 1s;
+        opacity: 0;
+        text-shadow: 0px 0px rgb(146, 96, 72,0.3);
+        padding-right: 0px;
+        background-color: rgba(240, 248, 255, 0);
+        writing-mode:initial;
+        opacity: 1;
+    }
+    .img:hover + .box1Text{
+        text-shadow: 0px 0px rgb(146, 96, 72,0.3);
+    }
+}

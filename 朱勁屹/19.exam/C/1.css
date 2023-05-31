@@ -1,0 +1,703 @@
+html{
+    width: 100%;
+    height: 100%;
+    
+}
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+}
+
+.box{
+    
+    width: 100%;
+    height: 850px;
+    display: flex;
+    margin-bottom: 150px;
+    /* margin: 0px 150px; */
+}
+.leftBox {
+    width: 150px;
+    height: 650px;
+    padding: 100px;
+    /* background-color: aqua; */
+}
+.logo{
+    width: 200px;
+    height: 200px;
+    background-image: url(../speadtest/img/logo.png);
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+
+}
+.logo2{
+    display: none;
+}
+#buger{
+    display: none;
+}
+#buger:checked + .bar{
+    transform: rotate(360deg);
+}
+#buger:checked ~ .longBuger{
+    height: 500px;
+    opacity: 1;
+}
+
+.bar{
+    /* margin-top: 450px; */
+    text-align: center;
+    background-color: rgb(160, 160, 160);
+    width: 75px;
+    height: 75px;
+    position: fixed;
+    left: 80px;
+    bottom: 110px;
+    border-radius: 50%;
+    font-size: 75px;
+    line-height: 75px;
+    padding: 20px;
+    color: white;
+    transition: 0.5s;
+    transform: rotate(0deg);
+    user-select: none;
+    z-index: 99;
+    opacity: 0.6;
+}
+.longBuger{
+    position: fixed;
+    left: 82px;
+    bottom: 130px;
+    border-radius: 30px;
+    width: 90px;
+    height: 50px;
+    background-color: rgb(230, 227, 227);
+    padding: 10px;
+    transition: 0.5s;
+    z-index: 98;
+    opacity: 0;
+}
+.rightBox{
+    /* filter: brightness(.8); */
+    width: calc(100% - 350px);
+    height: 850px;
+    background-image: url(../speadtest/img/he.jpg);
+    background-position: center;
+    background-size: cover;
+    border-radius: 0px 0px 0px 1000px;
+    position: relative;
+    /* box-shadow: 0px 0px 50px 10px black; */
+    /* border-left: 10px solid black;
+    border-bottom:10px solid black; */
+}
+.rightBox:hover > .rightBoxText{
+    text-shadow: 30px 30px rgb(214, 104, 104);
+
+}
+.rightBoxText2{
+    display: none;
+}
+.rightBoxText{
+    height: calc(100% - 10px);
+    /* width: 500px; */
+    background-color: rgb(255, 255, 255, 0.01);
+    writing-mode:   vertical-rl;
+    position: absolute;
+    right: 60px;
+    padding-top: 10px;
+    font-size: 110px;
+    font-weight: 800;
+    line-height: 1.8;
+    color: rgb(39, 34, 28);
+    transition: 1s;
+    z-index: 100;
+}
+.img{
+    /* height: 100%; */
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+    object-fit: cover;
+    width: 50%;
+}
+
+.box1{
+    width: calc(100% - 300px);
+    height: 850px;
+    display: flex;
+    margin-bottom: 150px;
+    margin: 50px 150px;
+    position: relative;
+}
+.box1Text1{
+    height: calc(100% - 20px);
+    writing-mode: vertical-rl;
+    position: absolute;
+    right: calc(20% - 200px);
+    /* padding-top: 10px; */
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.8;
+    text-align: center;
+    color: rgb(39, 34, 28);
+    /* text-shadow: 3px 3px gray; */
+    transition: 1s;
+    opacity: 0;
+    background-color: rgb(255, 255, 255);
+    text-shadow: 0px -0px rgb(146, 96, 72,0.3);
+    padding-right: 200px;
+}
+.box1Text2{
+    height: calc(100% - 20px);
+    /* writing-mode: vertical-rl; */
+    position: absolute;
+    left: calc(50% - 200px);
+    top: 500px;
+    /* padding-top: 10px; */
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.8;
+    text-align: center;
+    color: rgb(39, 34, 28);
+    /* text-shadow: 3px 3px gray; */
+    transition: 1s;
+    opacity: 0;
+    text-shadow: 0px 0px rgb(146, 96, 72,0.3);
+    padding-right: 200px;
+}
+.box1Text3{
+    height: calc(100% - 20px);
+    writing-mode: vertical-rl;
+    position: absolute;
+    left: 20%;
+    /* padding-top: 10px; */
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.8;
+    text-align: center;
+    color: rgb(39, 34, 28);
+    /* text-shadow: 3px 3px gray; */
+    transition: 1s;
+    opacity: 0;
+    text-shadow: 0px -0px rgb(146, 96, 72,0.3);
+    padding-right: 200px;
+}
+.img:hover + .box1Text{
+    opacity: 1;
+    text-shadow: 0px -100px rgb(146, 96, 72,0.3);
+}
+
+.img2{
+    width: 100%;
+}
+.box13{
+    display: flex;
+    justify-content: right;
+}
+.sBox1{
+    border: 2px solid black;
+    border-radius: 3px;
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: -100px;
+    left: 550px;
+}
+.sBox2{
+    border: 2px solid black;
+    border-radius: 3px;
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    bottom: -150px;
+    right: -100px;
+    z-index: 97;
+}
+.sBox3{
+    border: 2px solid black;
+    border-radius: 3px;
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 500px;
+    left: -50px;
+    z-index: 97;
+}
+.sBox4{
+    border: 2px solid black;
+    border-radius: 3px;
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: -100px;
+    right: 0px;
+    z-index: 97;
+}
+.sBox5{
+    border: 2px solid black;
+    border-radius: 3px;
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    bottom: -100px;
+    left: -50px;
+    z-index: 97;
+}
+
+.sBox6{
+    width: 300px;
+    height: 300px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 30px;
+    text-align: center;
+    line-height: 300px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.sBox7{
+    width: 300px;
+    height: 150px;
+    border: 2px solid black;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+.bigCard{
+    width: 100%;
+    height: 3600px;
+    position: relative;
+    padding-bottom: 100px;
+}
+
+
+
+.cardBox{
+    width: 100%;
+    height: 900px;
+    /* border: 1px solid black; */
+    margin-top: 100px;
+    z-index: 95;
+    /* background-color: rgb(152, 223, 233); */
+}
+
+.cardBox1{
+    position: absolute;
+    top: 100px;
+
+}
+.cardBox2{
+    position: absolute;
+    top: 900px;
+
+}
+.cardBox3{
+    position: absolute;
+    top: 1700px;
+
+}
+.cardBox4{
+    position: absolute;
+    top: 2500px;
+
+}
+
+.card{
+    position: absolute;
+    top: calc(50% - 200px);
+    left: calc(50% - 250px);
+    width: 400px;
+    height: 500px;
+    border: 1px solid black;
+    display: block;
+    border-radius: 5px;
+    /* background-image: url(../speadtest/img/he.jpg); */
+    background-position: center;
+    background-size: cover;
+    transition: 1s;
+    /* position: relative; */
+    z-index: 95;
+    opacity: 0;
+}
+.card1{
+    background-image: url(../speadtest/img/he.jpg);
+}
+.card2{
+    background-image: url(../speadtest/img/heart.jpg);
+}
+.card3{
+    background-image: url(../speadtest/img/logo.png);
+}
+.card4{
+    background-image: url(../speadtest/img/sky.jpg);
+}
+/* .card111{
+    width: 100px;
+    height: 125px;
+    border: 1px solid black; 
+    display: block;
+    border-radius: 5px;
+    background-image: url(../speadtest/img/he.jpg);
+    background-position: center;
+    background-size: cover;
+    transition: 1s;
+    position: relative;
+    z-index: 97;
+} */
+.cardText{
+    /* background-color: rgba(214, 214, 214); */
+    position: absolute;
+    top: 150px;
+    left: -600px;
+    /* opacity: 0; */
+    transition: 1s;
+    font-size: 30px;
+    /* display: none; */
+    width: 300px;
+    height: 500px;
+    text-align: center;
+    border-radius: 5px;
+    opacity: 0;
+}
+/* .card12{
+    position: absolute;
+    top: 20px;
+    left: 200px;
+}
+.card22{
+    position: absolute;
+    top: 270px;
+    left: 200px;
+}
+.card32{
+    position: absolute;
+    top: 520px;
+    left: 200px;
+}
+.card42{
+    position: absolute;
+    top: 770px;
+    left: 200px;
+} */
+/* .card1{
+    position: absolute;
+    top: 20px;
+    left: 200px;
+}
+.card2{
+    position: absolute;
+    top: 270px;
+    left: 200px;
+}
+.card3{
+    position: absolute;
+    top: 520px;
+    left: 200px;
+}
+.card4{
+    position: absolute;
+    top: 770px;
+    left: 200px;
+} */
+.cardInput{
+    display: none;
+}
+.cardBox1:hover ~ .squ>.card1{
+    opacity: 1;
+}
+.cardBox2:hover ~ .squ>.card2{
+    opacity: 1;
+}
+.cardBox3:hover ~ .squ>.card3{
+    opacity: 1;
+}
+.cardBox4:hover ~ .squ>.card4{
+    opacity: 1;
+}
+.cardBox1:hover ~ .squ>.cardText1{
+    opacity: 1;
+}
+.cardBox2:hover ~ .squ>.cardText2{
+    opacity: 1;
+}
+.cardBox3:hover ~ .squ>.cardText3{
+    opacity: 1;
+}
+.cardBox4:hover ~ .squ>.cardText4{
+    opacity: 1;
+}
+.circle{
+    /* position: absolute; */
+    /* top: calc(50% - 400px);
+    left: calc(50% - 100px); */
+    transform: rotate(0deg);
+    width: 800px;
+    height: 800px;
+    /* border: 2px solid black; */
+    border-radius: 50%;
+    position: relative;
+    transition: 1s;
+}
+.squ{
+    position: sticky;
+    top: 100px;
+    left: calc(50% - 0px);
+    transform: rotate(0deg);
+    width: 800px;
+    height: 800px;
+    border: 2px solid rgb(10, 10, 10);
+    border-radius: 50% 5px 5px 5px;
+    /* position: relative; */
+    transition: 1s;
+    
+    /* background-color: rgb(146, 96, 72); */
+}
+.cBox1{
+    width: 200px;
+    height: 200px;
+    /* border: 5px solid rgb(202, 202, 202); */
+    background-color: rgb(235, 210, 74);
+    transform: rotate(45deg);
+    opacity: 0.7;
+    border-radius: 5px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.cBox2{
+    width: 200px;
+    height: 250px;
+    /* border: 5px solid rgb(214, 213, 213); */
+    opacity: 0.7;
+    background-color: rgb(96, 212, 228);
+    position: absolute;
+    bottom: 50px;
+    right: -50px;
+    border-radius: 5px;
+}
+.cardBox1:hover ~ .squ>.circle{
+    transform: rotate(-288deg);
+}
+.cardBox2:hover ~ .squ>.circle{
+    transform: rotate(288deg);
+}
+.cardBox3:hover ~ .squ>.circle{
+    transform: rotate(-288deg);
+}
+.cardBox4:hover ~ .squ>.circle{
+    transform: rotate(288deg);
+}
+.grayBox{
+    width: 100%;
+    height: 100px;
+    background-color: rgb(173, 172, 172);
+    color: white;
+    text-align: center;
+    line-height: 100px;
+    font-size: 30px;
+}
+.forOur{
+    width: 100%;
+    height: 1000px;
+    /* background-color: rgb(158, 192, 243); */
+    position: relative;
+}
+
+.forImage{
+    width: 70px;
+    height: 70px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-image: url(../speadtest/img/he.jpg);
+    background-position: center;
+    background-size: cover;
+    transition: 1s;
+    display: block;
+    cursor: pointer;
+}
+.forImage1{
+    position: absolute;
+    left: calc(50% - 35px);
+    bottom: 360px;
+    transform: rotate(0deg);
+}
+.forImage2{
+    position: absolute;
+    bottom: calc(50% - 35px);
+    right: 360px;
+    transform: rotate(270deg);
+}
+.forImage3{
+    position: absolute;
+    left: calc(50% - 35px);
+    top: 360px;
+    transform: rotate(180deg);
+}
+.forImage4{
+    position: absolute;
+    bottom: calc(50% - 35px);
+    left: 360px;
+    transform: rotate(90deg);
+}
+.fcircle{
+    width: 400px;
+    height: 400px;
+    /* border: 5px solid black; */
+    border-radius: 50%;
+    position: absolute;
+    bottom: 100px;
+    left: calc(50% - 200px);
+    transition: 0.5s;
+    transform: rotate(0deg);
+}
+#forInput1:checked ~ .fcircle{
+    transform: rotate(0deg);
+}
+#forInput2:checked ~ .fcircle{
+    transform: rotate(-270deg);
+}
+#forInput3:checked ~ .fcircle{
+    transform: rotate(-180deg);
+}
+#forInput4:checked ~ .fcircle{
+    transform: rotate(-90deg);
+}
+
+#forInput1:checked ~ .fcircle > .forImage1{
+    border-radius: 3%;
+    background-image: none;
+    background-color: rgb(155, 154, 154);
+    width: 300px;
+    height: 350px;
+    position: absolute;
+    left: calc(50% - 150px);
+    bottom: 460px;
+}
+#forInput2:checked ~ .fcircle > .forImage2{
+    border-radius: 3%;
+    background-image: none;
+    background-color: rgb(155, 154, 154);
+    width: 300px;
+    height: 350px;
+    position: absolute;
+    bottom: calc(50% - 175px);
+    right: 485px;
+}
+#forInput3:checked ~ .fcircle > .forImage3{
+    border-radius: 3%;
+    background-image: none;
+    background-color: rgb(155, 154, 154);
+    width: 300px;
+    height: 350px;
+    position: absolute;
+    left: calc(50% - 150px);
+    top: 460px;
+}
+#forInput4:checked ~ .fcircle > .forImage4{
+    border-radius: 3%;
+    background-image: none;
+    background-color: rgb(155, 154, 154);
+    width: 300px;
+    height: 350px;
+    position: absolute;
+    bottom: calc(50% - 175px);
+    left: 485px;
+}
+
+#forInput1:hover ~ .fcircle > .forImage1{
+    transform: rotate(360deg);
+}
+#forInput2:hover ~ .fcircle > .forImage2{
+    transform: rotate(630deg);
+}
+#forInput3:hover ~ .fcircle > .forImage3{
+    transform: rotate(540deg);
+}
+#forInput4:hover ~ .fcircle > .forImage4{
+    transform: rotate(450deg);
+}
+
+#forInput1:checked ~ .fcircle > .forImage1 >.forText1{
+    width: 250px;
+    height: 300px;
+    padding: 25px;
+    font-size: 30px;
+    word-break: break-all;
+    opacity: 1;
+    text-align: center;
+}
+#forInput2:checked ~ .fcircle > .forImage2 >.forText2{
+    width: 250px;
+    height: 300px;
+    padding: 25px;
+    font-size: 30px;
+    word-break: break-all;
+    opacity: 1;
+    text-align: center;
+}
+#forInput3:checked ~ .fcircle > .forImage3 >.forText3{
+    width: 250px;
+    height: 300px;
+    padding: 25px;
+    font-size: 30px;
+    word-break: break-all;
+    opacity: 1;
+    text-align: center;
+}
+#forInput4:checked ~ .fcircle > .forImage4 >.forText4{
+    width: 250px;
+    height: 300px;
+    padding: 25px;
+    font-size: 30px;
+    word-break: break-all;
+    opacity: 1;
+    text-align: center;
+}
+
+.forInput{
+    display: none;
+}
+.forText{
+    font-size: 0px;
+    transition: 1s;
+    width: 0px;
+    height: 0px;
+    padding: 0px;
+    transition: 1s;
+    opacity: 0;
+    color: white;
+}
+.foot{
+    width: calc(100% - 200px);
+    height: 300px;
+    background-color: rgb(221, 221, 221);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0px 100px;
+    
+}
+ul{
+    width: 20%;
+    height: 80%;
+}
+a{
+    font-size: 30px;
+    text-decoration: none;
+    color: gray;
+    
+}
+li{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px;
+}
+.bigtoe{
+    font-size: 35px;
+    font-weight: 600;
+}
