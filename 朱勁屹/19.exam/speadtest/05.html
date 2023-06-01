@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            text-align: center;
+            font-size: 30px;
+            font-weight: 600;
+        }
+        html{
+            height: 100%;
+            width: 100%;
+
+        }
+        body{
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+        }
+        header,.footer{
+            width: 80%;
+            height: 150px;
+            margin: 10px auto;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 150px;
+            font-size: 30px;
+        }
+        .newsAB{
+            width: 45%;
+            height: 150px;
+            border: 1px solid black;
+            line-height: 150px;
+            margin: 0px 0px 20px 0px;
+        }
+        .newsC{
+            width: 100%;
+            height: 400px;
+            border: 1px solid black;
+            line-height: 400px;
+        }
+        .box2{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .adSpace1{
+            display: none;
+        }
+        main{
+            width: 80%;
+            /* height: 650px; */
+            /* border: 1px solid black; */
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            
+            align-items: center;
+        }
+        .box1{
+            width: 60%;
+            /* border: 1px solid black; */
+            /* height: 600px; */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .adSpace2{
+            width: 30%;
+            border: 1px solid black;
+            height: 600px;
+            line-height: 600px;
+        }
+        @media screen and (max-width:600px) {
+            *{
+                font-size: 20px;
+            }
+            .box1{
+                width: 100%;
+            }
+            .box2{
+                display: flex;
+                flex-direction: column;
+            }
+            .newsAB{
+                width: 100%;
+                justify-content: space-around;
+                margin: 0px 0px 20px 0px;
+            }
+            .newsC{
+                height: 150px;
+                line-height: 150px;
+                margin: 0px 0px 20px 0px;
+            }
+            .adSpace1{
+                display: block;
+                width: 100%;
+                height: 400px;
+                border: 1px solid black;
+                line-height: 400px;
+                margin: 0px 0px 20px 0px;
+            }
+            .adSpace2{
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        header
+    </header>
+    <main>
+        <div class="box1">
+            <div class="box2">
+                <div class="newsA newsAB">newsA</div>
+                <div class="adSpace1">adSpace</div>
+                <div class="newsB newsAB">newsB</div>
+            </div>
+            <div class="newsC">newsC</div>
+        </div>
+        <div class="adSpace2">adSpace</div>
+    </main>
+    <footer>
+        <div class="footer">footer</div>
+    </footer>
+</body>
+</html>

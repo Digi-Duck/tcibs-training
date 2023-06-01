@@ -1,0 +1,19 @@
+@media screen and (max-width:870px){
+    ul{
+        width: 40%;
+        
+    }
+    .foot{
+        display: flex;
+        justify-content: space-around;
+        /* align-items: center; */
+        flex-wrap: wrap;
+    }
+    .img{
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+        position: absolute;
+        left: calc(50% - 150px);
+    }
+}
