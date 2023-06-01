@@ -39,7 +39,7 @@
                 console.log(1);
             },
             start(){
-                
+                location.href = '#/exercise/start';
             },
         },
         mounted(){

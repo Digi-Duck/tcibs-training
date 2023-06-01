@@ -25,21 +25,14 @@
             let r = Math.floor(Math.random() * 256);
             let g = Math.floor(Math.random() * 256);
             let b = Math.floor(Math.random() * 256);
-            console.log();
-            v = (text.match(/(<([^>]+)>)/g) || []);
-            console.log(v);
+            // console.log();
+            // v = (text.match(/(<([^>]+)>)/g) || []);
+            // console.log(v);
             text = text.replace(reg,'<span style="background-color: rgb( '+r+', '+g+', '+b+' );">'+input.value+'</span>');
             contant.innerHTML = text;
             input.value = '';
         })
 
-        function filterHtml(str) {
-            let output = '';
-            if(typeof(str)=='string'){
-                output = str.replace(/(<([^>]+)>)/ig,"");
-            }
-            return output;
-        }
     </script>
 </body>
 </html>

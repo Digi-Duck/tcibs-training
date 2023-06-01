@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown 預覽</title>
+
+    <style>
+        body{
+            margin: 0px;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+        }
+        .left, .right{
+            width: 50%;
+            flex-grow: 1;
+            padding: 5px;
+            border: 5px solid gray;
+            overflow: hidden;
+            overflow-y: scroll;
+        }
+        textarea{
+            resize: none;
+        }
+
+    </style>
+</head>
+<body>
+    <textarea name="" id="" class="left"></textarea>
+    <div class="right"></div>
+<strong></strong>
+    <script>
+        const left = document.querySelector('.left')
+        const right = document.querySelector('.right')
+
+        left.addEventListener('keyup',()=>{
+            let text = left.value
+            text = text.replaceAll('\n',`<br>`)
+            text = text.replaceAll('---','<hr>')
+
+
+            let title = text.match(/#([\s\S]*)/)
+            if(title){
+                let titleText = title[0].replace('#','')
+                text = text.replaceAll(title[0],`<h1>${titleText}</h1>`)
+            }
+
+            let strong = text.match(/\*\*([\s\S]*)\*\*/)
+            text = text.replaceAll('\n',`<br>`)
+            if(strong){
+                let strongText = strong[0].replaceAll('**','')
+                text = text.replaceAll(strong[0],`<strong>${strongText}</strong>`)
+            }
+
+
+            right.innerHTML = text
+        })
+    </script>
+</body>
+</html>

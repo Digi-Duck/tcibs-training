@@ -11,7 +11,7 @@
 </template>
 
 <script>
-    import Btn from '@/components/Btn'
+    import btn from '@/components/Btn'
 
     export default {
         data(){
@@ -34,7 +34,7 @@
 
         },
         components: {
-            Btn
+            btn
         }
     }
 </script>

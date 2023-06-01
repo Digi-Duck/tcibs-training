@@ -25,12 +25,17 @@
 </template>
 
 <script>
+    import BtnA from '@/components/BtnA.vue'
+
     export default {
         data(){
             return{
                 checked: true,
                 checked1: true,
             }
+        },
+        components: {
+            BtnA,
         },
     }
 </script>
