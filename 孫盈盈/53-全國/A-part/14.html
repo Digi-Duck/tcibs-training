@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+        .all{
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+        }
+        .quarter{
+            display: flex;
+            flex-wrap: wrap;
+            width: 800px;
+            height: 800px;
+        
+            border: 5px solid black;
+            margin: auto;
+        }
+        .box{
+            width: 45.05px;
+            height: 48px;
+
+            border: 1px solid black;
+        }
+        .color{
+            width: 10px;
+            height: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="quarter"></div>
+    </div>
+    <div class="colors">
+
+    </div>
+    <script>
+        const all = document.querySelector('.quarter');
+        const colors = document.querySelector('.colors')
+
+        let currentColor = 'rgb(0, 0, 0)';
+        for(let i = 0;i<=16;i++){
+            for (let j = 0; j < 16; j++) {
+                all.innerHTML += `<div onclick="draw(${i}, ${j})" class="box box-${i}-${j}"></div>`;
+            }
+        }
+        for (let i = 0; i < 10; i++) {
+            for (let y = 0; y < 1; y++) {    
+                let c = color();
+                colors.innerHTML += `<div onclick="drawed(${c})" style="background-color: ${c}; class="color"></div>`
+            }
+        }
+
+        function draw(x, y){
+            document.querySelector(`.box-${x}-${y}`).style.backgroundColor = currentColor;
+        }
+        function color(){
+            return `rgb(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)})`
+        }
+        function drawed(color){
+            currentColor = color;
+        }
+    </script>
+</body>
+</html>

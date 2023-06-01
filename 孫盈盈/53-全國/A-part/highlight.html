@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="page-wrapper">
+        <h1>Keyword Highlighting</h1>
+
+            <div id="form-wrapper">
+                <h3>Keywords</h3>
+                <div>
+                    <textarea rows = "3" cols = "60" name = "description" placeholder="Keywords (Each new line = separate keyword)" id="keyword-input"></textarea>
+                </div>
+                <h3>Text</h3>
+                <div>
+                    <textarea rows = "5" cols = "60" name = "description" placeholder="Text (Solid block of text with keywords to be highlighted)" id="text-input"></textarea>
+                </div>
+                <div>
+                    <button  id="highlight-button" onclick="highlight()">Highlight</button>
+                </div>
+            </div>
+
+
+        <h2>Result</h2>
+        <div id="result"></div>
+
+    </div>
+    <script>
+        function highlight(){
+            let keywords = document.getElementById('keyword-input').value.split('\n');
+            let content = document.getElementById('text-input').value
+            document.getElementById('result').innerHTML = transformContent(content, keywords)
+        }
+
+        function transformContent(content, keywords){
+            let temp = content
+
+            keywords.forEach(keyword => {
+                temp = temp.replace(new RegExp(keyword, 'g'), wrapKeywordWithHTML(keyword, `https://www.google.com/search?q=${keyword}`))
+        })
+
+        return temp
+        }
+
+        function wrapKeywordWithHTML(keyword, url){
+            return `<a href="${url}" target="_blank"> <span style="font-weight: bold; color: red; font-size: 30px">  ${keyword}  </span> </a>`
+        }
+    </script>
+</body>
+</html>

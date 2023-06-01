@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section class="text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi laboriosam perspiciatis velit totam aut voluptatum atque aliquam nemo nam hic delectus neque fugiat reprehenderit, placeat eos, impedit repellat sequi nihil.Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quisquam cupiditate facilis perspiciatis, illo sint consectetur tempora error iusto! Nisi dolore a culpa non fuga eius at accusamus quibusdam ratione. Provident doloremque, sequi alias distinctio architecto modi totam eligendi, dolorum cum, eveniet quod enim maiores. Eum, cumque quisquam harum possimus culpa consequatur, explicabo quibusdam corrupti officia tempore sit iure odio?
+    </section>
+    <input type="text" class="search">
+    <button id="btn">search</button>
+    <script>
+        let btn = document.getElementById('btn');
+        let search = document.querySelector('.search');
+        let text = document.querySelector('.text');
+        
+        let history = [];
+
+        btn.addEventListener('click',()=>{
+            let answer = text.textContent;
+            console.log(answer);
+
+            history.push(search.value.trim())
+            history.forEach((elements, index) => {
+                for(k of search.value){
+                    answer = answer.replace(new RegExp(elements, 'g'), color(elements))
+                    console.log(answer);
+                }
+            });
+            text.innerHTML = answer;
+            function color(keyword){
+                let r = Math.floor(Math.random() * 255)
+                let g = Math.floor(Math.random() * 255)
+                let b = Math.floor(Math.random() * 255)
+                
+                return `<a style="background-color: rgb(${r}, ${g}, ${b}, 0.5);">${keyword}</a>`
+            }
+        })
+    </script>
+</body>
+</html>
