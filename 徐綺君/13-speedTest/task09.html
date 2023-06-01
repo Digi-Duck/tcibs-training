@@ -24,12 +24,16 @@
         textarea{
             resize: none;
         }
+        .title{
 
+        }
     </style>
 </head>
 <body>
+    
     <textarea name="" id="" class="left"></textarea>
     <div class="right"></div>
+    
 <strong></strong>
     <script>
         const left = document.querySelector('.left')
@@ -41,7 +45,8 @@
             text = text.replaceAll('---','<hr>')
 
 
-            let title = text.match(/#([\s\S]*)/)
+            let title = text.match(/#([^<br>]*)/)
+            console.log(title[0]);
             if(title){
                 let titleText = title[0].replace('#','')
                 text = text.replaceAll(title[0],`<h1>${titleText}</h1>`)
