@@ -32,9 +32,17 @@
 
             border: 1px solid black;
         }
+        .colors{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            
+            padding: 40px;
+        }
         .color{
-            width: 10px;
-            height: 10px;
+            width: 50px;
+            height: 50px;
         }
     </style>
 </head>
@@ -56,20 +64,22 @@
             }
         }
         for (let i = 0; i < 10; i++) {
-            for (let y = 0; y < 1; y++) {    
+            for (let y = 0; y < 2; y++) {    
                 let c = color();
-                colors.innerHTML += `<div onclick="drawed(${c})" style="background-color: ${c}; class="color"></div>`
+                console.log(c);
+                colors.innerHTML += `<div onclick="drawed('${c}')" style="background-color: ${c};" class="color"></div>`;
             }
         }
 
+        function drawed(c){
+            console.log(c);
+            currentColor = c;
+        }
         function draw(x, y){
             document.querySelector(`.box-${x}-${y}`).style.backgroundColor = currentColor;
         }
         function color(){
             return `rgb(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)})`
-        }
-        function drawed(color){
-            currentColor = color;
         }
     </script>
 </body>

@@ -42,7 +42,7 @@
                 console.log(colorInput);
                 result.innerHTML = `RGB, rgb(${colorInput[0]},${colorInput[1]},${colorInput[2]})`;
                 
-            }else if(color.value.match(/^rgb\((?<red>[0-9]{1,3}),(?<green>[0-9]{1,3}),(?<blue>[0-9]{1,3})\)/)){
+            }else if(color.value.match(/^rgb\((?<red>[0-9]{1,3}),(?<green>[0-9]{1,3}),(?<blue>[0-9]{1,3})\)$/)){
                 const colorInput = color.value.match(/^rgb\((?<r>[0-9]{1,3}),(?<g>[0-9]{1,3}),(?<b>[0-9]{1,3})\)/).groups;
                 console.log(colorInput.r);    
                 function rgb(r, g, b){

@@ -36,12 +36,11 @@
                         //照片寫進canvas
                         newImg.width = oldImg.width;
                         newImg.height = oldImg.height
-                        console.log(ctx.width);
 
                         ctx.drawImage(oldImg, 0, 0);
                         const imageData = ctx.getImageData(0, 0, oldImg.width, oldImg.width);
                         const data = imageData.data;
-                        console.log(data);
+                        
                         //加噪點
                         for(let i = 0; i < data.length; i+=4){
                             const noise = Math.random() * 70;
