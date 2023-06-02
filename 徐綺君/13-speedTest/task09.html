@@ -24,17 +24,17 @@
         textarea{
             resize: none;
         }
-        .title{
-
+        .right{
+            word-break: break-all;
         }
     </style>
 </head>
 <body>
     
     <textarea name="" id="" class="left"></textarea>
-    <div class="right"></div>
-    
-<strong></strong>
+    <span class="right"></span>
+    <img src="" alt="">
+
     <script>
         const left = document.querySelector('.left')
         const right = document.querySelector('.right')
@@ -42,23 +42,62 @@
         left.addEventListener('keyup',()=>{
             let text = left.value
             text = text.replaceAll('\n',`<br>`)
-            text = text.replaceAll('---','<hr>')
+            // text = text.replaceAll('---','<hr>')
 
 
-            let title = text.match(/#([^<br>]*)/)
-            console.log(title[0]);
+            let title = text.match(new RegExp (/#([\s]+)([^<br>]*)/, "g"))
+            console.log(title);
             if(title){
-                let titleText = title[0].replace('#','')
-                text = text.replaceAll(title[0],`<h1>${titleText}</h1>`)
+                title.forEach(e => {
+                    let titleText = e.replace('# ','')
+                    text = text.replace(e,`<h1>${titleText}</h1>`)
+                });
             }
 
-            let strong = text.match(/\*\*([\s\S]*)\*\*/)
-            text = text.replaceAll('\n',`<br>`)
+            let line = text.match(new RegExp (/([-]{3,})([^<br>]*)/, "g"))
+            console.log(line);
+            if(line){
+                line.forEach(e => {
+                    console.log(e);
+                    text = text.replace(e,`<hr>`)
+                });
+            }
+
+
+            let strong = text.match(new RegExp (/\*\*([^<br>]*)\*\*/, "g"))
             if(strong){
-                let strongText = strong[0].replaceAll('**','')
-                text = text.replaceAll(strong[0],`<strong>${strongText}</strong>`)
+                strong.forEach(e=>{
+                    let strongText = e.replaceAll('**','')
+                    text = text.replace(e,`<strong>${strongText}</strong>`)
+                })
             }
 
+            let list = text.match(new RegExp (/-([\s]+)([^<br>]*)/, "g"))
+            if(list){
+                list.forEach(e =>{
+                    let listText = e.replace('- ','')
+                    text = text.replace(e,`<li>${listText}</li>`)
+                })
+            }
+
+            let img = text.match(new RegExp (/\!\[([^\]]*)\]\(([^<br>]*|[^\)]*)\)/,"g"))
+            if(img){
+                img.forEach(e=>{
+                    let imgText = e.match(/\[([^\]]*)\]/)[1]
+                    let imgHref = e.match(/\(([^<br>]*|[^\)]*)\)/)[1]
+                    text = text.replace(e,`<img src="${imgHref}" alt="${imgText}">`)
+                })
+            }
+                
+            let link = text.match(new RegExp (/\[([^\]]*)\]\(([^<br>]*|[^\)]*)\)/,"g"))
+            if(link){
+                link.forEach(e=>{
+                    let linkText = e.match(/\[([^\]]*)\]/)[1]
+                    let linkHref = e.match(/\(([^<br>]*|[^\)]*)\)/)[1]
+                    console.log(linkHref);
+                    text = text.replace(e,`<a href="${linkHref}">${linkText}</a>`)
+                })
+            }
 
             right.innerHTML = text
         })
