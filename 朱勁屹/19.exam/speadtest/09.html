@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            display: flex;
+            /* justify-content: ; */
+        }
+        html{
+            width: 100%;
+            height: 100%;
+        }
+        textarea{
+            width: 50%;
+            height: 100%;
+            font-size: 30px;
+            border: 10px solid black;
+        }
+        .area{
+            width: 50%;
+            height: 100%;
+            border:10px solid black ;
+            font-size: 30px;
+            /* background-color: black; */
+        }
+        .line{
+            width: 80%;
+            height: 1px;
+            background-color: black;
+            margin: 14.5px auto;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <textarea class="text"></textarea>
+    <div class="area">
+        <a href="https://youtu.be/OPZKZfc73s4">必勝客</a>
+        <a href="https://youtu.be/OPZKZfc73s4">必勝客</a>
+        <a href="https://youtu.be/OPZKZfc73s4">必勝客</a>
+        <a href="https://youtu.be/OPZKZfc73s4">必勝客</a>
+        
+    
+    </div>
+    
+    <script>
+        let text = document.querySelector('.text');
+        let area = document.querySelector('.area');
+        let a;
+
+        text.addEventListener('keyup',function () {
+            // console.log(text.value.match('\n'));
+            
+            a = text.value.replaceAll('\n','<br>');
+
+            //換行
+            while(a.match(/  /)){
+                // console.log(a.match(/#([^<br>]*)/));
+                a = a.replaceAll(a.match(/  /)[0],'<br>');
+                // console.log(a);
+                // a = a.replaceAll("#",'');
+            }
+
+            //標題
+            while(a.match(/# ([^<br>]*)/)){
+                // console.log(a.match(/#([^<br>]*)/));
+                a = a.replaceAll(a.match(/# ([^<br>]*)/)[0],'<h1>'+a.match(/# ([^<br>]*)/)[1]+'</h1>');
+                // console.log(a);
+                // a = a.replaceAll("#",'');
+            }
+
+            //粗體
+            while(a.match(/\*\*([\s\S]*)\*\*/)){
+                console.log(1);
+                // console.log(a.match(/#([^<br>]*)/));
+                a = a.replaceAll(a.match(/\*\*([\s\S]*)\*\*/)[0],'<strong>'+a.match(/\*\*([\s\S]*)\*\*/)[1]+'</strong>');
+                a = a.replaceAll("*",'');
+            }
+
+            //水平線
+            while(a.match(/---/)){
+                // console.log(a.match(/---$/)[0]);
+                a = a.replaceAll(a.match(/---/)[0],'<div class="line"></div><br>');
+            }
+
+            //列表
+            while(a.match(/- ([^<br>]*)/)){
+                // console.log(a.match(/---$/)[0]);
+                a = a.replaceAll(a.match(/- ([^<br>]*)/)[0],'<li>'+a.match(/- ([^<br>]*)/)[1]+'</li>');
+            }
+
+            //圖片
+            while(a.match(/\!\[([\s\S]*)\]/)){
+                // console.log(a.match(/\!\[([\s\S]*)\]/));
+                a = a.replaceAll(a.match(/\!\[([\s\S]*)\]/)[0],'<img src="'+a.match(/\!\[([\s\S]*)\]/)[1]+'" alt="">');
+            }
+
+            //連結
+            while(a.match(/\[([\s\S]*)\]/)){
+                // console.log(a.match(/---$/)[0]);
+                a = a.replaceAll(a.match(/\[([\s\S]*)\]/)[0],'<a href="'+a.match(/\[([\s\S]*)\]/)[1]+'">'+a.match(/\[([\s\S]*)\]/)[1]+'</a>');
+            }
+            
+            
+            area.innerHTML = a;
+        });
+    </script>
+</body>
+</html>
