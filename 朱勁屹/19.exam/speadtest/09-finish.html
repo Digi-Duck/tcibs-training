@@ -45,10 +45,6 @@
 <body>
     <textarea class="text"></textarea>
     <div class="area">
-        <a href="https://youtu.be/OPZKZfc73s4">必勝客</a>
-        <a href="https://youtu.be/OPZKZfc73s4">必勝客</a>
-        <a href="https://youtu.be/OPZKZfc73s4">必勝客</a>
-        <a href="https://youtu.be/OPZKZfc73s4">必勝客</a>
         
     
     </div>
@@ -100,15 +96,18 @@
             }
 
             //圖片
-            while(a.match(/\!\[([\s\S]*)\]/)){
-                // console.log(a.match(/\!\[([\s\S]*)\]/));
-                a = a.replaceAll(a.match(/\!\[([\s\S]*)\]/)[0],'<img src="'+a.match(/\!\[([\s\S]*)\]/)[1]+'" alt="">');
+            while(a.match(/\!\[(?<word>[^\]]*)\] \((?<link>[^\)]*)\)/)){
+                console.log(a.match(/\!\[(?<word>[^\]]*)\] \((?<link>[^\)]*)\)/));
+                groups = a.match(/\!\[(?<word>[^\]]*)\] \((?<link>[^\)]*)\)/).groups;
+                a = a.replaceAll(a.match(/\!\[(?<word>[^\]]*)\] \((?<link>[^\)]*)\)/)[0],'<img src="'+groups.link+'" alt="'+groups.word+'">');
             }
 
             //連結
-            while(a.match(/\[([\s\S]*)\]/)){
+            while(a.match(/\[(?<word>[^\]]*)\] \((?<link>[^\)]*)\)/)){
                 // console.log(a.match(/---$/)[0]);
-                a = a.replaceAll(a.match(/\[([\s\S]*)\]/)[0],'<a href="'+a.match(/\[([\s\S]*)\]/)[1]+'">'+a.match(/\[([\s\S]*)\]/)[1]+'</a>');
+                console.log(a.match(/\[(?<word>[^\]]*)\] \((?<link>[^\)]*)\)/));
+                group = a.match(/\[(?<word>[^\]]*)\] \((?<link>[^\)]*)\)/).groups;
+                a = a.replaceAll(a.match(/\[(?<word>[^\]]*)\] \((?<link>[^\)]*)\)/)[0],'<a href="'+group.link+'">'+group.word+'</a>');
             }
             
             
