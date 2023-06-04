@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>建立圖片預覽視窗套件</title>
+
+    <style>
+        .img{
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            object-position: center center;
+            margin: 10px;
+        }
+        .lightBox{
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+        }
+        .lightImg{
+            margin: auto;
+        }
+        .prev,.next,.back{
+            border: none;
+            background-color: transparent;
+            font-size: 80px;
+            color: white;
+            margin: 10px;
+            padding: 5px;
+        }
+        .prev:hover,.next:hover,.back:hover{
+            color: black;
+        }
+        .back{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .display{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <img class="img" src="https://i.pinimg.com/236x/db/bc/d1/dbbcd1e7c89432305dab86dbcb9297cc.jpg" alt="">
+    <img class="img" src="https://i.pinimg.com/236x/df/9f/9e/df9f9e8dfd80010fc33e60280f553e24.jpg" alt="">
+    <img class="img" src="https://i.pinimg.com/236x/fd/f3/a5/fdf3a5e37e12d7c9055c7c865c000cd3.jpg" alt="">
+    <img class="img" src="https://i.pinimg.com/236x/26/24/9e/26249ec49f50dfbbee6b75d1e2291603.jpg" alt="">
+    <img class="img" src="https://i.pinimg.com/236x/96/23/d2/9623d2c6edb596365a88484533dd9aff.jpg" alt="">
+    <img class="img" src="https://i.pinimg.com/236x/d2/ba/5f/d2ba5f0775d63a95c9ec7d4736e5c834.jpg" alt="">
+    <img class="img" src="https://i.pinimg.com/236x/b4/7d/0b/b47d0b215dafc5d7f8cf62ce1b5a7360.jpg" alt="">
+
+    <div class="lightBox display">
+        <button class="back">X</button>
+        <button class="prev"><</button>
+        <img src="https://i.pinimg.com/236x/db/bc/d1/dbbcd1e7c89432305dab86dbcb9297cc.jpg" alt="" class="lightImg">
+        <button class="next">></button>
+    </div>
+
+    <script src="./task12-js.js"></script>
+</body>
+</html>

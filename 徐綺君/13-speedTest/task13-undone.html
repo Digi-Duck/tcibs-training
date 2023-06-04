@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board Sortable</title>
+
+    <style>
+        body{
+            margin: 0px;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: start;
+            align-items: flex-start;
+        }
+        .box{
+            width: 500px;
+            min-height: 150px;
+            background-color: tomato;
+            border-radius: 20px;
+            margin: 10px;
+            padding: 0px 10px;
+            padding-bottom: 20px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        .card{
+            width: 480px;
+            height: 380px;
+            background-color: rgb(187, 187, 187);
+            border-radius: 15px;
+            cursor: move;
+            margin: 10px 0px;
+        }
+        p{
+            color: white;
+            font-size: 25px;
+            font-weight: 600;
+        }
+        .drag{
+            position: fixed;
+            transform: rotate(15deg);
+        }
+        .dragOver{
+            opacity: 0;
+        }
+        .card2{
+            width: 480px;
+            height: 380px;
+            margin: 10px 0px;
+            /* position: absolute; */
+            opacity: 0;
+        }
+        .display{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p>Font-End</p>
+        <div class="card" draggable="true">1</div>
+        <div class="card" draggable="true">2</div>
+    </div>
+    <div class="box">
+        <p>Back-End</p>
+    </div>
+
+    <script>
+        const cards = document.querySelectorAll('.card')
+        const boxs = document.querySelectorAll('.box')
+        const card2 = document.querySelector('.card2')
+        let drag;
+
+        cards.forEach((card,i) => {
+            card.addEventListener('dragstart',(e)=>{
+                drag = e.target;
+                // console.log(drag);
+                e.dataTransfer.setDragImage(new Image(), 0, 0);
+            })
+            card.addEventListener("drag", function(e){
+                card.classList.add('drag')
+                card.style.left = e.pageX - 40 + "px";
+                card.style.top = e.pageY - window.scrollY + 60 + "px";
+            });
+            card.addEventListener('dragover',(e)=>{
+                e.stopPropagation();
+            })
+            card.addEventListener('drop',(e)=>{
+                console.log(drag);
+                e.target.appendChild(drag)
+                console.log(e.target);
+            })
+            card.addEventListener('dragend',(e)=>{
+                card.classList.remove('drag')
+            })
+        });
+
+        boxs.forEach((box,i) => {
+            box.addEventListener('dragenter',(e)=>{
+                console.log(e.target);
+            })
+            box.addEventListener('dragover',(e)=>{
+                e.preventDefault();
+            })
+            box.addEventListener('drop',(e)=>{
+                console.log(drag);
+                e.target.appendChild(drag)
+            })
+        });
+        /* Made with love by @fitri
+        This is a component of my ReactJS project
+        https://codepen.io/fitri/full/oWovYj/ */
+
+        function enableDragSort(listClass) {
+        const sortableLists = document.getElementsByClassName(listClass);
+        Array.prototype.map.call(sortableLists, (list) => {enableDragList(list)});
+        }
+
+        function enableDragList(list) {
+        Array.prototype.map.call(list.children, (item) => {enableDragItem(item)});
+        }
+
+        function enableDragItem(item) {
+        item.setAttribute('draggable', true)
+        item.ondrag = handleDrag;
+        item.ondragend = handleDrop;
+        }
+
+        function handleDrag(item) {
+        const selectedItem = item.target,
+                list = selectedItem.parentNode,
+                x = event.clientX,
+                y = event.clientY;
+        
+        selectedItem.classList.add('drag-sort-active');
+        let swapItem = document.elementFromPoint(x, y) === null ? selectedItem : document.elementFromPoint(x, y);
+        
+        if (list === swapItem.parentNode) {
+            swapItem = swapItem !== selectedItem.nextSibling ? swapItem : swapItem.nextSibling;
+            list.insertBefore(selectedItem, swapItem);
+        }
+        }
+
+        function handleDrop(item) {
+        item.target.classList.remove('drag-sort-active');
+        }
+
+        (()=> {enableDragSort('drag-sort-enable')})();
+    </script>
+</body>
+</html>
