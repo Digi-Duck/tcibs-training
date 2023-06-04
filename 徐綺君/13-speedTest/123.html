@@ -1,38 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-      <script src="https://unpkg.com/konva@9.0.2/konva.min.js"></script>
-      <meta charset="utf-8" />
-      <title>Konva Noise Image Demo</title>
-      <style>
-      picture {
-      width: 250px;
-      display: inline-grid;
-      margin: 5px;
-      position: relative;
-      }
-      img {
-      width: 100%;
-      }
-      picture::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: repeating-conic-gradient(#ffffff00 0.000045%, #000000 0.0005%);
-      mix-blend-mode: overlay;
-      }
-      </style>
-</head>
+    <meta charset="UTF-8">
+    <title>网格背景</title>
+    <style>
+        body {
+            line-height: 2em;
+        }
 
+        #canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            margin: 0 20%;
+        }
+
+        p {
+            margin: 0 20%;
+            text-indent: 2em;
+        }
+    </style>
+</head>
 <body>
-<picture>
-<img src="https://picsum.photos/id/10/400/400" alt="">
-</picture>
-<picture>
-<img src="https://picsum.photos/id/17/400/400" alt="">
-</picture>
-<picture>
-<img src="https://picsum.photos/id/19/400/400" alt="">
-</picture>
+<canvas id="canvas" height="100%" width="100%">canvas not supported</canvas>
 </body>
+<script>
+      var canvas = document.getElementById('canvas'),
+      context = canvas.getContext('2d');
+
+      let img  = new Image();
+      img.src = "https://i.pinimg.com/236x/14/e0/23/14e02377e848e76b4483c38eb75a34ea.jpg";
+      img.onload = function(){
+            context.drawImage(img, 0, 0, img.height, img.width);
+      }
+
+      //初始化
+      drawGrid('lightgray', 10, 10);
+
+      //窗口伸缩监听
+      window.onresize = function () {
+            AutoCanvas();
+            drawGrid('lightgray', 10, 10);
+      };
+
+      /**
+       * 画网格
+       * @param color 网格线颜色
+       * @param stepX 格子横向间距
+       * @param stepY 格子垂直间距
+       */
+      function drawGrid(color, stepX, stepY) {
+            context.save();
+            context.strokeStyle = color;
+            context.lineWidth = 0.5;
+            for (var i = stepX + 0.5;
+                  i < context.canvas.width; i += stepX) {
+                  context.beginPath();
+                  context.moveTo(i, 0);
+                  context.lineTo(i, context.canvas.height);
+                  context.stroke();
+            }
+
+            for (var i = stepY + 0.5;
+                  i < context.canvas.height; i += stepY) {
+                  context.beginPath();
+                  context.moveTo(0, i);
+                  context.lineTo(context.canvas.width, i);
+                  context.stroke();
+            }
+
+            context.restore();
+      }
+</script>
 </html>
