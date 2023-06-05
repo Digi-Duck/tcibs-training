@@ -1,5 +1,6 @@
 <?php
-    echo 1;
-
-
+    public function aa($x)
+    {
+        # code...
+    }
 ?>

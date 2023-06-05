@@ -4,52 +4,111 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>圖像顏色偵測器</title>
 
     <style>
         img{
             width: 500px;
-            color: black;
+            color: gray;
+        }
+        .box{
+            width: 20px;
+            height: 20px;
+            border: 1px solid black;
+        }
+        .magnifier{
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            border: 2px solid gray;
+            border-radius: 50%;
+            background-color: aqua;
+            /* background-image: url(../04-Parallax/cat.jpg); */
+        }
+        .display{
+            display: none;
         }
     </style>
 </head>
 <body>
-    <canvas></canvas>
     <div class="content">
-
+        <input type="file">
+        <div class="box"></div>
+        <div class="magnifier display"></div>
+        <div class="canvasContainer"></div>
     </div>
+    <canvas></canvas>
 
     <script>
-        let canvas = document.querySelector('canvas')
-        let ctx = canvas.getContext('2d')
+        const canvas = document.querySelector('canvas');
+        const content = document.querySelector('.content');
+        const magnifier = document.querySelector('.magnifier');
+        const box = document.querySelector('.box');
+        const body = document.body;
+        const ctx = canvas.getContext('2d');
+        const input = document.querySelector('input');
+        ctx.mozImageSmoothingEnabled = false;
 
-        let img  = new Image();
-        img.src = "https://i.pinimg.com/236x/14/e0/23/14e02377e848e76b4483c38eb75a34ea.jpg";
-        img.onload = function(){
-            canvas.width = 500;
-            canvas.height = img.height/img.width * 500;
-            ctx.drawImage(img, 0, 0, 500, img.height/img.width * 500);
-            
-            ctx.save();
-            ctx.strokeStyle = 'black';
-            ctx.lineWidth = 0.5;
-            for (let i = 1 + 0.5; i < ctx.canvas.width; i += 1) {
-                ctx.beginPath();
-                ctx.moveTo(i, 0);
-                ctx.lineTo(i, ctx.canvas.height);
-                ctx.stroke();
+        input.addEventListener('change',()=>{
+            let file = input.files[0];
+            const url = URL.createObjectURL(file)
+            const img = new Image;
+            img.alt = file.name;
+            img.src = url;
+            img.onload = function(){
+                content.appendChild(img);
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0, img.width, img.height);
             }
-            
-            for (let i = 1 + 0.5; i < ctx.canvas.height; i += 1) {
-                ctx.beginPath();
-                ctx.moveTo(0, i);
-                ctx.lineTo(ctx.canvas.width, i);
-                ctx.stroke();
-            }
-            
-            ctx.restore();
-        }
-        
+
+            img.addEventListener('mousemove',(e)=>{
+                // const { scale } = this;
+                // console.log(img.offsetTop , img.offsetLeft);
+                // console.log(e.offsetX , e.offsetY);
+                const {data} = ctx.getImageData(e.offsetX, e.offsetY, 1, 1);
+                const r = data[0];
+                const g = data[1];
+                const b = data[2];
+                const a = data[3] / 255;
+                const rgba = { r, g, b, a };
+                box.style = `background-color: rgb(${r}, ${g}, ${b}, ${a});`;
+                
+
+                ctx.clearRect(0, 0, img.width, img.height);
+                const colors = ctx.getImageData(e.offsetX - 7, e.offsetY - 7, 15, 15);
+                ctx.drawImage(img, e.offsetX, e.offsetY, 10, 10, e.offsetX + 10, e.offsetY + 10, 100, 100);
+
+                colors.forEach((e, i) => {
+                    ctx.fillStyle = e;
+                    ctx.fillRect(j * size, i * size, 100/15, 100/15);
+                });
+                // 画水平线
+                for (let i = 0; i < 15; i += 1) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = '#000000';
+                    ctx.lineWidth = 0.6;
+                    ctx.moveTo(e.pageX+2, i * 100/15 + e.pageY-40);
+                    ctx.lineTo(e.pageX+102, i * 100/15  + e.pageY-40);
+                    ctx.stroke();
+                }
+                // 画垂直线
+                for (let j = 0; j < 15; j += 1) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = '#000000';
+                    ctx.lineWidth = 0.6;
+                    ctx.moveTo(j * 100/15 + e.pageX-100, e.pageY+2);
+                    ctx.lineTo(j * 100/15 + e.pageX-100, e.pageY+102);
+                    ctx.stroke();
+                }
+
+
+                magnifier.classList.remove('display');
+                magnifier.style = `top: ${ e.pageY + 10}px; left: ${ e.pageX + 10}px;`
+
+            })
+        })
+
     </script>
 </body>
 </html>

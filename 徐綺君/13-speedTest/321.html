@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const dom = document.getElementById("myCanvas"); // canvas画布
+
+// getImageData 获取像素数据 
+getImageData(dom,"https://i.pinimg.com/236x/72/c0/8a/72c08a97586f0875f119bae043c2e008.jpg").then((data)=>{
+  data = rotate90(data,dom.width,dom.height); // 顺时针旋转90度
+  drawImage(dom,data); // 绘制图像
+})
+
+function rotate90(data,w,h){
+  data = normalize(data,w,h); // 转化成矩阵
+  // 围绕中间行上下颠倒
+  const mid = h/2; // 找出中间行
+  for(hh = 0;hh < mid;hh++){
+    const symmetric_hh = h - hh -1; // 对称行的索引
+    for(ww = 0;ww<w;ww++){
+        let tmp = data[hh][ww];
+        data[hh][ww] = data[symmetric_hh][ww];
+        data[symmetric_hh][ww] = tmp;
+    }
+  }
+  // 根据对角线进行值交换
+  for(hh = 0;hh < h;hh++){
+    for(ww = hh+1;ww<w;ww++){
+      let tmp = data[hh][ww];
+      data[hh][ww] = data[ww][hh];
+      data[ww][hh] = tmp;
+    }
+  }
+  return restoreData(data); // 转化成一维数组
+}
+
+作者：Kay_
+链接：https://juejin.cn/post/7045935743037866020
+来源：稀土掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+    </script>
+</body>
+</html>

@@ -1,82 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>网格背景</title>
-    <style>
-        body {
-            line-height: 2em;
-        }
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>图片放大镜</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+.container{
+  text-align: center;
+}
 
-        #canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
+.zoom-wrap{
+  position: relative;
+  display: inline-block;
+}
 
-        h1 {
-            text-align: center;
-        }
+.target{
+  position: relative;
+  width: 100%;
+}
 
-        h2 {
-            margin: 0 20%;
-        }
+.zoom-area{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  display: block;
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  box-shadow: 0 0 5px rgba(255,255,255,.3), inset 0 0 5px rgba(0,0,0,.3);
+  background-repeat: no-repeat;
+  pointer-events: none;
 
-        p {
-            margin: 0 20%;
-            text-indent: 2em;
-        }
-    </style>
+  transition: .3s ease-out;
+}
+</style>
 </head>
 <body>
-<canvas id="canvas" height="100%" width="100%">canvas not supported</canvas>
+  <div class="container">
+    <div class="zoom-wrap">
+      <!-- 只需修改该处的图片路径即可放大对应图片 -->
+      <img class="target" src="https://s1.ax1x.com/2021/12/09/oWHiJ1.jpg">
+      <div class="zoom-area"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    //放大倍数
+    var scale = 10;
+    var showZoomArea = false;
+
+    //等待放大的图片
+    var target = document.getElementsByClassName('target')[0];
+    target.addEventListener('mousemove', zoomImgMouseMove, false);
+    target.addEventListener('mouseenter', zoomImgMouseEnter, false);
+    target.addEventListener('mouseleave', zoomImgMouseleave, false);
+
+    //放大显示区域
+    var zoomArea = document.getElementsByClassName('zoom-area')[0];
+    //设置放大背景图
+    zoomArea.style.backgroundImage = 'url('+target.getAttribute('src')+')';
+
+    //等待图片加载完成
+    target.onload = function(){
+      var targetRect = target.getBoundingClientRect();
+      var targetWidth = targetRect.width;
+      var targetHeight = targetRect.height;
+
+      //设置放大区域样式
+      zoomArea.style.backgroundSize = (targetWidth * scale)+'px '+(targetHeight * scale)+'px';
+    }
+
+    var zoomRect = zoomArea.getBoundingClientRect();
+    var widthHalf = zoomRect.width / 2;
+    var heightHalf = zoomRect.height / 2;
+    var offsetX = 0;
+    var offsetY = 0;
+
+    console.log(window.innerWidth, window.innerHeight);
+
+    function zoomImgMouseMove(e){
+      offsetX = e.offsetX;
+      offsetY = e.offsetY;
+    }
+
+    function zoomImgMouseEnter(){
+      showZoomArea = true;
+    }
+
+    function zoomImgMouseleave(){
+      showZoomArea = false;
+    }
+
+    setInterval(function(){
+      zoomArea.style.backgroundPosition = -(offsetX * scale - widthHalf)+'px '+(-(offsetY * scale - heightHalf))+'px';
+      window.innerWidth, window.innerHeight
+
+      //放大镜居中
+      /*zoomArea.style.left = (offsetX - widthHalf) + 'px';
+      zoomArea.style.top = (offsetY - heightHalf) + 'px';*/
+
+      //放大镜居右下角
+      if((offsetX + zoomRect.width) > window.innerWidth){
+        zoomArea.style.left = (offsetX - zoomRect.width) + 'px';
+      }else{
+        zoomArea.style.left = offsetX + 'px';
+      }
+
+      if((offsetY + zoomRect.height) > window.innerHeight){
+        zoomArea.style.top = (offsetY - zoomRect.height) + 'px';
+      }else{
+        zoomArea.style.top = offsetY + 'px';
+      }
+
+      setZoomAreaVisi();
+    }, 100)
+
+    function setZoomAreaVisi(){
+      if(showZoomArea)
+        zoomArea.style.transform = 'scale(1)';
+      else
+        zoomArea.style.transform = 'scale(0)';
+    }
+
+    setZoomAreaVisi();
+  </script>
 </body>
-<script>
-      var canvas = document.getElementById('canvas'),
-      context = canvas.getContext('2d');
-
-      let img  = new Image();
-      img.src = "https://i.pinimg.com/236x/14/e0/23/14e02377e848e76b4483c38eb75a34ea.jpg";
-      img.onload = function(){
-            context.drawImage(img, 0, 0, img.height, img.width);
-      }
-
-      //初始化
-      drawGrid('lightgray', 10, 10);
-
-      //窗口伸缩监听
-      window.onresize = function () {
-            AutoCanvas();
-            drawGrid('lightgray', 10, 10);
-      };
-
-      /**
-       * 画网格
-       * @param color 网格线颜色
-       * @param stepX 格子横向间距
-       * @param stepY 格子垂直间距
-       */
-      function drawGrid(color, stepX, stepY) {
-            context.save();
-            context.strokeStyle = color;
-            context.lineWidth = 0.5;
-            for (var i = stepX + 0.5;
-                  i < context.canvas.width; i += stepX) {
-                  context.beginPath();
-                  context.moveTo(i, 0);
-                  context.lineTo(i, context.canvas.height);
-                  context.stroke();
-            }
-
-            for (var i = stepY + 0.5;
-                  i < context.canvas.height; i += stepY) {
-                  context.beginPath();
-                  context.moveTo(0, i);
-                  context.lineTo(context.canvas.width, i);
-                  context.stroke();
-            }
-
-            context.restore();
-      }
-</script>
 </html>

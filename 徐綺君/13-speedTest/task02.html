@@ -44,13 +44,11 @@
                 ctx.drawImage(image, 0, 0, image.width, image.height);
 
                 const iData = ctx.getImageData(0,0,image.width,image.height);
-                iData.data.forEach((e,i)=>{
-                    let num  = Math.random()
-                    iData.data[i] = iData.data[i] - Math.random()*25+1;
-                    iData.data[i + 1] = iData.data[i+1] - Math.random()*25+1;
-                    iData.data[i + 2] = iData.data[i+2] - Math.random()*25+1;
-                })
-                console.log(Math.random()*255+1);
+                for (let i = 0; i < iData.data.length; i += 4) {
+                    iData.data[i] += Math.floor(Math.random() * 100);
+                    iData.data[i + 1] += Math.floor(Math.random() * 100);
+                    iData.data[i + 2] += Math.floor(Math.random() * 100);
+                }
                 ctx.putImageData(iData,0,0);
                 image1.src = canvas.toDataURL("image/png");
                 ctx.clearRect(0, 0, image.width, image.height);
