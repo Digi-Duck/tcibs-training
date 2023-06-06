@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table, th, td{
+            border: 1px solid black;
+        }
+        th, td{
+            padding: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Actual Answer</th>
+                <th>Submitted Answer</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+
+    <script>
+        const tbody = document.querySelector('tbody');
+        let score = 0
+
+        fetch('./1.csv')
+        .then(Response => Response.text())
+        .then(text =>{
+            const aAnswer = text.split(",");
+            fetch('./2.csv')
+            .then(Response => Response.text())
+            .then(text =>{
+                const sAnswer = text.split(",");
+                for (let i = 0; i < 10; i++) {
+                    tbody.innerHTML += `
+                    <tr>
+                        <td>${i+1}</td>
+                        <td>${aAnswer[i]}</td>
+                        <td>${sAnswer[i]}</td>
+                    </tr>`
+                    if (aAnswer[i] == sAnswer[i]) {
+                        score ++;
+                    }
+                }
+                document.body.innerHTML += 'Score: '+score+'/10'
+            })
+        })
+        
+
+    </script>
+</body>
+</html>

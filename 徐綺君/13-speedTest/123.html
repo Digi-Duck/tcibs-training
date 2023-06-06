@@ -7,125 +7,73 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <link href="" rel="stylesheet">
-<style type="text/css">
-.container{
-  text-align: center;
+<style>
+li {
+  margin: 5px 0;
+  padding: 0 20px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 3px;
+  background: #136a8a;
+  color: #fff;
+  list-style: none;
 }
 
-.zoom-wrap{
-  position: relative;
-  display: inline-block;
-}
-
-.target{
-  position: relative;
-  width: 100%;
-}
-
-.zoom-area{
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  display: block;
-  width: 200px;
-  height: 200px;
-  border-radius: 100%;
-  box-shadow: 0 0 5px rgba(255,255,255,.3), inset 0 0 5px rgba(0,0,0,.3);
-  background-repeat: no-repeat;
-  pointer-events: none;
-
-  transition: .3s ease-out;
+li.drag-sort-active {
+  background: transparent;
+  color: transparent;
+  border: 1px solid #4ca1af;
 }
 </style>
 </head>
 <body>
-  <div class="container">
-    <div class="zoom-wrap">
-      <!-- 只需修改该处的图片路径即可放大对应图片 -->
-      <img class="target" src="https://s1.ax1x.com/2021/12/09/oWHiJ1.jpg">
-      <div class="zoom-area"></div>
-    </div>
-  </div>
+    <ul class="drag-sort-enable">
+      <li>Application</li>
+      <li>Blank</li>
+      <li>Class</li>
+      <li>Data</li>
+      <li>Element</li>
+    </ul>
+  <script>
 
-  <script type="text/javascript">
-    //放大倍数
-    var scale = 10;
-    var showZoomArea = false;
+        function enableDragSort(listClass) {
+          const sortableLists = document.getElementsByClassName(listClass);
+          console.log(sortableLists);
+          Array.prototype.map.call(sortableLists, (list) => {enableDragList(list)});
+        }
 
-    //等待放大的图片
-    var target = document.getElementsByClassName('target')[0];
-    target.addEventListener('mousemove', zoomImgMouseMove, false);
-    target.addEventListener('mouseenter', zoomImgMouseEnter, false);
-    target.addEventListener('mouseleave', zoomImgMouseleave, false);
+        function enableDragList(list) {
+          console.log(list);
+          Array.prototype.map.call(list.children, (item) => {enableDragItem(item)});
+        }
 
-    //放大显示区域
-    var zoomArea = document.getElementsByClassName('zoom-area')[0];
-    //设置放大背景图
-    zoomArea.style.backgroundImage = 'url('+target.getAttribute('src')+')';
+        function enableDragItem(item) {
+          console.log(item);
+          item.setAttribute('draggable', true)
+          item.ondrag = handleDrag;
+          item.ondragend = handleDrop;
+        }
 
-    //等待图片加载完成
-    target.onload = function(){
-      var targetRect = target.getBoundingClientRect();
-      var targetWidth = targetRect.width;
-      var targetHeight = targetRect.height;
+        function handleDrag(item) {
+          const selectedItem = item.target,
+                list = selectedItem.parentNode,
+                x = event.clientX,
+                y = event.clientY;
+          
+          selectedItem.classList.add('drag-sort-active');
+          let swapItem = document.elementFromPoint(x, y) === null ? selectedItem : document.elementFromPoint(x, y);
+          
+          if (list === swapItem.parentNode) {
+            swapItem = swapItem !== selectedItem.nextSibling ? swapItem : swapItem.nextSibling;
+            list.insertBefore(selectedItem, swapItem);
+          }
+        }
 
-      //设置放大区域样式
-      zoomArea.style.backgroundSize = (targetWidth * scale)+'px '+(targetHeight * scale)+'px';
-    }
+        function handleDrop(item) {
+          item.target.classList.remove('drag-sort-active');
+        }
 
-    var zoomRect = zoomArea.getBoundingClientRect();
-    var widthHalf = zoomRect.width / 2;
-    var heightHalf = zoomRect.height / 2;
-    var offsetX = 0;
-    var offsetY = 0;
-
-    console.log(window.innerWidth, window.innerHeight);
-
-    function zoomImgMouseMove(e){
-      offsetX = e.offsetX;
-      offsetY = e.offsetY;
-    }
-
-    function zoomImgMouseEnter(){
-      showZoomArea = true;
-    }
-
-    function zoomImgMouseleave(){
-      showZoomArea = false;
-    }
-
-    setInterval(function(){
-      zoomArea.style.backgroundPosition = -(offsetX * scale - widthHalf)+'px '+(-(offsetY * scale - heightHalf))+'px';
-      window.innerWidth, window.innerHeight
-
-      //放大镜居中
-      /*zoomArea.style.left = (offsetX - widthHalf) + 'px';
-      zoomArea.style.top = (offsetY - heightHalf) + 'px';*/
-
-      //放大镜居右下角
-      if((offsetX + zoomRect.width) > window.innerWidth){
-        zoomArea.style.left = (offsetX - zoomRect.width) + 'px';
-      }else{
-        zoomArea.style.left = offsetX + 'px';
-      }
-
-      if((offsetY + zoomRect.height) > window.innerHeight){
-        zoomArea.style.top = (offsetY - zoomRect.height) + 'px';
-      }else{
-        zoomArea.style.top = offsetY + 'px';
-      }
-
-      setZoomAreaVisi();
-    }, 100)
-
-    function setZoomAreaVisi(){
-      if(showZoomArea)
-        zoomArea.style.transform = 'scale(1)';
-      else
-        zoomArea.style.transform = 'scale(0)';
-    }
-
-    setZoomAreaVisi();
+        (()=> {enableDragSort('drag-sort-enable')})();
   </script>
 </body>
 </html>

@@ -9,14 +9,16 @@ imgGroup.forEach((img,i) => {
     img.addEventListener('click',()=>{
         lightBox.classList.remove('display')
         lightImg.src = img.src
-        prev.addEventListener('click',()=>{
+        prev.addEventListener('click',(e)=>{
+            e.stopPropagation();
             i = i - 1
             if (i < 0) {
                 i = imgGroup.length - 1;
             }
             lightImg.src = imgGroup[i].src
         })
-        next.addEventListener('click',()=>{
+        next.addEventListener('click',(e)=>{
+            e.stopPropagation();
             i = i + 1
             if (i > imgGroup.length - 1) {
                 i = 0;
@@ -25,6 +27,10 @@ imgGroup.forEach((img,i) => {
         })
     })
 });
-back.addEventListener('click',()=>{
+back.addEventListener('click',(e)=>{
+    e.stopPropagation();
+    lightBox.classList.add('display')
+})
+lightBox.addEventListener('click',()=>{
     lightBox.classList.add('display')
 })
