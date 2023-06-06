@@ -137,13 +137,17 @@
         })
 
         function update(data) {
-            console.log(241656241);
-            fetch('17.json', {
-                method: 'PUT', // 或 'POST'，取決於你的伺服器端設定
+            fetch('./17.php', {
+                method: 'POST', // 或 'POST'，取決於你的伺服器端設定
                 headers: {
+                    Accept: 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(data)
+                body: {
+                    'text' : JSON.stringify(data)
+                },
+                cache:"default"
+
                 })
         }
     </script>

@@ -17,8 +17,8 @@
 while(($num = readline()) != false){
 
     for ($i=0; $i < $num; $i++) { 
-        $O.$aa;
-        $X.$bb;
+        $O = $O.$aa;
+        $X = $X.$bb;
         array_push($array,$b);
         $ccc = str_split(get());
         // print_r($ccc);
@@ -54,7 +54,10 @@ while(($num = readline()) != false){
     }else{
         echo '?';
     }
-    echo $O;
+    echo $zzz;
+    echo $yyy;
+    echo $xxx;
+    echo $www;
 
     break;
     
