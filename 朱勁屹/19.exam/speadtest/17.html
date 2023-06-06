@@ -143,9 +143,10 @@
                     Accept: 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: {
-                    'text' : JSON.stringify(data)
-                },
+                body: JSON.stringify({
+                    text:data
+                }),
+                
                 cache:"default"
 
                 })
