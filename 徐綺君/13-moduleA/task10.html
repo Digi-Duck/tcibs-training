@@ -28,7 +28,7 @@
         .display{
             display: none;
         }
-        canvas{
+        .canvas2{
             display: none;
         }
     </style>
@@ -56,7 +56,6 @@
         const ctx2 = canvas2.getContext('2d');
         const input = document.querySelector('input');
         let hex = []
-        // ctx.mozImageSmoothingEnabled = false;
 
         input.addEventListener('change',()=>{
             let file = input.files[0];
@@ -64,7 +63,6 @@
             const img = new Image;
             img.src = url;
             img.onload = function(){
-                content.appendChild(img);
                 canvas.width = img.width;
                 canvas.height = img.height;
                 canvas2.width = 100;
@@ -72,7 +70,7 @@
                 ctx.drawImage(img, 0, 0, img.width, img.height);
             }
             
-            img.addEventListener('mousemove',(e)=>{
+            canvas.addEventListener('mousemove',(e)=>{
                 for (let i = 0; i < 15; i++) {
                     for (let j = 0; j < 15; j++) {
                         const { data } = ctx.getImageData(e.offsetX - 7 + i, e.offsetY - 7 + j, 1, 1)
@@ -113,8 +111,8 @@
                 ctx2.strokeStyle = '#ddd';
                 ctx2.arc(50, 50, 50, 0, 2 * Math.PI);
                 ctx2.stroke();
-                ctx2.strokeStyle = '#000';
-                ctx2.lineWidth = 1;
+                ctx2.strokeStyle = '#FF0000';
+                ctx2.lineWidth = 2;
                 ctx2.strokeRect(50 - 100/15 / 2, 50 - 100/15 / 2, 100/15, 100/15);
 
                 magnifier.classList.remove('display');
