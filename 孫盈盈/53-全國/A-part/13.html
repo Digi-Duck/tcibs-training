@@ -5,8 +5,87 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body,html{
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .all{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            
+            width: 100%;
+            height: 100%;
+
+            background-color: rgb(203, 255, 151);
+        }
+        .drop{
+            display: flex;
+            margin: 10px;
+            flex-direction: column;
+            
+            width: 200px;
+            padding: 10px;
+
+            background-color: rgb(130, 255, 255);
+            text-align: center;
+        }
+        .card{
+            width: 200px;
+            height: 100px;
+
+            box-sizing: border-box;
+
+            background-color: azure;
+        }
+        .none{
+            display: none;
+        }
+        .border{
+            border:2px solid black;
+            opacity: 1;
+            transform: rotate(0.9turn);
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="all">
+        <div class="drop">
+            <h1 style="text-align: center;">front</h1>
+            <div draggable="true" class="js card"></div>
+        </div>
+        <div class="drop">
+            <h1>back</h1>
+            <div draggable="true" class="php card"></div>
+        </div>
+    </div>
+    <script>
+        let cards = document.querySelectorAll('.card');
+        let drops = document.querySelectorAll('.drop');
+
+        let drag_id = 0;
+        cards.forEach((card, index)=>{
+            card.id = index;
+
+            card.addEventListener(('dragstart'), (e)=>{
+                drag_id = card.id;
+                let drag = document.getElementById(`${drag_id}`);
+
+                e.dataTransfer.setData("text/plain", "");
+                e.dataTransfer.effectAllowed = "copy";
+
+                drag.style.opacity = '1';
+                drag.classList.add('border')
+            })
+            card.addEventListener(('drag'), () => {
+                event.preventDefault();
+            })
+            // card.addEventListener('dragleave', ()=>{
+            //     card.classList.remove('border');
+            // })
+        })
+    </script>
 </body>
 </html>

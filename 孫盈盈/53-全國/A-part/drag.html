@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #dragElement {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  color: white;
+  text-align: center;
+  line-height: 100px;
+  opacity: 1;
+}
+
+.dragging {
+  background-color: blue;
+  opacity: 0.5;
+}
+
+.drag-over {
+  border: 2px dashed black;
+}
+    </style>
+</head>
+<body>
+    <div id="dragElement" draggable="true">可拖曳的元素</div>
+
+
+    <script>
+       var dragElement = document.getElementById("dragElement");
+
+dragElement.addEventListener("dragstart", function(event) {
+  // 設定拖曳的數據（此處使用一個空字串）
+  event.dataTransfer.setData("text/plain", "");
+
+  // 添加 CSS 樣式類別以改變拖曳時的樣式
+  dragElement.classList.add("dragging");
+});
+
+dragElement.addEventListener("dragend", function(event) {
+  // 移除拖曳時添加的 CSS 樣式類別，還原元素的原始樣式
+  dragElement.classList.remove("dragging");
+});
+
+dragElement.addEventListener("dragenter", function(event) {
+  // 防止瀏覽器預設的拖曳進入行為
+  event.preventDefault();
+
+  // 添加 CSS 樣式以改變拖曳進入時的樣式
+  dragElement.style.border = "2px dashed black";
+});
+
+dragElement.addEventListener("dragleave", function(event) {
+  // 移除拖曳進入時的 CSS 樣式，還原元素的原始樣式
+  dragElement.style.border = "none";
+});
+
+    </script>
+</body>
+</html>
