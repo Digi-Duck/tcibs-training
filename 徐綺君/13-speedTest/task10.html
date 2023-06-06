@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圖像顏色偵測器</title>
+
+    <style>
+        img{
+            width: 500px;
+            color: gray;
+        }
+        .box{
+            width: 20px;
+            height: 20px;
+            border: 1px solid black;
+        }
+        .magnifier{
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            border: 2px solid #eee;
+            border-radius: 50%;
+            /* background-color: aqua; */
+            /* background-image: url(../04-Parallax/cat.jpg); */
+        }
+        .display{
+            display: none;
+        }
+        canvas{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <input type="file">
+        <div class="box"></div><span class="colorbox"></span>
+        <div class="magnifier display"></div>
+        <div class="canvasContainer"></div>
+    </div>
+    <canvas></canvas>
+    <canvas class="canvas2"></canvas>
+
+
+    <script>
+        const canvas = document.querySelector('canvas');
+        const canvas2 = document.querySelector('.canvas2');
+        const content = document.querySelector('.content');
+        const magnifier = document.querySelector('.magnifier');
+        const box = document.querySelector('.box');
+        const colorbox = document.querySelector('.colorbox')
+        const body = document.body;
+        const ctx = canvas.getContext('2d');
+        const ctx2 = canvas2.getContext('2d');
+        const input = document.querySelector('input');
+        let hex = []
+        // ctx.mozImageSmoothingEnabled = false;
+
+        input.addEventListener('change',()=>{
+            let file = input.files[0];
+            const url = URL.createObjectURL(file)
+            const img = new Image;
+            img.src = url;
+            img.onload = function(){
+                content.appendChild(img);
+                canvas.width = img.width;
+                canvas.height = img.height;
+                canvas2.width = 100;
+                canvas2.height = 100;
+                ctx.drawImage(img, 0, 0, img.width, img.height);
+            }
+            
+            img.addEventListener('mousemove',(e)=>{
+                for (let i = 0; i < 15; i++) {
+                    for (let j = 0; j < 15; j++) {
+                        const { data } = ctx.getImageData(e.offsetX - 7 + i, e.offsetY - 7 + j, 1, 1)
+                        ctx2.fillStyle = `rgb(${data[0]}, ${data[1]}, ${data[2]}, ${data[3] / 255})`;
+                        ctx2.fillRect(i* 100/15, j* 100/15,  100/15,  100/15);
+                    }
+                }
+
+                const { data } = ctx.getImageData(e.offsetX, e.offsetY, 1, 1)
+                box.style = `background-color: rgb(${data[0]}, ${data[1]}, ${data[2]}, ${data[3] / 255});`;
+                data.forEach((e,i)=>{
+                    e = parseInt(e);
+                    hex[i] = e.toString(16).padStart(2,'0');
+                })
+                colorbox.innerHTML = `
+                    HEX: #${hex[0]+hex[1]+hex[2]} <br>
+                    RGB: rgb(${data[0]},${data[1]},${data[2]})
+                    `
+
+                for (let i = 0; i < 15; i += 1) {
+                    ctx2.beginPath();
+                    ctx2.strokeStyle = '#eee';
+                    ctx2.lineWidth = 0.6;
+                    ctx2.moveTo(0, i * 100/15);
+                    ctx2.lineTo(100, i * 100/15);
+                    ctx2.stroke();
+                }
+                for (let j = 0; j < 15; j += 1) {
+                    ctx2.beginPath();
+                    ctx2.strokeStyle = '#eee';
+                    ctx2.lineWidth = 0.6;
+                    ctx2.moveTo(j * 100/15, 0);
+                    ctx2.lineTo(j * 100/15, 100);
+                    ctx2.stroke();
+                }
+
+                ctx2.beginPath();
+                ctx2.strokeStyle = '#ddd';
+                ctx2.arc(50, 50, 50, 0, 2 * Math.PI);
+                ctx2.stroke();
+                ctx2.strokeStyle = '#000';
+                ctx2.lineWidth = 1;
+                ctx2.strokeRect(50 - 100/15 / 2, 50 - 100/15 / 2, 100/15, 100/15);
+
+                magnifier.classList.remove('display');
+                magnifier.style = `top: ${ e.pageY + 10}px; left: ${ e.pageX + 10}px; background-image: url(${canvas2.toDataURL("image/png")});`
+                // ctx.clearRect(0, 0, img.width, img.height);
+            })
+            img.addEventListener('mouseleave', ()=>{
+                magnifier.classList.add('display');
+            })
+        })
+
+
+    </script>
+</body>
+</html>
