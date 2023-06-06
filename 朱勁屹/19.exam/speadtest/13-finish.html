@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main{
+            width: 1300px;
+            height: 800px;
+            /* border: 1px solid black; */
+            margin: auto;
+            margin-top: 100px;
+            display: flex;
+            justify-content: space-around;
+            align-items: start;
+        }
+        .box{
+            width: 400px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+
+            background-color: rgb(36, 86, 250);
+            border-radius: 5px;
+            
+        }
+        .ele{
+            width: 360px;
+            height: 300px;
+            padding: 10px;
+            background-color: white;
+            color: black;
+            margin: 10px;
+            border: 1px solid black;
+        }
+        
+        .text{
+            width: 400px;
+            height: 50px;
+            line-height: 50px;
+            color: white;
+            font-size: 30px;
+            border-radius: 5px;
+        }
+        .bigBox{
+            background-color: rgb(36, 86, 250);
+            width: 400px;
+            padding: 50px;
+
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="bigBox">
+            <div class="text">
+                Front-End
+    
+            </div>
+            <div class="box">
+                <div class="ele" id="0" draggable="true">
+                    js
+                </div>
+            </div>
+
+        </div>
+        <div class="bigBox">
+            <div class="text">
+                Back-End
+    
+            </div>
+            <div class="box">
+                <div class="ele" id="1" draggable="true">
+                    php
+                </div>
+            </div>
+
+        </div>
+        
+    </main>
+    <script>
+        let box = document.querySelectorAll('.box');
+        let ele = document.querySelectorAll('.ele');
+        let num;
+        let bigBox = document.querySelectorAll('.bigBox');
+        let array = [0,1];
+        let b = [0,0];
+        let ele2 = document.querySelectorAll('.ele2');
+        
+
+        box.forEach(function (value,index) {
+            
+            value.addEventListener('dragover',function (event) {
+                
+                event.preventDefault();
+                event.dataTransfer.dropEffect = 'move';
+
+                if(array[0] != index && array[1] != index){
+                    value.style = 'height:300px'
+                }
+            })
+            value.addEventListener('drop',function (event) {
+                event.preventDefault();
+                event.target.appendChild(document.getElementById(num));
+                array[num] = index;
+                
+                console.log(array);
+                if(array == [0,1] || array[1,0]){
+                    console.log(123456789);
+                    box[0].style = '';
+                    box[1].style = '';
+                }
+            })
+
+            ele[index].addEventListener('dragstart',function (event) {
+                num = index;
+                
+
+            })
+            ele[index].addEventListener('dragover',function (event) {
+                if(event.target != document.getElementById(num)){
+                    if(b[array[index]] == 0){
+                        event.stopPropagation();
+                        event.preventDefault();
+                        console.log(event.target);
+                        box[array[index]].style = `
+                        display: flex;
+                        flex-direction:column-reverse;
+                        justify-content: end;
+                            height:700px
+                        `;
+                        b[array[index]] = 1;
+                    }else{
+                        event.stopPropagation();
+                        event.preventDefault();
+                        console.log(event.target);
+                        box[array[index]].style = `
+                        display: flex;
+                        flex-direction:column;
+                        justify-content: start;
+                            height:700px
+                        `;
+                        b[array[index]] = 0;
+                    }
+                }
+            })
+        })
+        
+    </script>
+</body>
+</html>

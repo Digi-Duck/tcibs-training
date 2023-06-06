@@ -15,7 +15,7 @@
         const ctx = canvas.getContext('2d');
 
         let img = new Image();
-        img.src = '../speadtest/img/he.jpg';
+        img.src = './img/he.jpg';
 
         img.onload = function () {
             canvas.width = img.width;
@@ -23,29 +23,36 @@
             const b = (img.height/img.width)*a;
             canvas.width = a;
             canvas.height = b;
-            ctx.filter = "saturate(0)";
+            // ctx.filter = "saturate(0)";
             ctx.drawImage(img,0,0,a,b);
             
-            // const iData = ctx.getImageData(0,0,img.width,img.height);
-            // console.log(iData.data.length);
-            // for (let i = 0; i < iData.data.length; i += 4) {
-            //     // iData.data[i] = 255;
-            //     // iData.data[i+1] = 255;
-            //     // iData.data[i+2] = 255;
+            const iData = ctx.getImageData(0,0,img.width,img.height);
+            console.log(iData.data.length);
+            for (let i = 0; i < iData.data.length; i += 4) {
+                // iData.data[i] = 255;
+                // iData.data[i+1] = 255;
+                // iData.data[i+2] = 255;
                 
-            //     total = iData.data[i] + iData.data[i+1]  + iData.data[i+2];
-            //     av = total/3;
-            //     iData.data[i] = av;
-            //     iData.data[i+1] = av;
-            //     iData.data[i+2] = av;
+                total = iData.data[i] + iData.data[i+1]  + iData.data[i+2];
+                av = total/3;
+                if(av > 112){
+                    iData.data[i] = 255;
+                    iData.data[i+1] = 255;
+                    iData.data[i+2] = 255;
 
-            // }
+                }else{
+                    iData.data[i] = 0;
+                    iData.data[i+1] = 0;
+                    iData.data[i+2] = 0;
+                }
+
+            }
 
             
             
             
             
-            // ctx.putImageData(iData,0,0);
+            ctx.putImageData(iData,0,0);
 
             const url = canvas.toDataURL();
 
@@ -53,7 +60,7 @@
             link.href = url;
             link.download = 'bicth.jpg';
 
-            link.click();
+            // link.click();
         }
 
     </script>

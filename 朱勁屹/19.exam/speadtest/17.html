@@ -57,7 +57,6 @@
     </div>
     <button class="button">刷新</button>
     <script>
-        const fs = require('fs');
         fetch("./17.json")
         .then(response => response.json())
         .then(response =>{
@@ -104,8 +103,8 @@
                         value.innerHTML = 'x';
                         ooo(array);
                         win(array);
-                        ja = JSON.stringify(array);
-                        fs.readFile('./17.json',ja)
+                        update(array);
+                        
                     }
                     
                 })
@@ -136,6 +135,17 @@
                 })
             }
         })
+
+        function update(data) {
+            console.log(241656241);
+            fetch('17.json', {
+                method: 'PUT', // 或 'POST'，取決於你的伺服器端設定
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+                })
+        }
     </script>
 </body>
 </html>
