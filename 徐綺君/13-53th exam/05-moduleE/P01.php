@@ -1,6 +1,6 @@
 <?php
     echo '請輸入一個正整數n: ';
-    $n = fgets(STDIN);
+    $n = trim(fgets(STDIN));
     $O = 0;
     $X = 0;
 
