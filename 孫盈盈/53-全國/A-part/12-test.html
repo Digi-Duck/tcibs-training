@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box2{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <button class="Y">Yes</button>
+    </div>
+    <script>
+        let body = document.querySelector('body');
+        
+        body.innerHTML += `<div class="box2">
+            <button class="right">right</button>
+            </div>`;
+        let box2 = document.querySelector('.box2');
+        // box2.style.display = 'none';
+        let right = document.querySelector('.right');
+        let Y = document.querySelector('.Y');
+        console.log(Y);
+        Y.addEventListener('click', (e)=>{
+            console.log(e.target);
+            console.log(1);
+            box2.style.display = 'block'
+        })
+    </script>
+</body>
+</html>
