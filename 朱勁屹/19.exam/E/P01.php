@@ -33,10 +33,10 @@ while(($num = readline()) != false){
         $xxx = '';
         $www = '';
         for ($a=0; $a < $num; $a++) { 
-            $zzz.$array[$i][$a];
-            $yyy.$array[$a][$i];
-            $xxx.$array[$a][$a];
-            $www.$array[$a][$four];
+            $zzz = $zzz.$array[$i][$a];
+            $yyy = $yyy.$array[$a][$i];
+            $xxx = $xxx.$array[$a][$a];
+            $www = $www.$array[$a][$four];
             $four--;
         }
         if($zzz == $O || $yyy == $O || $xxx == $O || $www == $O){
@@ -54,10 +54,7 @@ while(($num = readline()) != false){
     }else{
         echo '?';
     }
-    echo $zzz;
-    echo $yyy;
-    echo $xxx;
-    echo $www;
+    
 
     break;
     

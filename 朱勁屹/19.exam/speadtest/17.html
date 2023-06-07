@@ -140,14 +140,11 @@
             fetch('./17.php', {
                 method: 'POST', // 或 'POST'，取決於你的伺服器端設定
                 headers: {
-                    Accept: 'application/json',
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     text:data
                 }),
-                
-                cache:"default"
 
                 })
         }
