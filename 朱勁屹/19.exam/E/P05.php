@@ -22,6 +22,7 @@
         $d++;
         $num = $num - 1;
     }
+    
     echo '1 '.$d.PHP_EOL;
     echo '5 '.$c.PHP_EOL;
     echo '10 '.$b.PHP_EOL;

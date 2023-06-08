@@ -1,13 +1,9 @@
 <?php
-    $line = fgets(STDIN);
+    $line = trim(fgets(STDIN));
     
-    echo num($line);
-    function num($num){
-        if($num == 0){
-            return 0;
-        }elseif($num == 1){
-            return 1;
-        }else{
-            return num($num - 1) + num($num - 2);
-        }
+    $f = array(0,1);
+    for ($i = 2; $i <= $line; $i++) { 
+        $f[$i] = $f[$i - 1] + $f[$i - 2];
     }
+
+    echo $f[$line];
