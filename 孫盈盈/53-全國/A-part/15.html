@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, td, th{
+            border: 1px solid black;
+        }
+        table{
+            width: 240px;
+        }
+        td{
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <th>題號</th>
+            <th>我</th>
+            <th>答案</th>
+        </tr>
+    </table>
+    <script>
+        let tr = document.querySelector('.table');
+
+        let total = 0;
+        let t = 0;
+        let num = 0;
+        fetch('./15_answer.csv')
+        .then(response => response.text())
+        .then(response =>{
+            fetch('./15_mine.csv')
+            .then(res => res.text())
+            .then(res =>{
+                const r = res.replace(/,/gi, '');
+                const p = response.replace(/,/gi, '');
+                for(a of r){
+                    num = total + 1;
+                    tr.innerHTML += `<tr>
+                                        <td>${num}</td>
+                                        <td>${a}</td>
+                                        <td>${p[total]}</td>
+                                    </tr>`;
+                    if(a == p[total]){
+                        t ++;
+                    }
+                    total ++;
+                    console.log(t, total);
+                }
+                tr.innerHTML += `
+                            <tr>
+                                <td>total:${t}/${num}</td>
+                            </tr>`;
+            })
+        })
+    </script>
+</body>
+</html>
