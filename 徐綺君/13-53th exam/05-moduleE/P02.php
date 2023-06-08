@@ -1,15 +1,10 @@
 <?php
     echo '請輸入一個正整數n: ';
     $n = trim(fgets(STDIN));
-    echo f($n);
 
-    function f($n){
-        if ($n == 0) {
-            return 0;
-        }elseif($n == 1){
-            return 1;
-        }else{
-            return f($n-1) + f($n-2); 
-        }
+    $fibs = array(0, 1);
+    for ($i = 2; $i <= $n; $i++) {
+        $fibs[$i] = $fibs[$i - 1] + $fibs[$i - 2];
     }
+    echo $fibs[$n];
 ?>

@@ -7,17 +7,14 @@
 
     foreach ($arr as $key => $value) {
         $allNum = [];
-
         $allNum = f($value,2,$allNum);
         $allNum = array_count_values($allNum);
     
         foreach (array_keys($allNum) as $key => $value) {
             if ($key == count($allNum) - 1) {
-                echo $value."^".$allNum[$value];
-                echo "\n";
+                echo $value."^".$allNum[$value]."\n";
             }else{
-                echo $value."^".$allNum[$value];
-                echo '*';
+                echo $value."^".$allNum[$value].'*';
             }
         }
     }
