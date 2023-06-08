@@ -1,5 +1,5 @@
 <?php
-    echo '請輸入一個正整數n: ';
+    // echo '請輸入一個正整數n: ';
     $n = trim(fgets(STDIN));
     for ($i=0; $i < $n; $i++) { 
         $arr[$i] = trim(fgets(STDIN));
@@ -12,13 +12,20 @@
     
         foreach (array_keys($allNum) as $key => $value) {
             if ($key == count($allNum) - 1) {
-                echo $value."^".$allNum[$value]."\n";
+                if ($allNum[$value] == 1) {
+                    echo $value."\n";
+                }else{
+                    echo $value."^".$allNum[$value]."\n";
+                }
             }else{
-                echo $value."^".$allNum[$value].'*';
+                if ($allNum[$value] == 1) {
+                    echo $value."*";
+                }else{
+                    echo $value."^".$allNum[$value].'*';
+                }
             }
         }
     }
-
 
     function f($x,$y,$allNum){
         if ($x == 1) {
