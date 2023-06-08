@@ -1,0 +1,62 @@
+body{
+    margin: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    animation-name: bgSwitch;
+    animation-duration: 10s; 
+    background-image: url("./morning.jpg");
+    animation-iteration-count: infinite;
+}
+.sun{
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0px 0px 25px white;
+    margin: 10px;
+    position: relative;
+    animation-name: sunMove;
+    animation-duration: 10s;
+    top: 75%; 
+    left: -110px;
+    animation-iteration-count: infinite;
+}
+@keyframes sunMove {
+    from { 
+        top: 75%; 
+        left: -110px;
+    }
+    33.33% { 
+        top: 25%; 
+        left: 25%;
+    }
+    50%{
+        top: 0; 
+        left: calc(50% - 50px);
+    }
+    66.66% { 
+        top: 25%; 
+        left: 75%;
+    }
+    to { 
+        top: 75%; 
+        left: 100%;
+    }
+}
+@keyframes bgSwitch {
+    from { 
+        background-image: url("./morning.jpg");
+    }
+    33.33% { 
+        background-image: url("./noon.jpg");
+    }
+    66.66% { 
+        background-image: url("./afternoon.jpg");
+        /* background-color: blue; */
+    }
+    to { 
+        background-image: url("./evening.png");
+    }
+}

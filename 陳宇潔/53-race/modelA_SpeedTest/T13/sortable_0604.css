@@ -1,0 +1,42 @@
+.r2{
+    right: 100px;
+}
+.r1{
+    left: 100px;
+}
+.room{
+    margin: 0 25px;
+    background-color: rgb(72, 72, 213);
+    padding: 0 20px;
+    width: 500px;
+    position: absolute;
+}
+h1{
+    color: aliceblue;
+}
+.group{
+    padding: 10px 0;
+    width: 500px;
+}
+.card{
+    background-color: #ffffff;
+    padding: 10px;
+    cursor: move;
+    margin: 10px 0;
+    width: 480px;
+    box-shadow: 0px 0px 2.5px #aaa;
+}
+*{
+    border-radius: 5px;
+}
+p{
+    font-weight: bold;
+}
+.dragging{
+    transform: rotate(2deg);
+    position: fixed;
+    z-index: 1;
+}
+.move{
+    transform: translateY(0px);
+}

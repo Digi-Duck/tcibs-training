@@ -1,0 +1,56 @@
+.main div, header, main, footer, .main{
+    border: 1px solid #000;
+    margin: 20px;
+    text-align: center;
+    line-height: 100px;
+}
+.hidden{
+    display: flex;
+    border: 0 !important;
+    margin: 0 !important;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+}
+.f-d{
+    flex-direction: column;
+}
+.small{
+    width: 50%;
+}
+.ad{
+    width: 33.33%;
+}
+.big{
+    width: 66.66%;
+}
+.ad1{
+    display: none;
+}
+@media only screen and (max-width: 480px) {
+    .main div, header, main, footer, .main{
+        margin: 10px;
+    }
+    .hidden{
+        display: block;
+    }
+    .big{
+        width: 100%;
+    }
+    .small, .ad{
+        width: calc(100% - 22px);
+    }
+    .c{
+        line-height: 100px !important;
+    }
+    .ad{
+        line-height: 300px !important;
+    }
+    .ad2{
+        display: none;
+    }
+    .ad1{
+        display: block;
+    }
+}

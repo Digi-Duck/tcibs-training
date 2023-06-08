@@ -1,0 +1,14 @@
+.d-flex{
+    display: flex;
+}
+.j-c-c{
+    justify-content: center;
+}
+img{
+    margin: 5px;
+    width: 30%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: cover;
+}
