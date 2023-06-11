@@ -37,12 +37,26 @@ function prime($num){
 }
 function answer($num){
     $ar = prime($num);
-
+    $t = 1;
     foreach($ar as $i => $value){
         if(empty($ar[$i+1])){
-            echo $value. '';
+            if($t === 1){
+                echo $value.'';
+            }else{
+                echo $value.'^'.$t.'';
+                $t = 1;
+            }
         }else{
-            echo $value . '*';
+            if($ar[$i+1] === $value){
+                $t++;
+            }else{
+                if($t === 1){
+                    echo $value.'*';
+                }else{
+                    echo $value.'^'.$t.'*';
+                    $t = 1;
+                }
+            }
         }
     }
 }
