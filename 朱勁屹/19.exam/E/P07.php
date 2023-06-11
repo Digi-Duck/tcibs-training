@@ -28,12 +28,17 @@
         
         if($b == 0){
             // print_r($anArr);
-            if(count($array) > 1){
-                unset($array[array_search(end($anArr),$array)]);
-                unset($anArr[array_search(end($anArr),$anArr)]);
+            if(count($anArr) > 0){
+                if(count($array) > 1){
+                    unset($array[array_search(end($anArr),$array)]);
+                    unset($anArr[array_search(end($anArr),$anArr)]);
+    
+                }else{
+                    $array = [];
+                }
 
             }else{
-                $array = [];
+                $a = 1;
             }
 
         }
