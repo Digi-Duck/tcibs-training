@@ -57,7 +57,7 @@
         const all = document.querySelector('.quarter');
         const colors = document.querySelector('.colors')
 
-        let currentColor = 'rgb(0, 0, 0)';
+        let currentColor = 'rgb(255, 255, 255)';
         for(let i = 0;i<=16;i++){
             for (let j = 0; j < 16; j++) {
                 all.innerHTML += `<div onclick="draw(${i}, ${j})" class="box box-${i}-${j}"></div>`;

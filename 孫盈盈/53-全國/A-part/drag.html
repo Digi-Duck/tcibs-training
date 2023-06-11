@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,3 +63,89 @@ dragElement.addEventListener("dragleave", function(event) {
     </script>
 </body>
 </html>
+=======
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+	.container {
+		background: #336699;
+		width: 120px;
+		height: 120px;
+		border: solid #6699CC 2px;
+		padding: 3px 3px 3px 3px;
+		border-radius: 5px;
+	}
+	.object {
+		border: solid #244872 2px;
+		border-radius: 3px;
+		text-align: center;
+		background: #99CCFF;
+		padding: 2px 2px 2px 2px;
+		cursor: move;
+	}
+</style>
+<script>
+function ListIterator(o, cb) {
+	for(var i=0; i<o.length; i++) {
+		cb(o.item(i));
+	}
+}
+</script>
+
+
+<div id="panel1" class="container">
+<div id="source1" class="object">Test1</div>
+<div id="source2" class="object">Test2</div>
+<div id="source3" class="object">Test3</div></div>
+<br>
+<div id="panel2" class="container"></div>
+
+
+<script>
+(function(){
+document.ondragover = function(e){e.preventDefault();};
+document.ondrop = function(e){e.preventDefault();};
+ListIterator(
+	document.getElementsByClassName('object'),
+	function(o){o.draggable = true;}
+);
+ListIterator(
+	document.getElementsByClassName('object'),
+	function(o){
+		o.draggable = true;
+		o.addEventListener('dragstart', function(e) {
+			e.dataTransfer.effectAllowed = 'all';
+			e.dataTransfer.setData('text/plain', this.id);
+		},false);
+	}
+);
+
+ListIterator(
+	document.getElementsByClassName('container'),
+	function(o){
+		o.addEventListener('dragenter', function(e){
+			e.preventDefault();
+		},false);
+		o.addEventListener('dragover', function(e){
+			e.preventDefault();
+			e.dataTransfer.dropEffect = 'copy';
+		},false);
+		o.addEventListener('drop', function(e){
+			e.preventDefault();
+			e.stopPropagation();
+			if(e.target!==e.currentTarget) return false;
+			if(e.dataTransfer.types.length>0) {
+				for(var i=0; i<e.dataTransfer.types.length; i++) {
+					if(e.dataTransfer.types[i] === 'text/plain') {
+						var sourceid = e.dataTransfer.getData('text/plain');
+						var source = document.getElementById(sourceid);
+						e.currentTarget.appendChild(source.parentNode.removeChild(source));
+					}
+				}
+				return false;
+			}
+		},false);
+	}
+);
+})();
+</script>
+>>>>>>> Stashed changes
