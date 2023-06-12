@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-<<<<<<< Updated upstream
         body,html{
             margin: 0;
             width: 100%;
@@ -48,12 +47,6 @@
             border:2px solid black;
             opacity: 1;
             transform: rotate(0.9turn);
-=======
-        body, html{
-            width: 100%;
-            height: 100%;
-            
-            margin: 0;
         }
         .all{
             display: flex;
@@ -91,21 +84,11 @@
         .drag{
             position: absolute;
             transform: rotate(0.99turn);
->>>>>>> Stashed changes
         }
     </style>
 </head>
 <body>
     <div class="all">
-<<<<<<< Updated upstream
-        <div class="drop">
-            <h1 style="text-align: center;">front</h1>
-            <div draggable="true" class="js card"></div>
-        </div>
-        <div class="drop">
-            <h1>back</h1>
-            <div draggable="true" class="php card"></div>
-=======
         <div class="fornt end">
             <h1>Front-end</h1>
             <div draggable="true" class="card">
@@ -117,37 +100,13 @@
             <div draggable="true" class="card">
                 <h3>php</h3>
             </div>
->>>>>>> Stashed changes
         </div>
     </div>
     <script>
         let cards = document.querySelectorAll('.card');
-<<<<<<< Updated upstream
-        let drops = document.querySelectorAll('.drop');
-
-        let drag_id = 0;
-        cards.forEach((card, index)=>{
-            card.id = index;
-
-            card.addEventListener(('dragstart'), (e)=>{
-                drag_id = card.id;
-                let drag = document.getElementById(`${drag_id}`);
-
-                e.dataTransfer.setData("text/plain", "");
-                e.dataTransfer.effectAllowed = "copy";
-
-                drag.style.opacity = '1';
-                drag.classList.add('border')
-            })
-            card.addEventListener(('drag'), () => {
-                event.preventDefault();
-            })
-            // card.addEventListener('dragleave', ()=>{
-            //     card.classList.remove('border');
-            // })
-=======
         let ends = document.querySelectorAll('.end');
 
+        let drag_id = 0;
         let dragId = 0;
         cards.forEach((element, index)=>{
             element.id = index;
@@ -188,8 +147,7 @@
             end.addEventListener('drop', ()=>{
                 end.append(document.getElementById(drag))
             })
->>>>>>> Stashed changes
         })
-    </script>
-</body>
+        </script>
+    </body>
 </html>
