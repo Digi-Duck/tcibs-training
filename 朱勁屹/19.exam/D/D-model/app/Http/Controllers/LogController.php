@@ -7,7 +7,11 @@ use Illuminate\Http\Request;
 class LogController extends Controller
 {
     function login(REQUEST $request){
-        $a = json_decode($request->getContent());
-        return $a;
+        $data = $request->all();
+        // if(!isset($data['email']) || !isset($data['email'])){
+
+        // }else{
+
+        // }
     }
 }

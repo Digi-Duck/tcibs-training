@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        #app{
+            width: 100%;
+            height: 100%;
+        }
         html{
             width: 100%;
             height: 100%;
@@ -33,12 +37,21 @@
             height: 100%;
         }
         button{
-            padding: 20px;
+            padding: 20px 50px;
             font-size: 30px;
             background-color: white;
-            margin: 100px auto;
+            margin: 10px auto;
             display: block;
 
+        }
+        input{
+            width: 50%;
+            padding: 20px 50px;
+            font-size: 50px;
+            font-weight: 600;
+            display: block;
+            margin: auto;
+            border: 0px;
         }
         a{
             text-decoration: none;
@@ -52,13 +65,13 @@
                 <a href="./18.html">
                     <button>Leave Chat</button>
                 </a>
-                <input type="text" v-model="name">{{name}}
+                    <input type="text" v-model="name">
+                    <button>Current Users</button>
             </div>
             <div class="rightBox">
     
             </div>
         </main>
-
     </div>
     <script src="https://unpkg.com/vue@next"></script> 
     <script type="module">

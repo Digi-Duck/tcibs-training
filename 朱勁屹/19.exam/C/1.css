@@ -67,6 +67,7 @@ body{
     opacity: 0.6;
 }
 .longBuger{
+    
     position: fixed;
     left: 82px;
     bottom: 130px;
@@ -78,6 +79,7 @@ body{
     transition: 0.5s;
     z-index: 98;
     opacity: 0;
+    
 }
 .rightBox{
     /* filter: brightness(.8); */
@@ -275,8 +277,88 @@ body{
     padding-bottom: 100px;
 }
 
-
-
+.dardBox{
+    width: 100%;
+    height: 600px;
+    /* border-top: 1px solid black; */
+    /* border-bottom: 1px solid black;  */
+    display: flex;
+    justify-content: center;
+    align-items:end;
+    transition: 1s;   
+    position: relative;
+}
+.dard{
+    width: 60px;
+    height: 80px;
+    /* border: 1px solid black; */
+    transition: 1s;   
+    margin: 2%;
+    background-image: url(../speadtest/偶宜/LINE_ALBUM_偶宜_230605_101.jpg);
+    background-position: center;
+    background-size: cover;
+    z-index: 90;
+    border-radius: 5px;
+    position: relative;
+}
+.daBack{
+    width: 0%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-image: url(../speadtest/偶宜/LINE_ALBUM_偶宜_230605_101.jpg);
+    opacity: 0.2;
+    background-position: center;
+    background-size: cover;
+    transition: 1s;
+    z-index: 0;
+    
+}
+.ssBox10{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    border: 2px solid black;
+    width: 300px;
+    height: 300px;
+}
+.dardText{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0;
+    background-color: rgba(255, 255, 255);
+    border-radius: 5px;
+    font-size: 0px;
+    transition: 1s;
+    width: 250px;
+    height: 250px;
+    padding: 20px;
+}
+.dard:hover{
+    width: 390px;
+    height: 520px;
+}
+.dard:hover > .dardText{
+    font-size: 30px;
+    opacity: 1;
+    position:absolute;
+    bottom: 300px;
+    left: 300px;
+}
+.dard1:hover ~ .daBack1{
+    width: 100%;
+}
+.dard2:hover ~ .daBack2{
+    width: 100%;
+}
+.dard3:hover ~ .daBack3{
+    width: 100%;
+}
+.dard4:hover ~ .daBack4{
+    width: 100%;
+}
 .cardBox{
     width: 100%;
     height: 900px;
