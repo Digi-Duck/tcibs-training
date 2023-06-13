@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .all{
+            position: relative;
+        }
+        .glass{
+            position: absolute;
+            border: 3px solid black;
+            border-radius: 50%;
+
+            width: 100px;
+            height: 100px;
+
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <img id="img" src="./img/264828170_356247232927672_7580583740451996137_n.gif" alt="">
+    </div>
+    <script>
+        function magnifier(imgID, zoom){
+            let img,glass,w,h,bw;
+            img = document.getElementById(imgID);
+
+            glass = document.createElement('div');
+            glass.setAttribute('class', 'glass');
+
+            img.parentElement.insertBefore(glass, img);
+
+            glass.style.backgroundImage = `url(${img.src},)`;
+            glass.style.backgroundSize = (img.width * 3) + "px " + (img.height * 3) + "px";
+            bw = 3;
+            w = glass.offsetWidth/2;
+            h = glass.offsetHeight/2;
+
+
+        }
+        magnifier('img', 3)
+    </script>
+</body>
+</html>
