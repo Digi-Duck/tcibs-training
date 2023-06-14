@@ -11,7 +11,7 @@ while(1){
     // $length = count($a);
 
     for ($i=$input - 1; $i >= 0; $i--) { 
-        if(strlen($a) === 3){
+        if(strlen($a) === $input){
             $int[] = $a[$i];
         }else{
             echo '少了';
@@ -25,26 +25,50 @@ while(1){
         break;
     }
 }
+$s = '';
 for ($i=0; $i < $input; $i++) { 
     $x = [];
-    $l = '';
-    $y = '';
+    $y = [];
+    $l = [];
+    $r = [];
+
     for ($j=0; $j < $input; $j++) { 
+        $f = $input - $j - 1;
         $x[] = $total[$j][$i];
-        $y = $total[$j][$i];
-        $l = $total[$j][$j];
+        $y[] = $total[$i][$j];
+        $l[] = $total[$j][$j];
+        $r[] = $total[$f][$j];
     }
-    // echo $l;
-    // f($x);
-    print_r($x);
+
+    $s .= f($x) . f($y) . f($l) . f($r);
+    // echo $s;
 }
-function f($a){
-    if($a[0] === 'O' && $a[1] === 'O' && $a[2] === 'O'){
-        echo 'O';
-    }else if($a[0] === 'X' && $a[1] === 'X' && $a[2] === 'X'){
-        echo 'X';
+$e = '';
+for($i=0;$i<strlen(trim($s));$i++){
+    if($s[$i] == 'O'){
+        $e = 'O';
+        break;
+    }else if($s[$i] == 'X'){
+        $e = 'X';
+        break;
     }else{
-        echo '?';
+        $e = '?';
+    }
+}
+echo $e;
+function f($a){
+    $true = true;
+    foreach($a as $key){
+        if($key !== $a[0]){
+            $true = false;
+            break;
+        }
+    }
+
+    if($true){
+        return $a[0];
+    }else{
+        return '?';
     }
 }
 ?>

@@ -113,13 +113,13 @@
             element.addEventListener('dragstart', (e)=>{
                 drag = element.id
                 console.log(e);
-                e.dataTransfer.setDragImage(document.getElementById(drag), 10, 10);
+                // e.dataTransfer.setDragImage(document.getElementById(drag), 0, 0);
             })
-            // element.addEventListener('drag', (e)=>{
-            //     element.classList.add('drag');
-            //     element.style.left = e.pageX - 20 +"px";
-            //     element.style.top = e.pageY - window.scrollY - 30 + "px";
-            // })
+            element.addEventListener('drag', (e)=>{
+                element.classList.add('drag');
+                element.style.left = e.pageX - 20 +"px";
+                element.style.top = e.pageY - window.scrollY - 30 + "px";
+            })
             element.addEventListener('dragover', (e)=>{
                 e.preventDefault();
             })
