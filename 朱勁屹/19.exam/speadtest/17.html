@@ -139,7 +139,7 @@
         function update(data) {
             let fd = new FormData();
             fd.append('text',JSON.stringify(data));
-            fetch('17.php', {
+            fetch('./17.php', {
                 method: 'POST', // 或 'POST'，取決於你的伺服器端設定
                 headers: {
                     'Content-Type': 'application/json'
