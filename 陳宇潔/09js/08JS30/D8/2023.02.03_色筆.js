@@ -55,7 +55,7 @@ function draw(e){
     }else{
         ctx.lineWidth--;
     }
-  }
+}
 
 //開始繪圖
 canvas.addEventListener('mousedown', (e)=> {
