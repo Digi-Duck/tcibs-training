@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('author');
             $table->string('title');
             $table->string('description');
-            $table->string('width');
-            $table->string('heigh');
+            $table->integer('width');
+            $table->integer('height');
             $table->string('mimetype');
-            $table->string('view_count');
+            $table->integer('view_count');
             $table->string('updatedAt');
             $table->string('createAt');
             $table->timestamps();

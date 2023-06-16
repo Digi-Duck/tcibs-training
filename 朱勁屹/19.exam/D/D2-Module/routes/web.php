@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AmongusController;
+use App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::prefix('/api')->group(function () {
         Route::post('/logout',[AmongusController::class,'logout']);
     });
     Route::prefix('/images')->group(function () {
-
+        Route::get('/search', [ImageController::class,'search']);
+        // Route::get('/search', [ImageController::class,'search']);
     });
 });
