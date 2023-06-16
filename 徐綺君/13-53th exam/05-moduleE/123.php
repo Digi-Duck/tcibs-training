@@ -9,20 +9,10 @@
         $allNum = f($value,2,$allNum);
         $allNum = array_count_values($allNum);
     
-        foreach (array_keys($allNum) as $key => $value) {
-            if ($key == count($allNum) - 1) {
-                if ($allNum[$value] == 1) {
-                    echo $value."\n";
-                }else{
-                    echo $value."^".$allNum[$value]."\n";
-                }
-            }else{
-                if ($allNum[$value] == 1) {
-                    echo $value."*";
-                }else{
-                    echo $value."^".$allNum[$value].'*';
-                }
-            }
+        if (count($allNum) == 1) {
+            echo "Y\n";
+        }else{
+            echo "N\n";
         }
     }
 
