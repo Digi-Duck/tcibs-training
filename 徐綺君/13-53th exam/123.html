@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .main{
+            width: 100%;
+            height: 200px;
+            padding: 10px;
+            transition: 2s;
+        }
+        .box{
+            background-color: tomato;
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            font-size: 45px;
+            line-height: 100px;
+            font-weight: 600;
+            color: #ffffff;
+            -webkit-text-stroke: 2px black;
+            text-align: center;
+            transition: 2s;
+        }
+        input{
+            display: none;
+        }
+        input:checked + label{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <input type="radio" name="box" id="box1">
+        <label for="box1">
+            <div class="box">box1</div>
+        </label>
+        <input type="radio" name="box" id="box2">
+        <label for="box2">
+            <div class="box">box2</div>
+        </label>
+        <input type="radio" name="box" id="box3">
+        <label for="box3">
+            <div class="box">box3</div>
+        </label>
+        <input type="radio" name="box" id="box4">
+        <label for="box4">
+            <div class="box">box4</div>
+        </label>
+    </div>
+</body>
+</html>

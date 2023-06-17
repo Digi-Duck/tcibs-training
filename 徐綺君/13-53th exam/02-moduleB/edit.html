@@ -5,8 +5,161 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>編輯</title>
+
+    <style>
+        *{
+            /* margin: 5px; */
+            font-size: 25px;
+            font-weight: 600;
+            user-select: none;
+        }
+        input{
+            width: 50px;
+        }
+        button{
+            margin: 5px;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            background-color: #565656;
+            margin: 0px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        label{
+            color: #ffffff;
+        }  
+        .top{
+            width: 90%;
+            display: flex;
+        }
+        main{
+            width: 90%;
+            height: 80vh;
+            /* background-color: #ffffff; */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px;
+        }
+        .left,.right{
+            width: 15%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-content: center;
+            background-color: #ffffff;
+        }
+        canvas{
+            /* width: 67%;
+            height: 100%; */
+            background-color: #ffffff;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="top">
+        <button>新增專案</button>
+        <button class="restore">復原</button>
+        <button class="redo">重做</button>
+        <button>儲存圖片</button>
+    </div>
+    <main>
+        <div class="left">
+            <button>選取</button>
+            <!-- <button>筆刷</button> -->
+            <input type="number" id="size" value="1">
+            <button class="fill">油漆桶</button>
+            <!-- <button>調色盤</button> -->
+            <input type="color" name="" id="color">
+            <button>樣章</button>
+            <button>儲存為樣章</button>
+            <button>上傳圖片</button>
+        </div>
+        <canvas></canvas>
+        <div class="right"></div>
+    </main>
+
+    <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+        const color = document.querySelector('#color');
+        const size = document.querySelector('#size');
+        const restoreBtn = document.querySelector('.restore');
+        const redo = document.querySelector('.redo');
+        const fillBtn = document.querySelector('.fill');
+        canvas.width = 500;
+        canvas.height = 500;
+        let restore = [ctx.getImageData(0,0,canvas.width,canvas.height)];
+        let draw,fill = false;
+        ctx.lineJoin = "round";
+        ctx.lineCap = "round";
+        ctx.save();
+        let i = 1;
+        
+        canvas.addEventListener('mousedown', function(e){
+            ctx.lineWidth = size.value;
+            ctx.strokeStyle = color.value;
+            ctx.beginPath(); 
+            ctx.moveTo(e.offsetX, e.offsetY);
+            draw = true;
+        });
+        canvas.addEventListener('mousemove',(e)=>{
+            if (draw) {                
+                ctx.lineTo(e.offsetX, e.offsetY);
+                ctx.stroke();
+            }
+        });
+        canvas.addEventListener('mouseup', function(){      
+            if(draw){
+                draw = false;
+                // canvas.removeEventListener('mousemove',move);
+                restore[i] = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                i++;
+            }
+        }) 
+        canvas.addEventListener('mouseout', function(){             
+            if (draw) {
+                // canvas.removeEventListener('mousemove',move);
+                restore[i] = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                i++;
+                draw = false;
+            }
+        }) 
+        canvas.addEventListener('click',(e)=>{
+            if (fill) {
+
+            }
+        })
+
+        restoreBtn.addEventListener('click',()=>{
+            console.log(restore.length);
+            if (i > 1) {
+                ctx.putImageData(restore[i - 2], 0, 0);
+                console.log(i - 2);
+                i--;
+            }
+            console.log(restore);
+        })
+        redo.addEventListener('click',()=>{
+            console.log(restore.length);
+            if (i < restore.length) {
+                ctx.putImageData(restore[i], 0, 0);
+                i++;
+            }
+            console.log(restore);
+        })
+
+        fillBtn.addEventListener('click',()=>{
+            fill = true;
+            console.log(1);
+        })
+
+    </script>
 </body>
 </html>

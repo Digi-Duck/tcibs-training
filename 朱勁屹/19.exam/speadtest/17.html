@@ -56,6 +56,8 @@
         <div class="bbox"></div>
     </div>
     <button class="button">刷新</button>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+  crossorigin="anonymous"></script>
     <script>
         fetch("./17.json")
         .then(response => response.json())
@@ -137,16 +139,28 @@
         })
 
         function update(data) {
-            fetch('./17.php', {
-                method: 'POST', // 或 'POST'，取決於你的伺服器端設定
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    text:data
-                }),
 
-                })
+            $.ajax({
+                type: "POST",
+                url: './17.php',
+                data: data,
+                success: success,
+                dataType: dataType
+            });
+            
+            // let fd = new FormData();
+            // fd.append('text',JSON.stringify(data));
+            // fetch('./17.php', {
+            //     method: 'POST', // 或 'POST'，取決於你的伺服器端設定
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body: fd,
+            //     })
+            //     .catch(error => {
+            //         // 處理錯誤
+            //         console.error('Error:', error);
+            //     });
         }
     </script>
 </body>

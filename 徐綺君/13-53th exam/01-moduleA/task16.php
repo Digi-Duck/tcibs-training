@@ -22,4 +22,3 @@
     $x = $_GET["factor"];
 
     num($x,$num,$arr);
-?>

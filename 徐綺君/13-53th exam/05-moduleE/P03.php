@@ -1,5 +1,4 @@
 <?php
-    // echo '請輸入一個正整數n: ';
     $n = trim(fgets(STDIN));
     for ($i=0; $i < $n; $i++) { 
         $arr[$i] = trim(fgets(STDIN));

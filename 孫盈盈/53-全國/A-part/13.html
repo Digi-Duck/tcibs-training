@@ -48,44 +48,106 @@
             opacity: 1;
             transform: rotate(0.9turn);
         }
+        .all{
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            /* flex-direction: column; */
+
+            width: 100%;
+            height: 100%;
+
+            background-color: bisque;
+        }
+        .end{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            width: 440px;
+            height: auto;
+            background-color: burlywood;
+        
+            margin: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .card{
+            display: flex;
+            width: 400px;
+            height: 200px;
+
+            margin: 10px;
+            background-color: aquamarine;
+        }
+        .drag{
+            position: absolute;
+            transform: rotate(0.99turn);
+        }
     </style>
 </head>
 <body>
     <div class="all">
-        <div class="drop">
-            <h1 style="text-align: center;">front</h1>
-            <div draggable="true" class="js card"></div>
+        <div class="fornt end">
+            <h1>Front-end</h1>
+            <div draggable="true" class="card">
+                <h3>js</h3>
+            </div>
         </div>
-        <div class="drop">
-            <h1>back</h1>
-            <div draggable="true" class="php card"></div>
+        <div class="back end">
+            <h1>Back-end</h1>
+            <div draggable="true" class="card">
+                <h3>php</h3>
+            </div>
         </div>
     </div>
     <script>
         let cards = document.querySelectorAll('.card');
-        let drops = document.querySelectorAll('.drop');
+        let ends = document.querySelectorAll('.end');
 
         let drag_id = 0;
-        cards.forEach((card, index)=>{
-            card.id = index;
-
-            card.addEventListener(('dragstart'), (e)=>{
-                drag_id = card.id;
-                let drag = document.getElementById(`${drag_id}`);
-
-                e.dataTransfer.setData("text/plain", "");
-                e.dataTransfer.effectAllowed = "copy";
-
-                drag.style.opacity = '1';
-                drag.classList.add('border')
+        let dragId = 0;
+        cards.forEach((element, index)=>{
+            element.id = index;
+            element.addEventListener('dragstart', (e)=>{
+                drag = element.id
+                console.log(e);
+                // e.dataTransfer.setDragImage(document.getElementById(drag), 0, 0);
             })
-            card.addEventListener(('drag'), () => {
-                event.preventDefault();
+            element.addEventListener('drag', (e)=>{
+                element.classList.add('drag');
+                element.style.left = e.pageX - 20 +"px";
+                element.style.top = e.pageY - window.scrollY - 30 + "px";
             })
-            // card.addEventListener('dragleave', ()=>{
-            //     card.classList.remove('border');
-            // })
+            element.addEventListener('dragover', (e)=>{
+                e.preventDefault();
+            })
+            element.addEventListener('dragenter', (e)=>{
+                e.stopPropagation();
+            })
+            element.addEventListener('dragend', ()=>{
+                element.classList.remove('drag');
+            })
         })
-    </script>
-</body>
+        ends.forEach((end, index)=>{
+            end.addEventListener('dragover', (e)=>{
+                e.preventDefault();
+            })
+            // end.addEventListener('dragenter', (e)=>{
+            //     e.preventDefault();
+            //     end.style.height = end.offsetHeight + document.getElementById(drag).offsetHeight + 'px'; 
+            //     console.log(end.offsetHeight);
+            // })
+            // end.addEventListener('dragleave', (e)=>{
+            //     e.preventDefault();
+            //     end.style.height = end.offsetHeight - document.getElementById(drag).offsetHeight + 'px'; 
+            //     console.log(end.offsetHeight);
+            // })
+            end.addEventListener('drop', ()=>{
+                end.append(document.getElementById(drag))
+            })
+        })
+        </script>
+    </body>
 </html>

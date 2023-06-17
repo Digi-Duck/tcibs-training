@@ -18,7 +18,7 @@ flush();
 readfile($path);
 
 
-header('Location: 19.php');
+header('Location: 19(X).php');
 exit;
 
 ?>

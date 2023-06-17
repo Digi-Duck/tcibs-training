@@ -32,29 +32,55 @@ body{
     border-radius: 5px;
 
 }
+.ssBox{
+    display: none;
+}
 .logo2{
     display: none;
 }
 #buger{
     display: none;
 }
-#buger:checked + .bar{
-    transform: rotate(360deg);
+#buger:checked + .bar > .line1{
+    position: fixed;
+    top: 50%;
+    transform: rotate(45deg);
 }
-#buger:checked ~ .longBuger{
-    height: 500px;
+#buger:checked + .bar > .line2{
+    position: fixed;
+    left: 45px;
+    width: 0px;
+}
+#buger:checked + .bar > .line3{
+    position: fixed;
+    top: 50%;
+    transform: rotate(315deg);
+}
+
+#buger:checked ~ .barTop > .barButtons{
     opacity: 1;
+    transition: all 1s 1s;
+}
+#buger:checked ~ .barTop{
+    position: fixed;
+    top: 0%;
+}
+/* #buger:checked ~ .barBottom{
+    height: 50%;
+} */
+.barButton:hover + .aline{
+    width: 80%;
 }
 
 .bar{
     /* margin-top: 450px; */
     text-align: center;
-    background-color: rgb(160, 160, 160);
-    width: 75px;
-    height: 75px;
+    background-color: rgb(219, 219, 219);
+    width: 50px;
+    height: 50px;
     position: fixed;
-    left: 80px;
-    bottom: 110px;
+    left: 30px;
+    top: 30px;
     border-radius: 50%;
     font-size: 75px;
     line-height: 75px;
@@ -63,21 +89,76 @@ body{
     transition: 0.5s;
     transform: rotate(0deg);
     user-select: none;
-    z-index: 99;
+    z-index: 101;
     opacity: 0.6;
+    cursor: pointer;
+
 }
-.longBuger{
+.line{
+    width: 45px;
+    height: 3px;
+    background-color: black;
+    border: 3px;
+    transform: rotate(0deg);
+    transition: 1s;
+}
+.line1{
+    /* width: 42px; */
+    /* transform: rotate(45deg); */
+    top: 0px;
     position: fixed;
-    left: 82px;
-    bottom: 130px;
-    border-radius: 30px;
-    width: 90px;
-    height: 50px;
-    background-color: rgb(230, 227, 227);
-    padding: 10px;
+    top: 25px;
+    left: 23px;
+}
+.line2{
+    position: fixed;
+    top: 45px;
+    left: 23px;
+
+}
+.line3{
+    position: fixed;
+    top: 65px;
+    left: 23px;
+    /* width: 100%; */
+    /* transform: rotate(-45deg); */
+}
+
+.barTop{
+    width: 20%;
+    height: 100%;
+    background-color: rgb(247, 247, 247);
+    position: fixed;
+    left:0%;
+    top: -100%;
+    z-index: 100;
+    opacity: 1;
+    transition: 1s;
+}
+
+.barButtons{
+    width: 300px;
+    /* height: 300px; */
+    /* background-color: grey; */
+    margin: auto;
+    margin-top: 150px;
+    transition: 1s;
+}
+.barButton{
+    width: 100%;
+    font-size: 40px;
+    display: block;
+    text-align: center;
+    padding: 20px 0px;
+    color: black;
+}
+.aline{
+    width: 0%;
+    height: 0.5px;
+    background-color:black;
     transition: 0.5s;
-    z-index: 98;
-    opacity: 0;
+    margin: auto;
+    margin-bottom: 30px;
 }
 .rightBox{
     /* filter: brightness(.8); */
@@ -88,8 +169,10 @@ body{
     background-size: cover;
     border-radius: 0px 0px 0px 1000px;
     position: relative;
+    z-index: 99;
     /* box-shadow: 0px 0px 50px 10px black; */
     /* border-left: 10px solid black;
+    
     border-bottom:10px solid black; */
 }
 .rightBox:hover > .rightBoxText{
@@ -275,8 +358,88 @@ body{
     padding-bottom: 100px;
 }
 
-
-
+.dardBox{
+    width: 100%;
+    height: 600px;
+    /* border-top: 1px solid black; */
+    /* border-bottom: 1px solid black;  */
+    display: flex;
+    justify-content: center;
+    align-items:end;
+    transition: 1s;   
+    position: relative;
+}
+.dard{
+    width: 60px;
+    height: 80px;
+    /* border: 1px solid black; */
+    transition: 1s;   
+    margin: 2%;
+    background-image: url(../speadtest/偶宜/LINE_ALBUM_偶宜_230605_101.jpg);
+    background-position: center;
+    background-size: cover;
+    z-index: 90;
+    border-radius: 5px;
+    position: relative;
+}
+.daBack{
+    width: 0%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-image: url(../speadtest/偶宜/LINE_ALBUM_偶宜_230605_101.jpg);
+    opacity: 0.2;
+    background-position: center;
+    background-size: cover;
+    transition: 1s;
+    z-index: 0;
+    
+}
+.ssBox10{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    border: 2px solid black;
+    width: 300px;
+    height: 300px;
+}
+.dardText{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0;
+    background-color: rgba(255, 255, 255);
+    border-radius: 5px;
+    font-size: 0px;
+    transition: 1s;
+    width: 250px;
+    height: 250px;
+    padding: 20px;
+}
+.dard:hover{
+    width: 390px;
+    height: 520px;
+}
+.dard:hover > .dardText{
+    font-size: 30px;
+    opacity: 1;
+    position:absolute;
+    bottom: 300px;
+    left: 300px;
+}
+.dard1:hover ~ .daBack1{
+    width: 100%;
+}
+.dard2:hover ~ .daBack2{
+    width: 100%;
+}
+.dard3:hover ~ .daBack3{
+    width: 100%;
+}
+.dard4:hover ~ .daBack4{
+    width: 100%;
+}
 .cardBox{
     width: 100%;
     height: 900px;
