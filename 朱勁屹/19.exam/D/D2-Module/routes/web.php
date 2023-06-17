@@ -27,6 +27,8 @@ Route::prefix('/api')->group(function () {
     });
     Route::prefix('/images')->group(function () {
         Route::get('/search', [ImageController::class,'search']);
-        // Route::get('/search', [ImageController::class,'search']);
+        Route::post('/upload', [ImageController::class,'upload']);
+
+        Route::put('/{image_id}',[ImageController::class,'put'] );
     });
 });

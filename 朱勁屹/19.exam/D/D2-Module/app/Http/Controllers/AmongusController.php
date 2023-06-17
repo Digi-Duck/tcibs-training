@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 
 class AmongusController extends Controller
 {
@@ -100,12 +100,12 @@ class AmongusController extends Controller
                                 ]);
                                 return response()->json([
                                     "success"=>true,
-                                    'data'=>`{
-                                        "email":"`.$re->email.`",
-                                        "nickname":"`.$re->nickname.`",
-                                        "password":"`.$re->password.`",
-                                        "profile_image":"`.$dest.`",
-                                    }`
+                                    "data"=>([
+                                        "email"=>$re->email,
+                                        "nickname"=>$re->nickname,
+                                        "password"=>$re->password,
+                                        "profile_image"=>$dest,
+                                ])
                                 ]);
                             }
                         }
