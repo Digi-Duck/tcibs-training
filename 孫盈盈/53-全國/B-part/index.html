@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="all">
+        <div class="window">
+            <table class="card">
+                <th>
+                    <p style="background-color: rgb(51, 141, 220); color: aliceblue; margin: 0; padding: 5px; font-size: 20px; border-radius: 10px 10px 0 0;">
+                        新增專案
+                    </p>
+                    <p style="margin: 20px 30px;">
+                        寬度:
+                        <input id="w" type="number" value="1280" required>
+                        px
+                    </p>
+                    <p>
+                        高度:
+                        <input id="h" type="number" value="720" required>
+                        px
+                    </p>
+                    <p>
+                        <button class="true-btn" onclick="addOb()">確認</button>
+                    </p>
+                </th>
+            </table>
+        </div>
+        <header>
+            <div class="add">
+                <button class="add head-btn" onclick="openOb()">新增專案</button>
+                <button class="store head-btn">儲存圖片</button>
+            </div>
+            <div class="function">
+                <button class="up head-btn">復原</button>
+                <button class="down head-btn">重做</button>
+            </div>
+        </header>
+        <div class="content">
+            <div class="left">
+                <div class="paint">
+
+                </div>
+            </div>
+            <div id="center">
+                <div id="first"></div>
+            </div>
+            <div class="right">
+                <div class="layers"></div>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

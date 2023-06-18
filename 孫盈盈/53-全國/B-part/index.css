@@ -1,0 +1,120 @@
+body, html{
+    margin: 0;
+    background-color: #565656;
+
+    width: 100%;
+    height: 100%;
+}
+.all{
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+}
+.window{
+    position: absolute;
+    
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+    background-color: #565656a8;
+}
+.card{
+    border-spacing: 0;
+    background-color: rgb(220, 245, 244);
+
+    border-radius: 10px;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    height: 5%;
+
+    padding: 10px;
+
+    background-color: rgb(202, 244, 255);
+    box-sizing: border-box;
+}
+.head-btn{
+    height: 100%;
+
+    padding: 5px;
+
+    font-size: 20px;
+    border-radius: 10px;
+    border: 0;
+    background-color: rgb(202, 244, 255);
+}
+.head-btn:hover{
+    background-color: rgb(116, 183, 200);
+}
+.content{
+    display: flex;
+
+    width: 100%;
+    height: 95%;
+}
+.left{
+    width: 15%;
+    height: 100%;
+
+    padding: 10px;
+
+    box-sizing: border-box;
+    /* background-color: aqua; */
+}
+.paint{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 10px;
+    background-color: #565656;
+    border: 2px solid rgb(197, 255, 255);
+}
+#center{
+    overflow: auto;
+
+    width: 70%;
+    height: 100%;
+
+    padding: 10px;
+    box-sizing: border-box;
+}
+#canvas{
+    background-color: #ffffff00;
+}
+#first{
+    position: relative;
+	margin: 0 auto;
+    background-color: #ffffff;
+
+    margin: auto;
+}
+.right{
+    width: 15%;
+    height: 100%;
+
+    padding: 10px;
+
+    box-sizing: border-box;
+}
+.layers{
+    display: flex;
+    flex-wrap: wrap;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 10px;
+    background-color: #565656;
+    border: 2px solid rgb(202, 255, 255);
+}
