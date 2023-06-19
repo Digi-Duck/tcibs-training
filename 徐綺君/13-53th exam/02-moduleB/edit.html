@@ -14,7 +14,7 @@
             user-select: none;
         }
         input{
-            width: 50px;
+            width: 100px;
         }
         button{
             margin: 5px;
@@ -72,8 +72,8 @@
     <main>
         <div class="left">
             <button>選取</button>
-            <!-- <button>筆刷</button> -->
-            <input type="number" id="size" value="1">
+            <button class="pan">筆刷</button>
+            <input type="number" id="size" value="50">
             <button class="fill">油漆桶</button>
             <!-- <button>調色盤</button> -->
             <input type="color" name="" id="color">
@@ -93,9 +93,11 @@
         const restoreBtn = document.querySelector('.restore');
         const redo = document.querySelector('.redo');
         const fillBtn = document.querySelector('.fill');
-        canvas.width = 500;
-        canvas.height = 500;
+        const panBtn = document.querySelector('.pan');
+        canvas.width = 1000;
+        canvas.height = 685;
         let restore = [ctx.getImageData(0,0,canvas.width,canvas.height)];
+        let pan = true;
         let draw,fill = false;
         ctx.lineJoin = "round";
         ctx.lineCap = "round";
@@ -103,69 +105,79 @@
         let i = 1;
         let colorRGB = [];
         let now,start,fillData,fillcolor;
-        ctx.strokeRect(10, 70, 100, 50);
-        ctx.strokeRect(20, 80, 100, 50);
-        // canvas.addEventListener('mousedown', function(e){
-        //     ctx.lineWidth = size.value;
-        //     ctx.strokeStyle = color.value;
-        //     ctx.beginPath(); 
-        //     ctx.moveTo(e.offsetX, e.offsetY);
-        //     draw = true;
-        // });
-        // canvas.addEventListener('mousemove',(e)=>{
-        //     if (draw) {                
-        //         ctx.lineTo(e.offsetX, e.offsetY);
-        //         ctx.stroke();
-        //     }
-        // });
-        // canvas.addEventListener('mouseup', function(){      
-        //     if(draw){
-        //         draw = false;
-        //         // canvas.removeEventListener('mousemove',move);
-        //         restore[i] = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        //         i++;
-        //     }
-        // }) 
+
+        let img = new Image();
+        img.src = './3075977.png';
+
+        canvas.addEventListener('mousedown', function(e){
+            if (pan) {                
+                ctx.lineWidth = size.value;
+                ctx.strokeStyle = color.value;
+                ctx.beginPath(); 
+                ctx.moveTo(e.offsetX, e.offsetY);
+                ctx.drawImage(img,e.offsetX - size.value/2, e.offsetY - size.value/2, size.value, size.value); 
+                ctx.stroke();
+                draw = true;
+            }
+        });
+        canvas.addEventListener('mousemove',(e)=>{
+            if (draw) {                
+                // ctx.lineTo(e.offsetX, e.offsetY);
+                ctx.drawImage(img,e.offsetX - size.value/2, e.offsetY - size.value/2, size.value, size.value); 
+                ctx.stroke();
+            }
+        });
+        document.body.addEventListener('mouseup', function(){      
+            if(draw){
+                draw = false;
+                restore[i] = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                i++;
+            }
+        }) 
         // canvas.addEventListener('mouseout', function(){             
         //     if (draw) {
-        //         // canvas.removeEventListener('mousemove',move);
         //         restore[i] = ctx.getImageData(0, 0, canvas.width, canvas.height);
         //         i++;
         //         draw = false;
         //     }
         // }) 
         canvas.addEventListener('click',(e)=>{
-            // if (fill) {
-                fillData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                start = ctx.getImageData(e.offsetX, e.offsetY, 1, 1);
-                RGB(color.value);
-                floodFill(fillData,start,colorRGB,e.offsetX,e.offsetY);
-                ctx.putImageData(fillData,0,0);
-            // }
+            RGB(color.value)
+            if (colorRGB[0] === ctx.getImageData(e.offsetX, e.offsetY, 1, 1).data[0] && colorRGB[1] === ctx.getImageData(e.offsetX, e.offsetY, 1, 1).data[1] && colorRGB[2] === ctx.getImageData(e.offsetX, e.offsetY, 1, 1).data[2] && 255 === ctx.getImageData(e.offsetX, e.offsetY, 1, 1).data[3]) {
+                fillcolor = true;
+            }else{
+                fillcolor = false;
+            }
+            console.log(fillcolor);
+            if (fill && !fillcolor ) {
+                floodFill(ctx, e.offsetX, e.offsetY, '0xff'+color.value.substr(5,2)+color.value.substr(3,2)+ color.value.substr(1,2));
+                restore[i] = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                i++;
+            }
         })
 
-        // restoreBtn.addEventListener('click',()=>{
-        //     console.log(restore.length);
-        //     if (i > 1) {
-        //         ctx.putImageData(restore[i - 2], 0, 0);
-        //         console.log(i - 2);
-        //         i--;
-        //     }
-        //     console.log(restore);
-        // })
-        // redo.addEventListener('click',()=>{
-        //     console.log(restore.length);
-        //     if (i < restore.length) {
-        //         ctx.putImageData(restore[i], 0, 0);
-        //         i++;
-        //     }
-        //     console.log(restore);
-        // })
+        restoreBtn.addEventListener('click',()=>{
+            if (i > 1) {
+                ctx.putImageData(restore[i - 2], 0, 0);
+                i--;
+            }
+        })
 
-        // fillBtn.addEventListener('click',()=>{
-        //     fill = true;
-        //     console.log(1);
-        // })
+        redo.addEventListener('click',()=>{
+            if (i < restore.length) {
+                ctx.putImageData(restore[i], 0, 0);
+                i++;
+            }
+        })
+
+        fillBtn.addEventListener('click',()=>{
+            pan = false;
+            fill = true;
+        })
+        panBtn.addEventListener('click',()=>{
+            pan = true;
+            fill = false;
+        })
 
         function RGB(x) {
             colorRGB[0] = parseInt(x.substr(1, 2), 16);
@@ -173,23 +185,101 @@
             colorRGB[2] = parseInt(x.substr(5, 2), 16);
         }
 
-        function floodFill(fillData,start,color,x,y) {
-            now = ctx.getImageData(x, y, 1, 1);                
-            if (start.data[0] === now.data[0] && start.data[1] === now.data[1] && start.data[2] === now.data[2] && start.data[3] === now.data[3]) {
-                fillcolor = true;
-            }else{
-                fillcolor = false;
+        function getPixel(pixelData, x, y) {
+            if (x < 0 || y < 0 || x >= pixelData.width || y >= pixelData.height) {
+                return -1;  // impossible color
+            } else {
+                return pixelData.data[y * pixelData.width + x];
             }
-            if (x <= canvas.width-1 && y <= canvas.height-1 && x >= 0 && y >= 0 && fillcolor) {
-                pixelPos = (y * canvas.width + x) * 4;
-                fillData.data[pixelPos + 0] = color[0];
-                fillData.data[pixelPos + 1] = color[1];
-                fillData.data[pixelPos + 2] = color[2];
-                fillData.data[pixelPos + 3] = 255;
-                floodFill(fillData,start,color,x+1,y);
-                floodFill(fillData,start,color,x,y+1);
-                // floodFill(fillData,start,color,x-1,y);
-                // floodFill(fillData,start,color,x,y-1);
+        }
+
+        function floodFill(ctx, x, y, fillColor) {
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+            const pixelData = {
+                width: canvas.width,
+                height: canvas.height,
+                data: new Uint32Array(imageData.data.buffer),
+            };
+            
+            const targetColor = getPixel(pixelData, x, y);
+            
+            if (targetColor !== fillColor) {
+                const spansToCheck = [];
+                
+                function addSpan(left, right, y, direction) {
+                    spansToCheck.push({left, right, y, direction});
+                }
+                
+                function checkSpan(left, right, y, direction) {
+                    let inSpan = false;
+                    let start;
+                    let x;
+                    for (x = left; x < right; ++x) {
+                        const color = getPixel(pixelData, x, y);
+                        if (color === targetColor) {
+                        if (!inSpan) {
+                            inSpan = true;
+                            start = x;
+                        }
+                        } else {
+                        if (inSpan) {
+                            inSpan = false;
+                            addSpan(start, x - 1, y, direction);
+                        }
+                        }
+                    }
+                    if (inSpan) {
+                        inSpan = false;
+                        addSpan(start, x - 1, y, direction);
+                    }
+                }
+                
+                addSpan(x, x, y, 0);
+                
+                while (spansToCheck.length > 0) {
+                    const {left, right, y, direction} = spansToCheck.pop();
+                    
+                    // do left until we hit something, while we do this check above and below and add
+                    let l = left;
+                    let r = right;
+                    while (true) {
+                        l--;
+                        const color = getPixel(pixelData, l, y);
+                        if (color !== targetColor) {
+                        break;
+                        }
+                    }
+                    l++;
+                    
+                    while (true) {
+                        r++;
+                        const color = getPixel(pixelData, r, y);
+                        if (color !== targetColor) {
+                        break;
+                        }
+                    }
+                    // r++;
+                
+                    const lineOffset = y * pixelData.width;
+                    pixelData.data.fill(fillColor, lineOffset + l, lineOffset + r);
+                    
+                    if (direction <= 0) {
+                        checkSpan(l, r, y - 1, -1);
+                    } else {
+                        checkSpan(l, left, y - 1, -1);
+                        checkSpan(right, r, y - 1, -1);
+                    }
+                    
+                    if (direction >= 0) {
+                        checkSpan(l, r, y + 1, +1);
+                    } else {
+                        checkSpan(l, left, y + 1, +1);
+                        checkSpan(right, r, y + 1, +1);
+                    }     
+                }
+                // put the data back
+                ctx.putImageData(imageData, 0, 0);
             }
         }
     </script>
