@@ -132,4 +132,19 @@ class AmongusController extends Controller
             // return 1;
 
     }
+    function userImage($id) {
+        $user = DB::table('login')->where('id',$id)->first();
+        if(!isset($user)){
+            return response()->json([
+                "success"=>false,
+                "MSG"=>"MSG_USER_NOT_EXISTS"
+            ], 404);
+        }else{
+
+            $image = DB::table('image_detail')->where('userId',$id)->get();
+            
+            return $image;
+
+        }
+    }
 }

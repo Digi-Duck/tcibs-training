@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('login', function (Blueprint $table) {
+        Schema::create('img_text', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
-            $table->string('password');
-            $table->string('nickname');
-            $table->string('profile_image');
-            $table->string('type');
-            $table->string('access_token');
+            $table->integer('imgId');
+            $table->string('who');
+            $table->string('text');
+
         });
     }
 
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('login');
+        Schema::dropIfExists('img_text');
     }
 };

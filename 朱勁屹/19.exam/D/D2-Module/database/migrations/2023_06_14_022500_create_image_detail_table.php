@@ -15,15 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('url');
             $table->string('author');
+            $table->string('userId');
             $table->string('title');
             $table->string('description');
             $table->integer('width');
             $table->integer('height');
             $table->string('mimetype');
             $table->integer('view_count');
-            $table->string('updatedAt');
-            $table->string('createAt');
-            $table->timestamps();
+            $table->string('updated_at');
+            $table->string('created_at');
+            $table->integer('delete');
         });
     }
 

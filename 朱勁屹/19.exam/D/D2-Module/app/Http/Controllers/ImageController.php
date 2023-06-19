@@ -8,10 +8,46 @@ use Illuminate\Support\Facades\File;
 
 class ImageController extends Controller
 {
-    // function search(Request $re) {
-    //     $data = DB::table('image')
+    function search(Request $re) {
+        $keyword = '';
+        $page = 0;
+        $page_size = 10;
+        $order_type = 'asc';
+        $order_by = 'created_at';
+        if(isset($re->keyword)){
+            $keyword = $re->keyword;
+        }
+        if(isset($re->page_size)){
+            $page_size = $re->page_size;
+        }
+        if(isset($re->page)){
+            $page = $re->page - 1;
+            $page = $page * 10;
+        }
+        if(isset($re->order_type)){
+            $order_type = $re->order_type;
+        }
+        if(isset($re->order_by)){
+            $order_by = $re->order_by;
+        }
+        // ->where('title','like','%'.$keyword.'%')->orWhere('description','like','%'.$keyword.'%')
+        $image = DB::table('image_detail')->where(function ($qu) use ($keyword) {
+            $qu->where('title','like','%'.$keyword.'%')->orWhere('description','like','%'.$keyword.'%');
+        })->orderBy($order_by,$order_type)->where('delete',1)->skip($page)->take($page_size)->get();
+        return response()->json([
+            "success"=>true,
+            "data"=>[
+                "total_count"=>$page_size,
+                "image"=>$image
+            ]
+        ]);
+        return $image;
+    }
 
-    // }
+    function popular() {
+        $image = DB::table('image_detail')->where('delete',1)->orderBy('view_count')->get();
+        return $image;
+    }
 
     function upload(Request $re){
         if($re->url == '' || $re->title == '' || $re->description == '' || $re->width == '' || $re->height == '' || $re->userId == ''){
@@ -47,17 +83,19 @@ class ImageController extends Controller
                         DB::table('image')->insert([
                             'url'=>$dest,
                             'title'=>$re->title,
-                            'createdAt'=>$date
+                            'created_at'=>$date
                         ]);
                         $user = DB::table('login')->where('id',$re->userId)->first();
                         DB::table('image_detail')->insert([
                             'url'=>$dest,
+                            "userId"=>$user->id,
                             "author"=>json_encode([
                                 "id"=>$user->id,
                                 "email"=>$user->email,
-                                "nickname"=>$user->nickname,
                                 "password"=>$user->password,
-                                "profile_image"=>$user->profile_image
+                                "nickname"=>$user->nickname,
+                                "profile_image"=>$user->profile_image,
+
                             ]),
                             'title'=>$re->title,
                             'description'=>$re->description,
@@ -65,8 +103,9 @@ class ImageController extends Controller
                             'height'=>$re->height,
                             'mimetype'=>$filetype,
                             'view_count'=>0,
-                            'updatedAt'=>$date,
-                            'createAt'=>$date
+                            'updated_at'=>$date,
+                            'created_at'=>$date,
+                            'delete'=>1
                         ]);
                         return response()->json([
                             "author"=>([
@@ -83,7 +122,8 @@ class ImageController extends Controller
         }
     }
     function put(Request $re,$image_id){
-        return $re->all();
+        // dd('123');
+        return response()->json($re->title, 201);
         if($re == '' || $image_id == ''){
             return response()->json([
                 "success"=>false,
@@ -125,4 +165,28 @@ class ImageController extends Controller
             }
         }
     }
+    function delete($image_id){
+        $data = DB::table('image_detail')->where('id',$image_id)->first();
+        if(!isset($data) || $data->delete == 0){
+            return response()->json([
+                    "success"=>false,
+                    "MSG"=>"MSG_POST_NOT_EXISTS"
+                ],404 );
+        }else{
+            // return $data;
+            DB::table('image_detail')->where('id',$image_id)->update(['delete'=>0]);
+        }
+    }
+    function getImgDetail($image_id) {
+        $image = DB::table('image_detail')->where('id',$image_id)->first();
+        if(!isset($image)){
+            return response()->json([
+                "success"=>false,
+                "MSG"=>"MSG_POST_NOT_EXISTS"
+            ], 404);
+        }else{
+            return $image;
+        }
+    }
+
 }
