@@ -70,8 +70,7 @@ header{
 }
 .paint{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column;
 
     width: 100%;
     height: 100%;
@@ -89,7 +88,7 @@ header{
     padding: 10px;
     box-sizing: border-box;
 }
-#canvas{
+.canvas{
     background-color: #ffffff00;
 }
 #first{
@@ -112,9 +111,30 @@ header{
     flex-wrap: wrap;
 
     width: 100%;
-    height: 100%;
+    height: 95%;
 
     border-radius: 10px;
     background-color: #565656;
     border: 2px solid rgb(202, 255, 255);
+}
+.layer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+
+    padding: 3px;
+    margin: 20px;
+
+    background-color: rgb(202, 255, 255);
+    box-sizing: border-box;
+}
+.layer-btn{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 100%;
+    height: 5%;
 }
