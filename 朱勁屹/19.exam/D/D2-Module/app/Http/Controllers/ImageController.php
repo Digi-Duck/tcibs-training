@@ -123,7 +123,8 @@ class ImageController extends Controller
     }
     function put(Request $re,$image_id){
         // dd('123');
-        return response()->json($re->title, 201);
+        $putdata = file_get_contents("php://input", "r");
+        return $putdata;
         if($re == '' || $image_id == ''){
             return response()->json([
                 "success"=>false,

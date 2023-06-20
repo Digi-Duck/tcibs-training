@@ -5,5 +5,4 @@
     for ($i = 2; $i <= $line; $i++) { 
         $f[$i] = $f[$i - 1] + $f[$i - 2];
     }
-
     echo $f[$line];

@@ -38,7 +38,6 @@ function a($value,$n,$bbb)
         $bbb = a($value + 1,$n,$bbb);
         return $bbb;
     }
-    
 }
 
 ?>
