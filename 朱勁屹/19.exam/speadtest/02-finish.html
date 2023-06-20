@@ -10,8 +10,10 @@
     </style>
 </head>
 <body>
+    <!-- <img src="./偶宜/355444166_2383384408516696_5094676170250400530_n.jpg" alt=""> -->
     <canvas id="myCanvas"></canvas>
     <!-- <img src="../19.speadtest/img/he.jpg" alt=""> -->
+    <a class="a" href="">dafadfdassfadf</a>
     <script>
         a();
         function a() {
@@ -20,7 +22,7 @@
 
             // 在 canvas 上繪製圖像
             const image = new Image();
-            image.src = '../speadtest/img/he.jpg';
+            image.src = './偶宜/355444166_2383384408516696_5094676170250400530_n.jpg';
 
             canvas.width = image.width;
             canvas.height = image.width;
@@ -34,9 +36,22 @@
                 const iData = ctx.getImageData(0,0,image.width,image.height);
 
                 for (let i = 0; i < iData.data.length; i += 4) {
-                    iData.data[i] += Math.floor(Math.random() * 100);
-                    iData.data[i + 1] += Math.floor(Math.random() * 100);
-                    iData.data[i + 2] += Math.floor(Math.random() * 100);
+
+                    total = iData.data[i] + iData.data[i+1] +iData.data[i+2];
+                    if(total > 112){
+                        iData.data[i] += 255;
+                        iData.data[i + 1] += 255;
+                        iData.data[i + 2] += 255;
+                    }else{
+                        iData.data[i] += 0;
+                        iData.data[i + 1] += 0;
+                        iData.data[i + 2] += 0;
+                    }
+
+
+                    // iData.data[i] += Math.floor(Math.random() * 100);
+                    // iData.data[i + 1] += Math.floor(Math.random() * 100);
+                    // iData.data[i + 2] += Math.floor(Math.random() * 100);
                 }
 
                 // ctx.font = '24px Arial';
@@ -61,11 +76,15 @@
                 const dataURL = canvas.toDataURL(); // 獲取圖片的 base64 編碼
     
                 // 創建一個下載連結元素
-                const link = document.createElement('a');
-                link.href = dataURL;
-                link.download = 'canvas_image.png'; // 下載檔案的名稱
+                // const link = document.createElement('a');
+                // link.href = dataURL;
+                // link.download = 'canvas_image.png'; // 下載檔案的名稱
                 // 模擬點擊下載連結
                 // link.click();
+
+                const link = document.querySelector('.a');
+                link.href = dataURL;
+                link.download = 'canvas_image.png'; // 下載檔案的名稱
                 
             }
 
