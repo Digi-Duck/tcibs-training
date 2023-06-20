@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="400" height="200"></canvas>
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const context = canvas.getContext('2d');
+
+        // 在 canvas 上繪製一個矩形
+        context.fillStyle = 'red';
+        context.fillRect(50, 50, 200, 100);
+
+        // 等待一段時間後清除矩形
+        setTimeout(() => {
+        context.clearRect(50, 50, 200, 100);
+        }, 2000);
+    </script>
+</body>
+</html>

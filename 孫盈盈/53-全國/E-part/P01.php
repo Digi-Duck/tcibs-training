@@ -5,6 +5,7 @@ $input = intval(fgets($stdin));
 
 $total = array();
 $count = $input;
+
 while(1){
     $int = array();
     $a = trim(fgets($stdin));
@@ -25,6 +26,7 @@ while(1){
         break;
     }
 }
+
 $s = '';
 for ($i=0; $i < $input; $i++) { 
     $x = [];
@@ -39,10 +41,10 @@ for ($i=0; $i < $input; $i++) {
         $l[] = $total[$j][$j];
         $r[] = $total[$f][$j];
     }
-
     $s .= f($x) . f($y) . f($l) . f($r);
     // echo $s;
 }
+
 $e = '';
 for($i=0;$i<strlen(trim($s));$i++){
     if($s[$i] == 'O'){

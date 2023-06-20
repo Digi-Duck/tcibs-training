@@ -20,8 +20,8 @@ while(1){
         break;
     }
 }
-function prime($num){
 
+function prime($num){
     $ar = array();
     $divisor = 2;
 
@@ -35,6 +35,7 @@ function prime($num){
     }
     return $ar;
 }
+
 function answer($num){
     $ar = prime($num);
     $t = 1;

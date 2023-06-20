@@ -18,7 +18,7 @@
         }else{
             if ($op && !$brackets && f(end($op)) > f($value)) {
                 $out = $out.end($op).' ';
-                array_pop($op);
+                array_pop($op); 
             }
             array_push($op,$value);
         }

@@ -25,6 +25,7 @@ while(1){
         break;
     }
 }
+
 $total = 0;
 $length = count($ar);
 for($i = $length - 1; $i >= 0; $i--){

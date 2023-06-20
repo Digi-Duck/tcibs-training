@@ -27,6 +27,8 @@ function addOb(){
 let canvas = document.querySelectorAll('canvas');
 let isDrawing = false;
 let [lastX, lastY] = [0, 0];
+let undoArray = [];
+let redoArray = [];
 
 canvas.forEach((element, index) => {
     let w = document.getElementById('w');
@@ -40,6 +42,7 @@ canvas.forEach((element, index) => {
         isDrawing = true;
         [lastX, lastY] = [e.offsetX, e.offsetY];
         element.addEventListener('mousemove', draw);
+        saveDrawing(element);
     });
     element.addEventListener('mouseup', () => {
         isDrawing = false;
@@ -49,6 +52,12 @@ canvas.forEach((element, index) => {
         isDrawing = false;
         element.removeEventListener('mousemove', draw);
     });
+
+    let undoBtn = document.querySelector('.up');
+    let redoBtn = document.querySelector('.down');
+
+    undoBtn.addEventListener('click', undo);
+    redoBtn.addEventListener('click', redo);
 
     function draw(e) {
         let color = document.getElementById('color');
@@ -65,5 +74,34 @@ canvas.forEach((element, index) => {
         ctx.lineCap = 'round';
 
         [lastX, lastY] = [e.offsetX, e.offsetY];
+    }
+
+    function saveDrawing(canvas){
+        let drawingData = canvas.toDataURL();
+        undoArray.push(drawingData);
+        redoArray = [];
+    }
+
+    function undo(){
+        if(undoArray.length > 0){
+            let drawing = undoArray.pop();
+            redoArray.push(element.toDataURL());
+            restoreDraw(element, drawing);
+        }
+    }
+    function redo(){
+        if(redoArray.length > 0){
+            let drawing = redoArray.pop();
+            undoArray.push(element.toDataURL());
+            restoreDraw(element, drawing);
+        }
+    }
+    function restoreDraw(canvas, drawingData){
+        let img = new Image();
+        img.onload = function(){
+            ctx.clearRect(0, 0, canvas.widthm, canvas.height);
+            ctx.drawImage(img, 0, 0);
+        }
+        img.src = drawingData;
     }
 });
