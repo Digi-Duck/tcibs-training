@@ -96,7 +96,7 @@
             justify-content: space-around;
             align-content: space-around;
         }
-        .layers{
+        .layers_label{
             width: 80%;
             text-align: center;
             background-color: #888888;
@@ -120,6 +120,7 @@
         <button class="restore">復原</button>
         <button class="redo">重做</button>
         <button>儲存圖片</button>
+        <button class="newLayer">新增圖層</button>
     </div>
     <main>
         <div class="left">
@@ -143,19 +144,22 @@
             <canvas></canvas>
         </div>
         <div class="right">
-            <button class="newLayer">新增圖層</button>
             <input class="layers_radio" type="radio" name="layers" id="layers0" checked>
-            <label class="layers" for="layers0">圖層0</label>
+            <label class="layers_label" for="layers0">圖層0</label>
             <input class="layers_radio" type="radio" name="layers" id="layers1">
-            <label class="layers" for="layers1">圖層1</label>
+            <label class="layers_label" for="layers1">圖層1</label>
         </div>
     </main>
 
     <script>
         let canvas = document.querySelectorAll('canvas');
+        let restore = [[]];
         let ctx = [];
         canvas.forEach((c,i)=>{
             ctx[i] = c.getContext('2d');
+            c.width = 500;
+            c.height = 500;
+            restore[i] = [ctx[i].getImageData(0,0,c.width,c.height)];
         })
         const box = document.querySelector('.canvasBox');
         const color = document.querySelector('.color');
@@ -167,13 +171,14 @@
         const panBtn = document.querySelector('.pan');
         const stampBtn = document.querySelector('.stamp');
         const stampBox = document.querySelector('.stampBox');
-        const layersBtn = document.querySelector('.newLayer');
-        let layers = document.querySelectorAll('.layers_radio');
+        let layersBtn = document.querySelector('.newLayer');
+        let layers_radio = document.querySelectorAll('.layers_radio');
+        let layers_label = document.querySelectorAll('.layers_label');
         const right = document.querySelector('.right');
         let pan = true;
         let draw,fill = false;
         let record = 1;
-        let restore = [[]];
+        let layers = 1;
         let colorRGB = [];
         let now,start,fillData,fillcolor;
         let nowcanvas = 0;
@@ -183,9 +188,6 @@
         canvasDraw();
         function canvasDraw(){
             canvas.forEach((c,i)=>{
-                c.width = 500;
-                c.height = 500;
-                restore[i] = [ctx[i].getImageData(0,0,c.width,c.height)];
                 ctx[i].lineJoin = "round";
                 ctx[i].lineCap = "round";
                 ctx[i].save();
@@ -217,6 +219,7 @@
                             restore[i][record] = ctx[i].getImageData(0, 0, c.width, c.height);
                         })
                         record++;
+                        console.log(restore);
                     }
                 }) 
                 c.addEventListener('click',(e)=>{
@@ -236,34 +239,62 @@
                         }
                 })
             })
+
+
+            layers_radio.forEach((v,i) => {
+                v.addEventListener('change',()=>{
+                    if (v.checked) {
+                        nowcanvas = i;
+                        // console.log(nowcanvas);
+                    }
+                })
+            });
         }
         
-        layers.forEach((v,i) => {
-            v.addEventListener('change',()=>{
-                if (v.checked) {
-                    nowcanvas = i;
-                    // console.log(nowcanvas);
-                }
-            })
-        });
 
         restoreBtn.addEventListener('click',()=>{
-            console.log(record);
-            console.log(restore);
             if (record > 1) {
                 ctx.forEach((x,i)=>{
-                    x.putImageData(restore[i][record - 2], 0, 0);
+                    if (restore[i][record - 2] == 1) {
+                        canvas[i].parentNode.removeChild(canvas[i]);
+                        layers_radio[i].parentNode.removeChild(layers_radio[i]);
+                        console.log(layers_label[i]);
+                        layers_label[i].parentNode.removeChild(layers_label[i]);
+                    }else if(restore[i][record - 2]){
+                        x.putImageData(restore[i][record - 2], 0, 0);
+                    }
                 })
                 record--;
             }
         })
-
         redo.addEventListener('click',()=>{
             console.log(record);
             console.log(restore);
             if (record < restore[0].length) {
                 ctx.forEach((x,i)=>{
-                    x.putImageData(restore[i][record], 0, 0);
+                    if (restore[i][record-1] == 1) {
+                        box.innerHTML += '<canvas></canvas>';
+                        canvas = document.querySelectorAll('canvas');
+                        box.innerHTML += '<canvas></canvas>';
+                        right.innerHTML += `            
+                        <input class="layers_radio" type="radio" name="layers" id="layers${layers}">
+                        <label class="layers_label" for="layers${layers}">圖層${layers}</label>`
+                        layers_radio = document.querySelectorAll('.layers_radio');
+                        layers_label = document.querySelectorAll('.layers_label');
+                        canvas = document.querySelectorAll('canvas');
+                        canvas.forEach((c,i)=>{
+                            ctx[i] = c.getContext('2d');
+                            c.width = 500;
+                            c.height = 500;
+                        })
+                        restore[layers] = [];
+                        restore[layers][record-1] = 1;
+                        for (let i = 0; i < ctx.length-1; i++) {
+                            ctx[i].putImageData(restore[i][record - 1], 0, 0)
+                        }
+                    }else{
+                        x.putImageData(restore[i][record], 0, 0);
+                    }
                 })
                 record++;
             }
@@ -279,26 +310,18 @@
         })
 
         layersBtn.addEventListener('click',()=>{
-            box.innerHTML += '<canvas></canvas>';
-            right.innerHTML += `            
-            <input class="layers_radio" type="radio" name="layers" id="layers${layers.length}">
-            <label class="layers" for="layers${layers.length}">圖層${layers.length}</label>`
-            layers = document.querySelectorAll('.layers_radio');
-            canvas = document.querySelectorAll('canvas');
-            console.log(canvas);
+            layers++;
+            create_layers();
+            restore[layers] = [];
+            restore[layers][record-1] = 1;
+            for (let i = 0; i < ctx.length-1; i++) {
+                ctx[i].putImageData(restore[i][record - 1], 0, 0)
+            }
             canvas.forEach((c,i)=>{
-                ctx[i] = c.getContext('2d');
+                restore[i][record] = ctx[i].getImageData(0, 0, c.width, c.height);
             })
+            record++;
             canvasDraw();
-            layers.forEach((v,i) => {
-                v.addEventListener('change',()=>{
-                    if (v.checked) {
-                        nowcanvas = i;
-                    }
-                })
-            });
-
-            
         })
 
         stampBtn.addEventListener('click',()=>{
@@ -409,6 +432,21 @@
                 ctx.putImageData(imageData, 0, 0);
             }
         }
-    </script>
+        
+        function create_layers() {
+            box.innerHTML += '<canvas></canvas>';
+            right.innerHTML += `            
+            <input class="layers_radio" type="radio" name="layers" id="layers${layers}">
+            <label class="layers_label" for="layers${layers}">圖層${layers}</label>`
+            layers_label = document.querySelectorAll('.layers_label');
+            layers_radio = document.querySelectorAll('.layers_radio');
+            canvas = document.querySelectorAll('canvas');
+            canvas.forEach((c,i)=>{
+                ctx[i] = c.getContext('2d');
+                c.width = 500;
+                c.height = 500;
+            })
+        }
+   </script>
 </body>
 </html>
