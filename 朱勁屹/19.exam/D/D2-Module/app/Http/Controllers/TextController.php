@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 
 class TextController extends Controller
@@ -64,5 +65,12 @@ class TextController extends Controller
 
         }
     }
-    
+    function fuck(Request $re){
+        $file = $re->file;
+        $path = $re->file->store('public');
+        $url = Storage::url($path);
+        return response()->json([
+            "url"=>$url,
+        ]);
+    }
 }
