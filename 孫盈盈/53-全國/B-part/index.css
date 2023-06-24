@@ -31,7 +31,6 @@ body, html{
 header{
     display: flex;
     align-items: center;
-    justify-content: space-between;
     
     height: 5%;
 
@@ -88,7 +87,7 @@ header{
     padding: 10px;
     box-sizing: border-box;
 }
-.canvas{
+canvas{
     background-color: #ffffff00;
 }
 #first{

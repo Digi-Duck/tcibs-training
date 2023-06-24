@@ -35,6 +35,7 @@ canvas.forEach((element, index) => {
     let h = document.getElementById('h');
     element.width = w.value;
     element.height = h.value;
+    element.classList.add('canvas_' + index);
     console.log(element);
     let ctx = element.getContext('2d');
 
@@ -83,6 +84,7 @@ canvas.forEach((element, index) => {
     }
 
     function undo(){
+        console.log(undoArray);
         if(undoArray.length > 0){
             let drawing = undoArray.pop();
             redoArray.push(element.toDataURL());
@@ -90,6 +92,7 @@ canvas.forEach((element, index) => {
         }
     }
     function redo(){
+        console.log(redoArray);
         if(redoArray.length > 0){
             let drawing = redoArray.pop();
             undoArray.push(element.toDataURL());
@@ -99,7 +102,7 @@ canvas.forEach((element, index) => {
     function restoreDraw(canvas, drawingData){
         let img = new Image();
         img.onload = function(){
-            ctx.clearRect(0, 0, canvas.widthm, canvas.height);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(img, 0, 0);
         }
         img.src = drawingData;
