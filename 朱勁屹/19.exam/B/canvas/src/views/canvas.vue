@@ -16,7 +16,11 @@
             <button>儲存樣章</button>
             <button>上傳圖片</button>
         </div>
-        <div class="center"></div>
+        <div class="center">
+            <canvas>
+
+            </canvas>
+        </div>
         <div class="right">
             <button>新增屠城</button>
         </div>
@@ -26,11 +30,17 @@
 <script>
 
 
-    export default{
-        setup(){
-            return{
-                
-            }
+let canvas = document.querySelector("canvas");
+canvas.addEventListener('mousedown',function () {
+    console.log(1);
+});
+
+export default{
+    setup(){
+        return{
+            
+        }
+    },methods:{
         }
     }
 </script>
@@ -63,8 +73,13 @@
         .center{
             width: 1280px;
             height: 720px;
-            background-color: white;
+            /* background-color: white; */
 
+        }
+        canvas{
+            width: 500px;
+            height: 500px;
+            background-color: white;
         }
         .right{
             width: 15%;

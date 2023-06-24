@@ -4,7 +4,7 @@ import HomeView from '../views/HomeView.vue'
 const routes = [
   {
     path: '/',
-    name: 'home',
+    name: 'set',
     component: () => import('../views/set.vue')
   },
   {
@@ -16,18 +16,18 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
   {
-    history:createWebHistory(),
-    routes:[{path:"/canvas/:canvasWidth/:canvasHeight"}],
+    path:'/canvas',
+    name:'canvas',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/canvas.vue')
   }
-]
-
+];
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes:[{path:'/users/userId',component:user}]
-})
+  history: createWebHistory(),
+  routes
+});
 
-export default router
+export default router;
+

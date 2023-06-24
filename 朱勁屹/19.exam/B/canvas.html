@@ -32,8 +32,13 @@
         .center{
             width: 1280px;
             height: 720px;
-            background-color: white;
+            /* background-color: white; */
 
+        }
+        canvas{
+            width: 500px;
+            height: 500px;
+            background-color: white;
         }
         .right{
             width: 15%;
@@ -82,11 +87,28 @@
             <button>儲存樣章</button>
             <button>上傳圖片</button>
         </div>
-        <div class="center"></div>
+        <div class="center">
+            <canvas>
+
+            </canvas>
+        </div>
         <div class="right">
             <button>新增屠城</button>
         </div>
 
     </div>
+    <script>
+        let canvas = document.querySelector('canvas');
+        let ctx = canvas.getContext('2d');
+
+        canvas.addEventListener('mousedown',function (eve) {
+            ctx.lineWidth = '20px';
+            ctx.strokeStyle = 'background-color: black;';
+            ctx.moveTo(eve.offsetX,eve.offsetY);
+        })
+        document.body.addEventListener('mouseup',function (eve) {
+            
+        })
+    </script>
 </body>
 </html>
