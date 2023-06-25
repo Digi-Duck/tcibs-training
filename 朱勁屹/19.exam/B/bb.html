@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+        html{
+            width: 100%;
+            height: 100%;
+
+        }
+        body{
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+        }
+        canvas{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas>
+
+    </canvas>
+    <script>
+        let canvas = document.querySelector('canvas');
+        let ctx = canvas.getContext('2d');
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+        ctx.lineWidth = 10;
+        ctx.strokeStyle = 'black';
+        canvas.width = 1000;
+        canvas.height = 1000;
+        let amongus = false;
+        canvas.addEventListener('mousedown',function (eve) {
+            ctx.beginPath();
+            ctx.moveTo(eve.clientX,eve.clientY);
+            amongus = true;
+        })
+        canvas.addEventListener('mousemove',function (eve) {
+            if(amongus){
+                ctx.lineTo(eve.clientX,eve.clientY);
+                ctx.stroke();
+            }
+        });
+        canvas.addEventListener('mouseup',function (eve) {
+            amongus = false;
+        })
+    </script>
+</body>
+</html>
