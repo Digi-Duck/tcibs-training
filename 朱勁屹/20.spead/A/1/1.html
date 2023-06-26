@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas>
+
+    </canvas>
+    <!-- <img src="../1/偶宜/LINE_ALBUM_偶宜_230605_0.jpg" alt=""> -->
+    <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+        let img = new Image();
+        img.src = './偶宜/LINE_ALBUM_偶宜_230605_0.jpg';
+
+        img.onload = function () {
+            const a = 320;
+            const b = (img.height/img.width)*320;
+
+            canvas.width = a;
+            canvas.height = b;
+            ctx.filter = "saturate(0)";
+            ctx.drawImage(img,0,0,a,b);
+
+            
+            const url = canvas.toDataURL();
+            const link = document.createElement('a');
+            console.log(link);
+            link.href = url;
+            link.download = 'amongus.jpg';
+            link.click();
+                
+            
+        }//15
+    </script>
+</body>
+</html>

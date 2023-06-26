@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas>
+
+    </canvas>
+    <!-- <img src="./偶宜/LINE_ALBUM_偶宜_230605_101.jpg" alt=""> -->
+    <script>
+        let canvas = document.querySelector('canvas');
+        let ctx = canvas.getContext('2d');
+        let img = new Image();
+        img.src = './偶宜/LINE_ALBUM_偶宜_230605_101.jpg';
+        canvas.width = img.width;
+        canvas.height = img.height;
+        // console.log(img.height);
+        img.onload = function () {
+            ctx.drawImage(img,0,0,img.width,img.height);
+            imageData = ctx.getImageData(0,0,img.width,img.height);
+            for (let i = 0; i < imageData.data.length; i+=4) {
+                a = Math.random() * 10;
+                if(a > 5){
+                    imageData.data[i] = Math.floor(Math.random() * 255) ;
+                    imageData.data[i + 1] = Math.floor(Math.random() * 255) ;
+                    imageData.data[i + 2] = Math.floor(Math.random() * 255) ;
+                    // imageData.data[i + 3] = Math.floor(Math.random * 255) ;
+                }
+            }
+            ctx.putImageData(imageData,0,0);
+            url = canvas.toDataURL();
+            link = document.createElement('a');
+            link.href = url;
+            link.download = 'amongus.jpg';
+            link.click();
+        }
+
+    </script>
+</body>//18.23
+</html>

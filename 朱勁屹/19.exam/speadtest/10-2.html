@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <input type="file">
+    <div class="box"></div>
+    <canvas class="canvas">
+
+    </canvas>
+    <canvas class="canvas2">
+
+    </canvas>
+    <script>
+        let reader = new FileReader();
+        let image = new Image();
+        let canvas = document.querySelector('.canvas');
+        let canvas2 = document.querySelector('.canvas2');
+        let ctx = canvas.getContext('2d');
+        let ctx2 = canvas2.getContext('2d');
+        let input = document.querySelector('input');
+
+        input.addEventListener('change',function () {
+            let file = input.files[0];
+            
+            reader.onload = function (e) {
+                image.src = e.target.result;
+
+                image.onload = function () {
+                    canvas.width = image.width;
+                    canvas.height = image.height;
+                    ctx.drawImage(image,0,0,image.width,image.height);
+                }
+            }
+            reader.readAsDataURL(file);
+        });
+        canvas.addEventListener('mousemove',function (eve) {
+            // console.log(eve.offsetX);
+            let iData = getImageData(eve.offsetX - 7,eve.offsetY - 7,15,15);
+            for (let i = 0; i < iData.data.length; i += 4) {
+                canvas2.width = 100;
+                canvas2.height = 100;
+                
+                canvas2.fillStyle = `rgb(${iData[i]},${iData[i]+1},${iData[i+2]},${iData[i+3]/255})`;
+                canvas2.fillRect();
+            }
+        })
+
+    </script>
+</body>
+</html>

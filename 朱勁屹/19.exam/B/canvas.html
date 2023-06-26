@@ -36,8 +36,6 @@
 
         }
         canvas{
-            width: 500px;
-            height: 500px;
             background-color: white;
         }
         .right{
@@ -100,13 +98,30 @@
     <script>
         let canvas = document.querySelector('canvas');
         let ctx = canvas.getContext('2d');
+        canvas.width = 1200;
+        canvas.height = 700;
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+        ctx.lineWidth = '20';
+        ctx.strokeStyle = 'black;';
+        let turn = false; 
+        
 
         canvas.addEventListener('mousedown',function (eve) {
-            ctx.lineWidth = '20px';
-            ctx.strokeStyle = 'background-color: black;';
+            ctx.beginPath();
             ctx.moveTo(eve.offsetX,eve.offsetY);
+            turn = true;
+            startX = eve.offsetX;
+            startY = eve.offsetY;
+        })
+        canvas.addEventListener('mousemove',function (eve) {
+            if(turn){
+                ctx.lineTo(eve.offsetX,eve.offsetY);
+                ctx.stroke();
+            }
         })
         document.body.addEventListener('mouseup',function (eve) {
+            turn = false;
             
         })
     </script>

@@ -36,7 +36,6 @@
                 const iData = ctx.getImageData(0,0,image.width,image.height);
 
                 for (let i = 0; i < iData.data.length; i += 4) {
-
                     total = iData.data[i] + iData.data[i+1] +iData.data[i+2];
                     if(total > 112){
                         iData.data[i] += 255;
