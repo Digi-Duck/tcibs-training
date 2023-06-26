@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +27,8 @@ Route::post('auth/logout', [UserController::class, 'logout']);
 Route::get('images/search', []);
 Route::get('images/popular', []);
 Route::get('users/{user_id}/images', []);
-Route::post('images/upload', []);
-Route::put('images/{image_id}', []);
+Route::post('images/upload', [ImageController::class, 'add_photo']);
+Route::put('images/{image_id}', [ImageController::class, 'update_photo']);
 Route::post('images/{image_id}', []);
 Route::get('images/{image_id}', []);
 Route::delete('images/{image_id}', []);

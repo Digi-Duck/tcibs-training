@@ -27,7 +27,7 @@ class UserController extends Controller
         }else{
             $access = hash('sha256', $request->email);
             $accessToken = strtolower($access);
-            DB::table('user')->where('email', $request->email)->update(['accessToken'=> $accessToken]);
+            DB::table('user')->where('email', $request->email)->update(['accessToken'=> 'Bearer'.$accessToken]);
             $user = DB::table('user')->where('email', $request->email)->first();
             return response()->json([
                 'success'=>TRUE,
@@ -90,7 +90,8 @@ class UserController extends Controller
     }
 
     public function logout(Request $request){
-        DB::table('user')->where('email', $request->email)->update(['accessToken'=>'']);
+        $accessToken = $request->header('Authorization');
+        DB::table('user')->where('accessToken', $accessToken)->update(['accessToken'=>'']);
         return response()->json([
             'success'=> TRUE
         ]);
