@@ -12,7 +12,7 @@ class CommentController extends Controller
     public function addComment(Request $request, $image_id){
         if(DB::table('image')->where('id', $image_id)->doesntExist()){
             return ErrorController::picture();
-        }else if(!$request->filled('comment')){
+        }else if(!$request->has('comment')){
             return ErrorController::body_null();
         }else{
             DB::table('comment')->insert([

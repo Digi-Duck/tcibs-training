@@ -24,14 +24,13 @@ Route::post('auth/register', [UserController::class, 'register']);
 Route::post('auth/login', [UserController::class, 'login']);
 Route::post('auth/logout', [UserController::class, 'logout']);
 
-Route::get('images/search', []);
-Route::get('images/popular', []);
-Route::get('users/{user_id}/images', []);
+Route::get('images/search', [ImageController::class, 'selectPhoto']);
+Route::get('images/popular', [ImageController::class, 'hotPhoto']);
+Route::get('users/{user_id}/images', [ImageController::class, 'userPhoto']);
 Route::post('images/upload', [ImageController::class, 'add_photo']);
 Route::put('images/{image_id}', [ImageController::class, 'update_photo']);
-Route::post('images/{image_id}', []);
-Route::get('images/{image_id}', []);
-Route::delete('images/{image_id}', []);
+Route::get('images/{image_id}', [ImageController::class, 'get_photo_data']);
+Route::delete('images/{image_id}', [ImageController::class, 'delete_photo']);
 
 Route::get('images/{image_id}/comments', [CommentController::class, 'selectComment']);
 Route::post('images/{image_id}/comments', [CommentController::class, 'addComment']);
