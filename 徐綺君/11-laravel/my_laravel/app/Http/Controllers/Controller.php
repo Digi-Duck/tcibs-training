@@ -78,7 +78,4 @@ class Controller extends BaseController
         return view('microsoft-1',compact('data'));
     }
 
-    function FunctionName() : Returntype {
-        
-    }
 }
