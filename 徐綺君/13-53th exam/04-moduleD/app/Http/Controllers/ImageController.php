@@ -17,8 +17,7 @@ class ImageController extends Controller
             'page_size' => 'integer'
         ];
         $messages = [
-            'page.integer' => 'MSG_WROND_DATA_TYPE',
-            'page_size.integer' => 'MSG_WROND_DATA_TYPE'
+            '*.integer' => 'MSG_WROND_DATA_TYPE',
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()) {
@@ -42,10 +41,12 @@ class ImageController extends Controller
                 if ($request->keyword) {
                     $num = $request->page_size * $request->page;
                     $data = DB::table('images')->where('deleted',0)->where('title','like',"%$request->keyword%")->orWhere('description','like',"%$request->keyword%")->orderby($request->order_by,$request->order_type)->skip($num)->take($request->page_size)->get();
+                    DB::table('images')->where('deleted',0)->orderby($request->order_by,$request->order_type)->skip($num)->take($request->page_size)->increment('view_count',1);
                     return $data;
                 }else{
                     $num = $request->page_size * ($request->page - 1);
                     $data = DB::table('images')->where('deleted',0)->orderby($request->order_by,$request->order_type)->skip($num)->take($request->page_size)->get();
+                    DB::table('images')->where('deleted',0)->orderby($request->order_by,$request->order_type)->skip($num)->take($request->page_size)->increment('view_count',1);
                     return $data;
                 }
             }else{
@@ -57,19 +58,28 @@ class ImageController extends Controller
     function popular(Request $request){
         $num = $request->page_size * ($request->page - 1);
         $data = DB::table('images')->where('deleted',0)->orderby('view_count','desc')->get();
+        DB::table('images')->where('deleted',0)->orderby('view_count','desc')->increment('view_count',1);
         return $data;
     }
 
     function images($user_id){
-        $data = DB::table('images')->where('user_id',$user_id)->get();
-        return $data;
+        $user = DB::table('log')->where('id',$user_id)->first();
+        if ($user) {
+            $data = DB::table('images')->where('user_id',$user_id)->get();
+            DB::table('images')->where('user_id',$user_id)->increment('view_count',1);
+            return $data;
+        }else{
+            return response()->json(['success' => false, 'error' => 'MSG_USER_NOT_EXISTS'], 404);
+        }
     }
 
     function upload(Request $request){
-        if ($request -> has(['title','description','image'])) {
+        $user = DB::table('log')->where('access_token',$request->header('Authorization'))->first();
+        if($user){
             $rules = [
-                '*' => 'required',
-                'image' => 'mimes:png,jpg,jpeg',
+                'title' => 'required',
+                'description' => 'required',
+                'image' => 'image|mimes:png,jpg,jpeg',
             ];
             $messages = [
                 '*.required' => 'MSG_MISSING_FIELD',
@@ -83,6 +93,7 @@ class ImageController extends Controller
                 $path = Storage::disk('local')->put('public/img', $request->image);
                 $path = str_replace("public","storage",$path);
                 $user = DB::table('log')->where('access_token',$request->header('Authorization'))->first();
+                $date = date('H:i:s').'T'.date('H:i:s');
                 DB::table('images')->insert([
                     "url" => $path,
                     "user_id" => $user->id,
@@ -92,33 +103,40 @@ class ImageController extends Controller
                     "height" => getimagesize($request->image)[1],
                     "mimetype" => str_replace('image/','',$request->image->getMimeType()),
                     "view_count" => 0,
-                    "created_at" => date('Y-m-d H:i:s'),
+                    "created_at" => $date,
                 ]);
             }
+            return response()->json(['success'=>true]);
         }else{
-            return response()->json(['success'=>false,'error'=>'MSG_MISSING_FIELD'],400);
+            return response()->json(['success' => false, 'error' => 'MSG_INVALID_ACCESS_TOKEN'], 401);
         }
     }
 
     function updata($image_id, Request $request){
         $user = DB::table('log')->where('access_token',$request->header('Authorization'))->first();
-        $image = DB::table('images')->where('id',$image_id)->first();
-        if($user && $image){
-            if ($user->type == 'admin' || $user->id == $image->user_id) {
-                if ($request->has(['title','description'])) {
-                    DB::table('images')->where('id',$image_id)->update([
-                        "title" => $request->title,
-                        "description" => $request->description,
-                        "updated_at" => date('Y-m-d H:i:s'),
-                    ]);
+        if($user){
+            $image = DB::table('images')->where('id',$image_id)->first();
+            if($image){
+                if ($user->type == 'admin' || $user->id == $image->user_id) {
+                    if ($request->has(['title','description'])) {
+                        $date = date('H:i:s').'T'.date('H:i:s');
+                        DB::table('images')->where('id',$image_id)->update([
+                            "title" => $request->title,
+                            "description" => $request->description,
+                            "updated_at" => $date,
+                        ]);
+                        return response()->json(['success'=>true]);
+                    }else{
+                        return response()->json(['success'=>false,'error'=>'MSG_MISSING_FIELD'],400);
+                    }
                 }else{
-                    return response()->json(['success'=>false,'error'=>'MSG_MISSING_FIELD'],400);
+                    return repsonse()->json(['success'=>false,'error'=>'MSG_PERMISSION_DENY'],403);
                 }
             }else{
-                return repsonse()->json(['success'=>false,'error'=>'MSG_PERMISSION_DENY'],403);
+                return response()->json(['success'=>false,'error'=>'MSG_POST_NOT_EXISTS'],404);
             }
         }else{
-            return response()->json(['success'=>false,'error'=>'MSG_POST_NOT_EXISTS'],404);
+            return response()->json(['success' => false, 'error' => 'MSG_INVALID_ACCESS_TOKEN'], 401);
         }
     }
 
@@ -133,17 +151,21 @@ class ImageController extends Controller
 
     function delete($image_id, Request $request){
         $user = DB::table('log')->where('access_token',$request->header('Authorization'))->first();
-        $image = DB::table('images')->where('id',$image_id)->first();
-        if($user && $image){
-            if ($user->type == 'admin' || $user->id == $image->user_id) {
-                DB::table('images')->where('id',$image_id)->update([
-                    "deleted" => 1,
-                ]);
+        if($user){
+            $image = DB::table('images')->where('id',$image_id)->first();
+            if($image){
+                if ($user->type == 'admin' || $user->id == $image->user_id) {
+                    DB::table('images')->where('id',$image_id)->update([
+                        "deleted" => 1,
+                    ]);
+                }else{
+                    return repsonse()->json(['success'=>false,'error'=>'MSG_PERMISSION_DENY'],403);
+                }
             }else{
-                return repsonse()->json(['success'=>false,'error'=>'MSG_PERMISSION_DENY'],403);
+                return response()->json(['success'=>false,'error'=>'MSG_POST_NOT_EXISTS'],404);
             }
         }else{
-            return response()->json(['success'=>false,'error'=>'MSG_POST_NOT_EXISTS'],404);
+            return response()->json(['success' => false, 'error' => 'MSG_INVALID_ACCESS_TOKEN'], 401);
         }
     }
 }

@@ -22,7 +22,8 @@ return new class extends Migration
             $table->string('mimetype');
             $table->integer('view_count');
             $table->integer('deleted');
-            $table->timestamps();
+            $table->string('created_at');
+            $table->string('updated_at');
         });
     }
 

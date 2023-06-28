@@ -16,8 +16,7 @@ class CommentController extends Controller
         $image = DB::table('images')->where('id',$image_id)->first();
         if($image && $image->deleted == 0){
             $data = DB::table('comments')->get();
-
-            return $data;
+            return response()->json(['success'=>true,'data'=>$data]);
         }else{
             return response()->json(['success'=>false,'error'=>'MSG_POST_NOT_EXISTS'],404);
         }
@@ -28,13 +27,14 @@ class CommentController extends Controller
         $image = DB::table('images')->where('id',$image_id)->first();
         if ($user) {
             if($image && $image->deleted == 0){
-                DB::table('comments')->insert([
+                $data = DB::table('comments')->insert([
                     "content" => $request->content,
                     "user_id" => $user->id,
                     "image_id" => $image_id,
                     "created_at" => $date,
                 ]);
-            }else{
+                return response()->json(['success'=>true,'data'=>$data]);
+        }else{
                 return response()->json(['success'=>false,'error'=>'MSG_POST_NOT_EXISTS'],404);
             }
         }else{
@@ -51,6 +51,7 @@ class CommentController extends Controller
             if($image && $image->deleted == 0){
                 if ($user->id == $image->user_id || $user->id == $comments->user_id){
                     DB::table('comments')->where('id',$comment_id)->delete();
+                    return response()->json(['success'=>true]);
                 }else{
                     return response()->json(['success'=>false,'error'=>'MSG_PERMISSION_DENY'],403);
                 }
