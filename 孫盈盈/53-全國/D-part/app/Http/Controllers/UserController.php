@@ -18,7 +18,7 @@ class UserController extends Controller
 
         $vaildata = Validator::make($request->all(),['email' => 'email']);
 
-        if(!$request->filled(['email', 'password'])){
+        if(!$request->has(['email', 'password'])){
             return ErrorController::body_null();
         }else if($vaildata -> fails()){
             return ErrorController::body_format();
@@ -27,7 +27,7 @@ class UserController extends Controller
         }else{
             $access = hash('sha256', $request->email);
             $accessToken = strtolower($access);
-            DB::table('user')->where('email', $request->email)->update(['accessToken'=> 'Bearer'.$accessToken]);
+            DB::table('user')->where('email', $request->email)->update(['accessToken'=> 'Bearer '.$accessToken]);
             $user = DB::table('user')->where('email', $request->email)->first();
             return response()->json([
                 'success'=>TRUE,
@@ -56,11 +56,11 @@ class UserController extends Controller
             'password' => 'min:4'
         ]);
 
-        if(!$request->filled(['email', 'password', 'nickname'])){
+        if(!$request->has(['email', 'password', 'nickname', 'profile'])){
             return ErrorController::body_null();
         }else if($password -> fails()){
             return ErrorController::register_password();
-        }else if($vaildata -> fails()){
+        }else if(!$request->filled(['email', 'password', 'nickname', 'profile']) || $vaildata -> fails()){
             return ErrorController::body_format();
         }else if(!$userExist->isEmpty()){
             return ErrorController::register_user();
@@ -91,9 +91,14 @@ class UserController extends Controller
 
     public function logout(Request $request){
         $accessToken = $request->header('Authorization');
-        DB::table('user')->where('accessToken', $accessToken)->update(['accessToken'=>'']);
-        return response()->json([
-            'success'=> TRUE
-        ]);
+        $accessToken = DB::table('user')->where('accessToken', $accessToken);
+        if($accessToken->doesntExist()){
+            return ErrorController::access_token();
+        }else{
+            $accessToken->update('accessToken', '');
+            return response()->json([
+                'success'=> TRUE
+            ]);
+        }
     }
 }
