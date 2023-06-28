@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>編輯</title>
+</head>
+<body>
+    <header>
+        <div class="left">
+            <button class="add" style="margin-right: 20px;">
+                新增專案
+            </button>
+            <button class="undo no">
+                <i class="fa-solid fa-rotate-left disable"></i>
+            </button>
+            <button class="redo no">
+                <i class="fa-solid fa-rotate-right disable"></i>
+            </button>
+        </div>
+        <button class="right save">儲存圖片</button>
+    </header>
+    <hr>
+    <main class="update d-flex">
+        <div class="function d d-flex blue btns">
+            <input type="color" class="color box">
+            <input type="range" class="line" min="1" max="41" step="10" value="21">
+            <button class="point">
+                <i class="fa-regular fa-hand-pointer"></i>
+            </button>
+            <!-- 0 -->
+            <button class="draw">
+                <i class="fa-solid fa-paintbrush"></i>
+            </button>
+            <!-- 1 -->
+            <button class="fill">
+                <i class="fa-solid fa-fill"></i>
+            </button>
+            <!-- 3 -->
+            <button class="paint">
+                <i class="fa-solid fa-stamp"></i>
+            </button>
+            <div class="pattern none d-flex center">
+                <button class="add-pattern" id="add-pattern">+</button>
+                <input type="file" accept="image/*" class="input-pattern none">
+                <div class="patterns d-flex" style="padding: 0;"></div>
+            </div>
+        </div>
+        <div class="canvas">
+            <canvas>
+                畫布
+            </canvas>
+            <img class="moveImg"></img>
+        </div>
+        <div class="object layer blue">
+            <div class="d-flex center">
+                <p>圖層物件列表</p>
+                <div class="btn-group d-flex">
+                    <button class="smallBtn layerAdd">+</button>
+                    <button class="smallBtn layerDel">-</button>
+                </div>
+            </div>
+            <div class="layers">
+                <button class="layerBtn" style="background-color: #565656;">Layer1</button>
+            </div>
+        </div>
+    </main>
+    <script src="./update.js"></script>
+    <script src="https://kit.fontawesome.com/db2ba4df54.js" crossorigin="anonymous"></script>
+</body>
+</html>
