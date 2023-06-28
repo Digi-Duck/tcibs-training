@@ -36,7 +36,7 @@
 
         </div>
         <div class="right">
-            <button @click="insertLayer">新增屠城</button>
+            <button @click="insertLayer">新增圖層</button>
             
         </div>
 
@@ -78,7 +78,7 @@ export default{
     },methods:{
         insertLayer(eve){
             let button =document.createElement('button');
-            button.innerHTML = `新增圖層${this.layer}`;
+            button.innerHTML = `圖層${this.layer}`;
             eve.target.after(button);
             this.layer++;
         },
