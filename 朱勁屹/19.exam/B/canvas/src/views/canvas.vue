@@ -16,13 +16,28 @@
             <button @click="button = 5">儲存樣章</button>
             <button @click="button = 6">上傳圖片</button>
         </div>
-            <div class="center" @mousedown.capture="mousedown" @mousemove.capture="mousemove" @mouseup.capture="mouseup">
-                <canvas :width="caWid" :height="cahei">
-                    
-                </canvas>
+        <div class="a">
+            <div class="aaa">
+                <div class="center" @mousedown.capture="mousedown" @mousemove.capture="mousemove" @mouseup.capture="mouseup">
+                    <canvas :width="caWid" :height="cahei">
+                        
+                    </canvas>
+                </div>
+
             </div>
+            <div class="aaa">
+                <div class="center" @mousedown.capture="mousedown" @mousemove.capture="mousemove" @mouseup.capture="mouseup">
+                    <canvas :width="caWid" :height="cahei">
+                        
+                    </canvas>
+                </div>
+
+            </div>
+
+        </div>
         <div class="right">
-            <button>新增屠城</button>
+            <button @click="insertLayer">新增屠城</button>
+            
         </div>
 
     </div>
@@ -38,11 +53,13 @@ export default{
         const fontSize = ref(10);
         const color = ref("#000000");
         let turn = false;
-        let ctx = {};
+        let ctx = '';
         let startX = 0;
         let startY = 0;
         let endX = 0;
         let endY = 0;
+        let drag;
+        let layer = 1;
         return{
             caWid,
             cahei,
@@ -55,46 +72,73 @@ export default{
             startY,
             endX,
             endY,
+            drag,
+            layer,
         }
     },methods:{
+        insertLayer(eve){
+            let button =document.createElement('button');
+            button.innerHTML = `新增圖層${this.layer}`;
+            eve.target.after(button);
+            this.layer++;
+        },
         mousedown(eve){
-                if(this.button == 2){
+
+                if(this.button == 1){
+                    let X = eve.clientX - 270.5;
+                    let Y = eve.clientY - 150;
+                    console.log(eve.target.width);
+                    eve.target.style = `
+                    position: absolute;
+                            left: ${X - eve.offsetX}px;
+                            top: ${Y - eve.offsetY}px;
+                    `;
+                    this.drag = eve;
+
+                }else if(this.button == 2){
                 this.turn = true;
-                this.ctx = eve.target.getContext('2d');
+                this.ctx = eve.currentTarget.childNodes[0].getContext('2d');
                 this.ctx.lineJoin = 'round';
                 this.ctx.lineCap = 'round';
                 this.ctx.lineWidth = this.fontSize;
-                this.ctx.strokeStyle = 'black';
+                this.ctx.strokeStyle = this.color;
                 this.ctx.beginPath();
-                this.ctx.moveTo(eve.offsetX,eve.offsetY);
+                let X = eve.clientX - 270.5;
+                let Y = eve.clientY - 150;
+                
+                this.ctx.moveTo(X,Y);
+                
     
                 this.startX = 10000;
                 this.startY = 10000;
                 this.endX = 0;
                 this.endY = 0;
     
-                if(this.startX > eve.offsetX){
-                            this.startX = eve.offsetX;
+                        this.ctx.stroke();
+                        if(this.startX > X){
+                            this.startX = X;
                         }
-                        if(this.startY > eve.offsetY){
-                            this.startY = eve.offsetY;
+                        if(this.startY > Y){
+                            this.startY = Y;
                         }
-                        if(this.endX < eve.offsetX){
-                            this.endX = eve.offsetX;
+                        if(this.endX < X){
+                            this.endX = X;
                         }
-                        if(this.endY < eve.offsetY){
-                            this.endY = eve.offsetY;
+                        if(this.endY < Y){
+                            this.endY = Y;
                         }
                         
-                        this.ctx.lineTo(eve.offsetX,eve.offsetY);
+                        this.ctx.lineTo(X,Y);
                         this.ctx.stroke();
                     }
                     
                 },
                 mouseup(eve) {
-                    if(this.turn){
+                    if(this.button == 1 && this.drag != undefined){
+                        this.drag = undefined;
+                    }else if(this.turn){
                         let img = new Image();
-                        console.log(this.ctx);
+                        // console.log(this.ctx);
                         this.startX -= 50;
                         this.startY -= 50;
                         this.endX += 60;
@@ -107,10 +151,13 @@ export default{
                             //     this.endY++;
                             // }
     
-                            
+                            this.startX += this.fontSize/2;
+                            this.startY += this.fontSize/2;
+                            this.endX += this.fontSize/2;
+                            this.endY += this.fontSize/2;
                             let idata = this.ctx.getImageData(this.startX,this.startY,this.endX,this.endY);
                             let can = document.createElement('canvas');
-                            console.log(this.endX - this.startX);
+                            
                             can.width = this.endX - this.startX;
                             can.height = this.endY - this.startY;
                             let catctx = can.getContext('2d');
@@ -127,30 +174,42 @@ export default{
                             left: ${this.startX}px;
                             top: ${this.startY}px;
                             `;
+                            img.addEventListener('dragstart',function (event) {
+                                event.preventDefault();
+                            })
                             this.ctx.clearRect(this.startX,this.startY,this.endX,this.endY);
                     }
                     
                     
                     },
                     mousemove(e) {
-                        
-                        if(this.turn){
-                            let X = e.$parent;
-                            console.log(X); 
+                        if(this.button == 1 && this.drag != undefined){
+                            let X = e.clientX - 270.5;
+                            let Y = e.clientY - 150;
+                            this.drag.target.style = `
+                            position: absolute;
+                            left: ${X - this.drag.offsetX}px;
+                            top: ${Y - this.drag.offsetY}px;
+                    `;
                             
-                            this.ctx.lineTo(e.offsetX,e.offsetY);
+                        }else if(this.turn){
+                            
+                            let X = e.clientX - 270.5;
+                            let Y = e.clientY - 150;
+                            
+                            this.ctx.lineTo(X,Y);
                             this.ctx.stroke();
-                            if(this.startX > e.offsetX){
-                                this.startX = e.offsetX;
+                            if(this.startX > X){
+                                this.startX = X;
                             }
-                            if(this.startY > e.offsetY){
-                                this.startY = e.offsetY;
+                            if(this.startY > Y){
+                                this.startY = Y;
                             }
-                            if(this.endX < e.offsetX){
-                                this.endX = e.offsetX;
+                            if(this.endX < X){
+                                this.endX = X;
                             }
-                            if(this.endY < e.offsetY){
-                                this.endY = e.offsetY;
+                            if(this.endY < Y){
+                                this.endY = Y;
                             }
                         }
                     }
@@ -197,7 +256,20 @@ export default{
             background-color: white;
             position: relative;
             overflow: hidden;
-            z-index: 0;
+            
+            
+        }
+        .a{
+            width: 1280px;
+            height: 720px;
+            position: relative;
+        }
+        .aaa{
+            width: 1280px;
+            height: 720px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
         }
         
         canvas{
@@ -231,7 +303,7 @@ export default{
         }
         .right > button{
             font-size: 30px;
-            width: 150px;
+            width: 170px;
             display: block;
             margin: 30px auto;
         }
