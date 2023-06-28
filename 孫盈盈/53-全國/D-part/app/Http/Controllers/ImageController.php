@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 use App\Http\Controllers\ErrorController;
 
@@ -12,27 +13,51 @@ class ImageController extends Controller
 {
     //還未做完
     public function selectPhoto(Request $request){
-        
-        $order_by = ($request->filled('order_by'))?$request->order_by:'created_at';
-        $order_type = ($request->filled('order_type'))?$request->order_type:'desc';
-        $page = ($request->filled('page'))?$request->page:1;
-        $page_size = ($request->filled('page_size'))?$request->page_size:10;
+        if(!$request->has('order_by', 'order_type', 'keyword', 'page', 'page_size')){
+            return ErrorController::body_null();
+        }else{
+            $validator = Validator::make($request->all(),([
+                'order_by'=>'nullable|in:created_at, updated_at',
+                'order_type'=>'nullable|in:asc, desc',
+                'page'=>'nullable|numeric',
+                'page_size'=>'nullable|numeric'
+            ]));
 
-        $images = DB::table('image');
-        $image_array = array();
+            if($validator->fails()){
+                return ErrorController::body_format();
+            }else{
+                $order_by = ($request->filled('order_by'))?$request->order_by:'created_at';
+                $order_type = ($request->filled('order_type'))?$request->order_type:'desc';
+                $page = ($request->filled('page'))?$request->page:1;
+                $page_size = ($request->filled('page_size'))?$request->page_size:10;
 
-        $total = 0;
-        foreach($images as $key => $image){
-            if(empty($image -> delete_at)){
-                $total++;
-                DB::table('image')->where('id', $image->id)->update(['view_count'=>DB::raw('view_count + 1')]);
-                $update_image = DB::table('image')->where('id', $image->id)->first();
-                $image_array[] = $update_image;
+                $images = DB::table('image')->orderBy($order_by, $order_type)->get();
+                $image_array = array();
+
+                $total = 0;
+                foreach($images as $key => $image){
+                    if(empty($image -> delete_at)){
+                        $total++;
+                        $user = DB::table('user')->where('id', $image->user_id)->first();
+                        DB::table('image')->where('id', $image->id)->update(['view_count'=>DB::raw('view_count + 1')]);
+                        $update_image = DB::table('image')->where('id', $image->id)->first();
+
+                        $image_array[] = ([
+                            "success"=> true,
+                            "data"=>([
+                                'id'=>$update_image->id,
+                                'url'=>$update_image->url,
+                                'title'=>$update_image->title,
+                                'created_at'=>$update_image->created_at
+                            ])
+                        ]);
+                    }
+                }
+                $s = array_chunk($image_array, $page_size);
+
+                return $s;
             }
         }
-        $s = array_chunk($image_array, $page_size);
-
-        return $total;
     }
 
     public function hotPhoto(){

@@ -5,13 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .all{
+        body{
+            margin: 0;
+        }
+        /* .all{
+            position: relative;
+        } */
+        #img{
             position: relative;
         }
         .glass{
             position: absolute;
             border: 3px solid black;
             border-radius: 50%;
+
+            overflow: hidden;
+            top: 0;
 
             width: 100px;
             height: 100px;
@@ -22,27 +31,53 @@
 </head>
 <body>
     <div class="all">
-        <img id="img" src="./img/264828170_356247232927672_7580583740451996137_n.gif" alt="">
+        <img id="img" src="./img/264014786_956330775008920_5505670214503536807_n.png" alt="">
+        <div class="glass">
+            <canvas id="canvas" width="100" height="100"></canvas>
+            <!-- <img src="" alt="" class="glass-img"> -->
+        </div>
     </div>
     <script>
-        function magnifier(imgID, zoom){
-            let img,glass,w,h,bw;
-            img = document.getElementById(imgID);
+        let img = document.getElementById('img');
+        let glass = document.querySelector('.glass');
+        let glass_img = document.querySelector('.glass-img')
 
-            glass = document.createElement('div');
-            glass.setAttribute('class', 'glass');
+        let canvas = document.getElementById('canvas');
+        let ctx = canvas.getContext('2d');
 
-            img.parentElement.insertBefore(glass, img);
+// // 繪製垂直網格線
+// for (let x = 0; x < canvas.width; x += 9) {
+// }
 
-            glass.style.backgroundImage = `url(${img.src},)`;
-            glass.style.backgroundSize = (img.width * 3) + "px " + (img.height * 3) + "px";
-            bw = 3;
-            w = glass.offsetWidth/2;
-            h = glass.offsetHeight/2;
+// // 繪製水平網格線
+// for (let y = 0; y < canvas.height; y += 9) {
+// }
 
 
-        }
-        magnifier('img', 3)
+        img.addEventListener('mousemove', (e)=>{
+            glass.style.left = e.offsetX + 'px';
+            glass.style.top = e.offsetY + 'px';
+
+            ctx.drawImage(img, e.offsetX - 7, e.offsetY - 7, 14 ,14 ,0, 0, 100, 100);
+            console.log(img.offsetHeight);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';// 網格線顏色
+
+// 繪製垂直網格線
+for (let x = 0; x < canvas.width; x += 9) {
+    ctx.fillRect(x, 0, 1, canvas.height);
+}
+
+// 繪製水平網格線
+for (let y = 0; y < canvas.height; y += 9) {
+    ctx.fillRect(0, y, canvas.width, 1);
+}
+
+// 繪製紅色空心四方形
+ctx.strokeStyle = 'rgba(255, 0, 0)'; // 紅色邊線顏色
+ctx.lineWidth = 2; // 邊線寬度
+ctx.strokeRect(46, 46, 9, 9); // 繪製紅色空心四方形
+        })
+        
     </script>
 </body>
 </html>
