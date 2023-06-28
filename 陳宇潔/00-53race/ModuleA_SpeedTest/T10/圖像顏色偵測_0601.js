@@ -4,33 +4,22 @@ const canvas = document.querySelector('#canvas');
 const ctx = canvas.getContext('2d');
 
 img.addEventListener('mousemove', function(e){
-    const mouseX = e.offsetX
-    const mouseY = e.offsetY
-    // console.log(mouseX, mouseY)
-    // 設置放大鏡的位置
-    magnifier.style.left = mouseX + 10 + 'px';
-    magnifier.style.top = mouseY + 10 + 'px';
-
-    // 繪製放大圖像
-    drawMagnifiedImage(mouseX, mouseY);
+    magnifier.style.left = e.offsetX + 'px';
+    magnifier.style.top = e.offsetY + 'px';
+    
+    drawMagnifiedImage(e.offsetX, e.offsetY);
 })
 
 // 繪製放大圖像
 function drawMagnifiedImage(mouseX, mouseY) {
-    ctx.clearRect(0, 0, magnifier.clientWidth, magnifier.clientHeight); // 清除canvas內容
-    
-    let size = img.naturalHeight / img.height
-    ctx.drawImage(img, (mouseX - 7) * size, (mouseY - 7) * size, 14 * size, 14 * size, 0, 0, 100, 100);
-    
-    // console.log(img.clientWidth, img.naturalWidth);
-     // 繪製網格線
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';// 網格線顏色
+    ctx.drawImage(img, mouseX - 7, mouseY - 7, 14, 14, 0, 0, 100, 100);
 
+    // 繪製網格線
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';// 網格線顏色
     // 繪製垂直網格線
     for (let x = 0; x < canvas.width; x += 9) {
         ctx.fillRect(x, 0, 1, canvas.height);
     }
-
     // 繪製水平網格線
     for (let y = 0; y < canvas.height; y += 9) {
         ctx.fillRect(0, y, canvas.width, 1);
@@ -66,5 +55,4 @@ files.addEventListener('change', function(e) {
         magnifier.style.display = 'block'  
     };
     reader.readAsDataURL(file);
-
 });
