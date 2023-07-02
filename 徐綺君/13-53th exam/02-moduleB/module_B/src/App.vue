@@ -23,7 +23,7 @@
         </div>
         <div ref="center" class="center" @mousedown="down" @mousemove="move" @mouseup="up" @mouseleave="up">
             <canvas ref="canvas"></canvas>
-            <img draggable="false" :src="img" alt="" v-for="img in imgs" @drag="img_darg">
+            <img draggable="false" :src="img.src" alt="" v-for="img in imgs" @drag="img_darg" :style="{ left: img.x+'px', top: img.y+'px'}">
         </div>
         <div class="right">
             <input class="layers_radio" type="radio" name="layers" id="layers0" checked>
@@ -61,38 +61,46 @@
                 if (draw.value) {                
                     ctx.lineWidth = size.value;
                     ctx.beginPath(); 
-                    ctx.moveTo(e.offsetX, e.offsetY);
-                    ctx.lineTo(e.offsetX, e.offsetY);
-                    startX = endX = e.offsetX;
-                    startY = endY = e.offsetY;
+                    ctx.moveTo(e.offsetX + e.target.offsetLeft, e.offsetY + e.target.offsetTop);
+                    ctx.lineTo(e.offsetX + e.target.offsetLeft, e.offsetY + e.target.offsetTop);
+
+                    startX = endX = e.offsetX + e.target.offsetLeft;
+                    startY = endY = e.offsetY + e.target.offsetTop;
                     ctx.stroke();
                     drawing = true;
                 }
             }
             function move(e) {
                 if (drawing) {                    
-                    ctx.lineTo(e.offsetX, e.offsetY);
+                    ctx.lineTo(e.offsetX + e.target.offsetLeft, e.offsetY + e.target.offsetTop);
                     ctx.stroke();
-                    if (startX > e.offsetX) {
-                        startX = e.offsetX
+                    if (startX > e.offsetX + e.target.offsetLeft) {
+                        startX = e.offsetX + e.target.offsetLeft
                     }
-                    if (startY > e.offsetY) {
-                        startY = e.offsetY
+                    if (startY > e.offsetY + e.target.offsetTop) {
+                        startY = e.offsetY + e.target.offsetTop
                     }
-                    if (endX < e.offsetX) {
-                        endX = e.offsetX
+                    if (endX < e.offsetX + e.target.offsetLeft) {
+                        endX = e.offsetX + e.target.offsetLeft
                     }
-                    if (endY < e.offsetY) {
-                        endY = e.offsetY
+                    if (endY < e.offsetY + e.target.offsetTop) {
+                        endY = e.offsetY + e.target.offsetTop
                     }
                 }
             }
             function up() {
-                if (drawing) {                    
-                    startX -= size.value/2;
-                    startY -= size.value/2;
-                    endX += size.value/2;
-                    endY += size.value/2;
+                if (drawing) {            
+                    if (size.value > 1) {                        
+                        startX -= size.value/2;
+                        startY -= size.value/2;
+                        endX += size.value/2;
+                        endY += size.value/2;
+                    }else{
+                        startX -= 1;
+                        startY -= 1;
+                        endX += 1;
+                        endY += 1;
+                    }
 
                     if (startX <= 0) {
                         startX = 0;
@@ -114,12 +122,15 @@
                     let canvas_img = document.createElement('canvas');
                     canvas_img.width = img_width;
                     canvas_img.height = img_heigth;
-                    console.log(img_width);
-                    console.log(canvas_img.width);
                     ctx.clearRect(0, 0, canvas.value.width, canvas.value.height);
 
                     canvas_img.getContext('2d').putImageData(img_data,0,0);
-                    imgs.value.push(canvas_img.toDataURL("image/png"));
+                    let $img = {
+                        'src': canvas_img.toDataURL("image/png"),
+                        'x': startX,
+                        'y': startY,
+                    }
+                    imgs.value.push($img);
 
                     drawing = false;
                 }
@@ -175,6 +186,9 @@
     }
     body{
         margin: 0px;
+    }
+    img{
+        position: absolute;
     }
     #app{
         width: 100%;
