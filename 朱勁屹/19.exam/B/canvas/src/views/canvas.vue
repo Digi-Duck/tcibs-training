@@ -13,37 +13,36 @@
             <button @click="button = 3">油漆桶</button>
             <input type="color" v-model="color">
             <button @click="button = 4">樣章</button>
-            <button @click="button = 5">儲存樣章</button>
+            <input type="file" @change="file">
             <button @click="button = 6">上傳圖片</button>
         </div>
         <div class="a">
-            <div class="aaa">
+            <div class="aaa" v-for="(item,index) in centerLayer" :style="item.style">
+                <div class="center" @mousedown.capture="mousedown" @mousemove.capture="mousemove" @mouseup.capture="mouseup">
+                    <canvas :width="caWid" :height="cahei">
+                    </canvas>
+                    <img class='border2' v-for="(v,i) in img" :src="v['src']" v-show="v['in'] == index" :style="v.style" alt="" draggable="false" @mousedown="imgdown($event,i)" @mousemove="imgmove($event,i)" @mouseup="imgup" @mouseover="imgOver" @mouseout="imgOut">
+                </div>
+            </div>
+            <!-- <div class="aaa">
                 <div class="center" @mousedown.capture="mousedown" @mousemove.capture="mousemove" @mouseup.capture="mouseup">
                     <canvas :width="caWid" :height="cahei">
                         
                     </canvas>
                 </div>
 
-            </div>
-            <div class="aaa">
-                <div class="center" @mousedown.capture="mousedown" @mousemove.capture="mousemove" @mouseup.capture="mouseup">
-                    <canvas :width="caWid" :height="cahei">
-                        
-                    </canvas>
-                </div>
-
-            </div>
+            </div> -->
 
         </div>
         <div class="right">
             <button @click="insertLayer">新增圖層</button>
-            
+            <button @click="lZindex(index)" v-for="(item,index) in layer">{{ item.text }}</button>
         </div>
 
     </div>
 </template>
 <script>
-import { ref } from "vue";
+import { ref,toDisplayString,toRef } from "vue";
 
 export default{
     setup(){
@@ -59,7 +58,12 @@ export default{
         let endX = 0;
         let endY = 0;
         let drag;
-        let layer = 1;
+        let layers = 0;
+        let layer = ref([]);
+        let centerLayer = ref([]);
+        let img = ref([]);        
+        let now = ref(0);
+        let imgSrc = ref('');
         return{
             caWid,
             cahei,
@@ -74,28 +78,119 @@ export default{
             endY,
             drag,
             layer,
+            centerLayer,
+            layers,
+            img,
+            now,
+            imgSrc,
+            
         }
     },methods:{
-        insertLayer(eve){
-            let button =document.createElement('button');
-            button.innerHTML = `圖層${this.layer}`;
-            eve.target.after(button);
-            this.layer++;
+        file(eve){
+            let self = this;
+            const reader = new FileReader();
+            reader.readAsDataURL(eve.target.files[0]);
+            reader.onload = function () {
+                self.imgSrc = reader.result;
+                
+            }
+            console.log(this.imgSrc);
         },
-        mousedown(eve){
+        in(){
 
-                if(this.button == 1){
+        },
+        lZindex(eve){
+            for (let index = 0; index < this.centerLayer.length; index++) {
+
+                this.centerLayer[index] = {
+                    style:{
+                    'z-index': `${index}`
+                }
+                
+            }
+        }
+            this.centerLayer[eve] = {
+                style:{
+                    'z-index': `10000`
+                }
+            }
+            this.now = eve;
+        },
+        insertLayer(eve){
+            let array = [];
+            let a = {
+                style:{
+                    'z-index': `${this.layers}`
+                }
+            };
+            array['text'] = `圖層${this.layers}`;
+            this.layer.push(array);
+            this.centerLayer.push(a);
+            this.now = this.layers;
+            console.log(this.now);
+            this.layers++;
+        },
+        imgOver(eve){
+            if (this.button == 1) {
+                eve.target.classList.add('border');
+                
+            }
+        },
+        imgOut(eve){
+            if (this.button == 1) {
+                eve.target.classList.remove('border');
+                
+            }
+        },
+        imgdown(eve,i){
+            console.log(eve);
+            if(this.button == 1){
+                    console.log(eve.target);
                     let X = eve.clientX - 270.5;
                     let Y = eve.clientY - 150;
-                    console.log(eve.target.width);
-                    eve.target.style = `
-                    position: absolute;
-                            left: ${X - eve.offsetX}px;
-                            top: ${Y - eve.offsetY}px;
-                    `;
+                    
+                    this.img[i]['style'] = {
+                        'position': 'absolute',
+                        'left': `${X - eve.offsetX}px`,
+                        'top': `${Y - eve.offsetY}px`,
+
+                    }
+                    // eve.target.style = `
+                    //         position: absolute;
+                    //         left: ${X - eve.offsetX}px;
+                    //         top: ${Y - eve.offsetY}px;
+                    // `;
                     this.drag = eve;
 
-                }else if(this.button == 2){
+                }
+        },
+        imgmove(e,i){
+            
+            if(this.button == 1 && this.drag != undefined){
+                        let X = e.clientX - 270.5;
+                        let Y = e.clientY - 150;
+                    //     this.drag.target.style = `
+                    //     position: absolute;
+                    //     left: ${X - this.drag.offsetX}px;
+                    //     top: ${Y - this.drag.offsetY}px;
+                    // `;
+                    this.img[i]['style'] = {
+                        'position': 'absolute',
+                        'left': `${X - this.drag.offsetX}px`,
+                        'top': `${Y - this.drag.offsetY}px`,
+
+                    }
+                            
+            }
+        },
+        imgup(eve){
+            if(this.button == 1 && this.drag != undefined){
+                this.drag = undefined;
+            }
+        },
+        mousedown(eve){
+            console.log(this.imgSrc);
+                if(this.button == 2){
                 this.turn = true;
                 this.ctx = eve.currentTarget.childNodes[0].getContext('2d');
                 this.ctx.lineJoin = 'round';
@@ -107,6 +202,7 @@ export default{
                 let Y = eve.clientY - 150;
                 
                 this.ctx.moveTo(X,Y);
+
                 
     
                 this.startX = 10000;
@@ -130,13 +226,51 @@ export default{
                         
                         this.ctx.lineTo(X,Y);
                         this.ctx.stroke();
+                    }else if(this.button == 4 && this.imgSrc != ''){
+                        
+                        this.turn = true;
+                        this.ctx = eve.currentTarget.childNodes[0].getContext('2d');
+                        // this.ctx.lineJoin = 'round';
+                        // this.ctx.lineCap = 'round';
+                        // this.ctx.lineWidth = this.fontSize;
+                        // this.ctx.strokeStyle = this.color;
+                        // this.ctx.beginPath();
+                        let X = eve.clientX - 270.5;
+                        let Y = eve.clientY - 150;
+                        
+                        // this.ctx.moveTo(X,Y);
+                        let img = new Image();
+                        // img.width = this.fontSize;
+                        // img.height = this.fontSize;
+                        img.src = this.imgSrc;
+                        this.ctx.drawImage(img,X - (this.fontSize/2),Y - (this.fontSize/2),this.fontSize,this.fontSize);
+                        
+            
+                        this.startX = 10000;
+                        this.startY = 10000;
+                        this.endX = 0;
+                        this.endY = 0;
+    
+                        this.ctx.stroke();
+                        if(this.startX > X){
+                            this.startX = X;
+                        }
+                        if(this.startY > Y){
+                            this.startY = Y;
+                        }
+                        if(this.endX < X){
+                            this.endX = X;
+                        }
+                        if(this.endY < Y){
+                            this.endY = Y;
+                        }
+                        
+                        
                     }
                     
                 },
                 mouseup(eve) {
-                    if(this.button == 1 && this.drag != undefined){
-                        this.drag = undefined;
-                    }else if(this.turn){
+                    if(this.turn && this.button == 2){
                         let img = new Image();
                         // console.log(this.ctx);
                         this.startX -= 50;
@@ -151,8 +285,8 @@ export default{
                             //     this.endY++;
                             // }
     
-                            this.startX += this.fontSize/2;
-                            this.startY += this.fontSize/2;
+                            this.startX -= this.fontSize/2;
+                            this.startY -= this.fontSize/2;
                             this.endX += this.fontSize/2;
                             this.endY += this.fontSize/2;
                             let idata = this.ctx.getImageData(this.startX,this.startY,this.endX,this.endY);
@@ -163,36 +297,75 @@ export default{
                             let catctx = can.getContext('2d');
                             
                             catctx.putImageData(idata,0,0); 
-                            img.src = can.toDataURL("image/png");
-                            img.style = 'z-index: 99;';
-                            img.onload = function (e) {
-                                e.preventDefault();
-                                eve.target.after(img);
-                            }
-                            img.style=`
-                            position: absolute;
-                            left: ${this.startX}px;
-                            top: ${this.startY}px;
-                            `;
-                            img.addEventListener('dragstart',function (event) {
-                                event.preventDefault();
-                            })
+                            // img.src = can.toDataURL("image/png");
+                            // img.style = 'z-index: 99;';
+                            // img.onload = function (e) {
+                            // }
+                            let a = [];
+                            a['src'] = can.toDataURL("image/png");
+                            a['style'] = {
+                                'position': 'absolute',
+                                'left': `${this.startX}px`,
+                                'top': `${this.startY}px`
+                            };
+                            a['in'] = this.now;
+                            this.img.push(a);
+                            
+                            
+
+                            
+                            this.ctx.clearRect(this.startX,this.startY,this.endX,this.endY);
+                    }else if(this.turn && this.button == 4 && this.imgSrc != ''){
+                        let img = new Image();
+                        // console.log(this.ctx);
+                        this.startX -= 50;
+                        this.startY -= 50;
+                        this.endX += 60;
+                        this.endY += 60;
+                        this.turn = false;
+                        // console.log(this.startX);
+                        
+                        // if(this.endX - this.startX == 0 || this.endY - this.startY == 0){
+                            //     this.endX++;
+                            //     this.endY++;
+                            // }
+    
+                            this.startX -= this.fontSize/2;
+                            this.startY -= this.fontSize/2;
+                            this.endX += this.fontSize/2;
+                            this.endY += this.fontSize/2;
+                            let idata = this.ctx.getImageData(this.startX,this.startY,this.endX,this.endY);
+                            let can = document.createElement('canvas');
+                            
+                            can.width = this.endX - this.startX;
+                            can.height = this.endY - this.startY;
+                            let catctx = can.getContext('2d');
+                            
+                            catctx.putImageData(idata,0,0); 
+                            // img.src = can.toDataURL("image/png");
+                            // img.style = 'z-index: 99;';
+                            // img.onload = function (e) {
+                            // }
+                            let a = [];
+                            a['src'] = can.toDataURL("image/png");
+                            a['style'] = {
+                                'position': 'absolute',
+                                'left': `${this.startX}px`,
+                                'top': `${this.startY}px`
+                            };
+                            a['in'] = this.now;
+                            this.img.push(a);
+                            
+                            
+
+                            
                             this.ctx.clearRect(this.startX,this.startY,this.endX,this.endY);
                     }
                     
                     
                     },
                     mousemove(e) {
-                        if(this.button == 1 && this.drag != undefined){
-                            let X = e.clientX - 270.5;
-                            let Y = e.clientY - 150;
-                            this.drag.target.style = `
-                            position: absolute;
-                            left: ${X - this.drag.offsetX}px;
-                            top: ${Y - this.drag.offsetY}px;
-                    `;
-                            
-                        }else if(this.turn){
+                        if(this.turn && this.button == 2){
                             
                             let X = e.clientX - 270.5;
                             let Y = e.clientY - 150;
@@ -211,12 +384,40 @@ export default{
                             if(this.endY < Y){
                                 this.endY = Y;
                             }
+                        }else if(this.turn && this.button == 4 && this.imgSrc != ''){
+                            
+                            let X = e.clientX - 270.5;
+                            let Y = e.clientY - 150;
+                            
+                            let img = new Image();
+                            img.width = this.fontSize;
+                            img.height = this.fontSize;
+                            img.src = this.imgSrc;
+                            this.ctx.drawImage(img,X - (this.fontSize/2),Y - (this.fontSize/2),this.fontSize,this.fontSize);
+                            if(this.startX > X){
+                                this.startX = X;
+                            }
+                            if(this.startY > Y){
+                                this.startY = Y;
+                            }
+                            if(this.endX < X){
+                                this.endX = X;
+                            }
+                            if(this.endY < Y){
+                                this.endY = Y;
+                            }
                         }
                     }
                 }
             }
 </script>
 <style>
+        .border2{
+            border: 2px solid rgba(255, 255, 255, 0);
+        }
+        .border{
+            border: dashed 2px black;
+        }
         input{
             text-align: center;
         }
@@ -246,14 +447,14 @@ export default{
         }
         .left{
             width: 10%;
-            
+
             background-color: white;
             
         }
         .center{
             width: 1280px;
             height: 720px;
-            background-color: white;
+            /* background-color: white; */
             position: relative;
             overflow: hidden;
             
@@ -263,6 +464,7 @@ export default{
             width: 1280px;
             height: 720px;
             position: relative;
+            background-color: white;
         }
         .aaa{
             width: 1280px;
