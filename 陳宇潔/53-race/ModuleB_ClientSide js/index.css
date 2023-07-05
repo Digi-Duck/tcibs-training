@@ -1,0 +1,246 @@
+body{
+    background-color: #565656;
+    padding: 20px 50px;
+}
+input{
+    cursor: pointer;
+}
+*{
+    font-size: 25px;
+    font-weight: 600;
+    color: #565656;
+    /* text-align: center; */
+    font-weight: bold;
+    font-size: 25px;
+}
+.bg{
+    width: 75%;
+    height: 75vh;
+    margin: 10px auto;
+    border-radius: 25px;
+    border: 10px solid lightgray;
+}
+.left{
+    margin-right: 70%;
+}
+h1{
+    background-color: lightgray;
+    margin: 0;
+    padding: 20px 10px;
+    font-size: 50px;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+}
+button{
+    background-color: lightgray;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2.5px solid #565656;
+    cursor: pointer;
+}
+button:hover{
+    border: 2.5px solid lightgray;
+    color: lightgray;
+    background-color: #565656;
+}
+button:hover i{
+    color: lightgray;
+}
+main{
+    padding-top: 20px;
+    justify-content: space-between;
+}
+.update .blue{
+    text-align: center;
+    padding: 10px;
+}
+
+p{
+    color: lightgray;
+    margin: 30px;
+}
+.group{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+input{
+    height: 75px;
+    border-radius: 10px;
+    border: 5px solid lightgray
+}
+.d-flex{
+    display: flex;
+}
+.center{
+    justify-content: center;
+    align-items: center;
+}
+.none{
+    display: none;
+}
+.big{
+    width: 72%;
+}
+.small{
+    width: 20%;
+}
+.d{
+    height: 75%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.btns button, .box{
+    width: 75px;
+    height: 75px;
+    padding: 20px;
+    margin: 10px;
+}
+span{
+    display: block;
+    background: #565656;
+    margin-bottom: 7.5px;
+    border-radius: 5px;
+    padding: 0.5px;
+}
+span:hover{
+    background: lightgray;
+}
+.function{
+    width: 100px;
+    
+    position: relative;
+}
+.object{
+    width: 270px;
+    max-height: 75vh;
+    
+    overflow-y: scroll;
+}
+.blue{
+    background-color: lightgray;
+    border-radius: 10px;
+}
+.none{
+    display: none;
+}
+/* .disable{
+    color: #a5a4a4;
+}
+.no{
+    cursor: not-allowed;
+}
+.no:hover{
+    background-color: lightgray;
+}
+.no:hover .disable{
+    color: #a5a4a4;
+} */
+.object p{
+    color: #565656;
+    margin: 20px 0;
+    line-height: 50px;
+}
+#add-pattern{
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    margin: 5px;
+}
+.smallBtn{
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    margin-left: 5px;
+}
+.layerBtn{
+    width: 80%;
+    height: 50px;
+    background-color: #fff;
+    border: 2.5px solid lightgray;
+    color: lightgray;
+    margin: 10px 0;
+    height: 75px;
+}
+.pattern{
+    position: absolute;
+    background-color: lightgray;
+    left: 85%;
+    bottom: 0;
+    border-radius: 10px;
+    height: 100px;
+    z-index: 1001;
+    padding: 10px;
+}
+.patternImg{
+    width: 100px;
+    height: 100px;
+    object-fit: fill;
+    border: 5px solid lightgray;
+    margin: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.border{
+    border: 5px solid #565656;
+}
+input[type="range"]{
+    -webkit-appearance: none;
+    width: 75px;
+    background: none;
+    overflow:hidden;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    height: 5px;
+    border-radius: 4px;
+    background: #565656;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    position: relative;
+    height: 20px;
+    width: 20px;
+    margin-top: -8px;     
+    background-color: #fff;   
+    border-radius: 50%;
+}
+.canvas{
+    position: relative;
+    background-color: #fff;
+}
+canvas{
+    position: relative;
+}
+.moveImg{
+    display: none;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    pointer-events: none;
+}
+.canvas img{
+    user-select: none;
+    position: absolute; 
+    z-index: 5;
+}
+.pointed{
+    border: 2px dashed #565656;
+    box-sizing: border-box;
+}
+.imgFather div{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: lightgray;
+}
+.imgFather #circle{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
