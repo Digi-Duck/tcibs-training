@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-size: 30px;
+        }
+        body{
+            margin: 0px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+        html{
+            width: 100%;
+            height: 100%;
+
+        }
+        .text{
+            width: 50%;
+            height: 100%;
+        }
+        .area{
+            width: 50%;
+            height: 100%;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <textarea class="text"></textarea>
+    <div class="area"></div>
+    
+
+    <script>
+        let text = document.querySelector('.text');
+        let area = document.querySelector('.area');
+        
+
+        text.addEventListener('keyup',function () {
+            a = text.value.replaceAll("\n",'<br>');
+
+            while(a.match(/  /)){
+                console.log(a.match(/  /));
+                a = a.replaceAll(a.match(/  /)[0],'<br>');
+            }
+            while(a.match(/# ([^<br>]*)/)){
+                console.log(a.match(/# ([^<br>]*)/));
+                a = a.replaceAll(a.match(/# ([^<br>]*)/)[0],'<h1>'+a.match(/# ([^<br>]*)/)[1]+'<h1>')
+            }
+            while(a.match(/\*\*([\s\S]*)\*\*/)){
+                a = a.replaceAll(a.match(/\*\*([\s\S]*)\*\*/)[0],'<strong>'+a.match(/\*\*([\s\S]*)\*\*/)[1]+'</strong>');
+            }
+
+            while(a.match(/--/)){
+                a = a.replaceAll(a.match(/--/)[0],'<hr>');
+            }
+            
+            while(a.match(/-([^<br>]*)/)){
+                a = a.replaceAll(a.match(/-([^<br>]*)/)[0],'<li>'+a.match(/-([^<br>]*)/)[1]+'</li>');
+            }
+            
+            while(a.match(/!\[(?<word>[\s\S]*)\]\((?<link>[\s\S]*)\)/)){
+                group = a.match(/!\[(?<word>[\s\S]*)\]\((?<link>[\s\S]*)\)/).groups;
+                a = a.replaceAll(a.match(/!\[([\s\S]*)\]\([\s\S]*\)/)[0],'<img src="'+group.link+'" alt="'+group.word+'">');
+            }
+
+            while(a.match(/\[(?<word>[\s\S]*)\]\((?<link>[\s\S]*)\)/)){
+                group = a.match(/\[(?<word>[\s\S]*)\]\((?<link>[\s\S]*)\)/).groups;
+                a = a.replaceAll(a.match(/\[([\s\S]*)\]\([\s\S]*\)/)[0],'<a href="'+group.link+'">'+group.word+'</a>');
+            }
+           
+            area.innerHTML = a;
+        })
+    </script>
+</body>
+</html>

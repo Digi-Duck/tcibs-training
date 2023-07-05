@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .checkmark {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #000;
+            position: relative;
+        }
+
+        .checkmark_stem {
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background-color: #000;
+            top: 10px;
+            left: 16px;
+            transform: rotate(45deg);
+        }
+
+        .checkmark_kick {
+            position: absolute;
+            width: 10px;
+            height: 2px;
+            background-color: #000;
+            top: 28px;
+            left: 8px;
+            transform: rotate(45deg);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="checkmark">
+        <div class="checkmark_stem"></div>
+        <div class="checkmark_kick"></div>
+      </div>
+</body>
+</html>

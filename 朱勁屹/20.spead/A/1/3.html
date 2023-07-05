@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        label{
+            display: block;
+            border: 1px solid black;
+            width: 100px;
+            height: 100px;
+            position: relative;
+        }
+        .line1{
+            width: 2px;
+            height: 0px;
+            transition: 1s;
+            background-color: rgb(0, 0, 0);
+            transform: rotate(-45deg);
+            position: absolute;
+            left: 20px;
+            top: 35px;
+        }
+        .line2{
+            width: 2px;
+            height: 0px;
+            background-color: rgb(0, 0, 0);
+            transform: rotate(45deg);
+            position: absolute;
+            right: 30px;
+            top: 10px;
+            transition: 1s;
+        }
+        .box{
+            width: 500px;
+            display: flex;
+            height: 100px;
+        }
+        .text{
+            font-size: 100px;
+            position: relative;
+            line-height: 100px;
+        }
+        .del{
+            width: 0%;
+            height: 4px;
+            background-color: rgb(0, 0, 0);
+            position: absolute;
+            top: 50%;
+            transition: 1s;
+        }
+        #che1:checked ~.box1>label>.line1{
+            height: 50px;
+        }
+        #che1:checked ~.box1>label>.line2{
+            height: 80px;
+        }
+        #che1:checked ~.box1>.text>.del{
+            width: 100%;
+        }
+        #che2:checked ~.box2>.text>.del{
+            width: 100%;
+        }
+        #che3:checked ~.box3>.text>.del{
+            width: 100%;
+        }
+
+        #che2:checked ~.box2>label>.line1{
+            height: 50px;
+        }
+        #che2:checked ~.box2>label>.line2{
+            height: 80px;
+        }
+
+        #che3:checked ~.box3>label>.line1{
+            height: 50px;
+        }
+        #che3:checked ~.box3>label>.line2{
+            height: 80px;
+        }
+        input{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <input id="che1" type="checkbox">
+    <input id="che2" type="checkbox">
+    <input id="che3" type="checkbox">
+    <div class="box box1">
+        <label for="che1">
+            <div class="line1"></div>
+            <div class="line2"></div>
+        </label>
+        <div class="text">
+            <div class="del"></div>
+            dsafwe
+        </div>
+    </div>
+    <div class="box box2">
+        <label for="che2">
+            <div class="line1"></div>
+            <div class="line2"></div>
+        </label>
+        
+        <div class="text"><div class="del"></div>dsfe</div>
+    </div>
+    <div class="box box3">
+        <label for="che3">
+            <div class="line1"></div>
+            <div class="line2"></div>
+        </label>
+        
+        <div class="text"><div class="del"></div>esafd</div>
+    </div>
+</body>
+</html>
