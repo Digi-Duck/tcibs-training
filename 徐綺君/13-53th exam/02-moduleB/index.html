@@ -1,130 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-      #image-collection li {
-        float: left;
-        display: block;
-        margin: 5px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      #box {
+          width: 100px;
+          height: 100px;
+          background-color: aquamarine;
+          position: absolute;
       }
-    </style>
+      #father {
+        width: 600px;
+        height: 500px;
+        background-color: rgb(226, 117, 184);
+        position: relative;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        cursor: move;
+      }
+      #scale { 
+        width: 10px; 
+        height: 10px; 
+        overflow: hidden; 
+        cursor: se-resize; 
+        position: absolute; 
+        right: 0; 
+        bottom: 0; 
+        background-color: rgb(122, 191, 238); 
+      }
+  </style>
+
 </head>
 <body>
-  <div>
-    <h1>
-      Example: Storing Images in Local Storage
-    </h1>
-    <input id="image-upload" type="file" />
-    <ul id="image-collection">
-    </ul>
-  </div>
+    <div id="father">
+      <div id="box">
+        <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"/>
+        <div id="scale"></div>
+      </div>
+    </div>
+    <script type="text/javascript">
+    // box是装图片的容器,fa是图片移动缩放的范围,scale是控制缩放的小图标
+        var box = document.getElementById("box");
+        var fa = document.getElementById('father');
+        var scale = document.getElementById("scale");
+        // 图片移动效果
+        box.onmousedown=function(ev) {
+            var oEvent = ev; 
+            // 浏览器有一些图片的默认事件,这里要阻止
+            oEvent.preventDefault();
+            var disX = oEvent.clientX - box.offsetLeft;
+            var disY = oEvent.clientY - box.offsetTop;
+            fa.onmousemove=function (ev) {
+                oEvent = ev;
+                oEvent.preventDefault();
+                var x = oEvent.clientX -disX;
+                var y = oEvent.clientY -disY;
 
-    <script>
-        const fileUploadLimit = 1048576; // 1MB in bytes. Formula: 1MB = 1 * 1024 * 1024.
-        const localStorageKey = "images";
-        let imageData = [];
-
-        // Render image in HTML by adding to the unordered list.
-        function renderImage(imageObj, $imageCollection) {
-          if (imageObj.file_base64.length) {
-            $imageCollection.append("<li><img src=\"data:image/png;base64," + imageObj.file_base64 + "\"  width=\"200\" /><br />" + imageObj.name + "<br /><a href=\"#\" data-timestamp=\"" + imageObj.timestamp + "\" class=\"btn-delete\">Remove</a></li>")
-          }
-        }
-
-        // Add image to local storage.
-        function addImage(imageObj) {
-          imageData.push(imageObj);
-          localStorage.setItem(localStorageKey, JSON.stringify(imageData));
-        }
-
-        // Remove image from local storage by timestamp.
-        function removeImage(timestamp) {
-          // Remove item by the timestamp.
-          imageData = imageData.filter(img => img.timestamp !== timestamp);
-
-          // Update local storage.
-          localStorage.setItem(localStorageKey, JSON.stringify(imageData));
-        }
-
-        // Read image data stored in local storage.
-        function getImages($imageCollection) {
-          const localStorageData = localStorage.getItem(localStorageKey);
-
-          if (localStorageData !== null) {
-            imageData = JSON.parse(localStorage.getItem(localStorageKey))
-
-            for (let i = 0; i < imageData.length; i++) {
-              renderImage(imageData[i], $imageCollection);
+                // 图形移动的边界判断
+                x = x <= 0 ? 0 : x;
+                x = x >= fa.offsetWidth-box.offsetWidth ? fa.offsetWidth-box.offsetWidth : x;
+                y = y <= 0 ? 0 : y;
+                y = y >= fa.offsetHeight-box.offsetHeight ? fa.offsetHeight-box.offsetHeight : y;
+                box.style.left = x + 'px';
+                box.style.top = y + 'px';
             }
-          }
-        }
-
-        // Delete button action to fire off deletion.
-        function deleteImageAction() {
-          $(".btn-delete").on("click", function(e) {
-            e.preventDefault();
-
-            removeImage($(this).data("timestamp"));
-
-            // Remove the HTML markup for this image.
-            $(this).parent().remove();
-          })
-        }
-
-        // Upload action to fire off file upload automatically.
-        function uploadChangeAction($upload, $imageCollection) {
-          $upload.on("change", function(e) {
-            e.preventDefault();
-
-            // Ensure validation message is removed (if one is present).
-            $upload.next("p").remove();
-
-            const file = e.target.files[0];
-
-            if (file.size <= fileUploadLimit) {
-              const reader = new FileReader();
-
-              reader.onloadend = () => {
-                const base64String = reader.result
-                  .replace('data:', '')
-                  .replace(/^.+,/, '');
-
-                // Create an object containing image information.
-                let imageObj = {
-                  name: "image-" + ($imageCollection.find("li").length + 1),
-                  timestamp: Date.now(),
-                  file_base64: base64String.toString()
-                };
-
-                // Add To Local storage
-                renderImage(imageObj, $imageCollection)
-                addImage(imageObj);
-
-                deleteImageAction();
-
-                // Clear upload element.
-                $upload.val("");
-              };
-
-              reader.readAsDataURL(file);
-            } else {
-              $upload.after("<p>File too large</p>");
+            // 图形移出父盒子取消移动事件,防止移动过快触发鼠标移出事件,导致鼠标弹起事件失效
+            fa.onmouseleave = function () {
+              fa.onmousemove=null;
+              fa.onmouseup=null;
             }
-          });
+            // 鼠标弹起后停止移动
+            fa.onmouseup=function() {
+               fa.onmousemove=null;
+               fa.onmouseup=null;
+            } 
         }
+        // 图片缩放效果
+        scale.onmousedown = function (e) {
+          // 阻止冒泡,避免缩放时触发移动事件
+          e.stopPropagation();
+          e.preventDefault();
+          var pos = {
+            'w': box.offsetWidth,
+            'h': box.offsetHeight,
+            'x': e.clientX,
+            'y': e.clientY
+          };
+          fa.onmousemove = function (ev) {
+            ev.preventDefault();
+            // 设置图片的最小缩放为30*30
+            var w = Math.max(30, ev.clientX - pos.x + pos.w)
+            var h = Math.max(30,ev.clientY - pos.y + pos.h)
+            // console.log(w,h)
 
-        // Initialise.
-        $(document).ready(function() {
-          getImages($("#image-collection"));
-
-          // Set action events.
-          uploadChangeAction($("#image-upload"), $("#image-collection"));
-          deleteImageAction();
-        });
-
+            // 设置图片的最大宽高
+            w = w >= fa.offsetWidth-box.offsetLeft ? fa.offsetWidth-box.offsetLeft : w
+            h = h >= fa.offsetHeight-box.offsetTop ? fa.offsetHeight-box.offsetTop : h
+            box.style.width = w + 'px';
+            box.style.height = h + 'px';
+            // console.log(box.offsetWidth,box.offsetHeight)
+          }
+          fa.onmouseleave = function () {
+            fa.onmousemove=null;
+            fa.onmouseup=null;
+          }
+          fa.onmouseup=function() {
+            fa.onmousemove=null;
+            fa.onmouseup=null;
+          } 
+        }
+        
     </script>
 </body>
 </html>

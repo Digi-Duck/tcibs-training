@@ -22,8 +22,15 @@
 
         </div>
         <div ref="center" class="center" @mousedown="down" @mousemove="move" @mouseup="up" @mouseleave="up">
-            <canvas ref="canvas"></canvas>
-            <img draggable="false" :src="img.src" alt="" v-for="img in imgs" @drag="img_darg" :style="{ left: img.x+'px', top: img.y+'px'}">
+            <canvas ref="canvas" @click="clcik_darg"></canvas>
+            <div class="img_box" v-for="(img,index) in imgs" :class="{border: img.isdrag && drag && !zoom,mouse_pointer: drag && !zoom}" :style="{ left: img.x+'px', top: img.y+'px',transform: 'rotate('+img.deg+'deg)'}" :key="index" @mousedown="down_darg(index)">
+                <img draggable="false" :src="img.src" alt="" :style="{width: img.w+'px', height: img.h+'px'}">
+                <div class="dot dot1" @mousedown.stop="dot_down(index,1)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="left: -5px; top: -5px"></div>
+                <div class="dot dot2" @mousedown.stop="dot_down(index,2)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="left: -5px; bottom: -5px"></div>
+                <div class="dot dot3" @mousedown.stop="dot_down(index,3)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="right: -5px; top: -5px"></div>
+                <div class="dot dot4" @mousedown.stop="dot_down(index,4)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="right: -5px; bottom: -5px"></div>
+                <div class="dot dot5" @mousedown.stop="spin_down(index)" @mousemove="move" @mouseup="up" :style="{ left: (img.w/2)+'px', top: -30+'px'}" :class="{ block: img.isdrag && drag }" style="right: -5px; bottom: -5px"></div>
+            </div>
         </div>
         <div class="right">
             <input class="layers_radio" type="radio" name="layers" id="layers0" checked>
@@ -38,14 +45,24 @@
         setup() {
             let canvas = ref(null);
             let center = ref(null);
-            let ctx;
-            let drawing = false;
             let draw = ref(true);
             let drag = ref(false);
+            let fill = ref(false);
+            let zoom = ref(false);
+            let spin = ref(false);
+            let img_id = ref(0);
+            let dot_id = 0;
+            let ctx;
+            let drawing = false;
+            let draging = false;
             let startX;
             let startY;
             let endX;
             let endY;
+            let mouseX;
+            let mouseY;
+            let canvas_top;
+            let canvas_left;
             let size = ref(20);
 
             let imgs = ref([]);
@@ -56,36 +73,94 @@
                 ctx = canvas.value.getContext('2d');
                 ctx.lineCap = "round";
                 ctx.lineJoin = "round";
+                canvas_top = canvas.value.getBoundingClientRect().top;
+                canvas_left = canvas.value.getBoundingClientRect().left;
             }
             function down(e) {
                 if (draw.value) {                
                     ctx.lineWidth = size.value;
                     ctx.beginPath(); 
-                    ctx.moveTo(e.offsetX + e.target.offsetLeft, e.offsetY + e.target.offsetTop);
-                    ctx.lineTo(e.offsetX + e.target.offsetLeft, e.offsetY + e.target.offsetTop);
+                    ctx.moveTo(e.offsetX + e.target.getBoundingClientRect().left - canvas_left, e.offsetY + e.target.getBoundingClientRect().top - canvas_top);
+                    ctx.lineTo(e.offsetX + e.target.getBoundingClientRect().left - canvas_left, e.offsetY + e.target.getBoundingClientRect().top - canvas_top);
 
-                    startX = endX = e.offsetX + e.target.offsetLeft;
-                    startY = endY = e.offsetY + e.target.offsetTop;
+                    startX = endX = e.offsetX + e.target.getBoundingClientRect().left - canvas_left;
+                    startY = endY = e.offsetY + e.target.getBoundingClientRect().top - canvas_top;
                     ctx.stroke();
                     drawing = true;
                 }
             }
             function move(e) {
                 if (drawing) {                    
-                    ctx.lineTo(e.offsetX + e.target.offsetLeft, e.offsetY + e.target.offsetTop);
+                    ctx.lineTo(e.offsetX + e.target.getBoundingClientRect().left - canvas_left, e.offsetY + e.target.getBoundingClientRect().top - canvas_top);
                     ctx.stroke();
-                    if (startX > e.offsetX + e.target.offsetLeft) {
-                        startX = e.offsetX + e.target.offsetLeft
+
+                    if (startX > e.offsetX + e.target.getBoundingClientRect().left - canvas_left) {
+                        startX = e.offsetX + e.target.getBoundingClientRect().left - canvas_left
                     }
-                    if (startY > e.offsetY + e.target.offsetTop) {
-                        startY = e.offsetY + e.target.offsetTop
+                    if (startY > e.offsetY + e.target.getBoundingClientRect().top - canvas_top) {
+                        startY = e.offsetY + e.target.getBoundingClientRect().top - canvas_top
                     }
-                    if (endX < e.offsetX + e.target.offsetLeft) {
-                        endX = e.offsetX + e.target.offsetLeft
+                    if (endX < e.offsetX + e.target.getBoundingClientRect().left - canvas_left) {
+                        endX = e.offsetX + e.target.getBoundingClientRect().left - canvas_left
                     }
-                    if (endY < e.offsetY + e.target.offsetTop) {
-                        endY = e.offsetY + e.target.offsetTop
+                    if (endY < e.offsetY + e.target.getBoundingClientRect().top - canvas_top) {
+                        endY = e.offsetY + e.target.getBoundingClientRect().top - canvas_top
                     }
+                }
+                if (draging) {
+                    imgs.value[img_id.value].x = e.offsetX + e.target.getBoundingClientRect().left - canvas_left - (imgs.value[img_id.value].w/2);
+                    imgs.value[img_id.value].y = e.offsetY + e.target.getBoundingClientRect().top - canvas_top - (imgs.value[img_id.value].h/2);
+                }
+                if (zoom.value) {
+                    let w = e.offsetX + e.target.getBoundingClientRect().left - canvas_left - startX;
+                    let h = e.offsetY + e.target.getBoundingClientRect().top - canvas_top - startY;
+
+                    startX = e.offsetX + e.target.getBoundingClientRect().left - canvas_left;
+                    startY = e.offsetY + e.target.getBoundingClientRect().top - canvas_top;
+                      
+                    if (dot_id == 1) {
+                        imgs.value[img_id.value].w -= w;
+                        imgs.value[img_id.value].h -= h;
+                        imgs.value[img_id.value].x += w;
+                        imgs.value[img_id.value].y += h;
+                    }
+                    if (dot_id == 2) {
+                        imgs.value[img_id.value].w -= w;
+                        imgs.value[img_id.value].h += h;
+                        imgs.value[img_id.value].x += w;
+                    }
+                    if (dot_id == 3) {                       
+                        imgs.value[img_id.value].w += w;
+                        imgs.value[img_id.value].h -= h;
+                        imgs.value[img_id.value].y += h;
+                    }
+                    if (dot_id == 4) {
+                        imgs.value[img_id.value].h += h;
+                        imgs.value[img_id.value].w += w;
+                    }
+                }
+                if (spin.value) {
+                    endX = event.offsetX + event.target.getBoundingClientRect().left - canvas_left;
+                    endY = event.offsetY + event.target.getBoundingClientRect().top - canvas_top;
+
+                    let centerX = imgs.value[img_id.value].w/2 + imgs.value[img_id.value].x;
+                    let centerY = imgs.value[img_id.value].h/2 + imgs.value[img_id.value].y;
+
+                    let direct = ((startX - centerX) * (endY - centerY)) - ((startY - centerY) * (endX - centerX));
+                    let a =  Math.sqrt(Math.pow(startX - endX, 2) + Math.pow(startY - endY, 2));
+                    let b =  Math.sqrt(Math.pow(startX - centerX, 2) + Math.pow(startY - centerY, 2));
+                    let c =  Math.sqrt(Math.pow(centerX - endX, 2) + Math.pow(centerY - endY, 2));
+                    let cosA = (Math.pow(b, 2) + Math.pow(c, 2) - Math.pow(a, 2)) / (2 * b * c);
+                    let degA = Math.round(Math.acos(cosA) * 180 / Math.PI);
+
+                    if (direct > 0) {
+                        imgs.value[img_id.value].deg += degA;
+                    }else{
+                        imgs.value[img_id.value].deg -= degA;
+                    }
+
+                    startX = event.offsetX + event.target.getBoundingClientRect().left - canvas_left;
+                    startY = event.offsetY + event.target.getBoundingClientRect().top - canvas_top;
                 }
             }
             function up() {
@@ -116,32 +191,74 @@
                     }
                     
                     let img_width = endX - startX;
-                    let img_heigth = endY - startY;
+                    let img_height = endY - startY;
 
-                    let img_data = ctx.getImageData(startX,startY,img_width,img_heigth);
+                    let img_data = ctx.getImageData(startX,startY,img_width,img_height);
                     let canvas_img = document.createElement('canvas');
                     canvas_img.width = img_width;
-                    canvas_img.height = img_heigth;
+                    canvas_img.height = img_height;
                     ctx.clearRect(0, 0, canvas.value.width, canvas.value.height);
 
                     canvas_img.getContext('2d').putImageData(img_data,0,0);
-                    let $img = {
+                    let img = {
                         'src': canvas_img.toDataURL("image/png"),
-                        'x': startX,
-                        'y': startY,
+                        'x': startX - 3,
+                        'y': startY - 3,
+                        'w': img_width,
+                        'h': img_height,
+                        'deg': 0,
                     }
-                    imgs.value.push($img);
+                    imgs.value.push(img);
 
                     drawing = false;
                 }
+                if (draging) {
+                    draging = false;
+                }
+                if (zoom.value) {
+                    zoom.value = false;
+                }
+                if (spin.value) {
+                    spin.value = false;
+                }
             }
 
-            function img_darg(e){
+            function down_darg(i){
                 if (drag.value) {
-                    
-                }else{
-                    // e.target.draggable = false;
+                    draging = true;
+                    img_id.value = i;
+                    imgs.value.forEach(e => {
+                        e.isdrag = false;
+                    });
+                    imgs.value[i].isdrag = true;
+
+                    mouseX = event.offsetX;
+                    mouseY = event.offsetY;
                 }
+            }
+            function clcik_darg(e) {
+                if (drag) {
+                    imgs.value.forEach(e=>{
+                        e.isdrag = false;
+                    })
+                }
+            }
+
+            function dot_down(i,n) {
+                if (drag.value) {
+                    zoom.value = true;
+                    startX = event.offsetX + event.target.getBoundingClientRect().left - canvas_left;
+                    startY = event.offsetY + event.target.getBoundingClientRect().top - canvas_top;
+                    img_id.value = i;
+                    dot_id = n;
+                }
+            }
+
+            function spin_down(i) {
+                spin.value = true;
+                startX = event.offsetX + event.target.getBoundingClientRect().left - canvas_left;
+                startY = event.offsetY + event.target.getBoundingClientRect().top - canvas_top;
+                img_id.value = i;
             }
 
             onMounted(() => {
@@ -160,12 +277,20 @@
                 size,
                 draw,
                 drag,
+                fill,
+                zoom,
+                spin,
+                draging,
+                img_id,
 
                 setcanvas,
                 down,
                 move,
                 up,
-                img_darg,
+                down_darg,
+                clcik_darg,
+                dot_down,
+                spin_down,
             }
         }
     }
@@ -188,7 +313,42 @@
         margin: 0px;
     }
     img{
+        display: block;
+    }
+    .img_box{
         position: absolute;
+        padding: 2px;
+        border: 1px dashed #56565600;
+    }
+    .dot{
+        width: 10px;
+        height: 10px;
+        background-color: #565656;
+        border-radius: 50%;
+        position: absolute;
+        display: none;
+    }
+    .dot:hover{
+        background-color: #888888;
+    }
+    .dot3:hover,.dot2:hover{
+        cursor: ne-resize;
+    }
+    .dot1:hover,.dot4:hover{
+        cursor: nw-resize;
+    }
+    .dot5{
+        cursor: pointer;
+    }
+    .block{
+        display: block;
+    }
+    .mouse_pointer{
+        cursor: pointer;
+    }
+    .border{
+        border: 1px dashed #565656;
+        cursor: move;
     }
     #app{
         width: 100%;
@@ -248,6 +408,7 @@
         width: 1100px;
         height: 750px;
         background-color: #ffffff;
+        overflow: hidden;
     }
     .center > *{
         position: absolute;
