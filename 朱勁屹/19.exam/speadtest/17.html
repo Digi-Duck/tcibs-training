@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .text{
+            width: 700px;
+            height: 100px;
+            margin: auto;
+            margin-top: 50px;
+            font-size: 100px;
+
+        }
+        .box{
+            width: 700px;
+            height: 700px;
+            /* border: 1px solid black; */
+            margin:auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .bbox{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            font-size: 100px;
+            text-align: center;
+            line-height: 200px;
+        }
+        .button{
+            margin: auto;
+            display: block;
+            font-size: 30px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="text">
+        
+    </div>
+    <div class="box">
+        <div class="bbox"></div>
+        <div class="bbox"></div>
+        <div class="bbox"></div>
+        <div class="bbox"></div>
+        <div class="bbox"></div>
+        <div class="bbox"></div>
+        <div class="bbox"></div>
+        <div class="bbox"></div>
+        <div class="bbox"></div>
+    </div>
+    <button class="button">刷新</button>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+  crossorigin="anonymous"></script>
+    <script>
+        fetch("./17.json")
+        .then(response => response.json())
+        .then(response =>{
+            console.log(response.array);
+            let array = response.array;
+            let bbox = document.querySelectorAll('.bbox');
+            let button = document.querySelector('.button');
+            let text = document.querySelector('.text');
+            const dick = [
+                [0, 1, 2],
+                [3, 4, 5],
+                [6, 7, 8],
+    
+                // 縱向
+                [0, 3, 6],
+                [1, 4, 7],
+                [2, 5, 8],
+    
+                // 右斜
+                [2, 4, 6],
+    
+                // 左斜
+                [0, 4, 8],
+            ];
+    
+            button.addEventListener('click',function () {
+                array = [0,0,0,0,0,0,0,0,0];
+                bbox.forEach(function (value) {
+                    value.innerHTML = '';
+                });
+                text.innerHTML = '';
+            })
+    
+            bbox.forEach(function (value,index) {
+                if(array[index] == 1){
+                    value.innerHTML = 'x';
+                }else if(array[index] == 2){
+                    value.innerHTML = 'o';
+                }
+                win(array);
+                value.addEventListener('click',function () {
+                    if(array[index] == 0){
+                        array[index] = 1;
+                        value.innerHTML = 'x';
+                        ooo(array);
+                        win(array);
+                        update(array);
+                        
+                    }
+                    
+                })
+            })
+            function ooo(array) {
+                index = Math.floor(Math.random() * 9) 
+                if(array[index] == 0){
+                    array[index] = 2;
+                    bbox[index].innerHTML = 'o';
+                }else{
+                    ooo(array);
+                }
+            }
+            
+            function win(array) {
+                dick.forEach(function (value,index) {
+                    a1 = array[value[0]];
+                    a2 = array[value[1]];
+                    a3 = array[value[2]];
+                    
+                    console.log(a1);
+                    
+                    if(a1 == 1 && a2 == 1 && a3 == 1){
+                        text.innerHTML = `{{X||O}} win`;
+                    }else if((a1 == 2 && a2 == 2 && a3 == 2)){
+                        text.innerHTML = `{{X||O}} lose`;
+                    }
+                })
+            }
+        })
+
+        function update(data) {
+
+            $.ajax({
+                type: "POST",
+                url: './17.php',
+                data: data,
+                success: success,
+                dataType: dataType
+            });
+            
+            // let fd = new FormData();
+            // fd.append('text',JSON.stringify(data));
+            // fetch('./17.php', {
+            //     method: 'POST', // 或 'POST'，取決於你的伺服器端設定
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body: fd,
+            //     })
+            //     .catch(error => {
+            //         // 處理錯誤
+            //         console.error('Error:', error);
+            //     });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: #ededea;
+    margin: 0;
+    color: #4b3d2e;
+}
+.nav{
+    width: 100%;
+    height: 100px;
+    background-color: #4b3d2e;
+    box-shadow: 0.5px 0.1px 10px #4b3d2e;
+    z-index: 1;
+    padding: 10px 30px;
+
+    position: fixed;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.mainpng{
+    width: 60px;
+}
+.padding{
+    width: 100%;
+    height: 150px;
+}
+.center{
+    display: flex;
+    justify-content: center;
+}
+.bg{
+    display: flex;
+    flex-direction: column;
+}
+.title{
+    color: white;
+    text-shadow: 1px 1px #cdc8be;
+    font-size: 40px;
+    font-weight: 900;
+    font-family: sans-serif;
+    margin: 0 20px;
+}
+.content{
+    background-color: #cdc8be;
+    padding: 50px;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+}
+input{
+    width: 300px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+.room{
+    width: 200px;
+    display: flex;
+}
+.verify{
+    margin: 3px 0;
+    display: flex;
+    align-items: center;
+}
+img{
+    width: 100%;
+}
+.box{
+    width: 40px;
+    height: 40px;
+    border: 1px solid aliceblue;
+    background-color: aliceblue;
+    border-radius: 2.5px;
+    margin: 0 2px;
+    cursor: pointer;
+}
+.group{
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.group span{
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 3px;
+}
+.refresh{
+    height: 35px;
+    color: #4b3d2e;
+    font-size: 15px;
+    font-weight: 600;
+    margin-left: 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.group:last-child{
+    flex-direction: unset;
+    justify-content: space-between;
+}
+.group:last-child button{
+    width: 75px;
+    height: 40px;
+    background-color: #4b3d2e;
+    color: #ededea;
+    font-weight: 700;
+    font-size: 17px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+.move{
+    border: 1px solid #4b3d2e;
+    border-style: dashed;
+}

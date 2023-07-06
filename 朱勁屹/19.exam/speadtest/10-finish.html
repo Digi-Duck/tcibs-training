@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .canvas{
+            
+            border: 1px solid black;
+            /* display: block; */
+            position: relative;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: 50%;
+            /* background-color: red; */
+            z-index: 99;
+        }
+        .px{
+            width: calc(100px / 15 - 0.02px);
+            height: calc(100px / 15 - 0.02px);
+            border: 0.1px solid rgb(255, 255, 255);
+        }
+    </style>
+</head>
+<body>
+    <input type="file" class="input">
+    <canvas id="canvas" class="canvas">
+        
+    </canvas>
+    <div class="box"></div>
+    
+
+    <script>
+        let input = document.querySelector('.input'); 
+        let canvas  = document.getElementById('canvas');
+        let ctx = canvas.getContext('2d');
+        let num = 0;
+        const reader = new FileReader();
+        const image = new Image();
+        let box = document.querySelector('.box');
+        
+        for (let index = 0; index < 225; index++) {
+            box.innerHTML += '<div class="px"></div> ';
+            
+        }
+        
+        
+        input.addEventListener('change',function (event) {
+            let file = event.target.files[0];
+            
+            
+            reader.onload = function (e) {
+                image.src = e.target.result; 
+                
+                image.onload = function () {
+                    canvas.width = image.width;
+                    canvas.height = image.height;
+                    // console.log(image.width);
+                    ctx.drawImage(image,0,0,image.width,image.height);
+                    num = 1
+                }
+            }
+            reader.readAsDataURL(file);
+
+        });
+        canvas.addEventListener('mousemove',function (eve) {
+            if(num == 1){
+                let px = document.querySelectorAll('.px');
+                x = eve.pageX - 270;
+                y = eve.pageY - 15;
+                const idata = ctx.getImageData(x,y,15,15);
+                
+                // console.log(idata.data.length/3);
+                
+                for (index = 0; index < idata.data.length;index += 4) {
+                    r = idata.data[index + 0];
+                    g = idata.data[index + 1];
+                    b = idata.data[index + 2];
+                    op = idata.data[index + 3];
+                    px[index/4].style = `background-color: rgb(${r}, ${g},${b});`;
+                    
+                }
+                console.log(b);
+                // console.log();
+                // console.log(eve.pageX);
+                box.style = `
+                    position: absolute;
+                    top: ${eve.pageY + 10}px;
+                    left: ${eve.pageX + 10}px;
+                `;            
+            }
+        });
+        
+    </script>
+</body>
+</html>

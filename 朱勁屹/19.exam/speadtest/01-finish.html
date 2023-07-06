@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas">
+
+    </canvas>
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let img = new Image();
+        img.src = './img/he.jpg';
+
+        img.onload = function () {
+            canvas.width = img.width;
+            const a = 320;
+            const b = (img.height/img.width)*a;
+            canvas.width = a;
+            canvas.height = b;
+            // ctx.filter = "saturate(0)";
+            ctx.drawImage(img,0,0,a,b);
+            
+            const iData = ctx.getImageData(0,0,img.width,img.height);
+            console.log(iData.data.length);
+            for (let i = 0; i < iData.data.length; i += 4) {
+                // iData.data[i] = 255;
+                // iData.data[i+1] = 255;
+                // iData.data[i+2] = 255;
+                
+                total = iData.data[i] + iData.data[i+1]  + iData.data[i+2];
+                av = total/3;
+                if(av > 112){
+                    iData.data[i] = 255;
+                    iData.data[i+1] = 255;
+                    iData.data[i+2] = 255;
+
+                }else{
+                    iData.data[i] = 0;
+                    iData.data[i+1] = 0;
+                    iData.data[i+2] = 0;
+                }
+
+            }
+
+            
+            
+            
+            
+            ctx.putImageData(iData,0,0);
+
+            const url = canvas.toDataURL();
+
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'bicth.jpg';
+
+            // link.click();
+        }
+
+    </script>
+</body>
+</html>

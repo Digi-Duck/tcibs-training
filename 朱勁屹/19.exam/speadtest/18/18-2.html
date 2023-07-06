@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app{
+            width: 100%;
+            height: 100%;
+        }
+        html{
+            width: 100%;
+            height: 100%;
+
+        }
+        body{
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+        }
+        main{
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            display: flex;
+
+        }
+        .leftBox{
+            width: 20%;
+            height: 100%;
+            border-right: 2px solid black;
+        }
+        .rightBox{
+            width: 80%;
+            height: 100%;
+        }
+        button{
+            padding: 20px 50px;
+            font-size: 30px;
+            background-color: white;
+            margin: 10px auto;
+            display: block;
+
+        }
+        input{
+            width: 50%;
+            padding: 20px 50px;
+            font-size: 50px;
+            font-weight: 600;
+            display: block;
+            margin: auto;
+            border: 0px;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <main>
+            <div class="leftBox">
+                <a href="./18.html">
+                    <button>Leave Chat</button>
+                </a>
+                    <input type="text" v-model="name">
+                    <button>Current Users</button>
+            </div>
+            <div class="rightBox">
+    
+            </div>
+        </main>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script> 
+    <script type="module">
+        import {createApp , ref , reactive , onMounted , computed} from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.0-beta.7/vue.esm-browser.min.js';
+        const app = createApp({
+            setup(){
+                const name = ref('');
+                return{
+                    name,
+                }
+            }
+        })
+        app.mount('#app');
+
+    </script>
+</body>
+</html>

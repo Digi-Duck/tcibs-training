@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document</title>
+    <style>
+        .canvas {
+            width: 600px;
+            height: 600px;
+            border: 10px solid black;
+            border-radius: 5px;
+            margin: 10px auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .box {
+            width: 3.75px;
+            height: 3.75px;
+            /* scale: 0.5;
+            border: 1px solid black; */
+        }
+        .palette {
+            width: 400px;
+            height: 200px;
+            border-radius: 5px;
+            margin: 10px auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .color-btn {
+            border-radius: 100%;
+            width: 35.5px;
+            height: 35.5px;
+            border: 1px solid black;
+
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="canvas"></div>
+        <div class="palette"></div>
+        <img src="" alt="">
+        <!-- {{color}} -->
+    </div>
+    <script>
+        let canvas = document.querySelector(".canvas")
+        let palette = document.querySelector(".palette")
+        let isMouseDown = false;
+        let currentColor = "rgb(0, 0, 0)"
+        function draw(x, y) {
+            console.log(isMouseDown);
+            if (isMouseDown) document.querySelector(`.box-${x}-${y}`).style = `background-color: ${currentColor};`;
+        }
+        function changeColor(color) {
+            currentColor = color
+        }
+        function getColor() {
+            return `rgb(${Math.ceil(Math.random() * 255)}, ${Math.ceil(Math.random() * 255)}, ${Math.ceil(Math.random() * 255)})`
+        }
+        function logButtons(e) {
+            isMouseDown = (e.buttons === 1)
+        }   
+
+        document.addEventListener("mouseup", logButtons);
+        document.addEventListener("mousedown", logButtons);
+        for (let x = 0; x < 160; x += 1) {
+            for (let y = 0; y < 160; y += 1) {
+                canvas.innerHTML += `<div onclick="draw(${x}, ${y})" onmouseover="draw(${x}, ${y})" class="box box-${x}-${y}">`
+            }
+        }
+        for (let px = 0; px < 10; px += 1) {
+            for (let py = 0; py < 5; py += 1) {
+                let c = getColor()
+                palette.innerHTML += `<div onclick="changeColor('${c}')" class="color-btn" style="background-color: ${c};">`
+            }
+        }
+    </script>
+</body>
+</html>

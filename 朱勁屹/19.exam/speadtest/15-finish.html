@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        th,td{
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+        }
+        table{
+            border: 1px solid black;
+            width: 1000px;
+            margin: auto;
+            margin-top: 100px;
+            font-size: 30px;
+
+        }
+        .box{
+            width: 1000px;
+            font-size: 30px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    
+    <table>
+    <thead>
+        <tr>
+            <th>Question</th>
+            <th>Actual Answer</th>
+            <th>Submitted Answer</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <!-- <tr>
+            <td>df</td>
+            <td>df</td>
+            <td>df</td>
+        </tr> -->
+        
+    </tbody>
+    </table>
+    <div class="box">
+
+        
+    </div>
+    <script>
+        let tbody = document.querySelector('tbody');
+        let box = document.querySelector('.box');
+        let a = [];
+        let b = [];
+        let c = 0;
+        fetch('./15.csv')
+        .then(response => response.text())
+        .then(text => {
+            a = text.split(','); 
+            fetch('./15-2.csv')
+            .then(response => response.text())
+            .then(text => {
+                b = text.split(',');
+                
+                a.forEach(function (value,index) {
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${value}</td>
+                            <td>${b[index]}</td>
+                        </tr>
+                    `;
+                    if(value == b[index]){
+                        c++;
+                    }
+                });
+                box.innerHTML = `
+                    Score: ${c}/${a.length}
+                `;
+            })
+        })
+        
+    </script>
+</body>
+</html>
