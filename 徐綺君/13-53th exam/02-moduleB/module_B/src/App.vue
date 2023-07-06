@@ -59,6 +59,8 @@
             let startY;
             let endX;
             let endY;
+            let centerX;
+            let centerY;
             let mouseX;
             let mouseY;
             let canvas_top;
@@ -112,39 +114,36 @@
                     imgs.value[img_id.value].y = e.clientY - canvas_top;
                 }
                 if (zoom.value) {
-                    let w = e.clientX - canvas_left - startX;
-                    let h = e.clientY - canvas_top - startY;
+                    endX = event.clientX - canvas_left;
+                    endY = event.clientY - canvas_top;
 
-                    startX = e.clientX - canvas_left;
-                    startY = e.clientY - canvas_top;
+                    let deg = 180 / Math.PI *Math.atan2(startY - endY, endX - startX);
+
+                    let length = (Math.sqrt(Math.pow(startX - endX, 2) + Math.pow(startY - endY, 2)))/2;
+
+                    if (deg<0) {
+                        deg = deg + 360;
+                    }
+                    
+                    // console.log(startX,centerX,startY,centerY);
+                    // console.log(length);
+                    let x = length*Math.cos(deg);
+                    let y = length*Math.sin(deg);
+
+                    // console.log(deg);
+                    // console.log(x);
+
+                    imgs.value[img_id.value].x += x;
+                    // imgs.value[img_id.value].y += y;
+                    imgs.value[img_id.value].w += x;
+                    // imgs.value[img_id.value].h -= y;
+                    startX = event.clientX - canvas_left;
+                    startY = event.clientY - canvas_top;
                       
-                    if (dot_id == 1) {
-                        imgs.value[img_id.value].w -= w;
-                        imgs.value[img_id.value].h -= h;
-                        imgs.value[img_id.value].x += w;
-                        imgs.value[img_id.value].y += h;
-                    }
-                    if (dot_id == 2) {
-                        imgs.value[img_id.value].w -= w;
-                        imgs.value[img_id.value].h += h;
-                        imgs.value[img_id.value].x += w;
-                    }
-                    if (dot_id == 3) {                       
-                        imgs.value[img_id.value].w += w;
-                        imgs.value[img_id.value].h -= h;
-                        imgs.value[img_id.value].y += h;
-                    }
-                    if (dot_id == 4) {
-                        imgs.value[img_id.value].h += h;
-                        imgs.value[img_id.value].w += w;
-                    }
                 }
                 if (spin.value) {
-                    endX = event.offsetX + event.target.getBoundingClientRect().left - canvas_left;
-                    endY = event.offsetY + event.target.getBoundingClientRect().top - canvas_top;
-
-                    let centerX = imgs.value[img_id.value].w/2 + imgs.value[img_id.value].x;
-                    let centerY = imgs.value[img_id.value].h/2 + imgs.value[img_id.value].y;
+                    endX = event.clientX - canvas_left;
+                    endY = event.clientY - canvas_top;
 
                     let direct = ((startX - centerX) * (endY - centerY)) - ((startY - centerY) * (endX - centerX));
                     let a =  Math.sqrt(Math.pow(startX - endX, 2) + Math.pow(startY - endY, 2));
@@ -159,8 +158,8 @@
                         imgs.value[img_id.value].deg -= degA;
                     }
 
-                    startX = event.offsetX + event.target.getBoundingClientRect().left - canvas_left;
-                    startY = event.offsetY + event.target.getBoundingClientRect().top - canvas_top;
+                    startX = event.clientX - canvas_left;
+                    startY = event.clientY - canvas_top;
                 }
             }
             function up() {
@@ -247,8 +246,8 @@
             function dot_down(i,n) {
                 if (drag.value) {
                     zoom.value = true;
-                    startX = event.offsetX + event.target.getBoundingClientRect().left - canvas_left;
-                    startY = event.offsetY + event.target.getBoundingClientRect().top - canvas_top;
+                    startX = centerX = event.clientX - canvas_left;
+                    startY = centerY = event.clientY - canvas_top;
                     img_id.value = i;
                     dot_id = n;
                 }
@@ -256,8 +255,8 @@
 
             function spin_down(i) {
                 spin.value = true;
-                startX = event.offsetX + event.target.getBoundingClientRect().left - canvas_left;
-                startY = event.offsetY + event.target.getBoundingClientRect().top - canvas_top;
+                startX = event.clientX - canvas_left;
+                startY = event.clientY - canvas_top;
                 img_id.value = i;
             }
 
@@ -387,7 +386,7 @@
         background-color: #ffffff;
     }
     .left > *{
-        width: 200px;
+        width: 80%;
         text-align: center;
     }
     .right{
@@ -403,10 +402,10 @@
     .center{
         display: flex;
         position: relative;
-        /* width: 67%;
-        height: 100%; */
-        width: 1100px;
-        height: 750px;
+        width: 67%;
+        height: 100%;
+        /* width: 1100px;
+        height: 750px; */
         background-color: #ffffff;
         overflow: hidden;
     }
