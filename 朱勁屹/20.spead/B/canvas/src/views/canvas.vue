@@ -2,63 +2,421 @@
     <!-- <div class="back" v-show="back">
         <input type="text" v-model="canWidth">
         <input type="text" v-model="canHeight">
-        <button v-on:click="back == false">送出</button>
+        <button v-on:click="back = false">送出</button>
     </div> -->
     <div class="top">
         <button>新增專案{{ button }}</button>
-        <button>還原</button>
-        <button>重作</button>
-        <button>儲存圖片</button>
+        <button @click="ba">還原</button>
+        <button @click="re">重作</button>
+        <button >儲存圖片</button>
     </div>
     <div class="main">
         <div class="left">
             <button @click="button = 1">選取</button>
             <button @click="button = 2">筆刷</button>
-            <input type="number">
-            <button @click="button = 3">油漆桶</button>
-            <input type="color">
+            <input type="number" v-model="fontWidth">
+            <button @click="button = 3" >油漆桶</button>
+            <input type="color" v-model="color">
             <button @click="button = 4">樣章</button>
+            <img width="30" height="30" v-for="(value,index) in imgSrc" :src="value" alt="" @click="useSeal = index">
             <label class="button" for="fi">儲存樣章</label>
-            <input id="fi" type="file" style="display: none;">
+            <input id="fi" type="file" @change="file" style="display: none;">
 
             <button>上傳圖片</button>
         </div>
-        <div class="center" :style="{width: canWidth,height: canHeight}">
-            <div class="a">
-                <canvas :style="{width: canWidth,height: canHeight}"></canvas>
+        <div class="center" :style="{width: canWidth+'px',height: canHeight+'px',}"  @mousedown.capture="down" @mousemove.capture="move" @mouseup.capture="up">
+            <div class="a" v-for="(vv,ii) in la" :style="{zIndex:vv['z']}">
+                <canvas :style="{width: canWidth+'px',height: canHeight+'px'}" ></canvas>
+                <div class="imgBox" v-for="(value,index) in img" v-show="value['in'] == vv['id']">
+                    <img draggable="false" :src="value.src" alt="" :style="value.style" @mousedown.capture="imgDown($event,index)" @mouseup="imgUp($event,index)" >
+                </div>
             </div>
         </div>
         <div class="right">
-            <button>新增圖層</button>
-            <button v-for="(value,index) in layer">{{ value.text }}</button>
+            <button @click="newLa">新增圖層</button>
+            <button v-for="(value,index) in layer" @click="laButt(index)">{{ value.text }}</button>
         </div>
 
     </div>
 </template>
 <script>
-    import { ref } from 'vue';
     export default{
-        setup(){
-            let canWidth = ref('1280px');
-            let canHeight = ref('720px');
-            let back = ref(true);
-            let button = ref(0);
-            let layer = ref([]);
+        data(){
+            let canWidth = '1280';
+            let canHeight = '720';
+            let back = true;
+            let button = 0;
+            let layer = [];
+            let la = [];
+            let img = [];
+            let turn = false;
+            let fontWidth = 10;
+            let ctx = '';
+            let color = '#ff0000';
+            let startX = 10000;
+            let startY = 10000;
+            let endX = 0;
+            let endY = 0;
+            let now = 0;
+            
             return{
                 canWidth,
                 canHeight,
                 back,
                 button,
                 layer,
+                img,
+                turn,
+                fontWidth,
+                ctx,
+                color,
+                startX,
+                startY,
+                endX,
+                endY,
+                now,
+                cenWidth:0,
+                cenheight:0,
+                mouseX:0,
+                mouseY:0,
+                mou:0,
+                iii:0,
+                laId:0,
+                la,
+                imgSrc:[],
+                useSeal:0,
+                order:[],
+                his:[],
+                his2:[],
             }
         },methods:{
-            
+            ba(){
+                let a = this.order.pop();
+                if(a != undefined){
+                    if(a == 0){
+                        this.his.push(this.img.pop());
+                    }else{
+                        this.his.push(this.la.pop());
+                        this.his2.push(this.layer.pop());
+    
+                    }
+
+                }
+            },
+            re(){
+                if(this.his.length > 0){
+                    let a = this.his.pop();
+                    if(a['type'] == 'img'){
+                        this.img.push(a);
+                    }else{
+                        this.la.push(a);
+                        this.layer.push(this.his2.pop());
+                    }
+                }
+            },
+            file(eve){
+                let self = this;
+                const reader = new FileReader();
+                reader.readAsDataURL(eve.target.files[0]);
+                reader.onload = function () {
+                    self.imgSrc.push(reader.result);
+                }
+            },
+            laButt(i){
+                this.la.forEach(function (value,index) {
+                    if(index == i){
+                        value['z'] = 100;
+                        
+                    }else{
+                        value['z'] = value['id'];
+                        
+                    }
+                    
+                })
+                this.now = i;
+            },
+            newLa(){
+                let a = [];
+                a['text'] = '屠城'+this.laId;
+                a['style'] = this.laId;
+                this.layer.push(a);
+                let b = [];
+                b['type'] = 'layer'
+                b['z'] = this.laId,
+                b['id'] = this.laId,
+                this.la.push(b);
+                this.now = this.laId;
+                this.laId++;
+                this.order.push(1);
+            },
+            imgDown(eve,i){
+                if(this.button == 1){
+                    this.turn = true;
+                    this.mouseX = eve.offsetX;
+                    this.mouseY = eve.offsetY;
+                    this.iii = i;
+                }
+            },
+            imgMove(eve){
+                if(this.button == 1 && this.turn){
+                    // console.log(eve.clientY);
+                    // console.log(eve.target.getBoundingClientRect().top);
+                    // console.log(eve.target);
+                    // console.log(eve.offsetY);
+                    // this.img[this.iii]['style'] = {
+                    //     'position': 'absolute',
+                    //     'top':  eve.clientY - this.cenheight - this.mouseY +'px',
+                    //     'left':  eve.clientX - this.cenWidth -this.mouseX +'px',
+                    // }
+                }
+            },
+            imgUp(eve,i){
+                if(this.button == 1 && this.turn){
+                    this.turn = false;
+                }
+            },
+            down(eve){
+                console.log(eve);
+                if(this.button == 2 && this.layer.length > 0){
+                    this.startX = 10000;
+                    this.startY = 10000;
+                    this.endX = 0;
+                    this.endY = 0;
+                    this.turn = true;
+                    eve.currentTarget.childNodes[this.now + 1].childNodes[0].width = this.canWidth;
+                    eve.currentTarget.childNodes[this.now + 1].childNodes[0].height = this.canHeight;
+                    // console.log(eve.target);
+                    this.cenWidth = eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left;
+                    this.cenheight = eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top;
+                    this.ctx = eve.currentTarget.childNodes[this.now + 1].childNodes[0].getContext('2d');
+                    
+
+                    this.ctx.lineJoin = 'round';
+                    this.ctx.lineCap = 'round';
+                    this.ctx.lineWidth = this.fontWidth;
+                    this.ctx.strokeStyle = this.color;
+
+                    this.ctx.beginPath();
+                    this.ctx.moveTo( eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left,eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top);
+
+                    this.ctx.lineTo( eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left,eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top);
+                    this.ctx.stroke();
+
+                    
+
+                    if(this.startX >  eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left){
+                        this.startX =  eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left;
+                    }
+                    if(this.startY > eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top){
+                        this.startY = eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top;
+                    }
+                    if(this.endX <  eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left){
+                        this.endX =  eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left;
+                    }
+                    if(this.endY < eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top){
+                        this.endY = eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top;
+                    }
+                }else if(this.button == 3){
+                    console.log(eve.currentTarget.childNodes[this.now + 1].childNodes[0]);
+                    if(eve.currentTarget.childNodes[this.now + 1].childNodes[0] != undefined){
+                        let canvas = eve.currentTarget.childNodes[this.now + 1].childNodes[0];
+                        let ctx = canvas.getContext('2d');
+                        ctx.fillStyle = this.color;
+                        ctx.fillRect(0,0,this.canWidth,this.canHeight);
+
+                    }
+                }else if(this.button == 4 && this.layer.length > 0 && this.imgSrc.length > 0){
+                    this.startX = 10000;
+                    this.startY = 10000;
+                    this.endX = 0;
+                    this.endY = 0;
+                    this.turn = true;
+                    eve.currentTarget.childNodes[this.now + 1].childNodes[0].width = this.canWidth;
+                    eve.currentTarget.childNodes[this.now + 1].childNodes[0].height = this.canHeight;
+                    // console.log(eve.target);
+                    this.cenWidth = eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left;
+                    this.cenheight = eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top;
+                    this.ctx = eve.currentTarget.childNodes[this.now + 1].childNodes[0].getContext('2d');
+                    
+                    let img = new Image();
+                    img.src = this.imgSrc[this.useSeal];
+                
+                        this.ctx.drawImage(img,eve.clientX - eve.currentTarget.childNodes[this.now + 1] .childNodes[0].getBoundingClientRect().left - this.fontWidth/2,eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top - this.fontWidth/2,this.fontWidth,this.fontWidth);
+    
+                        // this.ctx.beginPath();
+                        // this.ctx.moveTo( eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left,eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top);
+    
+                        // this.ctx.lineTo( eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left,eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top);
+                        // this.ctx.stroke();
+    
+                        
+    
+                        if(this.startX >  eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left){
+                            this.startX =  eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left;
+                        }
+                        if(this.startY > eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top){
+                            this.startY = eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top;
+                        }
+                        if(this.endX <  eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left){
+                            this.endX =  eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left;
+                        }
+                        if(this.endY < eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top){
+                            this.endY = eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top;
+                        }
+                        
+                    
+                }
+            },
+            move(eve){
+                // console.log(eve.currentTarget);
+                if(this.button == 2 && this.turn){
+                    this.ctx.lineTo( eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left,eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top);
+                    this.ctx.stroke();
+
+                    if(this.startX >  eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left){
+                        this.startX =  eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left;
+                    }
+                    if(this.startY > eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top){
+                        this.startY = eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top;
+                    }
+                    if(this.endX <  eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left){
+                        this.endX =  eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left;
+                    }
+                    if(this.endY < eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top){
+                        this.endY = eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top;
+                    }
+                }
+                if(this.button == 1 && this.turn){
+                    // console.log(eve.clientY);
+                    // console.log(eve.target.getBoundingClientRect().top);
+                    // console.log(eve.target);
+                    // console.log(eve.offsetY);
+                    this.img[this.iii]['style'] = {
+                        'position': 'absolute',
+                        'top':  eve.clientY - this.cenheight - this.mouseY +'px',
+                        'left':  eve.clientX - this.cenWidth -this.mouseX +'px',
+                    }
+                }else if(this.button == 4 && this.turn){
+                    let img = new Image();
+                    img.src = this.imgSrc[this.useSeal];
+                    
+                        this.ctx.drawImage(img,eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left,eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top,this.fontWidth,this.fontWidth);
+    
+                        // this.ctx.beginPath();
+                        // this.ctx.moveTo( eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left,eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top);
+    
+                        // this.ctx.lineTo( eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left,eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top);
+                        // this.ctx.stroke();
+    
+                        
+    
+                        if(this.startX >  eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left){
+                            this.startX =  eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left;
+                        }
+                        if(this.startY > eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top){
+                            this.startY = eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top;
+                        }
+                        if(this.endX <  eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left){
+                            this.endX =  eve.clientX - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().left;
+                        }
+                        if(this.endY < eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top){
+                            this.endY = eve.clientY - eve.currentTarget.childNodes[this.now + 1].childNodes[0].getBoundingClientRect().top;
+                        }
+                        
+                    
+                }
+            },
+            up(eve){
+                if(this.button == 2 && this.turn){
+                    this.turn = false;
+                    this.startX -= this.fontWidth/2;
+                    this.startY -= this.fontWidth/2;
+                    this.endX += this.fontWidth/2;
+                    this.endY += this.fontWidth/2;
+                    console.log(this.startX);
+                    console.log(this.endX);
+                    let can = document.createElement('canvas');
+                    can.width = this.endX - this.startX;
+                    can.height = this.endY - this.startY;
+
+                    // console.log(this.endX - this.startX,this.endY - this.startY);
+
+                    let idata = this.ctx.getImageData(this.startX ,this.startY ,can.width ,can.height);
+
+                    let canctx = can.getContext('2d');
+                    canctx.putImageData(idata,0,0);
+
+                    let a = [];
+                    a['src'] = can.toDataURL("image/png");
+                    a['style'] = {
+                        'position': 'absolute',
+                        'top': this.startY+'px',
+                        'left': this.startX+'px',
+                        
+                    }
+                    a['in'] = this.now;
+                    a['type'] = 'img';
+                    this.order.push(0);
+                    this.img.push(a);
+                    this.ctx.clearRect(this.startX,this.startY,this.endX - this.startX , this.endY - this.startY);
+                }else if(this.button == 4 && this.turn){
+                    this.turn = false;
+                    this.startX -= this.fontWidth;
+                    this.startY -= this.fontWidth;
+                    this.endX += this.fontWidth;
+                    this.endY += this.fontWidth;
+                    console.log(this.endX - this.startX);
+                    console.log(this.startX);
+                    console.log(this.endX);
+                    let can = document.createElement('canvas');
+                    can.width = this.endX - this.startX;
+                    can.height = this.endY - this.startY;
+
+                    // console.log(this.endX - this.startX,this.endY - this.startY);
+
+                    let idata = this.ctx.getImageData(this.startX ,this.startY ,can.width ,can.height);
+
+                    let canctx = can.getContext('2d');
+                    canctx.putImageData(idata,0,0);
+
+                    let a = [];
+                    a['src'] = can.toDataURL("image/png");
+                    a['style'] = {
+                        'position': 'absolute',
+                        'top': this.startY+'px',
+                        'left': this.startX+'px',
+                        
+                    }
+                    a['in'] = this.now;
+                    a['type'] = 'img';
+                    this.order.push(0);
+                    this.img.push(a);
+                    this.ctx.clearRect(this.startX,this.startY,this.endX - this.startX , this.endY - this.startY);
+                }
+            }
             
         }
     }
 </script>
 <style>
-    
+    .a{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+
+    }
+    img{
+        user-select: none;
+    }
+    .aaa{
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: absolute;
+        top: 100px;
+    }
     .top{
         width: 50%;
         height: 10%;
@@ -67,6 +425,7 @@
         display: flex;
         justify-content: center;
         margin: auto;
+        
     }
     body{
         width: 100%;
@@ -120,5 +479,11 @@
         height: 720px;
         background-color: white;
         position: relative;
+
+    }
+    canvas{
+        position: absolute;
+        top: 0px;
+        left: 0px;
     }
 </style>
