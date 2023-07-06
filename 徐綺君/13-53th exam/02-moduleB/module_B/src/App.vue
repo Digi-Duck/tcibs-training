@@ -23,7 +23,7 @@
         </div>
         <div ref="center" class="center" @mousedown="down" @mousemove="move" @mouseup="up" @mouseleave="up">
             <canvas ref="canvas" @click="clcik_darg"></canvas>
-            <div class="img_box" v-for="(img,index) in imgs" :class="{border: img.isdrag && drag && !zoom,mouse_pointer: drag && !zoom}" :style="{ left: img.x+'px', top: img.y+'px',transform: 'rotate('+img.deg+'deg)'}" :key="index" @mousedown="down_darg(index)">
+            <div class="img_box" v-for="(img,index) in imgs" :class="{border: img.isdrag && drag && !zoom,mouse_pointer: drag && !zoom}" :style="{ left: img.x-(img.w/2)+'px', top: img.y-(img.h/2)+'px',transform: 'rotate('+img.deg+'deg)'}" :key="index" @mousedown="down_darg(index)">
                 <img draggable="false" :src="img.src" alt="" :style="{width: img.w+'px', height: img.h+'px'}">
                 <div class="dot dot1" @mousedown.stop="dot_down(index,1)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="left: -5px; top: -5px"></div>
                 <div class="dot dot2" @mousedown.stop="dot_down(index,2)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="left: -5px; bottom: -5px"></div>
@@ -80,43 +80,43 @@
                 if (draw.value) {                
                     ctx.lineWidth = size.value;
                     ctx.beginPath(); 
-                    ctx.moveTo(e.offsetX + e.target.getBoundingClientRect().left - canvas_left, e.offsetY + e.target.getBoundingClientRect().top - canvas_top);
-                    ctx.lineTo(e.offsetX + e.target.getBoundingClientRect().left - canvas_left, e.offsetY + e.target.getBoundingClientRect().top - canvas_top);
+                    ctx.moveTo(e.clientX - canvas_left, e.clientY - canvas_top);
+                    ctx.lineTo(e.clientX - canvas_left, e.clientY - canvas_top);
 
-                    startX = endX = e.offsetX + e.target.getBoundingClientRect().left - canvas_left;
-                    startY = endY = e.offsetY + e.target.getBoundingClientRect().top - canvas_top;
+                    startX = endX = e.clientX - canvas_left;
+                    startY = endY = e.clientY - canvas_top;
                     ctx.stroke();
                     drawing = true;
                 }
             }
             function move(e) {
                 if (drawing) {                    
-                    ctx.lineTo(e.offsetX + e.target.getBoundingClientRect().left - canvas_left, e.offsetY + e.target.getBoundingClientRect().top - canvas_top);
+                    ctx.lineTo(e.clientX - canvas_left, e.clientY - canvas_top);
                     ctx.stroke();
 
-                    if (startX > e.offsetX + e.target.getBoundingClientRect().left - canvas_left) {
-                        startX = e.offsetX + e.target.getBoundingClientRect().left - canvas_left
+                    if (startX > e.clientX - canvas_left) {
+                        startX = e.clientX - canvas_left
                     }
-                    if (startY > e.offsetY + e.target.getBoundingClientRect().top - canvas_top) {
-                        startY = e.offsetY + e.target.getBoundingClientRect().top - canvas_top
+                    if (startY > e.clientY - canvas_top) {
+                        startY = e.clientY - canvas_top
                     }
-                    if (endX < e.offsetX + e.target.getBoundingClientRect().left - canvas_left) {
-                        endX = e.offsetX + e.target.getBoundingClientRect().left - canvas_left
+                    if (endX < e.clientX - canvas_left) {
+                        endX = e.clientX - canvas_left
                     }
-                    if (endY < e.offsetY + e.target.getBoundingClientRect().top - canvas_top) {
-                        endY = e.offsetY + e.target.getBoundingClientRect().top - canvas_top
+                    if (endY < e.clientY - canvas_top) {
+                        endY = e.clientY - canvas_top
                     }
                 }
                 if (draging) {
-                    imgs.value[img_id.value].x = e.offsetX + e.target.getBoundingClientRect().left - canvas_left - (imgs.value[img_id.value].w/2);
-                    imgs.value[img_id.value].y = e.offsetY + e.target.getBoundingClientRect().top - canvas_top - (imgs.value[img_id.value].h/2);
+                    imgs.value[img_id.value].x = e.clientX - canvas_left;
+                    imgs.value[img_id.value].y = e.clientY - canvas_top;
                 }
                 if (zoom.value) {
-                    let w = e.offsetX + e.target.getBoundingClientRect().left - canvas_left - startX;
-                    let h = e.offsetY + e.target.getBoundingClientRect().top - canvas_top - startY;
+                    let w = e.clientX - canvas_left - startX;
+                    let h = e.clientY - canvas_top - startY;
 
-                    startX = e.offsetX + e.target.getBoundingClientRect().left - canvas_left;
-                    startY = e.offsetY + e.target.getBoundingClientRect().top - canvas_top;
+                    startX = e.clientX - canvas_left;
+                    startY = e.clientY - canvas_top;
                       
                     if (dot_id == 1) {
                         imgs.value[img_id.value].w -= w;
@@ -202,8 +202,8 @@
                     canvas_img.getContext('2d').putImageData(img_data,0,0);
                     let img = {
                         'src': canvas_img.toDataURL("image/png"),
-                        'x': startX - 3,
-                        'y': startY - 3,
+                        'x': startX + (img_width/2) - 3,
+                        'y': startY + (img_height/2) - 3,
                         'w': img_width,
                         'h': img_height,
                         'deg': 0,
@@ -232,8 +232,8 @@
                     });
                     imgs.value[i].isdrag = true;
 
-                    mouseX = event.offsetX;
-                    mouseY = event.offsetY;
+                    mouseX = event.clientX;
+                    mouseY = event.clientY;
                 }
             }
             function clcik_darg(e) {
