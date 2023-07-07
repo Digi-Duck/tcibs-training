@@ -8,7 +8,7 @@
         <button>新增專案{{ button }}</button>
         <button @click="ba">還原</button>
         <button @click="re">重作</button>
-        <button >儲存圖片</button>
+        <button @click="storeImg">儲存圖片</button>
     </div>
     <div class="main">
         <div class="left">
@@ -22,7 +22,8 @@
             <label class="button" for="fi">儲存樣章</label>
             <input id="fi" type="file" @change="file" style="display: none;">
 
-            <button>上傳圖片</button>
+            <label class="button" for="update">上傳圖片</label>
+            <input type="file" @change="updateFile" id="update" style="display: none;">
         </div>
         <div class="center" :style="{width: canWidth+'px',height: canHeight+'px',}"  @mousedown.capture="down" @mousemove.capture="move" @mouseup.capture="up">
             <div class="a" v-for="(vv,ii) in la" :style="{zIndex:vv['z']}">
@@ -74,7 +75,7 @@
                 startY,
                 endX,
                 endY,
-                now,
+                now:0,
                 cenWidth:0,
                 cenheight:0,
                 mouseX:0,
@@ -88,8 +89,104 @@
                 order:[],
                 his:[],
                 his2:[],
+                seals:[],
             }
         },methods:{
+            
+            storeImg() {
+            let canvas = document.createElement('canvas');
+            let ctx = canvas.getContext('2d');
+            let self = this;
+            canvas.width = 1280;
+            canvas.height = 720;
+
+            let loadImagePromises = []; // 用于存储图像加载的 Promise
+
+            this.la.forEach(function (value, index) {
+                let canvas2 = document.createElement('canvas');
+                canvas2.width = 1280;
+                canvas2.height = 720;
+                let ctx2 = canvas2.getContext('2d');
+
+                self.img.forEach(function (v, i) {
+                if (v['in'] == value['id']) {
+                    let im = new Image();
+                    im.src = v['src'];
+
+                    // 创建一个 Promise，用于表示图像加载完成
+                    let loadImagePromise = new Promise(function (resolve, reject) {
+                    im.onload = function () {
+                        let left = parseInt(v['style'].left.slice(0, -2));
+                        let top = parseInt(v['style'].top.slice(0, -2));
+                        ctx2.drawImage(im, left, top);
+                        resolve(); // 图像加载完成，将 Promise 标记为成功
+                    }
+                    im.onerror = reject; // 图像加载出错，将 Promise 标记为失败
+                    });
+
+                    loadImagePromises.push(loadImagePromise); // 将图像加载的 Promise 添加到数组中
+                }
+                })
+            })
+
+            // 等待所有图像加载完成
+            Promise.all(loadImagePromises).then(function () {
+                // 所有图像加载完成后，将画布添加到适当的位置
+                document.body.appendChild(canvas);
+
+                // 在这里进行绘制操作
+                self.la.forEach(function (value, index) {
+                let canvas2 = document.createElement('canvas');
+                canvas2.width = 1280;
+                canvas2.height = 720;
+                let ctx2 = canvas2.getContext('2d');
+
+                self.img.forEach(function (v, i) {
+                    if (v['in'] == value['id']) {
+                    let im = new Image();
+                    im.src = v['src'];
+                    let left = parseInt(v['style'].left.slice(0, -2));
+                    let top = parseInt(v['style'].top.slice(0, -2));
+                    ctx2.drawImage(im, left, top);
+                    }
+                })
+
+                ctx.drawImage(canvas2, 0, 0);
+                });
+
+                let dataURL = canvas.toDataURL("image/jpg");
+                console.log(dataURL);
+                let URL = document.createElement('a');
+                URL.href = dataURL;
+                URL.download = 'amongus.jpg';
+                URL.click();
+
+                // 可选：在导出后从页面中删除 canvas 元素
+            }).catch(function (error) {
+                // 图像加载出错
+                console.error('图像加载出错:', error);
+            });
+            },
+            updateFile(eve){
+                let self = this;
+                let reader = new FileReader();
+                reader.readAsDataURL(eve.target.files[0]);
+                reader.onload = function () {
+                    let a = [];
+                    a['src'] = reader.result;
+                    a['style'] = {
+                        'position': 'absolute',
+                        'top': '0px',
+                        'left': '0px',
+                        
+                    }
+                    a['in'] = self.now;
+                    a['type'] = 'img';
+                    console.log(self.now);
+                    self.img.push(a);
+                }
+                this.order.push(0);
+            },
             ba(){
                 let a = this.order.pop();
                 if(a != undefined){
