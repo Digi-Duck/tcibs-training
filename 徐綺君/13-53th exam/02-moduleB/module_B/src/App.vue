@@ -25,9 +25,9 @@
             <canvas ref="canvas" @click="clcik_darg"></canvas>
             <div class="img_box" v-for="(img,index) in imgs" :class="{border: img.isdrag && drag && !zoom,mouse_pointer: drag && !zoom}" :style="{ left: img.x-(img.w/2)+'px', top: img.y-(img.h/2)+'px',transform: 'rotate('+img.deg+'deg)'}" :key="index" @mousedown="down_darg(index)">
                 <img draggable="false" :src="img.src" alt="" :style="{width: img.w+'px', height: img.h+'px'}">
-                <div class="dot dot1" @mousedown.stop="dot_down(index,1)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="left: -5px; top: -5px"></div>
-                <div class="dot dot2" @mousedown.stop="dot_down(index,2)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="left: -5px; bottom: -5px"></div>
-                <div class="dot dot3" @mousedown.stop="dot_down(index,3)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="right: -5px; top: -5px"></div>
+                <div class="dot dot1" @mousedown.stop="dot_down(index,2)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="left: -5px; top: -5px"></div>
+                <div class="dot dot2" @mousedown.stop="dot_down(index,3)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="left: -5px; bottom: -5px"></div>
+                <div class="dot dot3" @mousedown.stop="dot_down(index,1)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="right: -5px; top: -5px"></div>
                 <div class="dot dot4" @mousedown.stop="dot_down(index,4)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="right: -5px; bottom: -5px"></div>
                 <div class="dot dot5" @mousedown.stop="spin_down(index)" @mousemove="move" @mouseup="up" :style="{ left: (img.w/2)+'px', top: -30+'px'}" :class="{ block: img.isdrag && drag }" style="right: -5px; bottom: -5px"></div>
             </div>
@@ -117,26 +117,34 @@
                     endX = event.clientX - canvas_left;
                     endY = event.clientY - canvas_top;
 
-                    let deg = 180 / Math.PI *Math.atan2(startY - endY, endX - startX);
+                    let deg = Math.atan2(startY - endY, endX - startX);
+                    deg += (imgs.value[img_id.value].deg/45)*Math.PI/180;
 
-                    let length = (Math.sqrt(Math.pow(startX - endX, 2) + Math.pow(startY - endY, 2)))/2;
+                    let length = Math.sqrt(Math.pow(startX - endX, 2) + Math.pow(startY - endY, 2));
+                    let x_direction = 1;
+                    let y_direction = 1;
 
                     if (deg<0) {
-                        deg = deg + 360;
+                        deg = deg + (Math.PI*2);
                     }
-                    
-                    // console.log(startX,centerX,startY,centerY);
-                    // console.log(length);
+                    if (Math.cos((45 + (dot_id-1)*(90)+imgs.value[img_id.value].deg)*Math.PI/180) < 0){
+                        x_direction = -1;
+                    }                    
+                    if (Math.sin((45 + (dot_id-1)*(90)+imgs.value[img_id.value].deg)*Math.PI/180) < 0){
+                        y_direction = -1;
+                    }
+
                     let x = length*Math.cos(deg);
                     let y = length*Math.sin(deg);
 
-                    // console.log(deg);
-                    // console.log(x);
+                    
+                    // imgs.value[img_id.value].h -= x * x_direction;
+                    // imgs.value[img_id.value].w -= y * y_direction;
 
-                    imgs.value[img_id.value].x += x;
-                    // imgs.value[img_id.value].y += y;
-                    imgs.value[img_id.value].w += x;
-                    // imgs.value[img_id.value].h -= y;
+                    imgs.value[img_id.value].x += x/2;
+                    imgs.value[img_id.value].y -= y/2;
+                    imgs.value[img_id.value].w += x * x_direction;
+                    imgs.value[img_id.value].h += y * y_direction;
                     startX = event.clientX - canvas_left;
                     startY = event.clientY - canvas_top;
                       
@@ -230,9 +238,24 @@
                         e.isdrag = false;
                     });
                     imgs.value[i].isdrag = true;
+                    
+                    mouseX = event.offsetX - canvas_left;
+                    mouseY = event.offsetY - canvas_top;
 
-                    mouseX = event.clientX;
-                    mouseY = event.clientY;
+                    let deg = (Math.atan2(imgs.value[img_id.value].y - mouseY, imgs.value[img_id.value].x - mouseX));
+                    if (deg<0) {
+                        deg = deg + (Math.PI*2);
+                    }
+                    let x_direction = 1;
+                    let y_direction = 1;
+                    if (Math.cos(deg) < 0) {
+                        x_direction = -1;
+                    }
+                    if (Math.sin(deg) < 0) {
+                        y_direction = -1;
+                    }
+                    mouseX = (mouseX * x_direction)/2;
+                    mouseY = mouseY * y_direction;
                 }
             }
             function clcik_darg(e) {
@@ -255,6 +278,8 @@
 
             function spin_down(i) {
                 spin.value = true;
+                centerX = imgs.value[i].x;
+                centerY = imgs.value[i].y;
                 startX = event.clientX - canvas_left;
                 startY = event.clientY - canvas_top;
                 img_id.value = i;
