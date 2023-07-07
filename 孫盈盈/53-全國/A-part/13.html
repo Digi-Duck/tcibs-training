@@ -106,14 +106,13 @@
         let cards = document.querySelectorAll('.card');
         let ends = document.querySelectorAll('.end');
 
-        let drag_id = 0;
-        let dragId = 0;
+        let drag = 0;
         cards.forEach((element, index)=>{
             element.id = index;
             element.addEventListener('dragstart', (e)=>{
                 drag = element.id
                 console.log(e);
-                // e.dataTransfer.setDragImage(document.getElementById(drag), 0, 0);
+                e.dataTransfer.setDragImage(new Image(), 0, 0);
             })
             element.addEventListener('drag', (e)=>{
                 element.classList.add('drag');
@@ -134,17 +133,19 @@
             end.addEventListener('dragover', (e)=>{
                 e.preventDefault();
             })
-            // end.addEventListener('dragenter', (e)=>{
-            //     e.preventDefault();
-            //     end.style.height = end.offsetHeight + document.getElementById(drag).offsetHeight + 'px'; 
-            //     console.log(end.offsetHeight);
-            // })
-            // end.addEventListener('dragleave', (e)=>{
-            //     e.preventDefault();
-            //     end.style.height = end.offsetHeight - document.getElementById(drag).offsetHeight + 'px'; 
-            //     console.log(end.offsetHeight);
-            // })
+            end.addEventListener('dragenter', (e)=>{
+                e.stopPropagation();
+                end.style.height = end.offsetHeight + document.getElementById(drag).offsetHeight + 'px'; 
+                console.log(end.offsetHeight);
+                console.log(1);
+            })
+            end.addEventListener('dragleave', (e)=>{
+                e.stopPropagation();
+                end.style.height = end.offsetHeight - document.getElementById(drag).offsetHeight + 'px'; 
+                console.log(end.offsetHeight);
+            })
             end.addEventListener('drop', ()=>{
+                // console.log(document.getElementById(drag));
                 end.append(document.getElementById(drag))
             })
         })

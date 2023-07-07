@@ -115,7 +115,7 @@ export default {
       this.isDrawing = 0;
     }
   }                             
-}
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

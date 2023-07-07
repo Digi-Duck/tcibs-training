@@ -1,14 +1,14 @@
 <template>
      <div class="top">
         <button>新增專案</button>
-        <button>復原</button>
-        <button>重作</button>
+        <button @click="back">復原</button>
+        <button @click="re">重作</button>
         <button>儲存圖片</button>
     </div>
     <div class="box">
         <div class="left">
             <button @click="button = 1">選取</button>
-            <button @click="button = 2">筆刷{{ button }}</button>
+            <button @click="button = 2">筆刷</button>
             <input type="text" v-model="fontSize">
             <button @click="button = 3">油漆桶</button>
             <input type="color" v-model="color">
@@ -19,9 +19,15 @@
         <div class="a">
             <div class="aaa" v-for="(item,index) in centerLayer" :style="item.style">
                 <div class="center" @mousedown.capture="mousedown" @mousemove.capture="mousemove" @mouseup.capture="mouseup">
-                    <canvas :width="caWid" :height="cahei">
+                    <canvas :width="caWid" :height="cahei" @click="bucket">
                     </canvas>
-                    <img class='border2' v-for="(v,i) in img" :src="v['src']" v-show="v['in'] == index" :style="v.style" alt="" draggable="false" @mousedown="imgdown($event,i)" @mousemove="imgmove($event,i)" @mouseup="imgup" @mouseover="imgOver" @mouseout="imgOut">
+                    <div class="imgBox" v-for="(v,i) in img">
+                        <img class='border2' :src="v['src']" v-show="v['in'] == index" :style="v.style" alt="" draggable="false" @mousedown="imgdown($event,i)" @mousemove="imgmove($event,i)" @mouseup="imgup" @mouseover="imgOver" @mouseout="imgOut">
+                        <div class="imgSmallBox imgSmallBox1"></div>
+                        <div class="imgSmallBox imgSmallBox2"></div>
+                        <div class="imgSmallBox imgSmallBox3"></div>
+                        <div class="imgSmallBox imgSmallBox4"></div>
+                    </div>
                 </div>
             </div>
             <!-- <div class="aaa">
@@ -42,7 +48,7 @@
     </div>
 </template>
 <script>
-import { ref,toDisplayString,toRef } from "vue";
+import { ref } from "vue";
 
 export default{
     setup(){
@@ -64,6 +70,9 @@ export default{
         let img = ref([]);        
         let now = ref(0);
         let imgSrc = ref('');
+        let back = [];
+        let f1 = ref([]);
+        let f2 = ref([]);
         return{
             caWid,
             cahei,
@@ -83,9 +92,40 @@ export default{
             img,
             now,
             imgSrc,
-            
+            back,
+            f1,
+            f2,
         }
     },methods:{
+        back(){
+            let f = this.f1.pop();
+            this.f2.push(f);
+            if(f == 1){
+                this.back.push(this.layer.pop());
+                console.log(1);
+            }else if(f == 0){
+                this.back.push(this.img.pop());
+                console.log(0);
+            }
+        },
+        re(){
+            console.log();
+            let sh = this.back.pop(0);
+            this.f1.push(this.f2.pop());
+            if(sh['type'] == 'layers'){
+                this.layer.push(sh);
+            }else{
+                this.img.push(sh);
+            }
+        },
+        bucket(eve){
+            if(this.button == 3){
+                let ctx = eve.target.getContext('2d');
+                console.log(this.color);
+                ctx.fillStyle = this.color;
+                ctx.fillRect(0,0,eve.target.width,eve.target.height);
+            }
+        }, 
         file(eve){
             let self = this;
             const reader = new FileReader();
@@ -94,10 +134,7 @@ export default{
                 self.imgSrc = reader.result;
                 
             }
-            console.log(this.imgSrc);
-        },
-        in(){
-
+            // console.log(this.imgSrc);
         },
         lZindex(eve){
             for (let index = 0; index < this.centerLayer.length; index++) {
@@ -124,10 +161,12 @@ export default{
                 }
             };
             array['text'] = `圖層${this.layers}`;
+            array['type'] = 'layers';
+            this.f1.push(1);
             this.layer.push(array);
             this.centerLayer.push(a);
             this.now = this.layers;
-            console.log(this.now);
+            // console.log(this.now);
             this.layers++;
         },
         imgOver(eve){
@@ -143,9 +182,9 @@ export default{
             }
         },
         imgdown(eve,i){
-            console.log(eve);
+            // console.log(eve);
             if(this.button == 1){
-                    console.log(eve.target);
+                    // console.log(eve.target);
                     let X = eve.clientX - 270.5;
                     let Y = eve.clientY - 150;
                     
@@ -189,7 +228,7 @@ export default{
             }
         },
         mousedown(eve){
-            console.log(this.imgSrc);
+            // console.log(this.imgSrc);
                 if(this.button == 2){
                 this.turn = true;
                 this.ctx = eve.currentTarget.childNodes[0].getContext('2d');
@@ -309,6 +348,8 @@ export default{
                                 'top': `${this.startY}px`
                             };
                             a['in'] = this.now;
+                            a['type'] = 'img';
+                            this.f1.push(0);
                             this.img.push(a);
                             
                             
@@ -354,6 +395,8 @@ export default{
                                 'top': `${this.startY}px`
                             };
                             a['in'] = this.now;
+                            this.f1.push(0);
+                            
                             this.img.push(a);
                             
                             
@@ -412,6 +455,7 @@ export default{
             }
 </script>
 <style>
+
         .border2{
             border: 2px solid rgba(255, 255, 255, 0);
         }

@@ -26,16 +26,7 @@
     <script>
         let color = document.getElementById('color');
         let result = document.querySelector('.text')
-
-        // function rgb(r, g, b){
-        //     if(isNaN(r) || isNaN(g) || isNaN(b))return 'error';
-
-        //     for(c of [r, g, b]){
-        //         if(c < 0 || c > 255)return 'error'; 
-        //     }
-
-        //     return '#' + [r, g, b].map((c) => c.toString(16).padStart(2, '0')).join('');
-        // }
+        
         color.addEventListener('input',()=>{
             if (color.value.match(/^#(?<red>[0-9A-Fa-f]{2})(?<green>[0-9A-Fa-f]{2})(?<blue>[0-9A-Fa-f]{2})/) && color.value[7] === undefined){
                 const colorInput = Object.values(/^#(?<red>[0-9A-Fa-f]{2})(?<green>[0-9A-Fa-f]{2})(?<blue>[0-9A-Fa-f]{2})/.exec(color.value).groups).map((c) => parseInt(c, 16));

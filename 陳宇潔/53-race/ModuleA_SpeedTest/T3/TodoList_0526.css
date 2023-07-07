@@ -1,0 +1,8 @@
+input[type="checkbox"]:checked + label{
+    color: gray;
+    text-decoration: line-through;
+    text-decoration-color: black;
+}
+label{
+    transition: color 1s
+}

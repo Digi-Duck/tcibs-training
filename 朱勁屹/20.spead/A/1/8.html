@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>a</button>
+    <button>b</button>
+    <button>c</button>
+    <div class="a"></div>
+    <script>
+        
+         fetch('7.html')
+        .then(response => response.text())
+        .then(htmlContent => {
+        // 將 HTML 內容插入到頁面中的特定元素中
+        const targetElement = document.querySelector('.a');
+        targetElement.innerHTML = htmlContent;
+        })
+        .catch(error => {
+        console.error('Error fetching HTML:', error);
+        });
+    </script>
+</body>
+</html>
