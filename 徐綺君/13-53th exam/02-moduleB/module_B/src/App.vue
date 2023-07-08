@@ -118,36 +118,36 @@
                     endY = event.clientY - canvas_top;
 
                     let deg = Math.atan2(startY - endY, endX - startX);
-                    deg += (imgs.value[img_id.value].deg/45)*Math.PI/180;
+                    // deg += imgs.value[img_id.value].deg/180*Math.PI/180;
 
                     let length = Math.sqrt(Math.pow(startX - endX, 2) + Math.pow(startY - endY, 2));
                     let x_direction = 1;
                     let y_direction = 1;
+                    let img_deg = imgs.value[img_id.value].deg*Math.PI/180;
+                    let img_deg2 = Math.abs(imgs.value[img_id.value].deg);
 
-                    if (deg<0) {
-                        deg = deg + (Math.PI*2);
+                    if (Math.abs(imgs.value[img_id.value].deg) >= 180 && Math.abs(imgs.value[img_id.value].deg) <= 360) {
+                        img_deg2 = Math.abs(imgs.value[img_id.value].deg) - 180;
                     }
-                    if (Math.cos((45 + (dot_id-1)*(90)+imgs.value[img_id.value].deg)*Math.PI/180) < 0){
+
+                    if (Math.cos((Math.abs(img_deg2 - 45) + (dot_id-1)*90)*Math.PI/180) < 0){
                         x_direction = -1;
                     }                    
-                    if (Math.sin((45 + (dot_id-1)*(90)+imgs.value[img_id.value].deg)*Math.PI/180) < 0){
+                    if (Math.sin((Math.abs(img_deg2*3 - 45) + (dot_id-1)*90)*Math.PI/180) < 0){
                         y_direction = -1;
                     }
 
                     let x = length*Math.cos(deg);
                     let y = length*Math.sin(deg);
 
-                    
-                    // imgs.value[img_id.value].h -= x * x_direction;
-                    // imgs.value[img_id.value].w -= y * y_direction;
-
                     imgs.value[img_id.value].x += x/2;
                     imgs.value[img_id.value].y -= y/2;
-                    imgs.value[img_id.value].w += x * x_direction;
-                    imgs.value[img_id.value].h += y * y_direction;
+                    
+                    imgs.value[img_id.value].w += length*Math.cos(img_deg + deg) * x_direction;
+                    imgs.value[img_id.value].h += length*Math.sin(Math.PI + img_deg - deg) * y_direction;
+
                     startX = event.clientX - canvas_left;
                     startY = event.clientY - canvas_top;
-                      
                 }
                 if (spin.value) {
                     endX = event.clientX - canvas_left;
