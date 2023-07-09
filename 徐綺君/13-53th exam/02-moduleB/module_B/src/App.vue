@@ -25,10 +25,10 @@
             <canvas ref="canvas" @click="clcik_darg"></canvas>
             <div class="img_box" v-for="(img,index) in imgs" :class="{border: img.isdrag && drag && !zoom,mouse_pointer: drag && !zoom}" :style="{ left: img.x-(img.w/2)+'px', top: img.y-(img.h/2)+'px',transform: 'rotate('+img.deg+'deg)'}" :key="index" @mousedown="down_darg(index)">
                 <img draggable="false" :src="img.src" alt="" :style="{width: img.w+'px', height: img.h+'px'}">
-                <div class="dot dot1" @mousedown.stop="dot_down(index,2)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="left: -5px; top: -5px"></div>
-                <div class="dot dot2" @mousedown.stop="dot_down(index,3)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="left: -5px; bottom: -5px"></div>
-                <div class="dot dot3" @mousedown.stop="dot_down(index,1)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="right: -5px; top: -5px"></div>
-                <div class="dot dot4" @mousedown.stop="dot_down(index,4)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="right: -5px; bottom: -5px"></div>
+                <div class="dot dot1" @mousedown.stop="dot_down(index,3)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="left: -5px; top: -5px"></div>
+                <div class="dot dot2" @mousedown.stop="dot_down(index,2)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="left: -5px; bottom: -5px"></div>
+                <div class="dot dot3" @mousedown.stop="dot_down(index,4)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="right: -5px; top: -5px"></div>
+                <div class="dot dot4" @mousedown.stop="dot_down(index,1)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="right: -5px; bottom: -5px"></div>
                 <div class="dot dot5" @mousedown.stop="spin_down(index)" @mousemove="move" @mouseup="up" :style="{ left: (img.w/2)+'px', top: -30+'px'}" :class="{ block: img.isdrag && drag }" style="right: -5px; bottom: -5px"></div>
             </div>
         </div>
@@ -65,7 +65,7 @@
             let mouseY;
             let canvas_top;
             let canvas_left;
-            let size = ref(20);
+            let size = ref(200);
 
             let imgs = ref([]);
 
@@ -126,25 +126,24 @@
                     let img_deg = imgs.value[img_id.value].deg*Math.PI/180;
                     let img_deg2 = Math.abs(imgs.value[img_id.value].deg);
 
-                    if (Math.abs(imgs.value[img_id.value].deg) >= 180 && Math.abs(imgs.value[img_id.value].deg) <= 360) {
-                        img_deg2 = Math.abs(imgs.value[img_id.value].deg) - 180;
-                    }
+                    // console.log(Math.abs(45 - (dot_id*90 + img_deg2)) - 360*Math.trunc(Math.abs(45 - (dot_id*90 + img_deg2))/360));
 
-                    if (Math.cos((Math.abs(img_deg2 - 45) + (dot_id-1)*90)*Math.PI/180) < 0){
+                    if (Math.cos(Math.abs(45 - (dot_id*90 + img_deg2))*Math.PI/180) < 0){
                         x_direction = -1;
                     }                    
-                    if (Math.sin((Math.abs(img_deg2*3 - 45) + (dot_id-1)*90)*Math.PI/180) < 0){
+                    if (Math.sin(Math.abs(45 - (dot_id*90 + img_deg2))*Math.PI/180) < 0){
                         y_direction = -1;
                     }
+                    console.log(y_direction);
 
                     let x = length*Math.cos(deg);
                     let y = length*Math.sin(deg);
 
                     imgs.value[img_id.value].x += x/2;
-                    imgs.value[img_id.value].y -= y/2;
+                    imgs.value[img_id.value].y -= y/2;42154
                     
-                    imgs.value[img_id.value].w += length*Math.cos(img_deg + deg) * x_direction;
-                    imgs.value[img_id.value].h += length*Math.sin(Math.PI + img_deg - deg) * y_direction;
+                    imgs.value[img_id.value].w += length*Math.cos(img_deg - deg) * x_direction;
+                    imgs.value[img_id.value].h -= length*Math.sin(Math.abs(Math.PI + img_deg - deg)) * y_direction;
 
                     startX = event.clientX - canvas_left;
                     startY = event.clientY - canvas_top;
