@@ -4,7 +4,7 @@
         <button class="restore">復原</button>
         <button class="redo">重做</button>
         <button>儲存圖片</button>
-        <button class="newLayer">新增圖層</button>
+        <button class="newLayer" @click="create_layer">新增圖層</button>
     </div>
     <main>
         <div class="left">
@@ -22,15 +22,17 @@
 
         </div>
         <div ref="center" class="center" @mousedown="down" @mousemove="move" @mouseup="up" @mouseleave="up">
-            <canvas ref="canvas" @click="clcik_darg"></canvas>
-            <div class="img_box" v-for="(img,index) in imgs" :class="{border: img.isdrag && drag && !zoom,mouse_pointer: drag && !zoom}" :style="{ left: img.x-(img.w/2)+'px', top: img.y-(img.h/2)+'px',transform: 'rotate('+img.deg+'deg)'}" :key="index" @mousedown="down_darg(index)">
-                <img draggable="false" :src="img.src" alt="" :style="{width: img.w+'px', height: img.h+'px'}">
-                <div class="dot dot1" @mousedown.stop="dot_down(index,3)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="left: -5px; top: -5px"></div>
-                <div class="dot dot2" @mousedown.stop="dot_down(index,2)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="left: -5px; bottom: -5px"></div>
-                <div class="dot dot3" @mousedown.stop="dot_down(index,4)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="right: -5px; top: -5px"></div>
-                <div class="dot dot4" @mousedown.stop="dot_down(index,1)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="right: -5px; bottom: -5px"></div>
-                <div class="dot dot5" @mousedown.stop="spin_down(index)" @mousemove="move" @mouseup="up" :style="{ left: (img.w/2)+'px', top: -30+'px'}" :class="{ block: img.isdrag && drag }" style="right: -5px; bottom: -5px"></div>
-            </div>
+            <!-- <div class="layers"> -->
+                <canvas v-for="canvas in layers" :width="canvas.w" :height="canvas.h" @click="clcik_darg"></canvas>
+                <div class="img_box" v-for="(img,index) in imgs" :class="{border: img.isdrag && drag && !zoom,mouse_pointer: drag && !zoom}" :style="{ left: img.x-(img.w/2)+'px', top: img.y-(img.h/2)+'px',transform: 'rotate('+img.deg+'deg)'}" :key="index" @mousedown="down_darg(index)">
+                    <img draggable="false" :src="img.src" alt="" :style="{width: img.w+'px', height: img.h+'px'}">
+                    <div class="dot dot1" @mousedown.stop="dot_down(index,3)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="left: -5px; top: -5px"></div>
+                    <div class="dot dot2" @mousedown.stop="dot_down(index,2)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="left: -5px; bottom: -5px"></div>
+                    <div class="dot dot3" @mousedown.stop="dot_down(index,4)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="right: -5px; top: -5px"></div>
+                    <div class="dot dot4" @mousedown.stop="dot_down(index,1)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="right: -5px; bottom: -5px"></div>
+                    <div class="dot dot5" @mousedown.stop="spin_down(index)" @mousemove="move" @mouseup="up" :style="{ left: (img.w/2)+'px', top: -30+'px'}" :class="{ block: img.isdrag && drag }" style="right: -5px; bottom: -5px"></div>
+                </div>
+            <!-- </div> -->
         </div>
         <div class="right">
             <input class="layers_radio" type="radio" name="layers" id="layers0" checked>
@@ -43,7 +45,8 @@
     import { ref,onMounted, createElementBlock } from 'vue';
     export default{
         setup() {
-            let canvas = ref(null);
+            let layers = ref([]);
+            let canvas;
             let center = ref(null);
             let draw = ref(true);
             let drag = ref(false);
@@ -51,6 +54,7 @@
             let zoom = ref(false);
             let spin = ref(false);
             let img_id = ref(0);
+            let layers_id = 0;
             let dot_id = 0;
             let ctx;
             let drawing = false;
@@ -70,14 +74,29 @@
             let imgs = ref([]);
 
             function setcanvas() {
-                canvas.value.width = center.value.clientWidth;
-                canvas.value.height = center.value.clientHeight;
-                ctx = canvas.value.getContext('2d');
+                canvas = document.createElement('canvas');
+                canvas.width = center.value.clientWidth;
+                canvas.height = center.value.clientHeight;
+                ctx = canvas.getContext('2d');
+                layers.value[layers_id] = {
+                    'id': layers_id,
+                    'canvas': canvas,
+                    'w': canvas.width,
+                    'h': canvas.height,
+                    'ctx': ctx,
+                }
                 ctx.lineCap = "round";
                 ctx.lineJoin = "round";
-                canvas_top = canvas.value.getBoundingClientRect().top;
-                canvas_left = canvas.value.getBoundingClientRect().left;
+                canvas_top = layers.value[layers_id].canvas.getBoundingClientRect().top;
+                canvas_left = canvas.getBoundingClientRect().left;
+                console.log(layers.value[layers_id].canvas);
+                layers_id = layers_id + 1;
             }
+            function create_layer() {
+                canvas = document.createElement('create');
+
+            }
+
             function down(e) {
                 if (draw.value) {                
                     ctx.lineWidth = size.value;
@@ -117,33 +136,29 @@
                     endX = event.clientX - canvas_left;
                     endY = event.clientY - canvas_top;
 
-                    let deg = Math.atan2(startY - endY, endX - startX);
-                    // deg += imgs.value[img_id.value].deg/180*Math.PI/180;
+                    let deg = Math.atan2(endY - startY, endX - startX);
 
                     let length = Math.sqrt(Math.pow(startX - endX, 2) + Math.pow(startY - endY, 2));
                     let x_direction = 1;
                     let y_direction = 1;
                     let img_deg = imgs.value[img_id.value].deg*Math.PI/180;
-                    let img_deg2 = Math.abs(imgs.value[img_id.value].deg);
+                    let img_deg2 = imgs.value[img_id.value].deg;
 
-                    // console.log(Math.abs(45 - (dot_id*90 + img_deg2)) - 360*Math.trunc(Math.abs(45 - (dot_id*90 + img_deg2))/360));
-
-                    if (Math.cos(Math.abs(45 - (dot_id*90 + img_deg2))*Math.PI/180) < 0){
+                    if (Math.cos(((dot_id*90 + img_deg2*2) - 45)*Math.PI/180) < 0){
                         x_direction = -1;
                     }                    
-                    if (Math.sin(Math.abs(45 - (dot_id*90 + img_deg2))*Math.PI/180) < 0){
+                    if (Math.sin(((dot_id*90 + img_deg2*2) - 45)*Math.PI/180) < 0){
                         y_direction = -1;
                     }
-                    console.log(y_direction);
 
                     let x = length*Math.cos(deg);
                     let y = length*Math.sin(deg);
 
                     imgs.value[img_id.value].x += x/2;
-                    imgs.value[img_id.value].y -= y/2;42154
+                    imgs.value[img_id.value].y += y/2;
                     
-                    imgs.value[img_id.value].w += length*Math.cos(img_deg - deg) * x_direction;
-                    imgs.value[img_id.value].h -= length*Math.sin(Math.abs(Math.PI + img_deg - deg)) * y_direction;
+                    imgs.value[img_id.value].w += length*Math.cos(img_deg + deg) * x_direction;
+                    imgs.value[img_id.value].h += length*Math.sin(img_deg + deg) * y_direction;
 
                     startX = event.clientX - canvas_left;
                     startY = event.clientY - canvas_top;
@@ -189,11 +204,11 @@
                     if (startY <= 0) {
                         startY = 0;
                     }
-                    if (endX >= canvas.value.width) {
-                        endX = canvas.value.width;
+                    if (endX >= canvas.width) {
+                        endX = canvas.width;
                     }
-                    if (endY >= canvas.value.height) {
-                        endY = canvas.value.height;
+                    if (endY >= canvas.height) {
+                        endY = canvas.height;
                     }
                     
                     let img_width = endX - startX;
@@ -203,7 +218,7 @@
                     let canvas_img = document.createElement('canvas');
                     canvas_img.width = img_width;
                     canvas_img.height = img_height;
-                    ctx.clearRect(0, 0, canvas.value.width, canvas.value.height);
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
                     canvas_img.getContext('2d').putImageData(img_data,0,0);
                     let img = {
@@ -285,11 +300,11 @@
             }
 
             onMounted(() => {
-                setcanvas();
+                setcanvas(layers_id);
             });
 
-
             return {
+                layers,
                 canvas,
                 center,
                 startX,
@@ -307,6 +322,7 @@
                 img_id,
 
                 setcanvas,
+                create_layer,
                 down,
                 move,
                 up,
