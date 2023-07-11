@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .c2{
+            overflow: none;
+            border-radius: 50%;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            
+        }
+        .a{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <input type="file">
+    <div class="a">
+
+        <canvas class="c1"></canvas>
+        <canvas class="c2"></canvas>
+    </div>
+    <div class="box"></div>
+    <div class="text"></div>
+    <script>
+        let input = document.querySelector('input');
+        let c1 = document.querySelector('.c1');
+        let c2 = document.querySelector('.c2');
+        let ctx1 = c1.getContext('2d');
+        let ctx2 = c2.getContext('2d');
+        let box = document.querySelector('.box');
+        let text = document.querySelector('.text');
+
+
+        input.addEventListener('change',function () {
+            url = URL.createObjectURL(input.files[0]);
+            let img = new Image();
+            img.src = url;
+            img.onload = function () {
+                c1.width = img.width;
+                c1.height = img.height;
+                ctx1.drawImage(img,0,0);
+                c2.width = 100;
+                c2.height = 100;
+            }
+            c1.addEventListener('mousemove',function (eve) {
+                c2.style = `
+                    position: absolute;
+                    top: ${eve.offsetY+5}px;
+                    left: ${eve.offsetX+5}px;
+                `;
+                for (let i = 0; i < 15; i++) {
+                    for (let j = 0; j < 15; j++) {
+                        idata = ctx1.getImageData(eve.offsetX - 7 + i,eve.offsetY - 7 + j,1,1).data;
+                        ctx2.fillStyle = `rgb(${idata[0]},${idata[1]},${idata[2]},${idata[3]/255})`;
+                        ctx2.fillRect(i*100/15,j*100/15,100/15,100/15);
+                    }
+                    
+                }
+                idata = ctx1.getImageData(eve.offsetX,eve.offsetY ,1,1).data;
+                box.style = `background-color: rgb(${idata[0]},${idata[1]},${idata[2]},${idata[3]/255});`;
+                text.innerHTML = `rgb(${idata[0]},${idata[1]},${idata[2]},${idata[3]/255});`;
+                for (let i = 0; i < 15; i++) {
+                    ctx2.beginPath();
+                    ctx2.strokeStyle = '#eee';
+                    ctx2.lineWidth = 0.6;
+                    ctx2.moveTo(i*100/15,0);
+                    ctx2.lineTo(i*100/15,100);
+                    ctx2.stroke();
+                }
+                for (let i = 0; i < 15; i++) {
+                    ctx2.beginPath();
+                    ctx2.strokeStyle = '#eee';
+                    ctx2.lineWidth = 0.6;
+                    ctx2.moveTo(0,i*100/15);
+                    ctx2.lineTo(100,i*100/15);
+                    ctx2.stroke();
+                }
+                ctx2.beginPath();
+                ctx2.strokeStyle = 'red';
+                ctx2.lineWidth = 2;
+                ctx2.moveTo(7*100/15,7*100/15);
+                ctx2.lineTo(7*100/15,8*100/15);
+                ctx2.lineTo(8*100/15,8*100/15);
+                ctx2.lineTo(8*100/15,7*100/15);
+                ctx2.lineTo(7*100/15,7*100/15);
+                ctx2.stroke();
+            })
+        })
+    </script>
+</body>
+</html>

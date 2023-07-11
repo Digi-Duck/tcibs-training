@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-size: 50px;
+            font-weight: 600;
+            text-align: center;
+        }
+        html{
+            width: 100%;
+            height: 100%;
+
+        }
+        body{
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+        }
+        .top{
+            width: 80%;
+            height: 150px;
+            border: 5px solid black;
+            margin: 20px auto;
+            line-height: 150px;
+        }
+        .main{
+            width: 80%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        .left{
+            width: 65%;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .leftTop{
+            width: 100%;
+            height: 200px;
+            /* border: 5px solid black; */
+            display: flex;
+            justify-content: space-between;
+        }
+        .adLeft{
+            display: none;
+        }
+        .newAb{
+            width: 45%;
+            height: 100%;
+            border: 5px solid black;
+            line-height: 200px;
+        }
+        .adRight{
+            width: 30%;
+            height: 500px;
+            border: 5px solid black;
+            line-height: 500px;
+        }
+        .newC{
+            width: 100%;
+            height: 250px;
+            border: 5px solid black;
+            line-height: 250px;
+        }
+        .foot{
+            width: 80%;
+            height: 130px;
+            border: 5px solid black;
+            margin: 20px auto;
+            line-height: 130px;
+        }
+        @media screen and (max-width:750px) {
+            .leftTop{
+                flex-direction: column;
+                justify-content: space-around;
+            }
+            .adRight{
+                display: none;
+            }
+            .left{
+                width: 100%;
+            }
+            .leftTop{
+                height: 700px;
+            }
+            .adLeft{
+                display: block;
+                line-height: 100px;
+                width: 100%;
+                height: 100px;
+                border: 5px solid black;
+            }
+            .newAb{
+                line-height: 100px;
+                width: 100%;
+                height: 100px;
+            }
+            .newC{
+                height: 150px;
+                line-height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        top
+    </div>
+    <div class="main">
+        <div class="left">
+            <div class="leftTop">
+                <div class="newAb">new A</div>
+                <div class="adLeft">AD space</div>
+                <div class="newAb">new B</div>
+            </div>
+            <div class="newC">
+                new C
+            </div>
+        </div>
+        <div class="adRight">
+            AD space
+        </div>
+    </div>
+    <div class="foot">
+        footer
+    </div>
+</body>
+</html>

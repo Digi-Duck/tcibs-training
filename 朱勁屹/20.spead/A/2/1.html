@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" class="file">
+    <canvas></canvas>
+    <script>
+        let canvas = document.querySelector('canvas');
+        let ctx = canvas.getContext('2d');
+        let file = document.querySelector('input');
+        file.addEventListener('change',function (eve) {
+            let img = new Image();
+            let url = URL.createObjectURL(eve.target.files[0]);
+            img.src = url;
+            img.onload = function () {
+                console.log(img.height,img.width);
+                a = (img.height/img.width)*320;
+                b = 320;
+                canvas.width = b;
+                canvas.height = a;
+
+                ctx.filter ='saturate(0)';
+                ctx.drawImage(img,0,0,b,a);
+
+                const link = canvas.toDataURL();
+                const line = document.createElement('a');
+                line.href = link;
+                line.download = 'amogus.jpg';
+                line.click(); 
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <div class="main"></div>
+    <script>
+        let a = ['7.html','5.html','3.html'];
+        let button = document.querySelectorAll('button');
+        let main = document.querySelector('.main');
+        button.forEach(function (value,index) {
+            value.addEventListener('click',function () {
+                fetch(a[index])
+                .then(response => response.text())
+                .then(htmlContent =>{
+                    main.innerHTML = htmlContent
+                })
+            })
+        })
+    </script>
+</body>
+</html>

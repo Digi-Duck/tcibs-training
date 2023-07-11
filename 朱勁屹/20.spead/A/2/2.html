@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <input type="file">
+    <canvas></canvas>
+    <script>
+        let input = document.querySelector('input');
+        let canvas = document.querySelector('canvas');
+        let ctx = canvas.getContext('2d');
+        input.addEventListener('change',function (eve) {
+            let file = eve.target.files[0];
+            let img = new Image();
+            let url = URL.createObjectURL(file);
+            img.src = url;
+            img.onload = function () {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img,0,0);
+                let idata = ctx.getImageData(0,0,img.width,img.height);
+                for (i = 0; i < idata.data.length; i += 4) {
+                    if(Math.random()*10 > 5){
+                        idata.data[i] = Math.floor(Math.random()*255);
+                        idata.data[i+1] = Math.floor(Math.random()*255);
+                        idata.data[i+2] = Math.floor(Math.random()*255);
+
+                    }
+                    
+                }
+                console.log(idata);
+                ctx.putImageData(idata,0,0);
+                let herf = canvas.toDataURL();
+                let a = document.createElement('a');
+                a.href = herf;
+                a.download = 'amongus.jpg';
+                a.click();
+            }
+        })
+    </script>
+</body>
+</html>

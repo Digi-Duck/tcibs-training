@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .textBox{
+            display: flex;
+            width: 100px;
+            align-items: center;
+            position: relative;
+        }
+        .text{
+            transition: 1s;
+            color: black;
+        }
+        label{
+            display: block;
+            border: 1px solid black;
+            width: 10px;
+            height: 10px;
+            transition: 1s;
+            color: rgb(255, 255, 255);
+        }
+        .line{
+            width: 0%;
+            height: 2px;
+            background-color: black;
+            position: absolute;
+            top: 50%;
+            transition: 1s;
+        }
+        input{
+            display: none;
+        }
+        input:checked ~ .text{
+            color: grey;
+        }
+        input:checked ~ .line{
+            width: 100%;
+        }
+        input:checked ~ label{
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="textBox">
+        <input type="checkbox" id="che1">
+        <label for="che1">&radic;</label>
+        <div class="text">text</div>
+        <div class="line"></div>
+    </div>
+    <div class="textBox">
+        <input type="checkbox" id="che2">
+        <label for="che2">&radic;</label>
+        <div class="text">text</div>
+        <div class="line"></div>
+    </div>
+    <div class="textBox">
+        <input type="checkbox" id="che3">
+        <label for="che3">&radic;</label>
+        <div class="text">text</div>
+        <div class="line"></div>
+    </div>
+</body>
+</html>
