@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T13</title>
+    <style>
+        *{
+            border-radius: 3px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body{
+            padding: 0 10%;
+        }
+        .room{
+            width: 500px;
+            padding: 0 20px;
+            background-color: #3f51b5;
+        }
+        .group{
+            padding: 20px 0;
+        }
+        h1{
+            color: white;
+            margin-bottom: 0;
+        }
+        p{
+            font-size: 25px;
+            font-weight: 650;
+        }
+        .card{
+            width: 480px;
+            background-color: #fff;
+            padding: 10px;
+            box-shadow: 0 0 3px #222d6a;
+            cursor: move;
+            margin-top: 20px;
+        }
+        .dragging{
+            transform:  rotate(3deg) !important;
+            position: fixed;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="room" style="float: left;">
+        <h1>Front-End</h1>
+        <div class="group">
+            <div class="card" draggable="true">
+                <p>JavaScript</p>
+                <span>Dolor sit amet consectetur adipisicing elit. Voluptatem, ab, vitae distinctio velit ipsam accusamus quaerat odio voluptatibus dignissimos natus quisquam deserunt, consectetur neque eius? enim recusandae debitis nisi perferendis maiores error architecto.</span>
+            </div>
+        </div>
+    </div>
+    <div class="room" style="float: right;">
+        <h1>Back-End</h1>
+        <div class="group">
+            <div class="card" draggable="true">
+                <p>PHP</p>
+                <span>Error ex eligendi a at!Quidem dolores iste, enim recusandae debitis nisi perferendis maiores error pariatur architecto. Odit suscipit eligendi cupiditate repellat earum. Nisi ad, a mollitia possimus dicta placeat, harum cumque iste eligendi labore voluptatem?</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        const groups = document.querySelectorAll('.group')
+        const cards = document.querySelectorAll('.card')
+        cards.forEach(element => {
+            element.addEventListener('dragstart', function(e){
+                e.dataTransfer.setDragImage(new Image(), 0, 0)
+            })
+            element.addEventListener('drag', function(e){
+                element.classList.add('dragging')
+                element.style.left = e.pageX + 'px'
+                element.style.top = e.pageY + 'px'
+                groupHeight()
+            })
+            element.addEventListener('dragend', function(e){
+                element.classList.remove('dragging')
+                cards.forEach(element => { element.style.transform = `translateY(0px)`})
+            })
+        })
+        groups.forEach(element => {
+            element.addEventListener('dragover', function(e){
+                e.preventDefault()
+                const afterElement = getAfterElement(element, e.clientY)
+                const dragElememt = document.querySelector('.dragging')
+                if(afterElement == null){
+                    element.appendChild(dragElememt)
+                }else{
+                    element.insertBefore(dragElememt, afterElement)
+                    afterElement.style.transform = `translateY(${afterElement.offsetHeight + 20}px)`
+                }
+            })
+        })
+        function getAfterElement(group, y){
+            const dragElememts = [...group.querySelectorAll('.card:not(.dragging)')]
+            return dragElememts.reduce((closest, child) => {
+                const box = child.getBoundingClientRect()
+                const offset = y - box.top - box.height / 2
+                return (offset < 0 && offset > closest.offset) ? {offset, element: child} : closest
+            }, {offset: Number.NEGATIVE_INFINITY}).element
+        }
+        function groupHeight(){
+            groups.forEach(element => {
+                const totalHeight = Array.from(element.children).reduce((total, child) => total + child.offsetHeight, 0);
+                element.style.height = totalHeight + element.children.length * 20 + 'px'
+            })
+        }
+    </script>
+</body>
+</html>

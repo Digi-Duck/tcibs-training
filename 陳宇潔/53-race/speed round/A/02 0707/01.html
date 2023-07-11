@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T1</title>
+    <style>
+    </style>
+</head>
+<body>
+    <input type="file" accept="image/*" multiple>
+    <div class="container"></div>
+    <script>
+        const input = document.querySelector('input')
+        const container = document.querySelector('.container')
+        input.addEventListener('change', function(e){
+            const files = e.target.files
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const url = URL.createObjectURL(file)
+                const image = new Image()
+                image.src = url
+                image.onload = () => {
+                    const canvas = document.createElement('canvas')
+                    const ctx = canvas.getContext('2d')
+                    canvas.width = image.width / 2
+                    canvas.height = image.height / 2
+                    ctx.filter = 'grayscale(1)'
+                    ctx.drawImage(image, 0, 0, image.width / 2, image.height / 2)
+                    const newUrl = canvas.toDataURL()
+                    const newImage = new Image()
+                    newImage.src = newUrl
+                    container.appendChild(newImage)
+                    download(newUrl)
+                }
+            }
+        })
+        function download(url){
+            const a = document.createElement('a')
+            a.href = url
+            a.download = 'result'
+            a.click()
+        }
+    </script>
+</body>
+</html>

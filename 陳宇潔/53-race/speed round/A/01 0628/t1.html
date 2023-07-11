@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T1</title>
+</head>
+<body>
+    <input type="file" accept="imgae/*" class="file" multiple>
+    <div class="flex" style="display: flex; justify-content: center;"></div>
+    <script>
+        const fileInput = document.querySelector('.file')
+        const flex = document.querySelector('.flex')
+        fileInput.addEventListener('change', function(e){
+            const files = e.target.files
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i]
+                const url = URL.createObjectURL(file)
+                const image = new Image()
+                image.src = url
+                image.onload = () => {
+                    const canvas = document.createElement('canvas')
+                    const ctx = canvas.getContext('2d')
+                    canvas.width = image.width / 2
+                    canvas.height = image.height / 2
+                    ctx.filter = 'grayscale(1)'
+                    ctx.drawImage(image, 0, 0, image.width / 2, image.height / 2)
+                    const newUrl = canvas.toDataURL()
+                    flex.innerHTML += `<img src="${newUrl}" alt="">`
+                    download(newUrl)
+                } 
+                function download(newUrl){
+                    const link = document.createElement('a')
+                    link.href = newUrl
+                    link.download = 'result'
+                    link.click()
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T2</title>
+</head>
+<body>
+    <div class="flex">
+        <img src="/A/img/plane.jpg" class="original">
+        <img src="" alt="" class="new">
+    </div>
+    <script>
+        const original = document.querySelector('.original')
+        const newImg = document.querySelector('.new')
+        const image = new Image();
+        image.src = original.src;
+
+        image.addEventListener('load', () => {
+            const canvas = document.createElement('canvas')
+            const ctx = canvas.getContext('2d')
+            canvas.width = image.width;
+            canvas.height = image.height;
+            ctx.drawImage(image, 0, 0);
+            const imageData = ctx.getImageData(0, 0, image.width, image.height);
+            const data = imageData.data;
+
+            for (let i = 0; i < data.length; i += 4) {
+                const noise = Math.random() * 50; 
+                data[i] += noise;
+                data[i + 1] += noise;
+                data[i + 2] += noise;
+            }
+            ctx.putImageData(imageData, 0, 0);
+            ctx.font = "50px serif"; // 字級 字體
+            ctx.fillStyle = "gray";
+
+            // 在圖片上重複顯示 "SAMPLE" 文字
+            const xSpacing = 250; // 文字間的水平間距
+            const ySpacing = 100; // 文字間的垂直間距
+
+            for (let x = 0; x < image.width; x += xSpacing) {
+                for (let y = 50; y < image.height; y += ySpacing) {
+                    ctx.fillText("SAMPLE", x, y);
+                }
+            }
+            newImg.src = canvas.toDataURL();
+            download(newImg.src)
+        });
+
+        function download(newImg){
+            const link = document.createElement('a')
+            link.href = newImg
+            link.download = 'result'
+            link.click()
+        } 
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T5</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        *{
+            box-sizing: border-box;
+        }
+        .bg *, .bg{
+            border: 1px solid #000;
+            text-align: center;
+            margin: 20px;
+        }
+        .hidden{
+            display: flex;
+            border: 0 !important;
+            margin: 0 !important;
+        }
+        .d{
+            display: flex;
+            flex-direction: column;
+        }
+        header, footer{
+            height: 100px;
+            line-height: 100px;
+        }
+        .small{
+            width: 50%;
+        }
+        .big{
+            width: 66.66%;
+        }
+        .ad{
+            width: 33.33%;
+        }
+        .ad1{
+            display: none;
+        }
+        @media (max-width: 480px) {
+            .hidden{
+                display: block;
+            }
+            .bg *{
+                margin: 10px;
+            }
+            .rwd div{
+                width: calc(100% - 20px);
+            }
+            .big{
+                width: 100%;
+            }
+            .c{
+                line-height: 120px !important;
+            }
+            .ad2{
+                display: none;
+            }
+            .ad1{
+                display: block;
+            }
+            .ad{
+                line-height: 240px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="d bg">
+        <header>Header</header>
+        <main class="hidden">
+            <div class="hidden d big">
+                <div class="hidden rwd">
+                    <div class="small" style="line-height: 120px;">News A</div>
+                    <div class="ad1 ad">Ad Space</div>
+                    <div class="small" style="line-height: 120px;">News B</div>
+                </div>
+                <div class="c" style="line-height: 240px;">News C</div>
+            </div>
+            <div class="ad2 ad" style="line-height: 400px;">Ad space</div>
+        </main>
+        <footer>Footer</footer>
+    </div>
+</body>
+</html>

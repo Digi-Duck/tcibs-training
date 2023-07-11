@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T4</title>
+    <style>
+        body{
+            overflow: hidden;
+            animation: bg 10s infinite linear;
+        }
+        .circle{
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border: 5px solid rgba(255, 255, 0, 0.346);
+            border-radius: 50%;
+            position: relative;
+            top: 40vh;
+            animation: circle 10s infinite linear;
+        }
+        @keyframes circle {
+            from{
+                transform: rotate(-45deg) translate(0);
+            }
+            to{
+                transform: rotate(0deg) translate(100vw);
+            }
+        }
+        @keyframes bg {
+            from{
+                background-color: rgb(255, 204, 0);
+            }
+            to{
+                background-color: darkblue;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="circle"></div>
+</body>
+</html>

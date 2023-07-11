@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T3</title>
+    <style>
+        li{
+            list-style: none;
+        }
+        input[type="checkbox"]{
+            display: none;
+        }
+        input[type="checkbox"] + label::before{
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 15px;
+            margin-top: 5px;
+            border: 1px solid#000;
+            background-size: contain;
+            margin-right: 5px;
+            position: relative;
+        }
+        input[type="checkbox"]:checked + label{
+            text-decoration: line-through;
+            text-decoration-color: black;
+            color: gray;
+        }
+        label{
+            transition: 1s;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <input type="checkbox" name="" id="box1">
+            <label for="box1"></label>
+        </li>
+        <li>
+            <input type="checkbox" name="" id="box2">
+            <label for="box2"></label>
+        </li>
+        <li>
+            <input type="checkbox" name="" id="box3">
+            <label for="box3"></label>
+        </li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T14</title>
+    <style>
+        .big{
+            width: 480px;
+            height: 480px;
+            border: 2.5px solid #000;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .box{
+            width: 30px;
+            height: 30px;
+            border: 1px solid #000;
+            box-sizing: border-box;
+        }
+        .circle{
+            border: 5px solid gray;
+            width: 50px;
+            height: 50px;
+            margin: 7.5px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .bg{
+            width: 640px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .color{
+            margin: 10px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg">
+        <div class="big"></div>
+        <div class="color"></div>
+    </div>
+    <script>
+        const bigBox = document.querySelector('.big')
+        const colorBox = document.querySelector('.color')
+        for (let x = 0; x < 16; x++) {
+            for (let y = 0; y < 16; y++) {
+                bigBox.innerHTML += '<div class="box"></div>'
+            
+            }
+        }
+        for (let x = 0; x < 16; x++) {
+            colorBox.innerHTML += `<div class="circle" style="background-color: ${ getRGB() }"></div>`
+        }
+        function getRGB(){
+            const rgb = Array.from({length: 3}, () => Math.floor(Math.random() * 256))
+            return `rgb(${rgb.join(',')})`
+        }
+        const circle = document.querySelectorAll('.circle')
+        circle[0].style.borderColor = 'yellow'
+        color = circle[0].style.backgroundColor
+        circle.forEach(element => {
+            element.addEventListener('click', function(){
+                circle.forEach(circle => circle.style.borderColor = '')
+                element.style.borderColor = 'yellow'
+                color = element.style.backgroundColor
+            })
+        })
+        const box = document.querySelectorAll('.box')
+        let isMouseDown = false
+        box.forEach(element => {
+            element.addEventListener('mousedown', function(){
+                isMouseDown = true
+                element.style.backgroundColor = color
+            })
+            element.addEventListener('mousemove', function(){
+                if(isMouseDown){
+                    element.style.backgroundColor = color
+                }
+            })
+        })
+        document.addEventListener('mouseup', function(){
+            isMouseDown = false
+        })
+    </script>
+</body>
+</html>

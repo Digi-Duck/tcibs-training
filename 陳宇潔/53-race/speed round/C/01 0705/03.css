@@ -1,0 +1,120 @@
+#target{
+    transform: translateY(-100px);
+    border-radius: 50px;
+    background-image: radial-gradient(rgb(100,0,0) 0%, rgb(120,0,0) 100%);
+    margin: 20px;
+    width: calc(100% - 40px);
+    height: calc(100vh + 100px);
+    position: relative;
+}
+/* left */
+.target-container .target-left{
+    transform: translateX(-200%);
+}
+.target-container:hover .target-left {
+    transform: translateX(0);
+}
+.target h2{
+    font-size: 50px;
+    color: #ffffff;
+    text-align: start;
+}
+/* center */
+.target-title h1{
+    font-size: 250px;
+    color: rgba(255, 255, 255, 0.301);
+}
+.box{
+    width: 50px;
+    height: 50px;
+    float: left;
+    background: #ffffff;
+    margin: 0 2px 2px 0;
+    /* opacity: 0; */
+    border-radius: 3px;
+    transform: translateY(300px);
+}
+.clear{
+    clear: left;
+}
+.white{
+    background: none !important;
+}
+.box:not(.white){
+    transition: all .5s ease;
+    animation: boxMoving 5s infinite;
+}
+.box:not(.white):hover{
+    transform: scale(1.1, 1.1);
+    background: rgb(200, 0, 0);
+}
+@keyframes boxMoving {
+    0%{
+        opacity: 0;
+        transform: translateY( -300px);
+    }
+    30%{
+        opacity: 1;
+        transform: translateY( 0px);
+    }
+    70%{
+        opacity: 1;
+        transform: translateY( 0px);
+    }
+    100%{
+        opacity: 0;
+        transform: translateY( 300px);
+    }
+}
+.delay1{ animation-delay: .5s !important;}
+.delay2{ animation-delay: .6s !important;}
+.delay3{ animation-delay: .7s !important;}
+.delay4{ animation-delay: .8s !important;}
+.delay5{ animation-delay: .9s !important;}
+.delay6{ animation-delay: 1.0s !important;}
+.delay7{ animation-delay: 1.1s !important;}
+.delay8{ animation-delay: 1.2s !important;}
+.delay9{ animation-delay: 1.3s !important;}
+.delay10{ animation-delay: 1.4s !important;}
+.target-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+/* right */
+.target-container img{
+    width: 300px;
+    height: 350px;
+    margin: -20px;
+    transform: rotate(0deg) translate(0, 0) scale(0, 0);
+    transition: all 1s;
+}
+.target{
+    width: 33.33%;
+    transition: all 1s;
+}
+.target-container .target-right{
+    transform: translateX(-200%);
+}
+.target-container:hover .target-right {
+    transform: translateX(-10%);
+}
+.target-container:hover .target-right .d-1{
+    transform: rotate(10deg);
+    transition: all 1.1s ease-in-out;
+}
+.target-container:hover .target-right .d-2{
+    transform: rotate(-10deg) translateY(-30px);
+    transition: all 1.2s ease-in-out;
+}
+.target-container:hover .target-right .d-3{
+    transform: rotate(15deg) translate(60px,-80px);
+    transition: all 1.3s ease-in-out;
+}
+.target-container:hover .target-right .d-4{
+    transform: rotate(-5deg) translate(120px, -150px);
+    transition: all 1.4s ease-in-out;
+}
+
+
+

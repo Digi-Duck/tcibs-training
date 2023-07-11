@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T12</title>
+    <style>
+        img{
+            width: 15%;
+            margin: 10px;
+        }
+        .center{
+            display: flex;
+            justify-content: center;
+        }
+        .bg{
+            width: 100%;
+            height: 100%;
+            background-color: rgba(128, 128, 128, 0.743);
+            position: absolute;
+            left: 0;
+            top: 0;
+            justify-content: center;
+            align-items: center;
+        }
+        .bg img{
+            width: 500px;
+        }
+        button{
+            width: 50px;
+            height: 50px;
+            font-size: 25px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+        <img src="./DSC_0116.JPG" alt="">
+        <img src="./DSC_0117.JPG" alt="">
+        <img src="./DSC_0118.JPG" alt="">
+        <img src="./DSC_0119.JPG" alt="">
+        <img src="./DSC_0121.JPG" alt="">
+    </div>
+    <div class="bg" style="display: none;">
+        <button class="x" style="right: 20px; top: 20px;">X</button>
+        <button class="order" style="left: 20px; top: calc(50% - 25px);"><</button>
+        <button class="order" style="right: 20px; top: calc(50% - 25px);">></button>
+        <img src="" alt="">
+    </div>
+    <script>
+        const img = document.querySelectorAll('img')
+        const btn = document.querySelectorAll('button')
+        const target = document.querySelector('.bg img')
+        const bg = document.querySelector('.bg')
+        let now = 0
+        img.forEach((element, index) => {
+            element.addEventListener('click', function(){
+                now = index
+                target.src = img[now].src
+                bg.style.display = 'flex'
+            })
+        });
+        btn[1].addEventListener('click', function(e){
+            now = (now != 0) ? now - 1 : img.length - 2
+            target.src = img[now].src
+        })
+        btn[2].addEventListener('click', function(e){
+            now = (now != img.length - 2) ? now + 1 : 0
+            target.src = img[now].src
+        })
+        btn[0].addEventListener('click', close)
+        bg.addEventListener('click', close)
+        function close(e){
+            if(e.target === btn[0] || e.target === bg){
+                bg.style.display = 'none'
+            }
+        }
+    </script>
+</body>
+</html>

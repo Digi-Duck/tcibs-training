@@ -1,0 +1,53 @@
+#slogon img{
+    opacity: 0.8;
+}
+.slogon-container{
+    position: absolute;
+    top: 200px;
+    left: 0;
+    width: 100%;
+}
+.slogon-container h1{
+    font-size: 300px;
+    color: rgb(120, 0, 0);
+    margin: 0;
+}
+.slogon-container h1:hover{
+    font-size: 300px;
+    color: rgb(150, 0, 0);
+}
+.m{
+    font-size: 50px;
+    margin: 20px 7px;
+    color: #000;
+    text-shadow: 0 0 5px #100; 
+    animation: loading 1s ease-in-out infinite alternate;
+}
+@keyframes loading {
+    to{
+        text-shadow: 0 0 0 #a00;
+        color: #800;
+    }
+}
+.m:hover{
+    transform: translate3d(0, -10px, 22px) scale(1.1);
+
+}
+.m:nth-child(2){
+    animation-delay: 0.5s;
+}
+.m:nth-child(3){
+    animation-delay: 1s;
+}
+.m:nth-child(4){
+    animation-delay: 1.5s;
+}
+.m:nth-child(5){
+    animation-delay: 2s;
+}
+.m:nth-child(6){
+    animation-delay: 2.5s;
+}
+.m:nth-child(7){
+    animation-delay: 3s;
+}

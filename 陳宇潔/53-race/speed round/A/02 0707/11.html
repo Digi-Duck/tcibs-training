@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T11</title>
+    <style>
+        *{
+            color-scheme: light;
+            text-align: center;
+        }
+        *:has(body #change:checked){
+            color-scheme: dark;
+        }
+        #change{
+            display: none;
+        }
+        label{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Light Mode Test</h1>
+    <input type="checkbox" id="change">
+    <label for="change">Change mode</label>
+    <script>
+        const input = document.querySelector('input')
+        const h1 = document.querySelector('h1')
+        input.addEventListener('change', function(){
+            h1.textContent = input.checked ? 'Night Mode Test' : 'Light Mode Test'
+        })
+    </script>
+</body>
+</html>

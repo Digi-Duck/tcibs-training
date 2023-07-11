@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<title>T4</title>
+<head>
+    <style>
+        body{
+            overflow: hidden;
+            animation: bg 10s infinite linear;
+        }
+        .circle {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(255, 255, 255);
+            border: 6px solid #e3dac2bc;
+            border-radius: 50%;
+            position: relative;
+            top: 240px;
+            animation: moveCircle 10s infinite linear;
+        }
+
+        @keyframes moveCircle {
+            from {
+                transform: rotate(-45deg) translate(0);
+            }
+            to {
+                transform: rotate(0deg) translate(100vw);
+            }
+        }
+        @keyframes bg {
+            from {
+                background-color: #ffd000ab;
+            }
+            to {
+                background-color: #050f4e;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="circle"></div>
+</body>
+</html>

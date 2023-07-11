@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T12</title>
+    <style>
+        img{
+            width: 15%;
+            margin: 10px;
+        }
+        .center{
+            display: flex;
+            justify-content: center;
+        }
+        .bg{
+            width: 100%;
+            height: 100%;
+            background-color: #aaaaaaaa;
+            position: absolute;
+            left: 0;
+            top: 0;
+            justify-content: center;
+            align-items: center;
+        }
+        .x{
+            right: 20px;
+            top: 20px;
+        }
+        button{
+            width: 50px;
+            height: 50px;
+            font-size: 25px;
+            position: absolute;
+        }
+        .order{
+            top: calc(50% - 25px);
+        }
+        .bg img{
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+        <img src="../img/DSC_0116.JPG" alt="">
+        <img src="../img/DSC_0117.JPG" alt="">
+        <img src="../img/DSC_0118.JPG" alt="">
+        <img src="../img/DSC_0119.JPG" alt="">
+        <img src="../img/DSC_0121.JPG" alt="">
+    </div>
+    <div class="bg" style="display: none;">
+        <button class="x">X</button>
+        <button class="order" style="left: 20px;"><</button>
+        <button class="order" style="right: 20px;">></button>
+        <img src="" alt="">
+    </div>
+    <script src="./12.js"></script>
+</body>
+</html>

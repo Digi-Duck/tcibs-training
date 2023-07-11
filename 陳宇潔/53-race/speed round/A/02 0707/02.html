@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T2</title>
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="../img/plane.jpg" alt="">
+        <img src="" alt="">
+    </div>
+    <script>
+        const img = document.querySelectorAll('img')
+        const canvas = document.createElement('canvas')
+        const ctx = canvas.getContext('2d')
+        const image = new Image();
+        image.src = img[0].src;
+        canvas.width = image.width
+        canvas.height = image.height
+        ctx.drawImage(image, 0, 0)
+        const imageData = ctx.getImageData(0, 0, image.width, image.height)
+        const data = imageData.data
+        console.log(data);
+        for (let i = 0; i < data.length; i+=4) {
+            const noise = Math.random() * 50;
+            data[i] += noise;
+            data[i+1] += noise;
+            data[i+2] += noise;
+        }
+        ctx.putImageData(imageData, 0, 0)
+
+        ctx.font = "50px serif"
+        ctx.fillStyle ="#55555555"
+
+        const xS = 250
+        const yS = 50
+
+        for (let x = -100; x < image.width; x+=xS) {
+            for (let y = -120; y < image.height; y+=yS) {
+                ctx.fillText("SAMPLE", x ,y)
+            }
+        }
+
+        const newUrl = canvas.toDataURL()
+        img[1].src = newUrl
+        download(newUrl)
+        function download(url){
+            const a = document.createElement('a')
+            a.href = url
+            a.download = 'result.jpg'
+            a.click()
+        }
+    </script>
+</body>
+</html>

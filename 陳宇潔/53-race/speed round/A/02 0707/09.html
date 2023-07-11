@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T9</title>
+    <style>
+        body pre, body textarea{
+            box-sizing: border-box;
+            padding: 10px;
+            width: 50%
+        }
+        body{
+            display: flex;
+        }
+        pre{
+            border: 1px solid #000;
+            margin: 0;
+            white-space: pre-wrap;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+    <textarea name=""></textarea>
+    <pre></pre>
+    <!-- <strong></strong> -->
+    <script>
+        const textarea = document.querySelector('textarea')
+        const result = document.querySelector('pre')
+
+        textarea.addEventListener('keyup', function(){
+            const values = textarea.value.split('\n')
+            const lines = values.map(line => {
+                const strong = line.match(/\*\*(.+)\*\*/)
+                if(strong){
+                    console.log(strong);
+                    line = `<strong>${strong[1]}</strong>`
+                }
+                const h = line.match(/^(#+)(.+)/)
+                if(h){
+                    line = `<h${h[1].length}>${h[2]}</h${h[1].length}>`
+                }
+                const hr = line.match(/\-{3}/)
+                if(hr){
+                    line = `<hr>`
+                }
+                const li = line.match(/\-(.+)/)
+                if(li){
+                    line = `<li>${li[1]}</li>`
+                }
+                const a = line.match(/^\[(.+)\]\s*\((.+)\)/)
+                if(a){
+                    line = `<a href="${a[2]}">${a[1]}</a>`
+                }
+                const img = line.match(/^\!\[(.+)\]\s*\((.+)\)/)
+                if(img){
+                    line = `<img src="${img[2]}" alt="${img[1]}">`
+                }
+                return line
+            })
+            result.innerHTML = lines.join('\n')
+        })
+    </script>
+</body>
+</html>

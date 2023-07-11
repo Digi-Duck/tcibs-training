@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T9</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            height: 98vh;
+        }
+        textarea{
+            width: calc(50% + 20px);
+            overflow-y: scroll;
+            padding: 10px;
+        }
+        pre{
+            padding: 10px;
+            flex: 1;
+            border: 1px solid black;
+            margin: 0;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <textarea name="" id="" rows="25"># 請開始你的作答</textarea>
+    <pre></pre>
+<!--
+    <strong></strong>
+    <h1></h1>
+    <hr>
+    <li></li>
+    <a href=""></a>
+    <img src="" alt="">
+-->
+    <script>
+        const textarea = document.querySelector('textarea')
+        const result = document.querySelector('pre')
+
+        textarea.addEventListener('keyup', function(){
+            const values = textarea.value.split('\n')
+            const lines = values.map(line => {
+                const strong = line.match(/(\*\*\s*(.+)\s*\*\*)/)
+                if(strong){
+                    line = `<strong>${strong[2]}</strong>`
+                }
+                const title = line.match(/(#+)\s*(.+)/)
+                if(title){
+                    const level = title[1].length
+                    line = `<h${level}>${title[2]}</h${level}>`
+                }
+                const hr = line.match(/\-{3}/)
+                if(hr){
+                    line = `<hr>`
+                }
+                const li = line.match(/\-\s*(.+)/)
+                if(li){
+                    line = `<li>${li[1]}</li>`
+                }
+                const img = line.match(/\!\[(.+)\]\s*\((.+)\)/)
+                if(img){
+                    line = `<img src="${img[2]}">${img[1]}`
+                }
+                const a = line.match(/\[(.+)\]\s*\((.+)\)/)
+                if(a){
+                    line = `<a href="${a[2]}">${a[1]}</a>`
+                }
+                return line;
+            })
+            result.innerHTML = lines.join('\n')
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+.line{
+    position: fixed;
+    height: 100%;
+    width: 20px;
+    background-image: radial-gradient(rgb(150,0,0) 0%, rgb(120,0,0) 100%);
+    z-index: 5;
+}
+.lineTop div{
+    text-align: start;
+    animation: horse 10s linear infinite;
+}
+@keyframes horse {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+.lineTop{
+    position: fixed;
+    width: 100%;
+    padding: 5px;
+    background-image: radial-gradient(rgb(150,0,0) 0%, rgb(120,0,0) 100%);
+    color: #fff;
+    text-align: unset;
+    z-index: 5;
+}
+header{
+    position: fixed;
+    padding: 50px 50px 0 30px;
+    width: 100%;
+    z-index: 3;
+}
+.icon img{
+    width: 100px;
+    padding: ;
+}
+nav{
+    background-image: radial-gradient(rgb(170,0,0) 0%, rgb(150,0,0) 100%);
+    border-radius: 50% 20% / 10% 40%;
+    margin-top: 20px;
+    padding: 10px;
+    height: 60px;
+    position: relative;
+}
+nav input{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    opacity: 0;
+    position: relative;
+    z-index: 2;
+}
+label{
+    position: absolute;
+    top: 17px;
+    left: 14px;
+}
+nav span{
+    display: block;
+    width: 30px;
+    height: 5px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    background: #ccc;
+    transition: transform 0.5s;
+    position: relative;
+    z-index: 1;
+}
+.menu{
+    position: fixed;
+    width: 400px;
+    height: 100vh;
+    padding: 50px;
+    padding-top: 150px;
+    top: -15px;
+    background-color:rgb(120, 0, 0);
+    list-style-type: none;
+    transform: translateX(75px);
+    transition: transform 0.5s cubic-bezier(0.75, 0.2, 0.05, 1.0);
+    box-shadow: 0 0 5px #300;
+}
+.menu li{
+    padding: 50px 0;
+    font-size: 30px;
+    font-weight: 900;
+}
+.menu a{
+    text-decoration: none;
+    color:  #fff;
+}
+.menu a:hover{
+    color:  #aaa;
+}
+nav input:checked ~ ul li{
+    transform: rotate(360deg);
+    transition: transform 1s;
+}
+nav input:checked ~ .menu{
+    transform: translateX(-80%);
+}
+nav input:checked ~ label span{
+    background: #555;
+}
+nav input:checked ~ label span:first-child{
+    transform: rotate(45deg) translate(7px, 9px);
+}
+nav input:checked ~ label span:nth-child(2){
+    opacity: 0;
+}
+nav input:checked ~ label span:last-child{
+    transform: rotate(-45deg) translate(5px, -8px);
+}
+.menu li{
+    line-height: 75px;
+}
+.menu li::before, .menu li::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background-image: radial-gradient(rgb(240,240,240) 0%, rgb(255,255,255) 100%);
+}
+.menu li::after{
+    top: inherit;
+    right: inherit;
+    left: 0;
+    bottom: 0;
+}
+.menu li:hover:before, .menu li:hover:after{
+    width: 100%;
+    transition: 0.8s ease all;
+}

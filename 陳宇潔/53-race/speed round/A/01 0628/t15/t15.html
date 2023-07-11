@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T15</title>
+    <style>
+        table{
+            width: 320px;
+            margin: 20px auto;
+            border: 1px solid #000;
+        }
+        td, th{
+            border: 1px solid #000;
+        }
+        .scoreBox{
+            width: 320px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <th>Question</th>
+            <th>Actual Answer</th>
+            <th>Submitted Answer</th>
+        </thead>
+    </table>
+    <div class="scoreBox"></div>
+    <script>
+        const table = document.querySelector('table')
+        const scoreBox = document.querySelector('.scoreBox')
+        fetch("./ans1.csv")
+        .then(response => response.text())
+        .then(response => {
+            actual = response.split(',')
+            return fetch("./ans2.csv")
+        })
+        .then(response => response.text())
+        .then(response => {
+            submit = response.split(',')
+            let score = 0
+            for (let i = 1; i <= 10; i++) {
+                table.innerHTML += 
+                `<tr>
+                    <td>${i}</td>
+                    <td>${actual[i - 1]}</td>
+                    <td>${submit[i - 1]}</td>
+                </tr>`
+                score += actual[i - 1] === submit[i - 1] ? 1 : 0
+            }
+            scoreBox.innerHTML = `Score: ${score}/${actual.length}`
+        })
+    </script>
+</body>
+</html>
