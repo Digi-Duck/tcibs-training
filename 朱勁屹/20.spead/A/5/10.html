@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <input type="file">
+    <canvas class="c1"></canvas>
+    <canvas class="c2"></canvas>
+    <div class="text"></div>
+    <div class="box"></div>
+    <script>
+        let input = document.querySelector('input');
+        let c1 = document.querySelector('.c1');
+        let c2 = document.querySelector('.c2');
+        let ctx1 = c1.getContext('2d');
+        let ctx2 = c2.getContext('2d');
+
+        input.addEventListener('change',function () {
+            let img = new Image();
+            let url = URL.createObjectURL(input.files[0]);
+            img.src =  url;
+            img.onload = function () {
+                c1.width = img.width;
+                c1.height = img.height;
+                ctx1.drawImage(img,0,0);
+                c1.addEventListener('')
+            }
+        })
+    </script>
+</body>
+</html>

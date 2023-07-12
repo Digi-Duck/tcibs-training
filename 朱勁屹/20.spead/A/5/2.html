@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file">
+    <canvas></canvas>
+    <script>
+        let input = document.querySelector('input');
+        let canvas = document.querySelector('canvas');
+        let ctx = canvas.getContext('2d');
+
+        input.addEventListener('change',function () {
+            file = input.files[0];
+            let url = URL.createObjectURL(file);
+            let img = new Image();
+            img.src = url;
+            img.onload = function () {     
+                canvas.width = img.width;
+                canvas.height = img.height;    
+
+                
+                ctx.drawImage(img,0,0,canvas.width,canvas.height);
+                let idata = ctx.getImageData(0,0,canvas.width,canvas.height);
+
+                for (let i = 0; i < idata.data.length; i+=4) {
+                    if(Math.random()*10>5){
+                        idata.data[i] = Math.floor(Math.random()*255);
+                        idata.data[i+1] = Math.floor(Math.random()*255);
+                        idata.data[i+2] = Math.floor(Math.random()*255);
+                        idata.data[i+3] = Math.floor(Math.random()*255);
+
+                    }
+                    
+                }
+                ctx.putImageData(idata,0,0);
+
+                let href = canvas.toDataURL();
+                let a = document.createElement('a');
+                a.href = href;
+                a.download = 'a.jpg';
+                a.click();
+            }
+        })
+    </script>
+</body>
+</html>
