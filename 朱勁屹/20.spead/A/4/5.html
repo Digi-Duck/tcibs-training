@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            font-size: 50px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .top{
+            width: 80%;
+            height: 150px;
+            border: 5px solid black;
+            margin:  30px auto;
+            line-height: 150px;
+        }
+        .main{
+            width: 80%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        .left{
+            width: 65%;
+            height: 500px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+        .adRight{
+            width: 30%;
+            height: 500px;
+            border: 5px solid black;
+        }
+        .adLeft{
+            display: none;
+        }
+        .leftTop{
+            width: 100%;
+            
+            display: flex;
+            justify-content: space-between;
+        }
+        .newAb{
+            width: 45%;
+            height: 200px;
+            border: 5px solid black;
+            line-height: 200px;
+        }
+        .newC{
+            width: 100%;
+            height: 250px;
+            border: 5px solid black;
+            line-height: 250px;
+        }
+        .foot{
+            width: 80%;
+            height: 130px;
+            border: 5px solid black;
+            margin:  30px auto;
+            line-height: 130px;
+        }
+        @media screen and (max-width:750px) {
+            .left{
+                width: 100%;
+            }
+            .adRight{
+                display: none;
+
+            }
+            .leftTop{
+                flex-direction: column;
+            }
+            .adLeft{
+                display: block;
+            }
+            .newAb{
+                height: 100px;
+                width: 100%;
+                line-height: 100px;
+                margin: 20px 0px;
+            }
+            .newC{
+                height: 150px;
+                line-height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        top
+    </div>
+    <div class="main">
+        <div class="left">
+            <div class="leftTop">
+                <div class="newAb">new A</div>
+                <div class="adLeft">ad Space</div>
+                <div class="newAb">new B</div>
+            </div>
+            <div class="newC">
+                new C
+            </div>
+        </div>
+        <div class="adRight">ad Space</div>
+    </div>
+    <div class="foot">footer</div>
+</body>
+</html>

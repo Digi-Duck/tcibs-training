@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 700px;
+            height: 700px;
+            /* border: 2px solid black; */
+            display: flex;
+            flex-wrap: wrap;
+            margin: auto;
+        }
+        .clBox{
+            width: calc(648px/16);
+            height: calc(648px/16);
+            border: 1px solid black;
+            
+        }
+        .buttonBox{
+            width: 300px;
+            margin: auto;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+    <div class="buttonBox">
+        <button></button><button></button><button></button><button></button><button></button><button></button><button></button><button></button><button></button><button></button>
+    </div>
+    <script>
+        let box = document.querySelector('.box');
+        let button = document.querySelectorAll('button');
+        let color;
+        for (let i = 0; i < 16; i++) {
+            for (let j = 0; j < 16; j++) {
+                box.innerHTML += '<div class="clBox"></div>';
+                
+            }
+            
+        }
+        let clBox = document.querySelectorAll('.clBox');
+        clBox.forEach(function (value,index) {
+            // console.log(value);
+            value.addEventListener('click',function () {
+                value.style = `background-color: ${color};`;
+            })
+        })
+        button.forEach(function (value,index) {
+            let r = Math.random()*255;
+            let g = Math.random()*255;
+            let b = Math.random()*255;
+            value.style = `
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background-color: rgb(${r},${g},${b});
+            `;
+            value.addEventListener('click',function () {
+                color = `rgb(${r},${g},${b})`;
+            })
+        })
+    </script>
+</body>
+</html>

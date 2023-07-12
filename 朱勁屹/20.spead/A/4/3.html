@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .textBox{
+            display: flex;
+            width: 100px;
+            align-items: center;
+            position: relative;
+        }
+        label{
+            width: 10px;
+            height: 10px;
+            border: 2px solid black;
+            color: rgb(0, 0, 0,0);
+            transition: 1s;
+        }
+        .line{
+            width: 0%;
+            height: 2px;
+            position: absolute;
+            top: 50%;
+            background-color: black;
+            transition: 1s;
+        }
+        .text{
+            transition: 1s;
+            color: black;
+        }
+        input:checked ~ .text{
+            color: gray;
+        }
+        input:checked ~ label{
+            color: black;
+        }
+        input:checked ~ .line{
+
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="textBox">
+        <input id="che1" type="checkbox" style="display: none;">
+        <label for="che1">&radic;</label>
+        <div class="text">text</div>
+        <div class="line"></div>
+    </div>
+    <div class="textBox">
+        <input id="che2" type="checkbox" style="display: none;">
+        <label for="che2">&radic;</label>
+        <div class="text">text</div>
+        <div class="line"></div>
+    </div>
+    <div class="textBox">
+        <input id="che3" type="checkbox" style="display: none;">
+        <label for="che3">&radic;</label>
+        <div class="text">text</div>
+        <div class="line"></div>
+    </div>
+
+</body>
+</html>

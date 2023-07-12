@@ -132,7 +132,6 @@
             // 等待所有图像加载完成
             Promise.all(loadImagePromises).then(function () {
                 // 所有图像加载完成后，将画布添加到适当的位置
-                document.body.appendChild(canvas);
 
                 // 在这里进行绘制操作
                 self.la.forEach(function (value, index) {
@@ -142,6 +141,7 @@
                 let ctx2 = canvas2.getContext('2d');
 
                 self.img.forEach(function (v, i) {
+                    
                     if (v['in'] == value['id']) {
                     let im = new Image();
                     im.src = v['src'];
