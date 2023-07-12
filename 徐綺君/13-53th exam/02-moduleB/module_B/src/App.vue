@@ -4,7 +4,7 @@
         <button class="restore">復原</button>
         <button class="redo">重做</button>
         <button>儲存圖片</button>
-        <button class="newLayer" @click="create_layer">新增圖層</button>
+        <button class="newLayer" @click="setcanvas">新增圖層</button>
     </div>
     <main>
         <div class="left">
@@ -22,9 +22,9 @@
 
         </div>
         <div ref="center" class="center" @mousedown="down" @mousemove="move" @mouseup="up" @mouseleave="up">
-            <!-- <div class="layers"> -->
-                <canvas v-for="canvas in layers" :width="canvas.w" :height="canvas.h" @click="clcik_darg"></canvas>
-                <div class="img_box" v-for="(img,index) in imgs" :class="{border: img.isdrag && drag && !zoom,mouse_pointer: drag && !zoom}" :style="{ left: img.x-(img.w/2)+'px', top: img.y-(img.h/2)+'px',transform: 'rotate('+img.deg+'deg)'}" :key="index" @mousedown="down_darg(index)">
+            <!-- <canvas ref="" v-for="canvas in layers" :width="canvas.w" :height="canvas.h" @click="clcik_darg"></canvas> -->
+            <div class="layers_img" v-for="(i,n) in layers">
+                <div class="img_box" v-for="(img,index) in i.imgs" :class="{border: img.isdrag && drag && !zoom,mouse_pointer: drag && !zoom}" :style="{ left: img.x-(img.w/2)+'px', top: img.y-(img.h/2)+'px',transform: 'rotate('+img.deg+'deg)'}" :key="index" @mousedown="down_darg(index,n)">
                     <img draggable="false" :src="img.src" alt="" :style="{width: img.w+'px', height: img.h+'px'}">
                     <div class="dot dot1" @mousedown.stop="dot_down(index,3)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="left: -5px; top: -5px"></div>
                     <div class="dot dot2" @mousedown.stop="dot_down(index,2)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="left: -5px; bottom: -5px"></div>
@@ -32,17 +32,19 @@
                     <div class="dot dot4" @mousedown.stop="dot_down(index,1)" @mousemove="move" @mouseup="up" :class="{ block: img.isdrag && drag }" style="right: -5px; bottom: -5px"></div>
                     <div class="dot dot5" @mousedown.stop="spin_down(index)" @mousemove="move" @mouseup="up" :style="{ left: (img.w/2)+'px', top: -30+'px'}" :class="{ block: img.isdrag && drag }" style="right: -5px; bottom: -5px"></div>
                 </div>
-            <!-- </div> -->
+            </div>
         </div>
         <div class="right">
-            <input class="layers_radio" type="radio" name="layers" id="layers0" checked>
-            <label class="layers_label" for="layers0">圖層0</label>
+            <div class="layer_box" v-for="(i,n) in layers">
+                <input class="layers_radio" type="radio" name="layers" :id="'layers'+i.id" checked @click="now_id = n;console.log(now_id);">
+                <label class="layers_label" :for="'layers'+i.id">圖層{{ i.id }}</label>
+            </div>
         </div>
     </main>
 </template>
 
 <script>
-    import { ref,onMounted, createElementBlock } from 'vue';
+    import { ref,onMounted } from 'vue';
     export default{
         setup() {
             let layers = ref([]);
@@ -55,6 +57,7 @@
             let spin = ref(false);
             let img_id = ref(0);
             let layers_id = 0;
+            let now_id = ref(0);
             let dot_id = 0;
             let ctx;
             let drawing = false;
@@ -69,80 +72,78 @@
             let mouseY;
             let canvas_top;
             let canvas_left;
-            let size = ref(200);
+            let size = ref(20);
 
             let imgs = ref([]);
 
             function setcanvas() {
                 canvas = document.createElement('canvas');
+                center.value.appendChild(canvas);
                 canvas.width = center.value.clientWidth;
                 canvas.height = center.value.clientHeight;
                 ctx = canvas.getContext('2d');
-                layers.value[layers_id] = {
-                    'id': layers_id,
-                    'canvas': canvas,
-                    'w': canvas.width,
-                    'h': canvas.height,
-                    'ctx': ctx,
-                }
                 ctx.lineCap = "round";
                 ctx.lineJoin = "round";
-                canvas_top = layers.value[layers_id].canvas.getBoundingClientRect().top;
+                canvas_top = canvas.getBoundingClientRect().top;
                 canvas_left = canvas.getBoundingClientRect().left;
-                console.log(layers.value[layers_id].canvas);
-                layers_id = layers_id + 1;
-            }
-            function create_layer() {
-                canvas = document.createElement('create');
 
+                layers.value[layers_id] = {
+                    'id': layers_id,
+                    'ctx': ctx,
+                    'top': canvas_top,
+                    'left': canvas_left,
+                    'imgs': [],
+                }
+                now_id.value = layers_id;
+                layers_id = layers_id + 1;
             }
 
             function down(e) {
                 if (draw.value) {                
-                    ctx.lineWidth = size.value;
-                    ctx.beginPath(); 
-                    ctx.moveTo(e.clientX - canvas_left, e.clientY - canvas_top);
-                    ctx.lineTo(e.clientX - canvas_left, e.clientY - canvas_top);
+                    layers.value[now_id.value].ctx.lineWidth = size.value;
+                    layers.value[now_id.value].ctx.beginPath(); 
+                    layers.value[now_id.value].ctx.moveTo(e.clientX - layers.value[now_id.value].left, e.clientY - layers.value[now_id.value].top);
+                    layers.value[now_id.value].ctx.lineTo(e.clientX - layers.value[now_id.value].left, e.clientY - layers.value[now_id.value].top);
 
-                    startX = endX = e.clientX - canvas_left;
-                    startY = endY = e.clientY - canvas_top;
-                    ctx.stroke();
+                    startX = endX = e.clientX - layers.value[now_id.value].left;
+                    startY = endY = e.clientY - layers.value[now_id.value].top;
+                    layers.value[now_id.value].ctx.stroke();
                     drawing = true;
                 }
             }
             function move(e) {
                 if (drawing) {                    
-                    ctx.lineTo(e.clientX - canvas_left, e.clientY - canvas_top);
-                    ctx.stroke();
+                    layers.value[now_id.value].ctx.lineTo(e.clientX - layers.value[now_id.value].left, e.clientY - layers.value[now_id.value].top);
+                    layers.value[now_id.value].ctx.stroke();
 
-                    if (startX > e.clientX - canvas_left) {
-                        startX = e.clientX - canvas_left
+                    if (startX > e.clientX - layers.value[now_id.value].left) {
+                        startX = e.clientX - layers.value[now_id.value].left
                     }
-                    if (startY > e.clientY - canvas_top) {
-                        startY = e.clientY - canvas_top
+                    if (startY > e.clientY - layers.value[now_id.value].top) {
+                        startY = e.clientY - layers.value[now_id.value].top
                     }
-                    if (endX < e.clientX - canvas_left) {
-                        endX = e.clientX - canvas_left
+                    if (endX < e.clientX - layers.value[now_id.value].left) {
+                        endX = e.clientX - layers.value[now_id.value].left
                     }
-                    if (endY < e.clientY - canvas_top) {
-                        endY = e.clientY - canvas_top
+                    if (endY < e.clientY - layers.value[now_id.value].top) {
+                        endY = e.clientY - layers.value[now_id.value].top
                     }
                 }
                 if (draging) {
-                    imgs.value[img_id.value].x = e.clientX - canvas_left;
-                    imgs.value[img_id.value].y = e.clientY - canvas_top;
+                    layers.value[now_id.value].imgs[img_id.value].x = e.clientX - layers.value[now_id.value].left;
+                    layers.value[now_id.value].imgs[img_id.value].y = e.clientY - layers.value[now_id.value].top;
                 }
                 if (zoom.value) {
-                    endX = event.clientX - canvas_left;
-                    endY = event.clientY - canvas_top;
+                    endX = event.clientX - layers.value[now_id.value].left;
+                    endY = event.clientY - layers.value[now_id.value].top;
 
                     let deg = Math.atan2(endY - startY, endX - startX);
 
                     let length = Math.sqrt(Math.pow(startX - endX, 2) + Math.pow(startY - endY, 2));
                     let x_direction = 1;
                     let y_direction = 1;
-                    let img_deg = imgs.value[img_id.value].deg*Math.PI/180;
-                    let img_deg2 = imgs.value[img_id.value].deg;
+                    let img_deg = layers.value[now_id.value].imgs[img_id.value].deg*Math.PI/180;
+                    let img_deg2 = layers.value[now_id.value].imgs[img_id.value].deg;
 
                     if (Math.cos(((dot_id*90 + img_deg2*2) - 45)*Math.PI/180) < 0){
                         x_direction = -1;
@@ -154,18 +155,18 @@
                     let x = length*Math.cos(deg);
                     let y = length*Math.sin(deg);
 
-                    imgs.value[img_id.value].x += x/2;
-                    imgs.value[img_id.value].y += y/2;
+                    layers.value[now_id.value].imgs[img_id.value].x += x/2;
+                    layers.value[now_id.value].imgs[img_id.value].y += y/2;
                     
-                    imgs.value[img_id.value].w += length*Math.cos(img_deg + deg) * x_direction;
-                    imgs.value[img_id.value].h += length*Math.sin(img_deg + deg) * y_direction;
+                    layers.value[now_id.value].imgs[img_id.value].w += length*Math.cos(img_deg + deg) * x_direction;
+                    layers.value[now_id.value].imgs[img_id.value].h += length*Math.sin(img_deg + deg) * y_direction;
 
-                    startX = event.clientX - canvas_left;
-                    startY = event.clientY - canvas_top;
+                    startX = event.clientX - layers.value[now_id.value].left;
+                    startY = event.clientY - layers.value[now_id.value].top;
                 }
                 if (spin.value) {
-                    endX = event.clientX - canvas_left;
-                    endY = event.clientY - canvas_top;
+                    endX = event.clientX - layers.value[now_id.value].left;
+                    endY = event.clientY - layers.value[now_id.value].top;
 
                     let direct = ((startX - centerX) * (endY - centerY)) - ((startY - centerY) * (endX - centerX));
                     let a =  Math.sqrt(Math.pow(startX - endX, 2) + Math.pow(startY - endY, 2));
@@ -175,13 +176,13 @@
                     let degA = Math.round(Math.acos(cosA) * 180 / Math.PI);
 
                     if (direct > 0) {
-                        imgs.value[img_id.value].deg += degA;
+                        layers.value[now_id.value].imgs[img_id.value].deg += degA;
                     }else{
-                        imgs.value[img_id.value].deg -= degA;
+                        layers.value[now_id.value].imgs[img_id.value].deg -= degA;
                     }
 
-                    startX = event.clientX - canvas_left;
-                    startY = event.clientY - canvas_top;
+                    startX = event.clientX - layers.value[now_id.value].left;
+                    startY = event.clientY - layers.value[now_id.value].top;
                 }
             }
             function up() {
@@ -214,11 +215,11 @@
                     let img_width = endX - startX;
                     let img_height = endY - startY;
 
-                    let img_data = ctx.getImageData(startX,startY,img_width,img_height);
+                    let img_data = layers.value[now_id.value].ctx.getImageData(startX,startY,img_width,img_height);
                     let canvas_img = document.createElement('canvas');
                     canvas_img.width = img_width;
                     canvas_img.height = img_height;
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    layers.value[now_id.value].ctx.clearRect(0, 0, canvas.width, canvas.height);
 
                     canvas_img.getContext('2d').putImageData(img_data,0,0);
                     let img = {
@@ -229,8 +230,8 @@
                         'h': img_height,
                         'deg': 0,
                     }
-                    imgs.value.push(img);
-
+                    layers.value[now_id.value].imgs.unshift(img);
+                    console.log(layers.value);
                     drawing = false;
                 }
                 if (draging) {
@@ -244,19 +245,22 @@
                 }
             }
 
-            function down_darg(i){
-                if (drag.value) {
+            function down_darg(i,id){
+                console.log(id);
+                if (drag.value && id == now_id.value) {
                     draging = true;
                     img_id.value = i;
-                    imgs.value.forEach(e => {
-                        e.isdrag = false;
+                    layers.value.forEach(layer => {
+                        layer.imgs.forEach(e=>{
+                            e.isdrag = false;
+                        })
                     });
-                    imgs.value[i].isdrag = true;
+                    layers.value[now_id.value].imgs[i].isdrag = true;
                     
-                    mouseX = event.offsetX - canvas_left;
-                    mouseY = event.offsetY - canvas_top;
+                    mouseX = event.offsetX - layers.value[now_id.value].left;
+                    mouseY = event.offsetY - layers.value[now_id.value].top;
 
-                    let deg = (Math.atan2(imgs.value[img_id.value].y - mouseY, imgs.value[img_id.value].x - mouseX));
+                    let deg = (Math.atan2(layers.value[now_id.value].imgs[img_id.value].y - mouseY, layers.value[now_id.value].imgs[img_id.value].x - mouseX));
                     if (deg<0) {
                         deg = deg + (Math.PI*2);
                     }
@@ -274,7 +278,7 @@
             }
             function clcik_darg(e) {
                 if (drag) {
-                    imgs.value.forEach(e=>{
+                    layers.value[now_id.value].imgs.forEach(e=>{
                         e.isdrag = false;
                     })
                 }
@@ -283,8 +287,8 @@
             function dot_down(i,n) {
                 if (drag.value) {
                     zoom.value = true;
-                    startX = centerX = event.clientX - canvas_left;
-                    startY = centerY = event.clientY - canvas_top;
+                    startX = centerX = event.clientX - layers.value[now_id.value].left;
+                    startY = centerY = event.clientY - layers.value[now_id.value].top;
                     img_id.value = i;
                     dot_id = n;
                 }
@@ -292,10 +296,10 @@
 
             function spin_down(i) {
                 spin.value = true;
-                centerX = imgs.value[i].x;
-                centerY = imgs.value[i].y;
-                startX = event.clientX - canvas_left;
-                startY = event.clientY - canvas_top;
+                centerX = layers.value[now_id.value].imgs[i].x;
+                centerY = layers.value[now_id.value].imgs[i].y;
+                startX = event.clientX - layers.value[now_id.value].left;
+                startY = event.clientY - layers.value[now_id.value].top;
                 img_id.value = i;
             }
 
@@ -320,9 +324,9 @@
                 spin,
                 draging,
                 img_id,
+                now_id,
 
                 setcanvas,
-                create_layer,
                 down,
                 move,
                 up,
@@ -468,18 +472,23 @@
         justify-content: space-around;
         align-content: space-around;
     }
-    .layers_label{
+    .layer_box{
         width: 80%;
+        display: flex;
+    }
+    .layers_label{
+        flex-grow: 1;
         text-align: center;
         background-color: #888888;
         margin: 5px;
         border: 2px solid #888888;
+        border-radius: 5px;
     }
     .layers_radio{
         display: none;
     }
     .layers_radio:checked + label{
-        border-color: black;
+        border-color: rgb(41, 41, 41);
     }
     .display{
         display: none;
