@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 500px;
+            height: 500px;
+            /* border: 2px solid black; */
+            margin: 50PX auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .cheBox{
+            border: 1px solid black;
+            width: calc(448px / 16);
+            height: calc(448px / 16);
+        }
+        button{
+            width: 30px;
+            height: 30px;
+            border-radius:50% ;
+        }
+        .button{
+            width: 500px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+
+    <div class="button">
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+    </div>
+    <script>
+        let box = document.querySelector('.box');
+        let button = document.querySelectorAll('button');
+        let color = 0;
+        for (let i = 0; i < 16; i++) {
+            for (let j = 0; j < 16; j++) {
+                box.innerHTML += `
+                <div class="cheBox"></div>
+                `; 
+                
+            }
+            
+        }
+        let cheBox = document.querySelectorAll('.cheBox');
+        let colorArr = [];
+        
+        button.forEach(function (value,index) {
+            r = Math.floor(Math.random()*255);
+            g = Math.floor(Math.random()*255);
+            b = Math.floor(Math.random()*255);
+            value.style = `background-color: rgb(${r},${g},${b});`;
+            colorArr.push(`rgb(${r},${g},${b})`);
+            value.addEventListener('click',function () {
+                color = index;
+            })
+        })
+        cheBox.forEach(function (value,index) {
+            value.addEventListener('click',function (value,index) {
+                console.log(value);
+
+                
+                value.target.style = `background-color: ${colorArr[color]};`;
+            })
+        })
+
+        
+    </script>
+</body>
+</html>
