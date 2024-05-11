@@ -1,0 +1,139 @@
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+/* slogon */
+header{
+    width: 100%;
+    height: 100%;
+
+    background-image: url('./img/interlude_father.png');
+}
+.gray{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(97, 97, 97, 0.474);
+}
+.text{
+    font-size: 200px;
+    font-weight: 900;   
+
+    color: white;
+}
+/* target */
+#target{
+    width: 100%;
+    height: 100%;
+
+    padding: 20px;
+
+    background-image: url(./img/interlude_01.png);
+    background-position: center;
+    background-attachment: fixed;
+
+    filter: grayscale(1);
+
+    box-sizing: border-box;
+}
+.long{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 50%;
+    height: 100%;
+
+    padding: 20px;
+
+    font-size: 35px;
+    color: aliceblue;
+    text-align: center;
+    background-color: rgba(128, 128, 128, 0.652);
+
+    box-sizing: border-box;
+}
+/* card */
+#card{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    background-color: beige;
+}
+.card{
+    transition: 1s;
+    width: 250px;
+    height: 350px;
+
+    border: 3px solid rgb(203, 138, 40);
+    border-radius: 10px;
+
+    overflow: hidden;
+    margin: 0;
+
+    position: relative;
+}
+.position{
+    width: 100%;
+    height: 80%;
+
+    background-color: rgba(153, 79, 19, 0.397);
+
+    position: absolute;
+    left: -100%;
+
+    transition: 1s;
+}
+#card:hover .card:nth-child(2n + 1){
+    transition: 1s;
+    margin-top: 150px;
+}
+#card:hover .card:nth-child(2n){
+    transition: 1s;
+    margin-bottom: 150px;
+}
+.card h3{
+    margin: -4px 0 0 0;
+    height: 20%;
+    line-height: 150%;
+    transition: 0.5s;
+    background-color: rgb(252, 184, 81);
+    color: rgb(255, 255, 255);
+}
+.card:hover h3{
+    margin: -4px 0 0 0;
+    height: 20%;
+    line-height: 150%;
+    transition: 0.5s;
+    background-color: rgb(255, 237, 211);
+    color: rgb(49, 49, 49);
+}
+.card:hover .position{
+    transition: 1s;
+    left: 0;
+}
+.card img{
+    width: 100%;
+    height: 80%;
+
+    background-size: cover;
+    background-position:bottom;
+    background-repeat: no-repeat;
+}
+/* about us */
+footer{
+    width: 100%;
+    height: 50%;
+
+    background-color: rgb(184, 184, 184);
+    border-radius:0 0 0 200px;
+}

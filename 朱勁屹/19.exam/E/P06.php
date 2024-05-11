@@ -9,6 +9,6 @@
     
     foreach ($n as $key => $value) {
         if(is_numeric($value) && !$basketTurn){
-            array_push($font,$n)
+            array_push($font,$n);
         }
     }

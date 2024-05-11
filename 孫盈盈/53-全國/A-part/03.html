@@ -28,15 +28,21 @@
             height: 12px;
             margin-right: 5px;
             border: 1px solid gray;
-            border-radius: 3px;
+            /* border-radius: 3px; */
             background-color: #fdfdfd;
             text-align: center;
         }
 
         input[type=checkbox]:checked + span::before {
-            content: "\2714";
-            background-color: rgba(128, 255, 0, 0);
+            /* content: "\2714"; */
+            content: "";
+            width: 6px;
+            height: 12px;
+            /* background-color: rgba(17, 23, 11, 0); */
             border: 0;
+            border-bottom: 1px solid black;
+            border-right: 1px solid black;
+            transform: rotate(0.1turn);
             text-decoration: none;
         }
         input[type=checkbox]:checked + span{

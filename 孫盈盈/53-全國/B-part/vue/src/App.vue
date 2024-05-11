@@ -48,8 +48,8 @@
                     <p>顏色</p>
                     <input id="color" style="width: 100%; height: 50px;" type="color" v-model="color">
                 </div>
-                <button style="margin: 10px 0;"><p>筆刷</p></button>
-                <button style="margin: 10px 0;"><p>樣章</p></button>
+                <button style="margin: 10px 0;" @click="method_f(1)"><p>筆刷</p></button>
+                <button style="margin: 10px 0;" @click="method_f(2)"><p>樣章</p></button>
             </div>
         </div>
         <div id="center">
@@ -71,7 +71,7 @@
 export default {
   setup(){
     return{
-      text:'text',
+      method: 1,
       startX: 0,
       startY: 0,
       selected: 1,
@@ -86,6 +86,9 @@ export default {
       }
     }
   },methods:{
+    method_f(num){
+        this.method = num
+    },
     mousedown(e){
       this.isDrawing = 1;
       this.startX = e.offsetX;
@@ -96,19 +99,20 @@ export default {
       let ctx = canvas.getContext('2d');
 
       if (this.isDrawing) {
-
-        ctx.lineWidth = this.selected;
-        ctx.strokeStyle = this.color;
-
-        console.log(this.startX, this.startY, e.offsetX, e.offsetY);
-        ctx.beginPath();
-        ctx.moveTo(this.startX, this.startY);
-        ctx.lineTo(e.offsetX, e.offsetY);
-        ctx.stroke();
-        ctx.lineJoin = 'round';
-        ctx.lineCap = 'round';
-        [this.startX, this.startY] = [e.offsetX, e.offsetY];
-        
+        if(this.method == 1){
+            ctx.lineWidth = this.selected;
+            ctx.strokeStyle = this.color;
+    
+            console.log(this.startX, this.startY, e.offsetX, e.offsetY);
+            ctx.beginPath();
+            ctx.moveTo(this.startX, this.startY);
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.stroke();
+            ctx.lineJoin = 'round';
+            ctx.lineCap = 'round';
+            [this.startX, this.startY] = [e.offsetX, e.offsetY];
+            
+        }
       }
     },
     mouseup(){

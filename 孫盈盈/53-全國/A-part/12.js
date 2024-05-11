@@ -1,7 +1,7 @@
 let body = document.querySelector('body');
 
 body.innerHTML += `<div class="back">
-                    <button class="left"><</button>
+                        <button class="left"><</button>
                         <input id="img" type="image">
                         <button class="right">></button>
                     </div>
