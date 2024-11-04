@@ -97,6 +97,14 @@ body {
     padding-right: 20px;
   }
 }
+@media(max-width: 800px){
+  #button .button{
+    color: #8e8e9b;
+    border-color: #4F4F62;
+    width: 50px;
+    height: 60px;
+  }
+}
 .component main .sliders {
   position: relative;
   display: flex;
@@ -118,24 +126,24 @@ body {
 .component main .sliders .range-slider::after {
   position: absolute;
   bottom: -24px;
-  left: calc(50% - 2em);
-  font-size: 80%;
+  left: calc(50% - 3em);
+  font-size: 70%;
   color: #8e8e9b;
   content: 'red';
-  width: 4em;
+  width: 6em;
   text-align: center;
 }
 .component main .sliders .range-slider:nth-child(2)::after {
-  content: 'red';
+  content: 'Sensitive';
 }
 .component main .sliders .range-slider:nth-child(3)::after {
-  content: 'blue';
+  content: 'Peak Delay';
 }
 .component main .sliders .range-slider:nth-child(4)::after {
-  content: 'green';
+  content: 'Brightness';
 }
 .component main .sliders .range-slider:nth-child(5)::after {
-  content: '256';
+  content: '';
 }
 .component main .sliders .range-slider:nth-child(6)::after {
   content: '512';
@@ -287,6 +295,7 @@ body {
   background: transparent;
 }
 .button{
+  width: 80px;
   height: 30px;
   border-radius: 8px;
   background: transparent;
@@ -300,5 +309,18 @@ body {
 }
 .button:hover{
   background-color: #4F4F62;
-  color: #393838;
+  color: #ffffff;
+}
+#button{
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-around;
+}
+#button .button{
+  color: #8e8e9b;
+  border-color: #4F4F62;
+}
+#button .button:hover{
+  background-color: #4F4F62;
+  color: #ffffff;
 }

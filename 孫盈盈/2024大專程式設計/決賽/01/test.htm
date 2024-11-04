@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const playlists = [
+    {
+      "id" : "1",
+      "owner_id" : "2",
+      "song_ids" : [ "8", "32"]
+    },
+    {
+      "id" : "2",
+      "owner_id" : "3",
+      "song_ids" : ["6", "8","11" ]
+    }
+  ];
+  
+  /* Takes a list of playlists, and an ID to remove */
+  const removePlaylistById = (plists, id) =>
+    plists.filter(playlist => playlist.id !== id);
+  
+  /* Removes playlist ID 2 from list, prints result */
+  const result = removePlaylistById(playlists, '1');
+  console.log(result);
+  </script>
+</body>
+</html>

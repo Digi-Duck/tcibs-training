@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>購物車</th>
+            <th>價格</th>
+            <th>數量</th>
+            <th></th>
+            <th>總價</th>
+        </tr>
+        <tr>
+            <td>Apple</td>
+            <td>
+                <p class="cost">
+                    NT$12000
+                </p>
+            </td>
+            <td><input type="number" class="money" value="0" min="0"></td>
+            <td><button class="delete">刪除</button></td>
+            <td class="oneTotal">NT$0</td>
+        </tr>
+        <tr>
+            <td>NIKE</td>
+            <td><p class="cost">
+                NT$1200
+            </p></td>
+            <td><input type="number" class="money" value="0" min="0"></td>
+            <td><button class="delete">刪除</button></td>
+            <td class="oneTotal">NT$0</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                稅前總額
+            </td>
+            <td>
+                <input class="tae" type="text" disabled="disabled" value="NT$0">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                營業稅
+            </td>
+            <td>
+                <input class="bis" type="text" disabled="disabled" value="NT$0">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                運費
+            </td>
+            <td >
+                <input class="car" type="text" disabled="disabled" value="NT$100">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                最終價格
+            </td>
+            <td>
+                <input class="Total" type="text" disabled="disabled" value="NT$100" >
+            </td>
+        </tr>
+
+    </table>
+    <script>
+        // function a(){
+            let moneys = document.querySelectorAll('.money')
+            let costs = document.querySelectorAll('.cost')
+            let oneTotals = document.querySelectorAll('.oneTotal')
+            costs.forEach((b, index)=>{
+                moneys[index].addEventListener('change', ()=>{
+                    let total = 0
+                    let money = parseInt(costs[index].textContent.replace("NT$", ""), 10)
+                    oneTotals[index].textContent = `NT$${money * moneys[index].value}`
+                    oneTotals.forEach((a, num)=>{
+                       total += parseInt(oneTotals[num].textContent.replace("NT$", ""), 10)
+                    })
+                    document.querySelector('.tae').value = 'NT$' + total
+                    document.querySelector('.bis').value = 'NT$' + total * 0.05
+                    document.querySelector('.car').value = 'NT$' + 100
+                    total = total + total * 0.05 + 100
+                    document.querySelector('.Total').value = 'NT$' + total
+                })
+            })
+        // }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./01.css">
+</head>
+<body>
+    <h1>代辦事件管理</h1>
+    <div class="input">
+        <input type="text" class="event" placeholder="標題">
+        <input type="text" class="explain" placeholder="事件描述">
+        <input type="datetime-local" class="date">
+        <button id="insert">新增</button>
+    </div>
+    <div class="result">
+        <h1>事件列表</h1>
+        <div class="list">
+            <div class="css">
+                <h1>未完成</h1>
+                <div class="uncomplete d"></div>
+            </div>
+            <div class="css">
+                <h1>完成</h1>
+                <div class="complete d"></div>
+            </div>
+        </div>
+    </div>
+    <script src="./01.js"></script>
+</body>
+</html>
